@@ -1,8 +1,8 @@
 site_name: Sigma Documentação
 
+site_url: https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/
+
 theme:
   name: material
-
 nav:
-  - Início: teste.md
- 
+  - Início: index.md
