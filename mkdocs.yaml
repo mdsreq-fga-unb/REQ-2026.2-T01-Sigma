@@ -1,0 +1,8 @@
+site_name: Sigma Documentação
+
+theme:
+  name: material
+
+nav:
+  - Início: teste.md
+ 
