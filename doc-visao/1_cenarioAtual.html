@@ -1,0 +1,980 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de requisitos de software para o projeto web">
+      
+      
+        <meta name="author" content="Seu Projeto">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Cenário Atual do Cliente e do Negócio - Documentação de Requisitos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="light" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-cenario-atual-do-cliente-e-do-negocio" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Documentação de Requisitos" class="md-header__button md-logo" aria-label="Documentação de Requisitos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentação de Requisitos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Cenário Atual do Cliente e do Negócio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="light" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="dark" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1 Cenário Atual do Cliente e do Negócio:doc-visao/1_cenarioAtual.md" class="md-tabs__link">
+          
+  
+  
+  Visão do Produto e Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../videos/entrega-videos.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entrega de vídeos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../referencias/referencia.md" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referências
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Documentação de Requisitos" class="md-nav__button md-logo" aria-label="Documentação de Requisitos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentação de Requisitos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Produto e Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão do Produto e Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1 Cenário Atual do Cliente e do Negócio:doc-visao/1_cenarioAtual.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_solucao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Solução Proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_intervencao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Intervenção Social
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_estrategias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 Estratégias de engenharia de software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_requisitos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_cronograma.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 Cronograma e entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_interacao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Interação entre Equipe e Cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_licoes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 Lições Aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../videos/entrega-videos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrega de vídeos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/referencia.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-identificacao-do-clienteparceiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Identificação do Cliente/Parceiro
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-introducao-ao-negocio-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Introdução ao Negócio e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-rich-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Rich Picture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-identificacao-da-oportunidade-ou-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Identificação da Oportunidade ou Problema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-desafios-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Desafios do Projeto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-mapa-de-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Mapa de Stakeholders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-segmentacao-de-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 Segmentação de Clientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-cenario-atual-do-cliente-e-do-negocio">1. Cenário Atual do Cliente e do Negócio</h1>
+<h2 id="11-identificacao-do-clienteparceiro">1.1 Identificação do Cliente/Parceiro</h2>
+<ul>
+<li><strong>Nome:</strong> Creche Estação Vida</li>
+<li><strong>Tipo:</strong> Instituição de ensino filantrópica</li>
+<li><strong>Representante:</strong> Cirlene Sena, diretora da creche</li>
+<li><strong>Forma de contato:</strong> Reuniões por videochamadas, WhatsApp e e-mail</li>
+<li><strong>Vínculo com o projeto:</strong> Cliente real e interessado na resolução do problema tendo como solução o projeto, stakeholder principal do projeto, fornecerá informações essenciais para o desenvolvimento do projeto e avaliará as entregas conforme o projeto for desenvolvido.</li>
+</ul>
+<h2 id="12-introducao-ao-negocio-e-contexto">1.2 Introdução ao Negócio e Contexto</h2>
+<p>A Creche Estação Vida é uma instituição filantrópica, sem fins lucrativos, localizada em Águas Lindas de Goiás, que atua no atendimento e desenvolvimento de crianças em situação de vulnerabilidade social. A instituição funciona das 7h30 às 19h30, oferecendo um ambiente de educação, acolhimento e apoio às famílias atendidas.</p>
+<p>Atualmente, a creche atende 202 alunos, em sua maioria provenientes de famílias da região onde está localizada. Por estar inserida em uma área de baixa renda, a instituição possui um papel importante no atendimento às crianças e no suporte às suas famílias, contribuindo para o desenvolvimento infantil em um ambiente saudável e estável.</p>
+<p>A Creche Estação Vida é vinculada à prefeitura da cidade e conta com profissionais responsáveis pelas atividades educacionais, de cuidado e administrativas. Ao longo dos anos de funcionamento, a instituição acumulou uma grande quantidade de informações e documentos relacionados aos alunos.</p>
+<p>Apesar de sua atuação junto à comunidade, a creche enfrenta dificuldades relacionadas ao cadastro, armazenamento e manutenção das fichas de matrícula. Atualmente, o preenchimento e o gerenciamento dessas informações são realizados de forma manual, utilizando papel e caneta, o que dificulta a organização, a consulta e a manutenção dos dados dos alunos.</p>
+<h2 id="13-rich-picture">1.3 Rich Picture</h2>
+<p>A Creche Estação Vida possui mais de 20 anos de atuação e atende atualmente 202 alunos. Devido ao longo período de funcionamento, a instituição acumulou uma grande quantidade de fichas e documentos de matrícula, tornando o cadastro, armazenamento e consulta dessas informações mais trabalhosos.</p>
+<p>Atualmente, as matrículas são realizadas manualmente, utilizando fichas de papel que são armazenadas em armários, incluindo documentos antigos do chamado "arquivo morto". Esse processo dificulta a localização e manutenção das informações.</p>
+<p>A instituição conta com aproximadamente 25 funcionárias, sendo apenas 2 secretárias responsáveis pelas atividades administrativas. Dessa forma, a grande quantidade de documentos e a equipe reduzida contribuem para a sobrecarga e dificultam o gerenciamento das informações.</p>
+<p><img alt="rich picture imagem" src="../assets/richPicture.png" /></p>
+<blockquote>
+<p><strong>Figura 1</strong> — Diagrama do cenário atual da Creche Estação Vida, ilustrando o processo de cadastro, armazenamento e consulta das informações dos alunos de forma manual, utilizando fichas físicas e arquivos em armários, evidenciando os principais atores envolvidos, o fluxo de informações, os problemas enfrentados e a oportunidade de digitalização desse processo.</p>
+</blockquote>
+<h2 id="14-identificacao-da-oportunidade-ou-problema">1.4 Identificação da Oportunidade ou Problema</h2>
+<p>Foi elaborado um diagrama de Ishikawa a partir do levantamento realizado junto à Creche Estação Vida, contemplando as principais causas relacionadas às dificuldades enfrentadas pela instituição no armazenamento, organização e manutenção das fichas de matrícula dos alunos.</p>
+<p>Atualmente, grande parte das informações é registrada manualmente, utilizando fichas de papel que posteriormente são armazenadas em armários. Esse processo dificulta a localização, consulta e atualização das informações, além de exigir espaço físico para o armazenamento dos documentos.</p>
+<p>O grande volume de fichas acumuladas ao longo dos anos, juntamente com a quantidade reduzida de profissionais responsáveis pelas atividades administrativas, torna o gerenciamento dessas informações ainda mais trabalhoso e suscetível à perda ou deterioração dos documentos.</p>
+<p>Dessa forma, existe uma oportunidade de melhorar os processos internos por meio da digitalização das fichas de matrícula, proporcionando maior facilidade de acesso, organização e segurança das informações.</p>
+<p>Portanto, o desenvolvimento de um sistema digital para cadastro e gerenciamento das fichas de matrícula representa uma oportunidade de modernizar o processo administrativo da creche, reduzir a dependência de documentos físicos e tornar a manutenção das informações dos alunos mais eficiente.
+<img alt="imagem diagrama de ishikawa" src="../assets/ishikawa.png" /></p>
+<h3 id="causas-identificadas-no-diagrama-de-ishikawa">Causas identificadas no diagrama de Ishikawa</h3>
+<ul>
+<li><strong>Meio ambiente (fatores externos):</strong> região de vulnerabilidade social e baixo acesso a tecnologia; dependência da prefeitura (recursos e infraestrutura); possíveis mudanças em políticas públicas e legislações.</li>
+<li><strong>Materiais (recursos utilizados no processo):</strong> fichas de matrícula em papel; armários e pastas físicas; equipamentos e infraestrutura limitados.</li>
+<li><strong>Método (processos de trabalho):</strong> armazenamento manual das fichas; classificação e organização sem padronização; dificuldade na localização e atualização das informações.</li>
+<li><strong>Medida (métricas e controles):</strong> tempo gasto para localizar uma ficha; quantidade de documentos acumulados; falta de indicadores para controle e organização.</li>
+<li><strong>Máquina (tecnologia e sistemas):</strong> ausência de sistema digital; infraestrutura de TI inexistente ou limitada; equipamentos de informática insuficientes.</li>
+<li><strong>Mão de obra (pessoas e habilidades):</strong> equipe reduzida (2 secretárias); falta de treinamento em gestão documental; sobrecarga de tarefas administrativas.</li>
+</ul>
+<p><strong>Problema central:</strong> dificuldade na organização e gerenciamento das fichas de matrícula dos alunos.</p>
+<h2 id="15-desafios-do-projeto">1.5 Desafios do Projeto</h2>
+<p>O principal desafio do projeto é realizar a <strong>digitalização das fichas de matrícula atualmente armazenadas em documentos físicos</strong>. A Creche Estação Vida possui um grande volume de fichas acumuladas ao longo dos anos, o que dificulta a organização, localização e manutenção das informações. Além disso, a quantidade de documentos tende a aumentar com o passar do tempo, tornando necessário desenvolver uma solução que permita o armazenamento organizado e facilite o acesso aos dados.</p>
+<p>Outro desafio está relacionado à <strong>equipe reduzida da secretaria</strong>, composta por apenas duas responsáveis pelas atividades administrativas. Como o cadastro, a consulta e a atualização das fichas são realizados manualmente, essas atividades demandam tempo e podem sobrecarregar a equipe. Dessa forma, o sistema deverá ser simples e intuitivo, permitindo que as responsáveis realizem suas atividades sem a necessidade de conhecimentos técnicos avançados.</p>
+<p>Também será necessário considerar a <strong>transição dos documentos físicos para o sistema digital.</strong> Será preciso definir quais informações das fichas atuais deverão ser cadastradas e como os documentos antigos serão tratados, garantindo que informações importantes não sejam perdidas durante o processo.</p>
+<p>Assim, o projeto deverá transformar um processo que é, atualmente, manual e baseado em documentos físicos em um processo <strong>digital, organizado e de fácil utilização</strong>, considerando o volume de informações, a equipe disponível e a necessidade de preservar os dados existentes. A solução deverá priorizar as funcionalidades essenciais para atender às necessidades da creche sem tornar o sistema complexo para suas usuárias.</p>
+<h2 id="16-mapa-de-stakeholders">1.6 Mapa de Stakeholders</h2>
+<p>Os principais stakeholders do projeto são:</p>
+<ul>
+<li><strong>Cirlene Sena</strong> — diretora da instituição e proprietária do imóvel, principal responsável pela tomada de decisões, validação das prioridades e avaliação das entregas.</li>
+<li><strong>Kananda Sena</strong> — coordenadora da instituição, responsável por contribuir na definição e validação dos requisitos da solução.</li>
+<li><strong>Secretárias</strong> — principais usuárias do sistema, realizando o cadastro, consulta e atualização das informações dos alunos.</li>
+<li><strong>Professoras e monitoras</strong> — impactadas pela maior facilidade de acesso às informações necessárias para suas atividades.</li>
+<li><strong>Alunos e seus responsáveis</strong> — beneficiados indiretamente pela maior organização e segurança dos dados.</li>
+<li><strong>Equipe de desenvolvimento</strong> — responsável por implementar a solução e garantir sua funcionalidade, usabilidade e segurança.</li>
+</ul>
+<p><img alt="imagem de satakeholders" src="../assets/stakeholders.png" /></p>
+<h3 id="tabela-de-stakeholders">Tabela de stakeholders</h3>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Rel. com a solução</th>
+<th>Interesse Principal</th>
+<th>Influência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cirlene Sena (Diretora/Proprietária)</td>
+<td>Tomadora de decisão e responsável pela instituição</td>
+<td>Garantir uma gestão organizada e eficiente das informações dos alunos</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Kananda Sena (Coordenadora)</td>
+<td>Participa da definição de requisitos e validação da solução</td>
+<td>Facilitar o acesso às informações e apoiar a gestão da instituição</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Secretárias</td>
+<td>Principais usuárias do sistema, responsáveis pelo cadastro, consulta e atualização das fichas</td>
+<td>Ter um sistema simples e intuitivo que reduza o trabalho manual e otimize o tempo</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Professoras e Monitoras</td>
+<td>Usuárias indiretas da solução, fornecem e utilizam informações cadastradas</td>
+<td>Acesso fácil e rápido às informações dos alunos para apoiar o processo educacional</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Alunos e responsáveis</td>
+<td>Beneficiários indiretos da solução, fornecem e utilizam as informações cadastrais</td>
+<td>Maior organização, segurança dos dados e melhor atendimento</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Equipe de Desenvolvimento</td>
+<td>Responsável por desenvolver, implementar e manter o sistema</td>
+<td>Entregar uma solução funcional, segura e fácil de utilização</td>
+<td>Alta</td>
+</tr>
+</tbody>
+</table>
+<h2 id="17-segmentacao-de-clientes">1.7 Segmentação de Clientes</h2>
+<p>A Creche Estação Vida possui quatro principais perfis de clientes e públicos impactados pelo sistema:</p>
+<ul>
+<li><strong>Equipe administrativa (direção, coordenação e secretaria):</strong> principal grupo de usuários da solução, utilizando o sistema para realizar o cadastro, consulta, atualização e organização das informações dos alunos, buscando reduzir o trabalho manual e facilitar o gerenciamento das fichas de matrícula.</li>
+<li><strong>Equipe pedagógica (professoras e monitoras):</strong> poderá utilizar as informações dos alunos necessárias para o desenvolvimento das atividades e acompanhamento das crianças, tendo maior facilidade para consultar dados que atualmente estão armazenados em documentos físicos.</li>
+<li><strong>Responsáveis (pais e familiares):</strong> são responsáveis por fornecer as informações utilizadas no processo de matrícula e poderão ser beneficiados indiretamente pela maior organização e segurança dos dados, reduzindo as dificuldades relacionadas à localização e manutenção das informações cadastrais. Alguns responsáveis também solicitam informações de ex-alunos da creche, com mais de 20 anos de históricos, tornando a recuperação dessas informações muito complicada.</li>
+<li><strong>Alunos (crianças) e comunidade:</strong> principais beneficiários indiretos da solução, pois uma gestão mais organizada das informações pode contribuir para um atendimento mais eficiente e reduzir os riscos relacionados à perda ou dificuldade de acesso aos dados dos alunos.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
