@@ -964,12 +964,12 @@
 <h3 id="concepcao">Concepção</h3>
 <p><strong>Elicitação e Descoberta:</strong></p>
 <ul>
-<li><strong>Video-Entrevistas:</strong> Serão realizadas entrevistas com a diretora, coordenadora e secretárias da Creche Estação Vida para compreender o processo atual de cadastro, armazenamento, consulta e atualização das fichas de matrícula, identificando as principais necessidades dos usuários.</li>
+<li><strong>Entrevistas:</strong> Serão realizadas entrevistas por meio de videochamadas, com a diretora, coordenadora e secretárias da Creche Estação Vida para compreender o processo atual de cadastro, armazenamento, consulta e atualização das fichas de matrícula, identificando as principais necessidades dos usuários.</li>
 <li><strong>Análise Documental:</strong> As fichas de matrícula utilizadas pela instituição serão analisadas para identificar as principais informações que deverão ser consideradas na solução.</li>
 </ul>
 <p><strong>Análise e Consenso:</strong></p>
 <ul>
-<li><strong>Priorização de Requisitos:</strong> Os requisitos identificados serão analisados e priorizados de acordo com sua importância para a creche, dando preferência às necessidades que apresentam maior impacto na rotina administrativa.</li>
+<li><strong>Priorização de Requisitos (MoSCoW):</strong> Os requisitos identificados serão analisados e priorizados de acordo com sua importância para a creche, dando preferência às necessidades que apresentam maior impacto na rotina administrativa. Para realizar a priorização, utilizaremos o método MoSCoW (Must have, Should have, Could have, Won't have).</li>
 </ul>
 <p><strong>Declaração:</strong></p>
 <ul>
@@ -978,7 +978,11 @@
 </ul>
 <p><strong>Representação:</strong></p>
 <ul>
-<li><strong>Casos de Uso Leves:</strong> Serão elaborados casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.</li>
+<li><strong>Casos de Uso de Alto Nível:</strong> Serão elaborados casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.</li>
+</ul>
+<p><strong>Organização e Atualização:</strong></p>
+<ul>
+<li><strong>Catálogo Inicial de Requisitos:</strong> Será criada a estrutura de rastreabilidade dos requisitos funcionais e não funcionais do sistema. Além disso, os primeiros requisitos estabelecidos serão organizados nessa estrutura.</li>
 </ul>
 <h3 id="elaboracao">Elaboração</h3>
 <p><strong>Elicitação e Descoberta:</strong></p>
@@ -988,12 +992,12 @@
 </ul>
 <p><strong>Análise e Consenso:</strong></p>
 <ul>
-<li><strong>Análise de Requisitos:</strong> Os requisitos serão analisados para identificar conflitos, ambiguidades, dependências e informações incompletas.</li>
+<li><strong>Análise de Impacto e Dependências:</strong> Os requisitos serão analisados para identificar conflitos, ambiguidades, dependências e informações incompletas.</li>
 <li><strong>Priorização:</strong> Os requisitos serão novamente priorizados considerando seu valor para a instituição e os riscos envolvidos em sua implementação.</li>
 </ul>
 <p><strong>Declaração:</strong></p>
 <ul>
-<li><strong>Refinamento da Especificação:</strong> Os requisitos de maior prioridade serão detalhados progressivamente conforme a necessidade de implementação, evitando uma especificação excessiva antecipadamente.</li>
+<li><strong>Detalhamento Sob Demanda:</strong> Os requisitos de maior prioridade serão detalhados progressivamente conforme a necessidade de implementação, aplicando técnicas como a escrita de casos de uso detalhados e a definição de critérios de aceite, evitando uma especificação excessiva antecipadamente.</li>
 </ul>
 <p><strong>Representação:</strong></p>
 <ul>
@@ -1005,12 +1009,32 @@
 <li><strong>Revisões com Stakeholders:</strong> Os requisitos refinados serão revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas.</li>
 <li><strong>Demonstrações:</strong> Protótipos e versões iniciais das funcionalidades serão apresentados aos stakeholders para obter feedback e identificar possíveis ajustes.</li>
 </ul>
+<p><strong>Organização e Atualização:</strong></p>
+<ul>
+<li><strong>Gerenciamento de Mudanças:</strong> A Matriz de Rastreabilidade criada na Concepção será atualizada continuamente. Conforme os requisitos são refinados e detalhados em casos de uso, as alterações de escopo, novas dependências e repriorizações serão registradas para manter o controle e histórico do projeto.</li>
+</ul>
 <h3 id="construcao">Construção</h3>
 <p>Os requisitos serão progressivamente refinados conforme a implementação das funcionalidades, priorizando aqueles necessários para a iteração atual e evitando detalhamento desnecessário de funcionalidades futuras.</p>
+<p><strong>Elicitação e Descoberta:</strong></p>
+<ul>
+<li><strong>Esclarecimento Contínuo:</strong> Durante as iterações de desenvolvimento, comunicações diretas com os stakeholders serão realizadas para esclarecer dúvidas pontuais sobre as regras de negócio, garantindo que a equipe não fique travada.</li>
+</ul>
+<p><strong>Análise e Consenso:</strong></p>
+<ul>
+<li><strong>Avaliação de Mudanças:</strong> Caso surjam novos pedidos ou alterações nos requisitos durante o desenvolvimento, será aplicada a técnica de Análise de Impacto para avaliar a viabilidade técnica, o custo e o impacto dessas mudanças no escopo da iteração atual.</li>
+</ul>
+<p><strong>Declaração:</strong></p>
+<ul>
+<li><strong>Especificação Sob Demanda:</strong> Evitando detalhamento antecipado desnecessário, os requisitos selecionados para a iteração atual serão especificados no momento certo, por meio da escrita de critérios de aceite e atualização dos casos de uso, documentando o que os desenvolvedores precisam para construir a funcionalidade.</li>
+</ul>
+<p><strong>Representação:</strong></p>
+<ul>
+<li><strong>Refinamento Visual:</strong> Os protótipos de interface serão atualizados e ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.</li>
+</ul>
 <p><strong>Verificação e Validação:</strong></p>
 <ul>
-<li><strong>Testes:</strong> As funcionalidades implementadas serão testadas para verificar se estão de acordo com os requisitos definidos.</li>
-<li><strong>Demonstrações Incrementais:</strong> As funcionalidades desenvolvidas serão apresentadas aos stakeholders, permitindo verificar se o sistema continua atendendo às necessidades da creche e incorporar o feedback nas próximas iterações.</li>
+<li><strong>Verificação por Testes Baseados em Requisitos (Verificação):</strong> O software implementado será verificado por meio de técnicas convencionais de teste de software, projetados e executados para averiguar objetivamente se as regras de negócio e os critérios de aceite definidos na especificação dos requisitos foram plenamente atendidos.</li>
+<li><strong>Demonstrações Incrementais (Validação):</strong> As funcionalidades desenvolvidas serão apresentadas aos stakeholders, permitindo validar se o sistema continua atendendo às necessidades da creche e incorporar o feedback nas próximas iterações.</li>
 </ul>
 <p><strong>Organização e Atualização:</strong></p>
 <ul>
@@ -1031,88 +1055,144 @@
 <table>
 <thead>
 <tr>
-<th>Fase do OpenUP</th>
-<th>Atividade de ER</th>
-<th>Prática Técnica</th>
+<th>Fases do OpenUP</th>
+<th>Atividades de ER</th>
+<th>Prática</th>
+<th>Técnica</th>
 <th>Resultado Esperado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Concepção</strong></td>
-<td>Elicitação e Descoberta — Levantamento Inicial de Requisitos</td>
+<td>Elicitação e Descoberta</td>
+<td>Levantamento Inicial de Requisitos</td>
 <td>Entrevistas com Stakeholders, Análise Documental</td>
 <td>Requisitos de alto nível identificados e contexto do problema de gestão de matrículas compreendido</td>
 </tr>
 <tr>
-<td><strong>Concepção</strong></td>
-<td>Análise e Consenso — Priorização Estratégica Inicial</td>
-<td>Discussões em Equipe, Análise de Valor de Negócio</td>
-<td>Escopo principal do MVP acordado e requisitos críticos (maior impacto na rotina) priorizados</td>
+<td></td>
+<td>Análise e Consenso</td>
+<td>Priorização Estratégica Inicial</td>
+<td>Reunião de validação com a equipe e Stakeholders e aplicação do Método MoSCoW</td>
+<td>Escopo principal do MVP acordado com a direção/secretaria da creche</td>
 </tr>
 <tr>
-<td><strong>Concepção</strong></td>
-<td>Declaração — Registro da Visão e Escopo</td>
+<td></td>
+<td>Declaração</td>
+<td>Registro da Visão e Escopo</td>
 <td>Documento de Visão, Lista de Requisitos (Backlog Inicial)</td>
 <td>Objetivos da solução e escopo do sistema documentados de forma clara e concisa</td>
 </tr>
 <tr>
-<td><strong>Concepção</strong></td>
-<td>Representação — Modelagem de Funcionalidades</td>
+<td></td>
+<td>Representação</td>
+<td>Modelagem de Funcionalidades Essenciais</td>
 <td>Casos de Uso</td>
-<td>Funcionalidades críticas essenciais mapeadas e representadas de forma concisa</td>
+<td>Funcionalidades críticas mapeadas e representadas de forma concisa</td>
+</tr>
+<tr>
+<td></td>
+<td>Organização e Atualização</td>
+<td>Estruturação de Rastreabilidade</td>
+<td>Matriz de Rastreabilidade</td>
+<td>Catálogo inicial de requisitos estruturado</td>
 </tr>
 <tr>
 <td><strong>Elaboração</strong></td>
-<td>Elicitação e Descoberta — Refinamento de Requisitos Críticos</td>
+<td>Elicitação e Descoberta</td>
+<td>Refinamento de Requisitos Críticos</td>
 <td>Entrevistas de Aprofundamento, Cenários de Uso</td>
 <td>Requisitos refinados e compreendidos em detalhes para mitigar os riscos arquiteturais</td>
 </tr>
 <tr>
-<td><strong>Elaboração</strong></td>
-<td>Análise e Consenso — Análise de Viabilidade e Dependências</td>
-<td>Análise de Requisitos, Repriorização de Riscos</td>
+<td></td>
+<td>Análise e Consenso</td>
+<td>Análise de Impacto e Dependências</td>
+<td>Análise de Impacto, Análise de Valor vs. Risco</td>
 <td>Conflitos resolvidos e consenso estabelecido sobre a viabilidade técnica da implementação</td>
 </tr>
 <tr>
-<td><strong>Elaboração</strong></td>
-<td>Declaração — Especificação Progressiva</td>
+<td></td>
+<td>Declaração</td>
 <td>Refinamento da Especificação</td>
+<td>Escrita de Casos de Uso Detalhados e Definição de Critérios de Aceite</td>
 <td>Requisitos prioritários especificados com o nível exato de detalhe necessário para o desenvolvimento</td>
 </tr>
 <tr>
-<td><strong>Elaboração</strong></td>
-<td>Representação — Prototipação de Interface e Interação</td>
+<td></td>
+<td>Representação</td>
+<td>Prototipação de Interface e Interação</td>
 <td>Casos de Uso Detalhados, Protótipos de Interface</td>
 <td>Interações detalhadas e telas validadas visualmente para guiar a equipe de desenvolvimento</td>
 </tr>
 <tr>
-<td><strong>Elaboração</strong></td>
-<td>Verificação e Validação — Validação da Proposta de Solução</td>
+<td></td>
+<td>Verificação e Validação</td>
+<td>Validação da Proposta de Solução</td>
 <td>Revisões com Stakeholders, Demonstrações de Protótipos</td>
-<td>Confirmação de que a arquitetura e as interfaces propostas atendem às expectativas dos usuários</td>
+<td>Confirmação de que as interfaces propostas atendem às expectativas dos usuários</td>
+</tr>
+<tr>
+<td></td>
+<td>Organização e Atualização</td>
+<td>Gerenciamento de Mudanças e Rastreabilidade</td>
+<td>Atualização da Matriz de Rastreabilidade</td>
+<td>Alterações de escopo e novas dependências registradas, mantendo o controle do projeto</td>
 </tr>
 <tr>
 <td><strong>Construção</strong></td>
-<td>Verificação e Validação — Validação de Funcionalidades Implementadas</td>
-<td>Testes de Software, Demonstrações Incrementais</td>
+<td>Elicitação e Descoberta</td>
+<td>Esclarecimento contínuo de requisitos da iteração</td>
+<td>Comunicação com stakeholders por meio de aplicativos de mensagem</td>
+<td>Dúvidas pontuais de negócio resolvidas para não travar o desenvolvimento</td>
+</tr>
+<tr>
+<td></td>
+<td>Análise e Consenso</td>
+<td>Avaliação de mudanças e novos pedidos</td>
+<td>Análise de Impacto</td>
+<td>Decisão tomada sobre a viabilidade técnica e impacto de aceitar mudanças durante a iteração</td>
+</tr>
+<tr>
+<td></td>
+<td>Declaração</td>
+<td>Especificação (sob demanda)</td>
+<td>Escrita de Critérios de Aceite e atualização de Casos de Uso</td>
+<td>Regras de negócio da iteração atual documentadas para os desenvolvedores</td>
+</tr>
+<tr>
+<td></td>
+<td>Representação</td>
+<td>Refinamento visual da iteração</td>
+<td>Atualização de Protótipos de Interface</td>
+<td>Telas e fluxos ajustados conforme necessidades ou limitações que surgiram durante o desenvolvimento</td>
+</tr>
+<tr>
+<td></td>
+<td>Verificação e Validação</td>
+<td>Verificação da Conformidade da Implementação, Validação por demonstrações</td>
+<td>Testes Baseados em Requisitos e Demonstrações Incrementais</td>
 <td>Funcionalidades verificadas iterativamente com o cliente e feedback coletado para os próximos passos</td>
 </tr>
 <tr>
-<td><strong>Construção</strong></td>
-<td>Organização e Atualização — Revisão e Manutenção do Backlog</td>
+<td></td>
+<td>Organização e Atualização</td>
+<td>Revisão e Manutenção do Backlog</td>
 <td>Atualização de Requisitos, Gerenciamento de Mudanças</td>
 <td>Backlog de requisitos atualizado, incorporando feedbacks e controlando novas demandas</td>
 </tr>
 <tr>
 <td><strong>Transição</strong></td>
-<td>Verificação e Validação — Validação Final do Produto</td>
+<td>Verificação e Validação</td>
+<td>Validação Final do Produto</td>
 <td>Testes de Aceitação do Usuário (UAT), Validação com Stakeholders</td>
 <td>Sistema validado de forma definitiva pelas usuárias finais no ambiente real da instituição</td>
 </tr>
 <tr>
-<td><strong>Transição</strong></td>
-<td>Organização e Atualização — Gestão de Conhecimento e Evolução</td>
+<td></td>
+<td>Organização e Atualização</td>
+<td>Gestão de Conhecimento e Evolução</td>
 <td>Registro de Melhorias Futuras</td>
 <td>Novas demandas e melhorias não críticas registradas e organizadas para futuras versões do sistema</td>
 </tr>
