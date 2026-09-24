@@ -16,7 +16,10 @@ Atualmente, a creche atende 202 alunos, em sua maioria provenientes de famílias
 
 A Creche Estação Vida é vinculada à prefeitura da cidade e conta com profissionais responsáveis pelas atividades educacionais, de cuidado e administrativas. Ao longo dos anos de funcionamento, a instituição acumulou uma grande quantidade de informações e documentos relacionados aos alunos.
 
+O vínculo com a prefeitura se dá, que eles devem prestar contas de gastos gerais como de comida, salário de funcionários, manutenção, o que define a natureza do vínculo como administrativo.
+
 Apesar de sua atuação junto à comunidade, a creche enfrenta dificuldades relacionadas ao cadastro, armazenamento e manutenção das fichas de matrícula. Atualmente, o preenchimento e o gerenciamento dessas informações são realizados de forma manual, utilizando papel e caneta, o que dificulta a organização, a consulta e a manutenção dos dados dos alunos.
+
 
 ## 1.3 Rich Picture
 
@@ -31,15 +34,15 @@ A instituição conta com aproximadamente 25 funcionárias, sendo apenas 2 secre
 
 ## 1.4 Identificação da Oportunidade ou Problema
 
-Foi elaborado um diagrama de Ishikawa a partir do levantamento realizado junto à Creche Estação Vida, contemplando as principais causas relacionadas às dificuldades enfrentadas pela instituição no armazenamento, organização e manutenção das fichas de matrícula dos alunos.
+A Figura apresenta o diagrama de Ishikawa, elaborado a partir do levantamento realizado junto à Creche Estação Vida, contemplando as principais causas relacionadas às dificuldades enfrentadas pela instituição no armazenamento, organização e manutenção das fichas de matrícula dos alunos.
 
-Atualmente, grande parte das informações é registrada manualmente, utilizando fichas de papel que posteriormente são armazenadas em armários. Esse processo dificulta a localização, consulta e atualização das informações, além de exigir espaço físico para o armazenamento dos documentos.
+Atualmente, grande parte das informações é registrada manualmente, utilizando fichas de papel que posteriormente são armazenadas em armários. Esse processo dificulta a localização, consulta e atualização das informações, além de exigir espaço físico para o armazenamento dos documentos, a quantidade anual de novas fichas de matrícula varia entre 200 - 300. Tirando os arquivos mortos. O espaço ocupado para guardar as fichas sao dois armários de medidas 2.2m x 5.0m  x0.4m sendo respectivamente altura largura e profundidades oque somados dá cerca de 8,8 m³.
 
-O grande volume de fichas acumuladas ao longo dos anos, juntamente com a quantidade reduzida de profissionais responsáveis pelas atividades administrativas, torna o gerenciamento dessas informações ainda mais trabalhoso e suscetível à perda ou deterioração dos documentos.
+O grande volume de fichas acumuladas ao longo dos anos, juntamente com a quantidade reduzida de profissionais responsáveis pelas atividades administrativas, torna o gerenciamento dessas informações ainda mais trabalhoso e suscetível à perda ou deterioração dos documentos, demora entre 4 - 10 minutos pra achar uma ficha de matrícula atualmente, e a frequência de perda ou deterioração é de 2 fichas a cada uma ficha a cada 2 meses.
 
 Dessa forma, existe uma oportunidade de melhorar os processos internos por meio da digitalização das fichas de matrícula, proporcionando maior facilidade de acesso, organização e segurança das informações.
 
-Portanto, o desenvolvimento de um sistema digital para cadastro e gerenciamento das fichas de matrícula representa uma oportunidade de modernizar o processo administrativo da creche, reduzir a dependência de documentos físicos e tornar a manutenção das informações dos alunos mais eficiente.
+Portanto, o desenvolvimento de um sistema digital para cadastro e gerenciamento dos **cards de matrícula** representa uma oportunidade de modernizar o processo administrativo da creche, reduzir a dependência de documentos físicos e tornar a manutenção das informações dos alunos mais eficiente.
 ![imagem diagrama de ishikawa](../assets/ishikawa.png)
 
 ### Causas identificadas no diagrama de Ishikawa
@@ -68,30 +71,32 @@ Assim, o projeto deverá transformar um processo que é, atualmente, manual e ba
 Os principais stakeholders do projeto são:
 
 - **Cirlene Sena** — diretora da instituição e proprietária do imóvel, principal responsável pela tomada de decisões, validação das prioridades e avaliação das entregas.
-- **Kananda Sena** — coordenadora da instituição, responsável por contribuir na definição e validação dos requisitos da solução.
+- **Kananda Sena e Leticia** — coordenadoras da instituição, responsável por contribuir na definição e validação dos requisitos da solução.
 - **Secretárias** — principais usuárias do sistema, realizando o cadastro, consulta e atualização das informações dos alunos.
 - **Professoras e monitoras** — impactadas pela maior facilidade de acesso às informações necessárias para suas atividades.
 - **Alunos e seus responsáveis** — beneficiados indiretamente pela maior organização e segurança dos dados.
 - **Equipe de desenvolvimento** — responsável por implementar a solução e garantir sua funcionalidade, usabilidade e segurança.
 
-![imagem de satakeholders](../assets/stakeholders.png)
+![imagem de satakeholders](../assets/mapa_stakeholders3.png)
 
 ### Tabela de stakeholders
 
 | Stakeholder | Rel. com a solução | Interesse Principal | Influência |
 |---|---|---|---|
 | Cirlene Sena (Diretora/Proprietária) | Tomadora de decisão e responsável pela instituição | Garantir uma gestão organizada e eficiente das informações dos alunos | Alta |
-| Kananda Sena (Coordenadora) | Participa da definição de requisitos e validação da solução | Facilitar o acesso às informações e apoiar a gestão da instituição | Alta |
-| Secretárias | Principais usuárias do sistema, responsáveis pelo cadastro, consulta e atualização das fichas | Ter um sistema simples e intuitivo que reduza o trabalho manual e otimize o tempo | Alta |
-| Professoras e Monitoras | Usuárias indiretas da solução, fornecem e utilizam informações cadastradas | Acesso fácil e rápido às informações dos alunos para apoiar o processo educacional | Média |
-| Alunos e responsáveis | Beneficiários indiretos da solução, fornecem e utilizam as informações cadastrais | Maior organização, segurança dos dados e melhor atendimento | Média |
+| Kananda Sena e Leticia (Coordenadoras) | Participa da definição de requisitos e validação da solução | Facilitar o acesso às informações e apoiar a gestão da instituição | Alta |
+| Secretárias | Principais usuárias do sistema responsáveis pelo cadastro, consulta e atualização das fichas| Ter um sistema simples e intuitivo que reduza o trabalho manual e otimize o tempo | Alta |
+| Professoras e Monitoras |Usuárias indiretas, sem contato com a solução, utilizam informações cadastradas.| Usar as informações dos alunos, que são resgatadas e cadastradas pelas secretarias,  para apoiar o processo educacional| Média |
+| Alunos e responsáveis | Beneficiários diretos da solução, uma vez que, fornecem e utilizam as informações cadastrais| Maior organização, segurança dos dados e melhor atendimento | Média |
 | Equipe de Desenvolvimento | Responsável por desenvolver, implementar e manter o sistema | Entregar uma solução funcional, segura e fácil de utilização | Alta |
+
+Uma vez que o SIGMA é um sistema paralelo ao da prefeitura e que nao tem nenhum vínculo com a prefeittura nao há necessidades de stakeholders da prefeitura
 
 ## 1.7 Segmentação de Clientes
 
 A Creche Estação Vida possui quatro principais perfis de clientes e públicos impactados pelo sistema:
 
-- **Equipe administrativa (direção, coordenação e secretaria):** principal grupo de usuários da solução, utilizando o sistema para realizar o cadastro, consulta, atualização e organização das informações dos alunos, buscando reduzir o trabalho manual e facilitar o gerenciamento das fichas de matrícula.
-- **Equipe pedagógica (professoras e monitoras):** poderá utilizar as informações dos alunos necessárias para o desenvolvimento das atividades e acompanhamento das crianças, tendo maior facilidade para consultar dados que atualmente estão armazenados em documentos físicos.
-- **Responsáveis (pais e familiares):** são responsáveis por fornecer as informações utilizadas no processo de matrícula e poderão ser beneficiados indiretamente pela maior organização e segurança dos dados, reduzindo as dificuldades relacionadas à localização e manutenção das informações cadastrais. Alguns responsáveis também solicitam informações de ex-alunos da creche, com mais de 20 anos de históricos, tornando a recuperação dessas informações muito complicada.
-- **Alunos (crianças) e comunidade:** principais beneficiários indiretos da solução, pois uma gestão mais organizada das informações pode contribuir para um atendimento mais eficiente e reduzir os riscos relacionados à perda ou dificuldade de acesso aos dados dos alunos.
+- **Equipe administrativa (direção, coordenação e secretaria):**Será o principal grupo de usuários da solução, utilizando o sistema para realizar o cadastro, consulta, atualização e organização das informações dos alunos, buscando reduzir o trabalho manual e facilitar o gerenciamento das fichas de matrícula.
+- **Equipe pedagógica (professoras e monitoras):** Poderá utilizar as informações dos alunos necessárias para o desenvolvimento das atividades e acompanhamento das crianças, tendo maior facilidade para consultar dados, tais que hoje demoram muito tempo a serem consultados pelas as secretarias até serem passados para equipe pedagógica
+- **Responsáveis (pais e familiares):**  São responsáveis por fornecer as informações utilizadas no processo de matrícula e poderão ser beneficiados indiretamente pela maior organização e segurança dos dados, reduzindo as dificuldades relacionadas à localização e manutenção das informações cadastrais. Alguns responsáveis também solicitam informações de ex-alunos da creche, com mais de 20 anos de históricos, recuperar essas informações se torna algo muito complicado.
+- **Alunos (crianças) e comunidade:** São os principais beneficiários indiretos da solução, pois uma gestão mais organizada das informações pode contribuir para um atendimento mais eficiente e reduzir os riscos relacionados à perda ou dificuldade de acesso aos dados dos alunos.

@@ -47,7 +47,7 @@ Esta documentação segue a estrutura do documento de **Visão do Produto e Proj
 5. **Engenharia de Requisitos** — atividades e técnicas de ER aplicadas em cada fase do OpenUP.
 6. **Cronograma e Entregas** — planejamento das iterações e entregáveis do projeto.
 7. **Interação entre Equipe e Cliente** — composição da equipe, comunicação e processo de validação.
-8. *(a definir)*
+8. **Requisitos de Software** - Levantamento de requisitos de software
 9. *(a definir)*
 10. *(a definir)*
 11. **Lições Aprendidas** — reflexões da equipe sobre os desafios enfrentados ao longo do projeto.
@@ -58,7 +58,8 @@ Esta documentação segue a estrutura do documento de **Visão do Produto e Proj
 | Data | Versão | Descrição | Autor |
 |---|---|---|---|
 | 26/08/2026 | 1.0 | Preenchimento parcial dos itens 1 e 2 | Equipe 7 |
-|07/09/2029|1.1|Entrega final do documento de visão do modulo 1| Equipe 7|
+|07/09/2026|1.1|Entrega final do documento de visão do modulo 1| Equipe 7|
+|24/09/2026|2.0|Correção das issues abertas no modulo 1 | Equipe 7|
 
 ## Cliente do projeto
 
