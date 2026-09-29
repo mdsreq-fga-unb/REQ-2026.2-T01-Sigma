@@ -4,6 +4,7 @@ A avaliação de negócio dos requisitos foi realizada por meio de um formulári
 
 
 [formulario do google](https://forms.gle/4QGzyiW5N3brAKtC8)
+Como comprovação dentro de `docs/assets/priorização dos requisitos.csv` onde contem os resultados das respostas das duas 
 
 
 Devido à indisponibilidade dos stakeholders para uma avaliação mais detalhada, as classificações e interpretações apresentam certo nível de generalização. O grupo se compromete a validar posteriormente a tabela com os stakeholders, aprimorando principalmente a especificidade da coluna de **Interpretação**.
@@ -58,9 +59,7 @@ A avaliação técnica considerará os seguintes elementos para a análise:
  
 ### Esforço
  
-> ⚠️ *Definir de onde veio essa medida, para deixar claro para qualquer leitor.*
- 
-Tempo provável gasto para implementar:
+**Tempo provável gasto para implementar.**
  
 | Pontuação | Descrição |
 |---|---|
@@ -71,7 +70,7 @@ Tempo provável gasto para implementar:
  
 ### Complexidade
  
-> ⚠️ *Definir de onde veio essa medida, para deixar claro para qualquer leitor.*
+**Nível de esforço cognitivo para se realizar a tarefa, grau de dependência e incerteza.**
  
 | Pontuação | Descrição |
 |---|---|
@@ -82,9 +81,7 @@ Tempo provável gasto para implementar:
  
 ### Domínio e Capacidade
  
-> ⚠️ *Definir de onde veio essa medida, para deixar claro para qualquer leitor.*
- 
-*("Eu sei fazer")*
+**Nível de experiência e conhecimento dos membros da equipe.**
  
 | Pontuação | Descrição |
 |---|---|
@@ -176,3 +173,45 @@ A seguir a imagem e o link da nossa matriz de requisitos,
 ---
 ![matriz de requisitos ](../assets/matriz_requisitos.png)
 
+---
+
+## Definição do MVP
+ 
+## Definição de RFs do MVP
+ 
+| Requisito | Justificativa |
+|---|---|
+| RF05 | Necessário para a segurança do sistema, alto valor de negócio. |
+| RF06 | Necessário para a segurança do sistema, alto valor de negócio. |
+| RF07 | Necessário para a segurança do sistema, alto valor de negócio. |
+| RF08 | Necessário para a solução do problema principal, alto valor de negócio. |
+| RF09 | Necessário para a solução do problema principal, alto valor de negócio. |
+| RF10 | Necessário para a solução do problema principal, alto valor de negócio. |
+| RF21 | Necessário para a fluidez do sistema, alto valor de negócio, baixo esforço técnico. |
+| RF14 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |
+| RF15 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |
+| RF16 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |
+| RF23 | Necessário para o salvamento de dados do sistema, alto valor de negócio, baixo esforço técnico. |
+| RF22 | Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico. |
+| RF24 | Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico. |
+| RF18 | Necessário para a correta implementação do sistema e cumprimento de objetivos específicos, alto valor de negócio, baixo esforço técnico. |
+| RF13 | Necessário para a correta implementação do sistema e estruturação da solução do problema, alto valor de negócio, baixo esforço técnico. |
+ 
+## Definição de RNFs do MVP
+ 
+| Requisito | Justificativa |
+|---|---|
+| RNF1 | **Obrigatório para o MVP.** Trata-se de uma obrigação legal a ser seguida. |
+| RNF2 | **Obrigatório para o MVP.** Relacionado à segurança. Sem isso, os dados ficam expostos. É uma condição obrigatória para que o sistema vá ao ar. |
+| RNF9 | **Obrigatório para o MVP.** A justificativa exige que o sistema funcione durante o expediente. Se o sistema cai, a operação do cliente pode ser afetada. |
+| RNF5 | **Associado a RFs do MVP.** Diretamente associado ao RF06. |
+| RNF6 | **Associado a RFs do MVP.** Diretamente associado ao RF21. |
+| RNF7 | **Associado a RFs do MVP.** Diretamente associado ao RF22. |
+| RNF8 | **Associado a RFs do MVP.** Diretamente associado aos requisitos do MVP: RF09, RF10 e RF23. |
+| RNF10 | **Evolutivo.** Inicialmente, o sistema não será usado por todas as funcionárias, reduzindo a carga. |
+| RNF3 | **Evolutivo.** O sistema será utilizado principalmente em notebooks/desktops. A adição de suporte para outras resoluções é uma evolução futura. |
+| RNF4 | **Evolutivo.** É um ganho de conforto visual, mas não impede a operação do sistema. Deve ficar para o futuro. |
+ 
+## Validação do MVP
+ 
+Por motivos de força maior, os stakeholders não puderam participar da reunião, o que impossibilitou a validação direta do MVP. Contudo, os requisitos foram definidos com base no formulário de priorização preenchido por uma das stakeholders e na escuta ativa das necessidades do cliente durante as reuniões anteriores.
