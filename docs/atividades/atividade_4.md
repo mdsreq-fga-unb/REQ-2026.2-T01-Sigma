@@ -4,7 +4,10 @@ A avaliação de negócio dos requisitos foi realizada por meio de um formulári
 
 
 [formulario do google](https://forms.gle/4QGzyiW5N3brAKtC8)
-Como comprovação dentro de `docs/assets/priorização dos requisitos.csv` onde contem os resultados das respostas das duas 
+Como comprovação dentro de `docs/assets/priorização dos requisitos.csv` contem os resultados das respostas das duas.
+
+[imagem de resposta](../assets/resposta_forms.png)
+![link pras respostas](https://docs.google.com/spreadsheets/d/1BQhaek4HpgzPxiH990HxfgCpAwkMCBdxt9668IXAO50/edit?resourcekey=&gid=106421503#gid=106421503)
 
 
 Devido à indisponibilidade dos stakeholders para uma avaliação mais detalhada, as classificações e interpretações apresentam certo nível de generalização. O grupo se compromete a validar posteriormente a tabela com os stakeholders, aprimorando principalmente a especificidade da coluna de **Interpretação**.
