@@ -17,9 +17,9 @@ Apesar dos benefícios esperados, a digitalização das fichas de matrícula int
 
 ### Privacidade e segurança da informação
 
-- **Exposição indevida de dados de crianças e famílias:** a centralização das fichas em um único sistema aumenta o impacto de um eventual vazamento ou acesso indevido, já que dados sensíveis (de crianças em situação de vulnerabilidade social) passam a estar concentrados digitalmente.
-- **Ampliação do número de pessoas com acesso às informações:** diferente das fichas físicas, cujo acesso é naturalmente restrito pelo local de armazenamento, um sistema digital pode facilitar o acesso simultâneo por mais pessoas, exigindo controle explícito sobre quem pode ver o quê.
-- **Impactos da consulta mais fácil sobre privacidade e vigilância:** a agilidade trazida pelo sistema pode ser percebida (ou efetivamente utilizada) como uma forma de vigilância sobre crianças e famílias, o que exige cuidado na forma como o acesso às informações dos alunos e o rastreamento de consultas são implementados e comunicados.
+- **Maior exposição de dados de crianças e suas famílias:** 
+A LGPD (BRASIL, 2018) distingue dados pessoais, entendidos como qualquer "informação relacionada a pessoa natural identificada ou identificável" (art. 5º, I), e dados pessoais sensíveis, que abrangem, entre outros, dados referentes à saúde e à origem racial ou étnica (art. 5º, II). As fichas de matrícula da Creche Estação Vida contêm ambos os tipos: dados pessoais das crianças e de seus responsáveis (nome, documentos, endereço, contatos) e dados sensíveis, como informações de saúde (alergias, medicamentos, condições específicas). Além disso, por se tratar de dados de crianças, aplica-se o art. 14 da lei, segundo o qual o tratamento "deverá ser realizado em seu melhor interesse". Assim, todos os alunos da creche deverão ter seus dados sob proteção reforçada. A centralização das fichas em um único sistema aumenta o impacto de um eventual vazamento ou acesso indevido, já que dados de crianças passam a estar concentrados digitalmente.
+- **Ampliação do número de pessoas com acesso às informações:** diferente das fichas físicas, cujo acesso é naturalmente restrito pelo local de armazenamento, um sistema digital pode facilitar o acesso simultâneo por mais pessoas, exigindo um controle de acesso para o sistema.
 
 ### Operação e infraestrutura
 
