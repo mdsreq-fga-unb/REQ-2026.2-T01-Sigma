@@ -36,14 +36,4 @@ A LGPD (BRASIL, 2018) distingue dados pessoais, entendidos como qualquer "inform
 - **Resistência ou dificuldade de uso:** funcionárias com pouca familiaridade com tecnologia podem ter dificuldade de adaptação, gerando resistência ao novo processo caso não haja apoio adequado.
 - **Alteração das atribuições entre direção, coordenação, secretaria e equipe pedagógica:** o novo sistema pode redistribuir responsabilidades sobre quem cadastra, quem consulta e quem valida informações, exigindo que esses papéis sejam redefinidos junto à instituição.
 
-## Requisitos e Decisões Decorrentes
-
-Os riscos identificados foram convertidos em requisitos e decisões de projeto, de modo que a intervenção social seja considerada desde a concepção da solução:
-
-- **Acesso mínimo conforme o papel (least privilege):** cada perfil de usuário (direção, coordenação, secretaria, equipe pedagógica) terá acesso apenas às informações necessárias para suas funções, mitigando a exposição indevida de dados.
-- **Backup e recuperação:** deverão existir rotinas de backup, de forma a mitigar perdas de informação em caso de falhas técnicas, indisponibilidade do sistema ou erros durante a migração.
-- **Implantação gradual:** a transição do processo manual para o digital ocorrerá de forma progressiva, permitindo a coexistência controlada entre fichas físicas e digitais e reduzindo o impacto da mudança sobre a rotina da secretaria.
-- **Validação da migração:** os dados migrados das fichas físicas para o sistema deverão passar por um processo de validação, reduzindo o risco de erros e perda de informações durante a digitalização.
-- **Treinamento:** será oferecido treinamento às profissionais responsáveis pelo uso do sistema, buscando reduzir a resistência e a dificuldade de adaptação à nova ferramenta.
-
 Dessa forma, a intervenção não beneficia apenas a administração da creche. Ao melhorar a organização interna — de forma consciente dos riscos envolvidos e das decisões necessárias para mitigá-los — o sistema pode **refletir na rotina de toda a comunidade atendida,** proporcionando um atendimento mais eficiente às famílias e permitindo que as profissionais dediquem menos tempo à procura e organização de documentos e mais tempo às atividades relacionadas às crianças.
