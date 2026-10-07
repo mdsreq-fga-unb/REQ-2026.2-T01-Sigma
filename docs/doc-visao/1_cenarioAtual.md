@@ -16,18 +16,19 @@ Atualmente, a creche atende 202 alunos, em sua maioria provenientes de famílias
 
 A Creche Estação Vida é vinculada à prefeitura da cidade e conta com profissionais responsáveis pelas atividades educacionais, de cuidado e administrativas. Ao longo dos anos de funcionamento, a instituição acumulou uma grande quantidade de informações e documentos relacionados aos alunos.
 
-O vínculo com a prefeitura se dá, que eles devem prestar contas de gastos gerais como de comida, salário de funcionários, manutenção, o que define a natureza do vínculo como administrativo.
+O vínculo com a prefeitura se dá por meio de um sistema próprio da prefeitura, eles, a creche, presta contas de gastos gerais como de comida, salário de funcionários, manutenção, pois é a prefeitura que patrocina tais funcionários, definindo assim o seu vinculo com a prefeitura
 
 Apesar de sua atuação junto à comunidade, a creche enfrenta dificuldades relacionadas ao cadastro, armazenamento e manutenção das fichas de matrícula. Atualmente, o preenchimento e o gerenciamento dessas informações são realizados de forma manual, utilizando papel e caneta, o que dificulta a organização, a consulta e a manutenção dos dados dos alunos.
 
-
 ## 1.3 Rich Picture
 
-A Creche Estação Vida possui mais de 20 anos de atuação e atende atualmente 202 alunos. Devido ao longo período de funcionamento, a instituição acumulou uma grande quantidade de fichas e documentos de matrícula, tornando o cadastro, armazenamento e consulta dessas informações mais trabalhosos.
+A Creche Estação Vida possui mais de 20 anos de atuação e atende atualmente 202 alunos. Devido ao longo período de funcionamento, a instituição acumulou uma grande quantidade de fichas , sendo aproximadamente e documentos de matrícula, tornando o cadastro, armazenamento e consulta dessas informações mais trabalhosos.
 
 Atualmente, as matrículas são realizadas manualmente, utilizando fichas de papel que são armazenadas em armários, incluindo documentos antigos do chamado "arquivo morto". Esse processo dificulta a localização e manutenção das informações.
 
 A instituição conta com aproximadamente 25 funcionárias, sendo apenas 2 secretárias responsáveis pelas atividades administrativas. Dessa forma, a grande quantidade de documentos e a equipe reduzida contribuem para a sobrecarga e dificultam o gerenciamento das informações.
+
+> Descrições sobre a quantidade de fichas,(que são o problema raiz)  espaço ocupado, tempo médio de preenchimento e localização de uma ficha estão descritas em mais especificidade no capitulo 1.4 'Identificação do problema e Oportunidade'
 
 ![rich picture imagem](../assets/richPicture.png)
 > **Figura 1** — Diagrama do cenário atual da Creche Estação Vida, ilustrando o processo de cadastro, armazenamento e consulta das informações dos alunos de forma manual, utilizando fichas físicas e arquivos em armários, evidenciando os principais atores envolvidos, o fluxo de informações, os problemas enfrentados e a oportunidade de digitalização desse processo.

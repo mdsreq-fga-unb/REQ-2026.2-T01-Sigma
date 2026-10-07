@@ -1,3 +1,47 @@
+# Tabela Antiga de requisitos
+
+### Requisitos Funcionais
+ 
+| ID | Nome | Descrição | CP vinculada |
+|---|---|---|---|
+| RF01 | Disponibilizar quadro de avisos | O sistema deve disponibilizar um quadro de avisos para todos os usuários. | CP6 |
+| RF02 | Lançar avisos | Permitir que qualquer usuário possa lançar avisos contendo assunto e descrição. | CP6 |
+| RF03 | Notificar avisos | Notificar avisos via pop-up a todos os usuários no momento em que for lançado. | CP6 |
+| RF04 | Apagar avisos | Deve ser possível apagar avisos do quadro | CP6 |
+| RF05 | Cadastrar Usuários | Deve ser possível cadastrar usuários no sistema | CP1 |
+| RF05 | Realizar login | Realizar login padrão com nome de usuário e senha. | CP4 |
+| RF06 | Realizar logout | Deve ser possível realizar logout de sua conta | CP4 |
+| RF07 | Cadastrar aluno | Deve ser possível criar card de aluno que conterá os modelos das fichas a serem preenchidas. | CP1 |
+| RF10 | Inativar matrícula de aluno | Permitir a alteração do status do card do aluno para inativa, desabilitando ações do sistema com aquele card. | CP1 |
+| RF11 | Reativar matrícula de aluno | Permitir a alteração do status do card de aluno para ativo, habilitando ações do sistema com aquele card | CP1 |
+| RF09 | Editar fichas do card | Deve ser possível a edição de informações de qualquer ficha de qualquer card. | CP2 |
+| RF08 | Preenchimento de fichas | Deve ser possível Prencher as 5 fichas do processo de matrícula dentro do card de um aluno; | CP6 |
+| RF12 | Vincular aluno a turma | Deve ser capaz de vincular um aluno a uma turma | CP7 |
+| RF13 | Anexar documentos | Deve ser capaz de anexar documentos dos alunos às fichas. | CP5 |
+| RF14 | Editar documento | Permitir, ao clicar no botão de edição de documento, a anexação de um novo documento previamente digitalizado no formato .pdf. | CP5 |
+| RF15 | Baixar fichas e documentos | Permitir baixar fichas e documentos. | CP5 |
+| RF16 | Apresentar histórico de edições | Deve apresentar os dados de quem criou e das edições da ficha no histórico de edições. | CP2 |
+| RF17 | Cadastrar Etapa e turma | Permitir realizar cadastro de Etapa (série de ensino) e turma | CP7 |
+| RF18 | Inativar turma e etapa | Deve ser possível inativar turmas e etapas no sistema, deixando o status como inativo | CP7 |
+| RF19 | Vincular turma à etapa | Deve ser possível vincular uma turma a uma etapa | CP7 |
+| RF20 | Buscar aluno | Permitir buscar aluno pelo nome, retornando o card dele. | CP3 |
+| RF21 | Busca de turmas e etapas | Deve ser possível turmas e etapas no sistema | CP7 |
+| RF23 | Possibilitar salvamento de dados  | O sistema deve ter uma decisão de certeza ao clicar no botão de 'salvar os dados'.| |
+
+### Requisitos Não Funcionais
+ 
+| ID | Nome | Descrição | Classificação URPS+ |
+|---|---|---|---|
+| RNF01 | Privacidade de Dados e Retenção Segura | Garantir a privacidade dos dados pessoais restringindo sua visualização apenas a usuários autenticados, apoiando a segurança da informação exigida pela LGPD. | Segurança |
+| RNF02 | Apenas usuários autenticados podem acessar o sistema | Acesso restrito exclusivamente a usuários que realizam autenticação válida. | Segurança |
+| RNF03 | Interface responsiva e adaptável a múltiplos dispositivos | A interface do sistema deve preservar a usabilidade e adaptar os componentes visuais para resoluções de monitores desktop e dispositivos móveis. | Usabilidade |
+| RNF04 | Interface com suporte a Modo Escuro alternável | O sistema deve disponibilizar a opção de "modo escuro" alternável para o usuário, aplicando uma paleta de cores escura e textos de alto contraste, preservando a legibilidade e consistência visual. | Usabilidade |
+| RNF05 | Tempo de Resposta do Sistema ao Logar | Garantir tempo menor que 1 segundo para login | Desempenho |
+| RNF06 | Tempo de Resposta do Sistema ao Buscar aluno | Garantir tempo menor que 1 segundo | Desempenho |
+| RNF07 | Tempo de resposta do sistema para buscar turmas ou etapas | Garantir tempo menor que 1 segundo | Dese |
+| RNF08 | Tempo de completo de card | | |
+| RNF09 | Disponibilidade do sistema | O sistema deve estar acessível durante o funcionamento comercial da creche | Confiabilidade |
+
 # Tabela de Decisão dos Feedbacks
  
 | ID | Decisão | Justificativa ou ajuste |
