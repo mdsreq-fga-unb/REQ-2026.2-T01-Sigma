@@ -82,35 +82,39 @@ Como mencionado anteriormente, o OpenUP tem sido amplamente orientado por riscos
 
 ## 4.2 Comparação
 
-A comparação de dois processos de desenvolvimento de software potenciais é apresentada abaixo. Eles são o OpenUP (a escolha da equipe) e o XP (Extreme Programming).
+A comparação de dois processos de desenvolvimento de software potenciais é apresentada abaixo. Eles são o OpenUP (a escolha da equipe) e o UP (Unified Process).
 
-| Critérios | OpenUP | XP (Extreme Programming) |
-|-----------|--------|--------------------------|
-| Tipo | Processo de desenvolvimento de software | Processo de desenvolvimento de software |
-| Abordagem | Abordagem híbrida | Abordagem centrada em princípios |
-| Ciclo de vida | Iterativo Incremental | Iterativo Incremental |
-| Documentação | Documentação leve | Documentação leve |
-| Papéis | Analista, Desenvolvedor, Testador, Gerente de Projeto | Cliente, Programador, Coach, Tracker |
-| Requisitos | Elicitação gradual, foco em casos de uso leves e na orientação por riscos | Elicitação de histórias por partes interessadas, registradas em Releases. |
-| Validação | Validação contínua e incrementais (por exemplo, revisão e demonstração do sistema em cada iteração) | Validação pelo cliente como testes automatizados de aceitação |
-| Adaptabilidade | Moderadamente alta | Altamente adaptável |
-| Vantagens | Boa combinação de característica de processo centrado no modelo e aspectos ágeis; boa opção para equipes menores e para projetos menores; dá uma introdução suave tanto para equipes quanto para clientes ao estilo ágil | Boa adaptabilidade; validação contínua por partes interessadas; testes de aceitação automatizados; documentação mínima de apoio e de artefato |
-| Desvantagens | Exige compreensão prévia dos conceitos centrais do UP; menos confiável para grandes projetos | Exige participação intensiva de partes interessadas; não tão adaptável a alguns aspectos de modelagem; pouca documentação disponível para certos modelos; não tão confiável para projetos maiores |
-| Foco | Projetos medianos a pequenos, equipes medianas a pequenas, fornecimento leve de documentação | Projetos medianos a pequenos, equipes medianas a pequenas, fornecimento leve de documentação |
-| Conclusão | Adequado ao projeto | Adequado ao projeto? Seria potencialmente aplicável ao projeto, mas o XP requer a cooperação do cliente a níveis muito mais altos e abordagens técnicas específicas que não estão diretamente relacionadas aos problemas centrais do projeto. |
+| Critérios | OpenUP | UP (Unified Process) |
+|---|---|---|
+| **Tipo** | Processo de desenvolvimento de software (versão leve do UP) | Processo de desenvolvimento de software (abrangente) |
+| **Abordagem** | Abordagem híbrida (combina estrutura do UP com agilidade) | Abordagem dirigida por plano, com ênfase em disciplina e documentação |
+| **Ciclo de vida** | Iterativo e incremental, com fases (Concepção, Elaboração, Construção, Transição) | Iterativo e incremental, com as mesmas fases, porém com mais formalidade entre elas |
+| **Documentação** | Documentação enxuta, com artefatos mínimos (Visão, Lista de Requisitos, Casos de Uso simplificados) | Documentação extensa e detalhada, com múltiplos artefatos formais |
+| **Papéis** | Analista, Desenvolvedor, Testador, Gerente de Projeto, com flexibilidade para adaptação | Papéis bem definidos e especializados (Analista, Arquiteto, Designer, Testador, Gerente, etc.) |
+| **Requisitos** | Elicitação gradual, foco em casos de uso leves e orientação por riscos | Elicitação formal e abrangente, com documentação detalhada de requisitos e casos de uso completos |
+| **Validação** | Validação contínua e incremental (revisões e demonstrações ao final de cada iteração) | Validação formal em marcos definidos (revisões formais e aprovações) |
+| **Adaptabilidade** | Moderadamente alta, com flexibilidade para ajustes entre iterações | Moderada, com maior rigidez no controle de mudanças |
+| **Vantagens** | Equilíbrio entre estrutura e agilidade; adequado para equipes pequenas e projetos com escopo bem definido; documentação suficiente sem sobrecarga; introdução suave ao estilo ágil | Processo maduro e amplamente documentado; rastreabilidade robusta; adequado para projetos grandes e críticos; forte ênfase em arquitetura |
+| **Desvantagens** | Exige compreensão prévia dos conceitos centrais do UP; menos indicado para sistemas de grande escala ou criticidade elevada | Processo pesado e burocrático para projetos pequenos; excesso de documentação; curva de aprendizado acentuada; pouco adaptável a mudanças frequentes |
+| **Foco** | Projetos pequenos a médios, equipes pequenas, documentação leve | Projetos médios a grandes, equipes maiores, ambientes regulados ou críticos |
+| **Conclusão** | Adequado ao projeto: o OpenUP oferece estrutura suficiente para orientar a equipe, com documentação enxuta que atende às necessidades do cliente, e flexibilidade para acomodar refinamentos durante o desenvolvimento. | Não adequado ao projeto: o UP seria excessivamente pesado e burocrático para a realidade da Creche Estação Vida, que demanda agilidade, documentação enxuta e adaptabilidade a refinamentos contínuos. |
 
 ## 4.3 Justificativa
 
-Há alguns pontos-críticos que precisam ser considerados ao escolher um processo de desenvolvimento de software. Eles têm impacto na escolha de um processo e se refletem na decisão da equipe em favor do OpenUP. São eles: 1) Adequação ao tamanho da equipe e das partes interessadas, 2) Combinação de múltiplas vantagens, e 3) Aderência eficaz às práticas de Engenharia de Requisitos.
+Os motivos para escolher o OpenUP basearam-se nos seguintes fatores:
 
-**1. Adequação ao tamanho da equipe e das partes interessadas**
+## 1. Escala e maturidade da equipe e dos stakeholders do cliente
 
-Por ser um processo leve, o OpenUP parece ser uma boa escolha para projetos de equipe e de cliente menores. Ele é amplamente orientado por riscos, com foco em definir a direção do projeto em uma base iterativa e incremental. Ao mesmo tempo, contém todas as características essenciais de processos tradicionais de desenvolvimento de software de nível médio. Isso pode ser visto na documentação mínima fornecida pelas fases do projeto. Além disso, devido ao ambiente acadêmico do projeto, os requisitos do cliente não são difíceis de compreender, mesmo para uma pessoa que não tenha conhecimento prévio em desenvolvimento de software.
+Tanto o OpenUP quanto o UP têm sido utilizados em projetos envolvendo equipes reduzidas, como neste caso, e oferecem uma abordagem estruturada ao ciclo de vida do projeto, à estrutura gerencial e ao conjunto de artefatos. Isso é particularmente relevante neste projeto, considerando as limitações da nossa equipe de estudantes e a falta de experiência gerencial dos stakeholders do cliente. Embora o UP exija uma quantidade significativa de documentos de apoio e especificações gerenciais detalhadas, esses documentos não são essenciais para um conjunto menor de regras e objetivos bem definidos, como os previstos para este projeto específico.
 
-**2. Combinação de múltiplas vantagens**
+## 2. Um método de trabalho estabelecido que oferece flexibilidade para mudanças iterativas no processo de desenvolvimento
 
-Como mencionado acima, no OpenUP, características de vários processos de desenvolvimento de software são combinadas em um único framework. Em particular, ele inclui abordagens centradas em planos e ágeis. Assim, ele é capaz de proporcionar aos projetos estabilidade suficiente com a flexibilidade necessária ao mesmo tempo. Para este projeto, isso é especialmente útil porque alguns dos requisitos do cliente não são claramente definidos, mas ainda assim deveriam fazer parte do projeto. Além disso, há alguns riscos de alto impacto que precisam ser abordados com atenção especial. Por outro lado, a orientação por riscos e a abordagem iterativa são convenientes em termos de dividir grandes problemas em subitens mais simples. De modo geral, as características mencionadas tornam possível abordar simultaneamente a flexibilidade e a estabilidade do projeto.
+Além de fornecer um conjunto consistente de documentos para implementar as diretrizes gerenciais básicas, a estrutura operacional iterativa do OpenUP oferece flexibilidade, conforme mencionado acima, em relação aos modelos de trabalho tradicionais do UP. Essa flexibilidade é valiosa para o projeto atual, pois permite o envolvimento dos stakeholders do cliente na maioria das etapas por meio do feedback contínuo, da análise e da revisão. Por exemplo, enquanto os requisitos gerais do projeto foram identificados com precisão durante a etapa de planejamento, novas exigências ainda podem surgir e ser incluídas conforme os stakeholders do cliente intervierem e ajustarem a direção do projeto. Da mesma forma, embora a estrutura de riscos do OpenUP permita que questões relacionadas a migração, segurança de dados e arquitetura recebam atenção durante as fases de conceituação e elaboração, isso não precisa ocorrer apenas uma vez, em uma fase específica.
 
-**3. Adesão eficaz às práticas de Engenharia de Requisitos**
+## 3. A estrutura abrangente para a engenharia de requisitos
 
-Um dos aspectos do OpenUP que causam preocupação à equipe é a correspondência entre as práticas de Engenharia de Requisitos e as práticas de Engenharia de Software. No entanto, ao analisar os objetivos básicos por trás de ambos os conjuntos de práticas, torna-se evidente uma forte correlação entre eles. Ambos concentram-se em obter uma compreensão clara e suficiente do problema a ser resolvido, em encontrar soluções viáveis para ele e em comunicar essas soluções de forma eficaz aos diversos stakeholders. Em termos concretos, isso significa que práticas de Engenharia de Requisitos como elicitação e descoberta, análise e consenso, declaração e representação, e práticas de Engenharia de Software como fases do processo e artefatos são aplicadas de maneira bastante semelhante no OpenUP. Uma correspondência clara entre casamentos de requisitos e histórias do usuário também foi identificada, como uma etapa crucial para evitar a confusão entre esses artefatos no projeto.
+Como o OpenUP tem sido utilizado para definir uma abordagem bem-sucedida para as melhores práticas de engenharia de requisitos, ele serve como modelo de referência para aplicar a metodologia de engenharia de requisitos discutida nesta aula do curso. Dessa forma, a etapa de elicitação e descoberta, que utiliza entrevistas individuais e coletivas e a análise de documentação existente, pode ser combinada com as avaliações de análise e consenso, que enfatizam a importância da priorização. Depois disso, as atividades de declaração de requisitos podem ser integradas ao processo iterativo de negociação com os stakeholders do cliente. Em seguida, a descrição detalhada da relação entre casos de uso e usuários ajuda a evitar possíveis confusões e divergências entre os vários documentos. No geral, a descrição do OpenUP fornece uma compreensão detalhada de como os requisitos devem ser elaborados, apresentados e comunicados aos stakeholders do cliente. Da mesma forma, a definição transparente dos tipos de entradas e requisitos, de modo que os documentos sejam distintos, ajuda a diferenciar requisitos funcionais, não funcionais e de negócio, assim como requisitos de implementação e de arquitetura.
+
+## 4. As semelhanças e diferenças tanto com relações gerenciais quanto com práticas de documentação do UP
+
+A principal diferença entre o OpenUP e o UP reside nos objetivos para os quais ambos foram originalmente desenvolvidos. Enquanto o UP visa proporcionar uma estrutura abrangente para atividades de governança e gestão de projetos na implementação de projetos de grande escala, a abordagem OpenUP visa oferecer métodos ágeis e mais leves para o mesmo objetivo. Assim, apesar de a estrutura de documentação e gerenciamento do UP ser extremamente rigorosa e poderosa, ela não se tornaria economicamente viável para um projeto conduzido por uma equipe reduzida de estudantes. No geral, no que diz respeito ao projeto para a Creche Estação Vida, a decisão de seguir o OpenUP se mostrou apropriada, pois oferece uma abordagem razoavelmente simples e ágil para o mesmo escopo e estrutura gerencial do UP.
