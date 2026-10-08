@@ -47,3 +47,6 @@
 |Histórias de Usuário|Declaração Orientada á valor| Validação do MVP e Consenso|
 |Glossário de dados|Catálogo e Artefato Técnico|Fase futura|
 
+---
+
+Para a declaração de requisitos do projeto, a equipe utilizou diferentes técnicas ao longo das etapas do projeto, adequando a forma de representação de acordo ao objetivo de cada momento. Na concepção do projeto, foram utilizados textos narrativos em linguagem natural, do tipo narrativo descritivo, para apresentar de forma geral o contexto e as necessidades do sistema. Durante a fase de elicitação e descoberta foi utilizada a lista de requisitos, apresentando os requisitos individualmente. Posteriormente, durante a avaliação em pares, a técnica utilizada foi a de declarações textuais estruturadas por templates, para maior padronização e clareza na especificação dos requisitos. Além disso, a equipe utilizou de histórias de usuário para a validação e consenso sobre o MVP, por ser uma técnica que representa as necessidades a partir da perspectiva do usuário. Por fim, a equipe pretende usar, futuramente, um glossário de dados, com o objetivo de padronizar termos e melhorar a comunicação e entendimento da equipe.
