@@ -4,7 +4,7 @@
 
 | Papel | Descrição | Responsáveis |
 |---|---|---|
-| Gerente de projeto | Coordenar as atividades do projeto, gerenciar o cronograma das sprints e facilitar a comunicação entre a equipe e os stakeholders. | Gabriel Vieira |
+| Gerente de projeto | Coordenar as atividades do projeto, gerenciar o cronograma das iterações e facilitar a comunicação entre a equipe e os stakeholders. | Gabriel Vieira |
 | Desenvolvedor Frontend | Implementar as interfaces do sistema a partir dos protótipos validados. | Bryan Rodrigues, Jorge Vásquez |
 | Desenvolvedor Backend | Responsável por desenvolver as regras de negócio, estruturar a comunicação com o banco de dados e APIs. | Lucas Peixoto, João Rolim, Pedro Rocha |
 | Analista de Requisitos | Conduzir elicitação, análise, declaração e representação dos requisitos. | Bryan, Gabriel, Lucas, João, Pedro, Jorge |
@@ -21,8 +21,8 @@
 
 **Métodos e frequência de reuniões**
 
-- **Reunião de planejamento de Sprint (Interna)**: A equipe realizará uma reunião de planejamento após a conclusão do sprint anterior para organizar e priorizar as atividades a serem feitas para o próximo sprint, levando em conta o progresso do projeto em atendimento ao cronograma definido.
-- **Reunião de revisão de Sprint (Interna)**: Para finalizar um sprint, a equipe técnica realizará uma reunião interna com o objetivo de apresentar e revisar entre os desenvolvedores as funcionalidades construídas, identificar pontos de melhoria no código e atualizar o cronograma.
+- **Reunião de planejamento da iteração (Interna)**: A equipe realizará uma reunião de planejamento após a conclusão da iteração anterior para organizar e priorizar as atividades a serem feitas para a próxima iteração, levando em conta o progresso do projeto em atendimento ao cronograma definido.
+- **Avaliação da iteração (Interna)**: Para finalizar uma iteração, a equipe técnica realizará uma reunião interna com o objetivo de apresentar e revisar entre os desenvolvedores as funcionalidades construídas, identificar pontos de melhoria no código e atualizar o cronograma.
 
 **Frequência de interações com o cliente**
 
@@ -46,7 +46,7 @@ Um item só entra em uma iteração quando:
 - Tem protótipo de tela validado, quando envolver interface;
 - Tem o perfil de acesso definido (quem pode visualizar, cadastrar ou editar);
 
-#### 7.3.2 Definition of Done (DoD)
+#### 7.3.2 Definition of Done (DoD) 
 
 Uma funcionalidade é considerada concluída quando:
 
