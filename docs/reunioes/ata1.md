@@ -68,6 +68,7 @@ Tópico referente às reuniões que aconteceram durante o período da segunda un
 
 === " 6/10/2026 - Reunião com o Cliente pra validação do MVP "
     ## Ata: Apresentação do MVP à cliente e alinhamento da equipe
+    [link do vídeo](https://unbbr-my.sharepoint.com/:v:/g/personal/242004706_aluno_unb_br/IQBXti2dM-CuR44I9bXe8Ka9AedalX9A8_pG9i43LaH3-cA?e=P1HCHE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
     
     **Tema:** validação do MVP com a cliente e combinados internos para a entrega do módulo 2.
     **Duração:** ~24 min (≈17 min com a cliente + ≈7 min só com a equipe).
