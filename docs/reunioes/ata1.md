@@ -23,7 +23,7 @@ Tópico referente às reuniões que aconteceram durante o período da segunda un
 
 
 ===  "23/9/2026 - Ata da Reunião: Engenharia de Requisitos"
-    
+
     # Ata: Engenharia de Requisitos
  
     **Tema:** priorização de requisitos (valor de negócio, esforço técnico e matriz valor × esforço) para definir o MVP.
@@ -66,56 +66,49 @@ Tópico referente às reuniões que aconteceram durante o período da segunda un
     *Obs.: transcrição ruidosa. Data da reunião, notas por requisito e responsável pela prototipação não aparecem com clareza.*
 
 
+=== " 6/10/2026 - Reunião com o Cliente pra validação do MVP "
+    ## Ata: Apresentação do MVP à cliente e alinhamento da equipe
+    
+    **Tema:** validação do MVP com a cliente e combinados internos para a entrega do módulo 2.
+    **Duração:** ~24 min (≈17 min com a cliente + ≈7 min só com a equipe).
+    **Prazo citado:** entrega na terça-feira.
+    
+    ## Participantes
+    Gabriel Vieira Octacilio Pinheiro (condutor), Letícia Pretto (cliente/representante da creche, participou só da primeira parte), Joao Gabriel Rolim Veiga, Bryan Smith Rodrigues Cavalcante e Jorge Andres Vasquez Vega.
+    
+    ## Pautas
+    - **Apresentação do MVP** organizada em objetivos → características de produto → requisitos:
+    1. Gerenciamento de cards (cadastrar usuários da secretaria, cadastrar card de aluno, preencher fichas com exportação em PDF).
+    2. Edição e atualização de cards (editar fichas, histórico, salvar com confirmação "tem certeza?").
+    3. Documentos (baixar/anexar PDFs, buscar aluno pelo nome).
+    4. Controle de acesso (login/logout e bloqueio por inatividade).
+    - Requisitos não funcionais: privacidade/LGPD, acesso autenticado, disponibilidade, tempo de resposta. Também entram turmas, etapas e vínculos.
+    - **Hospedagem em nuvem:** acesso de qualquer lugar (a cliente está em São Paulo), custo estimado de ~US$ 5/mês e plano de até 20 GB.
+    - **Feedback da cliente:** nada urgente faltando, mas ela pediu histórico/versões de dados alterados.
+    - **Prototipação e próximos passos**, com entrega funcional prevista para dezembro.
+    - **Alinhamento interno:** proatividade, correção das issues do monitor, uso de branches e atividade nova do professor.
+    ## Decisões
+    1. **MVP aprovado pela cliente**, sem pendências urgentes. Ficam **fora do MVP** o chat e o quadro de avisos.
+    2. Sistema hospedado **na nuvem**, com login obrigatório e bloqueio após período de inatividade (tempo a definir).
+    3. Migrar apenas as fichas de **2026**, não o acervo antigo, o que reduz o custo.
+    4. Novo requisito da cliente: ao editar uma ficha, **manter os dados antigos como inativos**, consultáveis por busca específica (ex.: telefones anteriores). A busca padrão mostra só o dado atual.
+    5. Próxima etapa: **prototipação** das telas para aprovação da cliente, depois desenvolvimento com reuniões de acompanhamento. Meta: produto funcional em dezembro.
+    6. Alterações em requisitos: criar uma **branch** a partir do repositório de docs (ex.: `docs: ajuste…`) e abrir **PR**, em vez de editar o documento compartilhado.
+    7. Corrigir as issues devolvidas pelo monitor e **avisar no grupo** a cada correção, para ele rever. Prazo: terça.
+    8. Começar a codar após fechar o módulo 2.
+    ## Tarefas realizadas
+    - **Gabriel:** apresentou o MVP à cliente, coletou feedback e confirmou escopo e hospedagem; pesquisou preços e opções de nuvem.
+    - **Bryan:** compartilhou experiência prévia com nuvem (Google Cloud) e comentou que o custo depende da RAM.
+    - **Equipe:** o MVP foi validado, o que fecha a pendência de validação da reunião anterior.
+    - Observação do Gabriel: o documento do MVP tinha falhas de organização, mas a apresentação oral cobriu os itens que faltavam (como turmas e etapas).
+    ## Pendências
+    - **Todos:** ler e corrigir as issues do monitor (arquivo `.txt` sem extensão: renomear com `.txt` para abrir) e comunicar no grupo.
+    - **Gabriel:** fechar o levantamento de custo da nuvem e responder à cliente; verificar o e-mail do professor sobre a atividade do dia 8.
+    - **Equipe:** declarar o nível de abstração de cada requisito (atividade do dia 8, apontada pelo João).
+    - **Equipe:** incluir o histórico/versões de dados como requisito, fazer a prototipação e definir a escolha do provedor de nuvem.
+    - **Equipe:** ser proativa na divisão das tarefas, sem esperar mensagem do Gabriel, para evitar "pernoitada" na véspera da entrega.
+    *Obs.: transcrição ruidosa. Datas e nomes de terceiros mencionados (funcionárias da creche) foram omitidos por falta de clareza.*
 
-=== "06/09/2026 - Reunião com o Cliente"
-    # Reunião 3
-
-    >06/09/2026 · 19:00–20:30 · Microsoft Teams · Com Cliente
-
-    >[Link da reunião](https://youtu.be/RdfKNv9UFqM)
-
-    ## 1. Pauta
-    - Entendimento das dores atuais e do modelo de atuação do IBRADA no momento presente.
-    - Expectativas para o MVP[cite: 4].
-    - Mapeamento dos fluxos de comunicação prioritários com os diferentes públicos-alvo.
-    - Alinhamento sobre hospedagem e custos de manutenção futura do software.
-
-    ## 2. Assuntos debatidos
-    * Momento Atual e Foco de Atuação: O IBRADA está focado em projetos que unem a recuperação de áreas degradadas (reflorestamento nas margens de rios/APP) com a inclusão socio-produtiva e o turismo de base comunitária.
-    * Técnicas de Reflorestamento e Ecoturismo:
-        * Técnicas adotadas: Recomposição vegetal por meio de RNA (Recuperação Natural Assistida), Nendo Dango (bolas de semente com argila/composto) e nucleação
-        * Envolvimento comunitário: Capacitação e compra de mudas/esferas de sementes preparadas pelos próprios moradores e pequenos agricultores familiares
-        * Trilhas ecológicas: Criação de rotas curtas (ex: 13 km) com pontos de descanso e sinalização com QR Code para rota de fuga, apoio de saúde (UBS/postinho) e ofertas de serviços da comunidade (hospedagem rústica, refeições, aluguel de cavalos e bicicletas)
-    * Gargalos Operacionais e de Comunicação: Perda excessiva de tempo com explicações manuais repetitivas. O site precisa atuar como uma vitrine explicativa direta para evitar conversas iniciais extensas.
-    * Adequação de Comunicação por Público-Alvo
-    * Equipe do IBRADA: Formada por profissionais multidisciplinares (sociólogo, agrônomo, geógrafa, geólogo, economista e técnica em agroecologia).
-
-    ## 3. Participantes
-
-    >Somente equipe interna 
-
-    | Nome |
-    | --- |
-    | Zayra Moraes |
-    | Filipe Brito  | 
-    | Vinicius Dos Santos  |
-    | ArthurScartezini |
-    | Cauã Mendes Coelho | 
-    | Gabriel Guedes Fernandes |
-
-    ## 4. Decisões/Revisões
-
-    |Tipo|Descrição|
-    |-|-|
-    |Decisão|A prioridade máxima (MVP) será a construção de uma **Vitrine Interativa/Visual** (explicando o antes, durante e depois dos projetos) e a centralização dos canais de contato direcionados a cada público.|
-    |Decisão|O WhatsApp será mantido como o principal canal de comunicação de entrada para beneficiários rurais e comunitários devido à facilidade de uso por mensagens de áudio.|
-    |Decisão|A listagem detalhada de pacotes de trilhas para turistas fica categorizada como prioridade secundária no lançamento inicial.|
-    |Revisão|Agora usaremos o RAD, por se encaixar melhor no que queremos apresentar ao cliente.|
-
-    ## 5. Tarefas 
-
-    * Estruturar a linguagem visual e o fluxo da "Vitrine do Projeto" cobrindo o ciclo de recuperação ambiental e impacto comunitário.
-    * Consolidar os requisitos elicitados para elaborar a proposta formal de escopo do MVP e submeter à aprovação do cliente.
 
 
 
