@@ -13,6 +13,10 @@
       
       
       
+        <link rel="prev" href="atividade_4.html">
+      
+      
+        <link rel="next" href="../reunioes/ata1.html">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Atividade 5 - Documentação de Requisitos</title>
+        <title>atividade 5 - Documentação de Requisitos</title>
       
     
     
@@ -77,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#nivel-de-abstracao-dos-requisitos" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Atividade 5
+              atividade 5
             
           </span>
         </div>
@@ -241,10 +250,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="atividade_3.html" class="md-tabs__link">
           
   
@@ -265,7 +276,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../atas-reuniao/ata1.md" class="md-tabs__link">
+        <a href="../reunioes/ata1.html" class="md-tabs__link">
           
   
   
@@ -694,24 +705,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -729,7 +745,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -791,6 +807,44 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="atividade_5.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    atividade 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
     </li>
   
 
@@ -860,14 +914,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../atas-reuniao/ata1.md" class="md-nav__link">
+      <a href="../reunioes/ata1.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Unidade 1
+    Reunião unidade 2
   
 
     
@@ -888,70 +942,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../atas-reuniao/ata2.md" class="md-nav__link">
+      <a href="../reunioes/ata2.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Unidade 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../atas-reuniao/ata3.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Unidade 3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../atas-reuniao/ata4.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Unidade 4
+    Reunião unidade 1
   
 
     
@@ -1043,6 +1041,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1059,9 +1059,262 @@
 
 
 
-  <h1>Atividade 5</h1>
-
-
+<h1 id="nivel-de-abstracao-dos-requisitos">Nível de Abstração dos Requisitos</h1>
+<table>
+<thead>
+<tr>
+<th>Código do Requisito</th>
+<th>Nome do Requisito</th>
+<th>Nível de Abstração</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF01</td>
+<td>Disponibilizar quadro de avisos</td>
+<td>Produto</td>
+<td>Descreve como o sistema deve se comportar em relação à funcionalidade, é possível verificá-lo, mensurá-lo e testá-lo e orienta uma implementação.</td>
+</tr>
+<tr>
+<td>RF02</td>
+<td>Lançar avisos</td>
+<td>Produto</td>
+<td>Descreve como o sistema deve se comportar em relação à funcionalidade, é possível verificá-lo, mensurá-lo e testá-lo e orienta uma implementação. Além de trazer detalhes concretos como "preenchimento de campo obrigatório".</td>
+</tr>
+<tr>
+<td>RF03</td>
+<td>Exibir avisos</td>
+<td>Produto</td>
+<td>Descreve como o sistema deve se comportar em relação à funcionalidade, é possível verificá-lo, mensurá-lo e testá-lo e orienta uma implementação. Além de trazer detalhes concretos como uma condição.</td>
+</tr>
+<tr>
+<td>RF04</td>
+<td>Apagar avisos</td>
+<td>Produto</td>
+<td>Descreve como o sistema deve se comportar em relação à funcionalidade, é possível verificá-lo, mensurá-lo e testá-lo e orienta uma implementação. Além de trazer detalhes concretos como um fluxo de interação, aparente no trecho: "[...] sem confirmação de exclusão".</td>
+</tr>
+<tr>
+<td>RF05</td>
+<td>Cadastrar Usuários</td>
+<td>Usuário</td>
+<td>Não descreve como o sistema deve se comportar em relação à funcionalidade e não especifica detalhes concretos, explicitando o que o usuário é capaz de fazer.</td>
+</tr>
+<tr>
+<td>RF06</td>
+<td>Realizar login</td>
+<td>Usuário</td>
+<td>Mesmo identificando mecanismos intrínsecos à funcionalidade, o sujeito ainda é o usuário e o que ele é capaz de fazer.</td>
+</tr>
+<tr>
+<td>RF07</td>
+<td>Realizar logout</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema.</td>
+</tr>
+<tr>
+<td>RF08</td>
+<td>Cadastrar card de aluno</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema.</td>
+</tr>
+<tr>
+<td>RF09</td>
+<td>Preenchimento de fichas</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema. Além disso, não menciona os detalhes de cada ficha a serem preenchidos.</td>
+</tr>
+<tr>
+<td>RF10</td>
+<td>Editar fichas do card</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema.</td>
+</tr>
+<tr>
+<td>RF11</td>
+<td>Inativar card de aluno</td>
+<td>Produto</td>
+<td>Mesmo identificando mecanismos intrínsecos à funcionalidade, o sujeito ainda é o usuário e o que ele é capaz de fazer.</td>
+</tr>
+<tr>
+<td>RF12</td>
+<td>Reativar card de aluno</td>
+<td>Produto</td>
+<td>Descreve como o sistema deve se comportar em relação à funcionalidade, é verificável e aplica restrições de acesso.</td>
+</tr>
+<tr>
+<td>RF13</td>
+<td>Vincular aluno a turma</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema.</td>
+</tr>
+<tr>
+<td>RF14</td>
+<td>Anexar documentos</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema.</td>
+</tr>
+<tr>
+<td>RF15</td>
+<td>Editar documento</td>
+<td>Produto</td>
+<td>Descreve um comportamento mensurável e verificável do sistema em relação à funcionalidade, abrange detalhes concretos como condições.</td>
+</tr>
+<tr>
+<td>RF16</td>
+<td>Baixar fichas e documentos</td>
+<td>Usuário</td>
+<td>Mesmo identificando mecanismos intrínsecos à funcionalidade, o sujeito ainda é o usuário e o que ele é capaz de fazer.</td>
+</tr>
+<tr>
+<td>RF17</td>
+<td>Apresentar histórico de edições</td>
+<td>Produto</td>
+<td>Descreve um comportamento mensurável e verificável do sistema em relação à funcionalidade, abrange detalhes concretos como condições e campos de preenchimento.</td>
+</tr>
+<tr>
+<td>RF18</td>
+<td>Cadastrar Etapa</td>
+<td>Usuário</td>
+<td>O sujeito ligado à funcionalidade é o usuário e o requisito explicita uma capacidade dele dentro do sistema.</td>
+</tr>
+<tr>
+<td>RF19</td>
+<td>Inativar turma e etapa</td>
+<td>Produto</td>
+<td>Descreve um comportamento mensurável e verificável do sistema em relação à funcionalidade, abrange detalhes concretos como campos de preenchimento e alteração de dados.</td>
+</tr>
+<tr>
+<td>RF20</td>
+<td>Vincular turma à etapa</td>
+<td>Usuário</td>
+<td>Mesmo identificando mecanismos intrínsecos à funcionalidade, o sujeito ainda é o usuário e o que ele é capaz de fazer.</td>
+</tr>
+<tr>
+<td>RF21</td>
+<td>Buscar aluno pelo nome</td>
+<td>Produto</td>
+<td>Descreve um comportamento mensurável e verificável do sistema em relação à funcionalidade, abrange detalhes concretos como campos de preenchimento e suas determinadas regras e condições, além de também descrever os detalhes de saída e retorno.</td>
+</tr>
+<tr>
+<td>RF22</td>
+<td>Buscar turmas e etapas</td>
+<td>Produto</td>
+<td>Descreve um comportamento mensurável e verificável do sistema em relação à funcionalidade, abrange detalhes concretos como campos de preenchimento e suas determinadas regras e condições, além de também descrever os detalhes de saída e retorno.</td>
+</tr>
+<tr>
+<td>RF23</td>
+<td>Possibilitar salvamento de dados</td>
+<td>Produto</td>
+<td>Descreve um comportamento mensurável e verificável do sistema em relação à funcionalidade, abrange detalhes concretos como fluxo de interação com "Confirmar" e "Cancelar".</td>
+</tr>
+<tr>
+<td>RF24</td>
+<td>Cadastrar Turma</td>
+<td>Usuário</td>
+<td>Mesmo identificando mecanismos intrínsecos à funcionalidade, o sujeito ainda é o usuário e o que ele é capaz de fazer.</td>
+</tr>
+<tr>
+<td>RNF01</td>
+<td>Privacidade de Dados e Retenção Segura</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF02</td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF03</td>
+<td>Interface responsiva e adaptável a múltiplos dispositivos</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF04</td>
+<td>Interface com suporte a Modo Escuro alternável</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF05</td>
+<td>Tempo de Resposta do Sistema ao Logar</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF06</td>
+<td>Tempo de Resposta do Sistema ao Buscar aluno</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF07</td>
+<td>Tempo de resposta do sistema para buscar turmas ou etapas</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF08</td>
+<td>Tempo de resposta para salvar uma ficha</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF09</td>
+<td>Disponibilidade do sistema</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+<tr>
+<td>RNF10</td>
+<td>Acessos Múltiplos</td>
+<td>Produto</td>
+<td>O requisito apresenta um comportamento detalhado e restrições verificáveis.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="tecnicas-de-declaracao-de-requisitos">Tecnicas de Declaração de requisitos</h1>
+<table>
+<thead>
+<tr>
+<th>TÉCNICA</th>
+<th>TIPO</th>
+<th>ONDE FOI USADA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texto Narrativo em Linguagem Natural</td>
+<td>Narrativa Descritiva</td>
+<td>Concepção do Projeto</td>
+</tr>
+<tr>
+<td>Lista de Requisitos - Anteriormente</td>
+<td>Declaração Estruturada</td>
+<td>Fase de Elicitação e Descoberta</td>
+</tr>
+<tr>
+<td>Declarações Textuais Estruturadas (Templates) - Atualmente</td>
+<td>Declaração Estruturada</td>
+<td>Fase de avaliação em pares</td>
+</tr>
+<tr>
+<td>Histórias de Usuário</td>
+<td>Declaração Orientada á valor</td>
+<td>Validação do MVP e Consenso</td>
+</tr>
+<tr>
+<td>Glossário de dados</td>
+<td>Catálogo e Artefato Técnico</td>
+<td>Fase futura</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Para a declaração de requisitos do projeto, a equipe utilizou diferentes técnicas ao longo das etapas do projeto, adequando a forma de representação de acordo ao objetivo de cada momento. Na concepção do projeto, foram utilizados textos narrativos em linguagem natural, do tipo narrativo descritivo, para apresentar de forma geral o contexto e as necessidades do sistema. Durante a fase de elicitação e descoberta foi utilizada a lista de requisitos, apresentando os requisitos individualmente. Posteriormente, durante a avaliação em pares, a técnica utilizada foi a de declarações textuais estruturadas por templates, para maior padronização e clareza na especificação dos requisitos. Além disso, a equipe utilizou de histórias de usuário para a validação e consenso sobre o MVP, por ser uma técnica que representa as necessidades a partir da perspectiva do usuário. Por fim, a equipe pretende usar, futuramente, um glossário de dados, com o objetivo de padronizar termos e melhorar a comunicação e entendimento da equipe.</p>
 
 
 
