@@ -32,26 +32,7 @@
 
 O processo de validação deve garantir que o sistema atende com sucesso às necessidades da Creche Estação Vida. A validação ocorrerá através das seguintes etapas e definições:
 
-- **Validação contínua**: Desde o início do projeto, protótipos de tela e fluxos de navegação serão validados continuamente com as secretárias (principais usuárias) para garantir o alinhamento com a rotina administrativa antes da implementação final.
+- **Validação contínua**: A partir do início do desenvolvimento do projeto, protótipos de tela e fluxos de navegação serão validados com as secretárias (principais usuárias) para garantir o alinhamento com a rotina administrativa antes da implementação final.
 - **Testes de usabilidade**: Focados na experiência de uso. Serão realizados com as secretárias para garantir que a solução seja clara, intuitiva e não exija conhecimentos técnicos avançados para ser operada no dia a dia.
-- **Testes de aceitação**: Os testes de aceitação são focados nas regras de negócio, ocorrem para garantir que as funcionalidades implementadas (como o cadastro, busca e edição de alunos) cumpram rigorosamente com os critérios de aceitação estabelecidos junto à diretora e às secretarias.
-
-#### 7.3.1 Definition of Ready (DoR)
-
-Um item só entra em uma iteração quando:
-
-- Está escrito como história de usuário ou caso de uso e vinculado a um objetivo específico (OE) e a uma característica de produto (CP);
-- Possui critérios de aceitação escritos no formato Dado / Quando / Então, cobrindo no mínimo o fluxo principal e um fluxo alternativo ou de erro;
-- Tem as regras de negócio e os campos obrigatórios da ficha confirmados com a coordenação ou a secretaria;
-- Tem protótipo de tela validado, quando envolver interface;
-- Tem o perfil de acesso definido (quem pode visualizar, cadastrar ou editar);
-
-#### 7.3.2 Definition of Done (DoD) 
-
-Uma funcionalidade é considerada concluída quando:
-
-- O código foi revisado e aprovado em pull request por ao menos um membro que não seja o autor, e integrado à branch principal;
-- Os testes automatizados da funcionalidade passam e o pipeline está verde;
-- Todos os critérios de aceitação foram verificados e não possuem defeitos críticos;
-- A documentação e o requisito correspondente foram atualizados, com a issue vinculada e fechada;
-- A funcionalidade foi registrada e demonstrada ao cliente na reunião de validação;
+- **Testes de aceitação**: Os testes de aceitação são focados nas regras de negócio, ocorrem para garantir que as funcionalidades implementadas (como o cadastro, busca e edição de alunos) cumpram com os critérios de aceitação estabelecidos junto à diretora e às secretarias.
+- **DoR e DoD**: Os critérios estabelecidos pela equipe para que um requisito esteja pronto para ingressar em uma iteração (DoR) e seja considerado concluído (DoD) possuem a sua seção específica dentro do repositório, onde se encontram detalhados.
