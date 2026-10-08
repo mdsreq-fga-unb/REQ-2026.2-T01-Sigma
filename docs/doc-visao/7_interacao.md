@@ -15,7 +15,8 @@
 
 **Ferramentas de comunicação**
 
-- **Google Meet**: Será a ferramenta utilizada pela equipe para as reuniões semanais por meio de videoconferência, bem como para o contato formal com o cliente. As reuniões com a instituição contarão com a presença do Gerente de Projeto e desenvolvedores da equipe, juntamente com as representantes da creche (a diretora Cirlene Sena, a coordenadora Kananda Sena, ou as secretárias, dependendo da pauta). Todas as reuniões realizadas terão suas evidências disponibilizadas no site/repositório do projeto.
+- **Google Meet**: Será a ferramenta utilizada pela equipe para as reuniões de videoconferência, bem como para o contato formal com o cliente. As reuniões com a instituição contarão com a presença da equipe de desenvolvimento, juntamente com as representantes da creche (a diretora Cirlene Sena, a coordenadora Kananda Sena, ou as secretárias, dependendo da pauta). Todas as reuniões realizadas terão suas evidências disponibilizadas no site/repositório do projeto.
+- **Microsoft Teams**: Será a ferramenta utilizada principalmente para reuniões internas com a equipe para tomada de decisões, correção de issues e organização de atividades do processo de desenvolvimento. Também será o canal onde a equipe se comunicará com o monitor para receber orientação e feedback.
 - **Whatsapp**: Será utilizado para interações rápidas diárias entre a equipe técnica e para contato direto com a diretora e secretárias. Para garantir a rastreabilidade, quaisquer definições, validações ou decisões importantes recebidas pelo WhatsApp serão formalmente registradas e documentadas em atas de reunião ou dentro do repositório.
 
 **Métodos e frequência de reuniões**
