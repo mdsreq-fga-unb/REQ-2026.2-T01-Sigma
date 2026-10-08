@@ -26,7 +26,7 @@
 
 **Frequência de interações com o cliente**
 
-- **Reunião de validação com o cliente (Externa)**: Após a revisão interna, a equipe fará uma reunião específica para apresentar o estado atual do projeto e as funcionalidades entregues para a diretora Cirlene Sena e as secretárias. Nesta reunião, os clientes poderão avaliar as entregas e fornecer o feedback necessário.
+- **Reunião de validação com o cliente (Externa)**: Ao final de uma iteração, a equipe apresenta à diretora e às secretárias cada requisito trabalhado na iteração. Os requisitos deverão ser apresentados seguindo uma declaração definida, segundo o seu nível de abstração, em concordância com o nosso processo e facilitando o entendimento para os stakeholders. Para cada requisito, o cliente registra aceito, aceito com ressalvas ou não aceito. Requisitos não aceitos retornam ao backlog para a equipe revisar o núcleo de sentido do requisito e as suas camadas externas. 
 
 ### 7.3 Processo de Validação
 
