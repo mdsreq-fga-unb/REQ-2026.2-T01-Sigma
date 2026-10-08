@@ -179,7 +179,11 @@ A seguir a imagem e o link da nossa matriz de requisitos,
 ---
 
 ## Definição do MVP
- 
+
+### Definição do Critério de Montagem do MVP
+
+Para a inserção dos requisitos no MVP, efetuamos uma análise plural considerando as posições de cada requisito funcional e não-funcional na Matrix 4x4, alocando aqueles que apresentavam mais valor de negócio e menos esforço técnico. Além das posições da Matriz 4x4, foi considerado uma análise de contribuição para a solução do problema e relacionamento direto com o cumprimento dos objetivos do projeto. Em geral, acrescentamos ao MVP, aqueles requisitos indispensáveis e vitais para o desenvolvimento e implementação da solução, cujos complementam as funcionalidades que ja estariam no MVP .
+
 ## Definição de RFs do MVP
  
 | Requisito | Justificativa |
@@ -217,4 +221,8 @@ A seguir a imagem e o link da nossa matriz de requisitos,
  
 ## Validação do MVP
  
-Por motivos de força maior, os stakeholders não puderam participar da reunião, o que impossibilitou a validação direta do MVP. Contudo, os requisitos foram definidos com base no formulário de priorização preenchido por uma das stakeholders e na escuta ativa das necessidades do cliente durante as reuniões anteriores.
+Apos a confecção do MVP de acordo com as posições dos requisitos nos quadrantes e a completude entre os requisitos conforme esta descrito no critério de constituição do MVP, ocorreu a validação de tal por meio de apresentação de um slide diretamente com a cordenadora da creche, que é a nossa stakeholder principal
+
+> link da reuião dísponível na aba reuniões.
+
+Durante a reunião a coordenadora avaliou o quadroe matriz e valor e os requisitos listadso no MVP, confirmou que o conjunto dos requisitos satisfaz a ideia do 'miínimo possivel pra funcionar', contemplando com fidelidade as necessidades priorítárias pro MVP SIGMA;
