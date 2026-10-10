@@ -1,34 +1,43 @@
 # SIGMA — Sistema Integrado de Gestão de Matrículas
 
-<p align="center" style="margin: 24px 0;">
+<span class="version-badge">Versão 2.0</span>
+
+<p align="center" style="margin: 20px 0 28px;">
   <img src="assets/logo.png#only-light" alt="Logo SIGMA" width="360" />
   <img src="assets/logo-dark.png#only-dark" alt="Logo SIGMA" width="360" />
 </p>
 
-Documentação do projeto desenvolvido na disciplina de **Engenharia de Requisitos**.
+## Atalhos
 
-## Sobre a disciplina
+<div class="shortcut-cards">
+  <a class="shortcut-card" href="doc-visao/1_cenarioAtual/">
+    <span class="shortcut-card__tag">01</span>
+    <h3>Cenário & Negócio</h3>
+    <p>Contexto da creche, problema identificado, stakeholders e segmentação.</p>
+  </a>
 
-| Campo | Informação |
-|---|---|
-| Instituição | UNB |
-| Curso | Engenharia de software|
-| Disciplina |  Requisitos de software, FGA-0313, T-01 |
-| Professor(a) | George Marsciano |
-| Equipe | Os Requisitados|
+  <a class="shortcut-card" href="doc-visao/2_solucao/">
+    <span class="shortcut-card__tag">02</span>
+    <h3>Solução Proposta</h3>
+    <p>Objetivos do produto, características, tecnologias e análise de mercado.</p>
+  </a>
 
-## Integrantes do grupo
+  <a class="shortcut-card" href="doc-visao/8_requisitos/">
+    <span class="shortcut-card__tag">08</span>
+    <h3>Requisitos de Software</h3>
+    <p>Levantamento completo de requisitos funcionais e não-funcionais.</p>
+  </a>
 
-| Nome | Matrícula | Papel no projeto |
-|---|---|---|
-| Gabriel Octacilio | 242004706 | Gerente de Projeto e Analista de Qualidade |
-| Bryan Rodrigues | 231012156 | Desenvolvedor Frontend |
-| Jorge Vásquez | 242043615 | Desenvolvedor Frontend |
-| Lucas Peixoto | 242024271 | Desenvolvedor Backend |
-| João Gabriel | 242015432 | Desenvolvedor Backend |
-| Pedro Luca | 242004958 | Desenvolvedor Backend |
+  <a class="shortcut-card" href="doc-visao/6_cronograma/">
+    <span class="shortcut-card__tag">06</span>
+    <h3>Cronograma & Entregas</h3>
+    <p>Planejamento das iterações, fases do OpenUP e entregáveis do projeto.</p>
+  </a>
+</div>
 
-## Sobre o projeto
+---
+
+## Sobre o Projeto
 
 O **SIGMA (Sistema Integrado de Gestão de Matrículas)** é uma proposta de solução desenvolvida para a **Creche Estação Vida**, instituição de ensino filantrópica localizada em Águas Lindas de Goiás, que atende 202 crianças em situação de vulnerabilidade social.
 
@@ -41,7 +50,47 @@ O projeto tem como objetivo desenvolver um **sistema digital de gestão de matr�
 - Maior segurança e organização dos dados;
 - Redução do tempo gasto em atividades administrativas pela secretaria.
 
-## Como esta documentação está organizada
+<a class="repo-button" href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma" target="_blank" rel="noopener">
+  Acessar Repositório do Projeto no GitHub
+</a>
+
+---
+
+## Cliente do Projeto
+
+- **Nome:** Creche Estação Vida
+- **Tipo:** Instituição de ensino filantrópica, sem fins lucrativos
+- **Localização:** Águas Lindas de Goiás
+- **Representante:** Cirlene Sena, diretora da creche
+
+---
+
+## Sobre a Disciplina
+
+| Campo | Informação |
+|---|---|
+| Instituição | UNB |
+| Curso | Engenharia de software |
+| Disciplina | Requisitos de software, FGA-0313, T-01 |
+| Professor(a) | George Marsciano |
+| Equipe | Os Requisitados |
+
+---
+
+## Equipe
+
+| Nome | Matrícula | Papel no projeto |
+|---|---|---|
+| Gabriel Octacilio | 242004706 | Gerente de Projeto e Analista de Qualidade |
+| Bryan Rodrigues | 231012156 | Desenvolvedor Frontend |
+| Jorge Vásquez | 242043615 | Desenvolvedor Frontend |
+| Lucas Peixoto | 242024271 | Desenvolvedor Backend |
+| João Gabriel | 242015432 | Desenvolvedor Backend |
+| Pedro Luca | 242004958 | Desenvolvedor Backend |
+
+---
+
+## Como esta Documentação está Organizada
 
 Esta documentação segue a estrutura do documento de **Visão do Produto e Projeto**, elaborado com base no processo **OpenUP**, e está dividida nos seguintes capítulos:
 
@@ -52,26 +101,17 @@ Esta documentação segue a estrutura do documento de **Visão do Produto e Proj
 5. **Engenharia de Requisitos** — atividades e técnicas de ER aplicadas em cada fase do OpenUP.
 6. **Cronograma e Entregas** — planejamento das iterações e entregáveis do projeto.
 7. **Interação entre Equipe e Cliente** — composição da equipe, comunicação e processo de validação.
-8. **Requisitos de Software** - Levantamento de requisitos de software
+8. **Requisitos de Software** — Levantamento de requisitos de software.
 9. *(a definir)*
 10. *(a definir)*
 11. **Lições Aprendidas** — reflexões da equipe sobre os desafios enfrentados ao longo do projeto.
 
+---
 
-## Versionamento do Documento de Visão
- 
+## Histórico de Revisão
+
 | Data | Versão | Descrição | Autor |
 |---|---|---|---|
 | 26/08/2026 | 1.0 | Preenchimento parcial dos itens 1 e 2 | Equipe 7 |
-|07/09/2026|1.1|Entrega final do documento de visão do modulo 1| Equipe 7|
-|24/09/2026|2.0|Correção das issues abertas no modulo 1 | Equipe 7|
-
-## Cliente do projeto
-
-- **Nome:** Creche Estação Vida
-- **Tipo:** Instituição de ensino filantrópica, sem fins lucrativos
-- **Localização:** Águas Lindas de Goiás
-- **Representante:** Cirlene Sena, diretora da creche
-
----
-
+| 07/09/2026 | 1.1 | Entrega final do documento de visão do modulo 1 | Equipe 7 |
+| 24/09/2026 | 2.0 | Correção das issues abertas no modulo 1 | Equipe 7 |

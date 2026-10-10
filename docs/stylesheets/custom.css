@@ -302,6 +302,169 @@
   display: none !important;
 }
 
+/* ==========================================================================
+   ATALHOS DA PÁGINA INICIAL & COMPONENTES MACRO (Estilo Nativo)
+   ========================================================================== */
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--palette-teal-100);
+  color: var(--palette-blue-500);
+  border: 1px solid var(--palette-blue-400);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+[data-md-color-scheme="slate"] .version-badge,
+[data-md-color-scheme="dark"] .version-badge {
+  background-color: var(--palette-teal-600);
+  color: var(--palette-teal-200);
+  border-color: var(--palette-teal-400);
+}
+
+.shortcut-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin: 1.1rem 0 1.5rem;
+}
+
+.shortcut-card {
+  min-height: 6.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 8px;
+  background: var(--palette-gray-100);
+  box-shadow: var(--md-shadow-z1);
+  color: var(--palette-blue-500) !important;
+  text-decoration: none !important;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  border-top: 3px solid var(--palette-teal-400);
+}
+
+.shortcut-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--palette-amber-200);
+  border-top-color: var(--palette-amber-200);
+  box-shadow: var(--md-shadow-z2);
+}
+
+[data-md-color-scheme="slate"] .shortcut-card,
+[data-md-color-scheme="dark"] .shortcut-card {
+  background: var(--palette-teal-600);
+  border-color: var(--palette-teal-500);
+  border-top-color: var(--palette-teal-400);
+  color: var(--palette-gray-100) !important;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card:hover,
+[data-md-color-scheme="dark"] .shortcut-card:hover {
+  border-color: var(--palette-amber-200);
+  border-top-color: var(--palette-amber-200);
+}
+
+.shortcut-card__tag {
+  width: fit-content;
+  min-width: 1.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--palette-blue-500);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card__tag,
+[data-md-color-scheme="dark"] .shortcut-card__tag {
+  background: var(--palette-teal-400);
+  color: #031921;
+}
+
+.shortcut-card h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--palette-blue-500) !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card h3,
+[data-md-color-scheme="dark"] .shortcut-card h3 {
+  color: var(--palette-teal-200) !important;
+}
+
+.shortcut-card p {
+  margin: 0 !important;
+  color: var(--palette-gray-500);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card p,
+[data-md-color-scheme="dark"] .shortcut-card p {
+  color: var(--palette-gray-300);
+}
+
+.md-typeset .repo-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin: 0.4rem 0 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--palette-blue-400);
+  border-radius: 8px;
+  background: var(--palette-teal-100);
+  color: var(--palette-blue-500) !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none !important;
+  transition: all 0.18s ease;
+}
+
+.md-typeset .repo-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--palette-amber-200);
+  background: var(--palette-amber-100);
+  color: var(--palette-amber-600) !important;
+}
+
+.md-typeset .repo-button::after {
+  content: "→";
+  margin-left: 0.35rem;
+  color: currentColor;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .repo-button {
+  background: var(--palette-teal-600);
+  border-color: var(--palette-teal-400);
+  color: var(--palette-gray-100) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .repo-button:hover {
+  background: var(--palette-teal-500);
+  border-color: var(--palette-amber-200);
+  color: var(--palette-amber-200) !important;
+}
+
+@media screen and (max-width: 760px) {
+  .shortcut-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Barra de rolagem estilizada */
 ::-webkit-scrollbar {
   width: 8px;
