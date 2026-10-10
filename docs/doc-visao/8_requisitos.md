@@ -102,3 +102,15 @@ Os requisitos não funcionais definem critérios de qualidade do sistema SIGMA. 
 | <span id="req-rnf08" class="rf-anchor">RNF08</span> | Tempo de resposta para salvar uma ficha | O sistema deve concluir o salvamento de uma ficha em um tempo de resposta inferior a 5 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do servidor. A medição inicia ao acionar o botão de salvar e termina com a exibição da mensagem de sucesso em tela. | Desempenho |
 | <span id="req-rnf09" class="rf-anchor">RNF09</span> | Disponibilidade do sistema | O sistema deve garantir uma taxa de acessibilidade de 99,5% durante o horário de funcionamento comercial da creche, compreendido de segunda a sexta-feira, das 07h00 às 19h00. | Confiabilidade |
 | <span id="req-rnf10" class="rf-anchor">RNF10</span> | Acessos Múltiplos | O sistema deve suportar no mínimo 10 usuários acessando e interagindo simultaneamente com a aplicação, mantendo o tempo de resposta das operações dentro dos limites estabelecidos nos demais requisitos de desempenho. | Desempenho |
+
+---
+
+## 8.3 Árvore de Rastreabilidade
+
+Abaixo está representada a árvore de rastreabilidade dos requisitos do projeto SIGMA, conectando objetivos específicos (OEs), características do produto (CPs) e os requisitos de software. 
+
+A captura abaixo foi registrada no dia **10/10/2026**. Para melhor visualização, navegação e leitura completa com zoom dinâmico, acesse a árvore diretamente no quadro do Miro:
+
+:material-link: **[Acessar Árvore de Rastreabilidade no Miro](https://miro.com/app/board/uXjVEbrie7A=/)**
+
+![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)

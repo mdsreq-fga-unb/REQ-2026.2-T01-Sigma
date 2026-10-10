@@ -134,7 +134,7 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como está sendo aplicado:** Os requisitos estão sendo atualizados constantemente conforme as alterações identificadas durante o desenvolvimento. Novos requisitos ou modificações estão sendo registrados e avaliados considerando o seu impacto e prioridade para o projeto. Em conjunto com essas atualizações, está sendo construída uma árvore de rastreabilidade para mapear e gerenciar visualmente as ligações e a evolução desses requisitos.
 - **Resultado esperado:** Backlog de requisitos atualizado, incorporando feedbacks, controlando novas demandas e mantendo a rastreabilidade estruturada em árvore.
 - **Evidências:**
-    - [Inserir Link]
+    - [Árvore de Rastreabilidade no Miro](https://miro.com/app/board/uXjVEbrie7A=/) (captura registrada em 10/10/2026, documentada na [Seção 8.3](8_requisitos.md#83-arvore-de-rastreabilidade))
 
 ---
 
