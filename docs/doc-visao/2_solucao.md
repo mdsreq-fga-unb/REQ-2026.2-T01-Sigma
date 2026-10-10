@@ -13,23 +13,26 @@ Os dados armazenados e mantidos pelo nosso sistema serão consumidos exclusivame
 Tendo em vista que são dados sensíveis de crianças, a nossa solução pretende ter privacidade de dados e retenção segura. Com isso, o sistema vai manter a privacidade dos dados pessoais restringindo sua visualização apenas a usuários autenticados, apoiando a segurança da informação exigida pela LGPD.
  
 ## 2.2 Objetivos Específicos (OE) do Produto
- 
-- **OE.1:** Facilitar e melhorar a continuidade do processo administrativo.
-- **OE.2:** Reduzir riscos de perda e deterioração.
-- **OE.3:** Controlar o acesso quanto às informações dos cards.
-- **OE.4:** Reduzir o tempo de edição e manutenção de cards de matrícula, de modo que fique mais ágil do que feito atualmente (modo manual).
-- **OE.5:** Preservar e centralizar as informações das matrículas.
+
+- **OE.1:** Facilitar e agilizar a organização e a continuidade do processo administrativo.
+- **OE.2:** Preservar e centralizar o histórico e as informações das matrículas.
+- **OE.3:** Controlar o acesso e garantir a segurança das informações do sistema.
+- **OE.4:** Facilitar a comunicação interna entre a equipe administrativa.
+
 ## 2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)
- 
-| ID | OE Principal | Contribuição secundária | Característica | Descrição resumida | Valor de negócio principal |
-|---|---|---|---|---|---|
-| CP1 | OE.1 | OE.2 | Gerenciamento de cards de matrícula | Permitir o cadastro das informações dos alunos, centralizando os dados em cards de matrícula. | Redução do tempo de cadastro e de outras atividades da secretaria. |
-| CP2 | OE.1 | OE.2 | Edição e Atualização de cards de matrícula | Permitir a edição dos atuais cards. | Garantir a atualização de dados do usuário. |
-| CP3 | OE.5 | OE.2, OE.4 | Consulta de informações dos cards de matrícula | Facilitar a consulta de cards de matrícula, ou um conjunto de tais. | Reduzir o tempo necessário para localizar um card, otimizando o tempo das secretárias. |
-| CP4 | OE.3 | — | Controle de acesso de usuários | Permitir o cadastro de usuários ativos no sistema, tanto com autorização para editar o sistema ou apenas visualizar as informações. | Controla o acesso ao sistema, proporcionando segurança e confiabilidade de informações. |
-| CP5 | OE.1 | OE.5, OE.2 | Gerenciamento de documentos | Anexação ou deleção de documentos vinculados aos cards de matrícula. | Permite a anexação de documentos fixados aos cards de matrícula. |
-| CP6 | OE.1 | OE.5 | Avisos Rápidos | Postagem de avisos administrativos, para todos os usuários do sistema. | Facilita a comunicação entre as secretárias, facilitando o trabalho em equipe e coordenação no time. |
-| CP7 | OE.5 | — | Módulo de gerenciamento de turmas e etapas | Criação, edição e inativação de turmas e etapas; vínculo de cards em turmas e etapas. | Facilita a organização dos cards de alunos, ajudando a logística entre as secretárias e otimizando o tempo de busca de um card. |
+
+| ID | OE Principal | Característica | Descrição resumida | Valor de negócio principal |
+|---|---|---|---|---|
+| CP1 | OE.2 | Gerenciamento de cards de matrícula | Permitir o cadastro das informações dos alunos, centralizando os dados em cards de matrícula. | Redução do tempo de cadastro e de outras atividades da secretaria. |
+| CP2 | OE.1 | Edição e Atualização de cards de matrícula | Permitir a edição dos atuais cards. | Garantir a atualização de dados do usuário. |
+| CP3 | OE.1 | Consulta de informações dos cards de matrícula | Facilitar a consulta de cards de matrícula, ou um conjunto de tais. | Reduzir o tempo necessário para localizar um card, otimizando o tempo das secretárias. |
+| CP4 | OE.3 | Controle de acesso de usuários | Permitir o cadastro de usuários ativos no sistema tanto com autorização para editar o sistema ou apenas visualizar as informações. | Controla o acesso ao sistema, proporcionando segurança e confiabilidade de informações. |
+| CP5 | OE.2 | Gerenciamento de documentos | Anexação ou deleção de documentos vinculados aos cards de matrículas. | Permite a anexação de documentos fixados aos cards de matrícula. |
+| CP6 | OE.4 | Avisos Rápidos | Postagem de avisos administrativos, para todos os usuários do sistema. | Facilita a comunicação entre as secretárias, facilitando o trabalho em equipe e coordenação no time. |
+| CP7 | OE.4 | Módulo de gerenciamento de turmas e etapas | Criação, edição e inativação de turmas e etapas; vínculo de cards em turmas e etapas. | Facilita a organização dos cards de alunos, ajudando a logística entre as secretárias e otimizando o tempo de busca de um card. |
+| CP8 | OE.3 | Auditoria e Integridade | Registrar o histórico de edições e exigir confirmação em operações de salvamento. | Garantir total rastreabilidade e segurança contra alterações indevidas ou perdas acidentais de dados. |
+
+
  
 ## 2.4 Tecnologias a Serem Utilizadas
  
