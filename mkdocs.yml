@@ -24,8 +24,6 @@ theme:
         name: Mudar para modo claro
   
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.top
     - search.suggest
     - search.highlight

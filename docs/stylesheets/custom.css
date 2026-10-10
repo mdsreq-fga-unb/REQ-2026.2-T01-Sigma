@@ -465,6 +465,45 @@
   }
 }
 
+/* ==========================================================================
+   TABELA DE EQUIPE (Estilo Nativo com Avatares)
+   ========================================================================== */
+.md-typeset table td img {
+  border-radius: 50%;
+  border: 2px solid var(--palette-teal-400);
+  background-color: var(--palette-gray-100);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.md-typeset table td a:hover img {
+  transform: scale(1.06);
+  border-color: var(--palette-amber-200);
+  box-shadow: 0 4px 12px rgba(247, 174, 62, 0.3);
+}
+
+.md-typeset table td a {
+  font-weight: 600;
+  color: var(--md-default-fg-color) !important;
+  text-decoration: none !important;
+}
+
+.md-typeset table td a:hover {
+  color: var(--palette-amber-200) !important;
+}
+
+.md-typeset table td sub {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--palette-gray-400);
+  margin-top: 0.15rem;
+  line-height: 1.3;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table td sub,
+[data-md-color-scheme="dark"] .md-typeset table td sub {
+  color: var(--palette-gray-300);
+}
+
 /* Barra de rolagem estilizada */
 ::-webkit-scrollbar {
   width: 8px;
