@@ -6,13 +6,7 @@ Para apoiar a condução iterativa e incremental do projeto SIGMA, foram definid
 
 ## 9.1 Definition of Ready (DoR)
 
-### 9.1.1 Conceito
-
-O Definition of Ready (DoR) estabelece as condições mínimas para que um conjunto de requisitos ou um Caso de Uso esteja pronto para ser selecionado para a iteração. No contexto do SIGMA, um item só será considerado pronto se apresentar informações suficientes para uma implementação segura no sistema, sem depender de informações emergentes oriundas de decisões vitais em aberto.
-
-### 9.1.2 Critérios do DoR
-
-A lista a seguir abrange todas as condições do DoR para que um item seja selecionado para uma iteração:
+O Definition of Ready (DoR) estabelece as condições mínimas para que um conjunto de requisitos ou um Caso de Uso esteja pronto para ser selecionado para a iteração. No contexto do SIGMA, um item só será considerado pronto se apresentar informações suficientes para uma implementação segura no sistema, sem depender de informações emergentes oriundas de decisões vitais em aberto. A seguir, a lista que abrange todas as condições do DoR:
 
 - **Regras de Negócio compreendidas:** Regras de Negócio relacionadas ao item inteiramente compreendidas e registradas;
 - **Análise prévia realizada:** Houve uma análise prévia das dependências técnicas, riscos e impactos;
@@ -27,11 +21,7 @@ A lista a seguir abrange todas as condições do DoR para que um item seja selec
 
 ## 9.2 Definition of Done (DoD)
 
-### 9.2.1 Conceito
-
 O Definition of Done (DoD) estabelece as condições a serem atendidas para que uma funcionalidade seja considerada concluída pela equipe. No SIGMA, apenas a implementação do código não será considerada como critério suficiente para tratar a entrega como finalizada. Será necessário, ainda, verificar o atendimento aos requisitos, qualidade técnica, integração com o sistema e conformidade com o escopo definido.
-
-### 9.2.2 Critérios do DoD
 
 Um item será considerado concluído quando os seguintes critérios aplicáveis forem atendidos:
 
