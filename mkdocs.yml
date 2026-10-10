@@ -4,17 +4,23 @@ site_author: Seu Projeto
 
 theme:
   name: material
+  logo: assets/logo-dark.png
+  favicon: assets/favicon.png
   palette:
-    - scheme: light
+    # Modo Claro
+    - scheme: default
       primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
-        name: Modo escuro
-    - scheme: dark
+        name: Mudar para modo escuro
+    # Modo Escuro
+    - scheme: slate
       primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
-        name: Modo claro
+        name: Mudar para modo claro
   
   features:
     - navigation.tabs

@@ -1,5 +1,10 @@
 # SIGMA — Sistema Integrado de Gestão de Matrículas
 
+<p align="center" style="margin: 24px 0;">
+  <img src="assets/logo.png#only-light" alt="Logo SIGMA" width="360" />
+  <img src="assets/logo-dark.png#only-dark" alt="Logo SIGMA" width="360" />
+</p>
+
 Documentação do projeto desenvolvido na disciplina de **Engenharia de Requisitos**.
 
 ## Sobre a disciplina

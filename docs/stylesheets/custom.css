@@ -1,0 +1,322 @@
+/* ==========================================================================
+   SIGMA MKDOCS THEME - PALETA DE CORES PERSONALIZADA
+   Cores baseadas no Design System (Figma)
+   Modo Claro e Modo Escuro
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tokens de Cores da Paleta Figma
+   -------------------------------------------------------------------------- */
+:root {
+  /* Linha 1 - Tons Âmbar / Dourado / Accent */
+  --palette-amber-100: #FCDEC6;
+  --palette-amber-200: #F7AE3E; /* Destaque principal */
+  --palette-amber-300: #C68A30;
+  --palette-amber-400: #966822;
+  --palette-amber-500: #6A4815;
+  --palette-amber-600: #402A09;
+  --palette-amber-700: #1A0F02;
+
+  /* Linha 2 - Tons Cinza Neutro / Superfície */
+  --palette-gray-100: #F8F9F9; /* Fundo claro destacado */
+  --palette-gray-200: #CDD1D1;
+  --palette-gray-300: #A7AAAA;
+  --palette-gray-400: #828484;
+  --palette-gray-500: #5E6080;
+  --palette-gray-600: #3D3F3F;
+  --palette-gray-700: #1F2020;
+
+  /* Linha 3 - Tons Ciano / Teal */
+  --palette-teal-100: #D5F0FD;
+  --palette-teal-200: #51D2F9;
+  --palette-teal-300: #36AACB;
+  --palette-teal-400: #27829C; /* Destaque principal */
+  --palette-teal-500: #195C70;
+  --palette-teal-600: #0C3946;
+  --palette-teal-700: #031921;
+
+  /* Linha 4 - Tons Azul Oceano / Marca */
+  --palette-blue-100: #DEEFFE;
+  --palette-blue-200: #86CDFC;
+  --palette-blue-300: #2BABE1;
+  --palette-blue-400: #1F81AE;
+  --palette-blue-500: #135C7D; /* Destaque principal / Primária */
+  --palette-blue-600: #09394F;
+  --palette-blue-700: #021A26;
+
+  /* Linha 5 - Tons Azul Profundo */
+  --palette-deep-100: #E4F2FE;
+  --palette-deep-200: #8ECFFC;
+  --palette-deep-300: #2AACF6;
+  --palette-deep-400: #1E84B2;
+  --palette-deep-500: #135F81; /* Destaque principal */
+  --palette-deep-600: #083C53;
+  --palette-deep-700: #021C29;
+
+  /* Linha 6 - Tons Slate Quente */
+  --palette-warm-100: #E5E4E2;
+  --palette-warm-200: #C1BBB7;
+  --palette-warm-300: #9A9591;
+  --palette-warm-400: #74706E;
+  --palette-warm-500: #514E4C;
+  --palette-warm-600: #302E2D;
+  --palette-warm-700: #121110;
+}
+
+/* --------------------------------------------------------------------------
+   MODO CLARO (LIGHT MODE)
+   -------------------------------------------------------------------------- */
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="light"] {
+  /* Cor primária (cabeçalho, abas, botões principais) */
+  --md-primary-fg-color: #135C7D;
+  --md-primary-fg-color--light: #27829C;
+  --md-primary-fg-color--dark: #09394F;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #F8F9F9;
+
+  /* Cor de destaque (accent / links secundários / badges) */
+  --md-accent-fg-color: #F7AE3E;
+  --md-accent-fg-color--transparent: rgba(247, 174, 62, 0.15);
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: #FCDEC6;
+
+  /* Superfícies e fundos */
+  --md-default-bg-color: #ffffff;
+  --md-default-bg-color--light: #F8F9F9;
+  --md-default-bg-color--lighter: #EEF4F7;
+  --md-default-bg-color--lightest: #D5F0FD;
+
+  /* Textos */
+  --md-default-fg-color: #1F2020;
+  --md-default-fg-color--light: #3D3F3F;
+  --md-default-fg-color--lighter: #5E6080;
+  --md-default-fg-color--lightest: #828484;
+
+  /* Tipografia & Links */
+  --md-typeset-a-color: #135C7D;
+  --md-typeset-mark-color: rgba(247, 174, 62, 0.28);
+
+  /* Blocos de código */
+  --md-code-fg-color: #1F2020;
+  --md-code-bg-color: #F8F9F9;
+  --md-code-hl-color: #27829C;
+  --md-code-hl-color--light: rgba(39, 130, 156, 0.1);
+
+  /* Tabelas */
+  --md-typeset-table-color: #F8F9F9;
+  --md-typeset-table-color--light: #ffffff;
+
+  /* Rodapé */
+  --md-footer-bg-color: #09394F;
+  --md-footer-bg-color--dark: #021A26;
+  --md-footer-fg-color: #F8F9F9;
+  --md-footer-fg-color--light: #CDD1D1;
+  --md-footer-fg-color--lighter: #828484;
+
+  /* Sombras */
+  --md-shadow-z1: 0 0.2rem 0.5rem rgba(19, 92, 125, 0.08), 0 0 0.05rem rgba(0, 0, 0, 0.06);
+  --md-shadow-z2: 0 0.4rem 1rem rgba(19, 92, 125, 0.12), 0 0 0.1rem rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   MODO ESCURO (DARK MODE)
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"],
+[data-md-color-scheme="dark"] {
+  /* Cor primária no modo escuro */
+  --md-primary-fg-color: #0C3946;
+  --md-primary-fg-color--light: #195C70;
+  --md-primary-fg-color--dark: #031921;
+  --md-primary-bg-color: #F8F9F9;
+  --md-primary-bg-color--light: #CDD1D1;
+
+  /* Destaque no modo escuro */
+  --md-accent-fg-color: #F7AE3E;
+  --md-accent-fg-color--transparent: rgba(247, 174, 62, 0.25);
+  --md-accent-bg-color: #0C3946;
+  --md-accent-bg-color--light: #195C70;
+
+  /* Superfícies e fundos (Tons Teal Escuro do Figma) */
+  --md-default-bg-color: #031921;
+  --md-default-bg-color--light: #0C3946;
+  --md-default-bg-color--lighter: #195C70;
+  --md-default-bg-color--lightest: rgba(39, 130, 156, 0.22);
+
+  /* Textos */
+  --md-default-fg-color: #F8F9F9;
+  --md-default-fg-color--light: #CDD1D1;
+  --md-default-fg-color--lighter: #A7AAAA;
+  --md-default-fg-color--lightest: #828484;
+
+  /* Tipografia & Links */
+  --md-typeset-a-color: #51D2F9;
+  --md-typeset-mark-color: rgba(247, 174, 62, 0.4);
+
+  /* Blocos de código */
+  --md-code-fg-color: #F8F9F9;
+  --md-code-bg-color: #02161E;
+  --md-code-hl-color: #51D2F9;
+  --md-code-hl-color--light: rgba(81, 210, 249, 0.18);
+
+  /* Tabelas */
+  --md-typeset-table-color: #0C3946;
+  --md-typeset-table-color--light: #083C53;
+
+  /* Rodapé */
+  --md-footer-bg-color: #02161E;
+  --md-footer-bg-color--dark: #010F15;
+  --md-footer-fg-color: #F8F9F9;
+  --md-footer-fg-color--light: #CDD1D1;
+  --md-footer-fg-color--lighter: #828484;
+
+  /* Sombras */
+  --md-shadow-z1: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.4), 0 0 0.05rem rgba(0, 0, 0, 0.3);
+  --md-shadow-z2: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.6), 0 0 0.1rem rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   ESTILOS DE CABEÇALHO & LOGO
+   -------------------------------------------------------------------------- */
+.md-header {
+  border-bottom: 2px solid rgba(247, 174, 62, 0.35);
+  transition: background-color 250ms, border-color 250ms;
+}
+
+.md-header__button.md-logo {
+  padding: 0.2rem;
+  margin-right: 0.75rem;
+}
+
+.md-header__button.md-logo img {
+  height: 2.1rem;
+  width: auto;
+  max-height: 42px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.md-header__button.md-logo:hover img {
+  transform: scale(1.04);
+}
+
+/* No cabeçalho (que possui fundo escuro/teal em ambos os modos), usamos a versão com texto branco */
+.md-header .md-logo img {
+  content: url("../assets/logo-dark.png");
+}
+
+/* Barra de abas de navegação */
+.md-tabs {
+  border-bottom: 1px solid rgba(205, 209, 209, 0.2);
+}
+
+.md-tabs__link {
+  transition: color 150ms, opacity 150ms;
+}
+
+.md-tabs__item--active .md-tabs__link {
+  color: #F7AE3E !important;
+  font-weight: 600;
+}
+
+/* Indicador de navegação ativa */
+.md-nav__link--active {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600;
+}
+
+/* Hover em links do conteúdo */
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   ADMONITIONS (AVISOS / CAIXAS DE DESTAQUE)
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition.note,
+.md-typeset .admonition.info {
+  border-left-color: var(--palette-teal-400);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset .admonition.caution {
+  border-left-color: var(--palette-amber-200);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset .admonition.success {
+  border-left-color: var(--palette-teal-500);
+}
+
+/* --------------------------------------------------------------------------
+   TABELAS
+   -------------------------------------------------------------------------- */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]),
+[data-md-color-scheme="dark"] .md-typeset table:not([class]) {
+  border-color: var(--palette-teal-500);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--palette-blue-500);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th,
+[data-md-color-scheme="dark"] .md-typeset table:not([class]) th {
+  background-color: var(--palette-teal-600);
+  color: var(--palette-gray-100);
+}
+
+/* --------------------------------------------------------------------------
+   BOTÕES E ELEMENTOS INTERATIVOS
+   -------------------------------------------------------------------------- */
+.md-button--primary {
+  background-color: var(--palette-blue-500);
+  border-color: var(--palette-blue-500);
+  color: #ffffff;
+}
+
+.md-button--primary:hover {
+  background-color: var(--palette-amber-200);
+  border-color: var(--palette-amber-200);
+  color: #1F2020;
+}
+
+/* Suporte para alternância de imagens claro/escuro via #only-light e #only-dark */
+[data-md-color-scheme="default"] img[src$="#only-dark"],
+[data-md-color-scheme="light"] img[src$="#only-dark"] {
+  display: none !important;
+}
+
+[data-md-color-scheme="slate"] img[src$="#only-light"],
+[data-md-color-scheme="dark"] img[src$="#only-light"] {
+  display: none !important;
+}
+
+/* Barra de rolagem estilizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--palette-teal-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--palette-amber-200);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
