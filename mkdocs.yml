@@ -1,24 +1,29 @@
-site_name: Documentação de Requisitos
-site_description: Documentação de requisitos de software para o projeto web
-site_author: Seu Projeto
+site_name: SIGMA
+site_description: Documentação de requisitos de software para o projeto SIGMA
+site_author: Equipe SIGMA
 
 theme:
   name: material
+  logo: assets/logo-dark.png
+  favicon: assets/favicon.png
+  language: pt-BR
   palette:
-    - scheme: light
+    # Modo Claro
+    - scheme: default
       primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
-        name: Modo escuro
-    - scheme: dark
+        name: Mudar para modo escuro
+    # Modo Escuro
+    - scheme: slate
       primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
-        name: Modo claro
+        name: Mudar para modo claro
   
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.top
     - search.suggest
     - search.highlight
@@ -27,13 +32,22 @@ theme:
 
 plugins:
   - search
-  - offline
 
 markdown_extensions:
+  - attr_list
+  - md_in_html
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.tabbed:
@@ -46,7 +60,8 @@ extra_css:
   - stylesheets/custom.css
 
 nav:
-  - Home: index.md
+  - Início: index.md
+
   - Visão do Produto e Projeto:
       - 1 Cenário Atual do Cliente e do Negócio: doc-visao/1_cenarioAtual.md 
       - 2 Solução Proposta: doc-visao/2_solucao.md
