@@ -10,15 +10,15 @@
 
 ## 1.2 Introdução ao Negócio e Contexto
 
-A Creche Estação Vida é uma instituição filantrópica, sem fins lucrativos, localizada em Águas Lindas de Goiás, que atua no atendimento e desenvolvimento de crianças em situação de vulnerabilidade social. A instituição funciona das 7h30 às 19h30, oferecendo um ambiente de educação, acolhimento e apoio às famílias atendidas.
+A Creche Estação Vida é uma instituição filantrópica, sem fins lucrativos, localizada em Águas Lindas de Goiás, que atua no atendimento e no desenvolvimento de crianças em situação de vulnerabilidade social. A instituição funciona das 7h30 às 19h30, oferecendo um ambiente de educação, acolhimento e apoio às famílias atendidas.
 
-Atualmente, a creche atende 202 alunos, em sua maioria provenientes de famílias da região onde está localizada. Por estar inserida em uma área de baixa renda, a instituição possui um papel importante no atendimento às crianças e no suporte às suas famílias, contribuindo para o desenvolvimento infantil em um ambiente saudável e estável.
+Atualmente, a creche atende 202 alunos, em sua maioria provenientes de famílias da região onde está localizada. Por estar inserida em uma área de baixa renda, a instituição desempenha um papel importante no atendimento às crianças e no suporte às suas famílias, contribuindo para o desenvolvimento infantil em um ambiente saudável e estável.
 
 A Creche Estação Vida é vinculada à prefeitura da cidade e conta com profissionais responsáveis pelas atividades educacionais, de cuidado e administrativas. Ao longo dos anos de funcionamento, a instituição acumulou uma grande quantidade de informações e documentos relacionados aos alunos.
 
-O vínculo com a prefeitura se dá por meio de um sistema próprio da prefeitura, eles, a creche, presta contas de gastos gerais como de comida, salário de funcionários, manutenção, pois é a prefeitura que patrocina tais funcionários, definindo assim o seu vinculo com a prefeitura
+O vínculo com a prefeitura se dá por meio de um sistema próprio da prefeitura, no qual a creche presta contas de gastos gerais, como alimentação, salários de funcionários e manutenção, uma vez que é a prefeitura que custeia tais despesas e os funcionários, o que define o vínculo entre as duas partes.
 
-Apesar de sua atuação junto à comunidade, a creche enfrenta dificuldades relacionadas ao cadastro, armazenamento e manutenção das fichas de matrícula. Atualmente, o preenchimento e o gerenciamento dessas informações são realizados de forma manual, utilizando papel e caneta, o que dificulta a organização, a consulta e a manutenção dos dados dos alunos.
+Apesar de sua atuação junto à comunidade, a creche enfrenta dificuldades relacionadas ao cadastro, ao armazenamento e à manutenção das fichas de matrícula. Atualmente, o preenchimento e o gerenciamento dessas informações são realizados de forma manual, com papel e caneta, o que dificulta a organização, a consulta e a manutenção dos dados dos alunos.
 
 ## 1.3 Rich Picture
 
@@ -39,7 +39,7 @@ A Figura apresenta o diagrama de Ishikawa, elaborado a partir do levantamento re
 
 Atualmente, grande parte das informações é registrada manualmente, utilizando fichas de papel que posteriormente são armazenadas em armários. Esse processo dificulta a localização, consulta e atualização das informações, além de exigir espaço físico para o armazenamento dos documentos, a quantidade anual de novas fichas de matrícula varia entre 200 - 300. Tirando os arquivos mortos. O espaço ocupado para guardar as fichas sao dois armários de medidas 2.2m x 5.0m  x0.4m sendo respectivamente altura largura e profundidades oque somados dá cerca de 8,8 m³.
 
-O grande volume de fichas acumuladas ao longo dos anos, juntamente com a quantidade reduzida de profissionais responsáveis pelas atividades administrativas, torna o gerenciamento dessas informações ainda mais trabalhoso e suscetível à perda ou deterioração dos documentos, demora entre 4 - 10 minutos pra achar uma ficha de matrícula atualmente, e a frequência de perda ou deterioração é de 2 fichas a cada uma ficha a cada 2 meses.
+O grande volume de fichas acumuladas ao longo dos anos, juntamente com a quantidade reduzida de profissionais responsáveis pelas atividades administrativas, torna o gerenciamento dessas informações ainda mais trabalhoso e suscetível à perda ou deterioração dos documentos, demora entre 4 - 10 minutos pra achar uma ficha de matrícula atualmente, e a frequência de perda ou deterioração é de 2-3 fichas a cada semestre totalizando uma média de 4-6 fichas por ano
 
 Dessa forma, existe uma oportunidade de melhorar os processos internos por meio da digitalização das fichas de matrícula, proporcionando maior facilidade de acesso, organização e segurança das informações.
 
@@ -88,10 +88,11 @@ Os principais stakeholders do projeto são:
 | Kananda Sena e Leticia (Coordenadoras) | Participa da definição de requisitos e validação da solução | Facilitar o acesso às informações e apoiar a gestão da instituição | Alta |
 | Secretárias | Principais usuárias do sistema responsáveis pelo cadastro, consulta e atualização das fichas| Ter um sistema simples e intuitivo que reduza o trabalho manual e otimize o tempo | Alta |
 | Professoras e Monitoras |Usuárias indiretas, sem contato com a solução, utilizam informações cadastradas.| Usar as informações dos alunos, que são resgatadas e cadastradas pelas secretarias,  para apoiar o processo educacional| Média |
+| Equipe de Saúde | Usuárias indiretas, sem contato direto com a solução, consultam as informações cadastradas de modo semelhante às professoras | Acessar, por meio das secretárias, as informações dos alunos relevantes para apoiar o cuidado e o acompanhamento da saúde das crianças | Média |
 | Alunos e responsáveis | Beneficiários diretos da solução, uma vez que, fornecem e utilizam as informações cadastrais| Maior organização, segurança dos dados e melhor atendimento | Média |
 | Equipe de Desenvolvimento | Responsável por desenvolver, implementar e manter o sistema | Entregar uma solução funcional, segura e fácil de utilização | Alta |
 
-Uma vez que o SIGMA é um sistema paralelo ao da prefeitura e que nao tem nenhum vínculo com a prefeittura nao há necessidades de stakeholders da prefeitura
+Embora a creche seja vinculada à prefeitura, o SIGMA funciona de forma independente do sistema municipal, portanto não há necessidade de stakeholders da prefeitura
 
 ## 1.7 Segmentação de Clientes
 
