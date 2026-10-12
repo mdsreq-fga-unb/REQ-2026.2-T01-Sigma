@@ -206,6 +206,12 @@
   content: url("../assets/logo-dark.png");
 }
 
+/* Oculta o texto "SIGMA" redundante ao lado da logo no cabeçalho */
+.md-header__title .md-header__topic:first-child {
+  display: none !important;
+}
+
+
 /* Barra de abas de navegação */
 .md-tabs {
   border-bottom: 1px solid rgba(205, 209, 209, 0.2);
@@ -522,3 +528,107 @@
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+/* ==========================================================================
+   GRID E CARDS DE CASOS DE USO (Estilo Nativo)
+   ========================================================================== */
+.uc-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 1.2rem 0 1.8rem;
+}
+
+.uc-link-grid > p {
+  display: flex;
+  margin: 0;
+}
+
+.md-typeset .uc-link-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  min-height: 2.85rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(19, 92, 125, 0.22);
+  border-left: 4px solid var(--palette-teal-400);
+  border-radius: 8px;
+  background-color: var(--palette-gray-100);
+  color: var(--palette-blue-500) !important;
+  box-shadow: 0 1px 4px rgba(19, 92, 125, 0.05);
+  line-height: 1.35;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: all 0.18s ease;
+}
+
+.md-typeset .uc-link-card:hover {
+  border-color: var(--palette-amber-200);
+  border-left-color: var(--palette-amber-200);
+  background-color: var(--palette-teal-100);
+  color: var(--palette-blue-600) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(19, 92, 125, 0.12);
+}
+
+.md-typeset .uc-link-card::after {
+  content: "→";
+  margin-left: auto;
+  padding-left: 0.65rem;
+  color: var(--palette-amber-200);
+  font-weight: 700;
+  font-size: 1.15rem;
+  transition: transform 0.18s ease;
+}
+
+.md-typeset .uc-link-card:hover::after {
+  transform: translateX(3px);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .uc-link-card,
+[data-md-color-scheme="dark"] .md-typeset .uc-link-card {
+  border-color: var(--palette-teal-500);
+  border-left-color: var(--palette-teal-400);
+  background-color: var(--palette-teal-600);
+  color: var(--palette-gray-100) !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .uc-link-card:hover,
+[data-md-color-scheme="dark"] .md-typeset .uc-link-card:hover {
+  background-color: var(--palette-teal-500);
+  border-color: var(--palette-amber-200);
+  border-left-color: var(--palette-amber-200);
+  color: var(--palette-amber-200) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Links de navegação entre Casos de Uso (topo e rodapé) */
+.uc-nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+  padding: 0.8rem 1rem;
+  background-color: var(--palette-gray-100);
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 8px;
+}
+
+[data-md-color-scheme="slate"] .uc-nav-links,
+[data-md-color-scheme="dark"] .uc-nav-links {
+  background-color: var(--palette-teal-600);
+  border-color: var(--palette-teal-500);
+}
+
+.uc-nav-links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
