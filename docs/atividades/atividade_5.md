@@ -41,11 +41,10 @@
 
 |TÉCNICA|TIPO|ONDE FOI USADA|
 |---|---|---|
-|Texto Narrativo em Linguagem Natural|Narrativa Descritiva|Concepção do Projeto|
-|Lista de Requisitos - Anteriormente|Declaração Estruturada|Fase de Elicitação e Descoberta|
-|Declarações Textuais Estruturadas (Templates) - Atualmente|Declaração Estruturada|Fase de avaliação em pares|
-|Histórias de Usuário|Declaração Orientada á valor| Validação do MVP e Consenso|
-|Glossário de dados|Catálogo e Artefato Técnico|Fase futura|
+|Lista de Requisitos - Anteriormente|Declaração Estruturada| Fase de Elicitação e Descoberta |
+|Declarações Textuais Estruturadas (Templates) - Atualmente| Validação do MVP e Consenso |
+|Casos de Uso| Fase de elaboração e construção do produto de Software |
+
 
 ---
 
