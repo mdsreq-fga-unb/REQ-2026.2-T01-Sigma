@@ -11,35 +11,37 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como foi aplicado:** Realizámos entrevistas por videochamadas com a diretora, coordenadora e secretárias da Creche Estação Vida para compreender o processo atual de cadastro, armazenamento e consulta. Em paralelo, analisámos as fichas de matrícula físicas utilizadas pela instituição.
 - **Resultado esperado:** Requisitos de alto nível identificados e contexto do problema de gestão de matrículas compreendido.
 - **Evidências:**
-    - [Inserir Link para a Ata/Gravação da Entrevista]
-    - [Inserir Link para a análise documental / fotos das fichas]
+    - [Entrevista de levantamento de requisitos](https://drive.google.com/file/d/1EugRqtDabhgezjH6jpZ7e9RNyV-RaA_2/view)
+    - [Modelo de documentos](https://drive.google.com/drive/folders/1R6TWeKyvV99bJH4uQt0hzWzE3_3MuSq_?usp=sharing)
 
 #### Prática: Análise e Consenso
 - **Técnicas aplicadas:** Priorização de Requisitos (Método MoSCoW).
 - **Como foi aplicado:** Os requisitos identificados foram analisados e priorizados de acordo com a sua importância para a creche, dando preferência às necessidades que apresentam maior impacto na rotina administrativa.
 - **Resultado esperado:** Escopo principal do MVP acordado com a direção e a secretaria da creche.
 - **Evidências:**
-    - [Link para a nossa priorização]
+    - [Link para a nossa priorização](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/atividades/atividade_4/)
+    - [Link para reunião de validação do escopo do MVP](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FReuni%C3%A3o%20com%20Gabriel%20Vieira%20Octacilio%20Pinheiro%2D20261006%5F193801%2DGrava%C3%A7%C3%A3o%20de%20Reuni%C3%A3o%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E38bd09c9%2D2fb7%2D481b%2Db28f%2D1b185dc1604c)
 
 #### Prática: Declaração
 - **Técnicas aplicadas:** Elaboração do Documento de Visão e da Lista de Requisitos.
 - **Como foi aplicado:** Foi elaborado o documento de Visão, apresentando o problema identificado, os objetivos da solução e o escopo inicial do sistema. Adicionalmente, foi criada uma lista inicial contendo as principais funcionalidades que deverão ser contempladas pelo sistema.
 - **Resultado esperado:** Objetivos da solução e escopo do sistema documentados de forma clara e concisa.
 - **Evidências:**
-    - [Link para a nossa lista inicial de requisitos]
+    - [Link para a nossa lista inicial de requisitos](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/atividades/atividade_3/)
 
 #### Prática: Representação
 - **Técnicas a serem aplicadas:** Casos de Uso de Alto Nível.
 - **Como será aplicado:** Serão elaborados casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.
 - **Resultado esperado:** Funcionalidades críticas mapeadas e representadas de forma concisa.
 - **Evidências:**
+    - Link para casos de uso
 
 #### Prática: Organização e Atualização
 - **Técnicas aplicadas:** Estruturação de Rastreabilidade (Catálogo Inicial de Requisitos).
 - **Como foi aplicado:** Foi criada a estrutura de rastreabilidade dos requisitos funcionais e não funcionais do sistema. Além disso, os primeiros requisitos estabelecidos foram organizados nesta mesma estrutura.
 - **Resultado esperado:** Catálogo inicial de requisitos estruturado.
 - **Evidências:**
-    - [Link para o catálogo inicial dos requisitos]
+    - [Link para árvore de rastreabilidade](https://miro.com/app/board/uXjVEbrie7A=/?inviteKey=UkgxV1pUVE1OMGlNZysxSnRHbTBtSTRsbWR3UEI3T252ekJ5Tm1xb0YxOTlTVHpyRm5VdTRRMlFKOEVkc0svZFNGbUtUbkV0TlZqMSszVkVLV2w5YVc4QnZUb2VsQVFzc1FYMEErNjMzOUpqVjcyVGNycXNVNmRuWlNtMFZIK1FNakdSWkpBejJWRjJhRnhhb1UwcS9BPT0hdjE%3D)
 
 ---
 
@@ -50,23 +52,21 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como foi aplicado:** Foram realizadas novas entrevistas com as secretárias e demais stakeholders para esclarecer dúvidas e obter informações mais detalhadas sobre os requisitos levantados na Concepção.
 - **Resultado esperado:** Requisitos refinados e compreendidos em detalhe para mitigar riscos durante a implementação.
 - **Evidências:**
-    - [Inserir Link]
-    - [Inserir Link]
+    - [Link para reunião](https://drive.google.com/file/d/1EugRqtDabhgezjH6jpZ7e9RNyV-RaA_2/view)
 
 #### Prática: Análise e Consenso
 - **Técnicas aplicadas e a aplicar:** Análise de Impacto e Priorização (Realizadas); Prototipação para Alinhamento (Planeada).
 - **Como está a ser aplicado:** Os requisitos foram analisados para identificar conflitos, ambiguidades e dependências, sendo novamente priorizados com base no valor para a instituição e nos riscos de implementação. Além disso, serão utilizados protótipos preliminares em discussões com as secretárias como ferramenta de apoio visual para facilitar a compreensão, o debate e a obtenção de consenso sobre a estrutura da solução.
 - **Resultado esperado:** Conflitos resolvidos e consenso estabelecido sobre a viabilidade técnica da implementação e fluxos da interface.
 - **Evidências:**
-    - [Inserir Link]
-    - [Inserir Link]
+    - [Ata da reunião de analise de impacto e priorização](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/reunioes/ata1/#__tabbed_1_2)
 
 #### Prática: Declaração
 - **Técnicas em aplicação:** Detalhamento Sob Demanda (Casos de Uso Detalhados e Critérios de Aceite).
 - **Como está sendo aplicado:** Os requisitos de maior prioridade estão sendo detalhados progressivamente, aplicando a escrita de casos de uso detalhados e a definição de critérios de aceite, com o objetivo de evitar uma especificação excessiva e antecipada.
 - **Resultado esperado:** Requisitos prioritários especificados com o nível exato de detalhe necessário para o desenvolvimento.
 - **Evidências:**
-    - [Inserir Link]
+    - [Casos de uso detalhado]
 
 #### Prática: Representação
 - **Técnicas a serem aplicadas:** Refinamento de Casos de Uso e Prototipação de Interface.
@@ -87,7 +87,7 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como está sendo aplicado:** A Matriz de Rastreabilidade está sendo mantida em atualização contínua. Conforme os requisitos são refinados, as alterações de escopo, novas dependências e repriorizações estão sendo registradas na matriz para manter o controle e o histórico do projeto.
 - **Resultado esperado:** Alterações de escopo e novas dependências documentadas, mantendo a integridade e o controle do projeto.
 - **Evidências:**
-    - [Inserir Link]
+    - [Árvore de rastreabilidade](https://miro.com/app/board/uXjVEbrie7A=/)
 
 ---
 
