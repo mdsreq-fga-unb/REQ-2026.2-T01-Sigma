@@ -23,13 +23,13 @@ Tendo em vista que são dados sensíveis de crianças, a nossa solução pretend
 
 | ID | OE Principal | Característica | Descrição resumida | Valor de negócio principal |
 |---|---|---|---|---|
-| CP1 | OE.2 | Gerenciamento de cards de matrícula | Permitir o cadastro das informações dos alunos, centralizando os dados em cards de matrícula. | Redução do tempo de cadastro e de outras atividades da secretaria. |
+| CP1 | OE.2 | Concepção de cards de matrícula | Permitir o cadastro das informações dos alunos, centralizando os dados em cards de matrícula. | Redução do tempo de cadastro e de outras atividades da secretaria. |
 | CP2 | OE.1 | Edição e Atualização de cards de matrícula | Permitir a edição dos atuais cards. | Garantir a atualização de dados do usuário. |
 | CP3 | OE.1 | Consulta de informações dos cards de matrícula | Facilitar a consulta de cards de matrícula, ou um conjunto de tais. | Reduzir o tempo necessário para localizar um card, otimizando o tempo das secretárias. |
-| CP4 | OE.3 | Controle de acesso de usuários | Permitir o cadastro de usuários ativos no sistema tanto com autorização para editar o sistema ou apenas visualizar as informações. | Controla o acesso ao sistema, proporcionando segurança e confiabilidade de informações. |
+| CP4 | OE.3 | Controle de acesso de usuários | Permitir o cadastro de usuários ativos no sistema, e controlar a autorização para editar o informações ou apenas visualizar as informações. | Controla o acesso ao sistema, proporcionando segurança e confiabilidade de informações. |
 | CP5 | OE.2 | Gerenciamento de documentos | Anexação ou deleção de documentos vinculados aos cards de matrículas. | Permite a anexação de documentos fixados aos cards de matrícula. |
 | CP6 | OE.4 | Avisos Rápidos | Postagem de avisos administrativos, para todos os usuários do sistema. | Facilita a comunicação entre as secretárias, facilitando o trabalho em equipe e coordenação no time. |
-| CP7 | OE.4 | Módulo de gerenciamento de turmas e etapas | Criação, edição e inativação de turmas e etapas; vínculo de cards em turmas e etapas. | Facilita a organização dos cards de alunos, ajudando a logística entre as secretárias e otimizando o tempo de busca de um card. |
+| CP7 | OE.4 | Gerenciamento de turmas e etapas | Criação, edição e inativação de turmas e etapas; vínculo de cards em turmas e etapas. | Facilita a organização dos cards de alunos, ajudando a logística entre as secretárias e otimizando o tempo de busca de um card. |
 | CP8 | OE.3 | Auditoria e Integridade | Registrar o histórico de edições e exigir confirmação em operações de salvamento. | Garantir total rastreabilidade e segurança contra alterações indevidas ou perdas acidentais de dados. |
 
 
