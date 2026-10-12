@@ -18,17 +18,52 @@ A baixo está o link dos casos de uso relacionados, cada link , redireciona para
 |[UC07 - Alocar Alunos](casos-uso/uc07.md)|NÃO FEITA|
 |[UC08 - Consultar Registros (Busca)](casos-uso/uc08.md)|NÃO FEITA|
 
-> Também disponibilizamos [**Lista de requisitos**](./8_requisitos.md), pra fins de esclarecimento de algum requisito.
+A seguir uma tabela que Relaciona os requisitos do nosso sistema com os casos de uso.
+
+### Rastreabilidade entre Requisitos e Casos de Uso
+ 
+| ID | Nome | Casos de uso vinculados |
+|---|---|---|
+| RF01 | Disponibilizar quadro de avisos | UC03 - Gerenciamento de quadros de avisos |
+| RF02 | Lançar avisos | UC03 - Gerenciamento de quadros de avisos |
+| RF03 | Exibir avisos | UC03 - Gerenciamento de quadros de avisos |
+| RF04 | Apagar avisos | UC03 - Gerenciamento de quadros de avisos |
+| RF05 | Cadastrar Usuários | UC02 - Gerenciar usuários administrativos / UC03 - Gerenciamento de quadros de avisos |
+| RF06 | Realizar login | UC01 - Gerenciar autenticação |
+| RF07 | Realizar logout | UC01 - Gerenciar autenticação / UC03 - Gerenciamento de quadros de avisos |
+| RF08 | Cadastrar card de aluno | UC04 - Gerenciar cards de matrícula |
+| RF09 | Preenchimento de fichas | UC04 - Gerenciar cards de matrícula |
+| RF10 | Editar fichas do card | UC04 - Gerenciar cards de matrícula |
+| RF11 | Inativar card de aluno | UC04 - Gerenciar cards de matrícula |
+| RF12 | Reativar card de aluno | UC04 - Gerenciar cards de matrícula |
+| RF13 | Vincular aluno a turma | UC07 - Alocar alunos |
+| RF14 | Anexar documentos | UC05 - Gerenciar Documentos Digitais |
+| RF15 | Editar documento | UC05 - Gerenciar Documentos Digitais |
+| RF16 | Baixar fichas e documentos | UC05 - Gerenciar Documentos Digitais |
+| RF17 | Apresentar histórico de edições | UC04 - Gerenciar cards de matrícula |
+| RF18 | Cadastrar Etapa | UC06 - Gerenciar estrutura escolar (Etapas e Turmas) |
+| RF19 | Inativar turma e etapa | UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas) |
+| RF20 | Vincular turma à etapa | UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas) |
+| RF21 | Buscar aluno pelo nome | UC08 - Consultar Registros (Busca) / UC07 - Alocar Alunos |
+| RF22 | Buscar turmas e etapas | UC08 - Consultar Registros (Busca) / UC07 - Alocar Alunos |
+| RF23 | Possibilitar salvamento de dados | UC04 - Gerenciar cards de matrícula |
+| RF24 | Cadastrar Turma | UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas) |
+| RNF01 | Privacidade de Dados e Retenção Segura | UC03 - Gerenciar Quadro de Avisos |
+| RNF02 | Restrição de Acesso não Autenticado | UC01 - Gerenciar autenticação / UC07 - Alocar Alunos / UC02 - Gerenciar usuários administrativos |
+| RNF03 | Interface responsiva e adaptável a múltiplos dispositivos | GLOBAL |
+| RNF04 | Interface com suporte a Modo Escuro alternável | GLOBAL |
+| RNF05 | Tempo de Resposta do Sistema ao Logar | UC01 - Gerenciar autenticação |
+| RNF06 | Tempo de Resposta do Sistema ao Buscar aluno | UC07 - Alocar Alunos / UC08 - Consultar Registros (Busca) |
+| RNF07 | Tempo de resposta do sistema para buscar turmas ou etapas | UC07 - Alocar Alunos / UC08 - Consultar Registros (Busca) |
+| RNF08 | Tempo de resposta para salvar uma ficha | UC04 - Gerenciar cards de matrícula |
+| RNF09 | Disponibilidade do sistema | GLOBAL |
+| RNF10 | Acessos Múltiplos | GLOBAL |
 
 ## 10.2 Priorização do Backlog e MVP
 
-
-
-### Definição do Critério de Montagem do MVP
-
 Para a inserção dos requisitos no MVP, efetuamos uma análise plural considerando as posições de cada requisito funcional e não-funcional na Matrix 4x4, alocando aqueles que apresentavam mais valor de negócio e menos esforço técnico. Além das posições da Matriz 4x4, foi considerado uma análise de contribuição para a solução do problema e relacionamento direto com o cumprimento dos objetivos do projeto. Em geral, acrescentamos ao MVP, aqueles requisitos indispensáveis e vitais para o desenvolvimento e implementação da solução, cujos complementam as funcionalidades que ja estariam no MVP .
 
-### Consolidação das avaliações
+### Consolidação das Avaliações
  
 | ID | Requisito | Justificativa do cliente | V. Negócio | Esforço | Complexidade | Lacuna de Capacidade | Esforço técnico consolidado |
 |---|---|---|---|---|---|---|---|
@@ -67,41 +102,41 @@ Para a inserção dos requisitos no MVP, efetuamos uma análise plural considera
 | RNF9 | Disponibilidade do sistema | Necessário, o sistema deve permanecer acessível durante todo o expediente | 4 | 2 | 2 | 2 | 2 |
 | RNF10 | Acessos múltiplos | Essencial, para acompanhar a necessidade do cliente | 3 | 2 | 2 | 2 | 2 |
 
+A seguir a imagem e o link da nossa matriz de requisitos, 
+[link do excalidraw](https://excalidraw.ufpi.br/#room=18ce979a0731349ffb5c,xyFmMOtSPX3E6eJx2N1H_g)
+---
+![matriz de requisitos ](../assets/matriz_requisitos.png)
 
 
-### Definição de RFs do MVP
+Considerando a Tabela de Consolidação de Produto , decidimos fazer uma priorização mais aplicada aos nossos Casos de Uso, abaixo há uma tabela que indica o agrupamento da média das médias de Valor de Negócio e Esforço Técnico dos requisitos correspondentes à cada Caso de Uso
 
-- 15 requisitos -> todos estão no MVP dos casos de uso ? ou entao todos os requisitos de todos os casos de uso estão aqui ??
+### Priorização dos Casos de Uso
+ 
+#### Valor de Negócio e Esforço Técnico por Caso de Uso
+ 
+| Caso de Uso | Valor de Negócio | Esforço Técnico | Média do Valor de Negócio | Média do Esforço Técnico |
+|---|---|---|---|---|
+| UC1 | RF06: 4<br>RF07: 4<br>RNF02: 4<br>RNF05: 4 | RF06: 1.6<br>RF07: 1.6<br>RNF02: 1.3<br>RNF05: 2.6 | 4 | 1.8 |
+| UC2 | RF05: 4<br>RNF02: 4 | RF05: 1.3<br>RNF02: 1.3 | 4 | 1.3 |
+| UC3 | RF01: 2<br>RF02: 2<br>RF03: 2<br>RF04: 2<br>RF05: 4<br>RF07: 4 | RF01: 2<br>RF02: 2<br>RF03: 2<br>RF04: 2<br>RF05: 1.3<br>RF07: 1.6 | 2.7 | 1.8 |
+| UC4 | RF08: 4<br>RF09: 4<br>RF10: 3<br>RF11: 2<br>RF12: 2<br>RF17: 3<br>RF23: 3<br>RNF08: 4 | RF08: 2.6<br>RF09: 2.6<br>RF10: 2.6<br>RF11: 1<br>RF12: 1<br>RF17: 2<br>RF23: 1<br>RNF08: 2.6 | 3.1 | 1.9 |
+| UC5 | RF14: 4<br>RF15: 3 | RF14: 1.6<br>RF15: 1.3 | 3.5 | 1.45 |
+| UC6 | RF18: 4<br>RF19: 2<br>RF20: 2<br>RF24: 4 | RF18: 1<br>RF19: 1<br>RF20: 1.3<br>RF24: 1 | 3 | 1.1 |
+| UC7 | RF13: 4<br>RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4 | RF13: 1.3<br>RF21: 1<br>RF22: 1<br>RNF06: 2.6<br>RNF07: 2.6 | 4 | 1.7 |
+| UC8 | RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4 | RF21: 1<br>RF22: 1<br>RNF06: 2.6<br>RNF07: 2.6 | 4 | 1.8 |
+ 
+#### Tabela de Priorização dos Casos de Uso no MVP
+ 
+A seguir, a tabela de priorização dos Casos de Uso no MVP, seguindo os dados da tabela anterior.
+ 
+| ID | Caso de Uso | Valor de Negócio | Esforço Técnico | Valor Resultante (V. Negócio / E. Técnico) | Compõe a Entrega? |
+|---|---|---|---|---|---|
+| UC01 | Gerenciar Autenticar | 4 | 1.8 | 2.22 | SIM |
+| UC02 | Gerenciar Usuários Administrativos | 4 | 1.3 | 3.08 | SIM |
+| UC03 | Gerenciar Quadro de Avisos | 2.7 | 1.8 | 1.5 | NÃO |
+| UC04 | Gerenciar Fichas de Matrícula | 3.1 | 1.9 | 1.63 | SIM |
+| UC05 | Gerenciar Documentos Digitais | 3.5 | 1.45 | 2.41 | SIM |
+| UC06 | Gerenciar Estrutura Escolar | 3 | 1.1 | 2.73 | SIM |
+| UC07 | Alocar Alunos | 4 | 1.7 | 2.35 | SIM |
+| UC08 | Consultar Registros (Busca) | 4 | 1.8 | 2.22 | SIM |
 
-| Requisito | Justificativa | Casos de uso vinculado|
-|---|---|---|
-| RF05 | Necessário para a segurança do sistema, alto valor de negócio. |UC02|
-| RF06 | Necessário para a segurança do sistema, alto valor de negócio. |UC01|
-| RF07 | Necessário para a segurança do sistema, alto valor de negócio. |UC01|
-| RF08 | Necessário para a solução do problema principal, alto valor de negócio. |UC04|
-| RF09 | Necessário para a solução do problema principal, alto valor de negócio. |UC04|
-| RF10 | Necessário para a solução do problema principal, alto valor de negócio. |UC04|
-| RF21 | Necessário para a fluidez do sistema, alto valor de negócio, baixo esforço técnico. |UC08|
-| RF14 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |UC05|
-| RF15 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |UC05|
-| RF16 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |UC05|
-| RF23 | Necessário para o salvamento de dados do sistema, alto valor de negócio, baixo esforço técnico. |UC23|
-| RF22 | Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico. |UC08|
-| RF24 | Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico. |UC06|
-| RF18 | Necessário para a correta implementação do sistema e cumprimento de objetivos específicos, alto valor de negócio, baixo esforço técnico. |UC06|
-| RF13 | Necessário para a correta implementação do sistema e estruturação da solução do problema, alto valor de negócio, baixo esforço técnico. |UC07|
-
-### Definição de RNFs do MVP
-
-| Requisito | Justificativa |
-|---|---|
-| RNF1 | **Obrigatório para o MVP.** Trata-se de uma obrigação legal a ser seguida. |
-| RNF2 | **Obrigatório para o MVP.** Relacionado à segurança. Sem isso, os dados ficam expostos. É uma condição obrigatória para que o sistema vá ao ar. |
-| RNF9 | **Obrigatório para o MVP.** A justificativa exige que o sistema funcione durante o expediente. Se o sistema cai, a operação do cliente pode ser afetada. |
-| RNF5 | **Associado a RFs do MVP.** Diretamente associado ao RF06. |
-| RNF6 | **Associado a RFs do MVP.** Diretamente associado ao RF21. |
-| RNF7 | **Associado a RFs do MVP.** Diretamente associado ao RF22. |
-| RNF8 | **Associado a RFs do MVP.** Diretamente associado aos requisitos do MVP: RF09, RF10 e RF23. |
-| RNF10 | **Evolutivo.** Inicialmente, o sistema não será usado por todas as funcionárias, reduzindo a carga. |
-| RNF3 | **Evolutivo.** O sistema será utilizado principalmente em notebooks/desktops. A adição de suporte para outras resoluções é uma evolução futura. |
-| RNF4 | **Evolutivo.** É um ganho de conforto visual, mas não impede a operação do sistema. Deve ficar para o futuro. |
