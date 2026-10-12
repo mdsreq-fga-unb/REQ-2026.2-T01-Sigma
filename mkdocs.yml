@@ -74,6 +74,9 @@ nav:
       - 9 DoR & DoD: doc-visao/9_dor_dod.md
       - 10 Backlog do produto: doc-visao/10_backlog.md
       - 11 Lições Aprendidas: doc-visao/11_licoes.md
+
+  - Casos de Uso: doc-visao/casos-uso/index.md
+
   - Atividades:
     - Atividade 3: atividades/atividade_3.md
     - Atividade 4: atividades/atividade_4.md
