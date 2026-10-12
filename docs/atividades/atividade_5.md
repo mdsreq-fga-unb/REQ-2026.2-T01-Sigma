@@ -42,8 +42,8 @@
 |TÉCNICA|TIPO|ONDE FOI USADA|
 |---|---|---|
 |Lista de Requisitos - Anteriormente|Declaração Estruturada| Fase de Elicitação e Descoberta |
-|Declarações Textuais Estruturadas (Templates) - Atualmente| Validação do MVP e Consenso |
-|Casos de Uso| Fase de elaboração e construção do produto de Software |
+|Declarações Textuais Estruturadas (Templates) - Atualmente | Declaração Estruturada | Validação do MVP e Consenso |
+|Casos de Uso| Declaração Estruturada | Fase de elaboração e construção do produto de Software |
 
 
 ---
