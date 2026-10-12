@@ -11,4 +11,7 @@
 |UC07 - Alocar Alunos|NÃO FEITA|[**UC07**](casos-uso/uc07.md)|
 |ID: UC08 - Consultar Registros (Busca)|NÃO FEITA|[**UC08**](casos-uso/uc08.md)|
 
+## Link das regras de negocio
+[**Regras de negocio**](./Regras-Negocio.md)
+
 
