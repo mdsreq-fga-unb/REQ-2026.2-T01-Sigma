@@ -102,16 +102,21 @@ Para a inserção dos requisitos no MVP, efetuamos uma análise plural considera
 | RNF9 | Disponibilidade do sistema | Necessário, o sistema deve permanecer acessível durante todo o expediente | 4 | 2 | 2 | 2 | 2 |
 | RNF10 | Acessos múltiplos | Essencial, para acompanhar a necessidade do cliente | 3 | 2 | 2 | 2 | 2 |
 
+---
+
 A seguir a imagem e o link da nossa matriz de requisitos, 
 [link do excalidraw](https://excalidraw.ufpi.br/#room=18ce979a0731349ffb5c,xyFmMOtSPX3E6eJx2N1H_g)
----
+
+
+
 ![matriz de requisitos ](../assets/matriz_requisitos.png)
 
 
-Considerando a Tabela de Consolidação de Produto , decidimos fazer uma priorização mais aplicada aos nossos Casos de Uso, abaixo há uma tabela que indica o agrupamento da média das médias de Valor de Negócio e Esforço Técnico dos requisitos correspondentes à cada Caso de Uso
+
 
 ### Priorização dos Casos de Uso
- 
+
+ Considerando a Tabela de Consolidação de Produto , decidimos fazer uma priorização mais aplicada aos nossos Casos de Uso, abaixo há uma tabela que indica o agrupamento da média das médias de Valor de Negócio e Esforço Técnico dos requisitos correspondentes à cada Caso de Uso
 #### Valor de Negócio e Esforço Técnico por Caso de Uso
  
 | Caso de Uso | Valor de Negócio | Esforço Técnico | Média do Valor de Negócio | Média do Esforço Técnico |
@@ -142,6 +147,12 @@ A seguir, a tabela de priorização dos Casos de Uso no MVP, seguindo os dados d
 
 Para a composição da entrega, consideramos aqueles Casos de Uso cujo Valor de Negócio é maior ou igual à 3 e cujo Valor Resultante é maior ou igual 1.9, além desses critérios analíticos, analisamos cada Caso de Uso de acordo com sua importância para o cumprimento do objetivo do projeto, selecionando aqueles que, caso não fossem selecionados, não seria possível criar um protótipo minimamente funcional. 
 
-
-
 > Para consultar as regras de negócio consolidadas, acesse o documento de [**Regras de Negócio**](./Regras-Negocio.md).
+
+## Validação do MVP
+ 
+Apos a confecção do MVP de acordo com as posições dos requisitos nos quadrantes e a completude entre os requisitos conforme esta descrito no critério de constituição do MVP, ocorreu a validação de tal por meio de apresentação de um slide diretamente com a cordenadora da creche, que é a nossa stakeholder principal
+
+> link da reuião dísponível na aba reuniões.
+
+Durante a reunião a coordenadora avaliou o quadroe matriz e valor e os requisitos listadso no MVP, confirmou que o conjunto dos requisitos satisfaz a ideia do 'miínimo possivel pra funcionar', contemplando com fidelidade as necessidades priorítárias pro MVP SIGMA;
