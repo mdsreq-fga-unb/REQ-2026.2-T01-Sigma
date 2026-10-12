@@ -34,7 +34,7 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como será aplicado:** Serão elaborados casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.
 - **Resultado esperado:** Funcionalidades críticas mapeadas e representadas de forma concisa.
 - **Evidências:**
-    - Link para casos de uso
+    - [Link para casos de uso](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/doc-visao/casos-uso/)
 
 #### Prática: Organização e Atualização
 - **Técnicas aplicadas:** Estruturação de Rastreabilidade (Catálogo Inicial de Requisitos).
@@ -66,21 +66,15 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como está sendo aplicado:** Os requisitos de maior prioridade estão sendo detalhados progressivamente, aplicando a escrita de casos de uso detalhados e a definição de critérios de aceite, com o objetivo de evitar uma especificação excessiva e antecipada.
 - **Resultado esperado:** Requisitos prioritários especificados com o nível exato de detalhe necessário para o desenvolvimento.
 - **Evidências:**
-    - [Casos de uso detalhado]
+    - [Casos de uso detalhado](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/doc-visao/casos-uso/)
 
-#### Prática: Representação
-- **Técnicas a serem aplicadas:** Refinamento de Casos de Uso e Prototipação de Interface.
-- **Como será aplicado:** Os casos de uso iniciais serão refinados para representar de forma mais detalhada as interações entre os utilizadores e o sistema. Em paralelo, serão desenhados protótipos das principais telas para representar a solução visualmente e materializar a organização das informações.
-- **Resultado esperado:** Interações detalhadas e telas representadas visualmente para guiar a equipa de desenvolvimento.
-- **Evidências:**
-    - [Inserir Link]
 
 #### Prática: Verificação e Validação
-- **Técnicas a serem aplicadas:** Revisões com Stakeholders e Demonstrações.
-- **Como será aplicado:** Os requisitos refinados serão revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas. Protótipos e versões iniciais das funcionalidades serão apresentados aos stakeholders em sessões de demonstração para obter feedback e identificar possíveis ajustes.
-- **Resultado esperado:** Confirmação de que as interfaces propostas e os fluxos desenhados atendem às expectativas dos usuários.
+- **Técnicas aplicadas:** Revisões com Stakeholders e Demonstrações.
+- **Como foi aplicado:** Os requisitos refinados serão revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas. Versões iniciais das funcionalidades serão apresentados aos stakeholders em sessões de demonstração para obter feedback e identificar possíveis ajustes.
+- **Resultados:** Confirmação de que o MVP proposto atende às expectativas dos usuários.
 - **Evidências:**
-    - [Inserir Link]
+    - [Link de validação do MVP](https://unbbr-my.sharepoint.com/:v:/g/personal/242004706_aluno_unb_br/IQBXti2dM-CuR44I9bXe8Ka9AedalX9A8_pG9i43LaH3-cA?e=P1HCHE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
 #### Prática: Organização e Atualização
 - **Técnicas em aplicação:** Gerenciamento de Mudanças e Atualização de Rastreabilidade.
@@ -116,7 +110,7 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 
 #### Prática: Representação
 - **Técnicas a serem aplicadas:** Refinamento Visual (Atualização de Protótipos de Interface).
-- **Como será aplicado:** Os protótipos de interface serão atualizados e ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.
+- **Como será aplicado:** Os protótipos de interface serão craidos e ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.
 - **Resultado esperado:** Telas e fluxos ajustados conforme necessidades ou limitações que surgirem durante o desenvolvimento.
 - **Evidências:**
     - [Inserir Link]
