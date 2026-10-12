@@ -82,6 +82,7 @@ nav:
     - Atividade 4: atividades/atividade_4.md
     - atividade 5: atividades/atividade_5.md
   - Atas de Reunião:
+
     - Reunião unidade 2: reunioes/ata1.md
     - Reunião unidade 1: reunioes/ata2.md
 
@@ -92,4 +93,4 @@ nav:
   #     - Glossário: documentacao/glossario.md
   #     - FAQ: documentacao/faq.md
   - Entrega de vídeos: videos/entrega-videos.md
-  - Referências: referencias/referencia.md
+  # - Referências: referencias/referencia.md
