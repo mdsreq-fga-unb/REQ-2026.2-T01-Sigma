@@ -113,3 +113,44 @@ Tópico referente às reuniões que aconteceram durante o período da segunda un
 
 
 
+=== " 11/10/2026 - Reunião de montagem de casos de uso e de backlog "
+    ## Ata: Ajustes do MVP, rastreabilidade e site (Pages)
+    
+    **Tema:** padronização da documentação do MVP, ligação entre características de produto e requisitos, e preparação da entrega.
+    **Duração:** ~56 min (parte do tempo foi conversa informal, omitida desta ata).
+    
+    ## Participantes
+    Gabriel Vieira Octacilio Pinheiro (condutor), Joao Gabriel Rolim Veiga e Lucas Peixoto Rodrigues.
+    
+    ## Pautas
+    - **Rastreabilidade e vídeos:** o Gabriel cobrou os vídeos de quem gravou reuniões. Ficou confuso quem gravou: a reunião de sexta não foi gravada e o João só tinha um vídeo de ~10 min do fim de uma reunião.
+    - **Árvore de requisitos:** o Lucas notou que o **RF7** não aparecia. O João lembrava de ter colocado todos; o Gabriel considerou fácil de corrigir.
+    - **Site (Pages/MkDocs):** o Gabriel fez deploy e o João viu as abas "Entrega de vídeos", "Referências" e "Atividades" quebradas (404). A aba de referências está vazia. O problema se mostrou específico do navegador do João (Firefox), e depois ele conseguiu abrir.
+    - **Características de produto (CP) × requisitos do MVP**, feita pelo Lucas:
+    - CP de gerenciamento de matrícula, controle de acesso e edição/atualização de cards: completas no MVP.
+    - **RF11 e RF12** (inativar e reativar card): fora do MVP.
+    - **CP6** (quadro de avisos, RF1 a RF4): fora do MVP.
+    - **CP7** (RF19 e RF20): fora do MVP.
+    - RNFs 3, 4, 9 e 10 aparecem em todas as CPs (3, 4 e 10 são evolutivos).
+    - **Definição dos RFs do MVP:** a lista estava fora de ordem (10, 21, 14, 15, 16, 23...) e sem nome ao lado do ID.
+    - **Critério de montagem do MVP:** o professor pediu que fique claro por que cada item entrou ou não. O João lembrou que o critério adotado foi **baixo esforço técnico e alto valor de negócio**, além da contribuição para o problema e os objetivos do projeto.
+    - **Monitor:** o Gabriel reclamou da falta de retorno e do tempo de resposta às issues, que a equipe corrigiu há tempos. Durante a reunião o João viu que o monitor respondeu.
+    ## Decisões
+    1. Para a ligação CP × requisitos, listar apenas **o que está e o que não está no MVP**, sem repetir os RNFs evolutivos em cada CP.
+    2. Incluir o **nome do requisito** ao lado do ID na tabela de definição dos RFs do MVP.
+    3. Explicitar na documentação que a cliente dispensou alguns itens e que foram escolhidos os mais necessários, e detalhar o critério depois.
+    4. Observar na documentação que certas funcionalidades fora dos quadrantes selecionados estão no MVP, com o motivo.
+    5. Colocar as **regras de negócio** no Pages (o modo escuro ficou bem avaliado).
+    6. Nova reunião **amanhã às 10h**, bem cedo, para ajustes e para sobrar tempo de estudar a apresentação. O Gabriel avisa no grupo.
+    7. Se o monitor não responder e as issues não forem fechadas até terça, o Gabriel vai pedir ao professor a troca do monitor. A equipe teme perder pontos por correções já feitas.
+    ## Tarefas realizadas
+    - **Gabriel:** deploy do site, regras de negócio no Pages, anotações do que falta.
+    - **Lucas:** levantamento CP × requisitos do MVP (até a CP7) e verificação da árvore.
+    - **João:** teste do site, identificação do problema no navegador e explicação do critério do MVP.
+    ## Pendências
+    - **Corrigir** o RF7 na árvore de requisitos.
+    - **Lucas:** enviar ao Gabriel a lista de quais CPs estão completas e quais têm só alguns requisitos no MVP.
+    - **Gabriel:** passar os ajustes combinados ao Pages, incluir na tabela do MVP os fatores que levaram à escolha das declarações e o nome dos requisitos, ajustar o README e montar o **backlog com as atividades** para o vídeo.
+    - **Equipe:** reunião de amanhã às 10h, depois estudar para a apresentação.
+    - **Equipe:** reorganizar a ordem dos RFs na definição do MVP e deixar clara a justificativa de inclusão/exclusão.
+    *Obs.: transcrição ruidosa, com muitos trechos em inglês fora de contexto. Data não informada, e uma palavra do resumo final do Gabriel ("caju") não ficou clara, então fui conservador no que ela representa.*
