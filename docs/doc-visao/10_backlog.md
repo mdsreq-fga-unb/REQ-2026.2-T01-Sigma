@@ -140,3 +140,4 @@ A seguir, a tabela de priorização dos Casos de Uso no MVP, seguindo os dados d
 | UC07 | Alocar Alunos | 4 | 1.7 | 2.35 | SIM |
 | UC08 | Consultar Registros (Busca) | 4 | 1.8 | 2.22 | SIM |
 
+Para consultar as regras de negócio consolidadas, acesse o documento de [**Regras de Negócio**](./Regras-Negocio.md).
