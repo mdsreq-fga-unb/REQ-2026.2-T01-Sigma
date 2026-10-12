@@ -109,8 +109,16 @@ Os requisitos não funcionais definem critérios de qualidade do sistema SIGMA. 
 
 Abaixo está representada a árvore de rastreabilidade dos requisitos do projeto SIGMA, conectando objetivos específicos (OEs), características do produto (CPs) e os requisitos de software. 
 
-A captura abaixo foi registrada no dia **10/10/2026**. Para melhor visualização, navegação e leitura completa com zoom dinâmico, acesse a árvore diretamente no quadro do Miro:
+Você pode navegar, dar zoom e explorar a árvore interativamente diretamente pelo quadro incorporado do Miro a seguir:
 
-:material-link: **[Acessar Árvore de Rastreabilidade no Miro](https://miro.com/app/board/uXjVEbrie7A=/)**
+<iframe width="100%" height="650" src="https://miro.com/app/live-embed/uXjVEbrie7A=/" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen title="Árvore de Rastreabilidade no Miro"></iframe>
+
+:material-open-in-new: **[Abrir Árvore de Rastreabilidade diretamente no Miro](https://miro.com/app/board/uXjVEbrie7A=/)**
+
+---
+
+### Captura da Árvore de Rastreabilidade
 
 ![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
+
+<p align="center"><em>Captura registrada no dia 10/10/2026.</em></p>
