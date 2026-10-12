@@ -185,7 +185,7 @@ A seguir a imagem e o link da nossa matriz de requisitos,
 Para a inserção dos requisitos no MVP, efetuamos uma análise plural considerando as posições de cada requisito funcional e não-funcional na Matrix 4x4, alocando aqueles que apresentavam mais valor de negócio e menos esforço técnico. Além das posições da Matriz 4x4, foi considerado uma análise de contribuição para a solução do problema e relacionamento direto com o cumprimento dos objetivos do projeto. Em geral, acrescentamos ao MVP, aqueles requisitos indispensáveis e vitais para o desenvolvimento e implementação da solução, cujos complementam as funcionalidades que ja estariam no MVP .
 
 ## Definição de RFs do MVP
- 
+
 | Requisito | Justificativa |
 |---|---|
 | RF05 | Necessário para a segurança do sistema, alto valor de negócio. |

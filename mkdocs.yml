@@ -70,7 +70,9 @@ nav:
       - 5 Engenharia de Requisitos: doc-visao/5_requisitos.md
       - 6 Cronograma e entregas: doc-visao/6_cronograma.md
       - 7 Interação entre Equipe e Cliente: doc-visao/7_interacao.md
-      - 8 requisitos: doc-visao/8_requisitos.md
+      - 8 Requisitos: doc-visao/8_requisitos.md
+      - 9 DoR & DoD: doc-visao/9_dor_dod.md
+      - 10 Backlog do produto: doc-visao/10_backlog.md
       - 11 Lições Aprendidas: doc-visao/11_licoes.md
   - Atividades:
     - Atividade 3: atividades/atividade_3.md
