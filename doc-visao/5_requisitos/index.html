@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de requisitos de software para o projeto SIGMA">
+      
+      
+        <meta name="author" content="Equipe SIGMA">
+      
+      
+      
+        <link rel="prev" href="../4_estrategias/">
+      
+      
+        <link rel="next" href="../6_cronograma/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5 Engenharia de Requisitos - SIGMA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-engenharia-de-requisitos" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="SIGMA" class="md-header__button md-logo" aria-label="SIGMA" data-md-component="logo">
+      
+  <img src="../../assets/logo-dark.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIGMA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5 Engenharia de Requisitos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SIGMA" class="md-nav__button md-logo" aria-label="SIGMA" data-md-component="logo">
+      
+  <img src="../../assets/logo-dark.png" alt="logo">
+
+    </a>
+    SIGMA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Produto e Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão do Produto e Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_cenarioAtual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Cenário Atual do Cliente e do Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Solução Proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_intervencao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Intervenção Social
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_estrategias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 Estratégias de engenharia de software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-atividades-e-tecnicas-de-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Atividades e Técnicas de ER
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 Cronograma e entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_interacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Interação entre Equipe e Cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 DoR & DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 Backlog do produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_licoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 Lições Aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atividades/atividade_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atividades/atividade_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividade 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atividades/atividade_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    atividade 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atas de Reunião
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atas de Reunião
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reunioes/ata1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reunião unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reunioes/ata2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reunião unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../videos/entrega-videos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrega de vídeos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencias/referencia.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-atividades-e-tecnicas-de-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Atividades e Técnicas de ER
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5-engenharia-de-requisitos">5. Engenharia de Requisitos</h1>
+<p>Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisitos (ER) ao longo do ciclo de vida do projeto. Conforme definido anteriormente na estratégia do projeto, adotamos o processo OpenUP. Nas subseções a seguir, apresentamos como essas práticas estão distribuídas ao longo das quatro fases desse processo: Concepção, Elaboração, Construção e Transição.</p>
+<h2 id="51-atividades-e-tecnicas-de-er">5.1 Atividades e Técnicas de ER</h2>
+<h3 id="511-concepcao">5.1.1 Concepção</h3>
+<h4 id="pratica-elicitacao-e-descoberta">Prática: Elicitação e Descoberta</h4>
+<ul>
+<li><strong>Técnicas aplicadas:</strong> Entrevistas e Análise Documental.</li>
+<li><strong>Como foi aplicado:</strong> Realizámos entrevistas por videochamadas com a diretora, coordenadora e secretárias da Creche Estação Vida para compreender o processo atual de cadastro, armazenamento e consulta. Em paralelo, analisámos as fichas de matrícula físicas utilizadas pela instituição.</li>
+<li><strong>Resultado esperado:</strong> Requisitos de alto nível identificados e contexto do problema de gestão de matrículas compreendido.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link para a Ata/Gravação da Entrevista]</li>
+<li>[Inserir Link para a análise documental / fotos das fichas]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-analise-e-consenso">Prática: Análise e Consenso</h4>
+<ul>
+<li><strong>Técnicas aplicadas:</strong> Priorização de Requisitos (Método MoSCoW).</li>
+<li><strong>Como foi aplicado:</strong> Os requisitos identificados foram analisados e priorizados de acordo com a sua importância para a creche, dando preferência às necessidades que apresentam maior impacto na rotina administrativa.</li>
+<li><strong>Resultado esperado:</strong> Escopo principal do MVP acordado com a direção e a secretaria da creche.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Link para a nossa priorização]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-declaracao">Prática: Declaração</h4>
+<ul>
+<li><strong>Técnicas aplicadas:</strong> Elaboração do Documento de Visão e da Lista de Requisitos.</li>
+<li><strong>Como foi aplicado:</strong> Foi elaborado o documento de Visão, apresentando o problema identificado, os objetivos da solução e o escopo inicial do sistema. Adicionalmente, foi criada uma lista inicial contendo as principais funcionalidades que deverão ser contempladas pelo sistema.</li>
+<li><strong>Resultado esperado:</strong> Objetivos da solução e escopo do sistema documentados de forma clara e concisa.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Link para a nossa lista inicial de requisitos]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-representacao">Prática: Representação</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Casos de Uso de Alto Nível.</li>
+<li><strong>Como será aplicado:</strong> Serão elaborados casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.</li>
+<li><strong>Resultado esperado:</strong> Funcionalidades críticas mapeadas e representadas de forma concisa.</li>
+<li><strong>Evidências:</strong></li>
+</ul>
+<h4 id="pratica-organizacao-e-atualizacao">Prática: Organização e Atualização</h4>
+<ul>
+<li><strong>Técnicas aplicadas:</strong> Estruturação de Rastreabilidade (Catálogo Inicial de Requisitos).</li>
+<li><strong>Como foi aplicado:</strong> Foi criada a estrutura de rastreabilidade dos requisitos funcionais e não funcionais do sistema. Além disso, os primeiros requisitos estabelecidos foram organizados nesta mesma estrutura.</li>
+<li><strong>Resultado esperado:</strong> Catálogo inicial de requisitos estruturado.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Link para o catálogo inicial dos requisitos]</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="512-elaboracao">5.1.2 Elaboração</h3>
+<h4 id="pratica-elicitacao-e-descoberta_1">Prática: Elicitação e Descoberta</h4>
+<ul>
+<li><strong>Técnica aplicada:</strong> Entrevistas de Aprofundamento.</li>
+<li><strong>Como foi aplicado:</strong> Foram realizadas novas entrevistas com as secretárias e demais stakeholders para esclarecer dúvidas e obter informações mais detalhadas sobre os requisitos levantados na Concepção.</li>
+<li><strong>Resultado esperado:</strong> Requisitos refinados e compreendidos em detalhe para mitigar riscos durante a implementação.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-analise-e-consenso_1">Prática: Análise e Consenso</h4>
+<ul>
+<li><strong>Técnicas aplicadas e a aplicar:</strong> Análise de Impacto e Priorização (Realizadas); Prototipação para Alinhamento (Planeada).</li>
+<li><strong>Como está a ser aplicado:</strong> Os requisitos foram analisados para identificar conflitos, ambiguidades e dependências, sendo novamente priorizados com base no valor para a instituição e nos riscos de implementação. Além disso, serão utilizados protótipos preliminares em discussões com as secretárias como ferramenta de apoio visual para facilitar a compreensão, o debate e a obtenção de consenso sobre a estrutura da solução.</li>
+<li><strong>Resultado esperado:</strong> Conflitos resolvidos e consenso estabelecido sobre a viabilidade técnica da implementação e fluxos da interface.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-declaracao_1">Prática: Declaração</h4>
+<ul>
+<li><strong>Técnicas em aplicação:</strong> Detalhamento Sob Demanda (Casos de Uso Detalhados e Critérios de Aceite).</li>
+<li><strong>Como está sendo aplicado:</strong> Os requisitos de maior prioridade estão sendo detalhados progressivamente, aplicando a escrita de casos de uso detalhados e a definição de critérios de aceite, com o objetivo de evitar uma especificação excessiva e antecipada.</li>
+<li><strong>Resultado esperado:</strong> Requisitos prioritários especificados com o nível exato de detalhe necessário para o desenvolvimento.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-representacao_1">Prática: Representação</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Refinamento de Casos de Uso e Prototipação de Interface.</li>
+<li><strong>Como será aplicado:</strong> Os casos de uso iniciais serão refinados para representar de forma mais detalhada as interações entre os utilizadores e o sistema. Em paralelo, serão desenhados protótipos das principais telas para representar a solução visualmente e materializar a organização das informações.</li>
+<li><strong>Resultado esperado:</strong> Interações detalhadas e telas representadas visualmente para guiar a equipa de desenvolvimento.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-verificacao-e-validacao">Prática: Verificação e Validação</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Revisões com Stakeholders e Demonstrações.</li>
+<li><strong>Como será aplicado:</strong> Os requisitos refinados serão revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas. Protótipos e versões iniciais das funcionalidades serão apresentados aos stakeholders em sessões de demonstração para obter feedback e identificar possíveis ajustes.</li>
+<li><strong>Resultado esperado:</strong> Confirmação de que as interfaces propostas e os fluxos desenhados atendem às expectativas dos usuários.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-organizacao-e-atualizacao_1">Prática: Organização e Atualização</h4>
+<ul>
+<li><strong>Técnicas em aplicação:</strong> Gerenciamento de Mudanças e Atualização de Rastreabilidade.</li>
+<li><strong>Como está sendo aplicado:</strong> A Matriz de Rastreabilidade está sendo mantida em atualização contínua. Conforme os requisitos são refinados, as alterações de escopo, novas dependências e repriorizações estão sendo registradas na matriz para manter o controle e o histórico do projeto.</li>
+<li><strong>Resultado esperado:</strong> Alterações de escopo e novas dependências documentadas, mantendo a integridade e o controle do projeto.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="513-construcao">5.1.3 Construção</h3>
+<h4 id="pratica-elicitacao-e-descoberta_2">Prática: Elicitação e Descoberta</h4>
+<ul>
+<li><strong>Técnicas aplicadas:</strong> Esclarecimento Contínuo.</li>
+<li><strong>Como foi aplicado:</strong> Durante as iterações de desenvolvimento, foram realizadas comunicações diretas com os stakeholders para esclarecer dúvidas pontuais sobre as regras de negócio, garantindo que a equipa não ficasse bloqueada durante a implementação.</li>
+<li><strong>Resultado esperado:</strong> Dúvidas pontuais de negócio resolvidas para não travar o desenvolvimento.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-analise-e-consenso_2">Prática: Análise e Consenso</h4>
+<ul>
+<li><strong>Técnicas em aplicação:</strong> Avaliação de Mudanças (Análise de Impacto).</li>
+<li><strong>Como está sendo aplicado:</strong> Caso surjam novos pedidos ou alterações nos requisitos durante o desenvolvimento, está sendo aplicada a técnica de Análise de Impacto para avaliar a viabilidade técnica, o custo e o impacto dessas mudanças no escopo da iteração atual.</li>
+<li><strong>Resultado esperado:</strong> Decisão tomada sobre a viabilidade técnica e o impacto de aceitar mudanças durante a iteração.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-declaracao_2">Prática: Declaração</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Especificação Sob Demanda (Critérios de Aceite e atualização de Casos de Uso).</li>
+<li><strong>Como será aplicado:</strong> Evitando um detalhamento antecipado desnecessário, os requisitos selecionados para a iteração atual serão especificados no momento certo, por meio da escrita de critérios de aceite e atualização dos casos de uso, documentando o que os desenvolvedores precisam para construir a funcionalidade.</li>
+<li><strong>Resultado esperado:</strong> Regras de negócio da iteração atual documentadas para os desenvolvedores.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-representacao_2">Prática: Representação</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Refinamento Visual (Atualização de Protótipos de Interface).</li>
+<li><strong>Como será aplicado:</strong> Os protótipos de interface serão atualizados e ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.</li>
+<li><strong>Resultado esperado:</strong> Telas e fluxos ajustados conforme necessidades ou limitações que surgirem durante o desenvolvimento.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-verificacao-e-validacao_1">Prática: Verificação e Validação</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Testes Baseados em Requisitos (Verificação) e Demonstrações Incrementais (Validação).</li>
+<li><strong>Como será aplicado:</strong> O software implementado será verificado por meio de técnicas convencionais de teste para averiguar objetivamente se as regras de negócio e os critérios de aceite foram plenamente atendidos. Em seguida, as funcionalidades desenvolvidas serão apresentadas aos stakeholders em demonstrações iterativas, permitindo validar se o sistema continua a atender às necessidades da creche e incorporar feedback nas próximas iterações.</li>
+<li><strong>Resultado esperado:</strong> Funcionalidades verificadas iterativamente com o cliente e feedback recolhido para os passos seguintes.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-organizacao-e-atualizacao_2">Prática: Organização e Atualização</h4>
+<ul>
+<li><strong>Técnicas em aplicação:</strong> Revisão e Manutenção do Backlog (Atualização de Requisitos e Gerenciamento de Mudanças) e Construção da Árvore de Rastreabilidade.</li>
+<li><strong>Como está sendo aplicado:</strong> Os requisitos estão sendo atualizados constantemente conforme as alterações identificadas durante o desenvolvimento. Novos requisitos ou modificações estão sendo registrados e avaliados considerando o seu impacto e prioridade para o projeto. Em conjunto com essas atualizações, está sendo construída uma árvore de rastreabilidade para mapear e gerenciar visualmente as ligações e a evolução desses requisitos.</li>
+<li><strong>Resultado esperado:</strong> Backlog de requisitos atualizado, incorporando feedbacks, controlando novas demandas e mantendo a rastreabilidade estruturada em árvore.</li>
+<li><strong>Evidências:</strong><ul>
+<li><a href="https://miro.com/app/board/uXjVEbrie7A=/">Árvore de Rastreabilidade no Miro</a> (captura registrada em 10/10/2026, documentada na <a href="../8_requisitos/#83-arvore-de-rastreabilidade">Seção 8.3</a>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="514-transicao">5.1.4 Transição</h3>
+<h4 id="pratica-verificacao-e-validacao_2">Prática: Verificação e Validação</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Testes de Aceitação do Usuário (UAT) e Validação com Stakeholders.</li>
+<li><strong>Como será aplicado:</strong> Serão realizados testes de aceitação com as principais usuárias do sistema (secretárias) para verificar se as funcionalidades implementadas atendem aos requisitos e às necessidades reais da rotina administrativa da creche. Por fim, a solução será avaliada pela direção, coordenação e secretárias antes da sua utilização definitiva, o que permitirá identificar e corrigir os ajustes finais.</li>
+<li><strong>Resultado esperado:</strong> Sistema validado de forma definitiva pelas usuárias finais no ambiente real da instituição.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link para o Relatório de Testes de Aceitação (UAT)]</li>
+<li>[Inserir Link para a Ata/Termo de Homologação e Aceite Final com o cliente]</li>
+</ul>
+</li>
+</ul>
+<h4 id="pratica-organizacao-e-atualizacao_3">Prática: Organização e Atualização</h4>
+<ul>
+<li><strong>Técnicas a serem aplicadas:</strong> Gestão de Conhecimento e Registro de Melhorias Futuras.</li>
+<li><strong>Como será aplicado:</strong> As necessidades, novas ideias ou funcionalidades que não forem essenciais para o MVP (versão atual) serão formalmente registradas e organizadas no backlog para possíveis iterações e evoluções futuras.</li>
+<li><strong>Resultado esperado:</strong> Novas demandas e melhorias não críticas registradas e organizadas para futuras versões do sistema.</li>
+<li><strong>Evidências:</strong><ul>
+<li>[Inserir Link]</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

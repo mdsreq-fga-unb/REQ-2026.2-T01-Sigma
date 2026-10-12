@@ -1,31 +1,31 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="pt" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentação de requisitos de software para o projeto web">
+        <meta name="description" content="Documentação de requisitos de software para o projeto SIGMA">
       
       
-        <meta name="author" content="Seu Projeto">
+        <meta name="author" content="Equipe SIGMA">
       
       
       
       
-        <link rel="next" href="doc-visao/1_cenarioAtual.html">
+        <link rel="next" href="doc-visao/1_cenarioAtual/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Documentação de Requisitos</title>
+        <title>SIGMA</title>
       
     
     
@@ -39,8 +39,6 @@
 
     
     
-      
-        <script src="https://unpkg.com/iframe-worker/shim"></script>
       
     
     
@@ -71,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="light" data-md-color-primary="custom" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -81,7 +79,7 @@
       
         
         <a href="#sigma-sistema-integrado-de-gestao-de-matriculas" class="md-skip">
-          Skip to content
+          Pular para conteúdo
         </a>
       
     </div>
@@ -94,12 +92,11 @@
 
   
 
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="Documentação de Requisitos" class="md-header__button md-logo" aria-label="Documentação de Requisitos" data-md-component="logo">
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="." title="SIGMA" class="md-header__button md-logo" aria-label="SIGMA" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="assets/logo-dark.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -110,13 +107,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Documentação de Requisitos
+            SIGMA
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Início
             
           </span>
         </div>
@@ -129,9 +126,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="light" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -139,9 +136,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="dark" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -164,16 +161,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Pesquisar">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -186,7 +183,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Inicializando busca
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -199,141 +196,13 @@
     
   </nav>
   
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="doc-visao/1_cenarioAtual.html" class="md-tabs__link">
-          
-  
-  
-  Visão do Produto e Projeto
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="atividades/atividade_3.html" class="md-tabs__link">
-          
-  
-  
-  Atividades
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="reunioes/ata1.html" class="md-tabs__link">
-          
-  
-  
-  Atas de Reunião
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="videos/entrega-videos.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Entrega de vídeos
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="referencias/referencia.md" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Referências
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -347,18 +216,15 @@
                     
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="Documentação de Requisitos" class="md-nav__button md-logo" aria-label="Documentação de Requisitos" data-md-component="logo">
+    <a href="." title="SIGMA" class="md-nav__button md-logo" aria-label="SIGMA" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="assets/logo-dark.png" alt="logo">
 
     </a>
-    Documentação de Requisitos
+    SIGMA
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -386,7 +252,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Início
   
 
     
@@ -397,14 +263,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+      <a href="." class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Home
+    Início
   
 
     
@@ -416,7 +282,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
   
   
   
@@ -425,26 +291,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Índice
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sobre-a-disciplina" class="md-nav__link">
+  <a href="#atalhos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre a disciplina
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integrantes-do-grupo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrantes do grupo
+        Atalhos
       
     </span>
   </a>
@@ -455,29 +310,7 @@
   <a href="#sobre-o-projeto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre o projeto
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#como-esta-documentacao-esta-organizada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Como esta documentação está organizada
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versionamento-do-documento-de-visao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versionamento do Documento de Visão
+        Sobre o Projeto
       
     </span>
   </a>
@@ -488,7 +321,29 @@
   <a href="#cliente-do-projeto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cliente do projeto
+        Cliente do Projeto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equipe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisão
       
     </span>
   </a>
@@ -512,9 +367,6 @@
     
     
     
-    
-      
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -560,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/1_cenarioAtual.html" class="md-nav__link">
+      <a href="doc-visao/1_cenarioAtual/" class="md-nav__link">
         
   
   
@@ -588,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/2_solucao.html" class="md-nav__link">
+      <a href="doc-visao/2_solucao/" class="md-nav__link">
         
   
   
@@ -616,7 +468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/3_intervencao.html" class="md-nav__link">
+      <a href="doc-visao/3_intervencao/" class="md-nav__link">
         
   
   
@@ -644,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/4_estrategias.html" class="md-nav__link">
+      <a href="doc-visao/4_estrategias/" class="md-nav__link">
         
   
   
@@ -672,7 +524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/5_requisitos.html" class="md-nav__link">
+      <a href="doc-visao/5_requisitos/" class="md-nav__link">
         
   
   
@@ -700,7 +552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/6_cronograma.html" class="md-nav__link">
+      <a href="doc-visao/6_cronograma/" class="md-nav__link">
         
   
   
@@ -728,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/7_interacao.html" class="md-nav__link">
+      <a href="doc-visao/7_interacao/" class="md-nav__link">
         
   
   
@@ -756,14 +608,14 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/8_requisitos.html" class="md-nav__link">
+      <a href="doc-visao/8_requisitos/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8 requisitos
+    8 Requisitos
   
 
     
@@ -784,7 +636,63 @@
   
   
     <li class="md-nav__item">
-      <a href="doc-visao/11_licoes.html" class="md-nav__link">
+      <a href="doc-visao/9_dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 DoR & DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="doc-visao/10_backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 Backlog do produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="doc-visao/11_licoes/" class="md-nav__link">
         
   
   
@@ -821,9 +729,6 @@
     
     
     
-    
-      
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -869,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="atividades/atividade_3.html" class="md-nav__link">
+      <a href="atividades/atividade_3/" class="md-nav__link">
         
   
   
@@ -897,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="atividades/atividade_4.html" class="md-nav__link">
+      <a href="atividades/atividade_4/" class="md-nav__link">
         
   
   
@@ -925,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="atividades/atividade_5.html" class="md-nav__link">
+      <a href="atividades/atividade_5/" class="md-nav__link">
         
   
   
@@ -962,9 +867,6 @@
     
     
     
-    
-      
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1010,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reunioes/ata1.html" class="md-nav__link">
+      <a href="reunioes/ata1/" class="md-nav__link">
         
   
   
@@ -1038,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reunioes/ata2.html" class="md-nav__link">
+      <a href="reunioes/ata2/" class="md-nav__link">
         
   
   
@@ -1073,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="videos/entrega-videos.html" class="md-nav__link">
+      <a href="videos/entrega-videos/" class="md-nav__link">
         
   
   
@@ -1133,7 +1035,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
   
   
   
@@ -1142,26 +1044,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Índice
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sobre-a-disciplina" class="md-nav__link">
+  <a href="#atalhos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre a disciplina
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integrantes-do-grupo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrantes do grupo
+        Atalhos
       
     </span>
   </a>
@@ -1172,29 +1063,7 @@
   <a href="#sobre-o-projeto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre o projeto
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#como-esta-documentacao-esta-organizada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Como esta documentação está organizada
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versionamento-do-documento-de-visao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versionamento do Documento de Visão
+        Sobre o Projeto
       
     </span>
   </a>
@@ -1205,7 +1074,29 @@
   <a href="#cliente-do-projeto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cliente do projeto
+        Cliente do Projeto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equipe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Revisão
       
     </span>
   </a>
@@ -1230,137 +1121,43 @@
 
 
 <h1 id="sigma-sistema-integrado-de-gestao-de-matriculas">SIGMA — Sistema Integrado de Gestão de Matrículas</h1>
-<p>Documentação do projeto desenvolvido na disciplina de <strong>Engenharia de Requisitos</strong>.</p>
-<h2 id="sobre-a-disciplina">Sobre a disciplina</h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Informação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Instituição</td>
-<td>UNB</td>
-</tr>
-<tr>
-<td>Curso</td>
-<td>Engenharia de software</td>
-</tr>
-<tr>
-<td>Disciplina</td>
-<td>Requisitos de software, FGA-0313, T-01</td>
-</tr>
-<tr>
-<td>Professor(a)</td>
-<td>George Marsciano</td>
-</tr>
-<tr>
-<td>Equipe</td>
-<td>Os Requisitados</td>
-</tr>
-</tbody>
-</table>
-<h2 id="integrantes-do-grupo">Integrantes do grupo</h2>
-<table>
-<thead>
-<tr>
-<th>Nome</th>
-<th>Matrícula</th>
-<th>Papel no projeto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gabriel Octacilio</td>
-<td>242004706</td>
-<td>Gerente de Projeto e Analista de Qualidade</td>
-</tr>
-<tr>
-<td>Bryan Rodrigues</td>
-<td>231012156</td>
-<td>Desenvolvedor Frontend</td>
-</tr>
-<tr>
-<td>Jorge Vásquez</td>
-<td>242043615</td>
-<td>Desenvolvedor Frontend</td>
-</tr>
-<tr>
-<td>Lucas Peixoto</td>
-<td>242024271</td>
-<td>Desenvolvedor Backend</td>
-</tr>
-<tr>
-<td>João Gabriel</td>
-<td>242015432</td>
-<td>Desenvolvedor Backend</td>
-</tr>
-<tr>
-<td>Pedro Luca</td>
-<td>242004958</td>
-<td>Desenvolvedor Backend</td>
-</tr>
-</tbody>
-</table>
-<h2 id="sobre-o-projeto">Sobre o projeto</h2>
-<p>O <strong>SIGMA (Sistema Integrado de Gestão de Matrículas)</strong> é uma proposta de solução desenvolvida para a <strong>Creche Estação Vida</strong>, instituição de ensino filantrópica localizada em Águas Lindas de Goiás, que atende 202 crianças em situação de vulnerabilidade social.</p>
-<p>Atualmente, a creche realiza o cadastro, armazenamento e consulta das fichas de matrícula de forma totalmente manual, utilizando papel e caneta, o que gera dificuldades de organização, risco de perda de documentos e sobrecarga para a equipe administrativa — composta por apenas duas secretárias responsáveis por toda a demanda.</p>
-<p>O projeto tem como objetivo desenvolver um <strong>sistema digital de gestão de matrículas</strong>, permitindo:</p>
-<ul>
-<li>Cadastro, consulta e atualização centralizada das informações dos alunos;</li>
-<li>Armazenamento digital de documentos, reduzindo a dependência de papel;</li>
-<li>Maior segurança e organização dos dados;</li>
-<li>Redução do tempo gasto em atividades administrativas pela secretaria.</li>
-</ul>
-<h2 id="como-esta-documentacao-esta-organizada">Como esta documentação está organizada</h2>
-<p>Esta documentação segue a estrutura do documento de <strong>Visão do Produto e Projeto</strong>, elaborado com base no processo <strong>OpenUP</strong>, e está dividida nos seguintes capítulos:</p>
-<ol>
-<li><strong>Cenário Atual do Cliente e do Negócio</strong> — contexto da creche, problema identificado, stakeholders e segmentação de clientes.</li>
-<li><strong>Solução Proposta</strong> — objetivos do produto, características, tecnologias utilizadas e análise de mercado.</li>
-<li><strong>Intervenção Social</strong> — impactos esperados da solução na rotina da creche e da comunidade.</li>
-<li><strong>Estratégias de Engenharia de Software</strong> — abordagem, ciclo de vida, processo escolhido (OpenUP) e justificativa.</li>
-<li><strong>Engenharia de Requisitos</strong> — atividades e técnicas de ER aplicadas em cada fase do OpenUP.</li>
-<li><strong>Cronograma e Entregas</strong> — planejamento das iterações e entregáveis do projeto.</li>
-<li><strong>Interação entre Equipe e Cliente</strong> — composição da equipe, comunicação e processo de validação.</li>
-<li><strong>Requisitos de Software</strong> - Levantamento de requisitos de software</li>
-<li><em>(a definir)</em></li>
-<li><em>(a definir)</em></li>
-<li><strong>Lições Aprendidas</strong> — reflexões da equipe sobre os desafios enfrentados ao longo do projeto.</li>
-</ol>
-<h2 id="versionamento-do-documento-de-visao">Versionamento do Documento de Visão</h2>
-<table>
-<thead>
-<tr>
-<th>Data</th>
-<th>Versão</th>
-<th>Descrição</th>
-<th>Autor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>26/08/2026</td>
-<td>1.0</td>
-<td>Preenchimento parcial dos itens 1 e 2</td>
-<td>Equipe 7</td>
-</tr>
-<tr>
-<td>07/09/2026</td>
-<td>1.1</td>
-<td>Entrega final do documento de visão do modulo 1</td>
-<td>Equipe 7</td>
-</tr>
-<tr>
-<td>24/09/2026</td>
-<td>2.0</td>
-<td>Correção das issues abertas no modulo 1</td>
-<td>Equipe 7</td>
-</tr>
-</tbody>
-</table>
-<h2 id="cliente-do-projeto">Cliente do projeto</h2>
+<p><span class="version-badge">Versão 2.0</span></p>
+<p align="center" style="margin: 20px 0 28px;">
+  <img src="assets/logo.png#only-light" alt="Logo SIGMA" width="360" />
+  <img src="assets/logo-dark.png#only-dark" alt="Logo SIGMA" width="360" />
+</p>
+
+<h2 id="atalhos">Atalhos</h2>
+<div class="shortcut-cards">
+  <a class="shortcut-card" href="doc-visao/1_cenarioAtual/">
+    <span class="shortcut-card__tag">01</span>
+    <h3>Cenário & Negócio</h3>
+    <p>Contexto da creche, problema identificado, stakeholders e segmentação.</p>
+  </a>
+
+  <a class="shortcut-card" href="doc-visao/2_solucao/">
+    <span class="shortcut-card__tag">02</span>
+    <h3>Solução Proposta</h3>
+    <p>Objetivos do produto, características, tecnologias e análise de mercado.</p>
+  </a>
+
+  <a class="shortcut-card" href="doc-visao/8_requisitos/">
+    <span class="shortcut-card__tag">08</span>
+    <h3>Requisitos de Software</h3>
+    <p>Levantamento completo de requisitos funcionais e não-funcionais.</p>
+  </a>
+</div>
+
+<hr />
+<h2 id="sobre-o-projeto">Sobre o Projeto</h2>
+<p>O SIGMA (Sistema Integrado de Gestão de Matrículas) é uma proposta de solução desenvolvida para a Creche Estação Vida, instituição de ensino filantrópica localizada em Águas Lindas de Goiás, que atende 202 crianças em situação de vulnerabilidade social.</p>
+<p>Atualmente, a creche realiza o cadastro, armazenamento e consulta das fichas de matrícula de forma totalmente manual, utilizando papel e caneta, o que gera dificuldades de organização, risco de perda de documentos e sobrecarga para a equipe administrativa, composta por apenas duas secretárias responsáveis por toda a demanda.</p>
+<p>O projeto tem como objetivo desenvolver um sistema digital de gestão de matrículas.</p>
+<p><a class="repo-button" href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma" target="_blank" rel="noopener">
+  Acessar Repositório do Projeto no GitHub
+</a></p>
+<hr />
+<h2 id="cliente-do-projeto">Cliente do Projeto</h2>
 <ul>
 <li><strong>Nome:</strong> Creche Estação Vida</li>
 <li><strong>Tipo:</strong> Instituição de ensino filantrópica, sem fins lucrativos</li>
@@ -1368,6 +1165,60 @@
 <li><strong>Representante:</strong> Cirlene Sena, diretora da creche</li>
 </ul>
 <hr />
+<h2 id="equipe">Equipe</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://github.com/gabriel-otacilio" target="_blank"><img src="https://github.com/gabriel-otacilio.png?size=120" alt="Gabriel Octacilio" width="96"><br>Gabriel Octacilio</a><br><sub>Matrícula: 242004706</sub></td>
+<td style="text-align: center;"><a href="https://github.com/Bryan70897" target="_blank"><img src="https://github.com/Bryan70897.png?size=120" alt="Bryan Rodrigues" width="96"><br>Bryan Rodrigues</a><br><sub>Matrícula: 231012156</sub></td>
+<td style="text-align: center;"><a href="https://github.com/jorgevasquez25" target="_blank"><img src="https://github.com/jorgevasquez25.png?size=120" alt="Jorge Vásquez" width="96"><br>Jorge Vásquez</a><br><sub>Matrícula: 242043615</sub></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://github.com/LucasPeixotoRodrigues" target="_blank"><img src="https://github.com/LucasPeixotoRodrigues.png?size=120" alt="Lucas Peixoto" width="96"><br>Lucas Peixoto</a><br><sub>Matrícula: 242024271</sub></td>
+<td style="text-align: center;"><a href="https://github.com/joaorolim-code" target="_blank"><img src="https://github.com/joaorolim-code.png?size=120" alt="João Gabriel" width="96"><br>João Gabriel</a><br><sub>Matrícula: 242015432</sub></td>
+<td style="text-align: center;"><a href="https://github.com/pedrolrm" target="_blank"><img src="https://github.com/pedrolrm.png?size=120" alt="Pedro Luca" width="96"><br>Pedro Luca</a><br><sub>Matrícula: 242004958</sub></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="historico-de-revisao">Histórico de Revisão</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data</th>
+<th style="text-align: center;">Versão</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">26/08/2026</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: left;">Preenchimento parcial dos itens 1 e 2</td>
+<td style="text-align: left;">Equipe 7</td>
+</tr>
+<tr>
+<td style="text-align: center;">07/09/2026</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: left;">Entrega final do documento de visão do modulo 1</td>
+<td style="text-align: left;">Equipe 7</td>
+</tr>
+<tr>
+<td style="text-align: center;">24/09/2026</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: left;">Correção das issues abertas no modulo 1</td>
+<td style="text-align: left;">Equipe 7</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1393,7 +1244,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  Voltar para o topo
 </button>
         
       </main>
@@ -1425,7 +1276,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
