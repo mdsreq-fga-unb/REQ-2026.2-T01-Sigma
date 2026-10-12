@@ -88,8 +88,8 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 ### 5.1.3 Construção
 
 #### Prática: Elicitação e Descoberta
-- **Técnicas aplicadas:** Esclarecimento Contínuo.
-- **Como foi aplicado:** Durante as iterações de desenvolvimento, foram realizadas comunicações diretas com os stakeholders para esclarecer dúvidas pontuais sobre as regras de negócio, garantindo que a equipa não ficasse bloqueada durante a implementação.
+- **Técnicas a serem aplicadas:** Esclarecimento Contínuo.
+- **Como será aplicado:** Durante as iterações de desenvolvimento, serão realizadas comunicações diretas com os stakeholders para esclarecer dúvidas pontuais sobre as regras de negócio, garantindo que a equipa não fique bloqueada durante a implementação.
 - **Resultado esperado:** Dúvidas pontuais de negócio resolvidas para não travar o desenvolvimento.
 - **Evidências:**
     - [Inserir Link]
