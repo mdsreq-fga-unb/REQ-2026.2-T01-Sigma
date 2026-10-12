@@ -131,13 +131,17 @@ A seguir, a tabela de priorização dos Casos de Uso no MVP, seguindo os dados d
  
 | ID | Caso de Uso | Valor de Negócio | Esforço Técnico | Valor Resultante (V. Negócio / E. Técnico) | Compõe a Entrega? |
 |---|---|---|---|---|---|
-| UC01 | Gerenciar Autenticar | 4 | 1.8 | 2.22 | SIM |
-| UC02 | Gerenciar Usuários Administrativos | 4 | 1.3 | 3.08 | SIM |
-| UC03 | Gerenciar Quadro de Avisos | 2.7 | 1.8 | 1.5 | NÃO |
-| UC04 | Gerenciar Fichas de Matrícula | 3.1 | 1.9 | 1.63 | SIM |
-| UC05 | Gerenciar Documentos Digitais | 3.5 | 1.45 | 2.41 | SIM |
-| UC06 | Gerenciar Estrutura Escolar | 3 | 1.1 | 2.73 | SIM |
-| UC07 | Alocar Alunos | 4 | 1.7 | 2.35 | SIM |
-| UC08 | Consultar Registros (Busca) | 4 | 1.8 | 2.22 | SIM |
+| [UC01](./casos-uso/uc01.md) | Gerenciar Autenticar | 4 | 1.8 | 2.22 | SIM |
+| [UC02](./casos-uso/uc02.md) | Gerenciar Usuários Administrativos | 4 | 1.3 | 3.08 | SIM |
+| [UC03](./casos-uso/uc03.md) | Gerenciar Quadro de Avisos | 2.7 | 1.8 | 1.5 | NÃO |
+| [UC04](./casos-uso/uc04.md) | Gerenciar Fichas de Matrícula | 3.4 | 1.7 | 1.90 | SIM |
+| [UC05](./casos-uso/uc05.md) | Gerenciar Documentos Digitais | 3.5 | 1.45 | 2.41 | SIM |
+| [UC06](./casos-uso/uc06.md) | Gerenciar Estrutura Escolar | 3 | 1.1 | 2.73 | SIM |
+| [UC07](./casos-uso/uc07.md) | Alocar Alunos | 4 | 1.7 | 2.35 | SIM |
+| [UC08](./casos-uso/uc08.md) | Consultar Registros (Busca) | 4 | 1.8 | 2.22 | SIM |
 
-Para consultar as regras de negócio consolidadas, acesse o documento de [**Regras de Negócio**](./Regras-Negocio.md).
+Para a composição da entrega, consideramos aqueles Casos de Uso cujo Valor de Negócio é maior ou igual à 3 e cujo Valor Resultante é maior ou igual 1.9, além desses critérios analíticos, analisamos cada Caso de Uso de acordo com sua importância para o cumprimento do objetivo do projeto, selecionando aqueles que, caso não fossem selecionados, não seria possível criar um protótipo minimamente funcional. 
+
+
+
+> Para consultar as regras de negócio consolidadas, acesse o documento de [**Regras de Negócio**](./Regras-Negocio.md).
