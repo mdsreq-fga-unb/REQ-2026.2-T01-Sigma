@@ -1,0 +1,96 @@
+site_name: SIGMA
+site_description: Documentação de requisitos de software para o projeto SIGMA
+site_author: Equipe SIGMA
+
+theme:
+  name: material
+  logo: assets/logo-dark.png
+  favicon: assets/favicon.png
+  language: pt-BR
+  palette:
+    # Modo Claro
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    # Modo Escuro
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  
+  features:
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      toc_depth: 2
+
+extra_css:
+  - stylesheets/custom.css
+
+nav:
+  - Início: index.md
+
+  - Visão do Produto e Projeto:
+      - 1 Cenário Atual do Cliente e do Negócio: doc-visao/1_cenarioAtual.md 
+      - 2 Solução Proposta: doc-visao/2_solucao.md
+      - 3 Intervenção Social: doc-visao/3_intervencao.md
+      - 4 Estratégias de engenharia de software: doc-visao/4_estrategias.md
+      - 5 Engenharia de Requisitos: doc-visao/5_requisitos.md
+      - 6 Cronograma e entregas: doc-visao/6_cronograma.md
+      - 7 Interação entre Equipe e Cliente: doc-visao/7_interacao.md
+      - 8 Requisitos: doc-visao/8_requisitos.md
+      - 9 DoR & DoD: doc-visao/9_dor_dod.md
+      - 10 Backlog do produto: doc-visao/10_backlog.md
+      - 11 Lições Aprendidas: doc-visao/11_licoes.md
+
+  #- Casos de Uso: doc-visao/casos-uso/index.md
+
+  - Atividades:
+    - Atividade 3: atividades/atividade_3.md
+    - Atividade 4: atividades/atividade_4.md
+    - atividade 5: atividades/atividade_5.md
+  - Atas de Reunião:
+
+    - Reunião unidade 2: reunioes/ata1.md
+    # - Reunião unidade 1: reunioes/ata2.md
+
+  - Especificação:
+    - Casos de Uso: doc-visao/casos-uso/index.md
+    #- Arquitetura: especificacao/arquitetura.md
+  # - Documentação:
+  #     - Glossário: documentacao/glossario.md
+  #     - FAQ: documentacao/faq.md
+  - Entrega de vídeos: videos/entrega-videos.md
+  # - Referências: referencias/referencia.md

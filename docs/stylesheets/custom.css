@@ -1,0 +1,634 @@
+/* ==========================================================================
+   SIGMA MKDOCS THEME - PALETA DE CORES PERSONALIZADA
+   Cores baseadas no Design System (Figma)
+   Modo Claro e Modo Escuro
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tokens de Cores da Paleta Figma
+   -------------------------------------------------------------------------- */
+:root {
+  /* Linha 1 - Tons Âmbar / Dourado / Accent */
+  --palette-amber-100: #FCDEC6;
+  --palette-amber-200: #F7AE3E; /* Destaque principal */
+  --palette-amber-300: #C68A30;
+  --palette-amber-400: #966822;
+  --palette-amber-500: #6A4815;
+  --palette-amber-600: #402A09;
+  --palette-amber-700: #1A0F02;
+
+  /* Linha 2 - Tons Cinza Neutro / Superfície */
+  --palette-gray-100: #F8F9F9; /* Fundo claro destacado */
+  --palette-gray-200: #CDD1D1;
+  --palette-gray-300: #A7AAAA;
+  --palette-gray-400: #828484;
+  --palette-gray-500: #5E6080;
+  --palette-gray-600: #3D3F3F;
+  --palette-gray-700: #1F2020;
+
+  /* Linha 3 - Tons Ciano / Teal */
+  --palette-teal-100: #D5F0FD;
+  --palette-teal-200: #51D2F9;
+  --palette-teal-300: #36AACB;
+  --palette-teal-400: #27829C; /* Destaque principal */
+  --palette-teal-500: #195C70;
+  --palette-teal-600: #0C3946;
+  --palette-teal-700: #031921;
+
+  /* Linha 4 - Tons Azul Oceano / Marca */
+  --palette-blue-100: #DEEFFE;
+  --palette-blue-200: #86CDFC;
+  --palette-blue-300: #2BABE1;
+  --palette-blue-400: #1F81AE;
+  --palette-blue-500: #135C7D; /* Destaque principal / Primária */
+  --palette-blue-600: #09394F;
+  --palette-blue-700: #021A26;
+
+  /* Linha 5 - Tons Azul Profundo */
+  --palette-deep-100: #E4F2FE;
+  --palette-deep-200: #8ECFFC;
+  --palette-deep-300: #2AACF6;
+  --palette-deep-400: #1E84B2;
+  --palette-deep-500: #135F81; /* Destaque principal */
+  --palette-deep-600: #083C53;
+  --palette-deep-700: #021C29;
+
+  /* Linha 6 - Tons Slate Quente */
+  --palette-warm-100: #E5E4E2;
+  --palette-warm-200: #C1BBB7;
+  --palette-warm-300: #9A9591;
+  --palette-warm-400: #74706E;
+  --palette-warm-500: #514E4C;
+  --palette-warm-600: #302E2D;
+  --palette-warm-700: #121110;
+}
+
+/* --------------------------------------------------------------------------
+   MODO CLARO (LIGHT MODE)
+   -------------------------------------------------------------------------- */
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="light"] {
+  /* Cor primária (cabeçalho, abas, botões principais) */
+  --md-primary-fg-color: #135C7D;
+  --md-primary-fg-color--light: #27829C;
+  --md-primary-fg-color--dark: #09394F;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #F8F9F9;
+
+  /* Cor de destaque (accent / links secundários / badges) */
+  --md-accent-fg-color: #F7AE3E;
+  --md-accent-fg-color--transparent: rgba(247, 174, 62, 0.15);
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: #FCDEC6;
+
+  /* Superfícies e fundos */
+  --md-default-bg-color: #ffffff;
+  --md-default-bg-color--light: #F8F9F9;
+  --md-default-bg-color--lighter: #EEF4F7;
+  --md-default-bg-color--lightest: #D5F0FD;
+
+  /* Textos */
+  --md-default-fg-color: #1F2020;
+  --md-default-fg-color--light: #3D3F3F;
+  --md-default-fg-color--lighter: #5E6080;
+  --md-default-fg-color--lightest: #828484;
+
+  /* Tipografia & Links */
+  --md-typeset-a-color: #135C7D;
+  --md-typeset-mark-color: rgba(247, 174, 62, 0.28);
+
+  /* Blocos de código */
+  --md-code-fg-color: #1F2020;
+  --md-code-bg-color: #F8F9F9;
+  --md-code-hl-color: #27829C;
+  --md-code-hl-color--light: rgba(39, 130, 156, 0.1);
+
+  /* Tabelas */
+  --md-typeset-table-color: #F8F9F9;
+  --md-typeset-table-color--light: #ffffff;
+
+  /* Rodapé */
+  --md-footer-bg-color: #09394F;
+  --md-footer-bg-color--dark: #021A26;
+  --md-footer-fg-color: #F8F9F9;
+  --md-footer-fg-color--light: #CDD1D1;
+  --md-footer-fg-color--lighter: #828484;
+
+  /* Sombras */
+  --md-shadow-z1: 0 0.2rem 0.5rem rgba(19, 92, 125, 0.08), 0 0 0.05rem rgba(0, 0, 0, 0.06);
+  --md-shadow-z2: 0 0.4rem 1rem rgba(19, 92, 125, 0.12), 0 0 0.1rem rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   MODO ESCURO (DARK MODE)
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"],
+[data-md-color-scheme="dark"] {
+  /* Cor primária no modo escuro */
+  --md-primary-fg-color: #0C3946;
+  --md-primary-fg-color--light: #195C70;
+  --md-primary-fg-color--dark: #031921;
+  --md-primary-bg-color: #F8F9F9;
+  --md-primary-bg-color--light: #CDD1D1;
+
+  /* Destaque no modo escuro */
+  --md-accent-fg-color: #F7AE3E;
+  --md-accent-fg-color--transparent: rgba(247, 174, 62, 0.25);
+  --md-accent-bg-color: #0C3946;
+  --md-accent-bg-color--light: #195C70;
+
+  /* Superfícies e fundos (Tons Teal Escuro do Figma) */
+  --md-default-bg-color: #031921;
+  --md-default-bg-color--light: #0C3946;
+  --md-default-bg-color--lighter: #195C70;
+  --md-default-bg-color--lightest: rgba(39, 130, 156, 0.22);
+
+  /* Textos */
+  --md-default-fg-color: #F8F9F9;
+  --md-default-fg-color--light: #CDD1D1;
+  --md-default-fg-color--lighter: #A7AAAA;
+  --md-default-fg-color--lightest: #828484;
+
+  /* Tipografia & Links */
+  --md-typeset-a-color: #51D2F9;
+  --md-typeset-mark-color: rgba(247, 174, 62, 0.4);
+
+  /* Blocos de código */
+  --md-code-fg-color: #F8F9F9;
+  --md-code-bg-color: #02161E;
+  --md-code-hl-color: #51D2F9;
+  --md-code-hl-color--light: rgba(81, 210, 249, 0.18);
+
+  /* Tabelas */
+  --md-typeset-table-color: #0C3946;
+  --md-typeset-table-color--light: #083C53;
+
+  /* Rodapé */
+  --md-footer-bg-color: #02161E;
+  --md-footer-bg-color--dark: #010F15;
+  --md-footer-fg-color: #F8F9F9;
+  --md-footer-fg-color--light: #CDD1D1;
+  --md-footer-fg-color--lighter: #828484;
+
+  /* Sombras */
+  --md-shadow-z1: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.4), 0 0 0.05rem rgba(0, 0, 0, 0.3);
+  --md-shadow-z2: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.6), 0 0 0.1rem rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   ESTILOS DE CABEÇALHO & LOGO
+   -------------------------------------------------------------------------- */
+.md-header {
+  border-bottom: 2px solid rgba(247, 174, 62, 0.35);
+  transition: background-color 250ms, border-color 250ms;
+}
+
+.md-header__button.md-logo {
+  padding: 0.2rem;
+  margin-right: 0.75rem;
+}
+
+.md-header__button.md-logo img {
+  height: 2.1rem;
+  width: auto;
+  max-height: 42px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.md-header__button.md-logo:hover img {
+  transform: scale(1.04);
+}
+
+/* No cabeçalho (que possui fundo escuro/teal em ambos os modos), usamos a versão com texto branco */
+.md-header .md-logo img {
+  content: url("../assets/logo-dark.png");
+}
+
+/* Oculta o texto "SIGMA" redundante ao lado da logo no cabeçalho */
+.md-header__title .md-header__topic:first-child {
+  display: none !important;
+}
+
+
+/* Barra de abas de navegação */
+.md-tabs {
+  border-bottom: 1px solid rgba(205, 209, 209, 0.2);
+}
+
+.md-tabs__link {
+  transition: color 150ms, opacity 150ms;
+}
+
+.md-tabs__item--active .md-tabs__link {
+  color: #F7AE3E !important;
+  font-weight: 600;
+}
+
+/* Indicador de navegação ativa */
+.md-nav__link--active {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600;
+}
+
+/* Hover em links do conteúdo */
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   ADMONITIONS (AVISOS / CAIXAS DE DESTAQUE)
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition.note,
+.md-typeset .admonition.info {
+  border-left-color: var(--palette-teal-400);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset .admonition.caution {
+  border-left-color: var(--palette-amber-200);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset .admonition.success {
+  border-left-color: var(--palette-teal-500);
+}
+
+/* --------------------------------------------------------------------------
+   TABELAS
+   -------------------------------------------------------------------------- */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]),
+[data-md-color-scheme="dark"] .md-typeset table:not([class]) {
+  border-color: var(--palette-teal-500);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--palette-blue-500);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th,
+[data-md-color-scheme="dark"] .md-typeset table:not([class]) th {
+  background-color: var(--palette-teal-600);
+  color: var(--palette-gray-100);
+}
+
+/* --------------------------------------------------------------------------
+   BOTÕES E ELEMENTOS INTERATIVOS
+   -------------------------------------------------------------------------- */
+.md-button--primary {
+  background-color: var(--palette-blue-500);
+  border-color: var(--palette-blue-500);
+  color: #ffffff;
+}
+
+.md-button--primary:hover {
+  background-color: var(--palette-amber-200);
+  border-color: var(--palette-amber-200);
+  color: #1F2020;
+}
+
+/* Suporte para alternância de imagens claro/escuro via #only-light e #only-dark */
+[data-md-color-scheme="default"] img[src$="#only-dark"],
+[data-md-color-scheme="light"] img[src$="#only-dark"] {
+  display: none !important;
+}
+
+[data-md-color-scheme="slate"] img[src$="#only-light"],
+[data-md-color-scheme="dark"] img[src$="#only-light"] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   ATALHOS DA PÁGINA INICIAL & COMPONENTES MACRO (Estilo Nativo)
+   ========================================================================== */
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--palette-teal-100);
+  color: var(--palette-blue-500);
+  border: 1px solid var(--palette-blue-400);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+[data-md-color-scheme="slate"] .version-badge,
+[data-md-color-scheme="dark"] .version-badge {
+  background-color: var(--palette-teal-600);
+  color: var(--palette-teal-200);
+  border-color: var(--palette-teal-400);
+}
+
+.shortcut-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin: 1.1rem 0 1.5rem;
+}
+
+.shortcut-card {
+  min-height: 6.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 8px;
+  background: var(--palette-gray-100);
+  box-shadow: var(--md-shadow-z1);
+  color: var(--palette-blue-500) !important;
+  text-decoration: none !important;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  border-top: 3px solid var(--palette-teal-400);
+}
+
+.shortcut-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--palette-amber-200);
+  border-top-color: var(--palette-amber-200);
+  box-shadow: var(--md-shadow-z2);
+}
+
+[data-md-color-scheme="slate"] .shortcut-card,
+[data-md-color-scheme="dark"] .shortcut-card {
+  background: var(--palette-teal-600);
+  border-color: var(--palette-teal-500);
+  border-top-color: var(--palette-teal-400);
+  color: var(--palette-gray-100) !important;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card:hover,
+[data-md-color-scheme="dark"] .shortcut-card:hover {
+  border-color: var(--palette-amber-200);
+  border-top-color: var(--palette-amber-200);
+}
+
+.shortcut-card__tag {
+  width: fit-content;
+  min-width: 1.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--palette-blue-500);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card__tag,
+[data-md-color-scheme="dark"] .shortcut-card__tag {
+  background: var(--palette-teal-400);
+  color: #031921;
+}
+
+.shortcut-card h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--palette-blue-500) !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card h3,
+[data-md-color-scheme="dark"] .shortcut-card h3 {
+  color: var(--palette-teal-200) !important;
+}
+
+.shortcut-card p {
+  margin: 0 !important;
+  color: var(--palette-gray-500);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+[data-md-color-scheme="slate"] .shortcut-card p,
+[data-md-color-scheme="dark"] .shortcut-card p {
+  color: var(--palette-gray-300);
+}
+
+.md-typeset .repo-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin: 0.4rem 0 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--palette-blue-400);
+  border-radius: 8px;
+  background: var(--palette-teal-100);
+  color: var(--palette-blue-500) !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none !important;
+  transition: all 0.18s ease;
+}
+
+.md-typeset .repo-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--palette-amber-200);
+  background: var(--palette-amber-100);
+  color: var(--palette-amber-600) !important;
+}
+
+.md-typeset .repo-button::after {
+  content: "→";
+  margin-left: 0.35rem;
+  color: currentColor;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .repo-button {
+  background: var(--palette-teal-600);
+  border-color: var(--palette-teal-400);
+  color: var(--palette-gray-100) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .repo-button:hover {
+  background: var(--palette-teal-500);
+  border-color: var(--palette-amber-200);
+  color: var(--palette-amber-200) !important;
+}
+
+@media screen and (max-width: 760px) {
+  .shortcut-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   TABELA DE EQUIPE (Estilo Nativo com Avatares)
+   ========================================================================== */
+.md-typeset table td img {
+  border-radius: 50%;
+  border: 2px solid var(--palette-teal-400);
+  background-color: var(--palette-gray-100);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.md-typeset table td a:hover img {
+  transform: scale(1.06);
+  border-color: var(--palette-amber-200);
+  box-shadow: 0 4px 12px rgba(247, 174, 62, 0.3);
+}
+
+.md-typeset table td a {
+  font-weight: 600;
+  color: var(--md-default-fg-color) !important;
+  text-decoration: none !important;
+}
+
+.md-typeset table td a:hover {
+  color: var(--palette-amber-200) !important;
+}
+
+.md-typeset table td sub {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--palette-gray-400);
+  margin-top: 0.15rem;
+  line-height: 1.3;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table td sub,
+[data-md-color-scheme="dark"] .md-typeset table td sub {
+  color: var(--palette-gray-300);
+}
+
+/* Barra de rolagem estilizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--palette-teal-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--palette-amber-200);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ==========================================================================
+   GRID E CARDS DE CASOS DE USO (Estilo Nativo)
+   ========================================================================== */
+.uc-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 1.2rem 0 1.8rem;
+}
+
+.uc-link-grid > p {
+  display: flex;
+  margin: 0;
+}
+
+.md-typeset .uc-link-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  min-height: 2.85rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(19, 92, 125, 0.22);
+  border-left: 4px solid var(--palette-teal-400);
+  border-radius: 8px;
+  background-color: var(--palette-gray-100);
+  color: var(--palette-blue-500) !important;
+  box-shadow: 0 1px 4px rgba(19, 92, 125, 0.05);
+  line-height: 1.35;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: all 0.18s ease;
+}
+
+.md-typeset .uc-link-card:hover {
+  border-color: var(--palette-amber-200);
+  border-left-color: var(--palette-amber-200);
+  background-color: var(--palette-teal-100);
+  color: var(--palette-blue-600) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(19, 92, 125, 0.12);
+}
+
+.md-typeset .uc-link-card::after {
+  content: "→";
+  margin-left: auto;
+  padding-left: 0.65rem;
+  color: var(--palette-amber-200);
+  font-weight: 700;
+  font-size: 1.15rem;
+  transition: transform 0.18s ease;
+}
+
+.md-typeset .uc-link-card:hover::after {
+  transform: translateX(3px);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .uc-link-card,
+[data-md-color-scheme="dark"] .md-typeset .uc-link-card {
+  border-color: var(--palette-teal-500);
+  border-left-color: var(--palette-teal-400);
+  background-color: var(--palette-teal-600);
+  color: var(--palette-gray-100) !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .uc-link-card:hover,
+[data-md-color-scheme="dark"] .md-typeset .uc-link-card:hover {
+  background-color: var(--palette-teal-500);
+  border-color: var(--palette-amber-200);
+  border-left-color: var(--palette-amber-200);
+  color: var(--palette-amber-200) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Links de navegação entre Casos de Uso (topo e rodapé) */
+.uc-nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+  padding: 0.8rem 1rem;
+  background-color: var(--palette-gray-100);
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 8px;
+}
+
+[data-md-color-scheme="slate"] .uc-nav-links,
+[data-md-color-scheme="dark"] .uc-nav-links {
+  background-color: var(--palette-teal-600);
+  border-color: var(--palette-teal-500);
+}
+
+.uc-nav-links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
