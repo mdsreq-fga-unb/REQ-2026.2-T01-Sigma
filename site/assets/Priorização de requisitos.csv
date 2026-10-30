@@ -1,0 +1,33 @@
+"Carimbo de data/hora","1.)O sistema deve Disponibilizar um quadro de avisos;
+2.)Permitir que qualquer usuario lance avisos ;
+3.)Notificar avisos via pop-up no momento em que forem lançados;
+4.)Apagar avisos quando achar necessario;
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:","1.)Editar as fichas do card de um aluno, mudando quais quer campos;
+2.)Apresentar histórico de edições do card;
+3.)Salvamento de dupla certeza, pra evitar salvamentos por engano;
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:","1.)Anexação de documentos, permitindo as secretarias de vincularem os documentos aos cards;
+2)Edição de documentos, ao editar um documento anexar um novo documento no lugar previamente escaneado;
+3) baixar fichas e documentos em formato pdf;
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:","1.)Cadastrar de Turmas e Etapas
+2.)Vincular turmas a etapas;
+3.)Vincular cards de alunos a turmas;
+4) inativar turmas/etapas;
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:","1.)Busca de card de aluno pelo o nome, retornando o seu card;
+2.) Busca de etapas e turmas retornando o conjunto selecionado de cards
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:","1.)Deve ser possivel cadastrar usuario pras secretarias;
+2.)O sistema deve poder matricular o aluno, criando o seu card e suas fichas pra preenchimento;
+3.)O sistema deve possibilitar o preenchimento das fichas de matricula
+4.)Inativar um card de aluno, deixando o satatus dele como inativo;
+5.)Reativação de um aluno, retornando seu status pra ativo 
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:","1.)controle de aacesso via login pelas as secretárias;
+2). Realização de logoff, sair da conta quando necessário
+
+OS PONTOS ACIMA DEVEM SER PRIORIZADOS DE MODO QUE:"
+"2026/09/28 3:18:04 PM GMT-3","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.;DEVERIA TER . Itens importantes e de alto valor, mas não vitais de imediato. Podem ser adiados se necessário.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.","DEVERIA TER . Itens importantes e de alto valor, mas não vitais de imediato. Podem ser adiados se necessário.","DEVERIA TER . Itens importantes e de alto valor, mas não vitais de imediato. Podem ser adiados se necessário.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor."
+"2026/09/28 7:01:50 PM GMT-3","PODRIA TER . Melhorias desejáveis, porém opcionais. Só são feitas se sobrar tempo e recursos.","DEVERIA TER . Itens importantes e de alto valor, mas não vitais de imediato. Podem ser adiados se necessário.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.","DEVE TER . Itens obrigatórios e críticos. Sem eles, o projeto não funciona ou não tem valor.","Os pontos 1, 2 e 3 são mais importantes que o 4 e 5 ","DEVERIA TER . Itens importantes e de alto valor, mas não vitais de imediato. Podem ser adiados se necessário."
