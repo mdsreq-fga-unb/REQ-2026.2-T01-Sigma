@@ -119,6 +119,14 @@ Você pode navegar, dar zoom e explorar a árvore interativamente diretamente pe
 
 ---
 
+## 8.4 Requisitos Globais
+
+| ID | Nome do requisito | Descrição |
+| :--- | :--- | :--- |
+| <span id="req-rf25" class="rf-anchor">RF25</span> | Alternância de Tema Visual | Disponibilizar um controle na interface que permita ao usuário alterar manualmente entre os temas "claro" e "escuro". |
+
+---
+
 ### Captura da Árvore de Rastreabilidade
 
 ![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
