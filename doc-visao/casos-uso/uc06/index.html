@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,7 +1116,7 @@
 
 
 <h1 id="uc06-gerenciar-estrutura-escolar-etapas-e-turmas">UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas)</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
 <p><strong>Atores principais:</strong> Secretária, Administrador</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
@@ -1122,7 +1150,7 @@
 <li>O sistema registra a turma com status "ativo", vinculada à etapa selecionada. (RF24, RN04)</li>
 <li>O sistema exibe a mensagem: "Turma cadastrada com sucesso".</li>
 </ol>
-<p><strong>FP03 - Vincular Turma à Etapa</strong></p>
+<p><strong>FP03 - Vincular Turma à Etapa (Pós-MVP)</strong></p>
 <ol>
 <li>O ator busca e seleciona uma turma cadastrada.</li>
 <li>O ator acessa a funcionalidade de vincular à etapa. (RF20)</li>
@@ -1133,7 +1161,7 @@
 <li>O sistema registra o vínculo entre a turma e a etapa. (RF20, RN04)</li>
 <li>O sistema exibe a mensagem: "Turma vinculada à etapa com sucesso."</li>
 </ol>
-<p><strong>FP04 - Inativar Turma ou Etapa</strong></p>
+<p><strong>FP04 - Inativar Turma ou Etapa (Pós-MVP)</strong></p>
 <ol>
 <li>O ator busca e seleciona uma turma ou etapa com status "ativo".</li>
 <li>O ator seleciona a opção "inativar". (RF19)</li>
@@ -1198,34 +1226,41 @@
 <table>
 <thead>
 <tr>
-<th>RN</th>
-<th>Descrição</th>
+<th>ID</th>
+<th>Regra de Negócio</th>
+<th>Justificativa</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RN04</td>
+<td><a href="../../Regras-Negocio/#rn04">RN04</a></td>
 <td>Uma turma deve estar obrigatoriamente vinculada a uma etapa existente.</td>
+<td>Garante integridade organizacional: não pode existir turma desvinculada.</td>
 </tr>
 <tr>
-<td>RN11</td>
+<td><a href="../../Regras-Negocio/#rn11">RN11</a></td>
 <td>Só turmas e etapas ativas podem receber novos vínculos.</td>
+<td>Evita alocar novas turmas ou alunos em estruturas inativas.</td>
 </tr>
 <tr>
-<td>RN12</td>
+<td><a href="../../Regras-Negocio/#rn12">RN12</a></td>
 <td>Inativar uma turma ou etapa não elimina os vínculos existentes.</td>
+<td>Preserva o histórico de formação e matrícula dos alunos.</td>
 </tr>
 <tr>
-<td>RN13</td>
+<td><a href="../../Regras-Negocio/#rn13">RN13</a></td>
 <td>Impedir cadastro de duas etapas com o mesmo nome.</td>
+<td>Evita ambiguidade e conflito de dados na escola.</td>
 </tr>
 <tr>
-<td>RN14</td>
+<td><a href="../../Regras-Negocio/#rn14">RN14</a></td>
 <td>Impedir cadastro de duas turmas com o mesmo nome dentro da mesma etapa.</td>
+<td>Evita duplicidade de salas dentro do mesmo segmento.</td>
 </tr>
 <tr>
-<td>RN22</td>
-<td>O cadastro de etapa exige obrigatoriamente o nome. O cadastro de turma exige obrigatoriamente o nome e a etapa vinculada.</td>
+<td><a href="../../Regras-Negocio/#rn22">RN22</a></td>
+<td>O cadastro de etapa exige nome; cadastro de turma exige nome e etapa vinculada.</td>
+<td>Garante o preenchimento dos dados fundamentais.</td>
 </tr>
 </tbody>
 </table>
@@ -1233,26 +1268,41 @@
 <table>
 <thead>
 <tr>
-<th>RF/RNF</th>
-<th>Relação com o UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF18</td>
+<td><a href="../../8_requisitos/#req-rf18">RF18</a></td>
+<td>Cadastrar Etapa</td>
 <td>Permite o cadastro de novas etapas (séries de ensino) no sistema.</td>
 </tr>
 <tr>
-<td>RF19</td>
-<td>Permite inativar turmas e etapas, mantendo os vínculos e a visibilidade na busca.</td>
+<td><a href="../../8_requisitos/#req-rf19">RF19</a></td>
+<td>Inativar turma e etapa</td>
+<td>Permite inativar turmas e etapas mantendo vínculos e histórico (Adiado pós-MVP).</td>
 </tr>
 <tr>
-<td>RF20</td>
-<td>Permite vincular uma turma a uma etapa, selecionando ambas entre as ativas.</td>
+<td><a href="../../8_requisitos/#req-rf20">RF20</a></td>
+<td>Vincular turma à etapa</td>
+<td>Permite associar turmas a etapas ativas (Adiado pós-MVP).</td>
 </tr>
 <tr>
-<td>RF24</td>
-<td>Permite o cadastro de novas turmas, obrigatoriamente vinculadas a uma etapa.</td>
+<td><a href="../../8_requisitos/#req-rf24">RF24</a></td>
+<td>Cadastrar Turma</td>
+<td>Permite o cadastro de novas turmas vinculadas a etapas válidas.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Restringe o gerenciamento de estrutura escolar a usuários autenticados.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf07">RNF07</a></td>
+<td>Tempo de resposta para busca de turmas/etapas</td>
+<td>Assegura carregamento e busca de estruturas escolares em menos de 2s.</td>
 </tr>
 </tbody>
 </table>

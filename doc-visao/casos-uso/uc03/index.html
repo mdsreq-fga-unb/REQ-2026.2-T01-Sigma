@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,7 +1116,7 @@
 
 
 <h1 id="uc03-gerenciar-quadros-de-avisos">UC03 - Gerenciar Quadros de Avisos</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
 <p><strong>Atores principais:</strong> Equipe Administrativa (Secretárias, Coordenadoras e Diretora).</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
@@ -1129,24 +1157,15 @@
 <p><strong>FA02 - Apagar Aviso de Forma Definitiva</strong></p>
 <ol>
 <li>O ator acessa o quadro de avisos com as notificações ativas. (RF03, RF04)</li>
-<li>O ator seleciona um aviso existente no seu próprio espaço. (RF04)</li>
-<li>O ator aciona a opção de apagar/excluir. (RF04)</li>
-<li>O sistema solicita a confirmação da exclusão definitiva. (RF04)</li>
-<li>O ator confirma a exclusão. (RF04)</li>
-<li>O sistema remove o aviso da visualização do ator de forma definitiva. (RF04)</li>
-<li>O sistema atualiza o quadro de avisos e exibe uma mensagem de sucesso. (RF04)</li>
-</ol>
-<p><strong>FA03 - Cancelar Lançamento de Aviso</strong></p>
-<ol>
-<li>Durante o preenchimento de um novo aviso, o ator aciona a opção de cancelar ou fechar a janela. (RF02)</li>
-<li>O sistema descarta as informações não salvas. (RF02)</li>
-<li>O sistema retorna o ator para a visualização padrão do quadro de avisos. (RF02)</li>
-<li>Nenhum dado é registrado no banco de dados. (RF02)</li>
+<li>O ator seleciona o aviso que deseja apagar. (RF04)</li>
+<li>O ator aciona a opção de exclusão. (RF04)</li>
+<li>O sistema remove o aviso de forma definitiva do espaço visual do usuário. (RF04)</li>
+<li>O sistema atualiza o quadro de avisos, deixando de exibir o item apagado. (RF03, RF04)</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
-<p><strong>FE01 - Interface Indisponível para o Perfil do Ator</strong></p>
+<p><strong>FE01 - Acesso Não Autorizado</strong></p>
 <ol>
-<li>Um usuário não autorizado tenta acessar a rota de lançamento de avisos. (RF01)</li>
+<li>Um usuário não pertencente à equipe administrativa tenta acessar a seção de gerenciamento do quadro de avisos. (RF01)</li>
 <li>O sistema identifica que o perfil não possui permissão. (RF01)</li>
 <li>O sistema bloqueia o acesso e não exibe a funcionalidade de gerenciamento do quadro. (RF01)</li>
 </ol>
@@ -1183,22 +1202,22 @@
 </thead>
 <tbody>
 <tr>
-<td>RN09</td>
-<td>A criação de um aviso exige data e autor registrados e só poderá ser publicado quando o assunto e descrição estiverem devidamente preenchidos.</td>
+<td><a href="../../Regras-Negocio/#rn09">RN09</a></td>
+<td>A criação de um aviso exige data e autor registrados e só poderá ser publicado quando o assunto e descrição estiverem preenchidos.</td>
 <td>Garante identificação e rastreabilidade.</td>
-<td>RF02</td>
+<td><a href="../../8_requisitos/#req-rf02">RF02</a></td>
 </tr>
 <tr>
-<td>RN17</td>
+<td><a href="../../Regras-Negocio/#rn17">RN17</a></td>
 <td>A sessão do usuário deve ser encerrada após 30 minutos de inatividade contínua.</td>
-<td>Protege os dados sensíveis dos alunos caso o usuário tenha que sair do sistema e deixar ele logado.</td>
-<td>RF07, RNF01, RNF02</td>
+<td>Protege dados sensíveis em abandono de terminal.</td>
+<td><a href="../../8_requisitos/#req-rf07">RF07</a>, <a href="../../8_requisitos/#req-rnf01">RNF01</a>, <a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
 </tr>
 <tr>
-<td>RN18</td>
-<td>Apenas contas com status "Ativo" podem acessar o sistema. Contas inativadas devem ser bloqueadas do sistema imediatamente.</td>
-<td>Garantir que ex-funcionários e/ou pessoas não autorizadas percam acesso total ao sistema e aos dados nele contidos.</td>
-<td>RF05, RF06, RNF02</td>
+<td><a href="../../Regras-Negocio/#rn18">RN18</a></td>
+<td>Apenas contas com status "Ativo" podem acessar o sistema.</td>
+<td>Garante bloqueio imediato de contas inativadas.</td>
+<td><a href="../../8_requisitos/#req-rf05">RF05</a>, <a href="../../8_requisitos/#req-rf06">RF06</a>, <a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
 </tr>
 </tbody>
 </table>
@@ -1206,38 +1225,41 @@
 <table>
 <thead>
 <tr>
-<th>Requisito / Característica</th>
-<th>Relação com a UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF01 - Disponibilizar Quadro</td>
+<td><a href="../../8_requisitos/#req-rf01">RF01</a></td>
+<td>Disponibilizar Quadro</td>
 <td>Permite que o ambiente do quadro de avisos seja acessível para a equipe.</td>
 </tr>
 <tr>
-<td>RF02 - Lançar Avisos</td>
+<td><a href="../../8_requisitos/#req-rf02">RF02</a></td>
+<td>Lançar Avisos</td>
 <td>Permite que os atores publiquem novas notificações para a equipe administrativa.</td>
 </tr>
 <tr>
-<td>RF03 - Exibir Avisos</td>
+<td><a href="../../8_requisitos/#req-rf03">RF03</a></td>
+<td>Exibir Avisos</td>
 <td>Garante a visualização das notificações ativas no sistema.</td>
 </tr>
 <tr>
-<td>RF04 - Apagar Avisos</td>
+<td><a href="../../8_requisitos/#req-rf04">RF04</a></td>
+<td>Apagar Avisos</td>
 <td>Permite a remoção definitiva de um aviso do espaço visual.</td>
 </tr>
 <tr>
-<td>RF05 - Gerenciar Usuários</td>
-<td>Relação indireta para garantir bloqueio de inativos (RN18).</td>
+<td><a href="../../8_requisitos/#req-rnf01">RNF01</a></td>
+<td>Privacidade de Dados LGPD</td>
+<td>Restringe os avisos exclusivamente a membros internos autenticados.</td>
 </tr>
 <tr>
-<td>RF07 - Encerrar Sessão</td>
-<td>Relação para tratamento de inatividade da sessão (RN17).</td>
-</tr>
-<tr>
-<td>CP6 - Avisos Rápidos</td>
-<td>O caso de uso implementa diretamente a funcionalidade de postagem de avisos administrativos do sistema.</td>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Impede visualização e postagem pública no quadro de avisos.</td>
 </tr>
 </tbody>
 </table>

@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,68 +1116,71 @@
 
 
 <h1 id="uc07-alocar-alunos">UC07 - Alocar Alunos</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
 <p><strong>Atores principais:</strong> Administrador, Secretárias.</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
-<p>Permitir que o administrador ou o perfil autorizado aloque um card de aluno à uma turma da Creche Estação Vida.</p>
+<p>Permitir que o administrador ou as secretárias aloquem um card de aluno ativo a uma turma existente da Creche Estação Vida, assegurando que cada aluno pertença a exatamente uma turma.</p>
 <h2 id="3-pre-condicao">3. Pré-Condição</h2>
 <ol>
 <li>O ator deve estar autenticado no sistema e possuir autorização para realizar alocação de alunos.</li>
+<li>Deve existir pelo menos uma etapa cadastrada com status "ativo".</li>
+<li>Deve existir pelo menos uma turma cadastrada com status "ativo" e vinculada a uma etapa ativa.</li>
+<li>O aluno selecionado deve estar cadastrado e com matrícula ativa no sistema.</li>
 <li>O sistema deve possuir conexão ativa com o banco de dados.</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Alocar aluno a uma turma</strong></p>
+<p><strong>FP01 — Alocar card de aluno a uma turma</strong></p>
 <ol>
-<li>O ator acessa a funcionalidade de alocar aluno à uma turma. (RF13)</li>
-<li>O sistema apresenta a interface de seleção de aluno e turma para qual será alocado. (RF13)</li>
-<li>O ator pesquisa e seleciona o nome do aluno que deseja alocar. (RF21)</li>
-<li>O sistema apresenta as informações do aluno e verifica se o card de matrícula está ativo. (RF21)</li>
-<li>O ator seleciona a turma a qual deseja alocar o aluno. (RF22)</li>
-<li>O sistema apresenta as informações da turma selecionada e verifica se ela está ativa e vinculada a uma etapa escolar válida. (RN04 e RN11)</li>
-<li>O ator confere as informações apresentadas e confirma a alocação.</li>
-<li>O sistema valida os campos obrigatórios e verifica se o aluno já possui matrícula vinculada a outra turma. (RN06, RN08)</li>
-<li>O sistema verifica se a associação respeita a regra de que cada matrícula deve estar vinculada a exatamente uma turma e uma etapa escolar. (RN02)</li>
-<li>O sistema registra a associação entre o aluno e a turma selecionada. (RF13)</li>
-<li>O sistema exibe uma mensagem de sucesso e apresenta as informações do aluno e da turma à qual ele foi alocado.</li>
+<li>O ator acessa a funcionalidade de alocação de alunos.</li>
+<li>O ator pesquisa o aluno desejado informando o nome completo ou parcial. (RF21)</li>
+<li>O sistema retorna os resultados correspondentes em menos de 2 segundos. (RNF06)</li>
+<li>O ator seleciona o card de aluno a ser alocado.</li>
+<li>O ator pesquisa ou seleciona a turma à qual o aluno será vinculado. (RF22)</li>
+<li>O sistema retorna as turmas disponíveis em menos de 2 segundos. (RNF07)</li>
+<li>O sistema valida se o aluno e a turma estão com status "ativo". (RN03, RN11)</li>
+<li>O sistema valida se o aluno já não possui vínculo com outra turma. (RN08)</li>
+<li>O ator seleciona a opção "Salvar" ou "Confirmar".</li>
+<li>O sistema registra a vinculação do aluno à turma no banco de dados. (RF13, RN02)</li>
+<li>O sistema exibe a mensagem de confirmação: "Aluno alocado com sucesso."</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 - Selecionar turma antes do aluno</strong></p>
+<p><strong>FA01 — Cancelar alocação</strong></p>
 <ol>
-<li>O ator seleciona a turma a qual deseja alocar o aluno. (RF22)</li>
-<li>O sistema apresenta as informações da turma selecionada e verifica se ela está ativa e vinculada a uma etapa escolar válida.</li>
-<li>O ator pesquisa e seleciona o nome do(s) aluno(s) que deseja alocar. (RF21)</li>
-<li>O sistema apresenta as informações do aluno e verifica se o card está ativo. (RF21)</li>
-<li>O ator confere as informações apresentadas e confirma a alocação.</li>
-<li>O sistema valida os campos obrigatórios e verifica se o aluno já possui matrícula vinculada a outra turma. (RN06, RN08)</li>
-<li>O sistema verifica se a associação respeita a regra de que cada matrícula deve estar vinculada a exatamente uma turma e uma etapa escolar. (RN02)</li>
-<li>O sistema registra a associação entre o aluno e a turma selecionada. (RF13)</li>
-<li>O sistema exibe uma mensagem de sucesso e apresenta as informações do aluno e da turma à qual ele foi alocado.</li>
+<li>Em qualquer momento antes da confirmação, o ator seleciona a opção "Cancelar".</li>
+<li>O sistema descarta os dados informados e não realiza a vinculação.</li>
+<li>O sistema retorna à tela anterior.</li>
+</ol>
+<p><strong>FA02 — Alterar alocação de turma de um aluno</strong></p>
+<ol>
+<li>O ator localiza um card de aluno que já possui uma turma vinculada. (RF21)</li>
+<li>O ator seleciona a opção de redefinir ou transferir turma.</li>
+<li>O sistema exibe a turma atual e lista as outras turmas com status "ativo". (RF22, RN11)</li>
+<li>O ator seleciona a nova turma e confirma a operação.</li>
+<li>O sistema remove o vínculo anterior e registra o novo vínculo. (RN02, RN08)</li>
+<li>O sistema exibe a mensagem de confirmação: "Alocação atualizada com sucesso."</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
-<p><strong>FE01 — Matrícula inativa</strong></p>
+<p><strong>FE01 — Aluno não encontrado</strong></p>
 <ol>
-<li>O ator pesquisa e seleciona um aluno cuja matrícula está inativa.</li>
-<li>O sistema identifica que a matrícula não está ativa.</li>
-<li>O sistema impede a realização da alocação, respeitando as regras aplicáveis às matrículas inativas. (RN10)</li>
-<li>O sistema informa que não é possível alocar o aluno enquanto a matrícula estiver inativa.</li>
-<li>O sistema permite que o ator retorne à seleção de alunos.</li>
+<li>O ator realiza a busca por um aluno e nenhum registro corresponde ao termo informado.</li>
+<li>O sistema exibe a mensagem: "Nenhum aluno encontrado."</li>
+<li>O sistema permite que o ator refine os termos da busca e tente novamente.</li>
 </ol>
-<p><strong>FE02 — Turma ou etapa inativa, ou turma sem etapa vinculada</strong></p>
+<p><strong>FE02 — Turma ou etapa inativa selecionada</strong></p>
 <ol>
-<li>O ator seleciona uma turma que está inativa, vinculada a uma etapa inativa ou sem uma etapa existente associada.</li>
-<li>O sistema identifica que a turma não atende às condições para receber uma nova alocação. (RN04, RN11)</li>
-<li>O sistema impede o registro da associação.</li>
-<li>O sistema informa que a turma não está disponível para alocação.</li>
-<li>O sistema permite que o ator selecione outra turma.</li>
+<li>O ator tenta alocar um aluno a uma turma com status "inativo", ou a uma turma cuja etapa vinculada esteja inativa.</li>
+<li>O sistema identifica que a turma ou etapa não está ativa. (RN11)</li>
+<li>O sistema impede a alocação.</li>
+<li>O sistema exibe a mensagem: "Não é possível alocar alunos em turmas ou etapas inativas."</li>
 </ol>
-<p><strong>FE03 — Aluno já alocado a outra turma</strong></p>
+<p><strong>FE03 — Aluno já matriculado em outra turma</strong></p>
 <ol>
-<li>O ator seleciona um aluno que já possui matrícula vinculada a outra turma.</li>
-<li>O sistema identifica a existência do vínculo anterior.</li>
+<li>O ator tenta associar um aluno a uma nova turma sem realizar a transferência da turma anterior.</li>
+<li>O sistema verifica as vinculações ativas do aluno.</li>
 <li>O sistema impede a criação de uma associação que resulte na matrícula simultânea do aluno em duas turmas. (RN08)</li>
 <li>O sistema informa que o aluno já está alocado a outra turma.</li>
-<li>O sistema mantém a associação existente e não realiza uma nova alocação.</li>
+<li>O sistema mantém a associação existente e não realiza uma nova alocação sem desvinculação prévia.</li>
 </ol>
 <p><strong>FE04 — Campos obrigatórios não preenchidos</strong></p>
 <ol>
@@ -1171,38 +1202,46 @@
 <table>
 <thead>
 <tr>
-<th>RN</th>
-<th>Descrição</th>
+<th>ID</th>
+<th>Regra de Negócio</th>
+<th>Justificativa</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RN02</td>
-<td>Toda matrícula deve estar vinculada a exatamente uma turma.</td>
+<td><a href="../../Regras-Negocio/#rn02">RN02</a></td>
+<td>Toda matrícula deve estar vinculada a exatamente uma turma e uma etapa.</td>
+<td>Garante a organização e enturmação da creche.</td>
 </tr>
 <tr>
-<td>RN03</td>
+<td><a href="../../Regras-Negocio/#rn03">RN03</a></td>
 <td>Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias.</td>
+<td>Garante conformidade da documentação antes da alocação.</td>
 </tr>
 <tr>
-<td>RN04</td>
+<td><a href="../../Regras-Negocio/#rn04">RN04</a></td>
 <td>Uma turma deve estar obrigatoriamente vinculada a uma etapa existente.</td>
+<td>Impede turmas sem estrutura curricular.</td>
 </tr>
 <tr>
-<td>RN06</td>
+<td><a href="../../Regras-Negocio/#rn06">RN06</a></td>
 <td>Campos obrigatórios devem ser validados antes do salvamento.</td>
+<td>Assegura consistência relacional.</td>
 </tr>
 <tr>
-<td>RN08</td>
+<td><a href="../../Regras-Negocio/#rn08">RN08</a></td>
 <td>Um aluno não pode estar matriculado em duas turmas simultaneamente.</td>
+<td>Evita conflitos de horário e sobrecarga de vagas.</td>
 </tr>
 <tr>
-<td>RN10</td>
-<td>Uma matrícula inativa correspondente a um aluno não poderá ser editada, só pode ser consultada e reativada.</td>
+<td><a href="../../Regras-Negocio/#rn10">RN10</a></td>
+<td>Matrícula inativa não pode ter alocação alterada.</td>
+<td>Preserva histórico de alunos inativos.</td>
 </tr>
 <tr>
-<td>RN11</td>
+<td><a href="../../Regras-Negocio/#rn11">RN11</a></td>
 <td>Só turmas e etapas ativas podem receber novos vínculos.</td>
+<td>Evita alocar alunos em turmas extintas.</td>
 </tr>
 </tbody>
 </table>
@@ -1210,34 +1249,41 @@
 <table>
 <thead>
 <tr>
-<th>RF/RNF</th>
-<th>Relação com o UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF13</td>
-<td>Funcionalidade central deste caso de uso, responsável por relacionar o card de aluno e uma turma.</td>
+<td><a href="../../8_requisitos/#req-rf13">RF13</a></td>
+<td>Vincular aluno a turma</td>
+<td>Funcionalidade central deste caso de uso, responsável por relacionar o card do aluno a uma turma.</td>
 </tr>
 <tr>
-<td>RF21</td>
-<td>Permite localizar o aluno que será selecionado para a alocação.</td>
+<td><a href="../../8_requisitos/#req-rf21">RF21</a></td>
+<td>Buscar aluno pelo nome</td>
+<td>Permite localizar o aluno para a alocação de forma ágil.</td>
 </tr>
 <tr>
-<td>RF22</td>
+<td><a href="../../8_requisitos/#req-rf22">RF22</a></td>
+<td>Buscar turmas e etapas</td>
 <td>Permite localizar a turma à qual o aluno será alocado.</td>
 </tr>
 <tr>
-<td>RNF02</td>
-<td>Garante que apenas usuários autorizados sejam capazes de realizar o processo de alocação de aluno à turma.</td>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Garante que apenas secretárias/administradores autorizados aloquem alunos.</td>
 </tr>
 <tr>
-<td>RNF06</td>
-<td>Define que o sistema retorne as informações do aluno em menos de 2 segundos para 95% das requisições.</td>
+<td><a href="../../8_requisitos/#req-rnf06">RNF06</a></td>
+<td>Tempo de Resposta ao Buscar Aluno</td>
+<td>Retorna informações do aluno em menos de 2s para 95% das buscas.</td>
 </tr>
 <tr>
-<td>RNF07</td>
-<td>Define que o sistema retorne as informações de turmas e etapas em menos de 2 segundos para 95% das requisições.</td>
+<td><a href="../../8_requisitos/#req-rnf07">RNF07</a></td>
+<td>Tempo de Resposta para Buscar Turmas</td>
+<td>Retorna informações de turmas em menos de 2s para 95% das buscas.</td>
 </tr>
 </tbody>
 </table>

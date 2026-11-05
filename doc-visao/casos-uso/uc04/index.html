@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,7 +1116,7 @@
 
 
 <h1 id="uc04-gerenciar-fichas-de-matricula">UC04 - Gerenciar Fichas de Matrícula</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
 <p><strong>Atores principais:</strong> Equipe Administrativa (Secretárias, Coordenadoras e Diretora).</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
@@ -1111,11 +1139,11 @@
 <li>O sistema avança para as abas ou seções de preenchimento das fichas obrigatórias (Socioeconômica, Imagem, Saída, Compromisso Escolar, Requerimento). (RF09)</li>
 <li>O ator preenche todas as informações necessárias nas fichas. (RF09)</li>
 <li>O ator aciona a opção de salvar os dados. (RF23)</li>
-<li>O sistema solicita a confirmação do salvamento. (RF23)</li>
+<li>O sistema solicita a confirmação do salvamento. (RF23, RN15)</li>
 <li>O ator confirma a operação. (RF23)</li>
-<li>O sistema valida todos os campos obrigatórios e verifica se não há conflitos de duplicidade. (RF08, RF09)</li>
-<li>O sistema registra o card do aluno e as fichas preenchidas no banco de dados em menos de 5 segundos. (RNF08)</li>
-<li>O sistema altera o status da matrícula para ativa e exibe mensagem de sucesso. (RF08)</li>
+<li>O sistema valida todos os campos obrigatórios e verifica se não há conflitos de duplicidade. (RF08, RF09, RN06, RN07)</li>
+<li>O sistema registra o card do aluno e as fichas preenchidas no banco de dados em menos de 5 segundos. (RNF08, RNF01)</li>
+<li>O sistema altera o status da matrícula para ativa e exibe mensagem de sucesso. (RF08, RN01, RN03)</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
 <p><strong>FA01 - Editar Fichas de Matrícula</strong></p>
@@ -1124,25 +1152,25 @@
 <li>O ator aciona a opção de edição. (RF10)</li>
 <li>O sistema carrega os dados atuais das fichas. (RF10)</li>
 <li>O ator altera as informações desejadas. (RF10)</li>
-<li>O ator aciona a opção de salvar e confirma a operação. (RF23)</li>
+<li>O ator aciona a opção de salvar e confirma a operação. (RF23, RN15)</li>
 <li>O sistema valida os campos, registra o novo estado no banco e salva um registro no histórico de edições do card. (RF10, RF17)</li>
 <li>O sistema exibe mensagem de sucesso. (RF10)</li>
 </ol>
-<p><strong>FA02 - Inativar Matrícula</strong></p>
+<p><strong>FA02 - Inativar Matrícula (Pós-MVP)</strong></p>
 <ol>
 <li>O ator acessa a lista de cards e seleciona um aluno. (RF11)</li>
 <li>O ator aciona a opção de inativar a matrícula. (RF11)</li>
 <li>O sistema solicita confirmação para a inativação. (RF23)</li>
 <li>O ator confirma. (RF23)</li>
-<li>O sistema altera o status do card para inativo, bloqueando futuras edições, e salva a alteração no histórico. (RF11, RF17)</li>
+<li>O sistema altera o status do card para inativo, bloqueando futuras edições, e salva a alteração no histórico. (RF11, RF17, RN10)</li>
 </ol>
-<p><strong>FA03 - Reativar Matrícula</strong></p>
+<p><strong>FA03 - Reativar Matrícula (Pós-MVP)</strong></p>
 <ol>
 <li>O ator busca por um aluno com status inativo e acessa seu card. (RF12)</li>
 <li>O ator aciona a opção de reativar a matrícula. (RF12)</li>
 <li>O sistema solicita confirmação. (RF23)</li>
 <li>O ator confirma. (RF23)</li>
-<li>O sistema altera o status para ativo, liberando novamente a edição, e registra a ação no histórico. (RF12, RF17)</li>
+<li>O sistema altera o status para ativo, liberando novamente a edição, e registra a ação no histórico. (RF12, RF17, RN10)</li>
 </ol>
 <p><strong>FA04 - Consultar Histórico de Edições</strong></p>
 <ol>
@@ -1153,27 +1181,27 @@
 <p><strong>FA05 - Cancelar Criação ou Edição</strong></p>
 <ol>
 <li>Durante o preenchimento ou edição de uma ficha, o ator aciona a opção de cancelar. (RF23)</li>
-<li>O sistema descarta as informações inseridas ou alteradas. (RF23)</li>
+<li>O sistema descarta as informações inseridas ou alteradas. (RF23, RN15)</li>
 <li>O sistema retorna à visualização anterior, sem registrar nenhuma modificação no banco de dados. (RF23)</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
 <p><strong>FE01 - Fichas Obrigatórias Incompletas</strong></p>
 <ol>
 <li>O ator tenta confirmar a criação ou edição sem preencher todos os campos obrigatórios das fichas exigidas. (RF09, RF10)</li>
-<li>O sistema identifica a ausência dos dados. (RF09, RF10)</li>
-<li>O sistema impede o salvamento e não ativa a matrícula. (RF09, RF10)</li>
+<li>O sistema identifica a ausência dos dados. (RF09, RF10, RN06)</li>
+<li>O sistema impede o salvamento e não ativa a matrícula. (RF09, RF10, RN03)</li>
 <li>O sistema destaca os campos faltantes e exibe mensagem de erro. (RF09, RF10)</li>
 </ol>
 <p><strong>FE02 - Duplicidade de Cadastro (CPF ou Matrícula)</strong></p>
 <ol>
 <li>O ator tenta salvar um novo card ou editar um existente informando um número de matrícula ou CPF que já consta no banco de dados. (RF08)</li>
-<li>O sistema identifica a duplicidade durante a validação. (RF08)</li>
+<li>O sistema identifica a duplicidade durante a validação. (RF08, RN07)</li>
 <li>O sistema impede o salvamento e avisa ao ator sobre o conflito de dados. (RF08)</li>
 </ol>
 <p><strong>FE03 - Tentativa de Edição em Matrícula Inativa</strong></p>
 <ol>
 <li>O ator acessa o card de um aluno inativo. (RF10, RF11)</li>
-<li>O sistema identifica o status da matrícula e oculta ou desabilita os botões de edição das fichas. (RF10, RF11)</li>
+<li>O sistema identifica o status da matrícula e oculta ou desabilita os botões de edição das fichas. (RF10, RF11, RN10)</li>
 <li>O ator só consegue visualizar os dados ou acionar a reativação. (RF12)</li>
 </ol>
 <p><strong>FE04 - Falha de Conectividade ou Tempo de Resposta Excedido</strong></p>
@@ -1194,40 +1222,40 @@
 </thead>
 <tbody>
 <tr>
-<td>RN01</td>
+<td><a href="../../Regras-Negocio/#rn01">RN01</a></td>
 <td>Cada aluno pode ter apenas uma matrícula ativa por vez.</td>
 <td>Evita duplicidade de registros e conflitos de turma.</td>
-<td>RF08, RF09</td>
+<td><a href="../../8_requisitos/#req-rf08">RF08</a>, <a href="../../8_requisitos/#req-rf09">RF09</a></td>
 </tr>
 <tr>
-<td>RN03</td>
+<td><a href="../../Regras-Negocio/#rn03">RN03</a></td>
 <td>Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias: Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula.</td>
 <td>Garantir conformidade e documentação completa.</td>
-<td>RF09, RF10</td>
+<td><a href="../../8_requisitos/#req-rf09">RF09</a>, <a href="../../8_requisitos/#req-rf10">RF10</a></td>
 </tr>
 <tr>
-<td>RN06</td>
+<td><a href="../../Regras-Negocio/#rn06">RN06</a></td>
 <td>Campos obrigatórios devem ser validados antes do salvamento.</td>
-<td>Garantir conformidade.</td>
-<td>RF09, RF10, RF13</td>
+<td>Garantir conformidade cadastral.</td>
+<td><a href="../../8_requisitos/#req-rf09">RF09</a>, <a href="../../8_requisitos/#req-rf10">RF10</a>, <a href="../../8_requisitos/#req-rf13">RF13</a></td>
 </tr>
 <tr>
-<td>RN07</td>
+<td><a href="../../Regras-Negocio/#rn07">RN07</a></td>
 <td>Impedir cadastro de dois alunos com a mesma matrícula ou CPF.</td>
-<td>Evita conflito de dados.</td>
-<td>RF08, RF21</td>
+<td>Evita conflito e sobreposição de dados.</td>
+<td><a href="../../8_requisitos/#req-rf08">RF08</a>, <a href="../../8_requisitos/#req-rf21">RF21</a></td>
 </tr>
 <tr>
-<td>RN10</td>
-<td>Uma matrícula inativa correspondente a um aluno não poderá ser editada, só pode ser consultada e reativada.</td>
-<td>Garante que registros inativos não sejam alterados.</td>
-<td>RF10, RF11, RF13, RF14</td>
+<td><a href="../../Regras-Negocio/#rn10">RN10</a></td>
+<td>Uma matrícula inativa não poderá ser editada, só pode ser consultada e reativada.</td>
+<td>Garante que registros inativos não sejam alterados indevidamente.</td>
+<td><a href="../../8_requisitos/#req-rf10">RF10</a>, <a href="../../8_requisitos/#req-rf11">RF11</a>, <a href="../../8_requisitos/#req-rf13">RF13</a>, <a href="../../8_requisitos/#req-rf14">RF14</a></td>
 </tr>
 <tr>
-<td>RN15</td>
+<td><a href="../../Regras-Negocio/#rn15">RN15</a></td>
 <td>As alterações na matrícula só são aplicadas após a confirmação. Se a operação for cancelada, os dados não serão salvos.</td>
-<td>Evita salvamentos acidentais.</td>
-<td>RF23, RF10</td>
+<td>Evita salvamentos acidentais de dados incompletos.</td>
+<td><a href="../../8_requisitos/#req-rf23">RF23</a>, <a href="../../8_requisitos/#req-rf10">RF10</a></td>
 </tr>
 </tbody>
 </table>
@@ -1235,42 +1263,61 @@
 <table>
 <thead>
 <tr>
-<th>Requisito</th>
-<th>Relação com a UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF08 - Cadastrar Card de Aluno</td>
+<td><a href="../../8_requisitos/#req-rf08">RF08</a></td>
+<td>Cadastrar Card de Aluno</td>
 <td>Permite a criação do registro base do aluno no sistema.</td>
 </tr>
 <tr>
-<td>RF09 - Preenchimento de Fichas</td>
-<td>Viabiliza o registro de informações detalhadas obrigatórias para ativação.</td>
+<td><a href="../../8_requisitos/#req-rf09">RF09</a></td>
+<td>Preenchimento de Fichas</td>
+<td>Viabiliza o registro das informações obrigatórias para ativação da matrícula.</td>
 </tr>
 <tr>
-<td>RF10 - Editar Fichas</td>
-<td>Permite manter os dados do aluno atualizados.</td>
+<td><a href="../../8_requisitos/#req-rf10">RF10</a></td>
+<td>Editar Fichas do Card</td>
+<td>Permite manter os dados do aluno permanentemente atualizados.</td>
 </tr>
 <tr>
-<td>RF11 - Inativar Card</td>
-<td>Permite suspender ou desativar o registro sem excluí-lo permanentemente.</td>
+<td><a href="../../8_requisitos/#req-rf11">RF11</a></td>
+<td>Inativar Card de Aluno</td>
+<td>Permite suspender ou desativar o registro sem exclusão física (Adiado pós-MVP em ata).</td>
 </tr>
 <tr>
-<td>RF12 - Reativar Card</td>
-<td>Permite retornar um registro inativo ao status ativo.</td>
+<td><a href="../../8_requisitos/#req-rf12">RF12</a></td>
+<td>Reativar Card de Aluno</td>
+<td>Permite retornar um registro inativo ao status ativo (Adiado pós-MVP em ata).</td>
 </tr>
 <tr>
-<td>RF17 - Apresentar Histórico de Edições</td>
-<td>Garante a rastreabilidade das modificações feitas nos cards.</td>
+<td><a href="../../8_requisitos/#req-rf17">RF17</a></td>
+<td>Apresentar Histórico de Edições</td>
+<td>Garante auditoria e rastreabilidade das modificações realizadas.</td>
 </tr>
 <tr>
-<td>RF23 - Possibilitar salvamento de dados</td>
-<td>Exige a confirmação explícita antes de persistir informações.</td>
+<td><a href="../../8_requisitos/#req-rf23">RF23</a></td>
+<td>Possibilitar salvamento com confirmação</td>
+<td>Exige confirmação explícita de "Confirmar" ou "Cancelar" antes de persistir dados.</td>
 </tr>
 <tr>
-<td>RNF08 - Salvar Ficha em Menos de 5s</td>
-<td>Garante um tempo de resposta aceitável na persistência dos dados.</td>
+<td><a href="../../8_requisitos/#req-rnf01">RNF01</a></td>
+<td>Privacidade de Dados LGPD</td>
+<td>Proteção rígida aos dados sensíveis das crianças e famílias atendidas.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Impede qualquer acesso não autenticado às fichas de matrícula.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf08">RNF08</a></td>
+<td>Tempo de Resposta para Salvar Ficha</td>
+<td>Garante salvamento em menos de 5 segundos para 95% das operações.</td>
 </tr>
 </tbody>
 </table>

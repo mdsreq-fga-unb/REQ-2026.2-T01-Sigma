@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,7 +1116,7 @@
 
 
 <h1 id="uc01-gerenciar-autenticar">UC01 - Gerenciar Autenticar</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
 <p><strong>Atores principais:</strong> Secretária, Administrador</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
@@ -1158,21 +1186,25 @@
 <thead>
 <tr>
 <th>ID</th>
-<th>Descrição</th>
+<th>Regra de Negócio</th>
+<th>Justificativa</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RN16</td>
+<td><a href="../../Regras-Negocio/#rn16">RN16</a></td>
 <td>Bloqueio de acesso após 5 tentativas consecutivas de login inválidas.</td>
+<td>Previne ataques de força bruta e protege o sistema.</td>
 </tr>
 <tr>
-<td>RN17</td>
+<td><a href="../../Regras-Negocio/#rn17">RN17</a></td>
 <td>Encerramento de sessão após 30 minutos de inatividade.</td>
+<td>Protege dados sensíveis em caso de abandono de terminal.</td>
 </tr>
 <tr>
-<td>RN18</td>
+<td><a href="../../Regras-Negocio/#rn18">RN18</a></td>
 <td>Restrição de acesso aos usuário com status "Inativo" ou não cadastrados no sistema.</td>
+<td>Garante que ex-funcionários percam acesso imediatamente.</td>
 </tr>
 </tbody>
 </table>
@@ -1180,25 +1212,35 @@
 <table>
 <thead>
 <tr>
-<th>RF/RNF</th>
-<th>Relação com o UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF06</td>
-<td>Descreve a funcionalidade primária de entrar no sistema com usuário e senha padrão.</td>
+<td><a href="../../8_requisitos/#req-rf06">RF06</a></td>
+<td>Realizar login</td>
+<td>Funcionalidade primária de entrada no sistema com e-mail e senha.</td>
 </tr>
 <tr>
-<td>RF07</td>
-<td>Permite o encerramento seguro da sessão pela secretária.</td>
+<td><a href="../../8_requisitos/#req-rf07">RF07</a></td>
+<td>Realizar logout</td>
+<td>Permite o encerramento seguro da sessão ativa pela secretária.</td>
 </tr>
 <tr>
-<td>RNF02</td>
-<td>Garante o bloqueio de acessos a rotas internas e o redirecionamento imediato caso não haja sessão.</td>
+<td><a href="../../8_requisitos/#req-rnf01">RNF01</a></td>
+<td>Privacidade de Dados LGPD</td>
+<td>Restringe a visualização de qualquer dado exclusivamente a usuários autenticados.</td>
 </tr>
 <tr>
-<td>RNF05</td>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Garante o bloqueio de acessos a rotas internas e redirecionamento caso não haja sessão.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf05">RNF05</a></td>
+<td>Tempo de Resposta ao Logar</td>
 <td>Define o tempo máximo de 2 segundos para o sistema processar a entrada após o clique.</td>
 </tr>
 </tbody>

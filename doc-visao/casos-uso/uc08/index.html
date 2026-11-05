@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,72 +1116,61 @@
 
 
 <h1 id="uc08-consultar-registros-busca">UC08 - Consultar Registros (Busca)</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
-<p><strong>Atores principais:</strong> Equipe administrativa: (Secretárias, Coordenadoras e Diretora).</p>
+<p><strong>Atores principais:</strong> Equipe administrativa (Secretárias, Coordenadoras e Diretora).</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
-<p>Permitir que a secretária autenticada busque alunos por nome completo ou parcial para abrir o card do aluno, bem como busque turma e etapas cadastradas no sistema, garantindo agilidade no atendimento e na localização de informações.</p>
+<p>Permitir que a secretária autenticada busque alunos por nome completo ou parcial para abrir o card do aluno, bem como busque turmas e etapas cadastradas no sistema, garantindo agilidade no atendimento e na localização de informações em substituição à procura física em pastas e armários.</p>
 <h2 id="3-pre-condicoes">3. Pré-Condições</h2>
 <ul>
-<li>O ator deve estar autenticado no sistema (RF06).</li>
-<li>A conta do ator deve estar com status "Ativo" (RN18).</li>
-<li>O sistema deve possuir conexão com backend para consultar os dados.</li>
-<li>Para buscar alunos, deve haver alunos previamente cadastrados.</li>
-<li>Para buscar turmas e etapas, deve haver turmas e etapas previamente cadastradas.</li>
+<li>O ator deve estar autenticado no sistema (RF06, RNF02).</li>
+<li>A conta do ator deve estar com o status "ativo" (RN18).</li>
+<li>O sistema deve estar conectado ao banco de dados PostgreSQL.</li>
 </ul>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
 <p><strong>FP01 - Buscar Aluno pelo Nome</strong></p>
 <ol>
 <li>O ator acessa a funcionalidade de busca de alunos no sistema. (RF21)</li>
-<li>O sistema exibe o campo de busca.</li>
-<li>O ator informa o nome completo ou parcial do aluno. (RF21)</li>
-<li>O sistema processa a busca ignorando maiúsculas, minúsculas e acentos. (RF21)</li>
-<li>O sistema retorna os resultados em até 2 segundos para 95% das requisições. (RNF06)</li>
-<li>O sistema exibe a lista de alunos encontrados com seus cards.</li>
-<li>O ator seleciona um aluno da lista.</li>
-<li>O sistema abre o card do aluno com os dados de registro de matrícula. (RF21)</li>
-<li>O sistema encerra o caso de uso.</li>
+<li>O sistema exibe o campo de pesquisa. (RF21)</li>
+<li>O ator insere o nome completo ou parcial do aluno. (RF21)</li>
+<li>O ator confirma a busca clicando no ícone de pesquisa ou pressionando "Enter". (RF21)</li>
+<li>O sistema processa a consulta no banco de dados desconsiderando letras maiúsculas, minúsculas e acentos gráficos. (RF21)</li>
+<li>O sistema retorna e exibe a lista de alunos correspondentes em tempo inferior a 2 segundos. (RF21, RNF06)</li>
+<li>O ator seleciona o aluno desejado na lista de resultados. (RF21)</li>
+<li>O sistema direciona o ator para o card de matrícula do aluno selecionado. (RF21)</li>
 </ol>
 <p><strong>FP02 - Buscar Turmas e Etapas</strong></p>
 <ol>
-<li>O ator acessa a funcionalidade de busca de turmas e etapas no sistema. (RF22)</li>
-<li>O sistema exibe o campo de busca.</li>
-<li>O ator informa o nome completo ou parcial da turma ou etapa. (RF22)</li>
-<li>O sistema processa a busca.</li>
-<li>O sistema retorna os resultados em até 2 segundos para 95% das requisições. (RNF07)</li>
-<li>O sistema exibe a lista de turmas e etapas encontradas, incluindo aquelas com status "inativo" identificadas. (RN12)</li>
-<li>O ator visualiza os resultados.</li>
-<li>O sistema encerra o caso de uso.</li>
+<li>O ator acessa a funcionalidade de busca de turmas e etapas. (RF22)</li>
+<li>O sistema exibe o campo de pesquisa correspondente. (RF22)</li>
+<li>O ator insere o nome completo ou parcial da turma ou da etapa. (RF22)</li>
+<li>O ator confirma a busca. (RF22)</li>
+<li>O sistema processa a consulta no banco de dados. (RF22)</li>
+<li>O sistema retorna e exibe a lista de turmas e etapas correspondentes em tempo inferior a 2 segundos. (RF22, RNF07)</li>
+<li>O ator visualiza os resultados, que indicam o status ("ativo" ou "inativo") de cada registro. (RF22, RN12)</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 - Nenhum Aluno Encontrado</strong></p>
+<p><strong>FA01 - Nenhum Registro Encontrado</strong></p>
 <ol>
-<li>O ator realiza a busca de aluno. (RF21)</li>
-<li>O sistema consulta a base de dados.</li>
-<li>O sistema não encontra registros correspondentes ao critério informado.</li>
-<li>O sistema exibe a mensagem: "Nenhum resultado encontrado."</li>
-<li>O sistema mantém o campo de busca disponível para nova tentativa.</li>
+<li>O ator insere um termo de busca que não possui correspondência no banco de dados. (RF21, RF22)</li>
+<li>O sistema processa a consulta. (RF21, RF22)</li>
+<li>O sistema não encontra nenhum registro correspondente. (RF21, RF22)</li>
+<li>O sistema exibe na tela a mensagem informativa: "Nenhum resultado encontrado". (RF22)</li>
+<li>O ator pode refazer a busca com outro termo. (RF21, RF22)</li>
 </ol>
-<p><strong>FA02 - Nenhuma Turma ou Etapa Encontrada</strong></p>
+<p><strong>FA02 - Busca Parcial</strong></p>
 <ol>
-<li>O ator realiza a busca de turma ou etapa.</li>
-<li>O sistema consulta a base de dados.</li>
-<li>O sistema não encontra registros correspondentes ao critério informado.</li>
-<li>O sistema exibe a mensagem: "Nenhum resultado encontrado". (RF22)</li>
-<li>O sistema mantém o campo de busca disponível para nova tentativa.</li>
-</ol>
-<p><strong>FA03 - Busca com Acentos ou Maiúsculas/Minúsculas</strong></p>
-<ol>
-<li>O ator informa o nome com acentos ou variação de maiúsculas/minúsculas. (RF21)</li>
-<li>O sistema normaliza os dados de entrada e da base (remoção de acentos, conversão para minúsculas).</li>
-<li>O sistema retorna os resultados correspondentes. (RF21)</li>
+<li>O ator insere apenas as letras iniciais ou um trecho do nome do aluno, turma ou etapa. (RF21, RF22)</li>
+<li>O sistema processa a consulta buscando correspondências parciais. (RF21, RF22)</li>
+<li>O sistema exibe todos os registros que contêm o termo informado em qualquer posição do nome. (RF21, RF22)</li>
+<li>O ator localiza o registro desejado entre os resultados parciais exibidos. (RF21, RF22)</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
 <p><strong>FE01 - Falha de Conectividade</strong></p>
 <ol>
 <li>O ator tenta realizar uma busca. (RF21, RF22)</li>
 <li>O sistema não consegue se conectar ao backend.</li>
-<li>O sistema não concluiu a operação.</li>
+<li>O sistema não conclui a operação.</li>
 <li>O sistema exibe mensagem de falha de conexão.</li>
 <li>O sistema orienta o ator a tentar novamente quando a conexão for restabelecida.</li>
 </ol>
@@ -1168,16 +1185,16 @@
 <p><strong>FE03 - Tentativa de Acesso sem Autenticação</strong></p>
 <ol>
 <li>O ator tenta acessar a funcionalidade de busca sem estar autenticado. (RF21, RF22)</li>
-<li>O sistema identifica a ausência de sessão válida.</li>
-<li>O sistema bloqueia o acesso.</li>
-<li>O sistema direciona o ator para a tela de autenticação. (RF06)</li>
+<li>O sistema identifica a ausência de sessão válida. (RNF02)</li>
+<li>O sistema bloqueia o acesso. (RNF02)</li>
+<li>O sistema direciona o ator para a tela de autenticação. (RF06, RNF02)</li>
 </ol>
 <p><strong>FE04 - Conta com Status "inativo"</strong></p>
 <ol>
 <li>O ator tenta acessar a funcionalidade de busca com conta inativa. (RN18)</li>
-<li>O sistema identifica que a conta está inativa.</li>
-<li>O sistema bloqueia o acesso ao sistema.</li>
-<li>O sistema informa ao ator que a conta está inativa.</li>
+<li>O sistema identifica que a conta está inativa. (RN18)</li>
+<li>O sistema bloqueia o acesso ao sistema. (RN18)</li>
+<li>O sistema informa ao ator que a conta está inativa. (RN18)</li>
 </ol>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>
@@ -1191,40 +1208,40 @@
 </thead>
 <tbody>
 <tr>
-<td>RN07</td>
+<td><a href="../../Regras-Negocio/#rn07">RN07</a></td>
 <td>Impedir cadastro de dois alunos com a mesma matrícula ou CPF</td>
-<td>Garante que os resultados da busca sejam únicos e não duplicados</td>
+<td>Garante que os resultados da busca sejam únicos e sem duplicidades</td>
 <td>Evita conflito de dados.</td>
 </tr>
 <tr>
-<td>RN11</td>
+<td><a href="../../Regras-Negocio/#rn11">RN11</a></td>
 <td>Só turmas e etapas ativas podem receber novos vínculos</td>
 <td>A busca pode retornar turmas/etapas inativas, mas elas não podem receber novos alunos</td>
 <td>Evita alocar matrículas em estruturas inativas.</td>
 </tr>
 <tr>
-<td>RN12</td>
+<td><a href="../../Regras-Negocio/#rn12">RN12</a></td>
 <td>Inativar uma turma ou etapa não elimina os vínculos existentes</td>
 <td>Turmas/etapas inativas aparecem na busca, identificadas com status "inativo"</td>
 <td>Preserva o histórico de alocação dos alunos.</td>
 </tr>
 <tr>
-<td>RN13</td>
+<td><a href="../../Regras-Negocio/#rn13">RN13</a></td>
 <td>Impedir cadastro de duas etapas com o mesmo nome</td>
 <td>Garante que a busca por etapas não retorne duplicatas</td>
+<td>Evita ambiguidade na seleção.</td>
+</tr>
+<tr>
+<td><a href="../../Regras-Negocio/#rn14">RN14</a></td>
+<td>Impedir cadastro de duas turmas com o mesmo nome na mesma etapa</td>
+<td>Garante que a busca por turmas não retorne duplicatas dentro do mesmo segmento</td>
 <td>Evita conflito de dados.</td>
 </tr>
 <tr>
-<td>RN14</td>
-<td>Impedir cadastro de duas turmas com o mesmo nome dentro da mesma etapa</td>
-<td>Garante que a busca por turmas não retorne duplicatas dentro de uma mesma etapa</td>
-<td>Evita conflito de dados.</td>
-</tr>
-<tr>
-<td>RN18</td>
+<td><a href="../../Regras-Negocio/#rn18">RN18</a></td>
 <td>Apenas contas com status "Ativo" podem acessar o sistema</td>
 <td>Impede que contas inativas realizem buscas</td>
-<td>Garantir que ex-funcionários e/ou pessoas não autorizadas percam acesso total ao sistema e aos dados nele contidos.</td>
+<td>Garante proteção dos dados da creche exigida pela LGPD.</td>
 </tr>
 </tbody>
 </table>
@@ -1232,26 +1249,36 @@
 <table>
 <thead>
 <tr>
-<th>RF/RNF</th>
-<th>Relação com o UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF21 - Buscar aluno pelo nome</td>
+<td><a href="../../8_requisitos/#req-rf21">RF21</a></td>
+<td>Buscar aluno pelo nome</td>
 <td>Permite que a secretária busque alunos por nome completo ou parcial, sem diferenciar maiúsculas, minúsculas e acentos, retornando os dados de registro de matrícula.</td>
 </tr>
 <tr>
-<td>RF22 - Buscar turmas e etapas</td>
+<td><a href="../../8_requisitos/#req-rf22">RF22</a></td>
+<td>Buscar turmas e etapas</td>
 <td>Permite que a secretária busque turmas e etapas por nome completo ou parcial, exibindo mensagem "Nenhum resultado encontrado" quando não houver registros.</td>
 </tr>
 <tr>
-<td>RNF06 - Tempo de resposta para buscar aluno</td>
-<td>Retornar os resultados da consulta de alunos em menos de 2 segundos para 95% das requisições.</td>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Assegura que consultas aos alunos ocorram apenas sob sessão autenticada.</td>
 </tr>
 <tr>
-<td>RNF07 - Tempo de resposta para buscar turmas ou etapas</td>
-<td>Retornar os resultados da busca de turmas ou etapas em menos de 2 segundos para 95% das requisições.</td>
+<td><a href="../../8_requisitos/#req-rnf06">RNF06</a></td>
+<td>Tempo de resposta para buscar aluno</td>
+<td>Retorna os resultados da consulta de alunos em menos de 2 segundos para 95% das requisições.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf07">RNF07</a></td>
+<td>Tempo de resposta para buscar turmas ou etapas</td>
+<td>Retorna os resultados da busca de turmas ou etapas em menos de 2 segundos para 95% das requisições.</td>
 </tr>
 </tbody>
 </table>

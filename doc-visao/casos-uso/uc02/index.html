@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,11 +1116,11 @@
 
 
 <h1 id="uc02-gerenciar-usuarios-administrativos">UC02 - Gerenciar Usuários Administrativos</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
-<p><strong>Atores principais:</strong> Secretária</p>
+<p><strong>Atores principais:</strong> Secretária, Administrador</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
-<p>Permitir que qualquer usuário já cadastrado e autenticado no sistema (como as secretárias ou administradores da Creche Estação Vida) possa criar novas contas de acesso para outros membros da equipe administrativa.</p>
+<p>Permitir que qualquer usuário já cadastrado e autenticado no sistema (como as secretárias ou administradores da Creche Estação Vida) possa criar novas contas de acesso para outros membros da equipe administrativa e gerenciar seu status de acesso.</p>
 <h2 id="3-pre-condicoes">3. Pré-Condições</h2>
 <ol>
 <li>O ator deve estar autenticado no sistema.</li>
@@ -1101,13 +1129,13 @@
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
 <p><strong>FP01 - Cadastrar Novo Usuário</strong></p>
 <ol>
-<li>O ator acessa a seção de gerenciamento de usuários/configurações do sistema. (RF05)</li>
+<li>O ator acessa a seção de gerenciamento de usuários/configurações do sistema. (RF05, RNF02)</li>
 <li>O ator seleciona a opção de "Novo Usuário" ou "Cadastrar Membro". (RF05)</li>
-<li>O sistema apresenta o formulário de cadastro solicitando os dados necessários (ex: nome, e-mail e senha). (RF05)</li>
+<li>O sistema apresenta o formulário de cadastro solicitando os dados necessários (nome, e-mail e senha). (RF05)</li>
 <li>O ator preenche os dados do novo membro da equipe. (RF05)</li>
 <li>O ator seleciona a opção de confirmar o cadastro. (RF05)</li>
-<li>O sistema valida os dados fornecidos (verifica campos obrigatórios e se o e-mail já existe).</li>
-<li>O sistema cadastra o novo usuário no banco de dados. (RF05)</li>
+<li>O sistema valida os dados fornecidos (verifica campos obrigatórios, regras de senha forte e unicidade do e-mail). (RN19, RN20)</li>
+<li>O sistema cadastra o novo usuário no banco de dados com status ativo. (RF05, RN18)</li>
 <li>O sistema exibe uma mensagem de sucesso informando que a conta foi criada. (RF05)</li>
 <li>O sistema atualiza a lista exibindo o novo usuário cadastrado.</li>
 </ol>
@@ -1142,31 +1170,40 @@
 </ol>
 <p><strong>FE04 - Senha Fora do Padrão de Segurança</strong></p>
 <ol>
-<li>O ator insere uma senha com menos de 8 caracteres ou sem letras/números. (RF05)</li>
+<li>O ator insere uma senha com menos de 8 caracteres ou sem letras, números e caracteres especiais. (RF05)</li>
 <li>O sistema valida o padrão de segurança e reprova a senha. (RN20)</li>
 <li>O sistema interrompe o salvamento.</li>
-<li>O sistema exibe a mensagem: "A senha deve conter no mínimo 8 caracteres, incluindo letras e números."</li>
+<li>O sistema exibe a mensagem: "A senha deve conter no mínimo 8 caracteres, incluindo letras, números e caracteres especiais."</li>
 </ol>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>
 <thead>
 <tr>
-<th>RN</th>
-<th>Descrição</th>
+<th>ID</th>
+<th>Regra de Negócio</th>
+<th>Justificativa</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RN19</td>
-<td>Cadastro de usuário com email único.</td>
+<td><a href="../../Regras-Negocio/#rn18">RN18</a></td>
+<td>Apenas contas com status "Ativo" podem acessar o sistema.</td>
+<td>Garantir bloqueio imediato de contas inativadas.</td>
 </tr>
 <tr>
-<td>RN20</td>
-<td>Cadastro de senha contendo 8 caracteres, incluindo números, letras e caracteres especiais.</td>
+<td><a href="../../Regras-Negocio/#rn19">RN19</a></td>
+<td>Cadastro de usuário com e-mail único.</td>
+<td>O e-mail é a chave de login; duplicatas geram falha de autenticação.</td>
 </tr>
 <tr>
-<td>RN21</td>
-<td>Impedimento da exclusão de um usuário do banco de dados, apenas inativação.</td>
+<td><a href="../../Regras-Negocio/#rn20">RN20</a></td>
+<td>Senha com no mínimo 8 caracteres (letras, números e caracteres especiais).</td>
+<td>Segurança de acesso e proteção de dados sensíveis exigida pela LGPD.</td>
+</tr>
+<tr>
+<td><a href="../../Regras-Negocio/#rn21">RN21</a></td>
+<td>Impedimento da exclusão física de um usuário, apenas inativação.</td>
+<td>Preservar a rastreabilidade e integridade das ações registradas no sistema.</td>
 </tr>
 </tbody>
 </table>
@@ -1174,18 +1211,26 @@
 <table>
 <thead>
 <tr>
-<th>RF/RNF</th>
-<th>Relação com o UC</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF05</td>
-<td>Funcionalidade central deste caso de uso, permitindo a expansão do acesso à equipe administrativa.</td>
+<td><a href="../../8_requisitos/#req-rf05">RF05</a></td>
+<td>Cadastrar Usuários</td>
+<td>Funcionalidade central deste caso de uso, permitindo a concessão de acesso à equipe.</td>
 </tr>
 <tr>
-<td>RNF02</td>
-<td>Garante que apenas usuários que já passaram pelo login consigam acessar a tela de cadastro de novos usuários.</td>
+<td><a href="../../8_requisitos/#req-rnf01">RNF01</a></td>
+<td>Privacidade de Dados LGPD</td>
+<td>Restringe a gestão e dados cadastrais de usuários apenas a membros autorizados.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Garante que apenas usuários já autenticados possam acessar a tela de gestão de usuários.</td>
 </tr>
 </tbody>
 </table>

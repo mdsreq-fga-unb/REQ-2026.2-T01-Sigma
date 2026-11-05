@@ -13,6 +13,10 @@
       
       
       
+        <link rel="prev" href="../8_requisitos/">
+      
+      
+        <link rel="next" href="../9_dor_dod/">
       
       
         
@@ -258,18 +262,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -290,7 +296,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -511,7 +517,7 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
   
 
     
@@ -520,6 +526,44 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
     </li>
   
 
@@ -981,147 +1025,148 @@
 
 
 <h1 id="regras-de-negocio">Regras de Negócio</h1>
+<p>As Regras de Negócio (RNs) definem políticas, restrições e diretrizes operacionais indispensáveis ao funcionamento da Creche Estação Vida no sistema SIGMA. Todas as regras estão integradas e vinculadas aos respectivos requisitos e casos de uso no <a href="../8_requisitos/">Catálogo Unificado de Requisitos</a>.</p>
 <table>
 <thead>
 <tr>
 <th>ID</th>
 <th>Regra de Negócio</th>
 <th>Justificativa</th>
-<th>Requisitos Relacionados</th>
+<th>Requisitos &amp; Casos de Uso Relacionados</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RN01</td>
+<td><span id="rn01" class="rf-anchor">RN01</span></td>
 <td>Cada aluno pode ter apenas uma matrícula ativa por vez.</td>
 <td>Evita duplicidade de registros e conflitos de turma.</td>
-<td>RF08, RF09</td>
+<td><a href="../8_requisitos/#req-rf08">RF08</a>, <a href="../8_requisitos/#req-rf09">RF09</a> &bull; <a href="../casos-uso/uc04/">UC04</a></td>
 </tr>
 <tr>
-<td>RN02</td>
+<td><span id="rn02" class="rf-anchor">RN02</span></td>
 <td>Toda matrícula deve estar vinculada a exatamente uma turma e a uma etapa.</td>
 <td>Estrutura organizacional da creche.</td>
-<td>RF13, RF18, RF24</td>
+<td><a href="../8_requisitos/#req-rf13">RF13</a>, <a href="../8_requisitos/#req-rf18">RF18</a>, <a href="../8_requisitos/#req-rf24">RF24</a> &bull; <a href="../casos-uso/uc07/">UC07</a></td>
 </tr>
 <tr>
-<td>RN03</td>
+<td><span id="rn03" class="rf-anchor">RN03</span></td>
 <td>Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias: Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula.</td>
 <td>Garantir conformidade e documentação completa.</td>
-<td>RF09, RF10</td>
+<td><a href="../8_requisitos/#req-rf09">RF09</a>, <a href="../8_requisitos/#req-rf10">RF10</a> &bull; <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc07/">UC07</a></td>
 </tr>
 <tr>
-<td>RN04</td>
+<td><span id="rn04" class="rf-anchor">RN04</span></td>
 <td>Uma turma deve estar obrigatoriamente vinculada a uma etapa existente.</td>
 <td>Não pode existir turma solta.</td>
-<td>RF18, RF24</td>
+<td><a href="../8_requisitos/#req-rf18">RF18</a>, <a href="../8_requisitos/#req-rf24">RF24</a> &bull; <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc07/">UC07</a></td>
 </tr>
 <tr>
-<td>RN05</td>
+<td><span id="rn05" class="rf-anchor">RN05</span></td>
 <td>Todos os documentos anexados devem estar em formato PDF.</td>
 <td>Padronização e compatibilidade.</td>
-<td>RF14, RF15</td>
+<td><a href="../8_requisitos/#req-rf14">RF14</a>, <a href="../8_requisitos/#req-rf15">RF15</a> &bull; <a href="../casos-uso/uc05/">UC05</a></td>
 </tr>
 <tr>
-<td>RN06</td>
+<td><span id="rn06" class="rf-anchor">RN06</span></td>
 <td>Campos obrigatórios devem ser validados antes do salvamento.</td>
 <td>Garantir conformidade.</td>
-<td>RF09, RF10, RF13</td>
+<td><a href="../8_requisitos/#req-rf09">RF09</a>, <a href="../8_requisitos/#req-rf10">RF10</a>, <a href="../8_requisitos/#req-rf13">RF13</a> &bull; <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc07/">UC07</a></td>
 </tr>
 <tr>
-<td>RN07</td>
+<td><span id="rn07" class="rf-anchor">RN07</span></td>
 <td>Impedir cadastro de dois alunos com a mesma matrícula ou CPF.</td>
 <td>Evita conflito de dados.</td>
-<td>RF08, RF21</td>
+<td><a href="../8_requisitos/#req-rf08">RF08</a>, <a href="../8_requisitos/#req-rf21">RF21</a> &bull; <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc08/">UC08</a></td>
 </tr>
 <tr>
-<td>RN08</td>
+<td><span id="rn08" class="rf-anchor">RN08</span></td>
 <td>Um aluno não pode estar matriculado em duas turmas simultaneamente.</td>
 <td>Evitar duplicidade e conflito de horários.</td>
-<td>RF13</td>
+<td><a href="../8_requisitos/#req-rf13">RF13</a> &bull; <a href="../casos-uso/uc07/">UC07</a></td>
 </tr>
 <tr>
-<td>RN09</td>
+<td><span id="rn09" class="rf-anchor">RN09</span></td>
 <td>A criação de um aviso exige data e autor registrados e só poderá ser publicado quando o assunto e descrição estiverem devidamente preenchidos.</td>
 <td>Garante identificação e rastreabilidade.</td>
-<td>RF02</td>
+<td><a href="../8_requisitos/#req-rf02">RF02</a> &bull; <a href="../casos-uso/uc03/">UC03</a></td>
 </tr>
 <tr>
-<td>RN10</td>
+<td><span id="rn10" class="rf-anchor">RN10</span></td>
 <td>Uma matrícula inativa correspondente a um aluno não poderá ser editada, só pode ser consultada e reativada.</td>
 <td>Garante que registros inativos não sejam alterados.</td>
-<td>RF10, RF11, RF13, RF14</td>
+<td><a href="../8_requisitos/#req-rf10">RF10</a>, <a href="../8_requisitos/#req-rf11">RF11</a>, <a href="../8_requisitos/#req-rf13">RF13</a>, <a href="../8_requisitos/#req-rf14">RF14</a> &bull; <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc05/">UC05</a>, <a href="../casos-uso/uc07/">UC07</a></td>
 </tr>
 <tr>
-<td>RN11</td>
+<td><span id="rn11" class="rf-anchor">RN11</span></td>
 <td>Só turmas e etapas ativas podem receber novos vínculos.</td>
 <td>Evita alocar matrículas em estruturas inativas.</td>
-<td>RF13, RF20, RF24</td>
+<td><a href="../8_requisitos/#req-rf13">RF13</a>, <a href="../8_requisitos/#req-rf20">RF20</a>, <a href="../8_requisitos/#req-rf24">RF24</a> &bull; <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc07/">UC07</a>, <a href="../casos-uso/uc08/">UC08</a></td>
 </tr>
 <tr>
-<td>RN12</td>
+<td><span id="rn12" class="rf-anchor">RN12</span></td>
 <td>Inativar uma turma ou etapa não elimina os vínculos existentes.</td>
 <td>Preserva o histórico de alocação dos alunos.</td>
-<td>RF19</td>
+<td><a href="../8_requisitos/#req-rf19">RF19</a> &bull; <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc08/">UC08</a></td>
 </tr>
 <tr>
-<td>RN13</td>
+<td><span id="rn13" class="rf-anchor">RN13</span></td>
 <td>Impedir cadastro de duas etapas com o mesmo nome.</td>
 <td>Evita conflito de dados.</td>
-<td>RF18, RF22</td>
+<td><a href="../8_requisitos/#req-rf18">RF18</a>, <a href="../8_requisitos/#req-rf22">RF22</a> &bull; <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc08/">UC08</a></td>
 </tr>
 <tr>
-<td>RN14</td>
+<td><span id="rn14" class="rf-anchor">RN14</span></td>
 <td>Impedir cadastro de duas turmas com o mesmo nome dentro da mesma etapa.</td>
 <td>Evita conflito de dados.</td>
-<td>RF22, RF24</td>
+<td><a href="../8_requisitos/#req-rf22">RF22</a>, <a href="../8_requisitos/#req-rf24">RF24</a> &bull; <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc08/">UC08</a></td>
 </tr>
 <tr>
-<td>RN15</td>
+<td><span id="rn15" class="rf-anchor">RN15</span></td>
 <td>As alterações na matrícula só são aplicadas após a confirmação. Se a operação for cancelada, os dados não serão salvos.</td>
 <td>Evita salvamentos acidentais.</td>
-<td>RF23, RF10</td>
+<td><a href="../8_requisitos/#req-rf10">RF10</a>, <a href="../8_requisitos/#req-rf23">RF23</a> &bull; <a href="../casos-uso/uc04/">UC04</a></td>
 </tr>
 <tr>
-<td>RN16</td>
+<td><span id="rn16" class="rf-anchor">RN16</span></td>
 <td>O sistema deve bloquear o acesso após 5 tentativas consecutivas de login inválidas.</td>
 <td>Previne ataques de força bruta e garante a segurança do sistema.</td>
-<td>RF06, RNF02</td>
+<td><a href="../8_requisitos/#req-rf06">RF06</a>, <a href="../8_requisitos/#req-rnf02">RNF02</a> &bull; <a href="../casos-uso/uc01/">UC01</a></td>
 </tr>
 <tr>
-<td>RN17</td>
+<td><span id="rn17" class="rf-anchor">RN17</span></td>
 <td>A sessão do usuário deve ser encerrada após 30 minutos de inatividade contínua.</td>
 <td>Protege os dados sensíveis dos alunos caso o usuário tenha que sair do sistema e deixar ele logado.</td>
-<td>RF07, RNF01, RNF02</td>
+<td><a href="../8_requisitos/#req-rf07">RF07</a>, <a href="../8_requisitos/#req-rnf01">RNF01</a>, <a href="../8_requisitos/#req-rnf02">RNF02</a> &bull; <a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc03/">UC03</a></td>
 </tr>
 <tr>
-<td>RN18</td>
+<td><span id="rn18" class="rf-anchor">RN18</span></td>
 <td>Apenas contas com status "Ativo" podem acessar o sistema. Contas inativadas devem ser bloqueadas do sistema imediatamente.</td>
 <td>Garantir que ex-funcionários e/ou pessoas não autorizadas percam acesso total ao sistema e aos dados nele contidos.</td>
-<td>RF05, RF06, RNF02</td>
+<td><a href="../8_requisitos/#req-rf05">RF05</a>, <a href="../8_requisitos/#req-rf06">RF06</a>, <a href="../8_requisitos/#req-rnf02">RNF02</a> &bull; <a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc02/">UC02</a>, <a href="../casos-uso/uc03/">UC03</a>, <a href="../casos-uso/uc08/">UC08</a></td>
 </tr>
 <tr>
-<td>RN19</td>
+<td><span id="rn19" class="rf-anchor">RN19</span></td>
 <td>Cada usuário deverá ser cadastrado no sistema com um e-mail único.</td>
 <td>O e-mail atua como chave de identificação no login. E-mails duplicados geram falhas de autenticação e conflitos de contas.</td>
-<td>RF05</td>
+<td><a href="../8_requisitos/#req-rf05">RF05</a> &bull; <a href="../casos-uso/uc02/">UC02</a></td>
 </tr>
 <tr>
-<td>RN20</td>
+<td><span id="rn20" class="rf-anchor">RN20</span></td>
 <td>O cadastro da senha de um novo usuário do sistema deve conter obrigatoriamente 8 caracteres, incluindo letras, números e caracteres especiais.</td>
 <td>Garantir o nível mínimo de segurança contra acessos indevidos, apoiando a proteção de dados exigida pela LGPD.</td>
-<td>RF05, RNF01</td>
+<td><a href="../8_requisitos/#req-rf05">RF05</a>, <a href="../8_requisitos/#req-rnf01">RNF01</a> &bull; <a href="../casos-uso/uc02/">UC02</a></td>
 </tr>
 <tr>
-<td>RN21</td>
+<td><span id="rn21" class="rf-anchor">RN21</span></td>
 <td>Um usuário não pode ter sua conta excluída de forma definitiva do banco de dados, apenas inativado.</td>
 <td>Preservar a consistência e a rastreabilidade do sistema (manter o registro de quem criou um aviso ou editou uma matrícula, por exemplo).</td>
-<td>RF05</td>
+<td><a href="../8_requisitos/#req-rf05">RF05</a> &bull; <a href="../casos-uso/uc02/">UC02</a></td>
 </tr>
 <tr>
-<td>RN22</td>
+<td><span id="rn22" class="rf-anchor">RN22</span></td>
 <td>O cadastro de etapa exige obrigatoriamente o nome. O cadastro de turma exige obrigatoriamente o nome e a etapa vinculada.</td>
 <td>Sem o nome, não é possível aplicar as regras de unicidade (RN13 e RN14) nem buscar turmas e etapas.</td>
-<td>RF18, RF24</td>
+<td><a href="../8_requisitos/#req-rf18">RF18</a>, <a href="../8_requisitos/#req-rf24">RF24</a> &bull; <a href="../casos-uso/uc06/">UC06</a></td>
 </tr>
 </tbody>
 </table>

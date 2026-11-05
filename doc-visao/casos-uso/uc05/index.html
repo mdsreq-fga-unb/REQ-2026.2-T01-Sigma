@@ -511,7 +511,35 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
   
 
     
@@ -1088,7 +1116,7 @@
 
 
 <h1 id="uc05-gerenciar-documentos-digitais">UC05 - Gerenciar Documentos Digitais</h1>
-<p><a href="../">← Voltar para Casos de Uso</a></p>
+<p><a href="../">← Voltar para o Painel de Casos de Uso</a> • <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a></p>
 <h2 id="1-atores">1. Atores</h2>
 <p><strong>Ator principal:</strong> Secretárias da instituição</p>
 <h2 id="2-objetivo">2. Objetivo</h2>
@@ -1103,14 +1131,14 @@
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
 <p><strong>FP01 - Anexar um novo documento</strong></p>
 <ol>
-<li>O ator realiza a autenticação. (RF14)</li>
+<li>O ator realiza a autenticação. (RF14, RNF02)</li>
 <li>O ator realiza a busca de um card de matrícula. (RF14)</li>
 <li>O ator seleciona o card desejado. (RF14)</li>
 <li>O sistema apresenta as fichas e documentos daquele card. (RF14)</li>
 <li>O ator aciona o botão de fazer o upload de arquivo. (RF14)</li>
 <li>O sistema irá abrir uma tela do explorador de arquivos. (RF14)</li>
-<li>O ator seleciona o arquivo em formato PDF ou arrasta para a área de upload. (RF14)</li>
-<li>O sistema carrega o arquivo e realiza o upload. (RF14)</li>
+<li>O ator seleciona o arquivo em formato PDF ou arrasta para a área de upload. (RF14, RN05)</li>
+<li>O sistema carrega o arquivo e realiza o upload. (RF14, RNF01)</li>
 <li>O sistema apresenta uma mensagem de ação realizada com sucesso. (RF14)</li>
 <li>O sistema agora disponibiliza o documento para download em formato PDF. (RF16)</li>
 </ol>
@@ -1120,18 +1148,18 @@
 <li>O ator acessa um card de um aluno. (RF15)</li>
 <li>O ator seleciona o documento que deseja editar. (RF15)</li>
 <li>O sistema irá abrir o explorador de arquivos. (RF15)</li>
-<li>O ator seleciona o novo documento ou arrasta ele para a área de upload. (RF15)</li>
+<li>O ator seleciona o novo documento ou arrasta ele para a área de upload. (RF15, RN05)</li>
 <li>O autor aciona o botão de "salvar documento", e em seguida um de "tem certeza?". (RF15)</li>
-<li>O sistema vai realizar o upload do novo documento. (RF15)</li>
+<li>O sistema vai realizar o upload do novo documento. (RF15, RNF01)</li>
 <li>O sistema vai disponibilizar o download do novo documento. (RF16)</li>
-<li>O sistema deve disponibilizar a antiga versão do documento. (RF15)</li>
+<li>O sistema deve disponibilizar a versão atualizada do documento. (RF15)</li>
 <li>O sistema vai retornar uma mensagem de "ação realizada com sucesso". (RF15)</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
 <p><strong>FE01 - Formato inválido</strong></p>
 <ol>
 <li>O sistema identifica o formato do documento que não seja formato PDF.</li>
-<li>Não permite a ação e dá uma notificação de "formato de arquivo inválido".</li>
+<li>Não permite a ação e dá uma notificação de "formato de arquivo inválido". (RN05)</li>
 </ol>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>
@@ -1145,10 +1173,16 @@
 </thead>
 <tbody>
 <tr>
-<td>RN05</td>
+<td><a href="../../Regras-Negocio/#rn05">RN05</a></td>
 <td>Todos os documentos anexados devem estar em formato PDF.</td>
 <td>Padronização e compatibilidade.</td>
-<td>RF14, RF15</td>
+<td><a href="../../8_requisitos/#req-rf14">RF14</a>, <a href="../../8_requisitos/#req-rf15">RF15</a></td>
+</tr>
+<tr>
+<td><a href="../../Regras-Negocio/#rn10">RN10</a></td>
+<td>Uma matrícula inativa não poderá ser editada nem receber novos anexos.</td>
+<td>Preservar integridade de registros inativos.</td>
+<td><a href="../../8_requisitos/#req-rf14">RF14</a>, <a href="../../8_requisitos/#req-rf15">RF15</a></td>
 </tr>
 </tbody>
 </table>
@@ -1157,20 +1191,35 @@
 <thead>
 <tr>
 <th>ID</th>
-<th>Nome do requisito</th>
-<th>Descrição</th>
+<th>Nome do Requisito</th>
+<th>Relação com o Caso de Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RF14</td>
+<td><a href="../../8_requisitos/#req-rf14">RF14</a></td>
 <td>Anexar documentos</td>
-<td>O sistema deve permitir que qualquer perfil autorizado anexe documentos digitalizados às fichas dos alunos.</td>
+<td>Permite ao usuário anexar cópias digitalizadas em PDF às fichas de matrícula do aluno.</td>
 </tr>
 <tr>
-<td>RF15</td>
-<td>Editar documentos</td>
-<td>O sistema deve permitir que o administrador ou o perfil autorizado substitua um documento já anexado a uma ficha, por meio da anexação de um novo arquivo PDF. A substituição deve remover o arquivo anterior e manter apenas o novo.</td>
+<td><a href="../../8_requisitos/#req-rf15">RF15</a></td>
+<td>Editar/Substituir documentos</td>
+<td>Permite a substituição controlada de arquivos em anexo com erro ou desatualizados.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rf16">RF16</a></td>
+<td>Baixar fichas e documentos</td>
+<td>Permite o download individual de fichas preenchidas ou anexos comprobatórios em formato PDF.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf01">RNF01</a></td>
+<td>Privacidade de Dados LGPD</td>
+<td>Proteção e guarda confidencial dos documentos digitalizados dos alunos.</td>
+</tr>
+<tr>
+<td><a href="../../8_requisitos/#req-rnf02">RNF02</a></td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>Impede downloads e uploads por pessoas não autorizadas.</td>
 </tr>
 </tbody>
 </table>

@@ -16,7 +16,7 @@
         <link rel="prev" href="../7_interacao/">
       
       
-        <link rel="next" href="../9_dor_dod/">
+        <link rel="next" href="../Regras-Negocio/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>8 Requisitos - SIGMA</title>
+        <title>8 Catálogo Unificado de Requisitos - SIGMA</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#8-requisitos" class="md-skip">
+        <a href="#8-catalogo-unificado-de-requisitos" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8 Requisitos
+              8 Catálogo Unificado de Requisitos
             
           </span>
         </div>
@@ -526,7 +526,7 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
   
 
     
@@ -544,7 +544,7 @@
   <span class="md-ellipsis">
     
   
-    8 Requisitos
+    8 Catálogo Unificado de Requisitos
   
 
     
@@ -570,10 +570,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#81-lista-de-requisitos-funcionais-especificacao-suplementar" class="md-nav__link">
+  <a href="#81-catalogo-de-casos-de-uso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Lista de Requisitos Funcionais (Especificação Suplementar)
+        8.1 Catálogo de Casos de Uso
       
     </span>
   </a>
@@ -581,10 +581,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#82-lista-de-requisitos-nao-funcionais-especificacao-suplementar" class="md-nav__link">
+  <a href="#82-tabela-geral-de-requisitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2 Lista de Requisitos Não Funcionais (Especificação Suplementar)
+        8.2 Tabela Geral de Requisitos
       
     </span>
   </a>
@@ -606,6 +606,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Regras-Negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras de Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1058,10 +1086,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#81-lista-de-requisitos-funcionais-especificacao-suplementar" class="md-nav__link">
+  <a href="#81-catalogo-de-casos-de-uso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Lista de Requisitos Funcionais (Especificação Suplementar)
+        8.1 Catálogo de Casos de Uso
       
     </span>
   </a>
@@ -1069,10 +1097,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#82-lista-de-requisitos-nao-funcionais-especificacao-suplementar" class="md-nav__link">
+  <a href="#82-tabela-geral-de-requisitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2 Lista de Requisitos Não Funcionais (Especificação Suplementar)
+        8.2 Tabela Geral de Requisitos
       
     </span>
   </a>
@@ -1107,319 +1135,618 @@
 
 
 
-<h1 id="8-requisitos">8. Requisitos</h1>
-<h2 id="81-lista-de-requisitos-funcionais-especificacao-suplementar">8.1 Lista de Requisitos Funcionais (Especificação Suplementar)</h2>
-<p>Os requisitos funcionais estabelecem um consenso que fomenta a implementação dos objetivos planejados para o sistema SIGMA. A seguir, é apresentado o escopo atualizado do sistema, organizado de acordo com os Objetivos Específicos (OEs) e as Características do Produto (CPs).</p>
+<h1 id="8-catalogo-unificado-de-requisitos">8. Catálogo Unificado de Requisitos</h1>
+<p>Este documento consolida os requisitos funcionais e não funcionais do sistema <strong>SIGMA</strong>, estruturando suas relações com os objetivos do produto, regras de negócio e planejamento de entregas. Os requisitos funcionais são declarados através de <strong>Casos de Uso (UC)</strong>, detalhando fluxos principais, alternativos, exceções e critérios de aceitação.</p>
 <hr />
-<h3 id="oe1-facilitar-e-agilizar-a-organizacao-e-a-continuidade-do-processo-administrativo">(OE.1) Facilitar e agilizar a organização e a continuidade do processo administrativo</h3>
-<p><strong>CP2 - Edição e Atualização de cards de matrícula</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span id="req-rf10" class="rf-anchor">RF10</span></td>
-<td style="text-align: left;">Editar fichas do card</td>
-<td style="text-align: left;">As secretárias devem poder editar qualquer uma das informações das fichas de um aluno, a fim de que possam manter os dados atualizados.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf11" class="rf-anchor">RF11</span></td>
-<td style="text-align: left;">Inativar card de aluno</td>
-<td style="text-align: left;">As secretárias devem poder inativar um card de um aluno, mudando o status da matrícula dele para "inativo", restringindo esse card e impossibilitando qualquer ação com ele.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf12" class="rf-anchor">RF12</span></td>
-<td style="text-align: left;">Reativar card de aluno</td>
-<td style="text-align: left;">Permitir a alteração, pelas secretárias, do status do card de aluno para ativo, habilitando ações do sistema com aquele card.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>CP3 - Consulta de informações dos cards de matrícula</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span id="req-rf16" class="rf-anchor">RF16</span></td>
-<td style="text-align: left;">Baixar fichas e documentos</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou o perfil autorizado baixe individualmente uma ficha de matrícula ou um documento anexado a ela, em formato PDF.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf21" class="rf-anchor">RF21</span></td>
-<td style="text-align: left;">Buscar aluno pelo nome</td>
-<td style="text-align: left;">O sistema deve permitir que as secretárias ou o perfil autorizado busquem alunos informando o nome completo ou parte dele, sem diferenciar maiúsculas, minúsculas e acentos. O resultado deve retornar os dados de registro de matrícula do aluno.</td>
-</tr>
-</tbody>
-</table>
+<h2 id="81-catalogo-de-casos-de-uso">8.1 Catálogo de Casos de Uso</h2>
+<p>O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com Características do Produto (CP) e Objetivos Específicos (OE), capacidades funcionais (RF), requisitos não funcionais (RNF), regras de negócio (RN) e status no MVP:</p>
+<div class="catalogo-panel">
+
+  <!-- UC01 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc01/">UC01 - Gerenciar Autenticação</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP4 - Controle de Acesso</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.3 - Segurança</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Permitir que as secretárias e administradores acessem e encerrem suas sessões com credenciais seguras, protegendo o acesso aos dados sensíveis da instituição.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf06" class="chip chip--rf" title="Realizar login">RF06 - Realizar Login</a>
+            <a href="#req-rf07" class="chip chip--rf" title="Realizar logout">RF07 - Realizar Logout</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf05" class="chip chip--rnf" title="Tempo de Resposta ao Logar < 2s">RNF05</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn16" class="chip chip--rn" title="Bloqueio após 5 tentativas consecutivas inválidas">RN16</a>
+            <a href="../Regras-Negocio/#rn17" class="chip chip--rn" title="Encerramento de sessão após 30 min de inatividade">RN17</a>
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Apenas contas com status Ativo">RN18</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc01/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC02 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc02/">UC02 - Gerenciar Usuários Administrativos</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP4 - Controle de Acesso</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.3 - Segurança</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Permitir o cadastro, controle e inativação de contas da equipe administrativa da creche com restrições e políticas de senhas fortes.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf05" class="chip chip--rf" title="Cadastrar Usuários">RF05 - Cadastrar Usuários</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso não Autenticado">RNF02</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Bloqueio imediato de contas inativas">RN18</a>
+            <a href="../Regras-Negocio/#rn19" class="chip chip--rn" title="E-mail único cadastrado">RN19</a>
+            <a href="../Regras-Negocio/#rn20" class="chip chip--rn" title="Senha de 8 caracteres com letras, números e especiais">RN20</a>
+            <a href="../Regras-Negocio/#rn21" class="chip chip--rn" title="Impedimento de exclusão física, apenas inativação">RN21</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc02/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC03 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc03/">UC03 - Gerenciar Quadro de Avisos</a></h3>
+        <span class="badge-mvp badge-mvp--nao"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Não</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP6 - Avisos Rápidos</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.4 - Comunicação Interna</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Disponibilizar espaço central para lançamento, visualização e remoção de avisos internos entre a equipe administrativa da creche.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf01" class="chip chip--rf" title="Disponibilizar quadro de avisos">RF01</a>
+            <a href="#req-rf02" class="chip chip--rf" title="Lançar avisos">RF02</a>
+            <a href="#req-rf03" class="chip chip--rf" title="Exibir avisos">RF03</a>
+            <a href="#req-rf04" class="chip chip--rf" title="Apagar avisos">RF04</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn09" class="chip chip--rn" title="Assunto, descrição, data e autor obrigatórios">RN09</a>
+            <a href="../Regras-Negocio/#rn17" class="chip chip--rn" title="Timeout de inatividade 30 min">RN17</a>
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Apenas contas ativas">RN18</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc03/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC04 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc04/">UC04 - Gerenciar Fichas de Matrícula</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP1, CP2, CP8</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1, OE.2, OE.3</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Cadastrar cards de alunos, preencher fichas socioeconômicas e termos escolares, editar dados, registrar histórico e exigir confirmação de salvamento.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf08" class="chip chip--rf" title="Cadastrar card de aluno">RF08</a>
+            <a href="#req-rf09" class="chip chip--rf" title="Preenchimento de fichas">RF09</a>
+            <a href="#req-rf10" class="chip chip--rf" title="Editar fichas do card">RF10</a>
+            <a href="#req-rf11" class="chip chip--rf" title="Inativar card de aluno (Pós-MVP)">RF11</a>
+            <a href="#req-rf12" class="chip chip--rf" title="Reativar card de aluno (Pós-MVP)">RF12</a>
+            <a href="#req-rf17" class="chip chip--rf" title="Apresentar histórico de edições">RF17</a>
+            <a href="#req-rf23" class="chip chip--rf" title="Possibilitar salvamento com confirmação">RF23</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados LGPD">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf08" class="chip chip--rnf" title="Tempo de salvamento de ficha < 5s">RNF08</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn01" class="chip chip--rn" title="Apenas uma matrícula ativa por vez">RN01</a>
+            <a href="../Regras-Negocio/#rn03" class="chip chip--rn" title="Matrícula ativa mediante 5 fichas completas">RN03</a>
+            <a href="../Regras-Negocio/#rn06" class="chip chip--rn" title="Validação de campos obrigatórios">RN06</a>
+            <a href="../Regras-Negocio/#rn07" class="chip chip--rn" title="Impedir dois alunos com mesmo CPF ou matrícula">RN07</a>
+            <a href="../Regras-Negocio/#rn10" class="chip chip--rn" title="Matrícula inativa não pode ser editada">RN10</a>
+            <a href="../Regras-Negocio/#rn15" class="chip chip--rn" title="Alterações confirmadas antes de salvar">RN15</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc04/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC05 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc05/">UC05 - Gerenciar Documentos Digitais</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP5 - Gerenciamento de Documentos</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.2 - Preservar Informações</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Anexar documentos digitalizados (certidões, declarações) em formato PDF, realizar download e substituir arquivos vinculados às fichas.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf14" class="chip chip--rf" title="Anexar documentos">RF14 - Anexar</a>
+            <a href="#req-rf15" class="chip chip--rf" title="Editar/Substituir documento">RF15 - Substituir</a>
+            <a href="#req-rf16" class="chip chip--rf" title="Baixar fichas e documentos">RF16 - Baixar PDF</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade e Retenção Segura LGPD">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn05" class="chip chip--rn" title="Formato obrigatório em PDF">RN05</a>
+            <a href="../Regras-Negocio/#rn10" class="chip chip--rn" title="Matrícula inativa não pode receber novos anexos">RN10</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc05/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC06 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc06/">UC06 - Gerenciar Estrutura Escolar</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP7 - Turmas e Etapas</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização Administrativa</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Cadastrar novas etapas de ensino e turmas da creche, vincular turmas às suas respectivas etapas e gerenciar inativações com histórico.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf18" class="chip chip--rf" title="Cadastrar Etapa">RF18 - Cadastrar Etapa</a>
+            <a href="#req-rf19" class="chip chip--rf" title="Inativar turma e etapa">RF19 - Inativar</a>
+            <a href="#req-rf20" class="chip chip--rf" title="Vincular turma à etapa">RF20 - Vincular</a>
+            <a href="#req-rf24" class="chip chip--rf" title="Cadastrar Turma">RF24 - Cadastrar Turma</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf07" class="chip chip--rnf" title="Tempo de busca de turmas/etapas < 2s">RNF07</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn04" class="chip chip--rn" title="Turma obrigatoriamente vinculada a etapa">RN04</a>
+            <a href="../Regras-Negocio/#rn11" class="chip chip--rn" title="Apenas estruturas ativas recebem vínculos">RN11</a>
+            <a href="../Regras-Negocio/#rn12" class="chip chip--rn" title="Inativação mantém vínculos existentes">RN12</a>
+            <a href="../Regras-Negocio/#rn13" class="chip chip--rn" title="Impedir etapas duplicadas">RN13</a>
+            <a href="../Regras-Negocio/#rn14" class="chip chip--rn" title="Impedir turmas duplicadas na mesma etapa">RN14</a>
+            <a href="../Regras-Negocio/#rn22" class="chip chip--rn" title="Campos obrigatórios de etapa e turma">RN22</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc06/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC07 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc07/">UC07 - Alocar Alunos</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP7, CP1</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização Administrativa</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Vincular o card de matrícula do aluno a uma turma existente ativa, garantindo alocação única e consistência na formação de salas.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf13" class="chip chip--rf" title="Vincular aluno a turma">RF13 - Vincular Turma</a>
+            <a href="#req-rf21" class="chip chip--rf" title="Buscar aluno pelo nome">RF21 - Buscar Aluno</a>
+            <a href="#req-rf22" class="chip chip--rf" title="Buscar turmas e etapas">RF22 - Buscar Turma</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf06" class="chip chip--rnf" title="Tempo de busca de aluno < 2s">RNF06</a>
+            <a href="#req-rnf07" class="chip chip--rnf" title="Tempo de busca de turmas < 2s">RNF07</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn02" class="chip chip--rn" title="Matrícula vinculada a 1 turma e 1 etapa">RN02</a>
+            <a href="../Regras-Negocio/#rn03" class="chip chip--rn" title="Fichas completas para ativação">RN03</a>
+            <a href="../Regras-Negocio/#rn04" class="chip chip--rn" title="Turma vinculada a etapa">RN04</a>
+            <a href="../Regras-Negocio/#rn06" class="chip chip--rn" title="Validação de campos antes de salvar">RN06</a>
+            <a href="../Regras-Negocio/#rn08" class="chip chip--rn" title="Impedir aluno em duas turmas simultaneamente">RN08</a>
+            <a href="../Regras-Negocio/#rn10" class="chip chip--rn" title="Matrícula inativa não pode ter alocação alterada">RN10</a>
+            <a href="../Regras-Negocio/#rn11" class="chip chip--rn" title="Apenas turmas ativas recebem novos alunos">RN11</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc07/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC08 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc08/">UC08 - Consultar Registros (Busca)</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP3, CP7</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização e Continuidade</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Consultar alunos por nome completo ou parcial (sem distinção de maiúsculas/acentos) e pesquisar turmas e etapas em tempo hábil.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf21" class="chip chip--rf" title="Buscar aluno pelo nome">RF21 - Buscar Aluno</a>
+            <a href="#req-rf22" class="chip chip--rf" title="Buscar turmas e etapas">RF22 - Buscar Turmas</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf06" class="chip chip--rnf" title="Tempo de busca de aluno < 2s">RNF06</a>
+            <a href="#req-rnf07" class="chip chip--rnf" title="Tempo de busca de turmas < 2s">RNF07</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn07" class="chip chip--rn" title="Resultados únicos de matrícula e CPF">RN07</a>
+            <a href="../Regras-Negocio/#rn11" class="chip chip--rn" title="Identificação de status ativo/inativo">RN11</a>
+            <a href="../Regras-Negocio/#rn12" class="chip chip--rn" title="Inativos permanecem visíveis na consulta">RN12</a>
+            <a href="../Regras-Negocio/#rn13" class="chip chip--rn" title="Unicidade de nomes de etapas">RN13</a>
+            <a href="../Regras-Negocio/#rn14" class="chip chip--rn" title="Unicidade de nomes de turmas na etapa">RN14</a>
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Apenas usuários autenticados">RN18</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc08/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+</div>
+
 <hr />
-<h3 id="oe2-preservar-e-centralizar-o-historico-e-as-informacoes-das-matriculas">(OE.2) Preservar e centralizar o histórico e as informações das matrículas</h3>
-<p><strong>CP1 - Gerenciamento de cards de matrícula</strong></p>
+<p><span id="83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso"></span>
+<span id="82-lista-de-requisitos-nao-funcionais-especificacao-suplementar"></span></p>
+<h2 id="82-tabela-geral-de-requisitos">8.2 Tabela Geral de Requisitos</h2>
+<p>A tabela a seguir consolida as especificações de todos os requisitos funcionais e não funcionais do sistema:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span id="req-rf08" class="rf-anchor">RF08</span></td>
-<td style="text-align: left;">Cadastrar card de aluno</td>
-<td style="text-align: left;">As secretárias devem poder criar card de alunos que representam os registros de matrícula de tal.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf09" class="rf-anchor">RF09</span></td>
-<td style="text-align: left;">Preenchimento de fichas</td>
-<td style="text-align: left;">As secretárias devem poder preencher as fichas e termos: socioeconômico, requerimento de matrícula, termo de autorização de imagem, termo de saída de aluno e de compromisso escolar, preenchendo assim os dados de tais.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>CP5 - Gerenciamento de documentos</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span id="req-rf14" class="rf-anchor">RF14</span></td>
-<td style="text-align: left;">Anexar documentos</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou o perfil autorizado anexe documentos digitalizados às fichas dos alunos.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf15" class="rf-anchor">RF15</span></td>
-<td style="text-align: left;">Editar documento</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou o perfil autorizado substitua um documento já anexado a uma ficha, por meio da anexação de um novo arquivo PDF. A substituição deve remover o arquivo anterior e manter apenas o novo.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="oe3-controlar-o-acesso-e-garantir-a-seguranca-das-informacoes-do-sistema">(OE.3) Controlar o acesso e garantir a segurança das informações do sistema</h3>
-<p><strong>CP4 - Controle de acesso de usuários</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span id="req-rf05" class="rf-anchor">RF05</span></td>
-<td style="text-align: left;">Cadastrar Usuários</td>
-<td style="text-align: left;">Permitir aos usuários referentes à equipe administrativa cadastrar novas contas de administração ao sistema.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf06" class="rf-anchor">RF06</span></td>
-<td style="text-align: left;">Realizar login</td>
-<td style="text-align: left;">As secretárias da instituição deverão ser capazes de realizar login padrão com nome de usuário e senha.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf07" class="rf-anchor">RF07</span></td>
-<td style="text-align: left;">Realizar logout</td>
-<td style="text-align: left;">As secretárias da instituição deverão ser capazes de realizar logout de sua conta.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>CP8 - Auditoria e Integridade</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span id="req-rf17" class="rf-anchor">RF17</span></td>
-<td style="text-align: left;">Apresentar histórico de edições</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou o perfil autorizado consulte o histórico de edições de uma ficha, exibindo no mínimo: (i) nome do usuário que realizou a edição, (ii) data e hora da edição, (iii) campo alterado, (iv) valor anterior e (v) valor novo.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span id="req-rf23" class="rf-anchor">RF23</span></td>
-<td style="text-align: left;">Possibilitar salvamento de dados</td>
-<td style="text-align: left;">O sistema deve pedir às secretárias ou ao perfil autorizado a confirmação da operação ao solicitar o salvamento do preenchimento ou da edição de uma ficha de matrícula, oferecendo as opções "Confirmar" e "Cancelar".</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="oe4-facilitar-a-comunicacao-interna-entre-a-equipe-administrativa">(OE.4) Facilitar a comunicação interna entre a equipe administrativa</h3>
-<p><strong>CP6 - Avisos Rápidos</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Nome do Requisito</th>
 <th style="text-align: left;">Descrição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><span id="req-rf01" class="rf-anchor">RF01</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Disponibilizar quadro de avisos</td>
-<td style="text-align: left;">O sistema deve disponibilizar um quadro de avisos de modificações, inserções e exclusões de informação referentes às matrículas para os usuários referentes à equipe administrativa.</td>
+<td style="text-align: left;">O sistema deve disponibilizar um espaço central para visualização e gerenciamento de avisos administrativos da creche.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf02" class="rf-anchor">RF02</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Lançar avisos</td>
-<td style="text-align: left;">Permitir que os usuários autenticados referentes à equipe administrativa possam lançar avisos contendo os campos obrigatórios de assunto e descrição, com data e autor registrados, e direcionar os mesmos aos demais usuários.</td>
+<td style="text-align: left;">As secretárias ou administradores devem poder publicar novos avisos informando assunto, descrição, autor e data.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf03" class="rf-anchor">RF03</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Exibir avisos</td>
-<td style="text-align: left;">Exibir avisos aos usuários referentes à equipe administrativa no momento em que forem lançados, mantendo a notificação ativa no sistema até um usuário inativo ficar ativo e poder ler a notificação.</td>
+<td style="text-align: left;">O sistema deve listar de forma clara os avisos cadastrados no mural geral da instituição.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf04" class="rf-anchor">RF04</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Apagar avisos</td>
-<td style="text-align: left;">Permitir aos usuários referentes à equipe administrativa apagar de forma definitiva avisos do quadro de avisos para si mesmos, sem confirmação de exclusão.</td>
+<td style="text-align: left;">As secretárias ou administradores devem poder excluir avisos publicados quando não forem mais necessários.</td>
 </tr>
-</tbody>
-</table>
-<p><strong>CP7 - Módulo de gerenciamento de turmas e etapas</strong></p>
-<table>
-<thead>
 <tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
+<td style="text-align: left;"><span id="req-rf05" class="rf-anchor">RF05</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Cadastrar Usuários</td>
+<td style="text-align: left;">Permitir que usuários com perfil administrativo realizem o cadastro de novos usuários no sistema.</td>
 </tr>
-</thead>
-<tbody>
+<tr>
+<td style="text-align: left;"><span id="req-rf06" class="rf-anchor">RF06</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Realizar login</td>
+<td style="text-align: left;">As secretárias e administradores devem poder realizar login no sistema com e-mail cadastrado e senha.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf07" class="rf-anchor">RF07</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Realizar logout</td>
+<td style="text-align: left;">As secretárias e administradores devem poder encerrar com segurança sua sessão ativa no sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf08" class="rf-anchor">RF08</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Cadastrar card de aluno</td>
+<td style="text-align: left;">As secretárias devem poder criar cards de alunos representando os registros oficiais de matrícula da instituição.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf09" class="rf-anchor">RF09</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Preenchimento de fichas</td>
+<td style="text-align: left;">As secretárias devem poder preencher as fichas obrigatórias: Termo de Compromisso Escolar, Termo de Autorização de Uso de Imagem, Termo de Saída de Aluno, Ficha Socioeconômica e Requerimento de Matrícula.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf10" class="rf-anchor">RF10</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Editar fichas do card</td>
+<td style="text-align: left;">As secretárias devem poder editar qualquer uma das informações das fichas do card para manutenção e atualização cadastral contínua.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf11" class="rf-anchor">RF11</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Inativar card de aluno</td>
+<td style="text-align: left;">As secretárias devem poder inativar o card de um aluno, alterando seu status para "inativo" e restringindo edições.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf12" class="rf-anchor">RF12</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Reativar card de aluno</td>
+<td style="text-align: left;">Permitir a alteração do status do card de aluno de inativo para ativo, restaurando as permissões de edição e vinculação.</td>
+</tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf13" class="rf-anchor">RF13</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Vincular aluno a turma</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou perfil autorizado vincule um aluno (card) a uma turma existente.</td>
+<td style="text-align: left;">As secretárias devem poder associar o card de matrícula de um aluno a uma turma cadastrada e ativa da creche.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><span id="req-rf18" class="req-anchor">RF18</span></td>
+<td style="text-align: left;"><span id="req-rf14" class="rf-anchor">RF14</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Anexar documentos</td>
+<td style="text-align: left;">O sistema deve permitir anexar cópias digitalizadas de documentos (certidões, declarações, termos) em formato PDF às fichas dos alunos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf15" class="rf-anchor">RF15</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Editar/Substituir documento</td>
+<td style="text-align: left;">O sistema deve permitir substituir um documento PDF previamente anexado a uma ficha, removendo o arquivo anterior e mantendo o novo documento.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf16" class="rf-anchor">RF16</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Baixar fichas e documentos</td>
+<td style="text-align: left;">O sistema deve permitir o download individual de qualquer ficha de matrícula ou documento anexado em formato PDF.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf17" class="rf-anchor">RF17</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Apresentar histórico de edições</td>
+<td style="text-align: left;">O sistema deve permitir a consulta do histórico de edições de uma ficha, exibindo usuário responsável, data/hora da edição, campo alterado, valor anterior e novo valor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf18" class="rf-anchor">RF18</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Cadastrar Etapa</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou o perfil autorizado cadastre uma nova etapa (série de ensino) no sistema.</td>
+<td style="text-align: left;">O sistema deve permitir que as secretárias ou administradores cadastrem novas etapas escolares da creche.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf19" class="rf-anchor">RF19</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Inativar turma e etapa</td>
-<td style="text-align: left;">O sistema deve permitir que as secretárias ou o perfil autorizado alterem o status de uma turma ou etapa de "ativo" para "inativo". Uma turma ou etapa inativa mantém os vínculos já existentes e continua aparecendo na busca, identificada com o status "inativo".</td>
+<td style="text-align: left;">O sistema deve permitir inativar turmas ou etapas quando não estiverem mais em operação, preservando o histórico de vínculos anteriores.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf20" class="rf-anchor">RF20</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Vincular turma à etapa</td>
-<td style="text-align: left;">O sistema deve permitir que as secretárias ou o perfil autorizado vinculem uma turma a uma etapa, selecionando ambas entre as cadastradas com status ativo.</td>
+<td style="text-align: left;">O sistema deve permitir vincular uma turma a uma etapa de ensino existente e ativa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf21" class="rf-anchor">RF21</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Buscar aluno pelo nome</td>
+<td style="text-align: left;">O sistema deve permitir buscar alunos pelo nome completo ou parcial, sem distinção de maiúsculas, minúsculas ou acentos, retornando os registros de matrícula correspondentes.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf22" class="rf-anchor">RF22</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Buscar turmas e etapas</td>
-<td style="text-align: left;">O sistema deve permitir que as secretárias ou o perfil autorizado busquem turmas e etapas pelo nome completo ou parcial. Caso nenhum registro seja encontrado, o sistema deve exibir a mensagem "Nenhum resultado encontrado".</td>
+<td style="text-align: left;">O sistema deve permitir pesquisar turmas e etapas cadastradas na instituição para consulta e vinculação.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf23" class="rf-anchor">RF23</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Possibilitar salvamento com confirmação</td>
+<td style="text-align: left;">O sistema deve exigir confirmação explícita ("Confirmar" ou "Cancelar") ao solicitar o salvamento ou alteração de uma ficha de matrícula, prevenindo perdas acidentais.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rf24" class="rf-anchor">RF24</span></td>
+<td style="text-align: left;">Funcional</td>
 <td style="text-align: left;">Cadastrar Turma</td>
-<td style="text-align: left;">O sistema deve permitir que o administrador ou o perfil autorizado cadastre uma nova turma, obrigatoriamente vinculada a uma etapa existente.</td>
+<td style="text-align: left;">O sistema deve permitir cadastrar uma nova turma associada obrigatoriamente a uma etapa de ensino existente.</td>
 </tr>
-</tbody>
-</table>
-<hr />
-<h2 id="82-lista-de-requisitos-nao-funcionais-especificacao-suplementar">8.2 Lista de Requisitos Não Funcionais (Especificação Suplementar)</h2>
-<p>Os requisitos não funcionais definem critérios de qualidade do sistema SIGMA. A tabela a seguir apresenta os RNFs com sua classificação segundo as categorias do modelo FURPS+/URPS (Usabilidade, Confiabilidade, Desempenho, Segurança).</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Nome do requisito</th>
-<th style="text-align: left;">Descrição</th>
-<th style="text-align: left;">Classificação URPS+</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td style="text-align: left;"><span id="req-rnf01" class="rf-anchor">RNF01</span></td>
-<td style="text-align: left;">Privacidade de Dados e Retenção Segura</td>
-<td style="text-align: left;">Garantir a privacidade dos dados pessoais restringindo sua visualização apenas a usuários autenticados, apoiando a segurança da informação exigida pela LGPD.</td>
-<td style="text-align: left;">Segurança</td>
+<td style="text-align: left;">Não Funcional (Segurança)</td>
+<td style="text-align: left;">Privacidade de Dados e Proteção LGPD</td>
+<td style="text-align: left;">Garantir a privacidade dos dados pessoais e sensíveis das crianças e famílias, restringindo o acesso e a visualização exclusivamente a usuários autenticados da creche, em conformidade com a LGPD.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf02" class="rf-anchor">RNF02</span></td>
+<td style="text-align: left;">Não Funcional (Segurança)</td>
 <td style="text-align: left;">Restrição de Acesso não Autenticado</td>
-<td style="text-align: left;">O sistema deve restringir o acesso às suas funcionalidades internas exclusivamente a usuários autenticados por meio de credenciais válidas cadastradas (e-mail e senha). Qualquer tentativa de acesso não autenticado deve ser bloqueada, resultando no redirecionamento do usuário para a tela de login (na interface de usuário) e retornando o código de status HTTP 401 - Unauthorized (na comunicação com a API).</td>
-<td style="text-align: left;">Segurança</td>
+<td style="text-align: left;">O sistema deve restringir o acesso a todas as rotas e funcionalidades internas exclusivamente a usuários autenticados com credenciais válidas. Requisições não autenticadas devem retornar HTTP 401 e redirecionar para login.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf03" class="rf-anchor">RNF03</span></td>
-<td style="text-align: left;">Interface responsiva e adaptável a múltiplos dispositivos</td>
-<td style="text-align: left;">O sistema deve adaptar seus componentes visuais para resoluções de monitores desktop e dispositivos móveis, garantindo o funcionamento e layout adequado em resoluções de tela de 360px (mobile), 768px (tablet) e 1280px (desktop). A validação deve ser feita através de ferramentas de inspeção de navegador.</td>
-<td style="text-align: left;">Usabilidade</td>
+<td style="text-align: left;">Não Funcional (Usabilidade)</td>
+<td style="text-align: left;">Interface Responsiva e Adaptável</td>
+<td style="text-align: left;">O sistema deve adaptar seus componentes visuais para monitores desktop e dispositivos móveis (resoluções de 360px mobile, 768px tablet e 1280px desktop), preservando layout e funcionalidade.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf04" class="rf-anchor">RNF04</span></td>
-<td style="text-align: left;">Interface com suporte a Modo Escuro alternável</td>
-<td style="text-align: left;">O sistema deve disponibilizar a opção de "modo escuro" alternável para o usuário, aplicando uma paleta de cores escura e textos de alto contraste, preservando a legibilidade e consistência visual.</td>
-<td style="text-align: left;">Usabilidade</td>
+<td style="text-align: left;">Não Funcional (Usabilidade)</td>
+<td style="text-align: left;">Suporte a Modo Escuro Alternável</td>
+<td style="text-align: left;">O sistema deve disponibilizar alternância de tema visual (claro/escuro), assegurando índices de contraste e legibilidade adequados em ambas as paletas.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf05" class="rf-anchor">RNF05</span></td>
-<td style="text-align: left;">Tempo de Resposta do Sistema ao Logar</td>
-<td style="text-align: left;">Garantir tempo menor que 2 segundos para login, medido a partir do clique no botão de entrar até a autorização de acesso, sob condições normais de rede e servidor.</td>
-<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta ao Logar</td>
+<td style="text-align: left;">Garantir tempo de resposta inferior a 2 segundos entre o clique no botão de login e a autorização de acesso ao painel, sob conexão de rede estável.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf06" class="rf-anchor">RNF06</span></td>
-<td style="text-align: left;">Tempo de Resposta do Sistema ao Buscar aluno</td>
-<td style="text-align: left;">Retornar os resultados da consulta de alunos em um tempo inferior a 2 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do banco de dados. A medição inicia no acionamento do botão de busca e termina ao renderizar a lista na tela.</td>
-<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta ao Buscar Aluno</td>
+<td style="text-align: left;">Retornar os resultados da consulta de alunos em tempo inferior a 2 segundos para 95% das requisições na base da creche (estimada em ~200-300 registros anuais).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf07" class="rf-anchor">RNF07</span></td>
-<td style="text-align: left;">Tempo de resposta do sistema para buscar turmas ou etapas</td>
-<td style="text-align: left;">Retornar os resultados da busca de turmas ou etapas em um tempo inferior a 2 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do banco de dados.</td>
-<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta para Buscar Turmas ou Etapas</td>
+<td style="text-align: left;">Retornar os resultados da consulta de turmas e etapas em tempo inferior a 2 segundos para 95% das requisições.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf08" class="rf-anchor">RNF08</span></td>
-<td style="text-align: left;">Tempo de resposta para salvar uma ficha</td>
-<td style="text-align: left;">O sistema deve concluir o salvamento de uma ficha em um tempo de resposta inferior a 5 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do servidor. A medição inicia ao acionar o botão de salvar e termina com a exibição da mensagem de sucesso em tela.</td>
-<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta para Salvar Ficha</td>
+<td style="text-align: left;">O sistema deve concluir o salvamento de uma ficha de matrícula em tempo inferior a 5 segundos para 95% das requisições, exibindo confirmação de sucesso.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf09" class="rf-anchor">RNF09</span></td>
-<td style="text-align: left;">Disponibilidade do sistema</td>
-<td style="text-align: left;">O sistema deve garantir uma taxa de acessibilidade de 99,5% durante o horário de funcionamento comercial da creche, compreendido de segunda a sexta-feira, das 07h00 às 19h00.</td>
-<td style="text-align: left;">Confiabilidade</td>
+<td style="text-align: left;">Não Funcional (Confiabilidade)</td>
+<td style="text-align: left;">Disponibilidade Operacional</td>
+<td style="text-align: left;">O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span id="req-rnf10" class="rf-anchor">RNF10</span></td>
-<td style="text-align: left;">Acessos Múltiplos</td>
-<td style="text-align: left;">O sistema deve suportar no mínimo 10 usuários acessando e interagindo simultaneamente com a aplicação, mantendo o tempo de resposta das operações dentro dos limites estabelecidos nos demais requisitos de desempenho.</td>
-<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Suporte a Acessos Concorrentes</td>
+<td style="text-align: left;">O sistema deve suportar simultaneamente a equipe administrativa (mínimo de 10 usuários simultâneos) sem degradação perceptível de tempo de resposta.</td>
 </tr>
 </tbody>
 </table>
 <hr />
+<p><span id="83-arvore-de-rastreabilidade"></span></p>
 <h2 id="83-arvore-de-rastreabilidade">8.3 Árvore de Rastreabilidade</h2>
-<p>Abaixo está representada a árvore de rastreabilidade dos requisitos do projeto SIGMA, conectando objetivos específicos (OEs), características do produto (CPs) e os requisitos de software. </p>
-<p>Você pode navegar, dar zoom e explorar a árvore interativamente diretamente pelo quadro incorporado do Miro a seguir:</p>
+<p>A representação gráfica abaixo conecta o problema, objetivos específicos (OEs), características do produto (CPs) e os requisitos no Miro:</p>
 <iframe width="100%" height="650" src="https://miro.com/app/live-embed/uXjVEbrie7A=/" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen title="Árvore de Rastreabilidade no Miro"></iframe>
 
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"/></svg></span> <strong><a href="https://miro.com/app/board/uXjVEbrie7A=/">Abrir Árvore de Rastreabilidade diretamente no Miro</a></strong></p>
 <hr />
 <h3 id="captura-da-arvore-de-rastreabilidade">Captura da Árvore de Rastreabilidade</h3>
 <p><img alt="Árvore de Rastreabilidade" src="../../assets/arvore_rastreabilidade.png" /></p>
-<p align="center"><em>Captura registrada no dia 10/10/2026.</em></p>
+<p align="center"><em>Registro atualizado da rastreabilidade estrutural dos requisitos do SIGMA.</em></p>
 
 
 
