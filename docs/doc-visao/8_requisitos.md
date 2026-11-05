@@ -1,6 +1,6 @@
 # 8. Catálogo Unificado de Requisitos
 
-Este catálogo constitui a **fonte única da verdade (Single Source of Truth)** do escopo vigente do sistema **SIGMA**. Ele centraliza os requisitos funcionais, não funcionais e suas relações com os objetivos do projeto, eliminando listas redundantes ou declarações dispersas em múltiplos documentos.
+Este documento consolida os requisitos funcionais e não funcionais do sistema **SIGMA**, estruturando suas relações com os objetivos do produto, regras de negócio e planejamento de entregas.
 
 ---
 
@@ -43,15 +43,13 @@ A organização do escopo segue a hierarquia conceitual que conecta o problema r
     - **OE.3:** Controlar o acesso e garantir a segurança das informações do sistema.
     - **OE.4:** Facilitar a comunicação interna entre a equipe administrativa.
 - **[Características do Produto (CPs)](2_solucao.md#23-caracteristicas-de-produto):** CP1 (Cards de matrícula), CP2 (Edição de cards), CP3 (Consulta de informações), CP4 (Controle de acesso), CP5 (Gerenciamento de documentos), CP6 (Avisos rápidos), CP7 (Gerenciamento de turmas e etapas) e CP8 (Auditoria e integridade).
-- **Forma Principal de Declaração Adotada:** **Casos de Uso (UC)**. Os requisitos funcionais são mantidos exclusivamente através das especificações de casos de uso, onde fluxos principal, alternativos, de exceção e critérios de aceitação conferem o contexto operacional completo.
-
-> **Regra de Manutenção do Escopo:** Qualquer alteração em comportamento, escopo ou regra deve ser realizada diretamente na ficha do Caso de Uso correspondente e nas [Regras de Negócio](Regras-Negocio.md). As demais seções e páginas ([Priorização e MVP](10_backlog.md#102-priorizacao-do-backlog-e-mvp)) consultam este catálogo sem manter listas paralelas concorrentes.
+- **Declaração de Requisitos:** Os requisitos funcionais do sistema são declarados como **Casos de Uso (UC)**, abrangendo fluxos de operação, exceções e critérios de aceitação.
 
 ---
 
-## 8.2 Painel Unificado de Casos de Uso (Declaração Vigente)
+## 8.2 Catálogo de Casos de Uso
 
-O painel a seguir consolida os registros vigentes de requisitos funcionais declarados como Casos de Uso, exibindo seus vínculos com a hierarquia, requisitos funcionais atômicos, requisitos não funcionais aplicáveis, regras de negócio associadas e status de entrega no MVP:
+O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com Características do Produto (CP) e Objetivos Específicos (OE), capacidades funcionais (RF), requisitos não funcionais (RNF), regras de negócio (RN) e status no MVP:
 
 <div class="catalogo-panel">
 
@@ -430,11 +428,12 @@ O painel a seguir consolida os registros vigentes de requisitos funcionais decla
 
 ---
 
-## 8.3 Rastreabilidade dos Requisitos Funcionais aos Casos de Uso
+<span id="83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso"></span>
+## 8.3 Rastreabilidade de Capacidades Funcionais (RF)
 
-A tabela abaixo atua como índice de rastreabilidade rápida e consulta das capacidades funcionais. Em vez de manter textos repetidos e divergentes, a declaração completa de cada requisito é mantida e detalhada no seu respectivo Caso de Uso:
+A tabela a seguir relaciona as capacidades funcionais do sistema aos respectivos Casos de Uso, Características do Produto (CP) e ao planejamento de entrega do MVP:
 
-| ID | Capacidade / Funcionalidade | Caso de Uso Responsável (Declaração Vigente) | Característica (CP) | Entrega MVP |
+| ID | Capacidade / Funcionalidade | Caso de Uso | Característica (CP) | Entrega MVP |
 | :--- | :--- | :--- | :--- | :--- |
 | <span id="req-rf01" class="rf-anchor">RF01</span> | Disponibilizar quadro de avisos | [UC03 - Gerenciar Quadro de Avisos](casos-uso/uc03.md) | [CP6 - Avisos Rápidos](2_solucao.md#23-caracteristicas-de-produto) | [Não (Pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
 | <span id="req-rf02" class="rf-anchor">RF02</span> | Lançar avisos | [UC03 - Gerenciar Quadro de Avisos](casos-uso/uc03.md) | [CP6 - Avisos Rápidos](2_solucao.md#23-caracteristicas-de-produto) | [Não (Pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
