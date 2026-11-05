@@ -1,53 +1,10 @@
 # 8. Catálogo Unificado de Requisitos
 
-Este documento consolida os requisitos funcionais e não funcionais do sistema **SIGMA**, estruturando suas relações com os objetivos do produto, regras de negócio e planejamento de entregas.
+Este documento consolida os requisitos funcionais e não funcionais do sistema **SIGMA**, estruturando suas relações com os objetivos do produto, regras de negócio e planejamento de entregas. Os requisitos funcionais são declarados através de **Casos de Uso (UC)**, detalhando fluxos principais, alternativos, exceções e critérios de aceitação.
 
 ---
 
-## 8.1 Estrutura Hierárquica e Organização do Escopo
-
-A organização do escopo segue a hierarquia conceitual que conecta o problema real identificado no cliente até a declaração detalhada da solução:
-
-<div class="hierarchy-flow">
-  <div class="flow-step">
-    <span class="flow-step__label">Problema</span>
-    <span class="flow-step__desc">Gestão manual em papel</span>
-  </div>
-  <span class="flow-arrow">➔</span>
-  <div class="flow-step">
-    <span class="flow-step__label">Objetivo Geral</span>
-    <span class="flow-step__desc">Centralização digital</span>
-  </div>
-  <span class="flow-arrow">➔</span>
-  <div class="flow-step">
-    <span class="flow-step__label">Objetivos Específicos</span>
-    <span class="flow-step__desc">OE.1 a OE.4</span>
-  </div>
-  <span class="flow-arrow">➔</span>
-  <div class="flow-step">
-    <span class="flow-step__label">Características</span>
-    <span class="flow-step__desc">CP1 a CP8</span>
-  </div>
-  <span class="flow-arrow">➔</span>
-  <div class="flow-step flow-step--active">
-    <span class="flow-step__label">Requisitos</span>
-    <span class="flow-step__desc">Casos de Uso (UC01-UC08)</span>
-  </div>
-</div>
-
-- **[Problema](1_cenarioAtual.md#14-identificacao-da-oportunidade-ou-problema):** Sobrecarga e lentidão no gerenciamento manual em papel das fichas de matrícula de mais de 200 crianças na Creche Estação Vida, com risco contínuo de perda e deterioração documental.
-- **[Objetivo Geral](2_solucao.md#21-objetivo-geral-do-produto):** Centralizar e digitalizar a organização e recuperação das informações de matrículas em cards digitais ágeis e seguros.
-- **[Objetivos Específicos (OEs)](2_solucao.md#22-objetivos-especificos-oe-do-produto):**
-    - **OE.1:** Facilitar e agilizar a organização e a continuidade do processo administrativo.
-    - **OE.2:** Preservar e centralizar o histórico e as informações das matrículas.
-    - **OE.3:** Controlar o acesso e garantir a segurança das informações do sistema.
-    - **OE.4:** Facilitar a comunicação interna entre a equipe administrativa.
-- **[Características do Produto (CPs)](2_solucao.md#23-caracteristicas-de-produto):** CP1 (Cards de matrícula), CP2 (Edição de cards), CP3 (Consulta de informações), CP4 (Controle de acesso), CP5 (Gerenciamento de documentos), CP6 (Avisos rápidos), CP7 (Gerenciamento de turmas e etapas) e CP8 (Auditoria e integridade).
-- **Declaração de Requisitos:** Os requisitos funcionais do sistema são declarados como **Casos de Uso (UC)**, abrangendo fluxos de operação, exceções e critérios de aceitação.
-
----
-
-## 8.2 Catálogo de Casos de Uso
+## 8.1 Catálogo de Casos de Uso
 
 O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com Características do Produto (CP) e Objetivos Específicos (OE), capacidades funcionais (RF), requisitos não funcionais (RNF), regras de negócio (RN) e status no MVP:
 
@@ -430,7 +387,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
 
 <span id="83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso"></span>
 <span id="82-lista-de-requisitos-nao-funcionais-especificacao-suplementar"></span>
-## 8.3 Tabela Geral de Requisitos
+## 8.2 Tabela Geral de Requisitos
 
 A tabela a seguir consolida as especificações de todos os requisitos funcionais e não funcionais do sistema:
 
@@ -474,7 +431,7 @@ A tabela a seguir consolida as especificações de todos os requisitos funcionai
 ---
 
 <span id="83-arvore-de-rastreabilidade"></span>
-## 8.4 Árvore de Rastreabilidade
+## 8.3 Árvore de Rastreabilidade
 
 A representação gráfica abaixo conecta o problema, objetivos específicos (OEs), características do produto (CPs) e os requisitos no Miro:
 
