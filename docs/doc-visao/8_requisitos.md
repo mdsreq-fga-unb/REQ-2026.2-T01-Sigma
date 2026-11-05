@@ -429,63 +429,52 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
 ---
 
 <span id="83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso"></span>
-## 8.3 Rastreabilidade de Capacidades Funcionais (RF)
-
-A tabela a seguir relaciona as capacidades funcionais do sistema aos respectivos Casos de Uso, Características do Produto (CP) e ao planejamento de entrega do MVP:
-
-| ID | Capacidade / Funcionalidade | Caso de Uso | Característica (CP) | Entrega MVP |
-| :--- | :--- | :--- | :--- | :--- |
-| <span id="req-rf01" class="rf-anchor">RF01</span> | Disponibilizar quadro de avisos | [UC03 - Gerenciar Quadro de Avisos](casos-uso/uc03.md) | [CP6 - Avisos Rápidos](2_solucao.md#23-caracteristicas-de-produto) | [Não (Pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf02" class="rf-anchor">RF02</span> | Lançar avisos | [UC03 - Gerenciar Quadro de Avisos](casos-uso/uc03.md) | [CP6 - Avisos Rápidos](2_solucao.md#23-caracteristicas-de-produto) | [Não (Pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf03" class="rf-anchor">RF03</span> | Exibir avisos | [UC03 - Gerenciar Quadro de Avisos](casos-uso/uc03.md) | [CP6 - Avisos Rápidos](2_solucao.md#23-caracteristicas-de-produto) | [Não (Pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf04" class="rf-anchor">RF04</span> | Apagar avisos | [UC03 - Gerenciar Quadro de Avisos](casos-uso/uc03.md) | [CP6 - Avisos Rápidos](2_solucao.md#23-caracteristicas-de-produto) | [Não (Pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf05" class="rf-anchor">RF05</span> | Cadastrar Usuários | [UC02 - Gerenciar Usuários Administrativos](casos-uso/uc02.md) | [CP4 - Controle de Acesso](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf06" class="rf-anchor">RF06</span> | Realizar login | [UC01 - Gerenciar Autenticação](casos-uso/uc01.md) | [CP4 - Controle de Acesso](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf07" class="rf-anchor">RF07</span> | Realizar logout | [UC01 - Gerenciar Autenticação](casos-uso/uc01.md) | [CP4 - Controle de Acesso](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf08" class="rf-anchor">RF08</span> | Cadastrar card de aluno | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP1 - Cards de Matrícula](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf09" class="rf-anchor">RF09</span> | Preenchimento de fichas | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP1 - Cards de Matrícula](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf10" class="rf-anchor">RF10</span> | Editar fichas do card | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP2 - Edição e Atualização](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf11" class="rf-anchor">RF11</span> | Inativar card de aluno | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP2 - Edição e Atualização](2_solucao.md#23-caracteristicas-de-produto) | [Não (Adiado pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf12" class="rf-anchor">RF12</span> | Reativar card de aluno | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP2 - Edição e Atualização](2_solucao.md#23-caracteristicas-de-produto) | [Não (Adiado pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf13" class="rf-anchor">RF13</span> | Vincular aluno a turma | [UC07 - Alocar Alunos](casos-uso/uc07.md) | [CP7 - Turmas e Etapas](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf14" class="rf-anchor">RF14</span> | Anexar documentos | [UC05 - Gerenciar Documentos Digitais](casos-uso/uc05.md) | [CP5 - Gerenciamento de Documentos](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf15" class="rf-anchor">RF15</span> | Editar/Substituir documento | [UC05 - Gerenciar Documentos Digitais](casos-uso/uc05.md) | [CP5 - Gerenciamento de Documentos](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf16" class="rf-anchor">RF16</span> | Baixar fichas e documentos (PDF) | [UC05 - Gerenciar Documentos Digitais](casos-uso/uc05.md) | [CP3 - Consulta](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf17" class="rf-anchor">RF17</span> | Apresentar histórico de edições | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP8 - Auditoria e Integridade](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf18" class="rf-anchor">RF18</span> | Cadastrar Etapa | [UC06 - Gerenciar Estrutura Escolar](casos-uso/uc06.md) | [CP7 - Turmas e Etapas](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf19" class="rf-anchor">RF19</span> | Inativar turma e etapa | [UC06 - Gerenciar Estrutura Escolar](casos-uso/uc06.md) | [CP7 - Turmas e Etapas](2_solucao.md#23-caracteristicas-de-produto) | [Não (Adiado pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf20" class="rf-anchor">RF20</span> | Vincular turma à etapa | [UC06 - Gerenciar Estrutura Escolar](casos-uso/uc06.md) | [CP7 - Turmas e Etapas](2_solucao.md#23-caracteristicas-de-produto) | [Não (Adiado pós-MVP)](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf21" class="rf-anchor">RF21</span> | Buscar aluno pelo nome | [UC08 - Busca](casos-uso/uc08.md) & [UC07](casos-uso/uc07.md) | [CP3 - Consulta](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf22" class="rf-anchor">RF22</span> | Buscar turmas e etapas | [UC08 - Busca](casos-uso/uc08.md) & [UC07](casos-uso/uc07.md) | [CP7 - Turmas e Etapas](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf23" class="rf-anchor">RF23</span> | Possibilitar salvamento com confirmação | [UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md) | [CP8 - Auditoria e Integridade](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-| <span id="req-rf24" class="rf-anchor">RF24</span> | Cadastrar Turma | [UC06 - Gerenciar Estrutura Escolar](casos-uso/uc06.md) | [CP7 - Turmas e Etapas](2_solucao.md#23-caracteristicas-de-produto) | [Sim](10_backlog.md#102-priorizacao-do-backlog-e-mvp) |
-
----
-
 <span id="82-lista-de-requisitos-nao-funcionais-especificacao-suplementar"></span>
-## 8.4 Lista de Requisitos Não Funcionais (Especificação Suplementar)
+## 8.3 Tabela Geral de Requisitos
 
-Os requisitos não funcionais definem atributos de qualidade, desempenho, usabilidade, confiabilidade e segurança do sistema SIGMA, classificados segundo o modelo FURPS+/URPS.
+A tabela a seguir consolida as especificações de todos os requisitos funcionais e não funcionais do sistema:
 
-> **Natureza Transversal dos RNFs:** Requisitos como segurança (RNF01, RNF02) e usabilidade (RNF03, RNF04) cobrem toda a aplicação internamente, enquanto requisitos de desempenho estabelecem limites temporais sob condições operacionais esperadas da creche.
-
-| ID | Nome do Requisito | Descrição e Critério de Aceitação | Classificação URPS+ | Casos de Uso Vinculados |
-| :--- | :--- | :--- | :--- | :--- |
-| <span id="req-rnf01" class="rf-anchor">RNF01</span> | Privacidade de Dados e Proteção LGPD | Garantir a privacidade dos dados pessoais e sensíveis das crianças e famílias, restringindo o acesso e a visualização exclusivamente a usuários autenticados da creche, em conformidade com a LGPD. | Segurança | Transversal ([UC01](casos-uso/uc01.md), [UC02](casos-uso/uc02.md), [UC04](casos-uso/uc04.md), [UC05](casos-uso/uc05.md)) |
-| <span id="req-rnf02" class="rf-anchor">RNF02</span> | Restrição de Acesso não Autenticado | O sistema deve restringir o acesso a todas as rotas e funcionalidades internas exclusivamente a usuários autenticados com credenciais válidas. Requisições não autenticadas devem retornar HTTP 401 e redirecionar para login. | Segurança | Transversal (Todos os UCs internos) |
-| <span id="req-rnf03" class="rf-anchor">RNF03</span> | Interface Responsiva e Adaptável | O sistema deve adaptar seus componentes visuais para monitores desktop e dispositivos móveis (resoluções de 360px mobile, 768px tablet e 1280px desktop), preservando layout e funcionalidade. | Usabilidade | Global |
-| <span id="req-rnf04" class="rf-anchor">RNF04</span> | Suporte a Modo Escuro Alternável | O sistema deve disponibilizar alternância de tema visual (claro/escuro), assegurando índices de contraste e legibilidade adequados em ambas as paletas. | Usabilidade | Global |
-| <span id="req-rnf05" class="rf-anchor">RNF05</span> | Tempo de Resposta ao Logar | Garantir tempo de resposta inferior a 2 segundos entre o clique no botão de login e a autorização de acesso ao painel, sob conexão de rede estável. | Desempenho | [UC01 - Autenticação](casos-uso/uc01.md) |
-| <span id="req-rnf06" class="rf-anchor">RNF06</span> | Tempo de Resposta ao Buscar Aluno | Retornar os resultados da consulta de alunos em tempo inferior a 2 segundos para 95% das requisições na base da creche (estimada em ~200-300 registros anuais). | Desempenho | [UC07](casos-uso/uc07.md), [UC08](casos-uso/uc08.md) |
-| <span id="req-rnf07" class="rf-anchor">RNF07</span> | Tempo de Resposta para Buscar Turmas ou Etapas | Retornar os resultados da consulta de turmas e etapas em tempo inferior a 2 segundos para 95% das requisições. | Desempenho | [UC06](casos-uso/uc06.md), [UC07](casos-uso/uc07.md), [UC08](casos-uso/uc08.md) |
-| <span id="req-rnf08" class="rf-anchor">RNF08</span> | Tempo de Resposta para Salvar Ficha | O sistema deve concluir o salvamento de uma ficha de matrícula em tempo inferior a 5 segundos para 95% das requisições, exibindo confirmação de sucesso. | Desempenho | [UC04 - Fichas de Matrícula](casos-uso/uc04.md) |
-| <span id="req-rnf09" class="rf-anchor">RNF09</span> | Disponibilidade Operacional | O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30). | Confiabilidade | Global |
-| <span id="req-rnf10" class="rf-anchor">RNF10</span> | Suporte a Acessos Concorrentes | O sistema deve suportar simultaneamente a equipe administrativa (mínimo de 10 usuários simultâneos) sem degradação perceptível de tempo de resposta. | Desempenho | Global |
+| ID | Tipo | Nome do Requisito | Descrição |
+| :--- | :--- | :--- | :--- |
+| <span id="req-rf01" class="rf-anchor">RF01</span> | Funcional | Disponibilizar quadro de avisos | O sistema deve disponibilizar um espaço central para visualização e gerenciamento de avisos administrativos da creche. |
+| <span id="req-rf02" class="rf-anchor">RF02</span> | Funcional | Lançar avisos | As secretárias ou administradores devem poder publicar novos avisos informando assunto, descrição, autor e data. |
+| <span id="req-rf03" class="rf-anchor">RF03</span> | Funcional | Exibir avisos | O sistema deve listar de forma clara os avisos cadastrados no mural geral da instituição. |
+| <span id="req-rf04" class="rf-anchor">RF04</span> | Funcional | Apagar avisos | As secretárias ou administradores devem poder excluir avisos publicados quando não forem mais necessários. |
+| <span id="req-rf05" class="rf-anchor">RF05</span> | Funcional | Cadastrar Usuários | Permitir que usuários com perfil administrativo realizem o cadastro de novos usuários no sistema. |
+| <span id="req-rf06" class="rf-anchor">RF06</span> | Funcional | Realizar login | As secretárias e administradores devem poder realizar login no sistema com e-mail cadastrado e senha. |
+| <span id="req-rf07" class="rf-anchor">RF07</span> | Funcional | Realizar logout | As secretárias e administradores devem poder encerrar com segurança sua sessão ativa no sistema. |
+| <span id="req-rf08" class="rf-anchor">RF08</span> | Funcional | Cadastrar card de aluno | As secretárias devem poder criar cards de alunos representando os registros oficiais de matrícula da instituição. |
+| <span id="req-rf09" class="rf-anchor">RF09</span> | Funcional | Preenchimento de fichas | As secretárias devem poder preencher as fichas obrigatórias: Termo de Compromisso Escolar, Termo de Autorização de Uso de Imagem, Termo de Saída de Aluno, Ficha Socioeconômica e Requerimento de Matrícula. |
+| <span id="req-rf10" class="rf-anchor">RF10</span> | Funcional | Editar fichas do card | As secretárias devem poder editar qualquer uma das informações das fichas do card para manutenção e atualização cadastral contínua. |
+| <span id="req-rf11" class="rf-anchor">RF11</span> | Funcional | Inativar card de aluno | As secretárias devem poder inativar o card de um aluno, alterando seu status para "inativo" e restringindo edições. |
+| <span id="req-rf12" class="rf-anchor">RF12</span> | Funcional | Reativar card de aluno | Permitir a alteração do status do card de aluno de inativo para ativo, restaurando as permissões de edição e vinculação. |
+| <span id="req-rf13" class="rf-anchor">RF13</span> | Funcional | Vincular aluno a turma | As secretárias devem poder associar o card de matrícula de um aluno a uma turma cadastrada e ativa da creche. |
+| <span id="req-rf14" class="rf-anchor">RF14</span> | Funcional | Anexar documentos | O sistema deve permitir anexar cópias digitalizadas de documentos (certidões, declarações, termos) em formato PDF às fichas dos alunos. |
+| <span id="req-rf15" class="rf-anchor">RF15</span> | Funcional | Editar/Substituir documento | O sistema deve permitir substituir um documento PDF previamente anexado a uma ficha, removendo o arquivo anterior e mantendo o novo documento. |
+| <span id="req-rf16" class="rf-anchor">RF16</span> | Funcional | Baixar fichas e documentos | O sistema deve permitir o download individual de qualquer ficha de matrícula ou documento anexado em formato PDF. |
+| <span id="req-rf17" class="rf-anchor">RF17</span> | Funcional | Apresentar histórico de edições | O sistema deve permitir a consulta do histórico de edições de uma ficha, exibindo usuário responsável, data/hora da edição, campo alterado, valor anterior e novo valor. |
+| <span id="req-rf18" class="rf-anchor">RF18</span> | Funcional | Cadastrar Etapa | O sistema deve permitir que as secretárias ou administradores cadastrem novas etapas escolares da creche. |
+| <span id="req-rf19" class="rf-anchor">RF19</span> | Funcional | Inativar turma e etapa | O sistema deve permitir inativar turmas ou etapas quando não estiverem mais em operação, preservando o histórico de vínculos anteriores. |
+| <span id="req-rf20" class="rf-anchor">RF20</span> | Funcional | Vincular turma à etapa | O sistema deve permitir vincular uma turma a uma etapa de ensino existente e ativa. |
+| <span id="req-rf21" class="rf-anchor">RF21</span> | Funcional | Buscar aluno pelo nome | O sistema deve permitir buscar alunos pelo nome completo ou parcial, sem distinção de maiúsculas, minúsculas ou acentos, retornando os registros de matrícula correspondentes. |
+| <span id="req-rf22" class="rf-anchor">RF22</span> | Funcional | Buscar turmas e etapas | O sistema deve permitir pesquisar turmas e etapas cadastradas na instituição para consulta e vinculação. |
+| <span id="req-rf23" class="rf-anchor">RF23</span> | Funcional | Possibilitar salvamento com confirmação | O sistema deve exigir confirmação explícita ("Confirmar" ou "Cancelar") ao solicitar o salvamento ou alteração de uma ficha de matrícula, prevenindo perdas acidentais. |
+| <span id="req-rf24" class="rf-anchor">RF24</span> | Funcional | Cadastrar Turma | O sistema deve permitir cadastrar uma nova turma associada obrigatoriamente a uma etapa de ensino existente. |
+| <span id="req-rnf01" class="rf-anchor">RNF01</span> | Não Funcional (Segurança) | Privacidade de Dados e Proteção LGPD | Garantir a privacidade dos dados pessoais e sensíveis das crianças e famílias, restringindo o acesso e a visualização exclusivamente a usuários autenticados da creche, em conformidade com a LGPD. |
+| <span id="req-rnf02" class="rf-anchor">RNF02</span> | Não Funcional (Segurança) | Restrição de Acesso não Autenticado | O sistema deve restringir o acesso a todas as rotas e funcionalidades internas exclusivamente a usuários autenticados com credenciais válidas. Requisições não autenticadas devem retornar HTTP 401 e redirecionar para login. |
+| <span id="req-rnf03" class="rf-anchor">RNF03</span> | Não Funcional (Usabilidade) | Interface Responsiva e Adaptável | O sistema deve adaptar seus componentes visuais para monitores desktop e dispositivos móveis (resoluções de 360px mobile, 768px tablet e 1280px desktop), preservando layout e funcionalidade. |
+| <span id="req-rnf04" class="rf-anchor">RNF04</span> | Não Funcional (Usabilidade) | Suporte a Modo Escuro Alternável | O sistema deve disponibilizar alternância de tema visual (claro/escuro), assegurando índices de contraste e legibilidade adequados em ambas as paletas. |
+| <span id="req-rnf05" class="rf-anchor">RNF05</span> | Não Funcional (Desempenho) | Tempo de Resposta ao Logar | Garantir tempo de resposta inferior a 2 segundos entre o clique no botão de login e a autorização de acesso ao painel, sob conexão de rede estável. |
+| <span id="req-rnf06" class="rf-anchor">RNF06</span> | Não Funcional (Desempenho) | Tempo de Resposta ao Buscar Aluno | Retornar os resultados da consulta de alunos em tempo inferior a 2 segundos para 95% das requisições na base da creche (estimada em ~200-300 registros anuais). |
+| <span id="req-rnf07" class="rf-anchor">RNF07</span> | Não Funcional (Desempenho) | Tempo de Resposta para Buscar Turmas ou Etapas | Retornar os resultados da consulta de turmas e etapas em tempo inferior a 2 segundos para 95% das requisições. |
+| <span id="req-rnf08" class="rf-anchor">RNF08</span> | Não Funcional (Desempenho) | Tempo de Resposta para Salvar Ficha | O sistema deve concluir o salvamento de uma ficha de matrícula em tempo inferior a 5 segundos para 95% das requisições, exibindo confirmação de sucesso. |
+| <span id="req-rnf09" class="rf-anchor">RNF09</span> | Não Funcional (Confiabilidade) | Disponibilidade Operacional | O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30). |
+| <span id="req-rnf10" class="rf-anchor">RNF10</span> | Não Funcional (Desempenho) | Suporte a Acessos Concorrentes | O sistema deve suportar simultaneamente a equipe administrativa (mínimo de 10 usuários simultâneos) sem degradação perceptível de tempo de resposta. |
 
 ---
 
 <span id="83-arvore-de-rastreabilidade"></span>
-## 8.5 Árvore de Rastreabilidade
+## 8.4 Árvore de Rastreabilidade
 
 A representação gráfica abaixo conecta o problema, objetivos específicos (OEs), características do produto (CPs) e os requisitos no Miro:
 
