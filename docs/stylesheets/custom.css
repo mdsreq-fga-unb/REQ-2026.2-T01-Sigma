@@ -948,3 +948,104 @@
 [data-md-color-scheme="dark"] .catalogo-card__link {
   color: var(--palette-amber-200) !important;
 }
+
+
+/* ==========================================================================
+   FLUXO VISUAL DA HIERARQUIA DE REQUISITOS
+   ========================================================================== */
+
+.hierarchy-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0 1.8rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--palette-gray-100);
+  border: 1px solid rgba(19, 92, 125, 0.18);
+  border-left: 4px solid var(--palette-teal-400);
+  border-radius: 8px;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid rgba(19, 92, 125, 0.15);
+  border-radius: 6px;
+  min-width: 120px;
+}
+
+.flow-step__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--palette-blue-500);
+}
+
+.flow-step__desc {
+  font-size: 0.72rem;
+  color: var(--palette-gray-500);
+  margin-top: 0.15rem;
+}
+
+.flow-step--active {
+  background: var(--palette-teal-100);
+  border-color: var(--palette-teal-400);
+  box-shadow: 0 2px 6px rgba(19, 92, 125, 0.12);
+}
+
+.flow-step--active .flow-step__label {
+  color: var(--palette-teal-600);
+}
+
+.flow-arrow {
+  color: var(--palette-amber-300);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1;
+  user-select: none;
+  padding: 0 0.15rem;
+}
+
+[data-md-color-scheme="slate"] .hierarchy-flow,
+[data-md-color-scheme="dark"] .hierarchy-flow {
+  background-color: var(--palette-gray-700);
+  border-color: var(--palette-teal-600);
+  border-left-color: var(--palette-teal-400);
+}
+
+[data-md-color-scheme="slate"] .flow-step,
+[data-md-color-scheme="dark"] .flow-step {
+  background-color: var(--palette-gray-600);
+  border-color: var(--palette-teal-500);
+}
+
+[data-md-color-scheme="slate"] .flow-step__label,
+[data-md-color-scheme="dark"] .flow-step__label {
+  color: var(--palette-teal-200);
+}
+
+[data-md-color-scheme="slate"] .flow-step__desc,
+[data-md-color-scheme="dark"] .flow-step__desc {
+  color: var(--palette-gray-300);
+}
+
+[data-md-color-scheme="slate"] .flow-step--active,
+[data-md-color-scheme="dark"] .flow-step--active {
+  background-color: var(--palette-teal-600);
+  border-color: var(--palette-teal-300);
+}
+
+[data-md-color-scheme="slate"] .flow-step--active .flow-step__label,
+[data-md-color-scheme="dark"] .flow-step--active .flow-step__label {
+  color: var(--palette-amber-200);
+}
+
+[data-md-color-scheme="slate"] .flow-arrow,
+[data-md-color-scheme="dark"] .flow-arrow {
+  color: var(--palette-amber-200);
+}
