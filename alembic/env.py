@@ -10,7 +10,7 @@ from app.core.database import Base   # ajuste para o arquivo onde a sua Base est
 
 # Importe TODOS os models. Se um model não for importado aqui,
 # o Alembic não sabe que ele existe e não cria a tabela.
-from app.models import carro  # noqa: F401
+from app.models import aluno, etapa, ops, pessoa, user, turma, resp
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -29,7 +29,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
