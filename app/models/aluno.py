@@ -11,7 +11,7 @@ class StatusAluno(enum.Enum):
 
 
 class Aluno(Base):
-    __tablename__ = "alunos"
+    __tablename__ = "Aluno"
 
     matricula: Mapped[int] = mapped_column(primary_key=True)
     nome: Mapped[str] = mapped_column(String(100))
@@ -30,5 +30,5 @@ class Aluno(Base):
         default=StatusAluno.ATIVO,
     )
     responsavel_id: Mapped[int] = mapped_column(ForeignKey("Responsavel.id"))
-    turma_id: Mapped[int] = mapped_column(ForeignKey("Turma.id"))
+    turma_id: Mapped[int] = mapped_column(ForeignKey("Turma.codigo"))
 
