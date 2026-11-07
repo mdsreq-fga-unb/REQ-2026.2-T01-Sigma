@@ -67,7 +67,7 @@ Para a inserção dos requisitos no MVP, efetuamos uma análise plural considera
  
 | ID | Requisito | Justificativa do cliente | V. Negócio | Esforço | Complexidade | Lacuna de Capacidade | Esforço técnico consolidado |
 |---|---|---|---|---|---|---|---|
-| RF1 | Disponibilizar quadro de avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2.6 |
+| RF1 | Disponibilizar quadro de avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2.0 |
 | RF2 | Lançar avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
 | RF3 | Exibir avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
 | RF4 | Apagar avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
@@ -116,36 +116,92 @@ A seguir a imagem e o link da nossa matriz de requisitos,
 
 ### Priorização dos Casos de Uso
 
- Considerando a Tabela de Consolidação de Produto , decidimos fazer uma priorização mais aplicada aos nossos Casos de Uso, abaixo há uma tabela que indica o agrupamento da média das médias de Valor de Negócio e Esforço Técnico dos requisitos correspondentes à cada Caso de Uso
+Considerando a Tabela de Consolidação das Avaliações, realizou-se a priorização aplicada aos Casos de Uso do sistema. A tabela a seguir apresenta o agrupamento de Valor de Negócio (VN) e Esforço Técnico (ET) dos requisitos que compõem cada Caso de Uso, incluindo a quantidade de requisitos e o esforço técnico total acumulado (soma).
+
 #### Valor de Negócio e Esforço Técnico por Caso de Uso
- 
-| Caso de Uso | Valor de Negócio | Esforço Técnico | Média do Valor de Negócio | Média do Esforço Técnico |
-|---|---|---|---|---|
-| UC1 | RF06: 4<br>RF07: 4<br>RNF02: 4<br>RNF05: 4 | RF06: 1.6<br>RF07: 1.6<br>RNF02: 1.3<br>RNF05: 2.6 | 4 | 1.8 |
-| UC2 | RF05: 4<br>RNF02: 4 | RF05: 1.3<br>RNF02: 1.3 | 4 | 1.3 |
-| UC3 | RF01: 2<br>RF02: 2<br>RF03: 2<br>RF04: 2<br>RF05: 4<br>RF07: 4 | RF01: 2<br>RF02: 2<br>RF03: 2<br>RF04: 2<br>RF05: 1.3<br>RF07: 1.6 | 2.7 | 1.8 |
-| UC4 | RF08: 4<br>RF09: 4<br>RF10: 3<br>RF11: 2<br>RF12: 2<br>RF17: 3<br>RF23: 3<br>RNF08: 4 | RF08: 2.6<br>RF09: 2.6<br>RF10: 2.6<br>RF11: 1<br>RF12: 1<br>RF17: 2<br>RF23: 1<br>RNF08: 2.6 | 3.1 | 1.9 |
-| UC5 | RF14: 4<br>RF15: 3 | RF14: 1.6<br>RF15: 1.3 | 3.5 | 1.45 |
-| UC6 | RF18: 4<br>RF19: 2<br>RF20: 2<br>RF24: 4 | RF18: 1<br>RF19: 1<br>RF20: 1.3<br>RF24: 1 | 3 | 1.1 |
-| UC7 | RF13: 4<br>RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4 | RF13: 1.3<br>RF21: 1<br>RF22: 1<br>RNF06: 2.6<br>RNF07: 2.6 | 4 | 1.7 |
-| UC8 | RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4 | RF21: 1<br>RF22: 1<br>RNF06: 2.6<br>RNF07: 2.6 | 4 | 1.8 |
- 
-#### Tabela de Priorização dos Casos de Uso no MVP
- 
-A seguir, a tabela de priorização dos Casos de Uso no MVP, seguindo os dados da tabela anterior.
- 
+
+| Caso de Uso | Qtd. Req. | Requisitos & Valor de Negócio | Requisitos & Esforço Técnico | Média do Valor de Negócio | Média do Esforço Técnico | Esforço Total Acumulado (Soma) |
+|---|---|---|---|---|---|---|
+| UC1 | 4 | RF06: 4<br>RF07: 4<br>RNF02: 4<br>RNF05: 4 | RF06: 1.6<br>RF07: 1.6<br>RNF02: 1.3<br>RNF05: 2.6 | 4.0 | 1.8 | 7.1 |
+| UC2 | 2 | RF05: 4<br>RNF02: 4 | RF05: 1.3<br>RNF02: 1.3 | 4.0 | 1.3 | 2.6 |
+| UC3 | 6 | RF01: 2<br>RF02: 2<br>RF03: 2<br>RF04: 2<br>RF05: 4<br>RF07: 4 | RF01: 2.0<br>RF02: 2.0<br>RF03: 2.0<br>RF04: 2.0<br>RF05: 1.3<br>RF07: 1.6 | 2.7 | 1.8 | 10.9 |
+| UC4 | 8 | RF08: 4<br>RF09: 4<br>RF10: 3<br>RF11: 2<br>RF12: 2<br>RF17: 3<br>RF23: 3<br>RNF08: 4 | RF08: 2.6<br>RF09: 2.6<br>RF10: 2.6<br>RF11: 1.0<br>RF12: 1.0<br>RF17: 2.0<br>RF23: 1.0<br>RNF08: 2.6 | 3.1 | 1.9 | 15.4 |
+| UC5 | 3 | RF14: 4<br>RF15: 3<br>RF16: 3 | RF14: 1.6<br>RF15: 1.3<br>RF16: 2.3 | 3.3 | 1.7 | 5.2 |
+| UC6 | 4 | RF18: 4<br>RF19: 2<br>RF20: 2<br>RF24: 4 | RF18: 1.0<br>RF19: 1.0<br>RF20: 1.3<br>RF24: 1.0 | 3.0 | 1.1 | 4.3 |
+| UC7 | 5 | RF13: 4<br>RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4 | RF13: 1.3<br>RF21: 1.0<br>RF22: 1.0<br>RNF06: 2.6<br>RNF07: 2.6 | 4.0 | 1.7 | 8.5 |
+| UC8 | 4 | RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4 | RF21: 1.0<br>RF22: 1.0<br>RNF06: 2.6<br>RNF07: 2.6 | 4.0 | 1.8 | 7.2 |
+
+> **Nota Metodológica (Média Simples vs. Esforço Total Acumulado):**  
+> A média simples do esforço técnico por requisito foi utilizada como indicador da densidade relativa de esforço de cada Caso de Uso. Contudo, essa média não expressa isoladamente o volume total de desenvolvimento. Por exemplo, o **UC04** agrega 8 requisitos complexos (múltiplas fichas de dados, salvamento assíncrono e histórico), totalizando **15,4** pontos de esforço acumulado, ao passo que o **UC02** possui apenas 2 requisitos de cadastro básico com **2,6** pontos acumulados. Embora suas médias sejam comparáveis (1,9 vs. 1,3), a carga total de implementação do UC04 é quase seis vezes superior à do UC02. Por esse motivo, a seleção do MVP avaliou em conjunto a densidade, a carga acumulada de trabalho e a essencialidade das funcionalidades para o negócio.
+
+#### Tabela de Priorização dos Casos de Uso no MVP (Visão Completa dos Casos de Uso)
+
+A tabela abaixo sintetiza a priorização analítica inicial dos Casos de Uso a partir dos valores consolidados:
+
 | ID | Caso de Uso | Valor de Negócio | Esforço Técnico | Valor Resultante (V. Negócio / E. Técnico) | Compõe a Entrega? |
 |---|---|---|---|---|---|
-| [UC01](./casos-uso/uc01.md) | Gerenciar Autenticar | 4 | 1.8 | 2.22 | SIM |
-| [UC02](./casos-uso/uc02.md) | Gerenciar Usuários Administrativos | 4 | 1.3 | 3.08 | SIM |
-| [UC03](./casos-uso/uc03.md) | Gerenciar Quadro de Avisos | 2.7 | 1.8 | 1.5 | NÃO |
-| [UC04](./casos-uso/uc04.md) | Gerenciar Fichas de Matrícula | 3.4 | 1.7 | 1.90 | SIM |
-| [UC05](./casos-uso/uc05.md) | Gerenciar Documentos Digitais | 3.5 | 1.45 | 2.41 | SIM |
-| [UC06](./casos-uso/uc06.md) | Gerenciar Estrutura Escolar | 3 | 1.1 | 2.73 | SIM |
-| [UC07](./casos-uso/uc07.md) | Alocar Alunos | 4 | 1.7 | 2.35 | SIM |
-| [UC08](./casos-uso/uc08.md) | Consultar Registros (Busca) | 4 | 1.8 | 2.22 | SIM |
+| [UC01](./casos-uso/uc01.md) | Gerenciar Autenticação | 4.0 | 1.8 | 2.22 | SIM |
+| [UC02](./casos-uso/uc02.md) | Gerenciar Usuários Administrativos | 4.0 | 1.3 | 3.08 | SIM |
+| [UC03](./casos-uso/uc03.md) | Gerenciar Quadro de Avisos | 2.7 | 1.8 | 1.50 | NÃO |
+| [UC04](./casos-uso/uc04.md) | Gerenciar Fichas de Matrícula | 3.1 | 1.9 | 1.63 | SIM (Exceção de Negócio) |
+| [UC05](./casos-uso/uc05.md) | Gerenciar Documentos Digitais | 3.3 | 1.7 | 1.94 | SIM |
+| [UC06](./casos-uso/uc06.md) | Gerenciar Estrutura Escolar | 3.0 | 1.1 | 2.73 | SIM |
+| [UC07](./casos-uso/uc07.md) | Alocar Alunos | 4.0 | 1.7 | 2.35 | SIM |
+| [UC08](./casos-uso/uc08.md) | Consultar Registros (Busca) | 4.0 | 1.8 | 2.22 | SIM |
 
-Para a composição da entrega, consideramos aqueles Casos de Uso cujo Valor de Negócio é maior ou igual à 3 e cujo Valor Resultante é maior ou igual 1.9, além desses critérios analíticos, analisamos cada Caso de Uso de acordo com sua importância para o cumprimento do objetivo do projeto, selecionando aqueles que, caso não fossem selecionados, não seria possível criar um protótipo minimamente funcional. 
+**Critérios de Seleção e Justificativa de Exceção:**
+
+1. **Critério Analítico Geral:** Para a composição da entrega, o critério padrão adotado considerou os Casos de Uso com **Valor de Negócio $\ge$ 3.0** e **Valor Resultante (Razão) $\ge$ 1.90**.
+2. **Justificativa da Exceção de Negócio (UC04):**  
+   O UC04 obteve razão resultante de **1,63** (com VN = 3,125 e ET = 1,925), pontuação analítica que ficaria abaixo da linha de corte geral de 1,90 devido ao elevado volume de operações e requisitos técnicos que ele engloba. No entanto, sua inclusão no MVP é mandatória e foi aprovada como uma **exceção justificada por necessidade de negócio**: o UC04 constitui o coração operacional e a razão de ser de toda a solução SIGMA (cadastro centralizado do aluno e preenchimento de suas fichas). Sem o UC04, o sistema não entregaria o protótipo minimamente viável pactuado com a creche.
+3. **Inclusão do RF16 no UC05:**  
+   Com a inclusão devida do RF16 (Baixar fichas e documentos - VN: 3; ET: 2,3), o UC05 alcançou VN = 3,33 e ET = 1,73, resultando em Razão = 1,92 (ou 1,94 considerando arredondamentos parciais), qualificando-se normalmente nos critérios de seleção.
+
+### 10.3 Detalhamento de Escopo por Caso de Uso no MVP (Fluxos Contemplados vs. Excluídos)
+
+Conforme registrado nas deliberações das reuniões da equipe com a representante da creche (ver [Ata de Reunião 1](../reunioes/ata1.md)), a seleção de um Caso de Uso para o MVP não implica a inclusão de todos os seus fluxos alternativos ou secundários. Determinados fluxos que demandavam esforço adicional sem urgência no primeiro ciclo foram expressamente excluídos da versão inicial do MVP:
+
+- **UC04 - Gerenciar Fichas de Matrícula:**
+  - **Fluxos Contemplados no MVP:**
+    - FP01 - Cadastrar Card de Aluno e Preencher Fichas: contempla RF08 (cadastrar card), RF09 (preenchimento de fichas), RF23 (confirmação e salvamento) e RNF08 (tempo de resposta de salvamento < 5s).
+    - FA01 - Editar Fichas de Matrícula: contempla RF10 (edição de dados das fichas), RF17 (histórico de alterações) e RF23 (salvamento).
+  - **Fluxos Excluídos do MVP (Backlog Futuro):**
+    - FA02 - Inativar Matrícula (RF11): o ciclo de desativação de cards não é frequente no período inicial de adoção escolar e foi adiado.
+    - FA03 - Reativar Matrícula (RF12): dependente do fluxo de inativação, igualmente postergado.
+
+- **UC06 - Gerenciar Estrutura Escolar:**
+  - **Fluxos Contemplados no MVP:**
+    - FP01 - Cadastrar Etapa: contempla RF18 (cadastro de etapas ativas).
+    - FP02 - Cadastrar Turma: contempla RF24 (cadastro de turmas com seleção direta da etapa vinculada no momento da criação).
+  - **Fluxos Excluídos do MVP (Backlog Futuro):**
+    - FP03 - Vincular Turma à Etapa (RF20): a vinculação avulsa/posterior tornou-se desnecessária no MVP, uma vez que a etapa já é obrigatoriamente associada na criação da turma (FP02).
+    - FP04 - Inativar Turma ou Etapa (RF19): a exclusão/inativação de estruturas curriculares foi postergada para ciclos pós-MVP.
+
+#### Consolidação do Escopo Efetivo do MVP por Caso de Uso
+
+Ao recalcular os Casos de Uso considerando estritamente os fluxos e requisitos que integram a versão aprovada do MVP, obtêm-se as métricas refinadas da entrega:
+
+| Caso de Uso | Requisitos Efetivos no MVP | Média VN (MVP) | Média ET (MVP) | Razão Efetiva (MVP) | Esforço Acumulado (MVP) |
+|---|---|---|---|---|---|
+| [UC01](./casos-uso/uc01.md) | RF06, RF07, RNF02, RNF05 | 4.0 | 1.8 | 2.22 | 7.1 |
+| [UC02](./casos-uso/uc02.md) | RF05, RNF02 | 4.0 | 1.3 | 3.08 | 2.6 |
+| [UC04](./casos-uso/uc04.md) | RF08, RF09, RF10, RF17, RF23, RNF08 | 3.5 | 2.2 | 1.59 | 13.4 |
+| [UC05](./casos-uso/uc05.md) | RF14, RF15, RF16 | 3.3 | 1.7 | 1.94 | 5.2 |
+| [UC06](./casos-uso/uc06.md) | RF18, RF24 | 4.0 | 1.0 | 4.00 | 2.0 |
+| [UC07](./casos-uso/uc07.md) | RF13, RF21, RF22, RNF06, RNF07 | 4.0 | 1.7 | 2.35 | 8.5 |
+| [UC08](./casos-uso/uc08.md) | RF21, RF22, RNF06, RNF07 | 4.0 | 1.8 | 2.22 | 7.2 |
+
+*Observação:* No **UC04**, ao focar exclusivamente no escopo aprovado do MVP, a média de Valor de Negócio sobe de 3,1 para **3,5**, reforçando a entrega imediata de alto valor à cliente. No **UC06**, a remoção dos fluxos secundários (RF19 e RF20) eleva o custo-benefício para razão 4,00 com esforço acumulado reduzido a apenas 2,0 pontos.
+
+### 10.4 Requisitos Transversais e Condições Globais de Entrega
+
+Determinados requisitos não-funcionais possuem caráter arquitetural e de conformidade legal, aplicando-se transversalmente a toda a plataforma. Por essa natureza, eles não estão restritos a um único Caso de Uso de interface, mas atuam como **condições mandatórias globais de entrega**:
+
+| ID | Requisito | Natureza | Abrangência no MVP | Condição de Aceite |
+|---|---|---|---|---|
+| **RNF01** | Privacidade de dados e retenção segura | Obrigação Legal (LGPD) e Arquitetural | Transversal a todos os Casos de Uso com manipulação de dados cadastrais (UC01, UC02, UC04, UC05, UC07, UC08). | Criptografia de dados sensíveis dos menores e seus responsáveis em repouso e trânsito, controle de privilégios de acesso e trilha de auditoria. Trata-se de exigência legal inegociável definida como obrigatória na Atividade 4. |
+| **RNF02** | Restrição de acesso não autenticado | Segurança de Acesso | Transversal a todas as telas e endpoints do sistema. | Nenhuma rota operacional ou dado de aluno pode ser acessado sem credenciais autenticadas e autorizadas via token de sessão. |
+| **RNF09** | Disponibilidade do sistema | Confiabilidade Operacional | Transversal ao ambiente operacional do SIGMA. | O sistema deve assegurar disponibilidade estável durante todo o expediente regular de atendimento da creche. |
 
 > Para consultar as regras de negócio consolidadas, acesse o documento de [**Regras de Negócio**](./Regras-Negocio.md).
 

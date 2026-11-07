@@ -97,7 +97,7 @@ A avaliação técnica considerará os seguintes elementos para a análise:
  
 | ID | Esforço Técnico | Complexidade | Capacidade da Equipe | Média | Final (média arredondada) |
 |---|---|---|---|---|---|
-| RF01 | 2 | 3 | 1 | 2.6 | 3 |
+| RF01 | 2 | 3 | 1 | 2 | 2 |
 | RF02 | 2 | 3 | 1 | 2 | 2 |
 | RF03 | 2 | 3 | 1 | 2 | 2 |
 | RF04 | 2 | 3 | 1 | 2 | 2 |
@@ -136,7 +136,7 @@ A avaliação técnica considerará os seguintes elementos para a análise:
  
 | ID | Requisito | Justificativa do cliente | V. Negócio | Esforço | Complexidade | Lacuna de Capacidade | Esforço técnico consolidado |
 |---|---|---|---|---|---|---|---|
-| RF1 | Disponibilizar quadro de avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2.6 |
+| RF1 | Disponibilizar quadro de avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
 | RF2 | Lançar avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
 | RF3 | Exibir avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
 | RF4 | Apagar avisos | Se manifestou como um desejo da cliente | 2 | 2 | 3 | 1 | 2 |
