@@ -92,16 +92,18 @@ Os requisitos não funcionais definem critérios de qualidade do sistema SIGMA. 
 
 | ID | Nome do requisito | Descrição | Classificação URPS+ |
 | :--- | :--- | :--- | :--- |
-| <span id="req-rnf01" class="rf-anchor">RNF01</span> | Privacidade de Dados e Retenção Segura | Garantir a privacidade dos dados pessoais restringindo sua visualização apenas a usuários autenticados, apoiando a segurança da informação exigida pela LGPD. | Segurança |
+| <span id="req-rnf01" class="rf-anchor">RNF01</span> | Controle de Acesso e Autenticação | Restringir o acesso às funcionalidades do sistema e dados pessoais exclusivamente dos usuários autenticados por meio de credenciais válidas (e-mail e senha), garantindo a provacidade exigida pela LGPD. Tentativas de acesso não autenticado devem ser bloqueadas, redirecionando o usuário para a atela de login na interface e retornando o código HTTP 401 (Unauthorized) na API. | Segurança |
 | <span id="req-rnf02" class="rf-anchor">RNF02</span> | Restrição de Acesso não Autenticado | O sistema deve restringir o acesso às suas funcionalidades internas exclusivamente a usuários autenticados por meio de credenciais válidas cadastradas (e-mail e senha). Qualquer tentativa de acesso não autenticado deve ser bloqueada, resultando no redirecionamento do usuário para a tela de login (na interface de usuário) e retornando o código de status HTTP 401 - Unauthorized (na comunicação com a API). | Segurança |
 | <span id="req-rnf03" class="rf-anchor">RNF03</span> | Interface responsiva e adaptável a múltiplos dispositivos | O sistema deve adaptar seus componentes visuais para resoluções de monitores desktop e dispositivos móveis, garantindo o funcionamento e layout adequado em resoluções de tela de 360px (mobile), 768px (tablet) e 1280px (desktop). A validação deve ser feita através de ferramentas de inspeção de navegador. | Usabilidade |
-| <span id="req-rnf04" class="rf-anchor">RNF04</span> | Interface com suporte a Modo Escuro alternável | O sistema deve disponibilizar a opção de "modo escuro" alternável para o usuário, aplicando uma paleta de cores escura e textos de alto contraste, preservando a legibilidade e consistência visual. | Usabilidade |
-| <span id="req-rnf05" class="rf-anchor">RNF05</span> | Tempo de Resposta do Sistema ao Logar | Garantir tempo menor que 2 segundos para login, medido a partir do clique no botão de entrar até a autorização de acesso, sob condições normais de rede e servidor. | Desempenho |
+| <span id="req-rnf04" class="rf-anchor">RNF04</span> | Critérios de Contraste e Legibilidade de Interface | Garantir a legibilidade mantendo uma razão de contraste mínima de 4.5:1 para textos normais e 3:1 para textos grandes ou elementos gráficos de interface, em conformidade com as diretrizes de acessibilidade WCAG 2.1 (nível AA), independentemente do tema ativo (claro ou escuro). | Usabilidade / Acessibilidade |
+| <span id="req-rnf05" class="rf-anchor">RNF05</span> | Tempo de Resposta do Sistema ao Logar | Garantir tempo menor que 2 segundos para login, medindo à partir do clique no botão de entrar até a autorização de acesso. Este desempenho deve ser mantida sob os seguintes parâmetros definidos: carga simultânea de até 100 usuários ativos, servidor operando com limite de 75% de utilização de CPU/Memória, e latência de rede cliente-servidor de até 50ms. | Desempenho |
 | <span id="req-rnf06" class="rf-anchor">RNF06</span> | Tempo de Resposta do Sistema ao Buscar aluno | Retornar os resultados da consulta de alunos em um tempo inferior a 2 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do banco de dados. A medição inicia no acionamento do botão de busca e termina ao renderizar a lista na tela. | Desempenho |
 | <span id="req-rnf07" class="rf-anchor">RNF07</span> | Tempo de resposta do sistema para buscar turmas ou etapas | Retornar os resultados da busca de turmas ou etapas em um tempo inferior a 2 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do banco de dados. | Desempenho |
-| <span id="req-rnf08" class="rf-anchor">RNF08</span> | Tempo de resposta para salvar uma ficha | O sistema deve concluir o salvamento de uma ficha em um tempo de resposta inferior a 5 segundos para 95% das requisições, sob condições normais de tráfego de rede e carga do servidor. A medição inicia ao acionar o botão de salvar e termina com a exibição da mensagem de sucesso em tela. | Desempenho |
-| <span id="req-rnf09" class="rf-anchor">RNF09</span> | Disponibilidade do sistema | O sistema deve garantir uma taxa de acessibilidade de 99,5% durante o horário de funcionamento comercial da creche, compreendido de segunda a sexta-feira, das 07h00 às 19h00. | Confiabilidade |
+| <span id="req-rnf08" class="rf-anchor">RNF08</span> | Tempo de resposta para salvar uma ficha | Garantir a conclusão do salvamento de uma ficha em um tempo de resposta inferior a 5 segundos para 95% das requisições, com a medição iniciando ao acionar o botão de salvar e terminando com a exibição da mensagem de sucesso em tela. O desempenho deve ser garantido sob as seguintes condições de medição: fichas (documentos) com tamanho máximo de 5MB, base de dados operando com volume preenchido de até 1 milhão de registros, e suporte a picos de até 100 requisições simultâneas de salvamento. | Desempenho |
+| <span id="req-rnf09" class="rf-anchor">RNF09</span> | Disponibilidade do Sistema | Garantir uma taxa de acessibilidade de 99,5% apurada mensalmente, durante o horário de funcionamento comercial da creche, compreendido de segunda a sexta-feira, das 07h30 às 19h30. Considera-se indisponibilidade qualquer período em que a aplicação principal fique inacessível ou retorne erros de servidor por mais de 5 minutos consecutivos. A medição será feita por meio de ferramentas automatizadas de monitoramento que verificam a resposta do servidor em intervalos de 1 minuto. | Confiabilidade |
 | <span id="req-rnf10" class="rf-anchor">RNF10</span> | Acessos Múltiplos | O sistema deve suportar no mínimo 10 usuários acessando e interagindo simultaneamente com a aplicação, mantendo o tempo de resposta das operações dentro dos limites estabelecidos nos demais requisitos de desempenho. | Desempenho |
+| <span id="req-rnf11" class="rf-anchor">RNF11</span> | Política de Retenção e Descarte de Dados | Garantir o ciclo de vida dos dados pessoais aplicando os seguintes parâmetros de segurança: I - Todos os dados pessoais retidos e os backups correspondentes devem ser armazenados com criptografia forte; II - O sistema deve manter rotinas de backup automatizadas que garantam a integridade e a restauração dos dados retidos em caso de falhas, sem perda de informações; III - Dados inativos retidos por obrigações legais devem ser segregados do banco de dados operacional, acessíveis exclusivamente pelo administrador; IV - Após expirar o prazo legal de retenção, deve-se aplicar rotinas automatizadas de anonimização irreversível ou exclusão física, garantindo que os dados não possam ser recuperados sob nenhuma circunstância. | Segurança / Conformidade |
+| <span id="req-rnf12" class="rf-anchor">RNF12</span> | Backup e Restauração de Dados | Realizar rotinas automatizadas de backup do banco de dados e dos arquivos com frequência mínima diária. Em caso de incidentes ou falhas críticas, a perda aceitável de dados (RPO - Recovery Point Objective) não deve exceder as últimas 24 horas de operação, e o tempo máximo de recuperação e restauração completa do sistema (RTO - Recovery Time Objective) deve ser inferior a 4 horas. | Segurança / Confiabilidade |
 
 ---
 
@@ -117,8 +119,16 @@ Você pode navegar, dar zoom e explorar a árvore interativamente diretamente pe
 
 ---
 
+## 8.4 Requisitos Globais
+
+| ID | Nome do requisito | Descrição |
+| :--- | :--- | :--- |
+| <span id="req-rf25" class="rf-anchor">RF25</span> | Alternância de Tema Visual | Disponibilizar um controle na interface que permita ao usuário alterar manualmente entre os temas "claro" e "escuro". |
+
+---
+
 ### Captura da Árvore de Rastreabilidade
 
 ![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
 
-<p align="center"><em>Captura registrada no dia 10/10/2026.</em></p>
+<p align="center"><em>Captura registrada no dia 10/10/2026.</em></p>
