@@ -8,11 +8,12 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 
 #### Prática: Elicitação e Descoberta
 - **Técnicas aplicadas:** Entrevistas e Análise Documental.
-- **Como foi aplicado:** Realizámos entrevistas por videochamadas com a diretora, coordenadora e secretárias da Creche Estação Vida para compreender o processo atual de cadastro, armazenamento e consulta. Em paralelo, analisámos as fichas de matrícula físicas utilizadas pela instituição.
+- **Como foi aplicado:** Realizamos entrevistas por videochamadas com a diretora, coordenadora e secretárias da Creche Estação Vida para compreender o processo atual de cadastro, armazenamento e consulta. Em paralelo, analisamos as fichas de matrícula físicas utilizadas pela instituição.
 - **Resultado esperado:** Requisitos de alto nível identificados e contexto do problema de gestão de matrículas compreendido.
 - **Evidências:**
     - [Entrevista de levantamento de requisitos](https://drive.google.com/file/d/1EugRqtDabhgezjH6jpZ7e9RNyV-RaA_2/view)
     - [Modelo de documentos](https://drive.google.com/drive/folders/1R6TWeKyvV99bJH4uQt0hzWzE3_3MuSq_?usp=sharing)
+    - [Resultado da Análise Documental](https://drive.google.com/drive/folders/1qECWguOMe9hr9VL2HkD24GLw3UuwnfSp?usp=sharing)
 
 #### Prática: Análise e Consenso
 - **Técnicas aplicadas:** Priorização de Requisitos (Método MoSCoW).
@@ -21,6 +22,7 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Evidências:**
     - [Link para a nossa priorização](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/atividades/atividade_4/)
     - [Link para reunião de validação do escopo do MVP](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FReuni%C3%A3o%20com%20Gabriel%20Vieira%20Octacilio%20Pinheiro%2D20261006%5F193801%2DGrava%C3%A7%C3%A3o%20de%20Reuni%C3%A3o%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E38bd09c9%2D2fb7%2D481b%2Db28f%2D1b185dc1604c)
+    - [Revisão curta da priorização](https://drive.google.com/drive/folders/1qLuqXaOm1OK2K8ti5_UX2JuZUx2AlEWc?usp=sharing)
 
 #### Prática: Declaração
 - **Técnicas aplicadas:** Elaboração do Documento de Visão e da Lista de Requisitos.
@@ -55,15 +57,17 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
     - [Link para reunião](https://drive.google.com/file/d/1EugRqtDabhgezjH6jpZ7e9RNyV-RaA_2/view)
 
 #### Prática: Análise e Consenso
-- **Técnicas aplicadas e a aplicar:** Análise de Impacto e Priorização (Realizadas); Prototipação para Alinhamento (Planeada).
-- **Como está a ser aplicado:** Os requisitos foram analisados para identificar conflitos, ambiguidades e dependências, sendo novamente priorizados com base no valor para a instituição e nos riscos de implementação. Além disso, serão utilizados protótipos preliminares em discussões com as secretárias como ferramenta de apoio visual para facilitar a compreensão, o debate e a obtenção de consenso sobre a estrutura da solução.
+- **Técnicas aplicadas e a aplicar:** Análise de Impacto e Priorização (Realizadas); Prototipação para Alinhamento (Em atualização).
+- **Como foi aplicado:** Os requisitos foram analisados para identificar conflitos, ambiguidades e dependências, sendo novamente priorizados com base no valor para a instituição e nos riscos de implementação. Além disso, foram criados protótipos preliminares e apresentados aos stakeholders, como ferramenta de apoio visual para facilitar a compreensão, o debate e a obtenção de consenso sobre a estrutura da solução.
 - **Resultado esperado:** Conflitos resolvidos e consenso estabelecido sobre a viabilidade técnica da implementação e fluxos da interface.
 - **Evidências:**
     - [Ata da reunião de analise de impacto e priorização](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/reunioes/ata1/#__tabbed_1_2)
+    - [Análise de impacto](https://drive.google.com/drive/folders/1k8KviR3GCRpRtQArNYIqqjm4O9Rca81Z?usp=sharing)
+    - [Protótipo de Alta Fidelidade](https://www.figma.com/design/99K50wj2mkeuIdAPWrpCBr/Sigma---prot%C3%B3tipo--plano-free-?node-id=6-4&t=SsVQTnArufZAsepm-1)
 
 #### Prática: Declaração
 - **Técnicas em aplicação:** Detalhamento Sob Demanda (Casos de Uso Detalhados e Critérios de Aceite).
-- **Como está sendo aplicado:** Os requisitos de maior prioridade estão sendo detalhados progressivamente, aplicando a escrita de casos de uso detalhados e a definição de critérios de aceite, com o objetivo de evitar uma especificação excessiva e antecipada.
+- **Como foi aplicado:** Os requisitos de maior prioridade estão sendo detalhados progressivamente, aplicando a escrita de casos de uso detalhados e a definição de critérios de aceite, com o objetivo de evitar uma especificação excessiva e antecipada.
 - **Resultado esperado:** Requisitos prioritários especificados com o nível exato de detalhe necessário para o desenvolvimento.
 - **Evidências:**
     - [Casos de uso detalhado](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/doc-visao/casos-uso/)
@@ -71,7 +75,7 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 
 #### Prática: Verificação e Validação
 - **Técnicas aplicadas:** Revisões com Stakeholders e Demonstrações.
-- **Como foi aplicado:** Os requisitos refinados serão revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas. Versões iniciais das funcionalidades serão apresentados aos stakeholders em sessões de demonstração para obter feedback e identificar possíveis ajustes.
+- **Como está sendo aplicado:** Os requisitos refinados foram revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas. Versões iniciais das funcionalidades serão apresentados aos stakeholders em sessões de demonstração para obter feedback e identificar possíveis ajustes.
 - **Resultados:** Confirmação de que o MVP proposto atende às expectativas dos usuários.
 - **Evidências:**
     - [Link de validação do MVP](https://unbbr-my.sharepoint.com/:v:/g/personal/242004706_aluno_unb_br/IQBXti2dM-CuR44I9bXe8Ka9AedalX9A8_pG9i43LaH3-cA?e=P1HCHE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
@@ -110,10 +114,10 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 
 #### Prática: Representação
 - **Técnicas a serem aplicadas:** Refinamento Visual (Atualização de Protótipos de Interface).
-- **Como será aplicado:** Os protótipos de interface serão craidos e ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.
+- **Como será aplicado:** Os protótipos de interface criados precisam ser ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.
 - **Resultado esperado:** Telas e fluxos ajustados conforme necessidades ou limitações que surgirem durante o desenvolvimento.
 - **Evidências:**
-    - [Inserir Link]
+    - [Protótipo de Alta Fidelidade](https://www.figma.com/design/99K50wj2mkeuIdAPWrpCBr/Sigma---prot%C3%B3tipo--plano-free-?node-id=6-4&t=SsVQTnArufZAsepm-1)
 
 #### Prática: Verificação e Validação
 - **Técnicas a serem aplicadas:** Testes Baseados em Requisitos (Verificação) e Demonstrações Incrementais (Validação).
