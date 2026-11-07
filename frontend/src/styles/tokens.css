@@ -3,10 +3,10 @@
  * (conferir no Figma antes de fixar). Todas as cores são variáveis para suportar o modo escuro.
  */
 :root {
-  --color-primary: #1f57e0;
-  --color-primary-hover: #1848c0;
+  --color-primary: #23cdeb;
+  --color-primary-hover: #23cdeb;
   --color-primary-contrast: #ffffff;
-  --color-primary-dark: #173c8f;
+  --color-primary-dark: #23cdeb;
   --color-primary-dark-contrast: #ffffff;
   --color-primary-dark-muted: rgba(255, 255, 255, 0.72);
   --color-primary-dark-hover: rgba(255, 255, 255, 0.08);
