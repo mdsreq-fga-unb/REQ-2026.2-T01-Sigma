@@ -22,7 +22,7 @@ Apesar de sua atuação junto à comunidade, a creche enfrenta dificuldades rela
 
 ## 1.3 Rich Picture
 
-A Creche Estação Vida possui mais de 20 anos de atuação e atende atualmente 202 alunos. Devido ao longo período de funcionamento, a instituição acumulou uma grande quantidade de fichas , sendo aproximadamente e documentos de matrícula, tornando o cadastro, armazenamento e consulta dessas informações mais trabalhosos.
+A Creche Estação Vida possui mais de 20 anos de atuação e atende atualmente 202 alunos. Devido ao longo período de funcionamento, a instituição acumulou uma grande quantidade de fichas e documentos de matrícula, tornando o cadastro, armazenamento e consulta dessas informações mais trabalhosos.
 
 Atualmente, as matrículas são realizadas manualmente, utilizando fichas de papel que são armazenadas em armários, incluindo documentos antigos do chamado "arquivo morto". Esse processo dificulta a localização e manutenção das informações.
 
@@ -37,13 +37,15 @@ A instituição conta com aproximadamente 25 funcionárias, sendo apenas 2 secre
 
 A Figura apresenta o diagrama de Ishikawa, elaborado a partir do levantamento realizado junto à Creche Estação Vida, contemplando as principais causas relacionadas às dificuldades enfrentadas pela instituição no armazenamento, organização e manutenção das fichas de matrícula dos alunos.
 
-Atualmente, grande parte das informações é registrada manualmente, utilizando fichas de papel que posteriormente são armazenadas em armários. Esse processo dificulta a localização, consulta e atualização das informações, além de exigir espaço físico para o armazenamento dos documentos, a quantidade anual de novas fichas de matrícula varia entre 200 - 300. Tirando os arquivos mortos. O espaço ocupado para guardar as fichas sao dois armários de medidas 2.2m x 5.0m  x0.4m sendo respectivamente altura largura e profundidades oque somados dá cerca de 8,8 m³.
+Atualmente, grande parte das informações é registrada manualmente, utilizando fichas de papel que posteriormente são armazenadas em armários. Esse processo dificulta a localização, consulta e atualização das informações, além de exigir espaço físico para o armazenamento dos documentos, a quantidade anual de novas fichas de matrícula varia entre 200 - 300. Tirando os arquivos mortos. O espaço ocupado para guardar as fichas sao dois armários de medidas 2.2m x 5.0m  x0.4m sendo respectivamente altura largura e profundidades o que somados dá cerca de 8,8 m³.
 
 O grande volume de fichas acumuladas ao longo dos anos, juntamente com a quantidade reduzida de profissionais responsáveis pelas atividades administrativas, torna o gerenciamento dessas informações ainda mais trabalhoso e suscetível à perda ou deterioração dos documentos, demora entre 4 - 10 minutos pra achar uma ficha de matrícula atualmente, e a frequência de perda ou deterioração é de 2-3 fichas a cada semestre totalizando uma média de 4-6 fichas por ano
 
-Dessa forma, existe uma oportunidade de melhorar os processos internos por meio da digitalização das fichas de matrícula, proporcionando maior facilidade de acesso, organização e segurança das informações.
+> Os dados e informações acima foram obtidos através de uma reunião na plataforma Microsoft Teams realizada com a presença da diretora Cirlene Sena e a secretária Letícia Pretto na data de 24/08/2026. Os dados fornecidos são estimativas relatadas pelas funcionárias da creche, e não de medições sistemáticas. 
 
-Portanto, o desenvolvimento de um sistema digital para cadastro e gerenciamento dos **cards de matrícula** representa uma oportunidade de modernizar o processo administrativo da creche, reduzir a dependência de documentos físicos e tornar a manutenção das informações dos alunos mais eficiente.
+Atualmente, o escopo de desenvolvimento do sistema só planeja atingir a digitalização de fichas produzidas no ano de 2026 devido à dificuldade de integrar no sistema uma grande quantidade de arquivos armazenados. A partir disso, há a possibilidade de no futuro melhorar os processos internos por meio da digitalização das outras fichas de matrícula existentes, proporcionando maior facilidade de acesso, organização e segurança das informações.
+
+Portanto, o desenvolvimento de um sistema digital para cadastro e gerenciamento das **fichas de matrícula** representa uma oportunidade de modernizar o processo administrativo da creche, reduzir parcialmente a dependência de documentos físicos, possibilitando o armazenamento de cards de matrícula criados desde 2026 e tornar a manutenção das informações dos alunos mais eficiente.
 ![imagem diagrama de ishikawa](../assets/ishikawa.png)
 
 ### Causas identificadas no diagrama de Ishikawa
@@ -59,13 +61,13 @@ Portanto, o desenvolvimento de um sistema digital para cadastro e gerenciamento 
 
 ## 1.5 Desafios do Projeto
 
-O principal desafio do projeto é realizar a **digitalização das fichas de matrícula atualmente armazenadas em documentos físicos**. A Creche Estação Vida possui um grande volume de fichas acumuladas ao longo dos anos, o que dificulta a organização, localização e manutenção das informações. Além disso, a quantidade de documentos tende a aumentar com o passar do tempo, tornando necessário desenvolver uma solução que permita o armazenamento organizado e facilite o acesso aos dados.
+O principal desafio do projeto é realizar a **digitalização das fichas de matrícula criadas durante o ano de 2026, atualmente armazenadas em documentos físicos**. Para o ano de 2026, a Creche Estação Vida pode ter entre 200 ou 300 novas fichas de matrícula aproximadamente, apesar de fichas de anos anteriores não serem consideradas atualmente para a digitalização no sistema, ainda é um número considerável que pode tornar o processo de digitalização inicial levemente lento ao ser juntado às demais responsabilidades da secretaria. A equipe e a creche também devem avaliar a possibilidade de integrar a digitalização do grande volume de fichas acumuladas ao longo dos anos.
 
 Outro desafio está relacionado à **equipe reduzida da secretaria**, composta por apenas duas responsáveis pelas atividades administrativas. Como o cadastro, a consulta e a atualização das fichas são realizados manualmente, essas atividades demandam tempo e podem sobrecarregar a equipe. Dessa forma, o sistema deverá ser simples e intuitivo, permitindo que as responsáveis realizem suas atividades sem a necessidade de conhecimentos técnicos avançados.
 
-Também será necessário considerar a **transição dos documentos físicos para o sistema digital.** Será preciso definir quais informações das fichas atuais deverão ser cadastradas e como os documentos antigos serão tratados, garantindo que informações importantes não sejam perdidas durante o processo.
+Também será necessário considerar a **transição parcial dos documentos físicos para o sistema digital.** Será preciso entender os formatos utilizados pelas fichas físicas e os campos a serem preenchidos dentro desses formulários, com o objetivo de definir quais informações das fichas atuais deverão ser cadastradas, garantindo que informações importantes não sejam perdidas durante o processo.
 
-Assim, o projeto deverá transformar um processo que é, atualmente, manual e baseado em documentos físicos em um processo **digital, organizado e de fácil utilização**, considerando o volume de informações, a equipe disponível e a necessidade de preservar os dados existentes. A solução deverá priorizar as funcionalidades essenciais para atender às necessidades da creche sem tornar o sistema complexo para suas usuárias.
+Assim, o projeto deverá transformar um processo que é, atualmente, manual e baseado em documentos físicos em um processo misto **focando na parte digital, organizado e de fácil utilização e mantendo as fichas de anos anteriores de forma física**, considerando o volume de informações, a equipe disponível e a necessidade de preservar os dados existentes. A solução deverá priorizar as funcionalidades essenciais para atender às necessidades da creche sem tornar o sistema complexo para suas usuárias.
 
 ## 1.6 Mapa de Stakeholders
 
@@ -78,7 +80,7 @@ Os principais stakeholders do projeto são:
 - **Alunos e seus responsáveis** — beneficiados indiretamente pela maior organização e segurança dos dados.
 - **Equipe de desenvolvimento** — responsável por implementar a solução e garantir sua funcionalidade, usabilidade e segurança.
 
-![imagem de satakeholders](../assets/mapa_stakeholders3.png)
+![imagem de stakeholders](../assets/mapa_stakeholders3.png)
 
 ### Tabela de stakeholders
 
@@ -99,6 +101,6 @@ Embora a creche seja vinculada à prefeitura, o SIGMA funciona de forma independ
 A Creche Estação Vida possui quatro principais perfis de clientes e públicos impactados pelo sistema:
 
 - **Equipe administrativa (direção, coordenação e secretaria):**Será o principal grupo de usuários da solução, utilizando o sistema para realizar o cadastro, consulta, atualização e organização das informações dos alunos, buscando reduzir o trabalho manual e facilitar o gerenciamento das fichas de matrícula.
-- **Equipe pedagógica (professoras e monitoras):** Poderá utilizar as informações dos alunos necessárias para o desenvolvimento das atividades e acompanhamento das crianças, tendo maior facilidade para consultar dados, tais que hoje demoram muito tempo a serem consultados pelas as secretarias até serem passados para equipe pedagógica
-- **Responsáveis (pais e familiares):**  São responsáveis por fornecer as informações utilizadas no processo de matrícula e poderão ser beneficiados indiretamente pela maior organização e segurança dos dados, reduzindo as dificuldades relacionadas à localização e manutenção das informações cadastrais. Alguns responsáveis também solicitam informações de ex-alunos da creche, com mais de 20 anos de históricos, recuperar essas informações se torna algo muito complicado.
+- **Equipe pedagógica (professoras e monitoras):** Não utiliza o sistema diretamente, mas é beneficiada pela redução de tempo no momento em que a secretaria procura informações dos alunos necessárias para o desenvolvimento das atividades e acompanhamento das crianças, tendo maior facilidade para consultar dados.
+- **Responsáveis (pais e familiares):**  São responsáveis por fornecer as informações utilizadas no processo de matrícula e poderão ser beneficiados indiretamente pela maior organização e segurança dos dados, reduzindo as dificuldades relacionadas à localização e manutenção das informações cadastrais.
 - **Alunos (crianças) e comunidade:** São os principais beneficiários indiretos da solução, pois uma gestão mais organizada das informações pode contribuir para um atendimento mais eficiente e reduzir os riscos relacionados à perda ou dificuldade de acesso aos dados dos alunos.
