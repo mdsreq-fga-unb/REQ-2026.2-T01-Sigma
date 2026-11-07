@@ -22,6 +22,68 @@ export interface NovoUsuarioPayload {
   senha: string;
 }
 
+export type StatusMatricula = "ATIVA" | "INATIVA";
+export type TipoAlteracaoMatricula = "CRIACAO" | "EDICAO" | "INATIVACAO" | "REATIVACAO";
+
+export interface DadosAluno {
+  nome: string;
+  cpf: string;
+  numeroMatricula: string;
+  dataNascimento: string;
+  nomeResponsavel: string;
+  telefoneResponsavel: string;
+}
+
+export interface FichasMatricula {
+  socioeconomica: {
+    rendaFamiliar: string;
+    pessoasNaResidencia: string;
+    situacaoMoradia: string;
+    beneficioSocial: string;
+  };
+  imagem: {
+    autorizada: boolean | null;
+    responsavel: string;
+  };
+  saida: {
+    autorizadaSemResponsavel: boolean | null;
+    responsavel: string;
+    pessoasAutorizadas: string;
+  };
+  compromisso: {
+    aceito: boolean;
+    responsavel: string;
+  };
+  requerimento: {
+    anoLetivo: string;
+    turmaPretendida: string;
+    responsavel: string;
+  };
+}
+
+export interface AlteracaoMatricula {
+  id: string;
+  data: string;
+  autor: string;
+  tipo: TipoAlteracaoMatricula;
+  alteracoes: string[];
+}
+
+export interface Matricula {
+  id: string;
+  aluno: DadosAluno;
+  fichas: FichasMatricula;
+  status: StatusMatricula;
+  criadaEm: string;
+  atualizadaEm: string;
+  historico: AlteracaoMatricula[];
+}
+
+export interface NovaMatriculaPayload {
+  aluno: DadosAluno;
+  fichas: FichasMatricula;
+}
+
 /**
  * Códigos de erro do contrato com o backend. A API responde no formato do FastAPI:
  * `{ "detail": { "code": "<CODIGO>", "message": "..." } }`.
@@ -34,6 +96,10 @@ export type ApiErrorCode =
   | "SEM_PERMISSAO" // UC02 – ação restrita a administradores
   | "EMAIL_EM_USO" // UC02 FE01 (RN19)
   | "SENHA_FORA_PADRAO" // UC02 FE04 (RN20)
+  | "CPF_EM_USO" // UC04 FE02 (RN07)
+  | "MATRICULA_EM_USO" // UC04 FE02 (RN07)
+  | "MATRICULA_INATIVA" // UC04 FE03 (RN10)
+  | "FICHAS_INCOMPLETAS" // UC04 FE01 (RN03, RN06)
   | "DADOS_INVALIDOS"
   | "NAO_ENCONTRADO"
   | "FALHA_CONEXAO" // UC01 FE03 / UC02 FE03 (gerado no cliente)

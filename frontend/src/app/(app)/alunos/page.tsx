@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { EmBreve } from "@/components/layout/EmBreve";
-import { PageHeader } from "@/components/layout/PageHeader";
+import { MatriculasView } from "@/components/alunos/MatriculasView";
 
 export const metadata: Metadata = { title: "Alunos · SIGMA" };
 
-// Placeholder – UC04 (Gerenciar Fichas de Matrícula)
+// UC04 – Gerenciar Fichas de Matrícula (RF08, RF09, RF10, RF11, RF12, RF17, RF23)
 export default function AlunosPage() {
-  return (
-    <>
-      <PageHeader title="Alunos" subtitle="Fichas de matrícula das crianças da creche." />
-      <EmBreve casoDeUso="UC04 – Gerenciar Fichas de Matrícula" />
-    </>
-  );
+  return <MatriculasView />;
 }

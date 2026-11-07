@@ -3,9 +3,8 @@ import { Logo } from "./Logo";
 import styles from "./BrandPanel.module.css";
 
 const DESTAQUES = [
-  "Cadastro e edição das fichas de matrícula",
-  "Busca rápida por aluno, turma e etapa",
-  "Histórico de todas as alterações",
+  ,
+  
 ];
 
 /** Painel institucional (azul escuro) da tela de login. */
