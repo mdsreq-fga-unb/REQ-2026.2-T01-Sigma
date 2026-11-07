@@ -2,3 +2,5 @@
 .vscode
 
 site/
+.env 
+**/__pycache__/
