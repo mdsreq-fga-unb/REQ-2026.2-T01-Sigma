@@ -3,20 +3,30 @@
 Aqui vale ressaltar que todos os **casos de uso** a seguir são derivados das nossas listas de requisitos apresentado anteriormente nesse documento.
 Essa é uma lista tem o intuito de atender a representação de **requisitos de produto**, pra auxiliar duranto o desenvolvimento, e tamebm é  preliminar e deverá sofrer ajustes sempre que necessário durante o desenvolvimento do produto do SIGMA;
 
-## 10.1 Backlog Geral do produto 
+## 10.1 Backlog Geral do Produto e Planejamento das Entregas
 
-A baixo está o link dos casos de uso relacionados, cada link , redireciona para a descrição respectiva de seu caso de uso.
+O Backlog do Produto organiza as entregas do sistema SIGMA orientadas por Casos de Uso e seus respectivos fluxos operacionais, alinhando as necessidades da Creche Estação Vida ao ciclo iterativo do processo OpenUP.
 
-|Casos de Uso|Status|
-|---|---|
-|[UC01 - Gerenciar Autenticação](casos-uso/uc01.md)| NÃO FEITO|
-|[UC02 - Gerenciar Usuários Administrativos](casos-uso/uc02.md)|NÃO FEITA|
-|[UC03 - Gerenciamento de quadros de avisos](casos-uso/uc03.md)|NÃO FEITA|
-|[UC04 - Gerenciar Fichas de Matrícula](casos-uso/uc04.md)|NÃO FEITA|
-|[UC05 - Gerenciar Documentos Digitais](casos-uso/uc05.md)|NÃO FEITA|
-|[UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas)](casos-uso/uc06.md)|NÃO FEITA|
-|[UC07 - Alocar Alunos](casos-uso/uc07.md)|NÃO FEITA|
-|[UC08 - Consultar Registros (Busca)](casos-uso/uc08.md)|NÃO FEITA|
+Para assegurar o acompanhamento transparente da evolução do projeto, o estado de cada funcionalidade é distinguido nas três dimensões do ciclo de desenvolvimento:
+- **Especificação:** Status da modelagem e documentação de requisitos (Fechada para todos os Casos de Uso homologados na Unidade 2).
+- **Implementação:** Estado atual da codificação (Planejada, Em andamento, Em revisão ou Fechada).
+- **Validação:** Validação formal com os stakeholders (Fechada para consenso de requisitos e protótipos; Planejada para a homologação integrada do software na Iteração 8).
+
+### Quadro de Planejamento do Backlog
+
+| Item / Caso de Uso | Fluxos e Requisitos Contemplados | Iteração Prevista | Dependências | Responsáveis | Especificação | Implementação | Validação de Software |
+|---|---|---|---|---|---|---|---|
+| [UC01 - Gerenciar Autenticação](casos-uso/uc01.md) | FP01 (Login - RF06, RNF05), FP02 (Logout - RF07), RNF02 | Iteração 4 (Construção) | Nenhuma | A definir | Fechada | Em andamento | Planejada |
+| [UC02 - Gerenciar Usuários Administrativos](casos-uso/uc02.md) | FP01 (Cadastro de usuário - RF05, RNF02) | Iteração 4 (Construção) | UC01 | A definir | Fechada | Em andamento | Planejada |
+| [UC04.1 - Cadastro e Fichas de Matrícula](casos-uso/uc04.md) | FP01 (Cadastro de card, fichas e salvamento - RF08, RF09, RF23, RNF08) | Iteração 4 (Construção) | UC01, UC06.1 | A definir | Fechada | Em andamento | Planejada |
+| [UC04.2 - Edição e Histórico de Matrícula](casos-uso/uc04.md) | FA01 (Edição de fichas e histórico de alterações - RF10, RF17, RF23) | Iteração 5 (Construção) | UC04.1 | A definir | Fechada | Planejada | Planejada |
+| [UC05 - Gerenciar Documentos Digitais](casos-uso/uc05.md) | FP01, FA01 (Upload, substituição e download de PDFs - RF14, RF15, RF16, RN05) | Iteração 6 (Construção) | UC04.1 | A definir | Fechada | Planejada | Planejada |
+| [UC06.1 - Cadastro de Etapas e Turmas](casos-uso/uc06.md) | FP01 (RF18 - Etapa), FP02 (RF24 - Turma com etapa vinculada) | Iteração 7 (Construção) | UC01 | A definir | Fechada | Planejada | Planejada |
+| [UC07 - Alocar Alunos](casos-uso/uc07.md) | FP01 (Alocação de aluno em turma - RF13, RF21, RF22, RNF06, RNF07) | Iteração 7 (Construção) | UC04.1, UC06.1 | A definir | Fechada | Planejada | Planejada |
+| [UC08 - Consultar Registros (Busca)](casos-uso/uc08.md) | FP01 (Busca por aluno, turmas e etapas - RF21, RF22, RNF06, RNF07) | Iteração 7 (Construção) | UC04.1, UC06.1 | A definir | Fechada | Planejada | Planejada |
+| *[UC04.3 - Inativação e Reativação]* | FA02 (Inativar - RF11), FA03 (Reativar - RF12) | Pós-MVP | UC04.1 | A definir | Fechada | Planejada | Planejada |
+| *[UC06.2 - Estrutura Escolar Avançada]* | FP03 (Vincular turma à etapa - RF20), FP04 (Inativar turma/etapa - RF19) | Pós-MVP | UC06.1 | A definir | Fechada | Planejada | Planejada |
+| *[UC03 - Quadro de Avisos]* | FP01 a FP04 (Gestão de avisos - RF01, RF02, RF03, RF04) | Pós-MVP (Versão 2.0) | UC01, UC02 | A definir | Fechada | Planejada | Planejada |
 
 A seguir uma tabela que Relaciona os requisitos do nosso sistema com os casos de uso.
 
@@ -48,7 +58,7 @@ A seguir uma tabela que Relaciona os requisitos do nosso sistema com os casos de
 | RF22 | Buscar turmas e etapas | UC08 - Consultar Registros (Busca) / UC07 - Alocar Alunos |
 | RF23 | Possibilitar salvamento de dados | UC04 - Gerenciar cards de matrícula |
 | RF24 | Cadastrar Turma | UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas) |
-| RNF01 | Privacidade de Dados e Retenção Segura | UC03 - Gerenciar Quadro de Avisos |
+| RNF01 | Privacidade de Dados e Retenção Segura | GLOBAL / Transversal (UC01, UC02, UC04, UC05, UC07, UC08) |
 | RNF02 | Restrição de Acesso não Autenticado | UC01 - Gerenciar autenticação / UC07 - Alocar Alunos / UC02 - Gerenciar usuários administrativos |
 | RNF03 | Interface responsiva e adaptável a múltiplos dispositivos | GLOBAL |
 | RNF04 | Interface com suporte a Modo Escuro alternável | GLOBAL |
@@ -202,6 +212,61 @@ Determinados requisitos não-funcionais possuem caráter arquitetural e de confo
 | **RNF01** | Privacidade de dados e retenção segura | Obrigação Legal (LGPD) e Arquitetural | Transversal a todos os Casos de Uso com manipulação de dados cadastrais (UC01, UC02, UC04, UC05, UC07, UC08). | Criptografia de dados sensíveis dos menores e seus responsáveis em repouso e trânsito, controle de privilégios de acesso e trilha de auditoria. Trata-se de exigência legal inegociável definida como obrigatória na Atividade 4. |
 | **RNF02** | Restrição de acesso não autenticado | Segurança de Acesso | Transversal a todas as telas e endpoints do sistema. | Nenhuma rota operacional ou dado de aluno pode ser acessado sem credenciais autenticadas e autorizadas via token de sessão. |
 | **RNF09** | Disponibilidade do sistema | Confiabilidade Operacional | Transversal ao ambiente operacional do SIGMA. | O sistema deve assegurar disponibilidade estável durante todo o expediente regular de atendimento da creche. |
+
+### 10.5 Lista Vigente Consolidada de Requisitos do MVP
+
+Para solucionar quaisquer divergências entre listagens preliminares de atividades anteriores e o escopo homologado com a cliente (como a inclusão do **RF17** e a delimitação dos fluxos internos dos Casos de Uso), a tabela abaixo estabelece a **relação oficial e vigente** de requisitos que compõem o MVP do SIGMA:
+
+#### Requisitos Funcionais Vigentes no MVP (16 Requisitos)
+
+| ID | Nome do Requisito | Caso de Uso Vinculado | Fluxo Específico no MVP | Iteração de Construção |
+|---|---|---|---|---|
+| **RF05** | Cadastrar Usuários | [UC02](./casos-uso/uc02.md) | FP01 - Cadastrar Usuário Administrativo | Iteração 4 |
+| **RF06** | Realizar login | [UC01](./casos-uso/uc01.md) | FP01 - Autenticar Usuário | Iteração 4 |
+| **RF07** | Realizar logout | [UC01](./casos-uso/uc01.md) | FP02 - Encerrar Sessão | Iteração 4 |
+| **RF08** | Cadastrar card de aluno | [UC04](./casos-uso/uc04.md) | FP01 - Cadastrar Card de Aluno e Preencher Fichas | Iteração 4 |
+| **RF09** | Preenchimento de fichas | [UC04](./casos-uso/uc04.md) | FP01 - Cadastrar Card de Aluno e Preencher Fichas | Iteração 4 |
+| **RF10** | Editar fichas do card | [UC04](./casos-uso/uc04.md) | FA01 - Editar Fichas de Matrícula | Iteração 5 |
+| **RF13** | Vincular aluno a turma | [UC07](./casos-uso/uc07.md) | FP01 - Alocar Aluno em Turma | Iteração 7 |
+| **RF14** | Anexar documentos | [UC05](./casos-uso/uc05.md) | FP01 - Anexar Novo Documento (PDF) | Iteração 6 |
+| **RF15** | Editar documento | [UC05](./casos-uso/uc05.md) | FA01 - Substituir Documento Existente | Iteração 6 |
+| **RF16** | Baixar fichas e documentos | [UC05](./casos-uso/uc05.md) | FP01 / FA01 - Download de PDF | Iteração 6 |
+| **RF17** | Apresentar histórico de edições | [UC04](./casos-uso/uc04.md) | FA01 - Registro de Auditoria e Edições | Iteração 5 |
+| **RF18** | Cadastrar Etapa | [UC06](./casos-uso/uc06.md) | FP01 - Cadastrar Etapa Escolar | Iteração 7 |
+| **RF21** | Buscar aluno pelo nome | [UC08](./casos-uso/uc08.md) / [UC07](./casos-uso/uc07.md) | FP01 - Busca de Alunos | Iteração 7 |
+| **RF22** | Buscar turmas e etapas | [UC08](./casos-uso/uc08.md) / [UC07](./casos-uso/uc07.md) | FP01 - Busca de Turmas/Etapas | Iteração 7 |
+| **RF23** | Possibilitar salvamento de dados | [UC04](./casos-uso/uc04.md) | FP01 / FA01 - Confirmação de Salvamento | Iterações 4 e 5 |
+| **RF24** | Cadastrar Turma | [UC06](./casos-uso/uc06.md) | FP02 - Cadastrar Turma com Etapa | Iteração 7 |
+
+#### Requisitos Não-Funcionais Vigentes no MVP (7 Requisitos)
+
+| ID | Nome do Requisito | Categoria | Natureza no MVP |
+|---|---|---|---|
+| **RNF01** | Privacidade de dados e retenção segura | Segurança e Conformidade (LGPD) | Mandatório Transversal (todos os casos de uso de dados de alunos) |
+| **RNF02** | Restrição de acesso não autenticado | Segurança de Acesso | Mandatório Transversal (proteção de rotas e APIs) |
+| **RNF05** | Tempo de resposta do sistema ao logar (< 2s) | Desempenho | Associado ao UC01 |
+| **RNF06** | Tempo de resposta ao buscar aluno (< 3s) | Desempenho | Associado ao UC07 e UC08 |
+| **RNF07** | Tempo de resposta para buscar turmas/etapas (< 3s) | Desempenho | Associado ao UC07 e UC08 |
+| **RNF08** | Tempo de resposta para salvar uma ficha (< 5s) | Desempenho | Associado ao UC04 |
+| **RNF09** | Disponibilidade contínua no expediente escolar | Confiabilidade | Mandatório Global (ambiente de produção) |
+
+### 10.6 Backlog Futuro e Encaminhamento de Itens Posteriores (Pós-MVP)
+
+Os itens abaixo foram formalmente retirados do escopo da primeira entrega do SIGMA por consenso entre a equipe de desenvolvimento e a representação da Creche Estação Vida (registrado na [Ata de Reunião 1](../reunioes/ata1.md)). Cada um desses itens possui encaminhamento e justificativa definidos:
+
+1. **Quadro de Avisos ([UC03](./casos-uso/uc03.md) — RF01, RF02, RF03 e RF04):**
+   - *Justificativa:* Identificado como desejo periférico da cliente. O canal de comunicação via WhatsApp já atende a rotina da instituição, não justificando o esforço de implementação antes de estabilizar a gestão de fichas de matrícula.
+   - *Encaminhamento:* Postergado para a **Versão 2.0** do sistema, como módulo de comunicação interna.
+2. **Inativação e Reativação de Cards de Aluno (UC04 — RF11 e RF12):**
+   - *Justificativa:* O foco imediato da creche é a digitalização das matrículas ativas para o ano letivo de 2026. A inativação e a reativação de cards tornam-se necessárias apenas ao final do ciclo escolar ou em caso de evasão/transferência.
+   - *Encaminhamento:* Planejado para o ciclo de rematrícula e gestão de egressos (**Pós-MVP**).
+3. **Gerenciamento Avançado de Estrutura Escolar (UC06 — RF19 e RF20):**
+   - *Justificativa:* Na primeira versão, as turmas são obrigatoriamente vinculadas às suas etapas no próprio momento do cadastro (FP02), dispensando a operação de vínculo avulso posterior (RF20). A exclusão/inativação de turmas e etapas (RF19) não é necessária durante a fase inicial de implantação.
+   - *Encaminhamento:* Planejado para a fase de encerramento do ano letivo e reestruturação de turmas (**Pós-MVP**).
+4. **Requisitos Não-Funcionais Evolutivos:**
+   - **RNF03 (Interface Responsiva para Dispositivos Móveis):** A operação da secretaria é realizada exclusivamente em computadores de mesa e notebooks. A adaptação para smartphones e tablets foi encaminhada para a Versão 2.0.
+   - **RNF04 (Interface com Suporte a Modo Escuro):** Recurso de conforto visual opcional, postergado para ciclo evolutivo.
+   - **RNF10 (Acessos Múltiplos e Carga Massiva Concorrente):** Com apenas duas secretárias operando a secretaria da creche, mecanismos avançados de concorrência massiva foram postergados.
 
 > Para consultar as regras de negócio consolidadas, acesse o documento de [**Regras de Negócio**](./Regras-Negocio.md).
 

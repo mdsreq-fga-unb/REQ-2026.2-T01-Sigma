@@ -186,23 +186,26 @@ Para a inserção dos requisitos no MVP, efetuamos uma análise plural considera
 
 ## Definição de RFs do MVP
 
-| Requisito | Justificativa |
-|---|---|
-| RF05 | Necessário para a segurança do sistema, alto valor de negócio. |
-| RF06 | Necessário para a segurança do sistema, alto valor de negócio. |
-| RF07 | Necessário para a segurança do sistema, alto valor de negócio. |
-| RF08 | Necessário para a solução do problema principal, alto valor de negócio. |
-| RF09 | Necessário para a solução do problema principal, alto valor de negócio. |
-| RF10 | Necessário para a solução do problema principal, alto valor de negócio. |
-| RF21 | Necessário para a fluidez do sistema, alto valor de negócio, baixo esforço técnico. |
-| RF14 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |
-| RF15 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |
-| RF16 | Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico. |
-| RF23 | Necessário para o salvamento de dados do sistema, alto valor de negócio, baixo esforço técnico. |
-| RF22 | Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico. |
-| RF24 | Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico. |
-| RF18 | Necessário para a correta implementação do sistema e cumprimento de objetivos específicos, alto valor de negócio, baixo esforço técnico. |
-| RF13 | Necessário para a correta implementação do sistema e estruturação da solução do problema, alto valor de negócio, baixo esforço técnico. |
+A tabela a seguir consolida a lista vigente de Requisitos Funcionais do MVP, incluindo o RF17 (necessário para auditoria e histórico de edições dos cards) conforme pactuado com a cliente e formalizado nos Casos de Uso e nas atas de reunião:
+
+| ID | Nome do Requisito | Justificativa |
+|---|---|---|
+| RF05 | Cadastrar usuários | Necessário para a segurança do sistema e gestão de acessos, alto valor de negócio. |
+| RF06 | Realizar login | Necessário para a segurança e autenticação no sistema, alto valor de negócio. |
+| RF07 | Realizar logout | Necessário para encerramento de sessão e segurança física, alto valor de negócio. |
+| RF08 | Cadastrar card de aluno | Função essencial, resolve o problema principal de matrícula, alto valor de negócio. |
+| RF09 | Preenchimento de fichas | Função essencial para preenchimento dos dados escolares, alto valor de negócio. |
+| RF10 | Editar fichas do card | Necessário para atualização cadastral contínua dos alunos, alto valor de negócio. |
+| RF13 | Vincular aluno a turma | Necessário para estruturação escolar e alocação dos matriculados, alto valor de negócio. |
+| RF14 | Anexar documentos | Função essencial para digitalização dos comprovantes em PDF, alto valor de negócio. |
+| RF15 | Editar documento | Necessário para substituição de PDFs incorretos ou atualizados, alto valor de negócio. |
+| RF16 | Baixar fichas e documentos | Necessário para download individual de fichas e anexos em PDF, alto valor de negócio. |
+| RF17 | Apresentar histórico de edições | Necessário para auditoria, rastreabilidade e preservação do histórico de alterações nos cards, conforme acordado com a cliente. |
+| RF18 | Cadastrar Etapa | Necessário para organização curricular e hierarquia escolar, alto valor de negócio. |
+| RF21 | Buscar aluno pelo nome | Necessário para rápida localização de registros e fluidez operacional, alto valor de negócio. |
+| RF22 | Buscar Turmas e Etapas | Necessário para consulta ágil da organização escolar, alto valor de negócio. |
+| RF23 | Possibilitar salvamento de dados | Necessário para persistência segura e confirmação de gravação, alto valor de negócio. |
+| RF24 | Cadastrar Turma | Necessário para cadastro de turmas vinculadas à sua respectiva etapa, alto valor de negócio. |
  
 ## Definição de RNFs do MVP
  
