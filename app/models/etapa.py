@@ -1,12 +1,17 @@
 from sqlalchemy import String
-from sqlalchemy import Boolean, Integer, Float, Numeric, LargeBinary
-from sqlalchemy.orm import Mapped, mapped_column
+from typing import TYPE_CHECKING
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.database import Base
+from .mixins import TimestampMixin
 
-class Etapa(Base):
+if TYPE_CHECKING:
+    from .turma import Turma
+
+class Etapa(TimestampMixin, Base):
 
     __tablename__ = "Etapa"
 
     nome:Mapped[str] = mapped_column(String(100))
-    codigo:Mapped[int] = mapped_column(primary_key=True)
+    id:Mapped[int] = mapped_column(primary_key=True)
 
+    turmas: Mapped[list["Turma"]] = relationship(back_populates="etapa")
