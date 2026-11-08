@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE } from "@/lib/sessao";
-import type { ApiErrorCode, Matricula, Usuario } from "@/types";
+import type { ApiErrorCode, Matricula, StatusEstrutura, Usuario } from "@/types";
 
 /*
  * Mock em memória da API do SIGMA, usado enquanto o backend FastAPI não expõe
@@ -19,9 +19,25 @@ interface Tentativas {
   bloqueadoAte: number | null;
 }
 
+export interface EtapaRegistro {
+  id: string;
+  nome: string;
+  status: StatusEstrutura;
+}
+
+export interface TurmaRegistro {
+  id: string;
+  nome: string;
+  etapaId: string;
+  quantidadeAlunos: number;
+  status: StatusEstrutura;
+}
+
 interface MockStore {
   usuarios: UsuarioRegistro[];
   matriculas: Matricula[];
+  etapas: EtapaRegistro[];
+  turmas: TurmaRegistro[];
   sessoes: Map<string, string>; // token → id do usuário
   tentativas: Map<string, Tentativas>; // e-mail → tentativas de login
 }
@@ -74,13 +90,41 @@ function seed(): MockStore {
       senha: SENHA_PADRAO_MOCK,
     },
   ];
-  return { usuarios, matriculas: [], sessoes: new Map(), tentativas: new Map() };
+  return {
+    usuarios,
+    matriculas: [],
+    etapas: seedEtapas(),
+    turmas: seedTurmas(),
+    sessoes: new Map(),
+    tentativas: new Map(),
+  };
+}
+
+// Dados de exemplo do protótipo (UC06 – Turmas e etapas).
+function seedEtapas(): EtapaRegistro[] {
+  return [
+    { id: "e1", nome: "Berçário", status: "ATIVO" },
+    { id: "e2", nome: "Maternal I", status: "ATIVO" },
+    { id: "e3", nome: "Maternal II", status: "ATIVO" },
+    { id: "e4", nome: "Pré-escola I", status: "INATIVO" },
+  ];
+}
+
+function seedTurmas(): TurmaRegistro[] {
+  return [
+    { id: "t1", nome: "Turma A", etapaId: "e1", quantidadeAlunos: 18, status: "ATIVO" },
+    { id: "t2", nome: "Turma B", etapaId: "e2", quantidadeAlunos: 22, status: "ATIVO" },
+    { id: "t3", nome: "Turma C", etapaId: "e3", quantidadeAlunos: 20, status: "ATIVO" },
+    { id: "t4", nome: "Turma D (2025)", etapaId: "e2", quantidadeAlunos: 0, status: "INATIVO" },
+  ];
 }
 
 // globalThis mantém o estado entre recarregamentos de módulo do `next dev`.
 const globalMock = globalThis as typeof globalThis & { __sigmaMock?: MockStore };
 export const store: MockStore = (globalMock.__sigmaMock ??= seed());
 store.matriculas ??= [];
+store.etapas ??= seedEtapas();
+store.turmas ??= seedTurmas();
 
 export function mockHabilitado(): boolean {
   return process.env.SIGMA_API_MOCK === "true";
