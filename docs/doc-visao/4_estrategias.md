@@ -57,15 +57,7 @@ Igualmente conforme descrito acima, algumas das práticas sugeridas pelo OpenUP 
 
 ### 4.1.2 Relação entre os Artefatos
 
-Dois dos artefatos escolhidos para este projeto podem parecer redundantes para algumas pessoas: casos de uso e histórias do usuário. A equipe resolveu essa situação especificando relações claras para evitar ambiguidades e acredita ter encontrado a melhor maneira de aplicá-los a este projeto, conforme mostrado na tabela abaixo.
-
-| Características | Casos de Uso | Histórias do Usuário |
-|-----------------|--------------|----------------------|
-| Objetivo | Descrição do sistema de acordo com seus atores e ações | A descrição do sistema do ponto de vista dos usuários |
-| Uso | Principal para desenvolvimento e validação | Complementares aos casos de uso; usado para demonstração a partes interessadas |
-| Nível | Nível mais alto de descrição, com refinamento gradual; nível de detalhe maior | Breve e casual; nível mais baixo de detalhe |
-| Relação | Cada história do usuário é inspirada em pelo menos alguns casos de uso | Cada caso de uso pode ser derivado de várias histórias do usuário |
-| Exemplo | A história do usuário "Como secretária, eu quero cadastrar um aluno para ter acesso aos dados" é baseada no caso de uso "Cadastrar aluno" | |
+Embora o OpenUP preveja a utilização de Histórias de Usuário como artefatos complementares, a equipe decidiu centralizar o desenvolvimento e a documentação nos Casos de Uso. Com essa escolha visamos garantir maior rastreabilidade e alinhamento com a arquitetura do sistema. As Histórias de Usuário foram incorporadas como Critérios de Aceite dentro da especificação de cada Caso de Uso, evitando a duplicação de artefatos e mantendo o foco na interação entre atores e sistema.
 
 ### 4.1.3 Direção dos Riscos
 
@@ -118,3 +110,26 @@ Como o OpenUP tem sido utilizado para definir uma abordagem bem-sucedida para as
 ## 4. As semelhanças e diferenças tanto com relações gerenciais quanto com práticas de documentação do UP
 
 A principal diferença entre o OpenUP e o UP reside nos objetivos para os quais ambos foram originalmente desenvolvidos. Enquanto o UP visa proporcionar uma estrutura abrangente para atividades de governança e gestão de projetos na implementação de projetos de grande escala, a abordagem OpenUP visa oferecer métodos ágeis e mais leves para o mesmo objetivo. Assim, apesar de a estrutura de documentação e gerenciamento do UP ser extremamente rigorosa e poderosa, ela não se tornaria economicamente viável para um projeto conduzido por uma equipe reduzida de estudantes. No geral, no que diz respeito ao projeto para a Creche Estação Vida, a decisão de seguir o OpenUP se mostrou apropriada, pois oferece uma abordagem razoavelmente simples e ágil para o mesmo escopo e estrutura gerencial do UP.
+
+## 4.4 Decisões de Arquitetura, Segurança e Riscos
+
+Durante a fase de Elaboração, a equipe analisou os riscos técnicos e definiu as seguintes soluções para a arquitetura e infraestrutura do SIGMA, garantindo o embasamento técnico necessário para a etapa de Construção:
+
+| Categoria | Decisão Tomada | Risco Mitigado |
+| :--- | :--- | :--- |
+| **Arquitetura** | Backend em FastAPI (Python) e Frontend em Node.js, comunicando-se via API REST. | Facilita a separação de responsabilidades e a manutenção. |
+| **Banco de Dados** | PostgreSQL (relacional). | Garante integridade dos dados e suporta consultas complexas (RN02). |
+| **Segurança** | Autenticação via JWT e senhas criptografadas com Bcrypt. | Impede acessos não autorizados (RNF01, RNF02) e vazamento de senhas. |
+| **Backup** | Rotina de backup diário do banco de dados via volumes do Docker. | Mitiga a perda de dados em caso de falha no servidor. |
+| **Hospedagem** | Conteinerização com Docker. | Garante que o sistema rode de forma idêntica em qualquer ambiente. |
+
+## 4.5 Acompanhamento das Iterações
+
+Para garantir a transparência do processo OpenUP e rastrear a execução das atividades, a equipe mantém o seguinte registro de acompanhamento:
+
+| Iteração | Planejado | Concluído | Replanejado / Pendências |
+| :--- | :--- | :--- | :--- |
+| **Iteração 1** | Documento de Visão, Rich Picture | Entregue no prazo. | - |
+| **Iteração 2** | Backlog inicial, priorização MoSCoW | Entregue. | Matriz de priorização ajustada após feedback. |
+| **Iteração 3** | Prototipação e decisões de arquitetura | **Concluída em 04/11**. | Protótipos validados com a cliente. Decisões de arquitetura documentadas. |
+| **Iteração 4** | Cadastro de cards e controle de acesso | Em andamento. | - |
