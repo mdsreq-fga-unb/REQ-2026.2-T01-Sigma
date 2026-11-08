@@ -1,8 +1,9 @@
 # SIGMA – Frontend
 
 Interface web do SIGMA (Next.js 16 + React 19 + Axios + TypeScript).
-Escopo atual: **UC01 – Gerenciar Autenticação**, **UC02 – Gerenciar Usuários Administrativos**
-e **UC04 – Gerenciar Fichas de Matrícula**.
+Escopo atual: **UC01 – Gerenciar Autenticação**, **UC02 – Gerenciar Usuários Administrativos**,
+**UC04 – Gerenciar Fichas de Matrícula**, **UC06 – Gerenciar Estrutura Escolar** e
+**UC08 – Consultar Registros** (busca de turmas e etapas).
 
 ## Como rodar
 
@@ -48,7 +49,7 @@ src/
 │   ├── (auth)/login/           # UC01 – tela de login
 │   ├── (app)/                  # área autenticada (layout com sidebar)
 │   │   ├── alunos/             # UC04 – cards de matrícula, fichas e histórico
-│   │   ├── turmas/             # placeholder (UC06)
+│   │   ├── turmas/             # UC06/UC08 – turmas e etapas: listagem, busca, cadastro, inativação
 │   │   └── usuarios/           # UC02 – listagem, cadastro e inativação
 │   └── api/mock/               # mock da API (somente com SIGMA_API_MOCK=true)
 ├── components/
@@ -57,7 +58,8 @@ src/
 │   ├── auth/                   # LoginForm
 │   └── usuarios/               # UsuariosTable, NovoUsuarioModal, InativarUsuarioModal
 │   └── alunos/                 # MatriculaForm, MatriculasView
-├── services/                   # api.ts (Axios), auth.service.ts, usuarios.service.ts, matriculas.service.ts
+│   └── turmas/                 # TurmasEtapasView, BuscaEstrutura, TurmasTable, EtapasList, modais, useTurmasEtapas
+├── services/                   # api.ts (Axios) e um *.service.ts por recurso (auth, usuarios, matriculas, turmas, etapas)
 ├── hooks/                      # useAuth, useInactivityLogout, useTheme
 ├── lib/                        # mensagens, validações, formatação, constantes de sessão
 ├── mocks/                      # estado em memória do mock
@@ -93,12 +95,44 @@ O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a 
 | `GET /usuarios` | `200` Usuario[] | `401` |
 | `POST /usuarios` `{nome, email, administrador, senha}` | `201` Usuario | `403 SEM_PERMISSAO`, `409 EMAIL_EM_USO`, `422 SENHA_FORA_PADRAO`, `422 DADOS_INVALIDOS` |
 | `PATCH /usuarios/{id}/inativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `422` (própria conta) |
+| `PATCH /usuarios/{id}/reativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` (já ativa) |
 | `GET /matriculas` | `200` Matricula[] | `401` |
 | `POST /matriculas` `{aluno, fichas}` | `201` Matricula ativa | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `422 FICHAS_INCOMPLETAS` |
 | `GET /matriculas/{id}` | `200` Matricula com histórico | `401`, `404 NAO_ENCONTRADO` |
 | `PUT /matriculas/{id}` `{aluno, fichas}` | `200` Matricula atualizada | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `409 MATRICULA_INATIVA`, `422 FICHAS_INCOMPLETAS` |
 | `PATCH /matriculas/{id}/inativar` | `200` Matricula inativa | `404 NAO_ENCONTRADO` |
 | `PATCH /matriculas/{id}/reativar` | `200` Matricula ativa | `404 NAO_ENCONTRADO`, `409 CPF_EM_USO`, `422 FICHAS_INCOMPLETAS` |
+| `GET /turmas?busca=&status=` | `200` Turma[] | `401` |
+| `POST /turmas` `{nome, etapaId}` | `201` Turma ativa | `409 TURMA_NOME_EM_USO`, `409 ETAPA_INATIVA`, `422 DADOS_INVALIDOS` |
+| `PATCH /turmas/{id}/inativar` | `200` Turma inativa | `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` |
+| `PATCH /turmas/{id}/reativar` | `200` Turma ativa | `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO`, `409 ETAPA_INATIVA` |
+| `GET /etapas?busca=&status=` | `200` Etapa[] | `401` |
+| `POST /etapas` `{nome}` | `201` Etapa ativa | `409 ETAPA_NOME_EM_USO`, `422 DADOS_INVALIDOS` |
+
+**Busca de turmas e etapas (UC08 FP02):** `busca` é o nome completo ou parcial e `status` é
+`ATIVO` ou `INATIVO`. Os dois são opcionais: sem `status`, vêm todos (o filtro "Todos" não envia
+o parâmetro). Registros inativos também aparecem na busca (RN12). Por decisão do time, a busca
+**não** ignora acentos nem maiúsculas/minúsculas. O frontend chama `/turmas` e `/etapas` em paralelo
+com o mesmo filtro, e a busca só é disparada pelo botão **Buscar** ou pela tecla Enter.
+
+```ts
+type StatusEstrutura = "ATIVO" | "INATIVO";
+
+interface Turma {
+  id: string;
+  nome: string;
+  etapa: { id: string; nome: string };
+  quantidadeAlunos: number;
+  status: StatusEstrutura;
+}
+
+interface Etapa {
+  id: string;
+  nome: string;
+  quantidadeTurmas: number; // turmas vinculadas, ativas e inativas
+  status: StatusEstrutura;
+}
+```
 
 No mock, o card reúne os dados cadastrais do aluno e as fichas socioeconômica,
 autorização de imagem, autorização de saída, compromisso escolar e requerimento de

@@ -94,6 +94,27 @@ export const IconInfo = (p: IconProps) => (
   </Svg>
 );
 
+export const IconSearch = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </Svg>
+);
+
+/** Lupa com "menos": usada no estado "Nenhum resultado encontrado". */
+export const IconSearchOff = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5M8 11h6" />
+  </Svg>
+);
+
+export const IconChevronDown = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="m6 9 6 6 6-6" />
+  </Svg>
+);
+
 export const IconX = (p: IconProps) => (
   <Svg {...p}>
     <path d="M18 6 6 18M6 6l12 12" />

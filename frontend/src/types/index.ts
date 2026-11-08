@@ -84,6 +84,44 @@ export interface NovaMatriculaPayload {
   fichas: FichasMatricula;
 }
 
+// UC06 / UC08 – Estrutura escolar (turmas e etapas)
+export type StatusEstrutura = "ATIVO" | "INATIVO";
+
+export interface EtapaResumo {
+  id: string;
+  nome: string;
+}
+
+export interface Etapa {
+  id: string;
+  nome: string;
+  quantidadeTurmas: number; // turmas vinculadas, ativas e inativas (RN12)
+  status: StatusEstrutura;
+}
+
+export interface Turma {
+  id: string;
+  nome: string;
+  etapa: EtapaResumo;
+  quantidadeAlunos: number;
+  status: StatusEstrutura;
+}
+
+/** Parâmetros de busca (RF22). Sem `status` = todos. */
+export interface FiltroEstrutura {
+  busca?: string;
+  status?: StatusEstrutura;
+}
+
+export interface NovaEtapaPayload {
+  nome: string;
+}
+
+export interface NovaTurmaPayload {
+  nome: string;
+  etapaId: string;
+}
+
 /**
  * Códigos de erro do contrato com o backend. A API responde no formato do FastAPI:
  * `{ "detail": { "code": "<CODIGO>", "message": "..." } }`.
@@ -100,6 +138,10 @@ export type ApiErrorCode =
   | "MATRICULA_EM_USO" // UC04 FE02 (RN07)
   | "MATRICULA_INATIVA" // UC04 FE03 (RN10)
   | "FICHAS_INCOMPLETAS" // UC04 FE01 (RN03, RN06)
+  | "ETAPA_NOME_EM_USO" // UC06 FE02 (RN13)
+  | "TURMA_NOME_EM_USO" // UC06 FE03 (RN14)
+  | "ETAPA_INATIVA" // UC06 FE05 (RN11)
+  | "STATUS_INVALIDO" // UC06 – turma já está no status pedido
   | "DADOS_INVALIDOS"
   | "NAO_ENCONTRADO"
   | "FALHA_CONEXAO" // UC01 FE03 / UC02 FE03 (gerado no cliente)

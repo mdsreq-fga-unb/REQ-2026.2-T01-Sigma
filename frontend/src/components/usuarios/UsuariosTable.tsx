@@ -8,11 +8,12 @@ interface UsuariosTableProps {
   usuarioLogadoId: string;
   isAdmin: boolean;
   onInativar: (usuario: Usuario) => void;
+  onReativar: (usuario: Usuario) => void;
 }
 
 const COLUNAS = ["Nome", "E-mail", "Perfil", "Status", "Criado em", "Criado por"];
 
-export function UsuariosTable({ usuarios, usuarioLogadoId, isAdmin, onInativar }: UsuariosTableProps) {
+export function UsuariosTable({ usuarios, usuarioLogadoId, isAdmin, onInativar, onReativar }: UsuariosTableProps) {
   return (
     <TableFrame isAdmin={isAdmin}>
       <tbody>
@@ -35,7 +36,11 @@ export function UsuariosTable({ usuarios, usuarioLogadoId, isAdmin, onInativar }
               <td className={styles.muted}>{usuario.criadoPor ?? "—"}</td>
               {isAdmin && (
                 <td className={styles.acoes}>
-                  {usuario.ativo && !ehVoce ? (
+                  {ehVoce ? (
+                    <span className={styles.muted} aria-hidden="true">
+                      —
+                    </span>
+                  ) : usuario.ativo ? (
                     <Button
                       variant="ghost"
                       size="sm"
@@ -45,9 +50,14 @@ export function UsuariosTable({ usuarios, usuarioLogadoId, isAdmin, onInativar }
                       Inativar
                     </Button>
                   ) : (
-                    <span className={styles.muted} aria-hidden="true">
-                      —
-                    </span>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => onReativar(usuario)}
+                      aria-label={`Reativar a conta de ${usuario.nome}`}
+                    >
+                      Reativar
+                    </Button>
                   )}
                 </td>
               )}

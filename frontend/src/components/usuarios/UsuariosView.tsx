@@ -12,6 +12,7 @@ import { listarUsuarios } from "@/services/usuarios.service";
 import type { Usuario } from "@/types";
 import { InativarUsuarioModal } from "./InativarUsuarioModal";
 import { NovoUsuarioModal } from "./NovoUsuarioModal";
+import { ReativarUsuarioModal } from "./ReativarUsuarioModal";
 import { UsuariosTable, UsuariosTableSkeleton } from "./UsuariosTable";
 import styles from "./UsuariosView.module.css";
 
@@ -27,6 +28,7 @@ export function UsuariosView() {
   const [listagem, setListagem] = useState<Listagem>({ status: "carregando" });
   const [novoAberto, setNovoAberto] = useState(false);
   const [paraInativar, setParaInativar] = useState<Usuario | null>(null);
+  const [paraReativar, setParaReativar] = useState<Usuario | null>(null);
 
   const carregar = useCallback(async () => {
     setListagem({ status: "carregando" });
@@ -58,6 +60,12 @@ export function UsuariosView() {
     toast(`Conta de ${inativado.nome} inativada`);
   }
 
+  function onReativado(reativado: Usuario) {
+    atualizarLista((usuarios) => usuarios.map((u) => (u.id === reativado.id ? reativado : u)));
+    setParaReativar(null);
+    toast(`Conta de ${reativado.nome} reativada`);
+  }
+
   return (
     <>
       <PageHeader
@@ -86,6 +94,7 @@ export function UsuariosView() {
             usuarioLogadoId={logado.id}
             isAdmin={isAdmin}
             onInativar={setParaInativar}
+            onReativar={setParaReativar}
           />
         ))}
 
@@ -97,6 +106,13 @@ export function UsuariosView() {
           usuario={paraInativar}
           onClose={() => setParaInativar(null)}
           onInativado={onInativado}
+        />
+      )}
+      {isAdmin && paraReativar && (
+        <ReativarUsuarioModal
+          usuario={paraReativar}
+          onClose={() => setParaReativar(null)}
+          onReativado={onReativado}
         />
       )}
     </>

@@ -1,0 +1,28 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ativo {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.inativo {
+  background: var(--color-neutral-badge-bg);
+  color: var(--color-neutral-badge);
+}

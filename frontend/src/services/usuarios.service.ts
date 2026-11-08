@@ -15,3 +15,8 @@ export async function inativarUsuario(id: string): Promise<Usuario> {
   const { data } = await api.patch<Usuario>(`/usuarios/${encodeURIComponent(id)}/inativar`);
   return data;
 }
+
+export async function reativarUsuario(id: string): Promise<Usuario> {
+  const { data } = await api.patch<Usuario>(`/usuarios/${encodeURIComponent(id)}/reativar`);
+  return data;
+}

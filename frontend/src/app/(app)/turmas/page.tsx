@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { EmBreve } from "@/components/layout/EmBreve";
-import { PageHeader } from "@/components/layout/PageHeader";
+import { TurmasEtapasView } from "@/components/turmas/TurmasEtapasView";
 
 export const metadata: Metadata = { title: "Turmas e etapas · SIGMA" };
 
-// Placeholder – UC06 (Gerenciar Estrutura Escolar)
+// UC06 – Gerenciar Estrutura Escolar e UC08 – Consultar Registros (busca de turmas e etapas)
 export default function TurmasPage() {
-  return (
-    <>
-      <PageHeader title="Turmas e etapas" subtitle="Estrutura escolar da creche." />
-      <EmBreve casoDeUso="UC06 – Gerenciar Estrutura Escolar" />
-    </>
-  );
+  return <TurmasEtapasView />;
 }
