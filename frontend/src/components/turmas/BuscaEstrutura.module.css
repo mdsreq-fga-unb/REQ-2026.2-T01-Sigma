@@ -1,0 +1,111 @@
+.busca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.campo {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconeBusca {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px 0 38px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+/* Filtro com aparência de botão ("Status: Todos ▾"), mas um <select> nativo por dentro. */
+.status {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding-left: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.status:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.status label {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.status select {
+  height: 100%;
+  padding: 0 30px 0 4px;
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+}
+
+.status select:focus {
+  outline: none;
+}
+
+.status select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.chevron {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .busca {
+    flex-wrap: wrap;
+  }
+
+  .campo {
+    flex-basis: 100%;
+  }
+
+  .status {
+    flex: 1;
+  }
+
+  .status select {
+    flex: 1;
+  }
+}
