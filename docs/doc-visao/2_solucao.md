@@ -19,6 +19,7 @@ Tendo em vista que são dados sensíveis de crianças, a nossa solução pretend
 - **OE.3:** Controlar o acesso e garantir a segurança das informações do sistema.
 - **OE.4:** Facilitar a comunicação interna entre a equipe administrativa.
 
+<span id="23-caracteristicas-de-produto"></span>
 ## 2.3 Características de Produto (mapeadas com os Objetivos Específicos do Produto)
 
 | ID | OE Principal | Característica | Descrição resumida | Valor de negócio principal |

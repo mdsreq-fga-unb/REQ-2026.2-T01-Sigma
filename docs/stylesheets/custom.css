@@ -632,3 +632,420 @@
   text-decoration: none;
 }
 
+
+
+/* ==========================================================================
+   PAINEL DO CATÁLOGO UNIFICADO DE REQUISITOS (CARDS DE CASOS DE USO)
+   ========================================================================== */
+
+.catalogo-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.catalogo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--palette-gray-100);
+  border: 1px solid rgba(19, 92, 125, 0.2);
+  border-top: 4px solid var(--palette-teal-400);
+  border-radius: 10px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(19, 92, 125, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.catalogo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(19, 92, 125, 0.15);
+  border-color: var(--palette-teal-300);
+  border-top-color: var(--palette-amber-200);
+}
+
+.catalogo-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.catalogo-card__title {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  line-height: 1.35 !important;
+}
+
+.catalogo-card__title a {
+  color: var(--palette-blue-500) !important;
+  text-decoration: none !important;
+}
+
+.catalogo-card__title a:hover {
+  color: var(--palette-teal-300) !important;
+  text-decoration: underline !important;
+}
+
+.catalogo-card__hierarchy {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--palette-gray-500);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed rgba(19, 92, 125, 0.15);
+}
+
+.catalogo-card__hierarchy a {
+  color: var(--palette-teal-500) !important;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.catalogo-card__hierarchy a:hover {
+  text-decoration: underline !important;
+}
+
+.catalogo-card__desc {
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--palette-gray-600);
+  margin: 0 0 0.85rem 0 !important;
+  flex-grow: 1;
+}
+
+.catalogo-card__attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  background: #ffffff;
+  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(19, 92, 125, 0.1);
+  margin-bottom: 0.85rem;
+}
+
+.catalogo-card__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.catalogo-card__label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--palette-teal-500);
+}
+
+.catalogo-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* Chips / Badges */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+  line-height: 1.25;
+}
+
+.chip--rf {
+  background-color: var(--palette-teal-100);
+  color: var(--palette-teal-600) !important;
+  border: 1px solid var(--palette-teal-200);
+}
+.chip--rf:hover {
+  background-color: var(--palette-teal-200);
+  color: var(--palette-teal-700) !important;
+  border-color: var(--palette-teal-400);
+}
+
+.chip--rnf {
+  background-color: var(--palette-blue-100);
+  color: var(--palette-blue-600) !important;
+  border: 1px solid var(--palette-blue-200);
+}
+.chip--rnf:hover {
+  background-color: var(--palette-blue-200);
+  color: var(--palette-blue-700) !important;
+  border-color: var(--palette-blue-400);
+}
+
+.chip--rn {
+  background-color: var(--palette-amber-100);
+  color: var(--palette-amber-600) !important;
+  border: 1px solid var(--palette-amber-200);
+}
+.chip--rn:hover {
+  background-color: var(--palette-amber-200);
+  color: var(--palette-amber-700) !important;
+  border-color: var(--palette-amber-400);
+}
+
+.badge-mvp {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-mvp a {
+  text-decoration: none !important;
+}
+
+.badge-mvp--sim {
+  background-color: #dcfce7;
+  color: #15803d !important;
+  border: 1px solid #86efac;
+}
+.badge-mvp--sim a {
+  color: #15803d !important;
+}
+
+.badge-mvp--nao {
+  background-color: #fef3c7;
+  color: #b45309 !important;
+  border: 1px solid #fcd34d;
+}
+.badge-mvp--nao a {
+  color: #b45309 !important;
+}
+
+.catalogo-card__footer {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.catalogo-card__link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--palette-blue-500) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.catalogo-card__link:hover {
+  color: var(--palette-amber-300) !important;
+  transform: translateX(3px);
+}
+
+/* Modo escuro (Dark Mode) */
+[data-md-color-scheme="slate"] .catalogo-card,
+[data-md-color-scheme="dark"] .catalogo-card {
+  background-color: var(--palette-gray-700);
+  border-color: var(--palette-teal-600);
+  border-top-color: var(--palette-teal-400);
+}
+
+[data-md-color-scheme="slate"] .catalogo-card:hover,
+[data-md-color-scheme="dark"] .catalogo-card:hover {
+  border-color: var(--palette-teal-400);
+  border-top-color: var(--palette-amber-200);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__title a,
+[data-md-color-scheme="dark"] .catalogo-card__title a {
+  color: var(--palette-teal-200) !important;
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__hierarchy,
+[data-md-color-scheme="dark"] .catalogo-card__hierarchy {
+  color: var(--palette-gray-300);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__hierarchy a,
+[data-md-color-scheme="dark"] .catalogo-card__hierarchy a {
+  color: var(--palette-amber-200) !important;
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__desc,
+[data-md-color-scheme="dark"] .catalogo-card__desc {
+  color: var(--palette-gray-200);
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__attributes,
+[data-md-color-scheme="dark"] .catalogo-card__attributes {
+  background: var(--palette-gray-600);
+  border-color: var(--palette-teal-500);
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__label,
+[data-md-color-scheme="dark"] .catalogo-card__label {
+  color: var(--palette-teal-200);
+}
+
+[data-md-color-scheme="slate"] .chip--rf,
+[data-md-color-scheme="dark"] .chip--rf {
+  background-color: var(--palette-teal-600);
+  color: var(--palette-teal-100) !important;
+  border-color: var(--palette-teal-400);
+}
+
+[data-md-color-scheme="slate"] .chip--rnf,
+[data-md-color-scheme="dark"] .chip--rnf {
+  background-color: var(--palette-blue-600);
+  color: var(--palette-blue-100) !important;
+  border-color: var(--palette-blue-400);
+}
+
+[data-md-color-scheme="slate"] .chip--rn,
+[data-md-color-scheme="dark"] .chip--rn {
+  background-color: var(--palette-amber-600);
+  color: var(--palette-amber-100) !important;
+  border-color: var(--palette-amber-400);
+}
+
+[data-md-color-scheme="slate"] .badge-mvp--sim,
+[data-md-color-scheme="dark"] .badge-mvp--sim {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #4ade80 !important;
+  border-color: #22c55e;
+}
+[data-md-color-scheme="slate"] .badge-mvp--sim a,
+[data-md-color-scheme="dark"] .badge-mvp--sim a {
+  color: #4ade80 !important;
+}
+
+[data-md-color-scheme="slate"] .badge-mvp--nao,
+[data-md-color-scheme="dark"] .badge-mvp--nao {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24 !important;
+  border-color: #f59e0b;
+}
+[data-md-color-scheme="slate"] .badge-mvp--nao a,
+[data-md-color-scheme="dark"] .badge-mvp--nao a {
+  color: #fbbf24 !important;
+}
+
+[data-md-color-scheme="slate"] .catalogo-card__link,
+[data-md-color-scheme="dark"] .catalogo-card__link {
+  color: var(--palette-amber-200) !important;
+}
+
+
+/* ==========================================================================
+   FLUXO VISUAL DA HIERARQUIA DE REQUISITOS
+   ========================================================================== */
+
+.hierarchy-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0 1.8rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--palette-gray-100);
+  border: 1px solid rgba(19, 92, 125, 0.18);
+  border-left: 4px solid var(--palette-teal-400);
+  border-radius: 8px;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid rgba(19, 92, 125, 0.15);
+  border-radius: 6px;
+  min-width: 120px;
+}
+
+.flow-step__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--palette-blue-500);
+}
+
+.flow-step__desc {
+  font-size: 0.72rem;
+  color: var(--palette-gray-500);
+  margin-top: 0.15rem;
+}
+
+.flow-step--active {
+  background: var(--palette-teal-100);
+  border-color: var(--palette-teal-400);
+  box-shadow: 0 2px 6px rgba(19, 92, 125, 0.12);
+}
+
+.flow-step--active .flow-step__label {
+  color: var(--palette-teal-600);
+}
+
+.flow-arrow {
+  color: var(--palette-amber-300);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1;
+  user-select: none;
+  padding: 0 0.15rem;
+}
+
+[data-md-color-scheme="slate"] .hierarchy-flow,
+[data-md-color-scheme="dark"] .hierarchy-flow {
+  background-color: var(--palette-gray-700);
+  border-color: var(--palette-teal-600);
+  border-left-color: var(--palette-teal-400);
+}
+
+[data-md-color-scheme="slate"] .flow-step,
+[data-md-color-scheme="dark"] .flow-step {
+  background-color: var(--palette-gray-600);
+  border-color: var(--palette-teal-500);
+}
+
+[data-md-color-scheme="slate"] .flow-step__label,
+[data-md-color-scheme="dark"] .flow-step__label {
+  color: var(--palette-teal-200);
+}
+
+[data-md-color-scheme="slate"] .flow-step__desc,
+[data-md-color-scheme="dark"] .flow-step__desc {
+  color: var(--palette-gray-300);
+}
+
+[data-md-color-scheme="slate"] .flow-step--active,
+[data-md-color-scheme="dark"] .flow-step--active {
+  background-color: var(--palette-teal-600);
+  border-color: var(--palette-teal-300);
+}
+
+[data-md-color-scheme="slate"] .flow-step--active .flow-step__label,
+[data-md-color-scheme="dark"] .flow-step--active .flow-step__label {
+  color: var(--palette-amber-200);
+}
+
+[data-md-color-scheme="slate"] .flow-arrow,
+[data-md-color-scheme="dark"] .flow-arrow {
+  color: var(--palette-amber-200);
+}
