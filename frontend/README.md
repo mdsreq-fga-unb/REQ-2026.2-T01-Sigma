@@ -95,6 +95,7 @@ O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a 
 | `GET /usuarios` | `200` Usuario[] | `401` |
 | `POST /usuarios` `{nome, email, administrador, senha}` | `201` Usuario | `403 SEM_PERMISSAO`, `409 EMAIL_EM_USO`, `422 SENHA_FORA_PADRAO`, `422 DADOS_INVALIDOS` |
 | `PATCH /usuarios/{id}/inativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `422` (própria conta) |
+| `PATCH /usuarios/{id}/reativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` (já ativa) |
 | `GET /matriculas` | `200` Matricula[] | `401` |
 | `POST /matriculas` `{aluno, fichas}` | `201` Matricula ativa | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `422 FICHAS_INCOMPLETAS` |
 | `GET /matriculas/{id}` | `200` Matricula com histórico | `401`, `404 NAO_ENCONTRADO` |
