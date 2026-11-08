@@ -5,3 +5,4 @@ from .ops import Operacao
 from .pessoa import Pessoa
 from .turma import Turma
 from .user import Usuario
+from .tentativa import TentativaLogin
