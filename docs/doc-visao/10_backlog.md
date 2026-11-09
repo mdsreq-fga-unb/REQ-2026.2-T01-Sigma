@@ -21,7 +21,7 @@ Para permitir o acompanhamento claro da evolução do produto (diferenciando esp
 | [UC07](casos-uso/uc07.md) | Alocar Alunos em Turmas | Documentado | Validado em Reunião | Planejado | Iteração 7 (Construção) |
 | [UC08](casos-uso/uc08.md) | Consultar Registros (Busca) | Documentado | Validado em Reunião | Planejado | Iteração 7 (Construção) |
 
-> A relação de cada capacidade funcional (RF01 a RF24) e de qualidade (RNF01 a RNF10) aos Casos de Uso está disponível no [Catálogo Unificado de Requisitos](8_requisitos.md#83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso). As regras de negócio podem ser consultadas em [Regras de Negócio](Regras-Negocio.md).
+> A relação de cada capacidade funcional (RF01 a RF24), de qualidade (RNF01 a RNF10) e regras de negócio (RN01 a RN22) aos Casos de Uso está consolidada no [Catálogo Unificado de Requisitos](8_requisitos.md).
 
 ---
 
