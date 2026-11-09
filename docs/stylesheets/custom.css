@@ -1522,3 +1522,325 @@ body.sigma-modal-open {
   border-color: rgba(251, 191, 36, 0.4);
 }
 
+/* ==========================================================================
+   ESTILIZAÇÃO DE DIAGRAMAS MERMAID (MODO CLARO E MODO ESCURO)
+   ========================================================================== */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  background-color: transparent !important;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Bordas arredondadas e suavizadas nos nós */
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle {
+  rx: 8px !important;
+  ry: 8px !important;
+  stroke-width: 1.5px !important;
+  transition: all 0.2s ease;
+}
+
+/* Nós interativos e clicáveis */
+.mermaid .node.clickable,
+.mermaid [class*="node"] a,
+.mermaid a {
+  cursor: pointer !important;
+}
+
+.mermaid .node.clickable:hover rect,
+.mermaid a:hover rect {
+  filter: brightness(1.15) !important;
+  stroke-width: 2.5px !important;
+}
+
+/* --- MODO CLARO (Default) --- */
+[data-md-color-scheme="default"] .mermaid .node--prob rect { fill: #135C7D !important; stroke: #09394F !important; }
+[data-md-color-scheme="default"] .mermaid .node--prob text,
+[data-md-color-scheme="default"] .mermaid .node--prob .label,
+[data-md-color-scheme="default"] .mermaid .node--prob .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--prob span,
+[data-md-color-scheme="default"] .mermaid .node--prob div,
+[data-md-color-scheme="default"] .mermaid .node--prob a { fill: #ffffff !important; color: #ffffff !important; font-weight: 700 !important; }
+
+[data-md-color-scheme="default"] .mermaid .node--oe rect { fill: #27829C !important; stroke: #195C70 !important; }
+[data-md-color-scheme="default"] .mermaid .node--oe text,
+[data-md-color-scheme="default"] .mermaid .node--oe .label,
+[data-md-color-scheme="default"] .mermaid .node--oe .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--oe span,
+[data-md-color-scheme="default"] .mermaid .node--oe div,
+[data-md-color-scheme="default"] .mermaid .node--oe a { fill: #ffffff !important; color: #ffffff !important; font-weight: 600 !important; }
+
+[data-md-color-scheme="default"] .mermaid .node--cp rect { fill: #E0F2FE !important; stroke: #0284C7 !important; }
+[data-md-color-scheme="default"] .mermaid .node--cp text,
+[data-md-color-scheme="default"] .mermaid .node--cp .label,
+[data-md-color-scheme="default"] .mermaid .node--cp .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--cp span,
+[data-md-color-scheme="default"] .mermaid .node--cp div,
+[data-md-color-scheme="default"] .mermaid .node--cp a { fill: #0369A1 !important; color: #0369A1 !important; font-weight: 600 !important; }
+
+[data-md-color-scheme="default"] .mermaid .node--uc rect { fill: #DCFCE7 !important; stroke: #16A34A !important; }
+[data-md-color-scheme="default"] .mermaid .node--uc text,
+[data-md-color-scheme="default"] .mermaid .node--uc .label,
+[data-md-color-scheme="default"] .mermaid .node--uc .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--uc span,
+[data-md-color-scheme="default"] .mermaid .node--uc div,
+[data-md-color-scheme="default"] .mermaid .node--uc a { fill: #14532D !important; color: #14532D !important; font-weight: 700 !important; }
+
+[data-md-color-scheme="default"] .mermaid .node--pos rect { fill: #FEF3C7 !important; stroke: #D97706 !important; }
+[data-md-color-scheme="default"] .mermaid .node--pos text,
+[data-md-color-scheme="default"] .mermaid .node--pos .label,
+[data-md-color-scheme="default"] .mermaid .node--pos .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--pos span,
+[data-md-color-scheme="default"] .mermaid .node--pos div,
+[data-md-color-scheme="default"] .mermaid .node--pos a { fill: #78350F !important; color: #78350F !important; font-weight: 700 !important; }
+
+[data-md-color-scheme="default"] .mermaid .node--rf rect { fill: #F8FAFC !important; stroke: #94A3B8 !important; }
+[data-md-color-scheme="default"] .mermaid .node--rf text,
+[data-md-color-scheme="default"] .mermaid .node--rf .label,
+[data-md-color-scheme="default"] .mermaid .node--rf .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--rf span,
+[data-md-color-scheme="default"] .mermaid .node--rf div,
+[data-md-color-scheme="default"] .mermaid .node--rf a { fill: #0F172A !important; color: #0F172A !important; font-size: 0.84rem !important; }
+
+[data-md-color-scheme="default"] .mermaid .node--rnf rect { fill: #FFF7ED !important; stroke: #FB923C !important; }
+[data-md-color-scheme="default"] .mermaid .node--rnf text,
+[data-md-color-scheme="default"] .mermaid .node--rnf .label,
+[data-md-color-scheme="default"] .mermaid .node--rnf .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .node--rnf span,
+[data-md-color-scheme="default"] .mermaid .node--rnf div,
+[data-md-color-scheme="default"] .mermaid .node--rnf a { fill: #9A3412 !important; color: #9A3412 !important; font-size: 0.84rem !important; }
+
+[data-md-color-scheme="default"] .mermaid .cluster rect {
+  fill: rgba(248, 250, 252, 0.75) !important;
+  stroke: #CBD5E1 !important;
+  stroke-dasharray: 4 4;
+}
+
+[data-md-color-scheme="default"] .mermaid .cluster .label,
+[data-md-color-scheme="default"] .mermaid .cluster text,
+[data-md-color-scheme="default"] .mermaid .cluster span {
+  fill: #334155 !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+}
+
+[data-md-color-scheme="default"] .mermaid .edgePath path {
+  stroke: #64748B !important;
+  stroke-width: 1.5px !important;
+}
+[data-md-color-scheme="default"] .mermaid .edgePath marker path {
+  fill: #64748B !important;
+  stroke: #64748B !important;
+}
+
+/* --- MODO ESCURO (Slate / Dark): Alto contraste e legibilidade perfeita --- */
+[data-md-color-scheme="slate"] .mermaid .node rect,
+[data-md-color-scheme="dark"] .mermaid .node rect {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid text,
+[data-md-color-scheme="slate"] .mermaid .label,
+[data-md-color-scheme="slate"] .mermaid .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid span,
+[data-md-color-scheme="dark"] .mermaid text,
+[data-md-color-scheme="dark"] .mermaid .label,
+[data-md-color-scheme="dark"] .mermaid .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid span {
+  fill: #e2e8f0 !important;
+  color: #e2e8f0 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--prob rect,
+[data-md-color-scheme="dark"] .mermaid .node--prob rect {
+  fill: #0c2d3d !important;
+  stroke: #38bdf8 !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--prob text,
+[data-md-color-scheme="slate"] .mermaid .node--prob .label,
+[data-md-color-scheme="slate"] .mermaid .node--prob .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--prob span,
+[data-md-color-scheme="slate"] .mermaid .node--prob div,
+[data-md-color-scheme="slate"] .mermaid .node--prob a,
+[data-md-color-scheme="dark"] .mermaid .node--prob text,
+[data-md-color-scheme="dark"] .mermaid .node--prob .label,
+[data-md-color-scheme="dark"] .mermaid .node--prob .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--prob span,
+[data-md-color-scheme="dark"] .mermaid .node--prob div,
+[data-md-color-scheme="dark"] .mermaid .node--prob a {
+  fill: #e0f2fe !important;
+  color: #e0f2fe !important;
+  font-weight: 700 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--oe rect,
+[data-md-color-scheme="dark"] .mermaid .node--oe rect {
+  fill: #164e63 !important;
+  stroke: #22d3ee !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--oe text,
+[data-md-color-scheme="slate"] .mermaid .node--oe .label,
+[data-md-color-scheme="slate"] .mermaid .node--oe .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--oe span,
+[data-md-color-scheme="slate"] .mermaid .node--oe div,
+[data-md-color-scheme="slate"] .mermaid .node--oe a,
+[data-md-color-scheme="dark"] .mermaid .node--oe text,
+[data-md-color-scheme="dark"] .mermaid .node--oe .label,
+[data-md-color-scheme="dark"] .mermaid .node--oe .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--oe span,
+[data-md-color-scheme="dark"] .mermaid .node--oe div,
+[data-md-color-scheme="dark"] .mermaid .node--oe a {
+  fill: #cffafe !important;
+  color: #cffafe !important;
+  font-weight: 600 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--cp rect,
+[data-md-color-scheme="dark"] .mermaid .node--cp rect {
+  fill: #0c4a6e !important;
+  stroke: #38bdf8 !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--cp text,
+[data-md-color-scheme="slate"] .mermaid .node--cp .label,
+[data-md-color-scheme="slate"] .mermaid .node--cp .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--cp span,
+[data-md-color-scheme="slate"] .mermaid .node--cp div,
+[data-md-color-scheme="slate"] .mermaid .node--cp a,
+[data-md-color-scheme="dark"] .mermaid .node--cp text,
+[data-md-color-scheme="dark"] .mermaid .node--cp .label,
+[data-md-color-scheme="dark"] .mermaid .node--cp .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--cp span,
+[data-md-color-scheme="dark"] .mermaid .node--cp div,
+[data-md-color-scheme="dark"] .mermaid .node--cp a {
+  fill: #e0f2fe !important;
+  color: #e0f2fe !important;
+  font-weight: 600 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--uc rect,
+[data-md-color-scheme="dark"] .mermaid .node--uc rect {
+  fill: #14532d !important;
+  stroke: #4ade80 !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--uc text,
+[data-md-color-scheme="slate"] .mermaid .node--uc .label,
+[data-md-color-scheme="slate"] .mermaid .node--uc .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--uc span,
+[data-md-color-scheme="slate"] .mermaid .node--uc div,
+[data-md-color-scheme="slate"] .mermaid .node--uc a,
+[data-md-color-scheme="dark"] .mermaid .node--uc text,
+[data-md-color-scheme="dark"] .mermaid .node--uc .label,
+[data-md-color-scheme="dark"] .mermaid .node--uc .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--uc span,
+[data-md-color-scheme="dark"] .mermaid .node--uc div,
+[data-md-color-scheme="dark"] .mermaid .node--uc a {
+  fill: #bbf7d0 !important;
+  color: #bbf7d0 !important;
+  font-weight: 700 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--pos rect,
+[data-md-color-scheme="dark"] .mermaid .node--pos rect {
+  fill: #78350f !important;
+  stroke: #fcd34d !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--pos text,
+[data-md-color-scheme="slate"] .mermaid .node--pos .label,
+[data-md-color-scheme="slate"] .mermaid .node--pos .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--pos span,
+[data-md-color-scheme="slate"] .mermaid .node--pos div,
+[data-md-color-scheme="slate"] .mermaid .node--pos a,
+[data-md-color-scheme="dark"] .mermaid .node--pos text,
+[data-md-color-scheme="dark"] .mermaid .node--pos .label,
+[data-md-color-scheme="dark"] .mermaid .node--pos .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--pos span,
+[data-md-color-scheme="dark"] .mermaid .node--pos div,
+[data-md-color-scheme="dark"] .mermaid .node--pos a {
+  fill: #fde68a !important;
+  color: #fde68a !important;
+  font-weight: 700 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--rf rect,
+[data-md-color-scheme="dark"] .mermaid .node--rf rect {
+  fill: #1e293b !important;
+  stroke: #64748b !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--rf text,
+[data-md-color-scheme="slate"] .mermaid .node--rf .label,
+[data-md-color-scheme="slate"] .mermaid .node--rf .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--rf span,
+[data-md-color-scheme="slate"] .mermaid .node--rf div,
+[data-md-color-scheme="slate"] .mermaid .node--rf a,
+[data-md-color-scheme="dark"] .mermaid .node--rf text,
+[data-md-color-scheme="dark"] .mermaid .node--rf .label,
+[data-md-color-scheme="dark"] .mermaid .node--rf .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--rf span,
+[data-md-color-scheme="dark"] .mermaid .node--rf div,
+[data-md-color-scheme="dark"] .mermaid .node--rf a {
+  fill: #cbd5e1 !important;
+  color: #cbd5e1 !important;
+  font-size: 0.84rem !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .node--rnf rect,
+[data-md-color-scheme="dark"] .mermaid .node--rnf rect {
+  fill: #431407 !important;
+  stroke: #ea580c !important;
+}
+[data-md-color-scheme="slate"] .mermaid .node--rnf text,
+[data-md-color-scheme="slate"] .mermaid .node--rnf .label,
+[data-md-color-scheme="slate"] .mermaid .node--rnf .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .node--rnf span,
+[data-md-color-scheme="slate"] .mermaid .node--rnf div,
+[data-md-color-scheme="slate"] .mermaid .node--rnf a,
+[data-md-color-scheme="dark"] .mermaid .node--rnf text,
+[data-md-color-scheme="dark"] .mermaid .node--rnf .label,
+[data-md-color-scheme="dark"] .mermaid .node--rnf .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .node--rnf span,
+[data-md-color-scheme="dark"] .mermaid .node--rnf div,
+[data-md-color-scheme="dark"] .mermaid .node--rnf a {
+  fill: #fed7aa !important;
+  color: #fed7aa !important;
+  font-size: 0.84rem !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .cluster rect,
+[data-md-color-scheme="dark"] .mermaid .cluster rect {
+  fill: rgba(15, 23, 42, 0.75) !important;
+  stroke: #334155 !important;
+  stroke-dasharray: 4 4;
+}
+
+[data-md-color-scheme="slate"] .mermaid .cluster .label,
+[data-md-color-scheme="slate"] .mermaid .cluster text,
+[data-md-color-scheme="slate"] .mermaid .cluster span,
+[data-md-color-scheme="dark"] .mermaid .cluster .label,
+[data-md-color-scheme="dark"] .mermaid .cluster text,
+[data-md-color-scheme="dark"] .mermaid .cluster span {
+  fill: #94a3b8 !important;
+  color: #94a3b8 !important;
+  font-weight: 700 !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .edgePath path,
+[data-md-color-scheme="dark"] .mermaid .edgePath path {
+  stroke: #94a3b8 !important;
+  stroke-width: 1.5px !important;
+}
+[data-md-color-scheme="slate"] .mermaid .edgePath marker path,
+[data-md-color-scheme="dark"] .mermaid .edgePath marker path {
+  fill: #94a3b8 !important;
+  stroke: #94a3b8 !important;
+}
+
+

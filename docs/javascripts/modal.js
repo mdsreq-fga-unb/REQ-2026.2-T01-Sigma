@@ -793,13 +793,28 @@
     if (btn) btn.click();
   };
 
-  // Intercepta cliques globais em elementos com [data-modal-id]
+  // Intercepta cliques globais em elementos com [data-modal-id] ou links com hash de requisitos
   document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-modal-id]');
     if (trigger) {
       e.preventDefault();
       const id = trigger.getAttribute('data-modal-id');
       openModal(id);
+      return;
+    }
+
+    const anchor = e.target.closest('a[href*="#rf"], a[href*="#rnf"], a[href*="#rn"], a[href*="#RF"], a[href*="#RNF"], a[href*="#RN"]');
+    if (anchor) {
+      const rawHref = anchor.getAttribute('href') || '';
+      const hashIndex = rawHref.indexOf('#');
+      if (hashIndex !== -1) {
+        const hash = rawHref.substring(hashIndex + 1);
+        const clean = hash.replace(/^(modal-|req-)/i, '').toUpperCase();
+        if (REQUIREMENTS_DATA[clean]) {
+          e.preventDefault();
+          openModal(clean);
+        }
+      }
     }
   });
 

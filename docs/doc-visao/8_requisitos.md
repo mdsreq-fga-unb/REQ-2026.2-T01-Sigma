@@ -485,74 +485,58 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
     flowchart TD
         PROB["Problema Central:<br/>Gestão Manual de Fichas e Perda de Históricos"]
 
-        subgraph OBJETIVOS["Objetivos Específicos (OE)"]
-            OE1["OE.1: Agilidade e Organização Administrativa"]
-            OE2["OE.2: Preservação e Histórico de Matrículas"]
-            OE3["OE.3: Segurança, Acesso e LGPD"]
-            OE4["OE.4: Comunicação e Estrutura Escolar"]
-        end
-
-        subgraph CARACTERISTICAS["Características do Produto (CP)"]
-            CP1["CP1: Concepção de Cards de Matrícula"]
-            CP2["CP2: Edição e Atualização de Cards"]
-            CP3["CP3: Consulta de Informações dos Cards"]
-            CP4["CP4: Controle de Acesso de Usuários"]
-            CP5["CP5: Gerenciamento de Documentos Digitais"]
-            CP6["CP6: Mural de Avisos Rápidos"]
-            CP7["CP7: Gerenciamento de Turmas e Etapas"]
-            CP8["CP8: Auditoria e Integridade dos Dados"]
-        end
-
-        subgraph CASOS_USO["Casos de Uso (UC)"]
-            UC01["UC01: Gerenciar Autenticação (MVP)"]
-            UC02["UC02: Gerenciar Usuários Administrativos (MVP)"]
-            UC03["UC03: Gerenciar Quadro de Avisos (Pós-MVP)"]
+        subgraph PILAR1["Eixo Matrículas e Documentos"]
+            direction TB
+            OE_MAT["OE.1 e OE.2: Agilidade e Preservação de Históricos"]
+            CP_MAT["CP1, CP2, CP5, CP8:<br/>Cards, Edição, Docs Digitais e Integridade"]
             UC04["UC04: Gerenciar Fichas de Matrícula (MVP)"]
             UC05["UC05: Gerenciar Documentos Digitais (MVP)"]
+            OE_MAT --> CP_MAT
+            CP_MAT --> UC04
+            CP_MAT --> UC05
+        end
+
+        subgraph PILAR2["Eixo Estrutura e Alocação"]
+            direction TB
+            OE_EST["OE.1 e OE.4: Organização e Estrutura Escolar"]
+            CP_EST["CP3, CP7:<br/>Consulta de Informações, Turmas e Etapas"]
             UC06["UC06: Gerenciar Estrutura Escolar (MVP)"]
             UC07["UC07: Alocar Alunos (MVP)"]
             UC08["UC08: Consultar Registros - Busca (MVP)"]
+            OE_EST --> CP_EST
+            CP_EST --> UC06
+            CP_EST --> UC07
+            CP_EST --> UC08
         end
 
-        PROB --> OE1
-        PROB --> OE2
-        PROB --> OE3
-        PROB --> OE4
+        subgraph PILAR3["Eixo Segurança e Comunicação"]
+            direction TB
+            OE_SEG["OE.3 e OE.4: Segurança, LGPD e Comunicação"]
+            CP_SEG["CP4, CP6:<br/>Controle de Acesso e Mural de Avisos"]
+            UC01["UC01: Gerenciar Autenticação (MVP)"]
+            UC02["UC02: Gerenciar Usuários Administrativos (MVP)"]
+            UC03["UC03: Gerenciar Quadro de Avisos (Pós-MVP)"]
+            OE_SEG --> CP_SEG
+            CP_SEG --> UC01
+            CP_SEG --> UC02
+            CP_SEG --> UC03
+        end
 
-        OE1 --> CP2
-        OE1 --> CP3
-        OE2 --> CP1
-        OE2 --> CP5
-        OE3 --> CP4
-        OE3 --> CP8
-        OE4 --> CP6
-        OE4 --> CP7
-        OE1 -.-> CP7
+        PROB --> OE_MAT
+        PROB --> OE_EST
+        PROB --> OE_SEG
 
-        CP4 --> UC01
-        CP4 --> UC02
-        CP6 --> UC03
-        CP1 --> UC04
-        CP2 --> UC04
-        CP8 --> UC04
-        CP5 --> UC05
-        CP7 --> UC06
-        CP7 --> UC07
-        CP1 --> UC07
-        CP3 --> UC08
-        CP7 --> UC08
+        classDef node--prob stroke-width:2px;
+        classDef node--oe stroke-width:2px;
+        classDef node--cp stroke-width:1.5px;
+        classDef node--uc stroke-width:2px;
+        classDef node--pos stroke-width:2px;
 
-        classDef prob fill:#135C7D,stroke:#09394F,stroke-width:2px,color:#ffffff,font-weight:bold;
-        classDef oe fill:#27829C,stroke:#195C70,stroke-width:2px,color:#ffffff,font-weight:bold;
-        classDef cp fill:#D5F0FD,stroke:#27829C,stroke-width:2px,color:#031921,font-weight:bold;
-        classDef ucMvp fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d,font-weight:bold;
-        classDef ucPos fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f,font-weight:bold;
-
-        class PROB prob;
-        class OE1,OE2,OE3,OE4 oe;
-        class CP1,CP2,CP3,CP4,CP5,CP6,CP7,CP8 cp;
-        class UC01,UC02,UC04,UC05,UC06,UC07,UC08 ucMvp;
-        class UC03 ucPos;
+        class PROB node--prob;
+        class OE_MAT,OE_EST,OE_SEG node--oe;
+        class CP_MAT,CP_EST,CP_SEG node--cp;
+        class UC01,UC02,UC04,UC05,UC06,UC07,UC08 node--uc;
+        class UC03 node--pos;
 
         click UC01 href "#uc01" "Ver UC01 no catálogo"
         click UC02 href "#uc02" "Ver UC02 no catálogo"
@@ -564,105 +548,88 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
         click UC08 href "#uc08" "Ver UC08 no catálogo"
     ```
 
-=== "Eixo Matrículas e Documentos"
+=== "Matrículas e Documentos (UC04 e UC05)"
 
     ```mermaid
-    flowchart LR
-        subgraph CPS_MAT["Características"]
-            CP1["CP1: Concepção de Cards"]
-            CP2["CP2: Edição de Cards"]
-            CP3["CP3: Consulta de Cards"]
-            CP5["CP5: Documentos Digitais"]
-            CP7["CP7: Turmas e Etapas"]
-            CP8["CP8: Auditoria e Integridade"]
+    flowchart TD
+        subgraph ARVORE_UC04["Árvore UC04: Gerenciar Fichas de Matrícula (MVP)"]
+            direction TB
+            CP_UC04["Características:<br/>CP1 (Concepção), CP2 (Edição), CP8 (Integridade)"]
+            UC04_NODE["UC04: Gerenciar Fichas de Matrícula"]
+            CP_UC04 --> UC04_NODE
+
+            subgraph RFS_UC04["Requisitos Funcionais (RF)"]
+                direction TB
+                RF08["RF08: Cadastrar Card de Matrícula"]
+                RF09["RF09: Preencher Fichas dos Alunos"]
+                RF10["RF10: Editar Fichas dos Alunos"]
+                RF11["RF11: Inativar Card de Matrícula"]
+                RF12["RF12: Reativar Card de Matrícula"]
+                RF17["RF17: Registrar Histórico de Alterações"]
+                RF23["RF23: Exibir Confirmação ao Salvar"]
+            end
+
+            subgraph RNFS_UC04["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF01_4["RNF01: Proteção e Privacidade LGPD"]
+                RNF02_4["RNF02: Restrição de Acesso Autenticado"]
+                RNF03_4["RNF03: Interface Responsiva"]
+                RNF08_4["RNF08: Tempo de Salvamento menor que 5s"]
+            end
+
+            UC04_NODE --> RF08
+            UC04_NODE --> RF09
+            UC04_NODE --> RF10
+            UC04_NODE --> RF11
+            UC04_NODE --> RF12
+            UC04_NODE --> RF17
+            UC04_NODE --> RF23
+
+            UC04_NODE -.-> RNF01_4
+            UC04_NODE -.-> RNF02_4
+            UC04_NODE -.-> RNF03_4
+            UC04_NODE -.-> RNF08_4
         end
 
-        subgraph UCS_MAT["Casos de Uso"]
-            UC04["UC04: Gerenciar Fichas (MVP)"]
-            UC05["UC05: Documentos Digitais (MVP)"]
-            UC07["UC07: Alocar Alunos (MVP)"]
-            UC08["UC08: Consulta e Busca (MVP)"]
+        subgraph ARVORE_UC05["Árvore UC05: Gerenciar Documentos Digitais (MVP)"]
+            direction TB
+            CP_UC05["Características:<br/>CP5 (Documentos Digitais), CP8 (Integridade)"]
+            UC05_NODE["UC05: Gerenciar Documentos Digitais"]
+            CP_UC05 --> UC05_NODE
+
+            subgraph RFS_UC05["Requisitos Funcionais (RF)"]
+                direction TB
+                RF14["RF14: Anexar Documento Digital"]
+                RF15["RF15: Substituir Documento Digital"]
+                RF16["RF16: Baixar Documento em PDF"]
+            end
+
+            subgraph RNFS_UC05["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF01_5["RNF01: Proteção e Privacidade LGPD"]
+                RNF02_5["RNF02: Restrição de Acesso Autenticado"]
+            end
+
+            UC05_NODE --> RF14
+            UC05_NODE --> RF15
+            UC05_NODE --> RF16
+
+            UC05_NODE -.-> RNF01_5
+            UC05_NODE -.-> RNF02_5
         end
 
-        subgraph RFS_MAT["Requisitos Funcionais"]
-            RF08["RF08: Cadastrar Card"]
-            RF09["RF09: Preencher Fichas"]
-            RF10["RF10: Editar Fichas"]
-            RF11["RF11: Inativar Card"]
-            RF12["RF12: Reativar Card"]
-            RF17["RF17: Histórico"]
-            RF23["RF23: Confirmação Salvar"]
-            RF14["RF14: Anexar Documento"]
-            RF15["RF15: Substituir Doc"]
-            RF16["RF16: Baixar PDF"]
-            RF13["RF13: Vincular Turma"]
-            RF21["RF21: Buscar Aluno"]
-            RF22["RF22: Buscar Turma"]
-        end
+        classDef node--cp stroke-width:1.5px;
+        classDef node--uc stroke-width:2px;
+        classDef node--rf stroke-width:1.5px;
+        classDef node--rnf stroke-width:1.5px;
 
-        subgraph RNFS_MAT["Requisitos Não Funcionais"]
-            RNF01["RNF01: LGPD"]
-            RNF02["RNF02: Acesso Restrito"]
-            RNF03["RNF03: Responsivo"]
-            RNF06["RNF06: Busca menor 2s"]
-            RNF07["RNF07: Busca Turma menor 2s"]
-            RNF08["RNF08: Salvar menor 5s"]
-        end
+        class CP_UC04,CP_UC05 node--cp;
+        class UC04_NODE,UC05_NODE node--uc;
+        class RF08,RF09,RF10,RF11,RF12,RF17,RF23,RF14,RF15,RF16 node--rf;
+        class RNF01_4,RNF02_4,RNF03_4,RNF08_4,RNF01_5,RNF02_5 node--rnf;
 
-        CP1 --> UC04
-        CP2 --> UC04
-        CP8 --> UC04
-        CP5 --> UC05
-        CP7 --> UC07
-        CP1 --> UC07
-        CP3 --> UC08
-        CP7 --> UC08
-
-        UC04 --> RF08
-        UC04 --> RF09
-        UC04 --> RF10
-        UC04 --> RF11
-        UC04 --> RF12
-        UC04 --> RF17
-        UC04 --> RF23
-        UC04 -.-> RNF01
-        UC04 -.-> RNF02
-        UC04 -.-> RNF03
-        UC04 -.-> RNF08
-
-        UC05 --> RF14
-        UC05 --> RF15
-        UC05 --> RF16
-        UC05 -.-> RNF01
-        UC05 -.-> RNF02
-
-        UC07 --> RF13
-        UC07 --> RF21
-        UC07 --> RF22
-        UC07 -.-> RNF02
-        UC07 -.-> RNF06
-        UC07 -.-> RNF07
-
-        UC08 --> RF21
-        UC08 --> RF22
-        UC08 -.-> RNF02
-        UC08 -.-> RNF06
-        UC08 -.-> RNF07
-
-        classDef cp fill:#D5F0FD,stroke:#27829C,stroke-width:1px,color:#031921,font-weight:bold;
-        classDef uc fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d,font-weight:bold;
-        classDef rf fill:#f1f5f9,stroke:#0284c7,stroke-width:1px,color:#0369a1;
-        classDef rnf fill:#ffedd5,stroke:#ea580c,stroke-width:1px,color:#9a3412;
-
-        class CP1,CP2,CP3,CP5,CP7,CP8 cp;
-        class UC04,UC05,UC07,UC08 uc;
-        class RF08,RF09,RF10,RF11,RF12,RF17,RF23,RF14,RF15,RF16,RF13,RF21,RF22 rf;
-        class RNF01,RNF02,RNF03,RNF06,RNF07,RNF08 rnf;
-
-        click UC04 href "#uc04" "Ver UC04 no catálogo"
-        click UC05 href "#uc05" "Ver UC05 no catálogo"
-        click UC07 href "#uc07" "Ver UC07 no catálogo"
-        click UC08 href "#uc08" "Ver UC08 no catálogo"
+        click UC04_NODE href "#uc04" "Ver UC04 no catálogo"
+        click UC05_NODE href "#uc05" "Ver UC05 no catálogo"
         click RF08 href "#rf08" "Abrir modal do RF08"
         click RF09 href "#rf09" "Abrir modal do RF09"
         click RF10 href "#rf10" "Abrir modal do RF10"
@@ -673,149 +640,264 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
         click RF14 href "#rf14" "Abrir modal do RF14"
         click RF15 href "#rf15" "Abrir modal do RF15"
         click RF16 href "#rf16" "Abrir modal do RF16"
-        click RF13 href "#rf13" "Abrir modal do RF13"
-        click RF21 href "#rf21" "Abrir modal do RF21"
-        click RF22 href "#rf22" "Abrir modal do RF22"
-        click RNF01 href "#rnf01" "Abrir modal do RNF01"
-        click RNF02 href "#rnf02" "Abrir modal do RNF02"
-        click RNF03 href "#rnf03" "Abrir modal do RNF03"
-        click RNF06 href "#rnf06" "Abrir modal do RNF06"
-        click RNF07 href "#rnf07" "Abrir modal do RNF07"
-        click RNF08 href "#rnf08" "Abrir modal do RNF08"
+        click RNF01_4 href "#rnf01" "Abrir modal do RNF01"
+        click RNF02_4 href "#rnf02" "Abrir modal do RNF02"
+        click RNF03_4 href "#rnf03" "Abrir modal do RNF03"
+        click RNF08_4 href "#rnf08" "Abrir modal do RNF08"
+        click RNF01_5 href "#rnf01" "Abrir modal do RNF01"
+        click RNF02_5 href "#rnf02" "Abrir modal do RNF02"
     ```
 
-=== "Eixo Segurança e Controle de Acesso"
+=== "Estrutura e Alocação (UC06, UC07 e UC08)"
 
     ```mermaid
-    flowchart LR
-        subgraph CPS_SEG["Características"]
-            CP4["CP4: Controle de Acesso"]
-            CP8["CP8: Auditoria e Integridade"]
+    flowchart TD
+        subgraph ARVORE_UC06["Árvore UC06: Gerenciar Estrutura Escolar (MVP)"]
+            direction TB
+            CP_UC06["Características:<br/>CP7 (Gerenciamento de Turmas e Etapas)"]
+            UC06_NODE["UC06: Gerenciar Estrutura Escolar"]
+            CP_UC06 --> UC06_NODE
+
+            subgraph RFS_UC06["Requisitos Funcionais (RF)"]
+                direction TB
+                RF18["RF18: Cadastrar Etapa Escolar"]
+                RF19["RF19: Inativar Turma e Etapa"]
+                RF20["RF20: Vincular Turma à Etapa"]
+                RF24["RF24: Cadastrar Turma"]
+            end
+
+            subgraph RNFS_UC06["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF02_6["RNF02: Restrição de Acesso Autenticado"]
+                RNF07_6["RNF07: Tempo de Busca de Turmas menor que 2s"]
+            end
+
+            UC06_NODE --> RF18
+            UC06_NODE --> RF19
+            UC06_NODE --> RF20
+            UC06_NODE --> RF24
+
+            UC06_NODE -.-> RNF02_6
+            UC06_NODE -.-> RNF07_6
         end
 
-        subgraph UCS_SEG["Casos de Uso"]
-            UC01["UC01: Gerenciar Autenticação (MVP)"]
-            UC02["UC02: Gerenciar Usuários Administrativos (MVP)"]
+        subgraph ARVORE_UC07["Árvore UC07: Alocar Alunos (MVP)"]
+            direction TB
+            CP_UC07["Características:<br/>CP1 (Concepção de Cards), CP7 (Turmas e Etapas)"]
+            UC07_NODE["UC07: Alocar Alunos"]
+            CP_UC07 --> UC07_NODE
+
+            subgraph RFS_UC07["Requisitos Funcionais (RF)"]
+                direction TB
+                RF13["RF13: Vincular Turma à Ficha"]
+                RF21_7["RF21: Buscar Aluno por Nome ou Matrícula"]
+                RF22_7["RF22: Buscar Turmas Cadastradas"]
+            end
+
+            subgraph RNFS_UC07["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF02_7["RNF02: Restrição de Acesso Autenticado"]
+                RNF06_7["RNF06: Tempo de Busca de Alunos menor que 2s"]
+                RNF07_7["RNF07: Tempo de Busca de Turmas menor que 2s"]
+            end
+
+            UC07_NODE --> RF13
+            UC07_NODE --> RF21_7
+            UC07_NODE --> RF22_7
+
+            UC07_NODE -.-> RNF02_7
+            UC07_NODE -.-> RNF06_7
+            UC07_NODE -.-> RNF07_7
         end
 
-        subgraph RFS_SEG["Requisitos Funcionais"]
-            RF06["RF06: Realizar Login"]
-            RF07["RF07: Realizar Logout"]
-            RF05["RF05: Cadastrar Usuários"]
+        subgraph ARVORE_UC08["Árvore UC08: Consultar Registros - Busca (MVP)"]
+            direction TB
+            CP_UC08["Características:<br/>CP3 (Consulta de Cards), CP7 (Turmas e Etapas)"]
+            UC08_NODE["UC08: Consultar Registros - Busca"]
+            CP_UC08 --> UC08_NODE
+
+            subgraph RFS_UC08["Requisitos Funcionais (RF)"]
+                direction TB
+                RF21_8["RF21: Buscar Aluno por Nome ou Matrícula"]
+                RF22_8["RF22: Buscar Turmas Cadastradas"]
+            end
+
+            subgraph RNFS_UC08["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF02_8["RNF02: Restrição de Acesso Autenticado"]
+                RNF06_8["RNF06: Tempo de Busca de Alunos menor que 2s"]
+                RNF07_8["RNF07: Tempo de Busca de Turmas menor que 2s"]
+            end
+
+            UC08_NODE --> RF21_8
+            UC08_NODE --> RF22_8
+
+            UC08_NODE -.-> RNF02_8
+            UC08_NODE -.-> RNF06_8
+            UC08_NODE -.-> RNF07_8
         end
 
-        subgraph RNFS_SEG["Requisitos Não Funcionais"]
-            RNF01["RNF01: Proteção e Privacidade LGPD"]
-            RNF02["RNF02: Restrição Acesso Não Autenticado"]
-            RNF05["RNF05: Tempo Resposta Login menor 2s"]
-        end
+        classDef node--cp stroke-width:1.5px;
+        classDef node--uc stroke-width:2px;
+        classDef node--rf stroke-width:1.5px;
+        classDef node--rnf stroke-width:1.5px;
 
-        CP4 --> UC01
-        CP4 --> UC02
-        CP8 --> UC02
+        class CP_UC06,CP_UC07,CP_UC08 node--cp;
+        class UC06_NODE,UC07_NODE,UC08_NODE node--uc;
+        class RF18,RF19,RF20,RF24,RF13,RF21_7,RF22_7,RF21_8,RF22_8 node--rf;
+        class RNF02_6,RNF07_6,RNF02_7,RNF06_7,RNF07_7,RNF02_8,RNF06_8,RNF07_8 node--rnf;
 
-        UC01 --> RF06
-        UC01 --> RF07
-        UC01 -.-> RNF01
-        UC01 -.-> RNF02
-        UC01 -.-> RNF05
-
-        UC02 --> RF05
-        UC02 -.-> RNF01
-        UC02 -.-> RNF02
-
-        classDef cp fill:#D5F0FD,stroke:#27829C,stroke-width:1px,color:#031921,font-weight:bold;
-        classDef uc fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d,font-weight:bold;
-        classDef rf fill:#f1f5f9,stroke:#0284c7,stroke-width:1px,color:#0369a1;
-        classDef rnf fill:#ffedd5,stroke:#ea580c,stroke-width:1px,color:#9a3412;
-
-        class CP4,CP8 cp;
-        class UC01,UC02 uc;
-        class RF05,RF06,RF07 rf;
-        class RNF01,RNF02,RNF05 rnf;
-
-        click UC01 href "#uc01" "Ver UC01 no catálogo"
-        click UC02 href "#uc02" "Ver UC02 no catálogo"
-        click RF05 href "#rf05" "Abrir modal do RF05"
-        click RF06 href "#rf06" "Abrir modal do RF06"
-        click RF07 href "#rf07" "Abrir modal do RF07"
-        click RNF01 href "#rnf01" "Abrir modal do RNF01"
-        click RNF02 href "#rnf02" "Abrir modal do RNF02"
-        click RNF05 href "#rnf05" "Abrir modal do RNF05"
-    ```
-
-=== "Eixo Estrutura Escolar e Comunicação"
-
-    ```mermaid
-    flowchart LR
-        subgraph CPS_EST["Características"]
-            CP6["CP6: Avisos Rápidos"]
-            CP7["CP7: Turmas e Etapas"]
-        end
-
-        subgraph UCS_EST["Casos de Uso"]
-            UC03["UC03: Gerenciar Quadro de Avisos (Pós-MVP)"]
-            UC06["UC06: Gerenciar Estrutura Escolar (MVP)"]
-        end
-
-        subgraph RFS_EST["Requisitos Funcionais"]
-            RF01["RF01: Disponibilizar Quadro"]
-            RF02["RF02: Lançar Avisos"]
-            RF03["RF03: Exibir Avisos"]
-            RF04["RF04: Apagar Avisos"]
-            RF18["RF18: Cadastrar Etapa"]
-            RF19["RF19: Inativar Turma e Etapa"]
-            RF20["RF20: Vincular Turma à Etapa"]
-            RF24["RF24: Cadastrar Turma"]
-        end
-
-        subgraph RNFS_EST["Requisitos Não Funcionais"]
-            RNF01["RNF01: LGPD"]
-            RNF02["RNF02: Acesso Restrito"]
-            RNF07["RNF07: Tempo Busca Turmas menor 2s"]
-        end
-
-        CP6 --> UC03
-        CP7 --> UC06
-
-        UC03 --> RF01
-        UC03 --> RF02
-        UC03 --> RF03
-        UC03 --> RF04
-        UC03 -.-> RNF01
-        UC03 -.-> RNF02
-
-        UC06 --> RF18
-        UC06 --> RF19
-        UC06 --> RF20
-        UC06 --> RF24
-        UC06 -.-> RNF02
-        UC06 -.-> RNF07
-
-        classDef cp fill:#D5F0FD,stroke:#27829C,stroke-width:1px,color:#031921,font-weight:bold;
-        classDef ucMvp fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d,font-weight:bold;
-        classDef ucPos fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f,font-weight:bold;
-        classDef rf fill:#f1f5f9,stroke:#0284c7,stroke-width:1px,color:#0369a1;
-        classDef rnf fill:#ffedd5,stroke:#ea580c,stroke-width:1px,color:#9a3412;
-
-        class CP6,CP7 cp;
-        class UC06 ucMvp;
-        class UC03 ucPos;
-        class RF01,RF02,RF03,RF04,RF18,RF19,RF20,RF24 rf;
-        class RNF01,RNF02,RNF07 rnf;
-
-        click UC03 href "#uc03" "Ver UC03 no catálogo"
-        click UC06 href "#uc06" "Ver UC06 no catálogo"
-        click RF01 href "#rf01" "Abrir modal do RF01"
-        click RF02 href "#rf02" "Abrir modal do RF02"
-        click RF03 href "#rf03" "Abrir modal do RF03"
-        click RF04 href "#rf04" "Abrir modal do RF04"
+        click UC06_NODE href "#uc06" "Ver UC06 no catálogo"
+        click UC07_NODE href "#uc07" "Ver UC07 no catálogo"
+        click UC08_NODE href "#uc08" "Ver UC08 no catálogo"
         click RF18 href "#rf18" "Abrir modal do RF18"
         click RF19 href "#rf19" "Abrir modal do RF19"
         click RF20 href "#rf20" "Abrir modal do RF20"
         click RF24 href "#rf24" "Abrir modal do RF24"
-        click RNF01 href "#rnf01" "Abrir modal do RNF01"
-        click RNF02 href "#rnf02" "Abrir modal do RNF02"
-        click RNF07 href "#rnf07" "Abrir modal do RNF07"
+        click RF13 href "#rf13" "Abrir modal do RF13"
+        click RF21_7 href "#rf21" "Abrir modal do RF21"
+        click RF22_7 href "#rf22" "Abrir modal do RF22"
+        click RF21_8 href "#rf21" "Abrir modal do RF21"
+        click RF22_8 href "#rf22" "Abrir modal do RF22"
+        click RNF02_6 href "#rnf02" "Abrir modal do RNF02"
+        click RNF07_6 href "#rnf07" "Abrir modal do RNF07"
+        click RNF02_7 href "#rnf02" "Abrir modal do RNF02"
+        click RNF06_7 href "#rnf06" "Abrir modal do RNF06"
+        click RNF07_7 href "#rnf07" "Abrir modal do RNF07"
+        click RNF02_8 href "#rnf02" "Abrir modal do RNF02"
+        click RNF06_8 href "#rnf06" "Abrir modal do RNF06"
+        click RNF07_8 href "#rnf07" "Abrir modal do RNF07"
     ```
+
+=== "Segurança e Comunicação (UC01, UC02 e UC03)"
+
+    ```mermaid
+    flowchart TD
+        subgraph ARVORE_UC01["Árvore UC01: Gerenciar Autenticação (MVP)"]
+            direction TB
+            CP_UC01["Características:<br/>CP4 (Controle de Acesso de Usuários)"]
+            UC01_NODE["UC01: Gerenciar Autenticação"]
+            CP_UC01 --> UC01_NODE
+
+            subgraph RFS_UC01["Requisitos Funcionais (RF)"]
+                direction TB
+                RF06["RF06: Realizar Login"]
+                RF07["RF07: Realizar Logout"]
+            end
+
+            subgraph RNFS_UC01["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF01_1["RNF01: Proteção e Privacidade LGPD"]
+                RNF02_1["RNF02: Restrição de Acesso Autenticado"]
+                RNF05_1["RNF05: Tempo de Resposta de Login menor que 2s"]
+            end
+
+            UC01_NODE --> RF06
+            UC01_NODE --> RF07
+
+            UC01_NODE -.-> RNF01_1
+            UC01_NODE -.-> RNF02_1
+            UC01_NODE -.-> RNF05_1
+        end
+
+        subgraph ARVORE_UC02["Árvore UC02: Gerenciar Usuários Administrativos (MVP)"]
+            direction TB
+            CP_UC02["Características:<br/>CP4 (Controle de Acesso), CP8 (Auditoria)"]
+            UC02_NODE["UC02: Gerenciar Usuários Administrativos"]
+            CP_UC02 --> UC02_NODE
+
+            subgraph RFS_UC02["Requisitos Funcionais (RF)"]
+                direction TB
+                RF05["RF05: Cadastrar Usuários Administrativos"]
+            end
+
+            subgraph RNFS_UC02["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF01_2["RNF01: Proteção e Privacidade LGPD"]
+                RNF02_2["RNF02: Restrição de Acesso Autenticado"]
+            end
+
+            UC02_NODE --> RF05
+
+            UC02_NODE -.-> RNF01_2
+            UC02_NODE -.-> RNF02_2
+        end
+
+        subgraph ARVORE_UC03["Árvore UC03: Gerenciar Quadro de Avisos (Pós-MVP)"]
+            direction TB
+            CP_UC03["Características:<br/>CP6 (Mural de Avisos Rápidos)"]
+            UC03_NODE["UC03: Gerenciar Quadro de Avisos"]
+            CP_UC03 --> UC03_NODE
+
+            subgraph RFS_UC03["Requisitos Funcionais (RF)"]
+                direction TB
+                RF01["RF01: Disponibilizar Quadro de Avisos"]
+                RF02["RF02: Lançar Avisos Institucionais"]
+                RF03["RF03: Exibir Avisos aos Usuários"]
+                RF04["RF04: Apagar Avisos Expirados"]
+            end
+
+            subgraph RNFS_UC03["Requisitos Não Funcionais (RNF)"]
+                direction TB
+                RNF01_3["RNF01: Proteção e Privacidade LGPD"]
+                RNF02_3["RNF02: Restrição de Acesso Autenticado"]
+            end
+
+            UC03_NODE --> RF01
+            UC03_NODE --> RF02
+            UC03_NODE --> RF03
+            UC03_NODE --> RF04
+
+            UC03_NODE -.-> RNF01_3
+            UC03_NODE -.-> RNF02_3
+        end
+
+        classDef node--cp stroke-width:1.5px;
+        classDef node--uc stroke-width:2px;
+        classDef node--pos stroke-width:2px;
+        classDef node--rf stroke-width:1.5px;
+        classDef node--rnf stroke-width:1.5px;
+
+        class CP_UC01,CP_UC02,CP_UC03 node--cp;
+        class UC01_NODE,UC02_NODE node--uc;
+        class UC03_NODE node--pos;
+        class RF06,RF07,RF05,RF01,RF02,RF03,RF04 node--rf;
+        class RNF01_1,RNF02_1,RNF05_1,RNF01_2,RNF02_2,RNF01_3,RNF02_3 node--rnf;
+
+        click UC01_NODE href "#uc01" "Ver UC01 no catálogo"
+        click UC02_NODE href "#uc02" "Ver UC02 no catálogo"
+        click UC03_NODE href "#uc03" "Ver UC03 no catálogo"
+        click RF06 href "#rf06" "Abrir modal do RF06"
+        click RF07 href "#rf07" "Abrir modal do RF07"
+        click RF05 href "#rf05" "Abrir modal do RF05"
+        click RF01 href "#rf01" "Abrir modal do RF01"
+        click RF02 href "#rf02" "Abrir modal do RF02"
+        click RF03 href "#rf03" "Abrir modal do RF03"
+        click RF04 href "#rf04" "Abrir modal do RF04"
+        click RNF01_1 href "#rnf01" "Abrir modal do RNF01"
+        click RNF02_1 href "#rnf02" "Abrir modal do RNF02"
+        click RNF05_1 href "#rnf05" "Abrir modal do RNF05"
+        click RNF01_2 href "#rnf01" "Abrir modal do RNF01"
+        click RNF02_2 href "#rnf02" "Abrir modal do RNF02"
+        click RNF01_3 href "#rnf01" "Abrir modal do RNF01"
+        click RNF02_3 href "#rnf02" "Abrir modal do RNF02"
+    ```
+
+---
+
+### 8.2.1 Matriz Resumo de Rastreabilidade
+
+A matriz a seguir consolida a rastreabilidade bidirecional completa do sistema. Todos os itens de requisitos e regras de negócio possuem chips interativos que abrem seus respectivos modais detalhados ao serem clicados:
+
+| Caso de Uso | MVP | Características (CP) | Objetivos Específicos (OE) | Requisitos Funcionais (RF) | Requisitos Não Funcionais (RNF) | Regras de Negócio (RN) |
+| :--- | :---: | :--- | :--- | :--- | :--- | :--- |
+| [UC01: Gerenciar Autenticação](#uc01) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP4](2_solucao.md#23-caracteristicas-de-produto) | [OE.3](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF06">RF06</button> <button type="button" class="chip chip--rf" data-modal-id="RF07">RF07</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF05">RNF05</button> | <button type="button" class="chip chip--rn" data-modal-id="RN16">RN16</button> <button type="button" class="chip chip--rn" data-modal-id="RN17">RN17</button> <button type="button" class="chip chip--rn" data-modal-id="RN18">RN18</button> |
+| [UC02: Gerenciar Usuários Administrativos](#uc02) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP4](2_solucao.md#23-caracteristicas-de-produto), [CP8](2_solucao.md#23-caracteristicas-de-produto) | [OE.3](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF05">RF05</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> | <button type="button" class="chip chip--rn" data-modal-id="RN13">RN13</button> <button type="button" class="chip chip--rn" data-modal-id="RN14">RN14</button> <button type="button" class="chip chip--rn" data-modal-id="RN15">RN15</button> |
+| [UC03: Gerenciar Quadro de Avisos](#uc03) | <span class="badge-mvp badge-mvp--nao">Não</span> | [CP6](2_solucao.md#23-caracteristicas-de-produto) | [OE.4](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF01">RF01</button> <button type="button" class="chip chip--rf" data-modal-id="RF02">RF02</button> <button type="button" class="chip chip--rf" data-modal-id="RF03">RF03</button> <button type="button" class="chip chip--rf" data-modal-id="RF04">RF04</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> | <button type="button" class="chip chip--rn" data-modal-id="RN19">RN19</button> <button type="button" class="chip chip--rn" data-modal-id="RN20">RN20</button> <button type="button" class="chip chip--rn" data-modal-id="RN21">RN21</button> <button type="button" class="chip chip--rn" data-modal-id="RN22">RN22</button> |
+| [UC04: Gerenciar Fichas de Matrícula](#uc04) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP1](2_solucao.md#23-caracteristicas-de-produto), [CP2](2_solucao.md#23-caracteristicas-de-produto), [CP8](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto), [OE.2](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF08">RF08</button> <button type="button" class="chip chip--rf" data-modal-id="RF09">RF09</button> <button type="button" class="chip chip--rf" data-modal-id="RF10">RF10</button> <button type="button" class="chip chip--rf" data-modal-id="RF11">RF11</button> <button type="button" class="chip chip--rf" data-modal-id="RF12">RF12</button> <button type="button" class="chip chip--rf" data-modal-id="RF17">RF17</button> <button type="button" class="chip chip--rf" data-modal-id="RF23">RF23</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF03">RNF03</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF08">RNF08</button> | <button type="button" class="chip chip--rn" data-modal-id="RN01">RN01</button> <button type="button" class="chip chip--rn" data-modal-id="RN02">RN02</button> <button type="button" class="chip chip--rn" data-modal-id="RN03">RN03</button> <button type="button" class="chip chip--rn" data-modal-id="RN04">RN04</button> <button type="button" class="chip chip--rn" data-modal-id="RN05">RN05</button> <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> <button type="button" class="chip chip--rn" data-modal-id="RN08">RN08</button> <button type="button" class="chip chip--rn" data-modal-id="RN12">RN12</button> |
+| [UC05: Gerenciar Documentos Digitais](#uc05) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP5](2_solucao.md#23-caracteristicas-de-produto), [CP8](2_solucao.md#23-caracteristicas-de-produto) | [OE.2](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF14">RF14</button> <button type="button" class="chip chip--rf" data-modal-id="RF15">RF15</button> <button type="button" class="chip chip--rf" data-modal-id="RF16">RF16</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> | <button type="button" class="chip chip--rn" data-modal-id="RN09">RN09</button> <button type="button" class="chip chip--rn" data-modal-id="RN10">RN10</button> <button type="button" class="chip chip--rn" data-modal-id="RN11">RN11</button> |
+| [UC06: Gerenciar Estrutura Escolar](#uc06) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP7](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto), [OE.4](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF18">RF18</button> <button type="button" class="chip chip--rf" data-modal-id="RF19">RF19</button> <button type="button" class="chip chip--rf" data-modal-id="RF20">RF20</button> <button type="button" class="chip chip--rf" data-modal-id="RF24">RF24</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF07">RNF07</button> | <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> |
+| [UC07: Alocar Alunos](#uc07) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP1](2_solucao.md#23-caracteristicas-de-produto), [CP7](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto), [OE.4](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF13">RF13</button> <button type="button" class="chip chip--rf" data-modal-id="RF21">RF21</button> <button type="button" class="chip chip--rf" data-modal-id="RF22">RF22</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF06">RNF06</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF07">RNF07</button> | <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> <button type="button" class="chip chip--rn" data-modal-id="RN08">RN08</button> |
+| [UC08: Consultar Registros - Busca](#uc08) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP3](2_solucao.md#23-caracteristicas-de-produto), [CP7](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF21">RF21</button> <button type="button" class="chip chip--rf" data-modal-id="RF22">RF22</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF06">RNF06</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF07">RNF07</button> | <button type="button" class="chip chip--rn" data-modal-id="RN01">RN01</button> <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> |
+
 
