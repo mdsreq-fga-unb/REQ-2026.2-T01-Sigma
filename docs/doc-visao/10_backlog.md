@@ -61,25 +61,11 @@ Diferente das capacidades funcionais que foram modularizadas em casos de uso, ce
 
 ---
 
-## 10.2 Recorte e Composição do MVP
+## 10.2 Integração com o Catálogo Unificado
 
-A aplicação das regras de priorização resultou no seguinte escopo validado para o MVP:
+A indicação individual do recorte de cada Caso de Uso no MVP está consolidada diretamente nos cards do **[Catálogo Unificado de Requisitos](8_requisitos.md)**, identificada visualmente por badges de status e acessível através do filtro de MVP da página.
 
-| ID | Caso de Uso | Compõe o MVP? | Prioridade MoSCoW | Justificativa do Recorte |
-| :--- | :--- | :---: | :---: | :--- |
-| [UC01](8_requisitos.md#uc01) | Gerenciar Autenticação | **SIM** | Must Have | Porta de entrada segura para dados sensíveis e conformidade de acesso. |
-| [UC02](8_requisitos.md#uc02) | Gerenciar Usuários Administrativos | **SIM** | Must Have | Gestão das contas da secretaria e controle de privilégios. |
-| [UC03](8_requisitos.md#uc03) | Gerenciar Quadro de Avisos | **NÃO** | Won't Have | Funcionalidade secundária de comunicação; postergada para concentrar esforços nas matrículas. |
-| [UC04](8_requisitos.md#uc04) | Gerenciar Fichas de Matrícula | **SIM** | Must Have | **Núcleo essencial do sistema**. Substitui as fichas em papel e elimina a perda de históricos. Fluxos de inativação complexa foram postergados. |
-| [UC05](8_requisitos.md#uc05) | Gerenciar Documentos Digitais | **SIM** | Must Have | Digitalização e armazenamento em PDF de termos, certidões e laudos essenciais. |
-| [UC06](8_requisitos.md#uc06) | Gerenciar Estrutura Escolar | **SIM** | Must Have | Cadastro de turmas e etapas obrigatório para alocação de crianças. |
-| [UC07](8_requisitos.md#uc07) | Alocar Alunos | **SIM** | Must Have | Enturmação e alocação de crianças nas turmas correspondentes. |
-| [UC08](8_requisitos.md#uc08) | Consultar Registros (Busca) | **SIM** | Must Have | Localização ágil de alunos por nome em menos de 2 segundos, substituindo armários físicos. |
-
-!!! tip "Consulte o Catálogo Unificado de Requisitos"
-    Todas as informações completas, regras de negócio e requisitos funcionais e não funcionais estão concentradas no **[Catálogo Unificado de Requisitos](8_requisitos.md)**.
-    
-    Acesse o catálogo para utilizar o **filtro de MVP** e abrir os **modais interativos** com detalhes de cada requisito, prioridade e regras associadas.
+Para consultar a especificação completa, capacidades funcionais, requisitos de qualidade e regras de negócio de cada item, utilize os modais interativos e as opções de filtragem disponíveis no catálogo unificado.
 
 ---
 

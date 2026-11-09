@@ -71,7 +71,6 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
 <!-- Barra de Filtros do Catálogo (MVP) -->
 <div class="catalogo-filter-bar" role="toolbar" aria-label="Filtro de Casos de Uso por MVP">
   <div class="catalogo-filter-info">
-    <span class="catalogo-filter-icon">🎯</span>
     <span class="catalogo-filter-label">Filtrar por MVP:</span>
   </div>
   <div class="catalogo-filter-buttons" role="group">
