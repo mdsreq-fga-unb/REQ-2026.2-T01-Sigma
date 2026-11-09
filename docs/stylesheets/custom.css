@@ -1562,7 +1562,14 @@ body.sigma-modal-open {
 }
 
 /* --- MODO CLARO (Default) --- */
+[data-md-color-scheme="default"] .mermaid .cls_prob rect,
 [data-md-color-scheme="default"] .mermaid .node--prob rect { fill: #135C7D !important; stroke: #09394F !important; }
+[data-md-color-scheme="default"] .mermaid .cls_prob text,
+[data-md-color-scheme="default"] .mermaid .cls_prob .label,
+[data-md-color-scheme="default"] .mermaid .cls_prob .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_prob span,
+[data-md-color-scheme="default"] .mermaid .cls_prob div,
+[data-md-color-scheme="default"] .mermaid .cls_prob a,
 [data-md-color-scheme="default"] .mermaid .node--prob text,
 [data-md-color-scheme="default"] .mermaid .node--prob .label,
 [data-md-color-scheme="default"] .mermaid .node--prob .nodeLabel,
@@ -1570,7 +1577,14 @@ body.sigma-modal-open {
 [data-md-color-scheme="default"] .mermaid .node--prob div,
 [data-md-color-scheme="default"] .mermaid .node--prob a { fill: #ffffff !important; color: #ffffff !important; font-weight: 700 !important; }
 
+[data-md-color-scheme="default"] .mermaid .cls_oe rect,
 [data-md-color-scheme="default"] .mermaid .node--oe rect { fill: #27829C !important; stroke: #195C70 !important; }
+[data-md-color-scheme="default"] .mermaid .cls_oe text,
+[data-md-color-scheme="default"] .mermaid .cls_oe .label,
+[data-md-color-scheme="default"] .mermaid .cls_oe .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_oe span,
+[data-md-color-scheme="default"] .mermaid .cls_oe div,
+[data-md-color-scheme="default"] .mermaid .cls_oe a,
 [data-md-color-scheme="default"] .mermaid .node--oe text,
 [data-md-color-scheme="default"] .mermaid .node--oe .label,
 [data-md-color-scheme="default"] .mermaid .node--oe .nodeLabel,
@@ -1578,7 +1592,14 @@ body.sigma-modal-open {
 [data-md-color-scheme="default"] .mermaid .node--oe div,
 [data-md-color-scheme="default"] .mermaid .node--oe a { fill: #ffffff !important; color: #ffffff !important; font-weight: 600 !important; }
 
+[data-md-color-scheme="default"] .mermaid .cls_cp rect,
 [data-md-color-scheme="default"] .mermaid .node--cp rect { fill: #E0F2FE !important; stroke: #0284C7 !important; }
+[data-md-color-scheme="default"] .mermaid .cls_cp text,
+[data-md-color-scheme="default"] .mermaid .cls_cp .label,
+[data-md-color-scheme="default"] .mermaid .cls_cp .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_cp span,
+[data-md-color-scheme="default"] .mermaid .cls_cp div,
+[data-md-color-scheme="default"] .mermaid .cls_cp a,
 [data-md-color-scheme="default"] .mermaid .node--cp text,
 [data-md-color-scheme="default"] .mermaid .node--cp .label,
 [data-md-color-scheme="default"] .mermaid .node--cp .nodeLabel,
@@ -1586,7 +1607,14 @@ body.sigma-modal-open {
 [data-md-color-scheme="default"] .mermaid .node--cp div,
 [data-md-color-scheme="default"] .mermaid .node--cp a { fill: #0369A1 !important; color: #0369A1 !important; font-weight: 600 !important; }
 
+[data-md-color-scheme="default"] .mermaid .cls_uc rect,
 [data-md-color-scheme="default"] .mermaid .node--uc rect { fill: #DCFCE7 !important; stroke: #16A34A !important; }
+[data-md-color-scheme="default"] .mermaid .cls_uc text,
+[data-md-color-scheme="default"] .mermaid .cls_uc .label,
+[data-md-color-scheme="default"] .mermaid .cls_uc .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_uc span,
+[data-md-color-scheme="default"] .mermaid .cls_uc div,
+[data-md-color-scheme="default"] .mermaid .cls_uc a,
 [data-md-color-scheme="default"] .mermaid .node--uc text,
 [data-md-color-scheme="default"] .mermaid .node--uc .label,
 [data-md-color-scheme="default"] .mermaid .node--uc .nodeLabel,
@@ -1594,7 +1622,14 @@ body.sigma-modal-open {
 [data-md-color-scheme="default"] .mermaid .node--uc div,
 [data-md-color-scheme="default"] .mermaid .node--uc a { fill: #14532D !important; color: #14532D !important; font-weight: 700 !important; }
 
+[data-md-color-scheme="default"] .mermaid .cls_pos rect,
 [data-md-color-scheme="default"] .mermaid .node--pos rect { fill: #FEF3C7 !important; stroke: #D97706 !important; }
+[data-md-color-scheme="default"] .mermaid .cls_pos text,
+[data-md-color-scheme="default"] .mermaid .cls_pos .label,
+[data-md-color-scheme="default"] .mermaid .cls_pos .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_pos span,
+[data-md-color-scheme="default"] .mermaid .cls_pos div,
+[data-md-color-scheme="default"] .mermaid .cls_pos a,
 [data-md-color-scheme="default"] .mermaid .node--pos text,
 [data-md-color-scheme="default"] .mermaid .node--pos .label,
 [data-md-color-scheme="default"] .mermaid .node--pos .nodeLabel,
@@ -1602,7 +1637,14 @@ body.sigma-modal-open {
 [data-md-color-scheme="default"] .mermaid .node--pos div,
 [data-md-color-scheme="default"] .mermaid .node--pos a { fill: #78350F !important; color: #78350F !important; font-weight: 700 !important; }
 
+[data-md-color-scheme="default"] .mermaid .cls_rf rect,
 [data-md-color-scheme="default"] .mermaid .node--rf rect { fill: #F8FAFC !important; stroke: #94A3B8 !important; }
+[data-md-color-scheme="default"] .mermaid .cls_rf text,
+[data-md-color-scheme="default"] .mermaid .cls_rf .label,
+[data-md-color-scheme="default"] .mermaid .cls_rf .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_rf span,
+[data-md-color-scheme="default"] .mermaid .cls_rf div,
+[data-md-color-scheme="default"] .mermaid .cls_rf a,
 [data-md-color-scheme="default"] .mermaid .node--rf text,
 [data-md-color-scheme="default"] .mermaid .node--rf .label,
 [data-md-color-scheme="default"] .mermaid .node--rf .nodeLabel,
@@ -1610,7 +1652,14 @@ body.sigma-modal-open {
 [data-md-color-scheme="default"] .mermaid .node--rf div,
 [data-md-color-scheme="default"] .mermaid .node--rf a { fill: #0F172A !important; color: #0F172A !important; font-size: 0.84rem !important; }
 
+[data-md-color-scheme="default"] .mermaid .cls_rnf rect,
 [data-md-color-scheme="default"] .mermaid .node--rnf rect { fill: #FFF7ED !important; stroke: #FB923C !important; }
+[data-md-color-scheme="default"] .mermaid .cls_rnf text,
+[data-md-color-scheme="default"] .mermaid .cls_rnf .label,
+[data-md-color-scheme="default"] .mermaid .cls_rnf .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cls_rnf span,
+[data-md-color-scheme="default"] .mermaid .cls_rnf div,
+[data-md-color-scheme="default"] .mermaid .cls_rnf a,
 [data-md-color-scheme="default"] .mermaid .node--rnf text,
 [data-md-color-scheme="default"] .mermaid .node--rnf .label,
 [data-md-color-scheme="default"] .mermaid .node--rnf .nodeLabel,
@@ -1660,17 +1709,31 @@ body.sigma-modal-open {
   color: #e2e8f0 !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_prob rect,
 [data-md-color-scheme="slate"] .mermaid .node--prob rect,
+[data-md-color-scheme="dark"] .mermaid .cls_prob rect,
 [data-md-color-scheme="dark"] .mermaid .node--prob rect {
   fill: #0c2d3d !important;
   stroke: #38bdf8 !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_prob text,
+[data-md-color-scheme="slate"] .mermaid .cls_prob .label,
+[data-md-color-scheme="slate"] .mermaid .cls_prob .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_prob span,
+[data-md-color-scheme="slate"] .mermaid .cls_prob div,
+[data-md-color-scheme="slate"] .mermaid .cls_prob a,
 [data-md-color-scheme="slate"] .mermaid .node--prob text,
 [data-md-color-scheme="slate"] .mermaid .node--prob .label,
 [data-md-color-scheme="slate"] .mermaid .node--prob .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--prob span,
 [data-md-color-scheme="slate"] .mermaid .node--prob div,
 [data-md-color-scheme="slate"] .mermaid .node--prob a,
+[data-md-color-scheme="dark"] .mermaid .cls_prob text,
+[data-md-color-scheme="dark"] .mermaid .cls_prob .label,
+[data-md-color-scheme="dark"] .mermaid .cls_prob .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_prob span,
+[data-md-color-scheme="dark"] .mermaid .cls_prob div,
+[data-md-color-scheme="dark"] .mermaid .cls_prob a,
 [data-md-color-scheme="dark"] .mermaid .node--prob text,
 [data-md-color-scheme="dark"] .mermaid .node--prob .label,
 [data-md-color-scheme="dark"] .mermaid .node--prob .nodeLabel,
@@ -1682,17 +1745,31 @@ body.sigma-modal-open {
   font-weight: 700 !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_oe rect,
 [data-md-color-scheme="slate"] .mermaid .node--oe rect,
+[data-md-color-scheme="dark"] .mermaid .cls_oe rect,
 [data-md-color-scheme="dark"] .mermaid .node--oe rect {
   fill: #164e63 !important;
   stroke: #22d3ee !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_oe text,
+[data-md-color-scheme="slate"] .mermaid .cls_oe .label,
+[data-md-color-scheme="slate"] .mermaid .cls_oe .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_oe span,
+[data-md-color-scheme="slate"] .mermaid .cls_oe div,
+[data-md-color-scheme="slate"] .mermaid .cls_oe a,
 [data-md-color-scheme="slate"] .mermaid .node--oe text,
 [data-md-color-scheme="slate"] .mermaid .node--oe .label,
 [data-md-color-scheme="slate"] .mermaid .node--oe .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--oe span,
 [data-md-color-scheme="slate"] .mermaid .node--oe div,
 [data-md-color-scheme="slate"] .mermaid .node--oe a,
+[data-md-color-scheme="dark"] .mermaid .cls_oe text,
+[data-md-color-scheme="dark"] .mermaid .cls_oe .label,
+[data-md-color-scheme="dark"] .mermaid .cls_oe .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_oe span,
+[data-md-color-scheme="dark"] .mermaid .cls_oe div,
+[data-md-color-scheme="dark"] .mermaid .cls_oe a,
 [data-md-color-scheme="dark"] .mermaid .node--oe text,
 [data-md-color-scheme="dark"] .mermaid .node--oe .label,
 [data-md-color-scheme="dark"] .mermaid .node--oe .nodeLabel,
@@ -1704,17 +1781,31 @@ body.sigma-modal-open {
   font-weight: 600 !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_cp rect,
 [data-md-color-scheme="slate"] .mermaid .node--cp rect,
+[data-md-color-scheme="dark"] .mermaid .cls_cp rect,
 [data-md-color-scheme="dark"] .mermaid .node--cp rect {
   fill: #0c4a6e !important;
   stroke: #38bdf8 !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_cp text,
+[data-md-color-scheme="slate"] .mermaid .cls_cp .label,
+[data-md-color-scheme="slate"] .mermaid .cls_cp .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_cp span,
+[data-md-color-scheme="slate"] .mermaid .cls_cp div,
+[data-md-color-scheme="slate"] .mermaid .cls_cp a,
 [data-md-color-scheme="slate"] .mermaid .node--cp text,
 [data-md-color-scheme="slate"] .mermaid .node--cp .label,
 [data-md-color-scheme="slate"] .mermaid .node--cp .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--cp span,
 [data-md-color-scheme="slate"] .mermaid .node--cp div,
 [data-md-color-scheme="slate"] .mermaid .node--cp a,
+[data-md-color-scheme="dark"] .mermaid .cls_cp text,
+[data-md-color-scheme="dark"] .mermaid .cls_cp .label,
+[data-md-color-scheme="dark"] .mermaid .cls_cp .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_cp span,
+[data-md-color-scheme="dark"] .mermaid .cls_cp div,
+[data-md-color-scheme="dark"] .mermaid .cls_cp a,
 [data-md-color-scheme="dark"] .mermaid .node--cp text,
 [data-md-color-scheme="dark"] .mermaid .node--cp .label,
 [data-md-color-scheme="dark"] .mermaid .node--cp .nodeLabel,
@@ -1726,17 +1817,31 @@ body.sigma-modal-open {
   font-weight: 600 !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_uc rect,
 [data-md-color-scheme="slate"] .mermaid .node--uc rect,
+[data-md-color-scheme="dark"] .mermaid .cls_uc rect,
 [data-md-color-scheme="dark"] .mermaid .node--uc rect {
   fill: #14532d !important;
   stroke: #4ade80 !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_uc text,
+[data-md-color-scheme="slate"] .mermaid .cls_uc .label,
+[data-md-color-scheme="slate"] .mermaid .cls_uc .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_uc span,
+[data-md-color-scheme="slate"] .mermaid .cls_uc div,
+[data-md-color-scheme="slate"] .mermaid .cls_uc a,
 [data-md-color-scheme="slate"] .mermaid .node--uc text,
 [data-md-color-scheme="slate"] .mermaid .node--uc .label,
 [data-md-color-scheme="slate"] .mermaid .node--uc .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--uc span,
 [data-md-color-scheme="slate"] .mermaid .node--uc div,
 [data-md-color-scheme="slate"] .mermaid .node--uc a,
+[data-md-color-scheme="dark"] .mermaid .cls_uc text,
+[data-md-color-scheme="dark"] .mermaid .cls_uc .label,
+[data-md-color-scheme="dark"] .mermaid .cls_uc .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_uc span,
+[data-md-color-scheme="dark"] .mermaid .cls_uc div,
+[data-md-color-scheme="dark"] .mermaid .cls_uc a,
 [data-md-color-scheme="dark"] .mermaid .node--uc text,
 [data-md-color-scheme="dark"] .mermaid .node--uc .label,
 [data-md-color-scheme="dark"] .mermaid .node--uc .nodeLabel,
@@ -1748,17 +1853,31 @@ body.sigma-modal-open {
   font-weight: 700 !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_pos rect,
 [data-md-color-scheme="slate"] .mermaid .node--pos rect,
+[data-md-color-scheme="dark"] .mermaid .cls_pos rect,
 [data-md-color-scheme="dark"] .mermaid .node--pos rect {
   fill: #78350f !important;
   stroke: #fcd34d !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_pos text,
+[data-md-color-scheme="slate"] .mermaid .cls_pos .label,
+[data-md-color-scheme="slate"] .mermaid .cls_pos .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_pos span,
+[data-md-color-scheme="slate"] .mermaid .cls_pos div,
+[data-md-color-scheme="slate"] .mermaid .cls_pos a,
 [data-md-color-scheme="slate"] .mermaid .node--pos text,
 [data-md-color-scheme="slate"] .mermaid .node--pos .label,
 [data-md-color-scheme="slate"] .mermaid .node--pos .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--pos span,
 [data-md-color-scheme="slate"] .mermaid .node--pos div,
 [data-md-color-scheme="slate"] .mermaid .node--pos a,
+[data-md-color-scheme="dark"] .mermaid .cls_pos text,
+[data-md-color-scheme="dark"] .mermaid .cls_pos .label,
+[data-md-color-scheme="dark"] .mermaid .cls_pos .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_pos span,
+[data-md-color-scheme="dark"] .mermaid .cls_pos div,
+[data-md-color-scheme="dark"] .mermaid .cls_pos a,
 [data-md-color-scheme="dark"] .mermaid .node--pos text,
 [data-md-color-scheme="dark"] .mermaid .node--pos .label,
 [data-md-color-scheme="dark"] .mermaid .node--pos .nodeLabel,
@@ -1770,17 +1889,31 @@ body.sigma-modal-open {
   font-weight: 700 !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_rf rect,
 [data-md-color-scheme="slate"] .mermaid .node--rf rect,
+[data-md-color-scheme="dark"] .mermaid .cls_rf rect,
 [data-md-color-scheme="dark"] .mermaid .node--rf rect {
   fill: #1e293b !important;
   stroke: #64748b !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_rf text,
+[data-md-color-scheme="slate"] .mermaid .cls_rf .label,
+[data-md-color-scheme="slate"] .mermaid .cls_rf .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_rf span,
+[data-md-color-scheme="slate"] .mermaid .cls_rf div,
+[data-md-color-scheme="slate"] .mermaid .cls_rf a,
 [data-md-color-scheme="slate"] .mermaid .node--rf text,
 [data-md-color-scheme="slate"] .mermaid .node--rf .label,
 [data-md-color-scheme="slate"] .mermaid .node--rf .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--rf span,
 [data-md-color-scheme="slate"] .mermaid .node--rf div,
 [data-md-color-scheme="slate"] .mermaid .node--rf a,
+[data-md-color-scheme="dark"] .mermaid .cls_rf text,
+[data-md-color-scheme="dark"] .mermaid .cls_rf .label,
+[data-md-color-scheme="dark"] .mermaid .cls_rf .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_rf span,
+[data-md-color-scheme="dark"] .mermaid .cls_rf div,
+[data-md-color-scheme="dark"] .mermaid .cls_rf a,
 [data-md-color-scheme="dark"] .mermaid .node--rf text,
 [data-md-color-scheme="dark"] .mermaid .node--rf .label,
 [data-md-color-scheme="dark"] .mermaid .node--rf .nodeLabel,
@@ -1792,17 +1925,31 @@ body.sigma-modal-open {
   font-size: 0.84rem !important;
 }
 
+[data-md-color-scheme="slate"] .mermaid .cls_rnf rect,
 [data-md-color-scheme="slate"] .mermaid .node--rnf rect,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf rect,
 [data-md-color-scheme="dark"] .mermaid .node--rnf rect {
   fill: #431407 !important;
   stroke: #ea580c !important;
 }
+[data-md-color-scheme="slate"] .mermaid .cls_rnf text,
+[data-md-color-scheme="slate"] .mermaid .cls_rnf .label,
+[data-md-color-scheme="slate"] .mermaid .cls_rnf .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cls_rnf span,
+[data-md-color-scheme="slate"] .mermaid .cls_rnf div,
+[data-md-color-scheme="slate"] .mermaid .cls_rnf a,
 [data-md-color-scheme="slate"] .mermaid .node--rnf text,
 [data-md-color-scheme="slate"] .mermaid .node--rnf .label,
 [data-md-color-scheme="slate"] .mermaid .node--rnf .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .node--rnf span,
 [data-md-color-scheme="slate"] .mermaid .node--rnf div,
 [data-md-color-scheme="slate"] .mermaid .node--rnf a,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf text,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf .label,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf .nodeLabel,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf span,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf div,
+[data-md-color-scheme="dark"] .mermaid .cls_rnf a,
 [data-md-color-scheme="dark"] .mermaid .node--rnf text,
 [data-md-color-scheme="dark"] .mermaid .node--rnf .label,
 [data-md-color-scheme="dark"] .mermaid .node--rnf .nodeLabel,

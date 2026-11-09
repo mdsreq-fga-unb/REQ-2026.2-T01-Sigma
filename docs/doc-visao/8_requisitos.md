@@ -526,17 +526,17 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
         PROB --> OE_EST
         PROB --> OE_SEG
 
-        classDef node--prob stroke-width:2px;
-        classDef node--oe stroke-width:2px;
-        classDef node--cp stroke-width:1.5px;
-        classDef node--uc stroke-width:2px;
-        classDef node--pos stroke-width:2px;
+        classDef cls_prob stroke-width:2px;
+        classDef cls_oe stroke-width:2px;
+        classDef cls_cp stroke-width:1.5px;
+        classDef cls_uc stroke-width:2px;
+        classDef cls_pos stroke-width:2px;
 
-        class PROB node--prob;
-        class OE_MAT,OE_EST,OE_SEG node--oe;
-        class CP_MAT,CP_EST,CP_SEG node--cp;
-        class UC01,UC02,UC04,UC05,UC06,UC07,UC08 node--uc;
-        class UC03 node--pos;
+        class PROB cls_prob;
+        class OE_MAT,OE_EST,OE_SEG cls_oe;
+        class CP_MAT,CP_EST,CP_SEG cls_cp;
+        class UC01,UC02,UC04,UC05,UC06,UC07,UC08 cls_uc;
+        class UC03 cls_pos;
 
         click UC01 href "#uc01" "Ver UC01 no catálogo"
         click UC02 href "#uc02" "Ver UC02 no catálogo"
@@ -618,15 +618,15 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
             UC05_NODE -.-> RNF02_5
         end
 
-        classDef node--cp stroke-width:1.5px;
-        classDef node--uc stroke-width:2px;
-        classDef node--rf stroke-width:1.5px;
-        classDef node--rnf stroke-width:1.5px;
+        classDef cls_cp stroke-width:1.5px;
+        classDef cls_uc stroke-width:2px;
+        classDef cls_rf stroke-width:1.5px;
+        classDef cls_rnf stroke-width:1.5px;
 
-        class CP_UC04,CP_UC05 node--cp;
-        class UC04_NODE,UC05_NODE node--uc;
-        class RF08,RF09,RF10,RF11,RF12,RF17,RF23,RF14,RF15,RF16 node--rf;
-        class RNF01_4,RNF02_4,RNF03_4,RNF08_4,RNF01_5,RNF02_5 node--rnf;
+        class CP_UC04,CP_UC05 cls_cp;
+        class UC04_NODE,UC05_NODE cls_uc;
+        class RF08,RF09,RF10,RF11,RF12,RF17,RF23,RF14,RF15,RF16 cls_rf;
+        class RNF01_4,RNF02_4,RNF03_4,RNF08_4,RNF01_5,RNF02_5 cls_rnf;
 
         click UC04_NODE href "#uc04" "Ver UC04 no catálogo"
         click UC05_NODE href "#uc05" "Ver UC05 no catálogo"
@@ -737,15 +737,15 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
             UC08_NODE -.-> RNF07_8
         end
 
-        classDef node--cp stroke-width:1.5px;
-        classDef node--uc stroke-width:2px;
-        classDef node--rf stroke-width:1.5px;
-        classDef node--rnf stroke-width:1.5px;
+        classDef cls_cp stroke-width:1.5px;
+        classDef cls_uc stroke-width:2px;
+        classDef cls_rf stroke-width:1.5px;
+        classDef cls_rnf stroke-width:1.5px;
 
-        class CP_UC06,CP_UC07,CP_UC08 node--cp;
-        class UC06_NODE,UC07_NODE,UC08_NODE node--uc;
-        class RF18,RF19,RF20,RF24,RF13,RF21_7,RF22_7,RF21_8,RF22_8 node--rf;
-        class RNF02_6,RNF07_6,RNF02_7,RNF06_7,RNF07_7,RNF02_8,RNF06_8,RNF07_8 node--rnf;
+        class CP_UC06,CP_UC07,CP_UC08 cls_cp;
+        class UC06_NODE,UC07_NODE,UC08_NODE cls_uc;
+        class RF18,RF19,RF20,RF24,RF13,RF21_7,RF22_7,RF21_8,RF22_8 cls_rf;
+        class RNF02_6,RNF07_6,RNF02_7,RNF06_7,RNF07_7,RNF02_8,RNF06_8,RNF07_8 cls_rnf;
 
         click UC06_NODE href "#uc06" "Ver UC06 no catálogo"
         click UC07_NODE href "#uc07" "Ver UC07 no catálogo"
@@ -852,17 +852,17 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
             UC03_NODE -.-> RNF02_3
         end
 
-        classDef node--cp stroke-width:1.5px;
-        classDef node--uc stroke-width:2px;
-        classDef node--pos stroke-width:2px;
-        classDef node--rf stroke-width:1.5px;
-        classDef node--rnf stroke-width:1.5px;
+        classDef cls_cp stroke-width:1.5px;
+        classDef cls_uc stroke-width:2px;
+        classDef cls_pos stroke-width:2px;
+        classDef cls_rf stroke-width:1.5px;
+        classDef cls_rnf stroke-width:1.5px;
 
-        class CP_UC01,CP_UC02,CP_UC03 node--cp;
-        class UC01_NODE,UC02_NODE node--uc;
-        class UC03_NODE node--pos;
-        class RF06,RF07,RF05,RF01,RF02,RF03,RF04 node--rf;
-        class RNF01_1,RNF02_1,RNF05_1,RNF01_2,RNF02_2,RNF01_3,RNF02_3 node--rnf;
+        class CP_UC01,CP_UC02,CP_UC03 cls_cp;
+        class UC01_NODE,UC02_NODE cls_uc;
+        class UC03_NODE cls_pos;
+        class RF06,RF07,RF05,RF01,RF02,RF03,RF04 cls_rf;
+        class RNF01_1,RNF02_1,RNF05_1,RNF01_2,RNF02_2,RNF01_3,RNF02_3 cls_rnf;
 
         click UC01_NODE href "#uc01" "Ver UC01 no catálogo"
         click UC02_NODE href "#uc02" "Ver UC02 no catálogo"
@@ -882,22 +882,5 @@ Os nós dos Casos de Uso e dos Requisitos são **interativos e clicáveis**:
         click RNF01_3 href "#rnf01" "Abrir modal do RNF01"
         click RNF02_3 href "#rnf02" "Abrir modal do RNF02"
     ```
-
----
-
-### 8.2.1 Matriz Resumo de Rastreabilidade
-
-A matriz a seguir consolida a rastreabilidade bidirecional completa do sistema. Todos os itens de requisitos e regras de negócio possuem chips interativos que abrem seus respectivos modais detalhados ao serem clicados:
-
-| Caso de Uso | MVP | Características (CP) | Objetivos Específicos (OE) | Requisitos Funcionais (RF) | Requisitos Não Funcionais (RNF) | Regras de Negócio (RN) |
-| :--- | :---: | :--- | :--- | :--- | :--- | :--- |
-| [UC01: Gerenciar Autenticação](#uc01) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP4](2_solucao.md#23-caracteristicas-de-produto) | [OE.3](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF06">RF06</button> <button type="button" class="chip chip--rf" data-modal-id="RF07">RF07</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF05">RNF05</button> | <button type="button" class="chip chip--rn" data-modal-id="RN16">RN16</button> <button type="button" class="chip chip--rn" data-modal-id="RN17">RN17</button> <button type="button" class="chip chip--rn" data-modal-id="RN18">RN18</button> |
-| [UC02: Gerenciar Usuários Administrativos](#uc02) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP4](2_solucao.md#23-caracteristicas-de-produto), [CP8](2_solucao.md#23-caracteristicas-de-produto) | [OE.3](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF05">RF05</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> | <button type="button" class="chip chip--rn" data-modal-id="RN13">RN13</button> <button type="button" class="chip chip--rn" data-modal-id="RN14">RN14</button> <button type="button" class="chip chip--rn" data-modal-id="RN15">RN15</button> |
-| [UC03: Gerenciar Quadro de Avisos](#uc03) | <span class="badge-mvp badge-mvp--nao">Não</span> | [CP6](2_solucao.md#23-caracteristicas-de-produto) | [OE.4](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF01">RF01</button> <button type="button" class="chip chip--rf" data-modal-id="RF02">RF02</button> <button type="button" class="chip chip--rf" data-modal-id="RF03">RF03</button> <button type="button" class="chip chip--rf" data-modal-id="RF04">RF04</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> | <button type="button" class="chip chip--rn" data-modal-id="RN19">RN19</button> <button type="button" class="chip chip--rn" data-modal-id="RN20">RN20</button> <button type="button" class="chip chip--rn" data-modal-id="RN21">RN21</button> <button type="button" class="chip chip--rn" data-modal-id="RN22">RN22</button> |
-| [UC04: Gerenciar Fichas de Matrícula](#uc04) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP1](2_solucao.md#23-caracteristicas-de-produto), [CP2](2_solucao.md#23-caracteristicas-de-produto), [CP8](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto), [OE.2](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF08">RF08</button> <button type="button" class="chip chip--rf" data-modal-id="RF09">RF09</button> <button type="button" class="chip chip--rf" data-modal-id="RF10">RF10</button> <button type="button" class="chip chip--rf" data-modal-id="RF11">RF11</button> <button type="button" class="chip chip--rf" data-modal-id="RF12">RF12</button> <button type="button" class="chip chip--rf" data-modal-id="RF17">RF17</button> <button type="button" class="chip chip--rf" data-modal-id="RF23">RF23</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF03">RNF03</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF08">RNF08</button> | <button type="button" class="chip chip--rn" data-modal-id="RN01">RN01</button> <button type="button" class="chip chip--rn" data-modal-id="RN02">RN02</button> <button type="button" class="chip chip--rn" data-modal-id="RN03">RN03</button> <button type="button" class="chip chip--rn" data-modal-id="RN04">RN04</button> <button type="button" class="chip chip--rn" data-modal-id="RN05">RN05</button> <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> <button type="button" class="chip chip--rn" data-modal-id="RN08">RN08</button> <button type="button" class="chip chip--rn" data-modal-id="RN12">RN12</button> |
-| [UC05: Gerenciar Documentos Digitais](#uc05) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP5](2_solucao.md#23-caracteristicas-de-produto), [CP8](2_solucao.md#23-caracteristicas-de-produto) | [OE.2](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF14">RF14</button> <button type="button" class="chip chip--rf" data-modal-id="RF15">RF15</button> <button type="button" class="chip chip--rf" data-modal-id="RF16">RF16</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF01">RNF01</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> | <button type="button" class="chip chip--rn" data-modal-id="RN09">RN09</button> <button type="button" class="chip chip--rn" data-modal-id="RN10">RN10</button> <button type="button" class="chip chip--rn" data-modal-id="RN11">RN11</button> |
-| [UC06: Gerenciar Estrutura Escolar](#uc06) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP7](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto), [OE.4](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF18">RF18</button> <button type="button" class="chip chip--rf" data-modal-id="RF19">RF19</button> <button type="button" class="chip chip--rf" data-modal-id="RF20">RF20</button> <button type="button" class="chip chip--rf" data-modal-id="RF24">RF24</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF07">RNF07</button> | <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> |
-| [UC07: Alocar Alunos](#uc07) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP1](2_solucao.md#23-caracteristicas-de-produto), [CP7](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto), [OE.4](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF13">RF13</button> <button type="button" class="chip chip--rf" data-modal-id="RF21">RF21</button> <button type="button" class="chip chip--rf" data-modal-id="RF22">RF22</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF06">RNF06</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF07">RNF07</button> | <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> <button type="button" class="chip chip--rn" data-modal-id="RN08">RN08</button> |
-| [UC08: Consultar Registros - Busca](#uc08) | <span class="badge-mvp badge-mvp--sim">Sim</span> | [CP3](2_solucao.md#23-caracteristicas-de-produto), [CP7](2_solucao.md#23-caracteristicas-de-produto) | [OE.1](2_solucao.md#22-objetivos-especificos-oe-do-produto) | <button type="button" class="chip chip--rf" data-modal-id="RF21">RF21</button> <button type="button" class="chip chip--rf" data-modal-id="RF22">RF22</button> | <button type="button" class="chip chip--rnf" data-modal-id="RNF02">RNF02</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF06">RNF06</button> <button type="button" class="chip chip--rnf" data-modal-id="RNF07">RNF07</button> | <button type="button" class="chip chip--rn" data-modal-id="RN01">RN01</button> <button type="button" class="chip chip--rn" data-modal-id="RN06">RN06</button> <button type="button" class="chip chip--rn" data-modal-id="RN07">RN07</button> |
 
 
