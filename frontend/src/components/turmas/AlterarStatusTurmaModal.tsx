@@ -52,9 +52,12 @@ export function AlterarStatusTurmaModal({ turma, acao, onClose, onAlterada }: Al
       setErro(
         code === "ETAPA_INATIVA"
           ? `${MSG.vinculoInativo} Reative a etapa ${turma.etapa.nome} antes de reativar a turma.`
-          : code === "NAO_ENCONTRADO"
-            ? "A turma não foi encontrada. Atualize a listagem."
-            : mensagemDeErro(error),
+          : code === "NAO_ENCONTRADO" && acao === "REATIVAR"
+            ? // O backend (PR #57) ainda não implementa PATCH /turmas/{id}/reativar: fora do escopo do MVP.
+              "A reativação de turmas ainda não está disponível."
+            : code === "NAO_ENCONTRADO"
+              ? "A turma não foi encontrada. Atualize a listagem."
+              : mensagemDeErro(error),
       );
       setEnviando(false);
     }

@@ -83,9 +83,19 @@ src/
 O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a equipe do backend
 (seção 6.2, item 6 do documento de frontend).
 
-**Sessão:** cookie `httpOnly` chamado `sigma_session`, emitido no login e removido no logout.
+**Sessão:** o backend real responde ao login com `{access_token, token_type, expires_in}`. O frontend
+guarda o JWT no cookie `sigma_token` (lido pelo `proxy.ts`) e o envia em `Authorization: Bearer <token>`.
+A cada requisição autenticada o backend devolve `X-Renewed-Token` (RN17), que substitui o token salvo.
+`GET /auth/me` retorna `is_Admin`, convertido para `perfil` em `auth.service.ts`. O mock mantém o
+cookie `httpOnly` e devolve o `Usuario` direto no login; os dois formatos são aceitos.
 
-**Erros** no formato do FastAPI: `{"detail": {"code": "<CODIGO>", "message": "..."}}`.
+**Erros** no formato do FastAPI: `{"detail": {"code": "<CODIGO>", "message": "..."}}`. Quando o
+backend responde só `{"detail": "<texto>"}`, o código é inferido pelo status (`401` no login →
+`CREDENCIAIS_INVALIDAS`, `423` → `CONTA_BLOQUEADA`, `403` no login → `CONTA_INATIVA`, `401`/`403`
+nas demais rotas → `NAO_AUTENTICADO`/`SEM_PERMISSAO`, `404` → `NAO_ENCONTRADO`).
+
+**Etapas:** o backend não tem `status` nem `quantidadeTurmas` em Etapa; o frontend assume `ATIVO` e `0`.
+`PATCH /turmas/{id}/reativar` ainda não existe no backend (fora do MVP); o modal exibe aviso no `404`.
 
 | Método e rota | Sucesso | Erros |
 | --- | --- | --- |
