@@ -1,9 +1,9 @@
 import axios, { AxiosError } from "axios";
 import type { ApiError, ApiErrorCode } from "@/types";
+import { definirTokenSessao, obterTokenSessao, removerTokenSessao } from "@/lib/sessao";
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  withCredentials: true, // sessão em cookie httpOnly
   timeout: 10000,
   headers: { "Content-Type": "application/json" },
 });
@@ -14,26 +14,50 @@ export const LOGIN_TIMEOUT_MS = 2000;
 // Rotas em que um 401 é uma resposta esperada e não deve redirecionar para o login.
 const ROTAS_SEM_REDIRECT_401 = ["/auth/login"];
 
-function paraApiError(error: AxiosError<{ detail?: { code?: ApiErrorCode; message?: string } }>): ApiError {
+api.interceptors.request.use((config) => {
+  const token = obterTokenSessao();
+  if (token && !config.headers.Authorization) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+function paraApiError(
+  error: AxiosError<{ detail?: string | { code?: ApiErrorCode; message?: string } }>,
+): ApiError {
   // Timeout, servidor fora do ar, CORS etc.: não há resposta HTTP.
   if (!error.response) {
     return { status: null, code: "FALHA_CONEXAO" };
   }
 
-  const { status, data } = error.response;
+  const { status, data, config } = error.response;
   const detail = data?.detail;
 
-  if (detail && typeof detail === "object" && detail.code) {
+  if (detail && typeof detail === "object" && !Array.isArray(detail) && detail.code) {
     return { status, code: detail.code, message: detail.message };
   }
-  if (status >= 500) return { status, code: "FALHA_CONEXAO" };
-  if (status === 401) return { status, code: "NAO_AUTENTICADO" };
-  if (status === 403) return { status, code: "SEM_PERMISSAO" };
-  return { status, code: "ERRO_DESCONHECIDO" };
+  const message = typeof detail === "string" ? detail : undefined;
+  const url = config?.url ?? "";
+
+  if (status === 401) {
+    const code: ApiErrorCode = url.includes("/auth/login") ? "CREDENCIAIS_INVALIDAS" : "NAO_AUTENTICADO";
+    return { status, code, message };
+  }
+  if (status === 423) return { status, code: "CONTA_BLOQUEADA", message };
+  if (status === 403) {
+    const code: ApiErrorCode = url.includes("/auth/login") ? "CONTA_INATIVA" : "SEM_PERMISSAO";
+    return { status, code, message };
+  }
+  if (status >= 500) return { status, code: "FALHA_CONEXAO", message };
+  return { status, code: "ERRO_DESCONHECIDO", message };
 }
 
 api.interceptors.response.use(
-  (res) => res,
+  (res) => {
+    const renewed = res.headers["x-renewed-token"] as string | undefined;
+    if (renewed) definirTokenSessao(renewed);
+    return res;
+  },
   (error: AxiosError) => {
     const apiError = paraApiError(error as AxiosError<never>);
 
@@ -45,6 +69,7 @@ api.interceptors.response.use(
       !ROTAS_SEM_REDIRECT_401.some((rota) => url.endsWith(rota)) &&
       window.location.pathname !== "/login"
     ) {
+      removerTokenSessao();
       window.location.replace("/login");
     }
 

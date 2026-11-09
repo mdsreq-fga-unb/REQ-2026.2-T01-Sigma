@@ -81,13 +81,17 @@ src/
 O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a equipe do backend
 (seção 6.2, item 6 do documento de frontend).
 
-**Sessão:** cookie `httpOnly` chamado `sigma_session`, emitido no login e removido no logout.
+**Sessão:** no backend real, o login retorna `{ access_token, token_type, expires_in }`; o frontend
+guarda o JWT no cookie `sigma_token` e o envia como `Authorization: Bearer`. A API pode renovar
+esse token pelo cabeçalho `X-Renewed-Token`. O mock continua usando cookie `httpOnly` com o mesmo
+nome, sem exigir Bearer.
 
-**Erros** no formato do FastAPI: `{"detail": {"code": "<CODIGO>", "message": "..."}}`.
+**Erros:** o frontend aceita o formato estruturado `{"detail": {"code": "<CODIGO>", "message": "..."}}`
+do mock e mapeia respostas do FastAPI com `detail` textual pelos status HTTP.
 
 | Método e rota | Sucesso | Erros |
 | --- | --- | --- |
-| `POST /auth/login` `{email, senha}` | `200` Usuario + cookie | `401 CREDENCIAIS_INVALIDAS`, `423 CONTA_BLOQUEADA`, `403 CONTA_INATIVA` |
+| `POST /auth/login` `{email, senha}` | `200` Usuario (mock) ou token JWT (backend real) | `401 CREDENCIAIS_INVALIDAS`, `423 CONTA_BLOQUEADA`, `403 CONTA_INATIVA` |
 | `POST /auth/logout` | `204` | — |
 | `GET /auth/me` | `200` Usuario | `401 NAO_AUTENTICADO` |
 | `GET /usuarios` | `200` Usuario[] | `401` |
@@ -99,6 +103,40 @@ O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a 
 | `PUT /matriculas/{id}` `{aluno, fichas}` | `200` Matricula atualizada | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `409 MATRICULA_INATIVA`, `422 FICHAS_INCOMPLETAS` |
 | `PATCH /matriculas/{id}/inativar` | `200` Matricula inativa | `404 NAO_ENCONTRADO` |
 | `PATCH /matriculas/{id}/reativar` | `200` Matricula ativa | `404 NAO_ENCONTRADO`, `409 CPF_EM_USO`, `422 FICHAS_INCOMPLETAS` |
+<<<<<<< Updated upstream
+=======
+| `GET /turmas?busca=&status=` | `200` Turma[] | `401` |
+| `POST /turmas` `{nome, etapaId}` | `201` Turma ativa | `409 TURMA_NOME_EM_USO`, `409 ETAPA_INATIVA`, `422 DADOS_INVALIDOS` |
+| `PATCH /turmas/{id}/inativar` | `200` Turma inativa | `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` |
+| `PATCH /turmas/{id}/reativar` | Mock: `200` Turma ativa; backend real: indisponível no MVP | Backend real pode responder `404`; a interface exibe mensagem informativa |
+| `GET /etapas?busca=&status=` | `200` Etapa[] | `401` |
+| `POST /etapas` `{nome}` | `201` Etapa ativa | `409 ETAPA_NOME_EM_USO`, `422 DADOS_INVALIDOS` |
+
+**Busca de turmas e etapas (UC08 FP02):** `busca` é o nome completo ou parcial e `status` é
+`ATIVO` ou `INATIVO`. Os dois são opcionais: sem `status`, vêm todos (o filtro "Todos" não envia
+o parâmetro). Registros inativos também aparecem na busca (RN12). Por decisão do time, a busca
+**não** ignora acentos nem maiúsculas/minúsculas. O frontend chama `/turmas` e `/etapas` em paralelo
+com o mesmo filtro, e a busca só é disparada pelo botão **Buscar** ou pela tecla Enter.
+
+```ts
+type StatusEstrutura = "ATIVO" | "INATIVO";
+
+interface Turma {
+  id: string;
+  nome: string;
+  etapa: { id: string; nome: string };
+  quantidadeAlunos: number;
+  status: StatusEstrutura;
+}
+
+interface Etapa {
+  id: string;
+  nome: string;
+  quantidadeTurmas: number; // turmas vinculadas, ativas e inativas
+  status: StatusEstrutura;
+}
+```
+>>>>>>> Stashed changes
 
 No mock, o card reúne os dados cadastrais do aluno e as fichas socioeconômica,
 autorização de imagem, autorização de saída, compromisso escolar e requerimento de
@@ -148,5 +186,6 @@ SIGMA_API_MOCK=false
 ```
 
 As chamadas para `/api/backend/*` são repassadas pelo Next ao FastAPI (`next.config.ts`).
-Assim frontend e API ficam na mesma origem, o cookie de sessão chega ao navegador e o
-`proxy.ts` consegue verificar se existe sessão antes de renderizar as rotas internas.
+Assim frontend e API ficam na mesma origem. O frontend armazena o JWT no cookie `sigma_token`,
+que o `proxy.ts` verifica antes de renderizar as rotas internas, e o Axios envia no cabeçalho
+Bearer para a API.
