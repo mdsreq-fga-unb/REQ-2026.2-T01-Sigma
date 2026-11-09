@@ -1346,3 +1346,182 @@ body.sigma-modal-open {
 [data-md-color-scheme="dark"] .sigma-modal__btn-close:hover {
   background-color: var(--palette-teal-300, #36AACB);
 }
+
+/* ==========================================================================
+   BARRA DE FILTROS DO CATÁLOGO UNIFICADO (MVP)
+   ========================================================================== */
+.catalogo-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--palette-gray-100, #F8F9F9);
+  border: 1px solid var(--palette-gray-200, #CDD1D1);
+  border-radius: 10px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.catalogo-filter-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.catalogo-filter-icon {
+  font-size: 1.25rem;
+}
+
+.catalogo-filter-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--palette-blue-500, #135C7D);
+}
+
+.catalogo-filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.catalogo-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #ffffff;
+  color: var(--palette-gray-600, #3D3F3F);
+  border: 1px solid var(--palette-gray-200, #CDD1D1);
+  border-radius: 9999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.catalogo-filter-btn:hover {
+  background-color: var(--palette-blue-100, #DEEFFE);
+  color: var(--palette-blue-500, #135C7D);
+  border-color: var(--palette-blue-300, #2BABE1);
+}
+
+.catalogo-filter-btn.is-active {
+  background-color: var(--palette-blue-500, #135C7D);
+  color: #ffffff;
+  border-color: var(--palette-blue-500, #135C7D);
+  box-shadow: 0 2px 6px rgba(19, 92, 125, 0.25);
+}
+
+.catalogo-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.07);
+  color: inherit;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  min-width: 1.25rem;
+}
+
+.catalogo-filter-btn.is-active .catalogo-filter-count {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.catalogo-empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: var(--palette-gray-100, #F8F9F9);
+  border: 1px dashed var(--palette-gray-300, #A7AAAA);
+  border-radius: 10px;
+  margin: 1.5rem 0;
+  color: var(--palette-gray-500, #5E6080);
+  font-size: 0.95rem;
+}
+
+/* Badge de MVP dentro do Modal */
+.sigma-modal__mvp-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.sigma-modal__mvp-badge--sim {
+  background-color: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+.sigma-modal__mvp-badge--nao {
+  background-color: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+/* Modo escuro (Dark / Slate) */
+[data-md-color-scheme="slate"] .catalogo-filter-bar,
+[data-md-color-scheme="dark"] .catalogo-filter-bar {
+  background-color: #1a2332;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .catalogo-filter-label,
+[data-md-color-scheme="dark"] .catalogo-filter-label {
+  color: var(--palette-teal-200, #51D2F9);
+}
+
+[data-md-color-scheme="slate"] .catalogo-filter-btn,
+[data-md-color-scheme="dark"] .catalogo-filter-btn {
+  background-color: #0f172a;
+  color: #94a3b8;
+  border-color: #334155;
+}
+
+[data-md-color-scheme="slate"] .catalogo-filter-btn:hover,
+[data-md-color-scheme="dark"] .catalogo-filter-btn:hover {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: var(--palette-teal-400, #27829C);
+}
+
+[data-md-color-scheme="slate"] .catalogo-filter-btn.is-active,
+[data-md-color-scheme="dark"] .catalogo-filter-btn.is-active {
+  background-color: var(--palette-teal-400, #27829C);
+  color: #ffffff;
+  border-color: var(--palette-teal-400, #27829C);
+  box-shadow: 0 2px 6px rgba(39, 130, 156, 0.4);
+}
+
+[data-md-color-scheme="slate"] .catalogo-empty-state,
+[data-md-color-scheme="dark"] .catalogo-empty-state {
+  background-color: #1a2332;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+[data-md-color-scheme="slate"] .sigma-modal__mvp-badge--sim,
+[data-md-color-scheme="dark"] .sigma-modal__mvp-badge--sim {
+  background-color: rgba(21, 128, 61, 0.25);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.4);
+}
+
+[data-md-color-scheme="slate"] .sigma-modal__mvp-badge--nao,
+[data-md-color-scheme="dark"] .sigma-modal__mvp-badge--nao {
+  background-color: rgba(180, 83, 9, 0.25);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+

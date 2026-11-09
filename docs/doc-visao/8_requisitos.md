@@ -68,10 +68,29 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <span id="rn22"></span>
 </div>
 
+<!-- Barra de Filtros do Catálogo (MVP) -->
+<div class="catalogo-filter-bar" role="toolbar" aria-label="Filtro de Casos de Uso por MVP">
+  <div class="catalogo-filter-info">
+    <span class="catalogo-filter-icon">🎯</span>
+    <span class="catalogo-filter-label">Filtrar por MVP:</span>
+  </div>
+  <div class="catalogo-filter-buttons" role="group">
+    <button type="button" class="catalogo-filter-btn is-active" data-filter="todos">
+      Todos <span class="catalogo-filter-count">8</span>
+    </button>
+    <button type="button" class="catalogo-filter-btn" data-filter="sim">
+      No MVP <span class="catalogo-filter-count">7</span>
+    </button>
+    <button type="button" class="catalogo-filter-btn" data-filter="nao">
+      Fora do MVP <span class="catalogo-filter-count">1</span>
+    </button>
+  </div>
+</div>
+
 <div class="catalogo-panel">
 
   <!-- UC01 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc01" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc01/">UC01 - Gerenciar Autenticação</a></h3>
@@ -115,7 +134,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC02 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc02" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc02/">UC02 - Gerenciar Usuários Administrativos</a></h3>
@@ -158,7 +177,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC03 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc03" data-mvp="nao">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc03/">UC03 - Gerenciar Quadro de Avisos</a></h3>
@@ -203,7 +222,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC04 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc04" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc04/">UC04 - Gerenciar Fichas de Matrícula</a></h3>
@@ -255,7 +274,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC05 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc05" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc05/">UC05 - Gerenciar Documentos Digitais</a></h3>
@@ -298,7 +317,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC06 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc06" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc06/">UC06 - Gerenciar Estrutura Escolar</a></h3>
@@ -346,7 +365,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC07 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc07" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc07/">UC07 - Alocar Alunos</a></h3>
@@ -395,7 +414,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   </div>
 
   <!-- UC08 -->
-  <div class="catalogo-card">
+  <div class="catalogo-card" id="uc08" data-mvp="sim">
     <div>
       <div class="catalogo-card__header">
         <h3 class="catalogo-card__title"><a href="../casos-uso/uc08/">UC08 - Consultar Registros (Busca)</a></h3>
@@ -441,6 +460,11 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
     </div>
   </div>
 
+</div>
+
+<!-- Mensagem de estado vazio caso nenhum card corresponda ao filtro -->
+<div id="catalogo-empty-state" class="catalogo-empty-state" style="display: none;">
+  <p>Nenhum Caso de Uso encontrado para o filtro selecionado.</p>
 </div>
 
 ---

@@ -1,109 +1,92 @@
-# 10. Backlog do Produto e MVP
+# 10. Mínimo Produto Viável (MVP)
 
-O Backlog do Produto **SIGMA** é estruturado a partir do [Catálogo Unificado de Requisitos](8_requisitos.md), no qual os **Casos de Uso** representam a declaração oficial das necessidades funcionais da Creche Estação Vida. 
+O escopo do **Mínimo Produto Viável (MVP)** do sistema **SIGMA** foi estruturado a partir do [Catálogo Unificado de Requisitos](8_requisitos.md), tendo os **Casos de Uso (UC)** como representação oficial das necessidades operacionais da Creche Estação Vida.
 
-Esta página estabelece o estado atual de acompanhamento dos itens do backlog, o método de priorização aplicado e o recorte justificado e validado do **MVP (Mínimo Produto Viável)**.
-
----
-
-## 10.1 Backlog Geral do Produto
-
-Para permitir o acompanhamento claro da evolução do produto (diferenciando especificação, validação com stakeholder e implementação técnica), o estado atual de cada item do backlog é apresentado a seguir:
-
-| ID | Caso de Uso | Especificação (ER) | Validação com Cliente | Implementação Técnica | Iteração Prevista |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| [UC01](casos-uso/uc01.md) | Gerenciar Autenticação | Documentado | Validado em Reunião | Em desenvolvimento | Iteração 5 (Construção) |
-| [UC02](casos-uso/uc02.md) | Gerenciar Usuários Administrativos | Documentado | Validado em Reunião | Em desenvolvimento | Iteração 5 (Construção) |
-| [UC03](casos-uso/uc03.md) | Gerenciar Quadro de Avisos | Documentado | Validado em Reunião | Backlog Futuro (Pós-MVP) | Evolução posterior |
-| [UC04](casos-uso/uc04.md) | Gerenciar Fichas de Matrícula | Documentado | Validado em Reunião | Planejado | Iteração 5 (Construção) |
-| [UC05](casos-uso/uc05.md) | Gerenciar Documentos Digitais | Documentado | Validado em Reunião | Planejado | Iteração 6 (Construção) |
-| [UC06](casos-uso/uc06.md) | Gerenciar Estrutura Escolar | Documentado | Validado em Reunião | Planejado | Iteração 7 (Construção) |
-| [UC07](casos-uso/uc07.md) | Alocar Alunos em Turmas | Documentado | Validado em Reunião | Planejado | Iteração 7 (Construção) |
-| [UC08](casos-uso/uc08.md) | Consultar Registros (Busca) | Documentado | Validado em Reunião | Planejado | Iteração 7 (Construção) |
-
-> A relação de cada capacidade funcional (RF01 a RF24), de qualidade (RNF01 a RNF10) e regras de negócio (RN01 a RN22) aos Casos de Uso está consolidada no [Catálogo Unificado de Requisitos](8_requisitos.md).
+Esta página documenta as **regras e critérios de priorização** adotados para definir o recorte do produto, justificando os itens selecionados para a primeira entrega operacional e os itens planejados para versões posteriores.
 
 ---
 
 <span id="102-priorizacao-do-backlog-e-mvp"></span>
-## 10.2 Priorização do Backlog e Recorte do MVP
+<span id="criterios-priorizacao"></span>
+## 10.1 Critérios e Regras de Priorização do MVP
 
-Para a seleção do MVP, realizou-se uma avaliação combinada entre o **Valor de Negócio** (priorizado com a diretoria e secretaria da creche via método MoSCoW e escala 1 a 4) e o **Esforço Técnico** (avaliado pela equipe técnica considerando esforço, complexidade e lacuna de capacidade).
+A seleção dos componentes do MVP baseou-se na ponderação conjunta entre o **Valor de Negócio** (demandado pela creche) e o **Esforço Técnico** (avaliado pela equipe de engenharia), complementada por diretrizes de conformidade regulatória.
 
-### Matriz 4x4 de Priorização
+### 1. Regra de Valor de Negócio (Cliente e Usuários)
 
-Abaixo está o mapeamento dos requisitos na Matriz de Priorização (Valor vs. Esforço):
+O valor de cada necessidade funcional foi qualificado em reuniões participativas com a diretoria e a secretaria da Creche Estação Vida, aplicando os seguintes parâmetros:
 
-![Matriz de Requisitos](../assets/matriz_requisitos.png)
+- **Escala de Impacto no Negócio (1 a 4):**
+    - **Nível 4 (Crítico):** Resolve o gargalo mais severo da instituição (eliminação de fichas em papel, prevenção de perda de dados de crianças, proteção de acesso). Sem este item, o sistema é inoperável.
+    - **Nível 3 (Alto):** Agrega eficiência expressiva ao fluxo diário (edição segura de fichas, upload/download de comprovantes em PDF, agilidade de busca).
+    - **Nível 2 (Médio):** Funcionalidades de conveniência ou processos secundários (quadro de avisos interno, relatórios complementares).
+    - **Nível 1 (Baixo):** Ajustes cosméticos ou demandas dispensáveis na fase inicial.
 
-:material-open-in-new: **[Acessar Matriz Interativa de Requisitos no Excalidraw](https://excalidraw.ufpi.br/#room=18ce979a0731349ffb5c,xyFmMOtSPX3E6eJx2N1H_g)**
-
----
-
-### Avaliação e Consolidação dos Requisitos
-
-| ID | Nome do Requisito | Justificativa do Cliente / Negócio | V. Negócio | Esforço | Compl. | Lacuna | Esforço Consolidado |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| RF01 | Disponibilizar quadro de avisos | Desejo da cliente para comunicação interna | 2 | 2 | 3 | 1 | 2.0 |
-| RF02 | Lançar avisos | Desejo da cliente para comunicação interna | 2 | 2 | 3 | 1 | 2.0 |
-| RF03 | Exibir avisos | Desejo da cliente para comunicação interna | 2 | 2 | 3 | 1 | 2.0 |
-| RF04 | Apagar avisos | Desejo da cliente para comunicação interna | 2 | 2 | 3 | 1 | 2.0 |
-| RF05 | Cadastrar usuários | Necessidade de cadastrar a equipe administrativa | 4 | 1 | 2 | 1 | 1.3 |
-| RF06 | Realizar login | Proteção de acesso e segurança das informações | 4 | 1 | 2 | 2 | 1.6 |
-| RF07 | Realizar logout | Encerramento seguro de sessão | 4 | 1 | 2 | 2 | 1.6 |
-| RF08 | Cadastrar card de aluno | Função essencial, resolve o problema principal | 4 | 3 | 3 | 2 | 2.6 |
-| RF09 | Preenchimento de fichas | Função essencial para substituir fichas físicas | 4 | 3 | 3 | 2 | 2.6 |
-| RF10 | Editar fichas de card | Manutenção dos dados de matrícula atualizados | 3 | 3 | 3 | 2 | 2.6 |
-| RF11 | Inativar card de aluno | Organização interna (adiado pós-MVP em ata) | 2 | 1 | 1 | 1 | 1.0 |
-| RF12 | Reativar card de aluno | Organização interna (adiado pós-MVP em ata) | 2 | 1 | 1 | 1 | 1.0 |
-| RF13 | Vincular aluno a turma | Organização das turmas da creche | 4 | 1 | 1 | 2 | 1.3 |
-| RF14 | Anexar documentos | Digitalização de certidões e comprovantes | 4 | 1 | 2 | 2 | 1.6 |
-| RF15 | Editar/substituir documento | Correção de arquivos anexados | 3 | 1 | 2 | 1 | 1.3 |
-| RF16 | Baixar fichas e documentos | Recuperação digital de arquivos em PDF | 3 | 1 | 2 | 4 | 2.3 |
-| RF17 | Apresentar histórico de edições | Auditoria e integridade das alterações | 3 | 2 | 2 | 2 | 2.0 |
-| RF18 | Cadastrar Etapa | Estrutura escolar básica | 4 | 1 | 1 | 1 | 1.0 |
-| RF19 | Inativar Turma e Etapa | Gestão de turmas inativas (adiado pós-MVP) | 2 | 1 | 1 | 1 | 1.0 |
-| RF20 | Vincular turma à etapa | Gestão de turmas inativas (adiado pós-MVP) | 2 | 1 | 1 | 2 | 1.3 |
-| RF21 | Buscar aluno pelo nome | Redução imediata do tempo de busca de fichas | 4 | 1 | 1 | 1 | 1.0 |
-| RF22 | Buscar Turmas e Etapas | Consulta ágil da estrutura escolar | 4 | 1 | 1 | 1 | 1.0 |
-| RF23 | Salvamento com confirmação | Segurança contra perdas acidentais de dados | 3 | 1 | 1 | 1 | 1.0 |
-| RF24 | Cadastrar Turma | Estrutura de turmas obrigatória para alocação | 4 | 1 | 1 | 1 | 1.0 |
-| RNF01 | Privacidade de dados e proteção LGPD | Obrigação legal e proteção de dados de crianças | 4 | 3 | 4 | 4 | 3.6 |
-| RNF02 | Restrição de acesso não autenticado | Segurança indispensável contra acessos indevidos | 4 | 1 | 1 | 2 | 1.3 |
-| RNF03 | Interface responsiva | Usabilidade em múltiplos dispositivos | 3 | 2 | 2 | 3 | 2.3 |
-| RNF04 | Modo escuro alternável | Usabilidade visual | 2 | 1 | 2 | 1 | 1.3 |
-| RNF05 | Tempo de resposta no login (<2s) | Requisito de desempenho essencial | 4 | 2 | 3 | 3 | 2.6 |
-| RNF06 | Tempo de busca de alunos (<2s) | Agilidade na rotina de atendimento | 4 | 2 | 3 | 3 | 2.6 |
-| RNF07 | Tempo de busca de turmas (<2s) | Agilidade na navegação | 4 | 2 | 3 | 3 | 2.6 |
-| RNF08 | Tempo de salvamento de ficha (<5s) | Eficiência e resposta ao usuário | 4 | 2 | 3 | 3 | 2.6 |
-| RNF09 | Disponibilidade do sistema (99,5%) | Confiabilidade durante o expediente comercial | 4 | 2 | 2 | 2 | 2.0 |
-| RNF10 | Suporte a acessos concorrentes | Suporte à equipe da creche | 3 | 2 | 2 | 2 | 2.0 |
+- **Classificação MoSCoW:**
+    - **Must Have (Obrigatório):** Essencial para o ciclo de matrículas e gestão escolar básica. Compõe o núcleo do MVP.
+    - **Should Have (Importante):** Requisitos altamente recomendados, mantidos no MVP quando não comprometem o cronograma principal.
+    - **Could Have (Desejável):** Recursos agregadores de conveniência, incorporados apenas mediante folga técnica.
+    - **Won't Have (Pós-MVP):** Funcionalidades explicitamente acordadas com o cliente como escopo futuro.
 
 ---
 
-### Priorização Consolidada por Caso de Uso no MVP
+### 2. Regra de Esforço Técnico e Capacidade de Engenharia
 
-Como os requisitos foram declarados e estruturados como Casos de Uso, a seleção do MVP apoia-se na consolidação dos valores de negócio e esforço técnico de cada Caso de Uso:
+O esforço para concretização de cada requisito foi estimado pela equipe técnica considerando três dimensões (escala 1 a 4):
 
-| ID | Caso de Uso | V. Negócio Médio | Esforço Técnico Médio | Razão (V/E) | Compõe o MVP? | Justificativa do Recorte |
-| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| [UC01](casos-uso/uc01.md) | Gerenciar Autenticação | 4.0 | 1.8 | 2.22 | **SIM** | Porta de entrada e segurança indispensável de acesso aos dados. |
-| [UC02](casos-uso/uc02.md) | Gerenciar Usuários Administrativos | 4.0 | 1.3 | 3.08 | **SIM** | Necessário para conceder e controlar acessos da equipe da secretaria. |
-| [UC03](casos-uso/uc03.md) | Gerenciar Quadro de Avisos | 2.0 | 2.0 | 1.00 | **NÃO** | Funcionalidade secundária de comunicação; adiada para priorizar o núcleo de matrículas. |
-| [UC04](casos-uso/uc04.md) | Gerenciar Fichas de Matrícula | 3.4 | 1.7 | 2.00 | **SIM** | **Núcleo essencial do sistema**. Resolve o problema central de papel e fichas físicas. Os fluxos de inativação/reativação (RF11/RF12) foram postergados. |
-| [UC05](casos-uso/uc05.md) | Gerenciar Documentos Digitais | 3.5 | 1.5 | 2.33 | **SIM** | Anexação e download de certidões/termos em PDF (RF14, RF15, RF16), protegendo os documentos. |
-| [UC06](casos-uso/uc06.md) | Gerenciar Estrutura Escolar | 3.0 | 1.1 | 2.73 | **SIM** | Base obrigatória para cadastrar turmas e etapas onde os alunos serão alocados. Inativações postergadas. |
-| [UC07](casos-uso/uc07.md) | Alocar Alunos | 4.0 | 1.7 | 2.35 | **SIM** | Enturmação e associação de alunos a salas de aula ativas. |
-| [UC08](casos-uso/uc08.md) | Consultar Registros (Busca) | 4.0 | 1.8 | 2.22 | **SIM** | Recuperação rápida de alunos por nome em menos de 2s, substituindo a busca em armários físicos. |
+1. **Esforço de Desenvolvimento ($E$):** Volume estimado de horas de codificação e escrita de testes.
+2. **Complexidade Algorítmica e de Integração ($C$):** Grau de incerteza da lógica de negócio, persistência de arquivos sensíveis e relacionamentos de dados.
+3. **Lacuna de Competência da Equipe ($L$):** Necessidade de curva de aprendizado nas tecnologias e ferramentas empregadas.
 
-> **Nota sobre Requisitos Não Funcionais Transversais:** Os requisitos [RNF01 (LGPD/Privacidade)](8_requisitos.md#req-rnf01) e [RNF02 (Acesso Autenticado)](8_requisitos.md#req-rnf02) são condições obrigatórias de conformidade transversal da entrega, aplicando-se sobre todos os casos de uso selecionados para o MVP.
+O **Esforço Consolidado** resulta da média ponderada dessas dimensões, servindo de base para o cálculo de custo-benefício.
+
+---
+
+### 3. Relação Custo-Benefício (Valor vs. Esforço)
+
+A priorização do MVP busca maximizar a entrega de valor com a menor complexidade de execução no menor ciclo de tempo:
+
+$$\text{Razão de Prioridade} = \frac{\text{Valor de Negócio Médio}}{\text{Esforço Técnico Consolidado}}$$
+
+Itens com razão $\ge 2.0$ e classificados como *Must Have* receberam prioridade imediata para integrar o MVP. Itens com menor razão ou de caráter acessório foram alocados para o backlog pós-MVP.
+
+---
+
+### 4. Requisitos Não Funcionais Transversais Obrigatórios
+
+Diferente das capacidades funcionais que foram modularizadas em casos de uso, certos requisitos não funcionais constituem **condições de conformidade transversal indispensável** em todos os fluxos do MVP:
+
+- **Proteção e Privacidade de Dados (LGPD):** Obrigação legal absoluta no manuseio de dados de menores e responsáveis vulneráveis.
+- **Segurança de Acesso e Autenticação:** Restrição irrestrita de acessos não autenticados aos registros da creche.
+
+---
+
+## 10.2 Recorte e Composição do MVP
+
+A aplicação das regras de priorização resultou no seguinte escopo validado para o MVP:
+
+| ID | Caso de Uso | Compõe o MVP? | Prioridade MoSCoW | Justificativa do Recorte |
+| :--- | :--- | :---: | :---: | :--- |
+| [UC01](8_requisitos.md#uc01) | Gerenciar Autenticação | **SIM** | Must Have | Porta de entrada segura para dados sensíveis e conformidade de acesso. |
+| [UC02](8_requisitos.md#uc02) | Gerenciar Usuários Administrativos | **SIM** | Must Have | Gestão das contas da secretaria e controle de privilégios. |
+| [UC03](8_requisitos.md#uc03) | Gerenciar Quadro de Avisos | **NÃO** | Won't Have | Funcionalidade secundária de comunicação; postergada para concentrar esforços nas matrículas. |
+| [UC04](8_requisitos.md#uc04) | Gerenciar Fichas de Matrícula | **SIM** | Must Have | **Núcleo essencial do sistema**. Substitui as fichas em papel e elimina a perda de históricos. Fluxos de inativação complexa foram postergados. |
+| [UC05](8_requisitos.md#uc05) | Gerenciar Documentos Digitais | **SIM** | Must Have | Digitalização e armazenamento em PDF de termos, certidões e laudos essenciais. |
+| [UC06](8_requisitos.md#uc06) | Gerenciar Estrutura Escolar | **SIM** | Must Have | Cadastro de turmas e etapas obrigatório para alocação de crianças. |
+| [UC07](8_requisitos.md#uc07) | Alocar Alunos | **SIM** | Must Have | Enturmação e alocação de crianças nas turmas correspondentes. |
+| [UC08](8_requisitos.md#uc08) | Consultar Registros (Busca) | **SIM** | Must Have | Localização ágil de alunos por nome em menos de 2 segundos, substituindo armários físicos. |
+
+!!! tip "Consulte o Catálogo Unificado de Requisitos"
+    Todas as informações completas, regras de negócio e requisitos funcionais e não funcionais estão concentradas no **[Catálogo Unificado de Requisitos](8_requisitos.md)**.
+    
+    Acesse o catálogo para utilizar o **filtro de MVP** e abrir os **modais interativos** com detalhes de cada requisito, prioridade e regras associadas.
 
 ---
 
 ## 10.3 Validação do MVP com o Stakeholder
 
-A composição do MVP foi formalmente apresentada e validada junto à **Cirlene Sena**, diretora e coordenadora da **Creche Estação Vida** (stakeholder principal do projeto), através de reunião remota com apresentação dos fluxos e matriz de valor.
+A composição e os critérios do MVP foram formalmente apresentados e validados com **Cirlene Sena**, diretora e coordenadora da **Creche Estação Vida** (stakeholder principal):
 
-- **Confirmação do Cliente:** A coordenadora confirmou que o conjunto dos Casos de Uso selecionados (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) contempla com precisão o objetivo do *mínimo indispensável para operação*, substituindo as rotinas manuais mais críticas (cadastro de fichas, busca de alunos e anexação de documentos).
-- **Decisões Registradas:** Ficou acordado o adiamento do quadro de avisos (UC03) e das rotinas de inativação complexa para após a primeira entrega homologada, concentrando a primeira versão no ciclo de matrículas de 2026.
-- **Registro da Validação:** As evidências e a ata detalhada estão disponíveis na seção [Atas de Reunião - Unidade 2](../reunioes/ata1.md).
+- **Aprovação do Recorte:** A coordenadora confirmou que os 7 Casos de Uso selecionados (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) atendem plenamente ao objetivo de *mínimo produto indispensável para operação*, cobrindo o ciclo crítico de matrículas e dispensando o uso de papéis físicos.
+- **Adiamento Consciente:** Foi acordado entre cliente e equipe técnica o adiamento do mural de avisos (UC03) e das operações complexas de inativação/reativação (RF11, RF12, RF19, RF20) para o ciclo pós-MVP.
+- **Evidências:** Os registros detalhados da validação estão disponíveis na seção [Atas de Reunião - Unidade 2](../reunioes/ata1.md).

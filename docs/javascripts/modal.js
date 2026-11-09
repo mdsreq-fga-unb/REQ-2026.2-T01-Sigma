@@ -503,6 +503,17 @@
     UC08: 'UC08 - Consultar Registros (Busca)'
   };
 
+  // Itens postergados para além do MVP (Pós-MVP)
+  const POS_MVP_ITEMS = new Set([
+    'RF01', 'RF02', 'RF03', 'RF04', 'RF11', 'RF12', 'RF19', 'RF20',
+    'RNF04', 'RN09'
+  ]);
+
+  // Atribuição de status no MVP para cada requisito e regra
+  Object.keys(REQUIREMENTS_DATA).forEach(function (key) {
+    REQUIREMENTS_DATA[key].mvp = POS_MVP_ITEMS.has(key) ? 'Não (Pós-MVP)' : 'Sim';
+  });
+
   let modalElement = null;
 
   /**
@@ -524,6 +535,7 @@
           <div class="sigma-modal__badges">
             <span id="sigma-modal-type" class="sigma-modal__type-badge"></span>
             <span id="sigma-modal-id" class="sigma-modal__id-badge"></span>
+            <span id="sigma-modal-mvp" class="sigma-modal__mvp-badge" style="display: none;"></span>
           </div>
           <button type="button" class="sigma-modal__close-btn" id="sigma-modal-close-x" aria-label="Fechar modal">&times;</button>
         </div>
@@ -619,6 +631,18 @@
     idBadge.textContent = data.id;
     idBadge.className = `sigma-modal__id-badge sigma-modal__id-badge--${data.category}`;
 
+    const mvpBadge = modal.querySelector('#sigma-modal-mvp');
+    if (mvpBadge) {
+      if (data.mvp) {
+        const isSim = data.mvp.toLowerCase().includes('sim');
+        mvpBadge.textContent = `MVP: ${data.mvp}`;
+        mvpBadge.className = `sigma-modal__mvp-badge sigma-modal__mvp-badge--${isSim ? 'sim' : 'nao'}`;
+        mvpBadge.style.display = 'inline-flex';
+      } else {
+        mvpBadge.style.display = 'none';
+      }
+    }
+
     titleEl.textContent = data.name;
     descEl.textContent = data.description;
 
@@ -697,9 +721,77 @@
     document.body.classList.remove('sigma-modal-open');
   }
 
+  /**
+   * Inicializa o filtro de MVP na página do Catálogo Unificado
+   */
+  function initCatalogMvpFilter() {
+    const filterBar = document.querySelector('.catalogo-filter-bar');
+    if (!filterBar) return;
+
+    const filterButtons = filterBar.querySelectorAll('.catalogo-filter-btn');
+    const cards = document.querySelectorAll('.catalogo-card');
+    const emptyState = document.getElementById('catalogo-empty-state');
+
+    function applyFilter(filter) {
+      let visibleCount = 0;
+
+      filterButtons.forEach(function (btn) {
+        const isActive = btn.getAttribute('data-filter') === filter;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      cards.forEach(function (card) {
+        const cardMvp = card.getAttribute('data-mvp') || 'sim';
+        let show = false;
+
+        if (filter === 'todos') {
+          show = true;
+        } else if (filter === 'sim') {
+          show = (cardMvp === 'sim');
+        } else if (filter === 'nao') {
+          show = (cardMvp === 'nao');
+        }
+
+        if (show) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    filterButtons.forEach(function (btn) {
+      btn.onclick = function () {
+        const filter = this.getAttribute('data-filter');
+        applyFilter(filter);
+      };
+    });
+
+    // Suporte a parâmetro na URL (?mvp=sim ou ?mvp=nao ou hash #mvp-sim)
+    const urlParams = new URLSearchParams(window.location.search);
+    const mvpParam = urlParams.get('mvp');
+    if (mvpParam === 'sim' || mvpParam === 'nao') {
+      applyFilter(mvpParam);
+    } else if (window.location.hash === '#mvp-sim' || window.location.hash === '#filtro-mvp-sim') {
+      applyFilter('sim');
+    } else if (window.location.hash === '#mvp-nao' || window.location.hash === '#filtro-mvp-nao') {
+      applyFilter('nao');
+    }
+  }
+
   // Expõe helpers globalmente
   window.openSigmaModal = openModal;
   window.closeSigmaModal = closeModal;
+  window.applyCatalogMvpFilter = function (filter) {
+    const btn = document.querySelector(`.catalogo-filter-btn[data-filter="${filter}"]`);
+    if (btn) btn.click();
+  };
 
   // Intercepta cliques globais em elementos com [data-modal-id]
   document.addEventListener('click', function (e) {
@@ -724,12 +816,27 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', checkUrlHash);
-  } else {
+  function onPageReady() {
     checkUrlHash();
+    initCatalogMvpFilter();
   }
 
-  window.addEventListener('hashchange', checkUrlHash);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onPageReady);
+  } else {
+    onPageReady();
+  }
+
+  window.addEventListener('hashchange', function () {
+    checkUrlHash();
+    initCatalogMvpFilter();
+  });
+
+  // Suporte à navegação instantânea do Material for MkDocs
+  if (typeof document$ !== 'undefined') {
+    document$.subscribe(function () {
+      onPageReady();
+    });
+  }
 
 })();

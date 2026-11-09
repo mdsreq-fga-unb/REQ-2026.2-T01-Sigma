@@ -75,7 +75,7 @@ nav:
       - 7 Interação entre Equipe e Cliente: doc-visao/7_interacao.md
       - 8 Catálogo Unificado de Requisitos: doc-visao/8_requisitos.md
       - 9 DoR & DoD: doc-visao/9_dor_dod.md
-      - 10 Backlog do produto: doc-visao/10_backlog.md
+      - 10 MVP: doc-visao/10_backlog.md
       - 11 Lições Aprendidas: doc-visao/11_licoes.md
 
   #- Casos de Uso: doc-visao/casos-uso/index.md
