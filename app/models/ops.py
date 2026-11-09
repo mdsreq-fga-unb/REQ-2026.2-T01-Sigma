@@ -18,7 +18,7 @@ class Operacao(TimestampMixin, Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     id_user: Mapped[int] = mapped_column(ForeignKey("Usuario.id"))
     id_aluno: Mapped[int | None] = mapped_column(ForeignKey("Aluno.id"), nullable=True)
-    tipo: Mapped[Tipo] = mapped_column(Enum(Tipo, name="tipo", native_enum=False, length=50))
+    tipo: Mapped[Tipo] = mapped_column(Enum(Tipo, name="tipo"))
     data_op: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),

@@ -19,11 +19,10 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    """Upgrade schema."""
     sa.Enum('FEMININO', 'MASCULINO', 'NAO_DECLARADO', name='sexo').create(op.get_bind(), checkfirst=True)
-sa.Enum('BRANCO', 'PRETO', 'PARDO', 'AMARELO', 'INDIGENA', 'NAO_DECLARADO', name='raca').create(op.get_bind(), checkfirst=True)
-sa.Enum('CONSULTA', 'INATIVACAO', 'MATRICULA', name='tipo').create(op.get_bind(), checkfirst=True)
-sa.Enum('MANHA', 'TARDE', 'NOITE', 'INTEGRAL', name='turno').create(op.get_bind(), checkfirst=True)
+    sa.Enum('BRANCO', 'PRETO', 'PARDO', 'AMARELO', 'INDIGENA', 'NAO_DECLARADO', name='raca').create(op.get_bind(), checkfirst=True)
+    sa.Enum('CONSULTA', 'INATIVACAO', 'MATRICULA', name='tipo').create(op.get_bind(), checkfirst=True)
+    sa.Enum('MANHA', 'TARDE', 'NOITE', 'INTEGRAL', name='turno').create(op.get_bind(), checkfirst=True)
 
 def downgrade() -> None:
     """Downgrade schema."""

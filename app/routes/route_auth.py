@@ -59,9 +59,8 @@ def login(
     db: Annotated[Session, Depends(get_db)],
 ):
     now = _get_utc_now()
-
     try:
-        user = db.query(Usuario).filter(Usuario.email == login_data.email).first()
+        user = db.query(Usuario).filter(Usuario.email == login_data.email.lower()).first()
     except SQLAlchemyError:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -72,7 +71,7 @@ def login(
     if not user:
         try:
             tentativa = TentativaLogin(
-                email=str(login_data.email),
+                email=str(login_data.email.lower()),
                 id_user=None,
                 data_hora=now,
                 sucesso=False,

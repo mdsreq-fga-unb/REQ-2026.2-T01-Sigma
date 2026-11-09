@@ -8,7 +8,8 @@ from app.models.user import Usuario
 def busca_por_email(db:Session, email_usuario:str):
 
     temp=select(Usuario).where(
-        Usuario.email== email_usuario
+
+        Usuario.email== email_usuario.lower()
     )
     return db.scalar(temp)
 
