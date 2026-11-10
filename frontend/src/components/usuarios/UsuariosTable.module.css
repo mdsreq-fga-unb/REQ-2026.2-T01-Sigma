@@ -1,0 +1,91 @@
+.wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  padding: 12px 16px;
+  background: var(--color-surface-muted);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 13px 16px;
+  border-top: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+}
+
+.nome {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+.acoes {
+  text-align: right;
+}
+
+/* RN21: usuários inativos aparecem com texto apagado. */
+.inativo td {
+  color: var(--color-placeholder);
+}
+
+.inativo .nome {
+  font-weight: 400;
+  color: var(--color-placeholder);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badgeAtivo {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.badgeInativo {
+  background: var(--color-neutral-badge-bg);
+  color: var(--color-neutral-badge);
+}
+
+.skeleton {
+  display: block;
+  height: 12px;
+  width: 70%;
+  border-radius: 4px;
+  background: var(--color-skeleton);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

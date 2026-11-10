@@ -1,0 +1,237 @@
+/* ---------- Página ---------- */
+.acoesCabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.colunas {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(240px, 1fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.secao {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.secaoTitulo {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.nota {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.limpar {
+  margin-top: 12px;
+}
+
+.estadoErro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* ---------- Cartão base (tabela, lista e estado vazio) ---------- */
+.cartao {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Tabela de turmas ---------- */
+.tabelaWrap {
+  overflow-x: auto;
+  border-radius: inherit;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela th {
+  padding: 10px 14px;
+  background: var(--color-surface-muted);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tabela td {
+  height: 44px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+}
+
+.nome {
+  color: var(--color-text);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Ações com aparência de link, como no protótipo. */
+.acao {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-info);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.acao:hover {
+  text-decoration: underline;
+}
+
+.acao:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.acaoPerigo {
+  color: var(--color-danger);
+}
+
+.acaoSucesso {
+  color: var(--color-success);
+}
+
+/* ---------- Lista de etapas ---------- */
+.etapas {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etapa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 51px;
+  padding: 8px 14px;
+}
+
+.etapa + .etapa {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.etapaInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.etapaNome {
+  font-size: 14px;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.etapaTurmas {
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+/* ---------- Estado "Nenhum resultado encontrado" (UC08) ---------- */
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 176px;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.vazioIcone {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.vazioTitulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.vazioTexto {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* ---------- Carregamento ---------- */
+.skeleton {
+  display: block;
+  height: 12px;
+  width: 70%;
+  border-radius: 4px;
+  background: var(--color-skeleton);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.skeletonCurto {
+  width: 35%;
+  height: 10px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+/* ---------- Responsividade (sem design definido: colunas empilhadas) ---------- */
+@media (max-width: 1000px) {
+  .colunas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .acoesCabecalho > * {
+    flex: 1;
+  }
+}

@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.alertSpacing {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 420px) {
+  .actions > * {
+    flex: 1;
+  }
+}
