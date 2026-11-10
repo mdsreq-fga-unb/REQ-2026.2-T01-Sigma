@@ -1,4 +1,4 @@
-from sqlalchemy import String
+from sqlalchemy import String,DateTime
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base
@@ -14,4 +14,4 @@ class Usuario(TimestampMixin, Base):
     is_Admin:Mapped[bool] = mapped_column(default=False)
     ativo:Mapped[bool] = mapped_column(default=True)
     tentativas_falhas:Mapped[int] = mapped_column(default=0)
-    bloqueado_ate:Mapped[datetime | None] = mapped_column()
+    bloqueado_ate:Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

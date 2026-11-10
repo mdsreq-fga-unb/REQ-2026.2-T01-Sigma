@@ -11,6 +11,9 @@ security_bearer = HTTPBearer(auto_error=False)
 
 
 def get_current_user(
+
+
+        
     request: Request,
     response: Response,
     db: Annotated[Session, Depends(get_db)],
@@ -80,3 +83,15 @@ def get_current_user(
     response.headers["Access-Control-Expose-Headers"] = settings.renewed_token_header_name
 
     return user
+
+
+def get_admin_atual(
+    user_atual: Annotated[Usuario, Depends(get_current_user)],
+) -> Usuario:
+
+    if not user_atual.is_Admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Usuário não tem permissão para realizar esta ação.",
+        )
+    return user_atual

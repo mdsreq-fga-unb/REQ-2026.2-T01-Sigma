@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/sigma"
 
     # Configurações de Autenticação JWT (UC01 / RF06 / RN17)
-    jwt_secret_key: str = "estacao-vida-sigma-jwt-secret-key-super-segura-2026"
+    jwt_secret_key: str
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
 
