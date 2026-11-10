@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 from app.core.exceptions import EmailJaCadastradoError
 from sqlalchemy.exc import IntegrityError 
@@ -22,3 +22,9 @@ def criar_usuario_padrao(db:Session, usuario:Usuario):
         raise EmailJaCadastradoError() from e
 
 
+def listar_usuarios(db: Session, offset: int, limite: int):
+    total = db.scalar(select(func.count()).select_from(Usuario))
+    itens = db.scalars(
+        select(Usuario).order_by(Usuario.id).offset(offset).limit(limite)
+    ).all()
+    return itens, total

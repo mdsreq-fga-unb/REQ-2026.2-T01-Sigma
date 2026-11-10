@@ -41,3 +41,10 @@ class UsuarioResponse(BaseModel):
 
 class UsuarioAdminCreate(UsuarioCreate):
     is_Admin:bool
+
+
+class UsuarioListResponse(BaseModel):
+    itens: list[UsuarioResponse]
+    total: int
+    pagina: int
+    tamanho: int
