@@ -49,8 +49,11 @@ export function AlterarStatusTurmaModal({ turma, acao, onClose, onAlterada }: Al
       onAlterada(atualizada, acao);
     } catch (error) {
       const code = isApiError(error) ? error.code : null;
+      const status = isApiError(error) ? error.status : null;
       setErro(
-        code === "ETAPA_INATIVA"
+        acao === "REATIVAR" && status === 404 && code !== "NAO_ENCONTRADO"
+          ? "A reativação de turmas ainda não está disponível no backend."
+          : code === "ETAPA_INATIVA"
           ? `${MSG.vinculoInativo} Reative a etapa ${turma.etapa.nome} antes de reativar a turma.`
           : code === "NAO_ENCONTRADO"
             ? "A turma não foi encontrada. Atualize a listagem."

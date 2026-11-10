@@ -1,9 +1,8 @@
 # SIGMA – Frontend
 
 Interface web do SIGMA (Next.js 16 + React 19 + Axios + TypeScript).
-Escopo atual: **UC01 – Gerenciar Autenticação**, **UC02 – Gerenciar Usuários Administrativos**,
-**UC04 – Gerenciar Fichas de Matrícula**, **UC06 – Gerenciar Estrutura Escolar** e
-**UC08 – Consultar Registros** (busca de turmas e etapas).
+Escopo atual: **UC01 – Gerenciar Autenticação**, **UC02 – Gerenciar Usuários Administrativos**
+e **UC04 – Gerenciar Fichas de Matrícula**.
 
 ## Como rodar
 
@@ -49,7 +48,7 @@ src/
 │   ├── (auth)/login/           # UC01 – tela de login
 │   ├── (app)/                  # área autenticada (layout com sidebar)
 │   │   ├── alunos/             # UC04 – cards de matrícula, fichas e histórico
-│   │   ├── turmas/             # UC06/UC08 – turmas e etapas: listagem, busca, cadastro, inativação
+│   │   ├── turmas/             # placeholder (UC06)
 │   │   └── usuarios/           # UC02 – listagem, cadastro e inativação
 │   └── api/mock/               # mock da API (somente com SIGMA_API_MOCK=true)
 ├── components/
@@ -58,8 +57,7 @@ src/
 │   ├── auth/                   # LoginForm
 │   └── usuarios/               # UsuariosTable, NovoUsuarioModal, InativarUsuarioModal
 │   └── alunos/                 # MatriculaForm, MatriculasView
-│   └── turmas/                 # TurmasEtapasView, BuscaEstrutura, TurmasTable, EtapasList, modais, useTurmasEtapas
-├── services/                   # api.ts (Axios) e um *.service.ts por recurso (auth, usuarios, matriculas, turmas, etapas)
+├── services/                   # api.ts (Axios), auth.service.ts, usuarios.service.ts, matriculas.service.ts
 ├── hooks/                      # useAuth, useInactivityLogout, useTheme
 ├── lib/                        # mensagens, validações, formatação, constantes de sessão
 ├── mocks/                      # estado em memória do mock
@@ -83,19 +81,22 @@ src/
 O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a equipe do backend
 (seção 6.2, item 6 do documento de frontend).
 
-**Sessão:** cookie `httpOnly` chamado `sigma_session`, emitido no login e removido no logout.
+**Sessão:** no backend real, o login retorna `{ access_token, token_type, expires_in }`; o frontend
+guarda o JWT no cookie `sigma_token` e o envia como `Authorization: Bearer`. A API pode renovar
+esse token pelo cabeçalho `X-Renewed-Token`. O mock continua usando cookie `httpOnly` com o mesmo
+nome, sem exigir Bearer.
 
-**Erros** no formato do FastAPI: `{"detail": {"code": "<CODIGO>", "message": "..."}}`.
+**Erros:** o frontend aceita o formato estruturado `{"detail": {"code": "<CODIGO>", "message": "..."}}`
+do mock e mapeia respostas do FastAPI com `detail` textual pelos status HTTP.
 
 | Método e rota | Sucesso | Erros |
 | --- | --- | --- |
-| `POST /auth/login` `{email, senha}` | `200` Usuario + cookie | `401 CREDENCIAIS_INVALIDAS`, `423 CONTA_BLOQUEADA`, `403 CONTA_INATIVA` |
+| `POST /auth/login` `{email, senha}` | `200` Usuario (mock) ou token JWT (backend real) | `401 CREDENCIAIS_INVALIDAS`, `423 CONTA_BLOQUEADA`, `403 CONTA_INATIVA` |
 | `POST /auth/logout` | `204` | — |
 | `GET /auth/me` | `200` Usuario | `401 NAO_AUTENTICADO` |
 | `GET /usuarios` | `200` Usuario[] | `401` |
 | `POST /usuarios` `{nome, email, administrador, senha}` | `201` Usuario | `403 SEM_PERMISSAO`, `409 EMAIL_EM_USO`, `422 SENHA_FORA_PADRAO`, `422 DADOS_INVALIDOS` |
 | `PATCH /usuarios/{id}/inativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `422` (própria conta) |
-| `PATCH /usuarios/{id}/reativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` (já ativa) |
 | `GET /matriculas` | `200` Matricula[] | `401` |
 | `POST /matriculas` `{aluno, fichas}` | `201` Matricula ativa | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `422 FICHAS_INCOMPLETAS` |
 | `GET /matriculas/{id}` | `200` Matricula com histórico | `401`, `404 NAO_ENCONTRADO` |
@@ -105,7 +106,7 @@ O mock implementa o contrato abaixo. Ele é uma **proposta** para alinhar com a 
 | `GET /turmas?busca=&status=` | `200` Turma[] | `401` |
 | `POST /turmas` `{nome, etapaId}` | `201` Turma ativa | `409 TURMA_NOME_EM_USO`, `409 ETAPA_INATIVA`, `422 DADOS_INVALIDOS` |
 | `PATCH /turmas/{id}/inativar` | `200` Turma inativa | `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` |
-| `PATCH /turmas/{id}/reativar` | `200` Turma ativa | `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO`, `409 ETAPA_INATIVA` |
+| `PATCH /turmas/{id}/reativar` | Mock: `200` Turma ativa; backend real: indisponível no MVP | Backend real pode responder `404`; a interface exibe mensagem informativa |
 | `GET /etapas?busca=&status=` | `200` Etapa[] | `401` |
 | `POST /etapas` `{nome}` | `201` Etapa ativa | `409 ETAPA_NOME_EM_USO`, `422 DADOS_INVALIDOS` |
 
@@ -182,5 +183,6 @@ SIGMA_API_MOCK=false
 ```
 
 As chamadas para `/api/backend/*` são repassadas pelo Next ao FastAPI (`next.config.ts`).
-Assim frontend e API ficam na mesma origem, o cookie de sessão chega ao navegador e o
-`proxy.ts` consegue verificar se existe sessão antes de renderizar as rotas internas.
+Assim frontend e API ficam na mesma origem. O frontend armazena o JWT no cookie `sigma_token`,
+que o `proxy.ts` verifica antes de renderizar as rotas internas, e o Axios envia no cabeçalho
+Bearer para a API.
