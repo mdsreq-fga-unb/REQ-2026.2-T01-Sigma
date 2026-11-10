@@ -1,5 +1,6 @@
 from pydantic import BaseModel,ConfigDict,EmailStr,Field,field_validator
 from datetime import datetime
+import re
 
 class UsuarioCreate(BaseModel):
     nome:str = Field(min_length=1, max_length=100) 
@@ -19,6 +20,14 @@ class UsuarioCreate(BaseModel):
         if len(v.encode("utf-8")) > 72:
             raise ValueError("A senha deve ter no máximo 72 bytes")
         return v
+
+    @field_validator("senha")
+    @classmethod
+    def senha_tem_numero(cls,v:str) -> str:
+        if (re.search(r'[A-Za-z]', v) and re.search(r'\d', v) and re.search(r'[^a-zA-Z0-9]', v)):
+            return v
+        else:
+            raise ValueError("A senha deve conter no mínimo 8 caracteres, incluindo letras, números e caracteres especiais.")
 
 class UsuarioResponse(BaseModel):
     model_config = ConfigDict(from_attributes= True)

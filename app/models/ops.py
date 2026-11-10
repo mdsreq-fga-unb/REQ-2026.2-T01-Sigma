@@ -11,6 +11,7 @@ class Tipo(enum.Enum):
     MATRICULA = "Matricula"
     LOGIN = "LOGIN"
     LOGOUT = "LOGOUT"
+    CADASTRO_USUARIO = "CADASTRO_USUARIO"
 
 class Operacao(TimestampMixin, Base):
     __tablename__ = "Operacao"

@@ -16,11 +16,9 @@ def busca_por_email(db:Session, email_usuario:str):
 def criar_usuario_padrao(db:Session, usuario:Usuario):
     db.add(usuario)
     try:
-        db.commit()
+        db.flush()
     except IntegrityError as e:
         db.rollback()
         raise EmailJaCadastradoError() from e
-
-    db.refresh(usuario)
 
 
