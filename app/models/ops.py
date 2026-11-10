@@ -5,12 +5,15 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base
 from .mixins import TimestampMixin
 
-class Tipo(enum.Enum):
+class Tipo(str, enum.Enum):
     CONSULTA = "Consulta"
     INATIVACAO = "Inativacao"
     MATRICULA = "Matricula"
     LOGIN = "LOGIN"
     LOGOUT = "LOGOUT"
+    CADASTRO_ETAPA = "CADASTRO_ETAPA"
+    CADASTRO_TURMA = "CADASTRO_TURMA"
+    INATIVACAO_TURMA = "INATIVACAO_TURMA"
 
 class Operacao(TimestampMixin, Base):
     __tablename__ = "Operacao"
