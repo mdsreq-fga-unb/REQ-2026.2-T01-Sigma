@@ -1,0 +1,341 @@
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.resumoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+  padding: 16px 20px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.resumoItem span {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.resumoItem strong {
+  color: var(--color-text);
+  font-size: 24px;
+}
+
+.filtros {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(160px, 220px);
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filtroStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.filtroStatus select {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.filtroStatus select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.tabelaWrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela th {
+  padding: 12px 16px;
+  background: var(--color-surface-muted);
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tabela td {
+  padding: 13px 16px;
+  border-top: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+}
+
+.nome {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.linhaInativa td {
+  color: var(--color-placeholder);
+}
+
+.badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badgeAtiva {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.badgeInativa {
+  background: var(--color-neutral-badge-bg);
+  color: var(--color-neutral-badge);
+}
+
+.acaoLinha {
+  text-align: right;
+}
+
+.vazio {
+  padding: 34px 22px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.vazio h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+.vazio p {
+  margin: 8px 0 18px;
+}
+
+.estadoErro {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.acoesCabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.card,
+.secaoDetalhe {
+  margin-bottom: 18px;
+  padding: 22px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardTopo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cardTopo h2 {
+  margin: 4px 0 0;
+  color: var(--color-text);
+  font-size: 22px;
+}
+
+.rotulo {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dadosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dado {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dado span {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.dado strong {
+  overflow-wrap: anywhere;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.secaoDetalhe > h2 {
+  margin: 0 0 16px;
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+.fichasGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ficha {
+  padding: 16px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+}
+
+.ficha h3 {
+  margin: 0 0 14px;
+  color: var(--color-text);
+  font-size: 15px;
+}
+
+.dadosFicha {
+  display: grid;
+  gap: 12px;
+}
+
+.historico {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.historico > li {
+  padding: 14px 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.historico > li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.historicoTopo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.historicoTopo time,
+.historico p,
+.historico ul {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.historico p {
+  margin: 6px 0;
+}
+
+.historico ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.acoesModal {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.modalErro {
+  padding-top: 16px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 800px) {
+  .dadosGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resumo {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .filtros,
+  .fichasGrid,
+  .dadosGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .acoesCabecalho {
+    justify-content: flex-start;
+  }
+
+  .card,
+  .secaoDetalhe {
+    padding: 16px;
+  }
+
+  .acoesModal {
+    flex-direction: column-reverse;
+  }
+}

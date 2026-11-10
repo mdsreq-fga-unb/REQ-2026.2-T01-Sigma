@@ -1,0 +1,31 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(380px, 42%) 1fr;
+  min-height: 100vh;
+  background: var(--color-surface);
+}
+
+.brand {
+  display: flex;
+}
+
+.brand > * {
+  flex: 1;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+/* Telas estreitas: o painel azul é ocultado e o formulário ocupa toda a largura. */
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+  .brand {
+    display: none;
+  }
+}

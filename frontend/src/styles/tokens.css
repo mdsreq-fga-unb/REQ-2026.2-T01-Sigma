@@ -1,0 +1,88 @@
+/*
+ * Tokens de design do SIGMA. Valores aproximados a partir das capturas do protótipo
+ * (conferir no Figma antes de fixar). Todas as cores são variáveis para suportar o modo escuro.
+ */
+:root {
+  --color-primary: #23cdeb;
+  --color-primary-hover: #23cdeb;
+  --color-primary-contrast: #ffffff;
+  --color-primary-dark: #23cdeb;
+  --color-primary-dark-contrast: #ffffff;
+  --color-primary-dark-muted: rgba(255, 255, 255, 0.72);
+  --color-primary-dark-hover: rgba(255, 255, 255, 0.08);
+  --color-primary-dark-border: rgba(255, 255, 255, 0.14);
+
+  --color-bg: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef2f8;
+  --color-border: #d5dce8;
+  --color-border-subtle: #e6ebf3;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-placeholder: #94a3b8;
+
+  --color-danger: #c62828;
+  --color-danger-hover: #a91f1f;
+  --color-danger-bg: #fdecec;
+  --color-danger-border: #f5c2c2;
+  --color-success: #1e7b3c;
+  --color-success-bg: #e7f6ec;
+  --color-info: #1f4fb8;
+  --color-info-bg: #e8effd;
+  --color-info-border: #c5d6fa;
+  --color-neutral-badge: #64748b;
+  --color-neutral-badge-bg: #eef1f5;
+
+  --color-overlay: rgba(15, 23, 42, 0.55);
+  --color-focus: rgba(31, 87, 224, 0.35);
+  --color-skeleton: #e6ebf3;
+
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.22);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #4c7df0;
+  --color-primary-hover: #6690f3;
+  --color-primary-contrast: #ffffff;
+  --color-primary-dark: #0e1f4a;
+
+  --color-bg: #0b1222;
+  --color-surface: #141d31;
+  --color-surface-muted: #1b2640;
+  --color-border: #2c3a57;
+  --color-border-subtle: #233049;
+  --color-text: #e5eaf3;
+  --color-muted: #9aa8bf;
+  --color-placeholder: #6b7a93;
+
+  --color-danger: #f07171;
+  --color-danger-hover: #f48b8b;
+  --color-danger-bg: rgba(240, 113, 113, 0.12);
+  --color-danger-border: rgba(240, 113, 113, 0.35);
+  --color-success: #5fd08a;
+  --color-success-bg: rgba(95, 208, 138, 0.12);
+  --color-info: #8fb0ff;
+  --color-info-bg: rgba(76, 125, 240, 0.14);
+  --color-info-border: rgba(76, 125, 240, 0.4);
+  --color-neutral-badge: #9aa8bf;
+  --color-neutral-badge-bg: rgba(154, 168, 191, 0.14);
+
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-focus: rgba(76, 125, 240, 0.45);
+  --color-skeleton: #233049;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}

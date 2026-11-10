@@ -1,0 +1,35 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.*
+.yarn/
+
+# Build / cache do Next.js
+.next/
+out/
+build/
+dist/
+next-env.d.ts
+*.tsbuildinfo
+
+# Testes
+coverage/
+
+# Variáveis de ambiente locais (.env.development e .env.example são versionados)
+.env*.local
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivo gerado automaticamente pelo `next dev`
+AGENTS.md
+
+# Diversos
+.vercel
+*.pem
+.DS_Store
+Thumbs.db
