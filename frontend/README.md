@@ -187,7 +187,7 @@ Crie `frontend/.env.local` (ver `.env.example`):
 
 ```
 NEXT_PUBLIC_API_URL=/api/backend
-BACKEND_URL=http://localhost:8000
+BACKEND_URL=http://localhost:8001
 SIGMA_API_MOCK=false
 ```
 

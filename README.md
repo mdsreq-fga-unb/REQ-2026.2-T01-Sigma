@@ -35,6 +35,28 @@ uvicorn app:main -reload // tem que estar na mesma pasta que a main.py
 A API vai ta dísponível em `http://127.0.0.1:8000`
 E sua documentação em : `http://127.0.0.1:8000/docs`
 
+## Executar com Docker
+
+Requisitos: Docker com Compose v2.
+
+1. Copie `.env.example` para `.env` e ajuste as senhas e a chave JWT.
+2. Na raiz do projeto, execute:
+
+   ```bash
+   docker compose up --build
+   ```
+
+3. Acesse o frontend em `http://localhost:3000` e a documentação da API em
+   `http://localhost:8001/docs`.
+
+Na primeira inicialização, o backend aplica as migrations e cria o administrador definido por
+`ADMIN_EMAIL` e `ADMIN_PASSWORD` no `.env`. Os dados do PostgreSQL ficam no volume `postgres_data`.
+Para encerrar sem apagar os dados, use `docker compose down`; para apagar também o banco local,
+use `docker compose down -v`.
+
+O frontend real consome autenticação, usuários e estrutura escolar (turmas/etapas) disponíveis na
+API. O backend ainda não implementa os endpoints de matrículas usados pela tela de alunos.
+
 # Estrutura de pastas 
 
 O projeto utiliza **Python, FastAPI, SQLAlchemy e PostgreSQL**, com uma arquitetura organizada por responsabilidades. O objetivo dessa organização é separar as diferentes partes da aplicação, facilitando a manutenção, a implementação de novas funcionalidades e o trabalho em equipe.

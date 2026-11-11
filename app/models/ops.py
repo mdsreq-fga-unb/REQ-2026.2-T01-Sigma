@@ -15,6 +15,8 @@ class Tipo(str, enum.Enum):
     CADASTRO_ETAPA = "CADASTRO_ETAPA"
     CADASTRO_TURMA = "CADASTRO_TURMA"
     INATIVACAO_TURMA = "INATIVACAO_TURMA"
+    INATIVACAO_USUARIO = "INATIVACAO_USUARIO"
+    REATIVACAO_USUARIO = "REATIVACAO_USUARIO"
 
 class Operacao(TimestampMixin, Base):
     __tablename__ = "Operacao"
