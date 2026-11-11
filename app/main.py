@@ -10,10 +10,14 @@ app = FastAPI(
 )
 
 # Configuração de CORS para permitir consumo pelo frontend React
+ORIGENS_PERMITIDAS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=ORIGENS_PERMITIDAS,
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=[settings.renewed_token_header_name],

@@ -8,6 +8,9 @@ from app.models.etapa import Etapa
 from app.models.ops import Operacao, Tipo
 from app.models.user import Usuario
 from app.schemas.etapa import EtapaCreate, EtapaResponse
+from app.services.service_usuario import _get_utc_now
+
+
 
 router = APIRouter(prefix="/etapas", tags=["Etapas"])
 
@@ -16,18 +19,18 @@ router = APIRouter(prefix="/etapas", tags=["Etapas"])
     "",
     response_model=EtapaResponse,
     status_code=status.HTTP_201_CREATED,
-    summary="Cadastrar nova etapa (FP01)",
+    summary="Cadastrar nova etapa",
 )
 def cadastrar_etapa(
+    
     etapa_in: EtapaCreate,
     db: Session = Depends(get_db),
     current_user: Usuario = Depends(get_current_user),
 ) -> EtapaResponse:
-    """
-    Cadastra uma nova etapa escolar no sistema (RF18 / FP01).
-    Grava em Operacao com CADASTRO_ETAPA na mesma transação.
-    """
+
+    now=_get_utc_now()
     try:
+    
         etapa = Etapa(nome=etapa_in.nome)
         db.add(etapa)
         db.flush()
@@ -37,6 +40,7 @@ def cadastrar_etapa(
             id_aluno=None,
             tipo=Tipo.CADASTRO_ETAPA,
             descricao=f"Etapa criada: ID {etapa.id}, Nome: {etapa.nome}",
+
         )
         db.add(operacao)
         db.commit()

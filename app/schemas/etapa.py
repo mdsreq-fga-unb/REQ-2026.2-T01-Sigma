@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
+from app.core.tempo import para_sao_paulo
 
 
 class EtapaCreate(BaseModel):
@@ -29,3 +30,7 @@ class EtapaResponse(BaseModel):
     updated_at: Optional[datetime] = None
 
     model_config = ConfigDict(from_attributes=True, populate_by_name=True)
+
+    @field_serializer("created_at", "updated_at")
+    def serializa_datas_sao_paulo(self, valor: datetime | None):
+        return para_sao_paulo(valor)

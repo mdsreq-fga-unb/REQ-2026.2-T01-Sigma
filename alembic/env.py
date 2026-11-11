@@ -18,7 +18,7 @@ config = context.config
 
 #o banco ainda não foi criado, a linha abaixo representa um exemplo de como
 #ele será declarado aqui:
-config.set_main_option("sqlalchemy.url", settings.database_url)
+config.set_main_option("sqlalchemy.url", settings.database_url.replace("%", "%%"))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

@@ -25,11 +25,11 @@ class Turma(TimestampMixin, Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     nome: Mapped[str] = mapped_column(String(100), nullable=False)
     turno: Mapped[Turno | None] = mapped_column(
-        Enum(Turno, name="turno", native_enum=False, length=20),
+        Enum(Turno, name="turno"),
         nullable=True,
     )
     status: Mapped[StatusTurma] = mapped_column(
-        Enum(StatusTurma, name="status_turma", native_enum=False, length=20),
+        Enum(StatusTurma, name="status_turma"),
         default=StatusTurma.ATIVO,
         nullable=False,
     )

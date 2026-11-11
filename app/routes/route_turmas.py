@@ -10,6 +10,7 @@ from app.models.turma import StatusTurma, Turma, Turno
 from app.models.user import Usuario
 from app.schemas.etapa import EtapaResumo
 from app.schemas.turma import TurmaCreate, TurmaResponse
+from app.services.service_usuario import _get_utc_now
 
 router = APIRouter(prefix="/turmas", tags=["Turmas"])
 
@@ -88,6 +89,7 @@ def cadastrar_turma(
             id_aluno=None,
             tipo=Tipo.CADASTRO_TURMA,
             descricao=f"Turma criada: ID {turma.id}, Nome: {turma.nome}",
+            data_op=_get_utc_now()
         )
         db.add(operacao)
         db.commit()
@@ -193,36 +195,35 @@ def _executar_inativacao_turma(
             detail="Não foi possível conectar ao servidor. Tente novamente mais tarde.",
         )
 
-
 @router.patch(
-    "/{codigo}/status",
+    "/{id_turma}/status",
     response_model=TurmaResponse,
     status_code=status.HTTP_200_OK,
     summary="Inativar turma via status (FP04)",
 )
 def inativar_turma_status(
-    codigo: int,
+    id_turma: int,
     db: Session = Depends(get_db),
     current_user: Usuario = Depends(get_current_user),
 ) -> TurmaResponse:
     """
     Inativa a turma indicada (RN12: mantém todos os vínculos de alunos).
     """
-    return _executar_inativacao_turma(codigo, db, current_user)
+    return _executar_inativacao_turma(id_turma, db, current_user)
 
 
 @router.patch(
-    "/{codigo}/inativar",
+    "/{id_turma}/inativar",
     response_model=TurmaResponse,
     status_code=status.HTTP_200_OK,
     summary="Inativar turma via inativar (Compatibilidade Frontend / FP04)",
 )
 def inativar_turma_endpoint(
-    codigo: int,
+    id_turma: int,
     db: Session = Depends(get_db),
     current_user: Usuario = Depends(get_current_user),
 ) -> TurmaResponse:
     """
     Inativa a turma indicada (RN12: mantém todos os vínculos de alunos).
     """
-    return _executar_inativacao_turma(codigo, db, current_user)
+    return _executar_inativacao_turma(id_turma, db, current_user)

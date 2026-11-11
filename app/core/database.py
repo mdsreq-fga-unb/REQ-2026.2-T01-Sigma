@@ -6,7 +6,7 @@ from app.core.config import settings
 
 load_dotenv()
 
-db_url = os.getenv("DATABASE_URL") or settings.database_url
+db_url = settings.database_url
 engine = create_engine(db_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
