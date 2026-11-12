@@ -29,7 +29,7 @@ python -m pip install -r requirements.txt
 Para executar 
 
 ````bash
-uvicorn app:main -reload // tem que estar na mesma pasta que a main.py
+uvicorn app.main:app --reload
 ````
 
 A API vai ta dísponível em `http://127.0.0.1:8000`
@@ -46,13 +46,24 @@ Requisitos: Docker com Compose v2.
    docker compose up --build
    ```
 
-3. Acesse o frontend em `http://localhost:3000` e a documentação da API em
-   `http://localhost:8001/docs`.
+3. Acesse o frontend em `http://localhost:3000`. O backend e o PostgreSQL ficam
+   disponíveis apenas na rede interna do Compose.
 
-Na primeira inicialização, o backend aplica as migrations e cria o administrador definido por
-`ADMIN_EMAIL` e `ADMIN_PASSWORD` no `.env`. Os dados do PostgreSQL ficam no volume `postgres_data`.
-Para encerrar sem apagar os dados, use `docker compose down`; para apagar também o banco local,
-use `docker compose down -v`.
+O backend aplica as migrations antes de iniciar. Para criar manualmente o administrador inicial,
+com os valores de `ADMIN_NAME`, `ADMIN_EMAIL` e `ADMIN_PASSWORD` do `.env`, execute:
+
+```bash
+docker compose exec backend python -m app.scripts.seed_admin
+```
+
+Os dados do PostgreSQL ficam no volume `postgres_data`. Para encerrar sem apagar os dados, use
+`docker compose down`; para apagar também o banco local, use `docker compose down -v`.
+
+Para iniciar a configuração de produção (com `DEBUG=False`), use:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+```
 
 O frontend real consome autenticação, usuários e estrutura escolar (turmas/etapas) disponíveis na
 API. O backend ainda não implementa os endpoints de matrículas usados pela tela de alunos.

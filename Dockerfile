@@ -6,12 +6,22 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt \
+    && addgroup --system app \
+    && adduser --system --ingroup app app
 
 COPY alembic.ini .
 COPY alembic ./alembic
 COPY app ./app
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod 0555 /usr/local/bin/docker-entrypoint.sh \
+    && chown -R app:app /app
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "alembic upgrade head && python -m app.scripts.seed_admin && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+USER app
+
+HEALTHCHECK --interval=10s --timeout=5s --retries=10 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/')" || exit 1
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

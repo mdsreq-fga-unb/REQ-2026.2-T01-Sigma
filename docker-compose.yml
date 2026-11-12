@@ -5,8 +5,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:?Configure POSTGRES_USER in .env}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure POSTGRES_PASSWORD in .env}
       POSTGRES_DB: ${POSTGRES_DB:?Configure POSTGRES_DB in .env}
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -22,26 +20,15 @@ services:
     environment:
       APP_NAME: SIGMA
       APP_ENV: development
-      DEBUG: "false"
+      DEBUG: "true"
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Configure JWT_SECRET_KEY in .env}
       ADMIN_NAME: ${ADMIN_NAME:-Administrador do Sistema}
       ADMIN_EMAIL: ${ADMIN_EMAIL:?Configure ADMIN_EMAIL in .env}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Configure ADMIN_PASSWORD in .env}
-    ports:
-      - "8001:8000"
     depends_on:
       db:
         condition: service_healthy
-    healthcheck:
-      test:
-        - CMD
-        - python
-        - -c
-        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"
-      interval: 10s
-      timeout: 5s
-      retries: 10
 
   frontend:
     build:
@@ -49,6 +36,7 @@ services:
       args:
         NEXT_PUBLIC_API_URL: /api/backend
         BACKEND_URL: http://backend:8000
+        SIGMA_API_MOCK: "false"
     environment:
       HOSTNAME: 0.0.0.0
       PORT: 3000

@@ -9,9 +9,10 @@ COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 ARG NEXT_PUBLIC_API_URL=/api/backend
 ARG BACKEND_URL=http://backend:8000
+ARG SIGMA_API_MOCK=false
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL} \
     BACKEND_URL=${BACKEND_URL} \
-    SIGMA_API_MOCK=false \
+    SIGMA_API_MOCK=${SIGMA_API_MOCK} \
     NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
