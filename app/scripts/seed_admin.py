@@ -1,5 +1,4 @@
 import os
-import sys
 from typing import Optional
 from sqlalchemy.orm import Session
 from app.core.database import SessionLocal
@@ -10,7 +9,8 @@ from app.models.user import Usuario
 def seed_admin(
     nome: str = "Administrador do Sistema",
     email: str = "admin@estacaovida.org.br",
-    senha: str = "Admin@123",
+    *,
+    senha: str,
     db: Optional[Session] = None,
 ):
     """Cria um usuário administrador inicial caso não exista."""
@@ -50,6 +50,10 @@ def seed_admin(
 
 if __name__ == "__main__":
     nome = os.getenv("ADMIN_NAME", "Administrador do Sistema")
-    email = os.getenv("ADMIN_EMAIL", "admin@estacaovida.org.br")
-    senha = os.getenv("ADMIN_PASSWORD", "Admin@123")
-    seed_admin(nome, email, senha)
+    email = os.getenv("ADMIN_EMAIL")
+    senha = os.getenv("ADMIN_PASSWORD")
+    if not email:
+        raise SystemExit("Configure ADMIN_EMAIL antes de criar o administrador.")
+    if not senha:
+        raise SystemExit("Configure ADMIN_PASSWORD antes de criar o administrador.")
+    seed_admin(nome=nome, email=email, senha=senha)

@@ -1,0 +1,5 @@
+services:
+  backend:
+    environment:
+      APP_ENV: production
+      DEBUG: "false"

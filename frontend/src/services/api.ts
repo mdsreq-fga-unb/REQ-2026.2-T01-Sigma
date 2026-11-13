@@ -47,6 +47,15 @@ function paraApiError(error: AxiosError<CorpoErro>): ApiError {
   if (status === 423) return { status, code: "CONTA_BLOQUEADA", message };
   if (status === 403) return { status, code: ehLogin ? "CONTA_INATIVA" : "SEM_PERMISSAO", message };
   if (status === 404) return { status, code: "NAO_ENCONTRADO", message };
+  if (status === 409 && /e-?mail/i.test(message ?? "")) return { status, code: "EMAIL_EM_USO", message };
+  if (status === 422) {
+    const detalhe = JSON.stringify(detail ?? "").toLowerCase();
+    return {
+      status,
+      code: detalhe.includes("senha") ? "SENHA_FORA_PADRAO" : "DADOS_INVALIDOS",
+      message,
+    };
+  }
   if (status >= 500) return { status, code: "FALHA_CONEXAO", message };
   return { status, code: "ERRO_DESCONHECIDO", message };
 }

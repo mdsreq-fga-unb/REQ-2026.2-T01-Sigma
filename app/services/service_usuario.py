@@ -24,7 +24,7 @@ def criar_usuario(db:Session,dados:UsuarioCreate, admin:Usuario) -> Usuario:
     usuario = Usuario(
         nome=dados.nome,
         email=email,
-        is_Admin=False,
+        is_Admin=dados.administrador,
         senha_hash=senha_hash,
         
     )

@@ -95,6 +95,31 @@ def test_admin_cadastra_usuario_com_sucesso(client, db_session, admin_user, admi
     assert "Novo Usuário" in op.descricao
 
 
+def test_admin_cadastra_outro_administrador(client, admin_headers):
+    res = client.post("/usuarios", json=_payload(administrador=True), headers=admin_headers)
+
+    assert res.status_code == 201
+    assert res.json()["is_Admin"] is True
+
+
+def test_admin_inativa_e_reativa_usuario_com_auditoria(client, db_session, admin_user, admin_headers, test_user):
+    inativado = client.patch(f"/usuarios/{test_user.id}/inativar", headers=admin_headers)
+    assert inativado.status_code == 200
+    assert inativado.json()["ativo"] is False
+    assert db_session.query(Operacao).filter(Operacao.tipo == Tipo.INATIVACAO_USUARIO).count() == 1
+
+    reativado = client.patch(f"/usuarios/{test_user.id}/reativar", headers=admin_headers)
+    assert reativado.status_code == 200
+    assert reativado.json()["ativo"] is True
+    assert db_session.query(Operacao).filter(Operacao.tipo == Tipo.REATIVACAO_USUARIO).count() == 1
+
+
+def test_admin_nao_pode_inativar_a_propria_conta(client, admin_user, admin_headers):
+    res = client.patch(f"/usuarios/{admin_user.id}/inativar", headers=admin_headers)
+
+    assert res.status_code == 422
+
+
 def test_cadastro_sem_token_retorna_401(client):
     """FE02 / RNF02: sem token válido, 401."""
     res = client.post("/usuarios", json=_payload())
