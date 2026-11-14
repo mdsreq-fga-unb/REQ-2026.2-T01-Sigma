@@ -10,7 +10,7 @@ from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from .turma import Turma
-    from .resp import Responsavel
+    from .responsavel import Responsavel
 
 class StatusAluno(enum.Enum):
     ATIVO = "ativo"

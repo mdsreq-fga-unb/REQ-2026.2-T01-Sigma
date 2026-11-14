@@ -6,7 +6,7 @@ from app.core.database import Base
 from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
-    from .tasa import TermoSaida
+    from .termo_saida import TermoSaida
     from .pessoa import Pessoa
 
 class PessoaAutorizada(TimestampMixin, Base):

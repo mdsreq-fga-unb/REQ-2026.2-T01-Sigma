@@ -6,7 +6,7 @@ from app.core.database import Base
 from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
-    from .rm import RequerimentoMatricula
+    from .Req_matricula import RequerimentoMatricula
 
 class Documento(TimestampMixin, Base):
 

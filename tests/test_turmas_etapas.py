@@ -7,7 +7,7 @@ from app.models.aluno import Aluno, Raca, Sexo, StatusAluno
 from app.models.etapa import Etapa
 from app.models.ops import Operacao, Tipo
 from app.models.pessoa import Pessoa
-from app.models.resp import Responsavel
+from app.models.responsavel import Responsavel
 from app.models.turma import StatusTurma, Turma, Turno
 
 

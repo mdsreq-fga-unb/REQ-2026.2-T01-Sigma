@@ -7,7 +7,7 @@ from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from .aluno import Aluno
-    from .fs import FichaSocioeconomica
+    from .ficha_socioeco import FichaSocioeconomica
 
 class Familia(TimestampMixin, Base):
 
