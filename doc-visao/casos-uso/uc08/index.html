@@ -1128,66 +1128,66 @@
 <li>O sistema deve estar conectado ao banco de dados PostgreSQL.</li>
 </ul>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Buscar Aluno pelo Nome</strong></p>
+<p><strong>FP01 - Buscar Aluno pelo Nome (RF21)</strong></p>
 <ol>
-<li>O ator acessa a funcionalidade de busca de alunos no sistema. (RF21)</li>
-<li>O sistema exibe o campo de pesquisa. (RF21)</li>
-<li>O ator insere o nome completo ou parcial do aluno. (RF21)</li>
-<li>O ator confirma a busca clicando no ícone de pesquisa ou pressionando "Enter". (RF21)</li>
-<li>O sistema processa a consulta no banco de dados desconsiderando letras maiúsculas, minúsculas e acentos gráficos. (RF21)</li>
-<li>O sistema retorna e exibe a lista de alunos correspondentes em tempo inferior a 2 segundos. (RF21, RNF06)</li>
-<li>O ator seleciona o aluno desejado na lista de resultados. (RF21)</li>
-<li>O sistema direciona o ator para o card de matrícula do aluno selecionado. (RF21)</li>
-</ol>
-<p><strong>FP02 - Buscar Turmas e Etapas</strong></p>
-<ol>
-<li>O ator acessa a funcionalidade de busca de turmas e etapas. (RF22)</li>
-<li>O sistema exibe o campo de pesquisa correspondente. (RF22)</li>
-<li>O ator insere o nome completo ou parcial da turma ou da etapa. (RF22)</li>
-<li>O ator confirma a busca. (RF22)</li>
-<li>O sistema processa a consulta no banco de dados. (RF22)</li>
-<li>O sistema retorna e exibe a lista de turmas e etapas correspondentes em tempo inferior a 2 segundos. (RF22, RNF07)</li>
-<li>O ator visualiza os resultados, que indicam o status ("ativo" ou "inativo") de cada registro. (RF22, RN12)</li>
+<li>O ator acessa a funcionalidade de busca de alunos no sistema. (FE03, FE04)</li>
+<li>O sistema exibe o campo de pesquisa.</li>
+<li>O ator insere o nome completo ou parcial do aluno. (FA02)</li>
+<li>O ator confirma a busca clicando no ícone de pesquisa ou pressionando "Enter".</li>
+<li>O sistema processa a consulta no banco de dados desconsiderando letras maiúsculas, minúsculas e acentos gráficos. (FE01, FE02)</li>
+<li>O sistema retorna e exibe a lista de alunos correspondentes em tempo inferior a 2 segundos. (RNF06, FA01)</li>
+<li>O ator seleciona o aluno desejado na lista de resultados.</li>
+<li>O sistema direciona o ator para o card de matrícula do aluno selecionado.</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 - Nenhum Registro Encontrado</strong></p>
+<p><strong>FA01 - Nenhum Registro Encontrado (RF21, RF22)</strong></p>
 <ol>
-<li>O ator insere um termo de busca que não possui correspondência no banco de dados. (RF21, RF22)</li>
-<li>O sistema processa a consulta. (RF21, RF22)</li>
-<li>O sistema não encontra nenhum registro correspondente. (RF21, RF22)</li>
-<li>O sistema exibe na tela a mensagem informativa: "Nenhum resultado encontrado". (RF22)</li>
-<li>O ator pode refazer a busca com outro termo. (RF21, RF22)</li>
+<li>O ator insere um termo de busca que não possui correspondência no banco de dados.</li>
+<li>O sistema processa a consulta.</li>
+<li>O sistema não encontra nenhum registro correspondente.</li>
+<li>O sistema exibe na tela a mensagem informativa: "Nenhum resultado encontrado".</li>
+<li>O ator pode refazer a busca com outro termo.</li>
 </ol>
-<p><strong>FA02 - Busca Parcial</strong></p>
+<p><strong>FA02 - Busca Parcial (RF21, RF22)</strong></p>
 <ol>
-<li>O ator insere apenas as letras iniciais ou um trecho do nome do aluno, turma ou etapa. (RF21, RF22)</li>
-<li>O sistema processa a consulta buscando correspondências parciais. (RF21, RF22)</li>
-<li>O sistema exibe todos os registros que contêm o termo informado em qualquer posição do nome. (RF21, RF22)</li>
-<li>O ator localiza o registro desejado entre os resultados parciais exibidos. (RF21, RF22)</li>
+<li>O ator insere apenas as letras iniciais ou um trecho do nome do aluno, turma ou etapa.</li>
+<li>O sistema processa a consulta buscando correspondências parciais.</li>
+<li>O sistema exibe todos os registros que contêm o termo informado em qualquer posição do nome.</li>
+<li>O ator localiza o registro desejado entre os resultados parciais exibidos.</li>
+</ol>
+<p><strong>FA03 - Buscar Turmas e Etapas (RF22)</strong></p>
+<ol>
+<li>O ator acessa a funcionalidade de busca de turmas e etapas. (FE03, FE04)</li>
+<li>O sistema exibe o campo de pesquisa correspondente.</li>
+<li>O ator insere o nome completo ou parcial da turma ou da etapa. (FA02)</li>
+<li>O ator confirma a busca.</li>
+<li>O sistema processa a consulta no banco de dados. (FE01, FE02)</li>
+<li>O sistema retorna e exibe a lista de turmas e etapas correspondentes em tempo inferior a 2 segundos. (RNF07, FA01)</li>
+<li>O ator visualiza os resultados, que indicam o status ("ativo" ou "inativo") de cada registro. (RN12)</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
-<p><strong>FE01 - Falha de Conectividade</strong></p>
+<p><strong>FE01 - Falha de Conectividade (RF21, RF22)</strong></p>
 <ol>
-<li>O ator tenta realizar uma busca. (RF21, RF22)</li>
+<li>O ator tenta realizar uma busca.</li>
 <li>O sistema não consegue se conectar ao backend.</li>
 <li>O sistema não conclui a operação.</li>
 <li>O sistema exibe mensagem de falha de conexão.</li>
 <li>O sistema orienta o ator a tentar novamente quando a conexão for restabelecida.</li>
 </ol>
-<p><strong>FE02 - Erro interno no banco de dados</strong></p>
+<p><strong>FE02 - Erro interno no banco de dados (RF21, RF22)</strong></p>
 <ol>
-<li>O ator realiza uma busca válida. (RF21, RF22)</li>
+<li>O ator realiza uma busca válida.</li>
 <li>O sistema tenta consultar os dados no banco.</li>
 <li>O banco de dados retorna erro ou indisponibilidade.</li>
 <li>O sistema cancela a operação.</li>
 <li>O sistema exibe mensagem de erro interno.</li>
 </ol>
-<p><strong>FE03 - Tentativa de Acesso sem Autenticação</strong></p>
+<p><strong>FE03 - Tentativa de Acesso sem Autenticação (RF06, RF21, RF22)</strong></p>
 <ol>
-<li>O ator tenta acessar a funcionalidade de busca sem estar autenticado. (RF21, RF22)</li>
+<li>O ator tenta acessar a funcionalidade de busca sem estar autenticado.</li>
 <li>O sistema identifica a ausência de sessão válida. (RNF02)</li>
 <li>O sistema bloqueia o acesso. (RNF02)</li>
-<li>O sistema direciona o ator para a tela de autenticação. (RF06, RNF02)</li>
+<li>O sistema direciona o ator para a tela de autenticação. (RNF02)</li>
 </ol>
 <p><strong>FE04 - Conta com Status "inativo"</strong></p>
 <ol>

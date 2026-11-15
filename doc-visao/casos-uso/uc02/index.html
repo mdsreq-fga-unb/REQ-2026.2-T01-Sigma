@@ -1127,16 +1127,16 @@
 <li>O sistema deve possuir conexão ativa com o banco de dados para salvar as novas credenciais.</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Cadastrar Novo Usuário</strong></p>
+<p><strong>FP01 - Cadastrar Novo Usuário (RF05)</strong></p>
 <ol>
-<li>O ator acessa a seção de gerenciamento de usuários/configurações do sistema. (RF05, RNF02)</li>
-<li>O ator seleciona a opção de "Novo Usuário" ou "Cadastrar Membro". (RF05)</li>
-<li>O sistema apresenta o formulário de cadastro solicitando os dados necessários (nome, e-mail e senha). (RF05)</li>
-<li>O ator preenche os dados do novo membro da equipe. (RF05)</li>
-<li>O ator seleciona a opção de confirmar o cadastro. (RF05)</li>
+<li>O ator acessa a seção de gerenciamento de usuários/configurações do sistema. (RNF02)</li>
+<li>O ator seleciona a opção de "Novo Usuário" ou "Cadastrar Membro". </li>
+<li>O sistema apresenta o formulário de cadastro solicitando os dados necessários (nome, e-mail e senha). </li>
+<li>O ator preenche os dados do novo membro da equipe. </li>
+<li>O ator seleciona a opção de confirmar o cadastro. </li>
 <li>O sistema valida os dados fornecidos (verifica campos obrigatórios, regras de senha forte e unicidade do e-mail). (RN19, RN20)</li>
-<li>O sistema cadastra o novo usuário no banco de dados com status ativo. (RF05, RN18)</li>
-<li>O sistema exibe uma mensagem de sucesso informando que a conta foi criada. (RF05)</li>
+<li>O sistema cadastra o novo usuário no banco de dados com status ativo. (RN18)</li>
+<li>O sistema exibe uma mensagem de sucesso informando que a conta foi criada. </li>
 <li>O sistema atualiza a lista exibindo o novo usuário cadastrado.</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
@@ -1150,27 +1150,27 @@
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
 <p><strong>FE01 - Usuário (E-mail) Já Cadastrado</strong></p>
 <ol>
-<li>O ator preenche o formulário e confirma o cadastro. (RF05)</li>
+<li>O ator preenche o formulário e confirma o cadastro. </li>
 <li>O sistema verifica o banco de dados e identifica que o e-mail informado já existe. (RN19)</li>
 <li>O sistema interrompe o processo de salvamento.</li>
 <li>O sistema exibe a mensagem de erro: "Este e-mail já está em uso por outro usuário."</li>
 </ol>
 <p><strong>FE02 - Campos Obrigatórios Vazios</strong></p>
 <ol>
-<li>O ator deixa de preencher um campo obrigatório e tenta confirmar. (RF05)</li>
+<li>O ator deixa de preencher um campo obrigatório e tenta confirmar. </li>
 <li>O sistema identifica a ausência da informação.</li>
 <li>O sistema interrompe o processo e alerta quais campos precisam ser preenchidos.</li>
 </ol>
 <p><strong>FE03 - Falha de Conectividade</strong></p>
 <ol>
-<li>O ator preenche os dados e clica em salvar. (RF05)</li>
+<li>O ator preenche os dados e clica em salvar. </li>
 <li>O sistema perde a conexão com o banco de dados durante a tentativa de registro.</li>
 <li>O sistema não consegue concluir a operação.</li>
 <li>O sistema exibe mensagem de erro orientando o ator a tentar novamente mais tarde.</li>
 </ol>
 <p><strong>FE04 - Senha Fora do Padrão de Segurança</strong></p>
 <ol>
-<li>O ator insere uma senha com menos de 8 caracteres ou sem letras, números e caracteres especiais. (RF05)</li>
+<li>O ator insere uma senha com menos de 8 caracteres ou sem letras, números e caracteres especiais. </li>
 <li>O sistema valida o padrão de segurança e reprova a senha. (RN20)</li>
 <li>O sistema interrompe o salvamento.</li>
 <li>O sistema exibe a mensagem: "A senha deve conter no mínimo 8 caracteres, incluindo letras, números e caracteres especiais."</li>

@@ -1128,61 +1128,61 @@
 <li>Para cadastrar uma turma ou vinculá-la a uma etapa, deve existir pelo menos uma etapa com status "ativo".</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Cadastrar Etapa</strong></p>
+<p><strong>FP01 - Cadastrar Etapa (RF18)</strong></p>
 <ol>
-<li>O ator acessa a funcionalidade de criar uma nova etapa. (RF18)</li>
-<li>O sistema exibe o formulário de cadastro de etapa. (RF18)</li>
-<li>O ator informa o nome da etapa. (RF18)</li>
-<li>O ator seleciona o botão "Salvar". (RF18)</li>
-<li>O sistema valida o preenchimento dos campos obrigatórios. (RN22)</li>
-<li>O sistema verifica se não existe uma etapa cadastrada com o mesmo nome. (RN13)</li>
-<li>O sistema registra a etapa com status "ativo". (RF18)</li>
+<li>O ator acessa a funcionalidade de criar uma nova etapa.</li>
+<li>O sistema exibe o formulário de cadastro de etapa.</li>
+<li>O ator informa o nome da etapa.</li>
+<li>O ator seleciona o botão "Salvar".</li>
+<li>O sistema valida o preenchimento dos campos obrigatórios. (RN22, FE01)</li>
+<li>O sistema verifica se não existe uma etapa cadastrada com o mesmo nome. (RN13, FE02)</li>
+<li>O sistema registra a etapa com status "ativo". (FE06)</li>
 <li>O sistema exibe a mensagem "Etapa cadastrada com sucesso".</li>
-</ol>
-<p><strong>FP02 - Cadastrar Turma</strong></p>
-<ol>
-<li>O ator acessa a funcionalidade de criar uma nova turma. (RF24)</li>
-<li>O sistema exibe o formulário de cadastro de turma, listando apenas as etapas com status "ativo" para seleção. (RF24, RN11)</li>
-<li>O ator informa o nome da turma e seleciona a etapa à qual ela pertence. (RF24, RN04)</li>
-<li>O ator seleciona o botão "Salvar". (RF24)</li>
-<li>O sistema valida o preenchimento dos campos obrigatórios. (RN22)</li>
-<li>O sistema verifica se não existe outra turma com o mesmo nome dentro da etapa selecionada. (RN14)</li>
-<li>O sistema registra a turma com status "ativo", vinculada à etapa selecionada. (RF24, RN04)</li>
-<li>O sistema exibe a mensagem: "Turma cadastrada com sucesso".</li>
-</ol>
-<p><strong>FP03 - Vincular Turma à Etapa (Pós-MVP)</strong></p>
-<ol>
-<li>O ator busca e seleciona uma turma cadastrada.</li>
-<li>O ator acessa a funcionalidade de vincular à etapa. (RF20)</li>
-<li>O sistema exibe a lista de etapas com status "ativo". (RF20, RN11)</li>
-<li>O ator seleciona a etapa desejada. (RF20)</li>
-<li>O sistema verifica se a turma e a etapa selecionadas estão com status "ativo". (RN11)</li>
-<li>O sistema verifica se não existe outra turma com o mesmo nome na etapa de destino. (RN14)</li>
-<li>O sistema registra o vínculo entre a turma e a etapa. (RF20, RN04)</li>
-<li>O sistema exibe a mensagem: "Turma vinculada à etapa com sucesso."</li>
-</ol>
-<p><strong>FP04 - Inativar Turma ou Etapa (Pós-MVP)</strong></p>
-<ol>
-<li>O ator busca e seleciona uma turma ou etapa com status "ativo".</li>
-<li>O ator seleciona a opção "inativar". (RF19)</li>
-<li>O sistema solicita a confirmação da operação, com as opções "Confirmar" e "Cancelar". (RF19)</li>
-<li>O ator seleciona "Confirmar". (RF19)</li>
-<li>O sistema altera o status da turma ou etapa para "inativo". (RF19)</li>
-<li>O sistema mantém todos os vínculos já existentes (alunos e turmas). (RN12)</li>
-<li>O sistema passa a exibir o registro nas buscas identificado com o status "inativo". (RF19)</li>
-<li>O sistema exibe a mensagem: "Registro inativado com sucesso."</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
 <p><strong>FA01 - Cancelar Operação</strong></p>
 <ol>
-<li>Em qualquer formulário de FP01, FP02, FP03 ou na confirmação do FP04, o ator seleciona "Cancelar".</li>
+<li>Em qualquer formulário de FP01, FA02, FA03 ou na confirmação do FA04, o ator seleciona "Cancelar".</li>
 <li>O sistema descarta os dados informados, sem registrar nenhuma alteração.</li>
 <li>O sistema retorna à tela anterior.</li>
+</ol>
+<p><strong>FA02 - Cadastrar Turma (RF24)</strong></p>
+<ol>
+<li>O ator acessa a funcionalidade de criar uma nova turma.</li>
+<li>O sistema exibe o formulário de cadastro de turma, listando apenas as etapas com status "ativo" para seleção. (RN11, FE04)</li>
+<li>O ator informa o nome da turma e seleciona a etapa à qual ela pertence. (RN04)</li>
+<li>O ator seleciona o botão "Salvar".</li>
+<li>O sistema valida o preenchimento dos campos obrigatórios. (RN22, FE01)</li>
+<li>O sistema verifica se não existe outra turma com o mesmo nome dentro da etapa selecionada. (RN14, FE03)</li>
+<li>O sistema registra a turma com status "ativo", vinculada à etapa selecionada. (RN04, FE06)</li>
+<li>O sistema exibe a mensagem: "Turma cadastrada com sucesso".</li>
+</ol>
+<p><strong>FA03 - Vincular Turma à Etapa (Pós-MVP) (RF20)</strong></p>
+<ol>
+<li>O ator busca e seleciona uma turma cadastrada.</li>
+<li>O ator acessa a funcionalidade de vincular à etapa.</li>
+<li>O sistema exibe a lista de etapas com status "ativo". (RN11, FE04)</li>
+<li>O ator seleciona a etapa desejada.</li>
+<li>O sistema verifica se a turma e a etapa selecionadas estão com status "ativo". (RN11, FE05)</li>
+<li>O sistema verifica se não existe outra turma com o mesmo nome na etapa de destino. (RN14, FE03)</li>
+<li>O sistema registra o vínculo entre a turma e a etapa. (RN04, FE06)</li>
+<li>O sistema exibe a mensagem: "Turma vinculada à etapa com sucesso."</li>
+</ol>
+<p><strong>FA04 - Inativar Turma ou Etapa (Pós-MVP) (RF19)</strong></p>
+<ol>
+<li>O ator busca e seleciona uma turma ou etapa com status "ativo".</li>
+<li>O ator seleciona a opção "inativar".</li>
+<li>O sistema solicita a confirmação da operação, com as opções "Confirmar" e "Cancelar". (FA01)</li>
+<li>O ator seleciona "Confirmar".</li>
+<li>O sistema altera o status da turma ou etapa para "inativo". (FE06)</li>
+<li>O sistema mantém todos os vínculos já existentes (alunos e turmas). (RN12)</li>
+<li>O sistema passa a exibir o registro nas buscas identificado com o status "inativo".</li>
+<li>O sistema exibe a mensagem: "Registro inativado com sucesso."</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
 <p><strong>FE01 - Campos Obrigatórios Não Preenchidos</strong></p>
 <ol>
-<li>O ator seleciona "Salvar" sem preencher todos os campos obrigatórios (FP01, FP02 ou FP03).</li>
+<li>O ator seleciona "Salvar" sem preencher todos os campos obrigatórios (FP01, FA02 ou FA03).</li>
 <li>O sistema identifica os campos pendentes. (RN22)</li>
 <li>O sistema destaca os campos não preenchidos e não realiza o cadastro.</li>
 <li>O sistema exibe a mensagem: "Preencha todos os campos obrigatórios."</li>
@@ -1196,14 +1196,14 @@
 </ol>
 <p><strong>FE03 - Turma com Nome Duplicado na Mesma Etapa</strong></p>
 <ol>
-<li>O ator informa, no FP02 ou FP03, uma turma com um nome já existente na etapa selecionada.</li>
+<li>O ator informa, no FA02 ou FA03, uma turma com um nome já existente na etapa selecionada.</li>
 <li>O sistema identifica a duplicidade dentro da etapa. (RN14)</li>
 <li>O sistema não realiza o cadastro ou o vínculo.</li>
 <li>O sistema exibe a mensagem: "Já existe uma turma com esse nome na etapa."</li>
 </ol>
 <p><strong>FE04 - Nenhuma Etapa Ativa Disponível</strong></p>
 <ol>
-<li>O ator tenta cadastrar uma turma (FP02) ou vinculá-la a uma etapa (FP03).</li>
+<li>O ator tenta cadastrar uma turma (FA02) ou vinculá-la a uma etapa (FA03).</li>
 <li>O sistema identifica que não há nenhuma etapa com status "ativo". (RN04, RN11)</li>
 <li>O sistema impede a continuidade da operação.</li>
 <li>O sistema exibe a mensagem: "Não há etapas ativas cadastradas. Cadastre uma etapa antes de continuar."</li>
@@ -1217,7 +1217,7 @@
 </ol>
 <p><strong>FE06 - Falha de Conexão</strong></p>
 <ol>
-<li>O ator seleciona "Salvar" ou "Confirmar" em qualquer um dos fluxos principais.</li>
+<li>O ator seleciona "Salvar" ou "Confirmar" em FP01, FA02, FA03 ou FA04.</li>
 <li>O sistema tenta registrar a operação, mas há indisponibilidade de comunicação com o servidor/banco de dados.</li>
 <li>O sistema não registra nenhuma alteração.</li>
 <li>O sistema exibe a mensagem: "Não foi possível conectar ao servidor. Tente novamente mais tarde."</li>

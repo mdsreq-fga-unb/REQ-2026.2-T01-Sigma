@@ -1131,64 +1131,64 @@
 <li>O backend deve estar integrado ao banco de dados PostgreSQL.</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Lançar Aviso no Quadro</strong></p>
+<p><strong>FP01 - Lançar Aviso no Quadro (RF01, RF02)</strong></p>
 <ol>
-<li>O ator acessa a seção do Quadro de Avisos. (RF01)</li>
-<li>O sistema identifica o perfil do ator autenticado. (RF01)</li>
-<li>O sistema valida se o ator possui perfil da equipe administrativa. (RF01)</li>
-<li>O sistema apresenta o formulário de criação de aviso. (RF01)</li>
-<li>O ator preenche obrigatoriamente o assunto e a descrição do aviso. (RF02)</li>
-<li>O sistema registra automaticamente a data atual e o autor responsável pela criação. (RF02)</li>
-<li>O ator confirma a publicação do aviso. (RF02)</li>
-<li>O sistema valida os dados obrigatórios informados. (RF02)</li>
-<li>O sistema registra o aviso no banco de dados. (RF02)</li>
-<li>O sistema disponibiliza o aviso no quadro para todos os usuários autorizados da equipe administrativa. (RF01, RF02)</li>
-<li>O sistema exibe uma mensagem de sucesso informando que o aviso foi publicado. (RF02)</li>
+<li>O ator acessa a seção do Quadro de Avisos. </li>
+<li>O sistema identifica o perfil do ator autenticado. </li>
+<li>O sistema valida se o ator possui perfil da equipe administrativa. (FE01)</li>
+<li>O sistema apresenta o formulário de criação de aviso. </li>
+<li>O ator preenche obrigatoriamente o assunto e a descrição do aviso. (RN09)</li>
+<li>O sistema registra automaticamente a data atual e o autor responsável pela criação. (RN09)</li>
+<li>O ator confirma a publicação do aviso. (FE04)</li>
+<li>O sistema valida os dados obrigatórios informados. (RN09, FE02)</li>
+<li>O sistema registra o aviso no banco de dados. (FE03)</li>
+<li>O sistema disponibiliza o aviso no quadro para todos os usuários autorizados da equipe administrativa. </li>
+<li>O sistema exibe uma mensagem de sucesso informando que o aviso foi publicado.</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 - Exibir Avisos Ativos</strong></p>
+<p><strong>FA01 - Exibir Avisos Ativos (RF03)</strong></p>
 <ol>
-<li>O ator acessa a página inicial ou a seção do quadro de avisos. (RF03)</li>
-<li>O sistema identifica o perfil do ator autenticado. (RF03)</li>
-<li>O sistema busca os avisos ativos disponíveis no banco de dados, ordenados por data. (RF03)</li>
-<li>O sistema exibe a lista de notificações ativas no quadro de avisos. (RF03)</li>
-<li>O ator visualiza os avisos. (RF03)</li>
+<li>O ator acessa a página inicial ou a seção do quadro de avisos. </li>
+<li>O sistema identifica o perfil do ator autenticado. </li>
+<li>O sistema busca os avisos ativos disponíveis no banco de dados, ordenados por data. (FE03)</li>
+<li>O sistema exibe a lista de notificações ativas no quadro de avisos.</li>
+<li>O ator visualiza os avisos. </li>
 </ol>
-<p><strong>FA02 - Apagar Aviso de Forma Definitiva</strong></p>
+<p><strong>FA02 - Apagar Aviso de Forma Definitiva (RF04)</strong></p>
 <ol>
-<li>O ator acessa o quadro de avisos com as notificações ativas. (RF03, RF04)</li>
-<li>O ator seleciona o aviso que deseja apagar. (RF04)</li>
-<li>O ator aciona a opção de exclusão. (RF04)</li>
-<li>O sistema remove o aviso de forma definitiva do espaço visual do usuário. (RF04)</li>
-<li>O sistema atualiza o quadro de avisos, deixando de exibir o item apagado. (RF03, RF04)</li>
+<li>O ator acessa o quadro de avisos com as notificações ativas. </li>
+<li>O ator seleciona o aviso que deseja apagar. </li>
+<li>O ator aciona a opção de exclusão. </li>
+<li>O sistema remove o aviso de forma definitiva do espaço visual do usuário. (FE03)</li>
+<li>O sistema atualiza o quadro de avisos, deixando de exibir o item apagado. </li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
-<p><strong>FE01 - Acesso Não Autorizado</strong></p>
+<p><strong>FE01 - Acesso Não Autorizado (RF01)</strong></p>
 <ol>
-<li>Um usuário não pertencente à equipe administrativa tenta acessar a seção de gerenciamento do quadro de avisos. (RF01)</li>
-<li>O sistema identifica que o perfil não possui permissão. (RF01)</li>
-<li>O sistema bloqueia o acesso e não exibe a funcionalidade de gerenciamento do quadro. (RF01)</li>
+<li>Um usuário não pertencente à equipe administrativa tenta acessar a seção de gerenciamento do quadro de avisos. </li>
+<li>O sistema identifica que o perfil não possui permissão. </li>
+<li>O sistema bloqueia o acesso e não exibe a funcionalidade de gerenciamento do quadro. </li>
 </ol>
-<p><strong>FE02 - Dados Obrigatórios Ausentes</strong></p>
+<p><strong>FE02 - Dados Obrigatórios Ausentes (RF02)</strong></p>
 <ol>
-<li>O ator tenta publicar um aviso sem preencher o assunto e/ou a descrição. (RF02)</li>
-<li>O sistema identifica a ausência dos dados obrigatórios. (RF02)</li>
-<li>O sistema impede a publicação do aviso. (RF02)</li>
-<li>O sistema destaca os campos inválidos e exibe mensagem orientando o preenchimento correto. (RF02)</li>
+<li>O ator tenta publicar um aviso sem preencher o assunto e/ou a descrição. </li>
+<li>O sistema identifica a ausência dos dados obrigatórios. (RN09)</li>
+<li>O sistema impede a publicação do aviso. </li>
+<li>O sistema destaca os campos inválidos e exibe mensagem orientando o preenchimento correto.</li>
 </ol>
-<p><strong>FE03 - Falha de Conectividade</strong></p>
+<p><strong>FE03 - Falha de Conectividade (RF02, RF03, RF04)</strong></p>
 <ol>
-<li>O ator tenta publicar, listar ou apagar um aviso sem conexão com o backend. (RF02, RF03, RF04)</li>
-<li>O sistema não consegue concluir a operação. (RF02, RF03, RF04)</li>
-<li>O sistema exibe uma mensagem de falha de conexão. (RF02, RF03, RF04)</li>
-<li>O sistema orienta o ator a tentar novamente mais tarde. (RF02, RF03, RF04)</li>
+<li>O ator tenta publicar, listar ou apagar um aviso sem conexão com o backend. </li>
+<li>O sistema não consegue concluir a operação. </li>
+<li>O sistema exibe uma mensagem de falha de conexão. </li>
+<li>O sistema orienta o ator a tentar novamente mais tarde. </li>
 </ol>
-<p><strong>FE04 - Sessão Expirada por Inatividade</strong></p>
+<p><strong>FE04 - Sessão Expirada por Inatividade (RF07)</strong></p>
 <ol>
-<li>O ator tenta confirmar o lançamento de um aviso ou excluí-lo após 30 minutos de inatividade. (RF07)</li>
-<li>O sistema identifica que a sessão do usuário expirou. (RF07)</li>
-<li>O sistema impede a operação. (RF07)</li>
-<li>O sistema encerra a sessão, descarta as alterações não salvas e redireciona o ator para a tela de login. (RF07)</li>
+<li>O ator tenta confirmar o lançamento de um aviso ou excluí-lo após 30 minutos de inatividade. </li>
+<li>O sistema identifica que a sessão do usuário expirou. (RN17)</li>
+<li>O sistema impede a operação. </li>
+<li>O sistema encerra a sessão, descarta as alterações não salvas e redireciona o ator para a tela de login. </li>
 </ol>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>

@@ -1130,51 +1130,51 @@
 <li>O sistema deve possuir conexão ativa com o banco de dados.</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 — Alocar card de aluno a uma turma</strong></p>
+<p><strong>FP01 - Alocar card de aluno a uma turma (RF13, RF21, RF22)</strong></p>
 <ol>
 <li>O ator acessa a funcionalidade de alocação de alunos.</li>
-<li>O ator pesquisa o aluno desejado informando o nome completo ou parcial. (RF21)</li>
+<li>O ator pesquisa o aluno desejado informando o nome completo ou parcial. (FE01)</li>
 <li>O sistema retorna os resultados correspondentes em menos de 2 segundos. (RNF06)</li>
 <li>O ator seleciona o card de aluno a ser alocado.</li>
-<li>O ator pesquisa ou seleciona a turma à qual o aluno será vinculado. (RF22)</li>
+<li>O ator pesquisa ou seleciona a turma à qual o aluno será vinculado.</li>
 <li>O sistema retorna as turmas disponíveis em menos de 2 segundos. (RNF07)</li>
-<li>O sistema valida se o aluno e a turma estão com status "ativo". (RN03, RN11)</li>
-<li>O sistema valida se o aluno já não possui vínculo com outra turma. (RN08)</li>
-<li>O ator seleciona a opção "Salvar" ou "Confirmar".</li>
-<li>O sistema registra a vinculação do aluno à turma no banco de dados. (RF13, RN02)</li>
+<li>O sistema valida se o aluno e a turma estão com status "ativo". (RN03, RN11, FE02)</li>
+<li>O sistema valida se o aluno já não possui vínculo com outra turma. (RN08, FE03)</li>
+<li>O ator seleciona a opção "Salvar" ou "Confirmar". (FA01, FE04)</li>
+<li>O sistema registra a vinculação do aluno à turma no banco de dados. (RN02, FE05)</li>
 <li>O sistema exibe a mensagem de confirmação: "Aluno alocado com sucesso."</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 — Cancelar alocação</strong></p>
+<p><strong>FA01 - Cancelar alocação</strong></p>
 <ol>
 <li>Em qualquer momento antes da confirmação, o ator seleciona a opção "Cancelar".</li>
 <li>O sistema descarta os dados informados e não realiza a vinculação.</li>
 <li>O sistema retorna à tela anterior.</li>
 </ol>
-<p><strong>FA02 — Alterar alocação de turma de um aluno</strong></p>
+<p><strong>FA02 - Alterar alocação de turma de um aluno (RF21, RF22)</strong></p>
 <ol>
-<li>O ator localiza um card de aluno que já possui uma turma vinculada. (RF21)</li>
+<li>O ator localiza um card de aluno que já possui uma turma vinculada.</li>
 <li>O ator seleciona a opção de redefinir ou transferir turma.</li>
-<li>O sistema exibe a turma atual e lista as outras turmas com status "ativo". (RF22, RN11)</li>
+<li>O sistema exibe a turma atual e lista as outras turmas com status "ativo". (RN11)</li>
 <li>O ator seleciona a nova turma e confirma a operação.</li>
 <li>O sistema remove o vínculo anterior e registra o novo vínculo. (RN02, RN08)</li>
 <li>O sistema exibe a mensagem de confirmação: "Alocação atualizada com sucesso."</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
-<p><strong>FE01 — Aluno não encontrado</strong></p>
+<p><strong>FE01 - Aluno não encontrado</strong></p>
 <ol>
 <li>O ator realiza a busca por um aluno e nenhum registro corresponde ao termo informado.</li>
 <li>O sistema exibe a mensagem: "Nenhum aluno encontrado."</li>
 <li>O sistema permite que o ator refine os termos da busca e tente novamente.</li>
 </ol>
-<p><strong>FE02 — Turma ou etapa inativa selecionada</strong></p>
+<p><strong>FE02 - Turma ou etapa inativa selecionada</strong></p>
 <ol>
 <li>O ator tenta alocar um aluno a uma turma com status "inativo", ou a uma turma cuja etapa vinculada esteja inativa.</li>
 <li>O sistema identifica que a turma ou etapa não está ativa. (RN11)</li>
 <li>O sistema impede a alocação.</li>
 <li>O sistema exibe a mensagem: "Não é possível alocar alunos em turmas ou etapas inativas."</li>
 </ol>
-<p><strong>FE03 — Aluno já matriculado em outra turma</strong></p>
+<p><strong>FE03 - Aluno já matriculado em outra turma</strong></p>
 <ol>
 <li>O ator tenta associar um aluno a uma nova turma sem realizar a transferência da turma anterior.</li>
 <li>O sistema verifica as vinculações ativas do aluno.</li>
@@ -1182,7 +1182,7 @@
 <li>O sistema informa que o aluno já está alocado a outra turma.</li>
 <li>O sistema mantém a associação existente e não realiza uma nova alocação sem desvinculação prévia.</li>
 </ol>
-<p><strong>FE04 — Campos obrigatórios não preenchidos</strong></p>
+<p><strong>FE04 - Campos obrigatórios não preenchidos</strong></p>
 <ol>
 <li>O ator tenta confirmar a alocação sem preencher ou selecionar todas as informações obrigatórias.</li>
 <li>O sistema identifica os campos obrigatórios ausentes.</li>
@@ -1190,7 +1190,7 @@
 <li>O sistema informa quais informações precisam ser preenchidas.</li>
 <li>O sistema permite que o ator corrija os dados e tente novamente.</li>
 </ol>
-<p><strong>FE05 — Falha no registro da alocação</strong></p>
+<p><strong>FE05 - Falha no registro da alocação</strong></p>
 <ol>
 <li>O ator confirma a alocação após selecionar o aluno e a turma.</li>
 <li>O sistema tenta registrar a associação no banco de dados.</li>

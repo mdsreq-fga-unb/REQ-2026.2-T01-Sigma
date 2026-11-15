@@ -1131,84 +1131,84 @@
 <li>O backend deve estar integrado ao banco de dados PostgreSQL.</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Cadastrar Card de Aluno e Preencher Fichas</strong></p>
+<p><strong>FP01 - Cadastrar Card de Aluno e Preencher Fichas (RF08, RF09, RF23)</strong></p>
 <ol>
-<li>O ator acessa a seção de gerenciamento de matrículas e seleciona a opção para criar um novo card. (RF08)</li>
-<li>O sistema apresenta o formulário inicial para os dados do aluno. (RF08)</li>
-<li>O ator preenche os dados cadastrais básicos do aluno. (RF08)</li>
-<li>O sistema avança para as abas ou seções de preenchimento das fichas obrigatórias (Socioeconômica, Imagem, Saída, Compromisso Escolar, Requerimento). (RF09)</li>
-<li>O ator preenche todas as informações necessárias nas fichas. (RF09)</li>
-<li>O ator aciona a opção de salvar os dados. (RF23)</li>
-<li>O sistema solicita a confirmação do salvamento. (RF23, RN15)</li>
-<li>O ator confirma a operação. (RF23)</li>
-<li>O sistema valida todos os campos obrigatórios e verifica se não há conflitos de duplicidade. (RF08, RF09, RN06, RN07)</li>
-<li>O sistema registra o card do aluno e as fichas preenchidas no banco de dados em menos de 5 segundos. (RNF08, RNF01)</li>
-<li>O sistema altera o status da matrícula para ativa e exibe mensagem de sucesso. (RF08, RN01, RN03)</li>
+<li>O ator acessa a seção de gerenciamento de matrículas e seleciona a opção para criar um novo card. </li>
+<li>O sistema apresenta o formulário inicial para os dados do aluno. </li>
+<li>O ator preenche os dados cadastrais básicos do aluno. </li>
+<li>O sistema avança para as abas ou seções de preenchimento das fichas obrigatórias (Socioeconômica, Imagem, Saída, Compromisso Escolar, Requerimento). </li>
+<li>O ator preenche todas as informações necessárias nas fichas. </li>
+<li>O ator aciona a opção de salvar os dados.</li>
+<li>O sistema solicita a confirmação do salvamento. (RN15, FA05)</li>
+<li>O ator confirma a operação. </li>
+<li>O sistema valida todos os campos obrigatórios e verifica se não há conflitos de duplicidade. (RN06, RN07, FE01, FE02)</li>
+<li>O sistema registra o card do aluno e as fichas preenchidas no banco de dados em menos de 5 segundos. (RNF08, RNF01, FE04)</li>
+<li>O sistema altera o status da matrícula para ativa e exibe mensagem de sucesso. (RN01, RN03)</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 - Editar Fichas de Matrícula</strong></p>
+<p><strong>FA01 - Editar Fichas de Matrícula (RF10, RF17, RF23)</strong></p>
 <ol>
-<li>O ator acessa a lista de cards de matrícula e seleciona um aluno com matrícula ativa. (RF10)</li>
-<li>O ator aciona a opção de edição. (RF10)</li>
-<li>O sistema carrega os dados atuais das fichas. (RF10)</li>
-<li>O ator altera as informações desejadas. (RF10)</li>
-<li>O ator aciona a opção de salvar e confirma a operação. (RF23, RN15)</li>
-<li>O sistema valida os campos, registra o novo estado no banco e salva um registro no histórico de edições do card. (RF10, RF17)</li>
-<li>O sistema exibe mensagem de sucesso. (RF10)</li>
+<li>O ator acessa a lista de cards de matrícula e seleciona um aluno com matrícula ativa. (FE03)</li>
+<li>O ator aciona a opção de edição.</li>
+<li>O sistema carrega os dados atuais das fichas.</li>
+<li>O ator altera as informações desejadas.</li>
+<li>O ator aciona a opção de salvar e confirma a operação. (RN15)</li>
+<li>O sistema valida os campos, registra o novo estado no banco e salva um registro no histórico de edições do card. (RN06, FE01, FE02, FE04)</li>
+<li>O sistema exibe mensagem de sucesso.</li>
 </ol>
-<p><strong>FA02 - Inativar Matrícula (Pós-MVP)</strong></p>
+<p><strong>FA02 - Inativar Matrícula (Pós-MVP) (RF11, RF17, RF23)</strong></p>
 <ol>
-<li>O ator acessa a lista de cards e seleciona um aluno. (RF11)</li>
-<li>O ator aciona a opção de inativar a matrícula. (RF11)</li>
-<li>O sistema solicita confirmação para a inativação. (RF23)</li>
-<li>O ator confirma. (RF23)</li>
-<li>O sistema altera o status do card para inativo, bloqueando futuras edições, e salva a alteração no histórico. (RF11, RF17, RN10)</li>
+<li>O ator acessa a lista de cards e seleciona um aluno.</li>
+<li>O ator aciona a opção de inativar a matrícula.</li>
+<li>O sistema solicita confirmação para a inativação. (RN15)</li>
+<li>O ator confirma.</li>
+<li>O sistema altera o status do card para inativo, bloqueando futuras edições, e salva a alteração no histórico. (RN10)</li>
 </ol>
-<p><strong>FA03 - Reativar Matrícula (Pós-MVP)</strong></p>
+<p><strong>FA03 - Reativar Matrícula (Pós-MVP) (RF12, RF17, RF23)</strong></p>
 <ol>
-<li>O ator busca por um aluno com status inativo e acessa seu card. (RF12)</li>
-<li>O ator aciona a opção de reativar a matrícula. (RF12)</li>
-<li>O sistema solicita confirmação. (RF23)</li>
-<li>O ator confirma. (RF23)</li>
-<li>O sistema altera o status para ativo, liberando novamente a edição, e registra a ação no histórico. (RF12, RF17, RN10)</li>
+<li>O ator busca por um aluno com status inativo e acessa seu card.</li>
+<li>O ator aciona a opção de reativar a matrícula.</li>
+<li>O sistema solicita confirmação. (RN15)</li>
+<li>O ator confirma.</li>
+<li>O sistema altera o status para ativo, liberando novamente a edição, e registra a ação no histórico. (RN10)</li>
 </ol>
-<p><strong>FA04 - Consultar Histórico de Edições</strong></p>
+<p><strong>FA04 - Consultar Histórico de Edições (RF17)</strong></p>
 <ol>
-<li>O ator acessa o card de um aluno (ativo ou inativo). (RF17)</li>
-<li>O ator aciona a opção para visualizar o histórico de alterações. (RF17)</li>
-<li>O sistema exibe a lista de edições anteriores, mostrando data, autor e o que foi modificado. (RF17)</li>
+<li>O ator acessa o card de um aluno (ativo ou inativo).</li>
+<li>O ator aciona a opção para visualizar o histórico de alterações.</li>
+<li>O sistema exibe a lista de edições anteriores, mostrando data, autor e o que foi modificado.</li>
 </ol>
-<p><strong>FA05 - Cancelar Criação ou Edição</strong></p>
+<p><strong>FA05 - Cancelar Criação ou Edição (RF23)</strong></p>
 <ol>
-<li>Durante o preenchimento ou edição de uma ficha, o ator aciona a opção de cancelar. (RF23)</li>
-<li>O sistema descarta as informações inseridas ou alteradas. (RF23, RN15)</li>
-<li>O sistema retorna à visualização anterior, sem registrar nenhuma modificação no banco de dados. (RF23)</li>
+<li>Durante o preenchimento ou edição de uma ficha, o ator aciona a opção de cancelar.</li>
+<li>O sistema descarta as informações inseridas ou alteradas. (RN15)</li>
+<li>O sistema retorna à visualização anterior, sem registrar nenhuma modificação no banco de dados.</li>
 </ol>
 <h2 id="6-fluxos-de-excecao">6. Fluxos de Exceção</h2>
-<p><strong>FE01 - Fichas Obrigatórias Incompletas</strong></p>
+<p><strong>FE01 - Fichas Obrigatórias Incompletas (RF09, RF10)</strong></p>
 <ol>
-<li>O ator tenta confirmar a criação ou edição sem preencher todos os campos obrigatórios das fichas exigidas. (RF09, RF10)</li>
-<li>O sistema identifica a ausência dos dados. (RF09, RF10, RN06)</li>
-<li>O sistema impede o salvamento e não ativa a matrícula. (RF09, RF10, RN03)</li>
-<li>O sistema destaca os campos faltantes e exibe mensagem de erro. (RF09, RF10)</li>
+<li>O ator tenta confirmar a criação ou edição sem preencher todos os campos obrigatórios das fichas exigidas.</li>
+<li>O sistema identifica a ausência dos dados. (RN06)</li>
+<li>O sistema impede o salvamento e não ativa a matrícula. (RN03)</li>
+<li>O sistema destaca os campos faltantes e exibe mensagem de erro.</li>
 </ol>
-<p><strong>FE02 - Duplicidade de Cadastro (CPF ou Matrícula)</strong></p>
+<p><strong>FE02 - Duplicidade de Cadastro (CPF ou Matrícula) (RF08)</strong></p>
 <ol>
-<li>O ator tenta salvar um novo card ou editar um existente informando um número de matrícula ou CPF que já consta no banco de dados. (RF08)</li>
-<li>O sistema identifica a duplicidade durante a validação. (RF08, RN07)</li>
-<li>O sistema impede o salvamento e avisa ao ator sobre o conflito de dados. (RF08)</li>
+<li>O ator tenta salvar um novo card ou editar um existente informando um número de matrícula ou CPF que já consta no banco de dados.</li>
+<li>O sistema identifica a duplicidade durante a validação. (RN07)</li>
+<li>O sistema impede o salvamento e avisa ao ator sobre o conflito de dados.</li>
 </ol>
-<p><strong>FE03 - Tentativa de Edição em Matrícula Inativa</strong></p>
+<p><strong>FE03 - Tentativa de Edição em Matrícula Inativa (RF10, RF11, RF12)</strong></p>
 <ol>
-<li>O ator acessa o card de um aluno inativo. (RF10, RF11)</li>
-<li>O sistema identifica o status da matrícula e oculta ou desabilita os botões de edição das fichas. (RF10, RF11, RN10)</li>
-<li>O ator só consegue visualizar os dados ou acionar a reativação. (RF12)</li>
+<li>O ator acessa o card de um aluno inativo.</li>
+<li>O sistema identifica o status da matrícula e oculta ou desabilita os botões de edição das fichas. (RN10)</li>
+<li>O ator só consegue visualizar os dados ou acionar a reativação. (FA03)</li>
 </ol>
-<p><strong>FE04 - Falha de Conectividade ou Tempo de Resposta Excedido</strong></p>
+<p><strong>FE04 - Falha de Conectividade ou Tempo de Resposta Excedido (RF23)</strong></p>
 <ol>
-<li>O ator confirma o salvamento dos dados. (RF23)</li>
-<li>O sistema tenta persistir as informações, mas não consegue concluir em menos de 5 segundos devido à falha de conexão ou erro no banco. (RNF08, RF23)</li>
-<li>O sistema aborta a operação, não salva os dados e exibe mensagem de erro de comunicação ao usuário. (RF23)</li>
+<li>O ator confirma o salvamento dos dados.</li>
+<li>O sistema tenta persistir as informações, mas não consegue concluir em menos de 5 segundos devido à falha de conexão ou erro no banco. (RNF08)</li>
+<li>O sistema aborta a operação, não salva os dados e exibe mensagem de erro de comunicação ao usuário.</li>
 </ol>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>
