@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { MatriculasView } from "@/components/alunos/MatriculasView";
+import { Suspense } from "react";
+import { AlunosView } from "@/components/alunos/AlunosView";
 
 export const metadata: Metadata = { title: "Alunos · SIGMA" };
 
-// UC04 – Gerenciar Fichas de Matrícula (RF08, RF09, RF10, RF11, RF12, RF17, RF23)
+// UC08 FP01 – Lista e busca de alunos (RF21). Abre o card do aluno (UC04).
 export default function AlunosPage() {
-  return <MatriculasView />;
+  // useSearchParams (filtro `?turma=`) exige um limite de Suspense.
+  return (
+    <Suspense>
+      <AlunosView />
+    </Suspense>
+  );
 }
