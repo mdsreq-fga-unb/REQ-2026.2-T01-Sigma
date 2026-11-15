@@ -1,7 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE } from "@/lib/sessao";
-import type { ApiErrorCode, Matricula, StatusEstrutura, Usuario } from "@/types";
+import type { ApiErrorCode, StatusEstrutura, Usuario } from "@/types";
+import type { AlunoRegistro } from "./alunos";
 
 /*
  * Mock em memória da API do SIGMA, usado enquanto o backend FastAPI não expõe
@@ -35,7 +36,7 @@ export interface TurmaRegistro {
 
 interface MockStore {
   usuarios: UsuarioRegistro[];
-  matriculas: Matricula[];
+  alunos?: AlunoRegistro[]; // UC04 – criado sob demanda em mocks/alunos.ts
   etapas: EtapaRegistro[];
   turmas: TurmaRegistro[];
   sessoes: Map<string, string>; // token → id do usuário
@@ -92,7 +93,6 @@ function seed(): MockStore {
   ];
   return {
     usuarios,
-    matriculas: [],
     etapas: seedEtapas(),
     turmas: seedTurmas(),
     sessoes: new Map(),
@@ -122,7 +122,6 @@ function seedTurmas(): TurmaRegistro[] {
 // globalThis mantém o estado entre recarregamentos de módulo do `next dev`.
 const globalMock = globalThis as typeof globalThis & { __sigmaMock?: MockStore };
 export const store: MockStore = (globalMock.__sigmaMock ??= seed());
-store.matriculas ??= [];
 store.etapas ??= seedEtapas();
 store.turmas ??= seedTurmas();
 
@@ -136,6 +135,28 @@ export function esperar(ms = LATENCIA_MS): Promise<void> {
 
 export function publico({ senha: _senha, ...usuario }: UsuarioRegistro): Usuario {
   return usuario;
+}
+
+/** Usuário no formato devolvido pelo backend FastAPI (`UsuarioResponse`). */
+export interface UsuarioBackendMock {
+  id: string;
+  nome: string;
+  email: string;
+  is_Admin: boolean;
+  ativo: boolean;
+  created_at: string;
+}
+
+/** Converte o registro do mock para o contrato das rotas `/usuarios` do backend. */
+export function usuarioBackend(usuario: UsuarioRegistro): UsuarioBackendMock {
+  return {
+    id: usuario.id,
+    nome: usuario.nome,
+    email: usuario.email,
+    is_Admin: usuario.perfil === "ADMINISTRADOR",
+    ativo: usuario.ativo,
+    created_at: usuario.criadoEm,
+  };
 }
 
 export function erro(status: number, code: ApiErrorCode, message?: string) {
