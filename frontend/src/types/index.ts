@@ -22,66 +22,134 @@ export interface NovoUsuarioPayload {
   senha: string;
 }
 
-export type StatusMatricula = "ATIVA" | "INATIVA";
-export type TipoAlteracaoMatricula = "CRIACAO" | "EDICAO" | "INATIVACAO" | "REATIVACAO";
+// UC04 – Card do aluno / UC08 FP01 – busca de alunos
+export type StatusAluno = "ATIVO" | "INATIVO";
+export type Sexo = "MASCULINO" | "FEMININO";
+export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADA";
 
-export interface DadosAluno {
+/** Datas trafegam como `AAAA-MM-DD`; a interface exibe dd/mm/aaaa. */
+export interface DadosPessoaisAluno {
   nome: string;
-  cpf: string;
-  numeroMatricula: string;
   dataNascimento: string;
-  nomeResponsavel: string;
-  telefoneResponsavel: string;
+  sexo: Sexo | null;
+  nis: string;
+  rg: string; // campo "ID" do protótipo
+  cpf: string; // só dígitos; opcional
+  naturalidade: string;
+  uf: string;
+  nacionalidade: string;
+  corRaca: CorRaca | null;
 }
 
-export interface FichasMatricula {
-  socioeconomica: {
-    rendaFamiliar: string;
-    pessoasNaResidencia: string;
-    situacaoMoradia: string;
-    beneficioSocial: string;
-  };
-  imagem: {
-    autorizada: boolean | null;
-    responsavel: string;
-  };
-  saida: {
-    autorizadaSemResponsavel: boolean | null;
-    responsavel: string;
-    pessoasAutorizadas: string;
-  };
-  compromisso: {
-    aceito: boolean;
-    responsavel: string;
-  };
-  requerimento: {
-    anoLetivo: string;
-    turmaPretendida: string;
-    responsavel: string;
-  };
+export interface DadosMatriculaAluno {
+  etapaId: string | null; // "Ano de escolaridade / etapa"
+  anoLetivo: string;
+  dataMatricula: string;
 }
 
-export interface AlteracaoMatricula {
-  id: string;
+/** RF08 – cria o card; fichas e termos são preenchidos depois, dentro do card. */
+export interface NovoAlunoPayload {
+  aluno: DadosPessoaisAluno;
+  matricula: DadosMatriculaAluno;
+}
+
+export type FichaAluno = "requerimento" | "socioeconomica" | "usoImagem" | "saida" | "compromisso";
+export type SituacaoFicha = "PREENCHIDA" | "PENDENTE";
+export type SituacaoDocumento = "ENTREGUE" | "PENDENTE";
+
+export interface ResponsavelLegal {
+  nome: string;
+  nacionalidade: string;
+  estadoCivil: string; // texto livre
+  rg: string;
+  cpf: string;
+  endereco: string; // "Residente em"
+}
+
+export interface TermoUsoImagem {
+  responsavel: ResponsavelLegal;
+  autoriza: boolean; // o termo só é válido com a autorização (sem opção "Não autoriza")
+  local: string;
   data: string;
-  autor: string;
-  tipo: TipoAlteracaoMatricula;
-  alteracoes: string[];
 }
 
-export interface Matricula {
+export type FormaSaida = "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS";
+
+export interface PessoaAutorizada {
+  nome: string;
+  parentesco: string; // texto livre
+}
+
+export interface TermoSaida {
+  nomeResponsavel: string;
+  formaSaida: FormaSaida | null;
+  pessoasAutorizadas: PessoaAutorizada[]; // máximo de 4
+  local: string;
+  data: string;
+}
+
+export interface TermoCompromisso {
+  nomeResponsavel: string;
+  cpfResponsavel: string;
+  modalidade: string; // texto livre (ex.: "Creche", "Pré-escola")
+  regime: string; // texto livre (ex.: "Tempo integral")
+  ciente: boolean; // "O responsável leu e assinou o termo"
+  dataAssinatura: string;
+}
+
+/** Termos preenchidos no card. `null` = termo pendente. */
+export interface TermosAluno {
+  usoImagem: TermoUsoImagem | null;
+  saida: TermoSaida | null;
+  compromisso: TermoCompromisso | null;
+}
+
+export type TermoAluno = keyof TermosAluno;
+
+export interface ReferenciaNome {
   id: string;
-  aluno: DadosAluno;
-  fichas: FichasMatricula;
-  status: StatusMatricula;
-  criadaEm: string;
-  atualizadaEm: string;
-  historico: AlteracaoMatricula[];
+  nome: string;
 }
 
-export interface NovaMatriculaPayload {
-  aluno: DadosAluno;
-  fichas: FichasMatricula;
+export interface AlunoCard {
+  id: string;
+  aluno: DadosPessoaisAluno;
+  matricula: { anoLetivo: string; dataMatricula: string };
+  etapa: ReferenciaNome | null;
+  turma: ReferenciaNome | null;
+  status: StatusAluno;
+  fichas: Record<FichaAluno, SituacaoFicha>;
+  termos: TermosAluno;
+  /** Dados do Requerimento de matrícula (ficha ainda não implementada). Vazio = não informado. */
+  resumo: { responsavel: string; parentesco: string; telefone: string; endereco: string };
+  documentos: { nome: string; situacao: SituacaoDocumento }[]; // UC05
+  ultimaEdicao: { data: string; autor: string } | null; // RF17
+}
+
+/** Linha da lista de alunos (UC08 FP01). */
+export interface AlunoResumo {
+  id: string;
+  nome: string;
+  dataNascimento: string;
+  turma: ReferenciaNome | null;
+  etapa: ReferenciaNome | null;
+  status: StatusAluno;
+}
+
+export interface FiltroAlunos {
+  busca?: string;
+  status?: StatusAluno;
+  turmaId?: string;
+  pagina?: number;
+  tamanhoPagina?: number;
+}
+
+export interface ListaAlunos {
+  itens: AlunoResumo[];
+  total: number; // resultados do filtro
+  totalCadastrados: number; // todos os cards
+  pagina: number;
+  tamanhoPagina: number;
 }
 
 // UC06 / UC08 – Estrutura escolar (turmas e etapas)
@@ -135,9 +203,9 @@ export type ApiErrorCode =
   | "EMAIL_EM_USO" // UC02 FE01 (RN19)
   | "SENHA_FORA_PADRAO" // UC02 FE04 (RN20)
   | "CPF_EM_USO" // UC04 FE02 (RN07)
-  | "MATRICULA_EM_USO" // UC04 FE02 (RN07)
   | "MATRICULA_INATIVA" // UC04 FE03 (RN10)
-  | "FICHAS_INCOMPLETAS" // UC04 FE01 (RN03, RN06)
+  | "FICHAS_INCOMPLETAS" // UC04 FE01 (RN06)
+  | "TURMA_INATIVA" // UC04 – vincular à turma (RN11)
   | "ETAPA_NOME_EM_USO" // UC06 FE02 (RN13)
   | "TURMA_NOME_EM_USO" // UC06 FE03 (RN14)
   | "ETAPA_INATIVA" // UC06 FE05 (RN11)
