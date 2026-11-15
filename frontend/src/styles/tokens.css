@@ -27,6 +27,9 @@
   --color-danger-border: #f5c2c2;
   --color-success: #1e7b3c;
   --color-success-bg: #e7f6ec;
+  --color-warning: #b45309;
+  --color-warning-bg: #fff4e0;
+  --color-warning-border: #fbd9a5;
   --color-info: #1f4fb8;
   --color-info-bg: #e8effd;
   --color-info-border: #c5d6fa;
@@ -71,6 +74,9 @@
   --color-danger-border: rgba(240, 113, 113, 0.35);
   --color-success: #5fd08a;
   --color-success-bg: rgba(95, 208, 138, 0.12);
+  --color-warning: #f5b452;
+  --color-warning-bg: rgba(245, 180, 82, 0.12);
+  --color-warning-border: rgba(245, 180, 82, 0.35);
   --color-info: #8fb0ff;
   --color-info-bg: rgba(76, 125, 240, 0.14);
   --color-info-border: rgba(76, 125, 240, 0.4);

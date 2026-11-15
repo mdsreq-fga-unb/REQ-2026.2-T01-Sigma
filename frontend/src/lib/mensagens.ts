@@ -24,6 +24,20 @@ export const MSG = {
   registroInativado: "Registro inativado com sucesso.",
   turmaReativada: "Turma reativada com sucesso.",
 
+  // UC04 – Gerenciar Fichas de Matrícula
+  cardCriado: "Card criado com sucesso",
+  fichaSalva: "Ficha salva com sucesso",
+  fichaSalvaDetalhe: "alteração registrada no histórico",
+  cardInativado: "Card inativado",
+  cardReativado: "Card reativado",
+  alunoVinculado: "Aluno vinculado à turma",
+  cpfEmUso: "Já existe um aluno cadastrado com este CPF.", // FE02 (RN07)
+  matriculaInativa: "Este card está inativo e não pode ser editado. Reative o card para fazer alterações.", // FE03 (RN10)
+  fichaIncompleta: "Preencha todos os campos obrigatórios destacados.", // FE01 (RN06)
+  falhaSalvar: "Não foi possível salvar. Verifique a conexão e tente novamente; nenhum dado foi gravado.", // FE04
+  turmaIndisponivel: "Esta turma não está mais ativa. Escolha outra turma.", // RN11
+  alunoNaoEncontrado: "Card não encontrado. Ele pode ter sido removido ou o endereço está incorreto.",
+
   // UC08 – Consultar Registros (FA02)
   nenhumResultado: "Nenhum resultado encontrado",
   nenhumResultadoDica: "Confira a grafia ou busque por parte do nome.",
