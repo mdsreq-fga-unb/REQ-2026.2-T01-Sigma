@@ -10,7 +10,7 @@ from app.core.database import Base   # ajuste para o arquivo onde a sua Base est
 
 # Importe TODOS os models. Se um model não for importado aqui,
 # o Alembic não sabe que ele existe e não cria a tabela.
-from app.models import aluno, etapa, ops, pessoa, user, turma, resp, tentativa, const, mixins
+from app.models import Req_matricula, aluno, etapa, ficha_socioeco, ops, pessoa, responsavel, termo_imagem, termo_saida, user, turma, tentativa, const, mixins, familiar, matricula, saude, pessoas_a, documento, termo_comp
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
