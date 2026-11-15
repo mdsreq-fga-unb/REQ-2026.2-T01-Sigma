@@ -4,8 +4,8 @@ import {
   esperar,
   mockHabilitado,
   naoEncontrado,
-  publico,
   store,
+  usuarioBackend,
   usuarioDaSessao,
 } from "@/mocks/store";
 
@@ -27,5 +27,5 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
   for (const [token, usuarioId] of store.sessoes) {
     if (usuarioId === alvo.id) store.sessoes.delete(token);
   }
-  return NextResponse.json(publico(alvo));
+  return NextResponse.json(usuarioBackend(alvo));
 }
