@@ -8,6 +8,7 @@ from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from .matricula import Matricula
+    from .pessoas_a import PessoaAutorizada
 
 class TermoSaida(TimestampMixin, Base):
 
@@ -19,3 +20,4 @@ class TermoSaida(TimestampMixin, Base):
     id_matricula:Mapped[int] = mapped_column(ForeignKey("Matricula.id"), unique=True)
 
     matricula:Mapped["Matricula"] = relationship(back_populates="termo_saida")
+    pessoa_autorizada:Mapped[list["PessoaAutorizada"]] = relationship(back_populates="tasa")
