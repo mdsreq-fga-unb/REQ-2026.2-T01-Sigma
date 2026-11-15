@@ -11,6 +11,8 @@ from .mixins import TimestampMixin
 if TYPE_CHECKING:
     from .turma import Turma
     from .responsavel import Responsavel
+    from .ficha_socioeco import FichaSocioeconomica
+    from .matricula import Matricula
 
 class StatusAluno(enum.Enum):
     ATIVO = "ativo"
@@ -59,4 +61,6 @@ class Aluno(TimestampMixin, Base):
 
     responsavel: Mapped["Responsavel"] = relationship(back_populates="alunos")
     turma: Mapped["Turma"] = relationship(back_populates="alunos")
+    ficha: Mapped["FichaSocioeconomica | None"] = relationship(back_populates="aluno", uselist=False)
+    matriculas: Mapped[list["Matricula"]] = relationship(back_populates="aluno")
 

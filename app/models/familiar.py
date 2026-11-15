@@ -6,12 +6,11 @@ from app.core.database import Base
 from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
-    from .aluno import Aluno
     from .ficha_socioeco import FichaSocioeconomica
 
-class Familia(TimestampMixin, Base):
+class Familiar(TimestampMixin, Base):
 
-    __tablename__ = "Familia"
+    __tablename__ = "Familiar"
 
     tipo:Mapped[str] = mapped_column(String(100))
     idade:Mapped[int] = mapped_column()
@@ -19,8 +18,6 @@ class Familia(TimestampMixin, Base):
     escolaridade:Mapped[str] = mapped_column(String(100))
     renda_mensal:Mapped[str] = mapped_column(String(200))
     id_fs:Mapped[int] = mapped_column(ForeignKey("FichaSocioeconomica.id"))
-    id_aluno:Mapped[int] = mapped_column(ForeignKey("Aluno.id"))
     id:Mapped[int] = mapped_column(primary_key=True)
 
-    aluno:Mapped["Aluno"] = relationship(back_populates="familia")
-    fs:Mapped["FichaSocioeconomica"] = relationship(back_populates="familia")
+    fs:Mapped["FichaSocioeconomica"] = relationship(back_populates="familiares")

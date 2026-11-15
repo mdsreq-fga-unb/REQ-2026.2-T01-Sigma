@@ -16,7 +16,7 @@ class Saude(TimestampMixin, Base):
     descricao:Mapped[str] = mapped_column(String(1000), nullable=True)
     acomp:Mapped[str] = mapped_column(String(200), nullable=True)
     descricao_acomp:Mapped[str] = mapped_column(String(1000), nullable=True)
-    id_rm:Mapped[int] = mapped_column(ForeignKey("RequerimentoMatricula.id"))
+    id_rm:Mapped[int] = mapped_column(ForeignKey("RequerimentoMatricula.id"), unique=True)
     id:Mapped[int] = mapped_column(primary_key=True)
 
     rm:Mapped["RequerimentoMatricula"] = relationship(back_populates="saude")

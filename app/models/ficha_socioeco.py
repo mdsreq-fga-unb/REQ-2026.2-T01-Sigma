@@ -7,6 +7,7 @@ from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from .aluno import Aluno
+    from .familiar import Familiar
 
 class FichaSocioeconomica(TimestampMixin, Base):
 
@@ -17,8 +18,7 @@ class FichaSocioeconomica(TimestampMixin, Base):
     valor:Mapped[str] = mapped_column(String(100))
     transporte:Mapped[str] = mapped_column(String(100))
     o_prop:Mapped[bool] = mapped_column()
-    id_aluno:Mapped[int] = mapped_column(ForeignKey("Aluno.id"))
+    id_aluno:Mapped[int] = mapped_column(ForeignKey("Aluno.id"), unique=True)
 
-    alunos:Mapped[list["Aluno"]] = relationship(back_populates="fs")
-
-    
+    aluno:Mapped["Aluno"] = relationship(back_populates="ficha")
+    familiares:Mapped[list["Familiar"]] = relationship(back_populates="fs")

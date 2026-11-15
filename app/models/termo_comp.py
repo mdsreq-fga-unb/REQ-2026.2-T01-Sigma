@@ -6,7 +6,7 @@ from app.core.database import Base
 from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
-    from .aluno import Aluno
+    from .matricula import Matricula
 
 class TermoCompromisso(TimestampMixin, Base):
 
@@ -16,8 +16,6 @@ class TermoCompromisso(TimestampMixin, Base):
     modalidade:Mapped[str] = mapped_column(String(100))
     regime:Mapped[str] = mapped_column(String(100))
     assinatura:Mapped[bool] = mapped_column()
-    id_aluno:Mapped[int] = mapped_column(ForeignKey("Aluno.id"))
+    id_matricula:Mapped[int] = mapped_column(ForeignKey("Matricula.id"), unique=True)
 
-    aluno:Mapped["Aluno"] = relationship(back_populates="termocomp")
-
-    
+    matricula:Mapped["Matricula"] = relationship(back_populates="termo_compromisso")

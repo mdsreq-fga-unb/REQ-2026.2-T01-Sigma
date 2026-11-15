@@ -7,7 +7,9 @@ from app.core.database import Base
 from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
-    from .aluno import Aluno
+    from .matricula import Matricula
+    from .documento import Documento
+    from .saude import Saude
 
 class RequerimentoMatricula(TimestampMixin, Base):
 
@@ -35,6 +37,8 @@ class RequerimentoMatricula(TimestampMixin, Base):
     loc_mae:Mapped[str] = mapped_column(String(200))
     data_ped_transf:Mapped[date] = mapped_column()
     data_ent_transf:Mapped[date] = mapped_column()
-    id_aluno:Mapped[int] = mapped_column(ForeignKey("Aluno.id"))
+    id_matricula:Mapped[int] = mapped_column(ForeignKey("Matricula.id"), unique=True)
 
-    aluno:Mapped["Aluno"] = relationship(back_populates="aluno")
+    matricula:Mapped["Matricula"] = relationship(back_populates="requerimento")
+    documentos:Mapped[list["Documento"]] = relationship(back_populates="rm")
+    saude:Mapped["Saude | None"] = relationship(back_populates="rm", uselist=False)
