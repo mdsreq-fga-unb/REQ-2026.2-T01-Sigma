@@ -1,0 +1,198 @@
+.alerta {
+  margin-bottom: 16px;
+}
+
+/* Fieldset que agrupa o termo: desabilitado inteiro quando o card está inativo. */
+.conteudo {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* ---------- Uso de imagem ---------- */
+.abrangencia {
+  margin-top: 4px;
+}
+
+/* ---------- Saída: pessoas autorizadas ---------- */
+.tabelaPessoas {
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+}
+
+.tabelaPessoas table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tabelaPessoas th {
+  padding: 10px 14px;
+  background: var(--color-surface-muted);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.tabelaPessoas td {
+  padding: 10px 14px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.tabelaPessoas .vazio {
+  color: var(--color-muted);
+}
+
+.colunaAcao {
+  width: 48px;
+  text-align: right;
+}
+
+.remover {
+  display: inline-flex;
+  padding: 4px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.remover:hover:not(:disabled) {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.remover:disabled {
+  cursor: not-allowed;
+}
+
+.adicionar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+}
+
+.adicionar > button {
+  margin-bottom: 0;
+}
+
+.erroCampo {
+  font-size: 13px;
+  color: var(--color-danger);
+}
+
+/* ---------- Compromisso ---------- */
+.normas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 4px;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.checkbox input:disabled {
+  cursor: not-allowed;
+}
+
+.checkbox input[aria-invalid="true"] {
+  outline: 1px solid var(--color-danger);
+  outline-offset: 1px;
+}
+
+@media (max-width: 600px) {
+  .adicionar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Link "Ver texto completo do termo →" (um <a>: continua acessível com o card inativo) */
+.linkTexto {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-info);
+  text-decoration: none;
+}
+
+.linkTexto:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Texto completo do termo (modal) ---------- */
+.textoTermo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+  text-align: justify;
+}
+
+.lacuna {
+  color: var(--color-muted);
+}
+
+.itensTermo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itensTermo li {
+  display: flex;
+  gap: 8px;
+}
+
+.numeroItem {
+  flex-shrink: 0;
+  min-width: 44px;
+  font-weight: 600;
+}
+
+.subitens {
+  display: flex;
+  flex-direction: column;
+  margin: 4px 0;
+}
+
+.subtituloTermo {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lembrete {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  font-size: 13px;
+  text-align: left;
+}
