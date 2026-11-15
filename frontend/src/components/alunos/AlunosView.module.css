@@ -1,0 +1,273 @@
+/* ---------- Ação do cabeçalho (link com aparência de botão primário) ---------- */
+.botaoNovo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.botaoNovo:hover {
+  background: var(--color-primary-hover);
+}
+
+.botaoNovo:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+/* ---------- Busca e filtros ---------- */
+.busca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.campo {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconeBusca {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px 0 38px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+/* Filtro com aparência de botão ("Status: Todos ▾"), mas um <select> nativo por dentro. */
+.filtro {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding-left: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.filtro:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.filtro label {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filtro select {
+  max-width: 180px;
+  height: 100%;
+  padding: 0 30px 0 4px;
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+}
+
+.filtro select:focus {
+  outline: none;
+}
+
+.filtro select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.chevron {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+}
+
+.dica {
+  margin: 8px 0 20px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* ---------- Tabela ---------- */
+.cartao {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.tabelaWrap {
+  overflow-x: auto;
+  border-radius: inherit;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela th {
+  padding: 12px 14px;
+  background: var(--color-surface-muted);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tabela td {
+  height: 45px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+}
+
+.nome {
+  color: var(--color-text);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+.abrir {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-info);
+  text-decoration: none;
+}
+
+.abrir:hover {
+  text-decoration: underline;
+}
+
+.skeleton {
+  display: block;
+  width: 70%;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--color-skeleton);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* ---------- Rodapé e paginação ---------- */
+.rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 12px;
+}
+
+.paginacao {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.paginacao button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+}
+
+.paginacao button:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+}
+
+.paginacao button:disabled {
+  color: var(--color-placeholder);
+  cursor: not-allowed;
+}
+
+.paginacao button[aria-current="page"] {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  font-weight: 700;
+}
+
+.estadoErro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .busca {
+    flex-wrap: wrap;
+  }
+
+  .campo {
+    flex-basis: 100%;
+  }
+
+  .filtro {
+    flex: 1;
+  }
+
+  .filtro select {
+    flex: 1;
+    max-width: none;
+  }
+}
