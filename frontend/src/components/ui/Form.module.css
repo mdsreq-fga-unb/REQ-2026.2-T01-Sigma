@@ -71,7 +71,8 @@
 
 .radios {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
 }
 
 .radio {
@@ -88,4 +89,38 @@
   margin: 0;
   accent-color: var(--color-primary);
   cursor: pointer;
+}
+
+/* Select (SelectField) */
+.selectWrap {
+  position: relative;
+}
+
+.select {
+  padding-right: 40px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.select option {
+  color: var(--color-text);
+}
+
+.selectVazio {
+  color: var(--color-placeholder);
+}
+
+.selectChevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.fieldset[aria-invalid="true"] .radio input {
+  outline: 1px solid var(--color-danger);
+  outline-offset: 1px;
+  border-radius: 50%;
 }

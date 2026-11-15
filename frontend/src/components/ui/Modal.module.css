@@ -30,6 +30,10 @@
   max-width: 440px;
 }
 
+.lg {
+  max-width: 760px;
+}
+
 .header {
   margin-bottom: 20px;
 }

@@ -40,6 +40,14 @@
   flex: 1;
 }
 
+.detail {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
 .close {
   display: inline-flex;
   padding: 4px;

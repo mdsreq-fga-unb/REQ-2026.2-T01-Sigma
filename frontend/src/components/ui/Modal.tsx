@@ -10,7 +10,7 @@ interface ModalProps {
   onClose: () => void;
   /** Quando false, Esc e clique no overlay não fecham (ex.: durante uma requisição). */
   dismissible?: boolean;
-  size?: "md" | "sm";
+  size?: "md" | "sm" | "lg";
   children: ReactNode;
 }
 
@@ -88,7 +88,7 @@ export function Modal({ title, description, onClose, dismissible = true, size = 
         aria-labelledby={titleId}
         aria-describedby={description ? descId : undefined}
         tabIndex={-1}
-        className={`${styles.dialog} ${size === "sm" ? styles.sm : ""}`}
+        className={`${styles.dialog} ${size === "md" ? "" : styles[size]}`}
       >
         <header className={styles.header}>
           <h2 id={titleId} className={styles.title}>

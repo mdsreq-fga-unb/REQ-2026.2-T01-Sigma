@@ -7,9 +7,12 @@ import styles from "./Toast.module.css";
 interface ToastItem {
   id: number;
   message: string;
+  detail?: string;
 }
 
-const ToastContext = createContext<((message: string) => void) | null>(null);
+type MostrarToast = (message: string, detail?: string) => void;
+
+const ToastContext = createContext<MostrarToast | null>(null);
 
 const DURACAO_MS = 4000;
 
@@ -22,9 +25,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const mostrar = useCallback(
-    (message: string) => {
+    (message: string, detail?: string) => {
       const id = ++nextId.current;
-      setToasts((atual) => [...atual, { id, message }]);
+      setToasts((atual) => [...atual, { id, message, detail }]);
       setTimeout(() => fechar(id), DURACAO_MS);
     },
     [fechar],
@@ -39,7 +42,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             <span className={styles.icon}>
               <IconCheck size={14} />
             </span>
-            <span className={styles.message}>{toast.message}</span>
+            <span className={styles.message}>
+              {toast.message}
+              {toast.detail && <span className={styles.detail}>{toast.detail}</span>}
+            </span>
             <button type="button" className={styles.close} onClick={() => fechar(toast.id)} aria-label="Fechar aviso">
               <IconX size={16} />
             </button>
