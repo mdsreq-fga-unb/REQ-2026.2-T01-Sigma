@@ -3,7 +3,7 @@
 Interface web do SIGMA (Next.js 16 + React 19 + Axios + TypeScript).
 Escopo atual: **UC01 – Gerenciar Autenticação**, **UC02 – Gerenciar Usuários Administrativos**,
 **UC04 – Gerenciar Fichas de Matrícula**, **UC06 – Gerenciar Estrutura Escolar** e
-**UC08 – Consultar Registros** (busca de turmas e etapas).
+**UC08 – Consultar Registros** (busca de alunos, turmas e etapas).
 
 ## Como rodar
 
@@ -48,7 +48,7 @@ src/
 ├── app/
 │   ├── (auth)/login/           # UC01 – tela de login
 │   ├── (app)/                  # área autenticada (layout com sidebar)
-│   │   ├── alunos/             # UC04 – cards de matrícula, fichas e histórico
+│   │   ├── alunos/             # UC08 – lista e busca; novo/ – novo aluno; [id]/ – card e abas (UC04)
 │   │   ├── turmas/             # UC06/UC08 – turmas e etapas: listagem, busca, cadastro, inativação
 │   │   └── usuarios/           # UC02 – listagem, cadastro e inativação
 │   └── api/mock/               # mock da API (somente com SIGMA_API_MOCK=true)
@@ -57,9 +57,9 @@ src/
 │   ├── layout/                 # Sidebar, UserCard, BrandPanel, AppShell, PageHeader
 │   ├── auth/                   # LoginForm
 │   └── usuarios/               # UsuariosTable, NovoUsuarioModal, InativarUsuarioModal
-│   └── alunos/                 # MatriculaForm, MatriculasView
+│   └── alunos/                 # AlunosView, NovoAlunoForm, card/ (layout, visão geral, modais), termos/
 │   └── turmas/                 # TurmasEtapasView, BuscaEstrutura, TurmasTable, EtapasList, modais, useTurmasEtapas
-├── services/                   # api.ts (Axios) e um *.service.ts por recurso (auth, usuarios, matriculas, turmas, etapas)
+├── services/                   # api.ts (Axios) e um *.service.ts por recurso (auth, usuarios, alunos, turmas, etapas)
 ├── hooks/                      # useAuth, useInactivityLogout, useTheme
 ├── lib/                        # mensagens, validações, formatação, constantes de sessão
 ├── mocks/                      # estado em memória do mock
@@ -94,6 +94,10 @@ backend responde só `{"detail": "<texto>"}`, o código é inferido pelo status 
 `CREDENCIAIS_INVALIDAS`, `423` → `CONTA_BLOQUEADA`, `403` no login → `CONTA_INATIVA`, `401`/`403`
 nas demais rotas → `NAO_AUTENTICADO`/`SEM_PERMISSAO`, `404` → `NAO_ENCONTRADO`).
 
+**Usuários:** as rotas `/usuarios` seguem o formato do backend (`UsuarioBackend` =
+`{id, nome, email, is_Admin, ativo, created_at}`, listagem paginada); `usuarios.service.ts` converte
+para `Usuario`. O mock devolve o mesmo formato. Já `/auth/login` e `/auth/me` do mock devolvem `Usuario`.
+
 **Etapas:** o backend não tem `status` nem `quantidadeTurmas` em Etapa; o frontend assume `ATIVO` e `0`.
 `PATCH /turmas/{id}/reativar` ainda não existe no backend (fora do MVP); o modal exibe aviso no `404`.
 
@@ -102,16 +106,17 @@ nas demais rotas → `NAO_AUTENTICADO`/`SEM_PERMISSAO`, `404` → `NAO_ENCONTRAD
 | `POST /auth/login` `{email, senha}` | `200` Usuario + cookie | `401 CREDENCIAIS_INVALIDAS`, `423 CONTA_BLOQUEADA`, `403 CONTA_INATIVA` |
 | `POST /auth/logout` | `204` | — |
 | `GET /auth/me` | `200` Usuario | `401 NAO_AUTENTICADO` |
-| `GET /usuarios` | `200` Usuario[] | `401` |
-| `POST /usuarios` `{nome, email, administrador, senha}` | `201` Usuario | `403 SEM_PERMISSAO`, `409 EMAIL_EM_USO`, `422 SENHA_FORA_PADRAO`, `422 DADOS_INVALIDOS` |
-| `PATCH /usuarios/{id}/inativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `422` (própria conta) |
-| `PATCH /usuarios/{id}/reativar` | `200` Usuario | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` (já ativa) |
-| `GET /matriculas` | `200` Matricula[] | `401` |
-| `POST /matriculas` `{aluno, fichas}` | `201` Matricula ativa | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `422 FICHAS_INCOMPLETAS` |
-| `GET /matriculas/{id}` | `200` Matricula com histórico | `401`, `404 NAO_ENCONTRADO` |
-| `PUT /matriculas/{id}` `{aluno, fichas}` | `200` Matricula atualizada | `409 CPF_EM_USO`, `409 MATRICULA_EM_USO`, `409 MATRICULA_INATIVA`, `422 FICHAS_INCOMPLETAS` |
-| `PATCH /matriculas/{id}/inativar` | `200` Matricula inativa | `404 NAO_ENCONTRADO` |
-| `PATCH /matriculas/{id}/reativar` | `200` Matricula ativa | `404 NAO_ENCONTRADO`, `409 CPF_EM_USO`, `422 FICHAS_INCOMPLETAS` |
+| `GET /usuarios?pagina=&tamanho=` | `200` `{itens: UsuarioBackend[], total, pagina, tamanho}` | `401` |
+| `POST /usuarios` `{nome, email, administrador, senha}` | `201` UsuarioBackend | `403 SEM_PERMISSAO`, `409 EMAIL_EM_USO`, `422 SENHA_FORA_PADRAO`, `422 DADOS_INVALIDOS` |
+| `PATCH /usuarios/{id}/inativar` | `200` UsuarioBackend | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `422` (própria conta) |
+| `PATCH /usuarios/{id}/reativar` | `200` UsuarioBackend | `403 SEM_PERMISSAO`, `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` (já ativa) |
+| `GET /alunos?busca=&status=&turmaId=&pagina=&tamanhoPagina=` | `200` ListaAlunos | `401` |
+| `POST /alunos` `{aluno, matricula}` | `201` AlunoCard ativo | `409 CPF_EM_USO`, `409 ETAPA_INATIVA`, `422 DADOS_INVALIDOS` |
+| `GET /alunos/{id}` | `200` AlunoCard | `404 NAO_ENCONTRADO` |
+| `PUT /alunos/{id}/termos/{uso-imagem\|saida\|compromisso}` | `200` AlunoCard | `404`, `409 MATRICULA_INATIVA`, `422 FICHAS_INCOMPLETAS`, `422 DADOS_INVALIDOS` |
+| `PATCH /alunos/{id}/inativar` | `200` AlunoCard inativo | `404`, `409 STATUS_INVALIDO` |
+| `PATCH /alunos/{id}/reativar` | `200` AlunoCard ativo | `404`, `409 STATUS_INVALIDO` |
+| `PATCH /alunos/{id}/turma` `{turmaId}` | `200` AlunoCard | `404`, `409 MATRICULA_INATIVA`, `409 TURMA_INATIVA`, `409 ETAPA_INATIVA`, `422` |
 | `GET /turmas?busca=&status=` | `200` Turma[] | `401` |
 | `POST /turmas` `{nome, etapaId}` | `201` Turma ativa | `409 TURMA_NOME_EM_USO`, `409 ETAPA_INATIVA`, `422 DADOS_INVALIDOS` |
 | `PATCH /turmas/{id}/inativar` | `200` Turma inativa | `404 NAO_ENCONTRADO`, `409 STATUS_INVALIDO` |
@@ -144,30 +149,17 @@ interface Etapa {
 }
 ```
 
-No mock, o card reúne os dados cadastrais do aluno e as fichas socioeconômica,
-autorização de imagem, autorização de saída, compromisso escolar e requerimento de
-matrícula. A matrícula só é ativada após o preenchimento das fichas obrigatórias e o
-aceite do compromisso escolar. Edições e mudanças de status registram data, autor e
-campos alterados no histórico. O estado do mock é mantido em memória e reinicializado
-com o servidor de desenvolvimento.
-
-```ts
-interface Matricula {
-  id: string;
-  aluno: DadosAluno;
-  fichas: FichasMatricula;
-  status: "ATIVA" | "INATIVA";
-  criadaEm: string;
-  atualizadaEm: string;
-  historico: {
-    id: string;
-    data: string;
-    autor: string;
-    tipo: "CRIACAO" | "EDICAO" | "INATIVACAO" | "REATIVACAO";
-    alteracoes: string[];
-  }[];
-}
-```
+**Alunos (UC04 e UC08 FP01):** o backend ainda não tem essas rotas; o frontend usa o mock.
+A busca de alunos é por nome completo ou parcial e **ignora** acentos e maiúsculas/minúsculas (RF21),
+com filtros opcionais de status e turma e paginação no servidor. `?turma=<id>` na URL de `/alunos`
+(link "Ver alunos" da tela de turmas) abre a lista já filtrada.
+O card é criado só com os dados pessoais e da matrícula (RF08); os termos são salvos um a um em
+`PUT /alunos/{id}/termos/{termo}`, com confirmação (RF23). Cada termo pendente vem como `null`.
+Requerimento de matrícula e ficha socioeconômica ainda não têm formulário: o card só informa se
+estão preenchidas. Toda alteração registra autor e data no histórico (RF17), exposto em
+`ultimaEdicao`. Card inativo não aceita edição (`409 MATRICULA_INATIVA`, RN10). O mock de alunos apenas **consulta** turmas e etapas
+para exibir nomes e validar o vínculo; ele não altera o estado da tela de Turmas e etapas. Os tipos completos
+(`AlunoCard`, `TermosAluno`, `ListaAlunos`, `NovoAlunoPayload`) estão em `src/types/index.ts`.
 
 ```ts
 interface Usuario {
