@@ -1152,55 +1152,55 @@
 <td>30/09 a 19/10</td>
 <td>Refinamento do MVP e preparação das CP1 a CP5 e CP7. A CP6 permanece fora do MVP conforme decisão tomada com o cliente em 06/10/2026.</td>
 <td>Consolidar a definição do MVP a partir da validação realizada com o cliente em 06/10/2026. Incorporar os retornos recebidos, elaborar os protótipos das telas e refinar os fluxos de uso. Detalhar o modelo de dados, o controle de acesso, o registro de alterações nos cards, a segurança, os backups, a hospedagem e os limites da migração de dados.</td>
-<td><a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/reunioes/ata1.html">MVP aprovado pelo cliente</a>; protótipos e fluxos de uso sujeitos à validação das partes interessadas. (A reunião para apresentar os protótipos deve ser agendada e confirmada com o cliente. As decisões técnicas ainda pendentes devem ser registradas antes da implementação).</td>
-<td>Em andamento</td>
+<td><strong>MVP aprovado pelo cliente</strong> e <strong>protótipos e fluxos de uso validados com as secretárias no dia 04/11</strong>.</td>
+<td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 4 - Construção</strong></td>
 <td>20/10 a 29/10</td>
 <td>CP1 — Gerenciamento de cards de matrícula. CP4 — Controle de acesso, como funcionalidade transversal.</td>
-<td>Implementar o cadastro e o gerenciamento inicial dos cards de matrícula (CP1), integrando desde o início os mecanismos de autenticação e controle de acesso (CP4). Verificar a criação, a consulta básica e a persistência dos registros, assim como o acesso autorizado às funcionalidades.</td>
-<td>Fluxo inicial de cadastro de cards implementado e testado; autenticação e autorização funcionando nos fluxos desenvolvidos. Revisão interna dos testes e demonstração ao cliente, com data proposta de 29/10/2026.</td>
-<td>Planejada</td>
+<td>Implementar o cadastro e o gerenciamento inicial dos cards de matrícula (CP1), integrando desde o início os mecanismos de autenticação e controle de acesso (CP4). Verificar a criação, a consulta básica e a persistência dos registros. <strong>Nota:</strong> Como a criação de turmas/etapas (RF18/RF24) e vinculação (RF13) ocorrem na Iteração 7, nesta iteração o cadastro do aluno permitirá o preenchimento da turma como texto livre para não bloquear a RN02.</td>
+<td>Fluxo inicial de cadastro de cards implementado e testado; autenticação e autorização funcionando nos fluxos desenvolvidos. Revisão interna dos testes e demonstração ao cliente.</td>
+<td><strong>Em andamento</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 5 - Construção</strong></td>
 <td>30/10 a 05/11</td>
 <td>CP2 — Edição e atualização de cards de matrícula. Continuidade dos controles de acesso da CP4.</td>
 <td>Implementar a edição e a atualização dos cards de matrícula (CP2), considerando o requisito discutido com o cliente de preservar valores anteriores relevantes quando as informações forem alteradas. Verificar também a consistência dos registros após as atualizações.</td>
-<td>Funcionalidades de edição e atualização testadas, com evidências de preservação do histórico definido nos requisitos. Revisão interna e validação com o cliente, com data proposta de 05/11/2026.</td>
+<td>Funcionalidades de edição e atualização testadas, com evidências de preservação do histórico definido nos requisitos. Revisão interna e validação com o cliente.</td>
 <td>Planejada</td>
 </tr>
 <tr>
 <td><strong>Iteração 6 - Construção</strong></td>
 <td>06/11 a 12/11</td>
 <td>CP5 — Gerenciamento de documentos. Dependência dos cards de matrícula da CP1 e manutenção dos controles de acesso da CP4.</td>
-<td>Implementar o gerenciamento de documentos vinculados aos cards de matrícula (CP5), incluindo as operações previstas de anexação, consulta e exclusão. Verificar as permissões de acesso e a integridade dos vínculos entre os documentos e os respectivos cards. Essa funcionalidade será tratada separadamente da edição dos cards, prevista na iteração anterior.</td>
-<td>Gerenciamento de documentos implementado e testado, com verificação dos vínculos, das permissões e das operações previstas. Revisão interna e validação com o cliente, com data proposta de 12/11/2026.</td>
+<td>Implementar o gerenciamento de documentos vinculados aos cards de matrícula (CP5), incluindo as operações previstas de anexação, consulta, <strong>substituição ou exclusão</strong> (conforme alinhamento com a Issue de Requisitos). Verificar as permissões de acesso e a integridade dos vínculos.</td>
+<td>Gerenciamento de documentos implementado e testado, com verificação dos vínculos, das permissões e das operações previstas. Revisão interna e validação com o cliente.</td>
 <td>Planejada</td>
 </tr>
 <tr>
 <td><strong>Iteração 7 - Construção</strong></td>
 <td>13/11 a 19/11</td>
 <td>CP3 — Consulta de informações dos cards de matrícula. CP7 — Gerenciamento de turmas e etapas. Integração com as funcionalidades anteriores e manutenção da CP4.</td>
-<td>Implementar a consulta de informações dos cards (CP3) e o gerenciamento de turmas e etapas (CP7). Integrar as funcionalidades desenvolvidas, executar testes de integração e regressão e corrigir problemas encontrados.</td>
-<td>Funcionalidades de consulta, turmas e etapas integradas ao sistema; resultados dos testes registrados; pendências classificadas por impacto e prioridade. Demonstração integrada ao cliente, com data proposta de 19/11/2026, em consonância com o encerramento da Unidade 3.</td>
+<td>Implementar a consulta de informações dos cards (CP3) e o gerenciamento de turmas e etapas (CP7). Integrar as funcionalidades desenvolvidas, executar testes de integração e regressão.</td>
+<td>Funcionalidades de consulta, turmas e etapas integradas ao sistema; resultados dos testes registrados. Demonstração integrada ao cliente.</td>
 <td>Planejada</td>
 </tr>
 <tr>
 <td><strong>Iteração 8 - Transição</strong></td>
 <td>24/11 a 03/12</td>
-<td>Homologação do MVP composto pelas CP1, CP2, CP3, CP4, CP5 e CP7. Preparação dos dados, segurança e infraestrutura necessárias à operação do conjunto.</td>
-<td>Executar a preparação para implantação, incluindo homologação, testes integrados, verificações de segurança, backup e recuperação, preparação e conferência dos dados e treinamento dos usuários. A migração deverá contemplar apenas os cards de matrícula de 2026, conforme acordado com o cliente, sem incluir o arquivo histórico anterior. Definir também um procedimento de contingência para problemas durante a transição.</td>
-<td>Sistema homologado em ambiente de pré-produção; dados de 2026 preparados e conferidos; procedimentos de backup, recuperação e contingência verificados; usuários orientados. Validação com o cliente, com data proposta de 03/12/2026.</td>
+<td>Homologação do MVP composto pelas CP1, CP2, CP3, CP4, CP5 e CP7. Preparação dos dados, segurança e infraestrutura.</td>
+<td>Executar a preparação para implantação, incluindo homologação, testes integrados, verificações de segurança, backup e recuperação, preparação e conferência dos dados e treinamento dos usuários. <strong>A migração piloto contemplará 5 fichas selecionadas, por meio da digitalização dos documentos físicos e digitação no sistema.</strong></td>
+<td>Sistema homologado em ambiente de pré-produção; <strong>5 fichas migradas e conferidas com as secretárias</strong>; procedimentos de backup e contingência verificados.</td>
 <td>Planejada</td>
 </tr>
 <tr>
 <td><strong>Iteração 9 - Transição</strong></td>
 <td>04/12 a 10/12</td>
-<td>Implantação e aceite do MVP: CP1, CP2, CP3, CP4, CP5 e CP7. A CP6 não integra o escopo de entrega previsto para este MVP.</td>
-<td>Preparar e executar a implantação, desde que a hospedagem, a infraestrutura, a segurança e os mecanismos de backup e recuperação estejam confirmados. Acompanhar o funcionamento inicial, corrigir problemas encontrados, finalizar a documentação e definir responsabilidades de suporte e manutenção após a entrega.</td>
-<td>Sistema disponibilizado para uso somente após a verificação das condições de implantação; testes finais e aceite registrados; documentação e pendências entregues à equipe responsável. A validação final com o cliente tem data proposta de 10/12/2026. O período também deverá contemplar uma margem para correções após a implantação.</td>
+<td>Implantação e aceite do MVP: CP1, CP2, CP3, CP4, CP5 e CP7.</td>
+<td>Preparar e executar a implantação técnica. Acompanhar o funcionamento inicial, corrigir problemas encontrados, finalizar a documentação e definir responsabilidades de suporte e manutenção após a entrega. <strong>A operação em larga escala e a substituição total do papel ocorrerão em 2027 com a entrada das novas turmas.</strong></td>
+<td>Sistema disponibilizado para uso (Piloto) em dez/2026; testes finais e aceite registrados; documentação entregue.</td>
 <td>Planejada</td>
 </tr>
 </tbody>

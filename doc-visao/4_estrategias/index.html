@@ -534,6 +534,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#44-decisoes-de-arquitetura-seguranca-e-riscos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Decisões de Arquitetura, Segurança e Riscos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-acompanhamento-das-iteracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Acompanhamento das Iterações
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1206,6 +1228,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#44-decisoes-de-arquitetura-seguranca-e-riscos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Decisões de Arquitetura, Segurança e Riscos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-acompanhamento-das-iteracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Acompanhamento das Iterações
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1331,43 +1375,7 @@
 <li>Gestão de mudanças leve e de transformação.</li>
 </ul>
 <h3 id="412-relacao-entre-os-artefatos">4.1.2 Relação entre os Artefatos</h3>
-<p>Dois dos artefatos escolhidos para este projeto podem parecer redundantes para algumas pessoas: casos de uso e histórias do usuário. A equipe resolveu essa situação especificando relações claras para evitar ambiguidades e acredita ter encontrado a melhor maneira de aplicá-los a este projeto, conforme mostrado na tabela abaixo.</p>
-<table>
-<thead>
-<tr>
-<th>Características</th>
-<th>Casos de Uso</th>
-<th>Histórias do Usuário</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Objetivo</td>
-<td>Descrição do sistema de acordo com seus atores e ações</td>
-<td>A descrição do sistema do ponto de vista dos usuários</td>
-</tr>
-<tr>
-<td>Uso</td>
-<td>Principal para desenvolvimento e validação</td>
-<td>Complementares aos casos de uso; usado para demonstração a partes interessadas</td>
-</tr>
-<tr>
-<td>Nível</td>
-<td>Nível mais alto de descrição, com refinamento gradual; nível de detalhe maior</td>
-<td>Breve e casual; nível mais baixo de detalhe</td>
-</tr>
-<tr>
-<td>Relação</td>
-<td>Cada história do usuário é inspirada em pelo menos alguns casos de uso</td>
-<td>Cada caso de uso pode ser derivado de várias histórias do usuário</td>
-</tr>
-<tr>
-<td>Exemplo</td>
-<td>A história do usuário "Como secretária, eu quero cadastrar um aluno para ter acesso aos dados" é baseada no caso de uso "Cadastrar aluno"</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>Embora o OpenUP preveja a utilização de Histórias de Usuário como artefatos complementares, a equipe decidiu centralizar o desenvolvimento e a documentação nos Casos de Uso. Com essa escolha visamos garantir maior rastreabilidade e alinhamento com a arquitetura do sistema. As Histórias de Usuário foram incorporadas como Critérios de Aceite dentro da especificação de cada Caso de Uso, evitando a duplicação de artefatos e mantendo o foco na interação entre atores e sistema.</p>
 <h3 id="413-direcao-dos-riscos">4.1.3 Direção dos Riscos</h3>
 <p>Como mencionado anteriormente, o OpenUP tem sido amplamente orientado por riscos desde seu surgimento. Assim, quando se trata desse projeto, a equipe precisa abordar os riscos significativos que se aplicam a ele primeiro, com aqueles que são menos prováveis sendo abordados posteriormente ou ignorados completamente. Os riscos significativos identificados para este projeto são apresentados na tabela abaixo, juntamente com as formas como eles serão enfrentados.</p>
 <table>
@@ -1487,6 +1495,82 @@
 <p>Como o OpenUP tem sido utilizado para definir uma abordagem bem-sucedida para as melhores práticas de engenharia de requisitos, ele serve como modelo de referência para aplicar a metodologia de engenharia de requisitos discutida nesta aula do curso. Dessa forma, a etapa de elicitação e descoberta, que utiliza entrevistas individuais e coletivas e a análise de documentação existente, pode ser combinada com as avaliações de análise e consenso, que enfatizam a importância da priorização. Depois disso, as atividades de declaração de requisitos podem ser integradas ao processo iterativo de negociação com os stakeholders do cliente. Em seguida, a descrição detalhada da relação entre casos de uso e usuários ajuda a evitar possíveis confusões e divergências entre os vários documentos. No geral, a descrição do OpenUP fornece uma compreensão detalhada de como os requisitos devem ser elaborados, apresentados e comunicados aos stakeholders do cliente. Da mesma forma, a definição transparente dos tipos de entradas e requisitos, de modo que os documentos sejam distintos, ajuda a diferenciar requisitos funcionais, não funcionais e de negócio, assim como requisitos de implementação e de arquitetura.</p>
 <h2 id="4-as-semelhancas-e-diferencas-tanto-com-relacoes-gerenciais-quanto-com-praticas-de-documentacao-do-up">4. As semelhanças e diferenças tanto com relações gerenciais quanto com práticas de documentação do UP</h2>
 <p>A principal diferença entre o OpenUP e o UP reside nos objetivos para os quais ambos foram originalmente desenvolvidos. Enquanto o UP visa proporcionar uma estrutura abrangente para atividades de governança e gestão de projetos na implementação de projetos de grande escala, a abordagem OpenUP visa oferecer métodos ágeis e mais leves para o mesmo objetivo. Assim, apesar de a estrutura de documentação e gerenciamento do UP ser extremamente rigorosa e poderosa, ela não se tornaria economicamente viável para um projeto conduzido por uma equipe reduzida de estudantes. No geral, no que diz respeito ao projeto para a Creche Estação Vida, a decisão de seguir o OpenUP se mostrou apropriada, pois oferece uma abordagem razoavelmente simples e ágil para o mesmo escopo e estrutura gerencial do UP.</p>
+<h2 id="44-decisoes-de-arquitetura-seguranca-e-riscos">4.4 Decisões de Arquitetura, Segurança e Riscos</h2>
+<p>Durante a fase de Elaboração, a equipe analisou os riscos técnicos e definiu as seguintes soluções para a arquitetura e infraestrutura do SIGMA, garantindo o embasamento técnico necessário para a etapa de Construção:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Categoria</th>
+<th style="text-align: left;">Decisão Tomada</th>
+<th style="text-align: left;">Risco Mitigado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Arquitetura</strong></td>
+<td style="text-align: left;">Backend em FastAPI (Python) e Frontend em Node.js, comunicando-se via API REST.</td>
+<td style="text-align: left;">Facilita a separação de responsabilidades e a manutenção.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Banco de Dados</strong></td>
+<td style="text-align: left;">PostgreSQL (relacional).</td>
+<td style="text-align: left;">Garante integridade dos dados e suporta consultas complexas (RN02).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Segurança</strong></td>
+<td style="text-align: left;">Autenticação via JWT e senhas criptografadas com Bcrypt.</td>
+<td style="text-align: left;">Impede acessos não autorizados (RNF01, RNF02) e vazamento de senhas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Backup</strong></td>
+<td style="text-align: left;">Rotina de backup diário do banco de dados via volumes do Docker.</td>
+<td style="text-align: left;">Mitiga a perda de dados em caso de falha no servidor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hospedagem</strong></td>
+<td style="text-align: left;">Conteinerização com Docker.</td>
+<td style="text-align: left;">Garante que o sistema rode de forma idêntica em qualquer ambiente.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="45-acompanhamento-das-iteracoes">4.5 Acompanhamento das Iterações</h2>
+<p>Para garantir a transparência do processo OpenUP e rastrear a execução das atividades, a equipe mantém o seguinte registro de acompanhamento:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Iteração</th>
+<th style="text-align: left;">Planejado</th>
+<th style="text-align: left;">Concluído</th>
+<th style="text-align: left;">Replanejado / Pendências</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Iteração 1</strong></td>
+<td style="text-align: left;">Documento de Visão, Rich Picture</td>
+<td style="text-align: left;">Entregue no prazo.</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Iteração 2</strong></td>
+<td style="text-align: left;">Backlog inicial, priorização MoSCoW</td>
+<td style="text-align: left;">Entregue.</td>
+<td style="text-align: left;">Matriz de priorização ajustada após feedback.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Iteração 3</strong></td>
+<td style="text-align: left;">Prototipação e decisões de arquitetura</td>
+<td style="text-align: left;"><strong>Concluída em 04/11</strong>.</td>
+<td style="text-align: left;">Protótipos validados com a cliente. Decisões de arquitetura documentadas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Iteração 4</strong></td>
+<td style="text-align: left;">Cadastro de cards e controle de acesso</td>
+<td style="text-align: left;">Em andamento.</td>
+<td style="text-align: left;">-</td>
+</tr>
+</tbody>
+</table>
 
 
 

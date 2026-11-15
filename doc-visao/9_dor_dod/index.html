@@ -1114,37 +1114,106 @@
 
 
 <h1 id="9-definition-of-ready-dor-e-definition-of-done-dod">9. Definition of Ready (DoR) e Definition of Done (DoD)</h1>
-<p>Para apoiar a condução iterativa e incremental do projeto SIGMA, foram definidos critérios de Definition of Ready (DoR) e Definition of Done (DoD). Esses acordos têm como finalidade tornar explícito quando um item está suficientemente preparado para ser selecionado para desenvolvimento e quando uma entrega pode ser considerada efetivamente concluída.</p>
+<p>Para apoiar a condução iterativa e incremental do projeto SIGMA, foram definidos critérios de Definition of Ready (DoR) e Definition of Done (DoD). Esses acordos têm como finalidade estabelecer condições claras para determinar quando um Caso de Uso ou conjunto de fluxos está suficientemente preparado para ser selecionado para desenvolvimento e quando uma funcionalidade ou incremento pode ser considerado concluído.</p>
+<p>A aplicação desses critérios busca garantir que as atividades de desenvolvimento sejam iniciadas com informações suficientes, decisões importantes previamente estabelecidas e escopo delimitado. Além disso, permite acompanhar a qualidade das entregas, verificar o atendimento aos requisitos e manter a rastreabilidade entre os objetivos específicos, as características do produto, os requisitos, os Casos de Uso e as funcionalidades implementadas.</p>
 <hr />
 <h2 id="91-definition-of-ready-dor">9.1 Definition of Ready (DoR)</h2>
-<p>O Definition of Ready (DoR) estabelece as condições mínimas para que um conjunto de requisitos ou um Caso de Uso esteja pronto para ser selecionado para a iteração. No contexto do SIGMA, um item só será considerado pronto se apresentar informações suficientes para uma implementação segura no sistema, sem depender de informações emergentes oriundas de decisões vitais em aberto. A seguir, a lista que abrange todas as condições do DoR:</p>
+<p>O Definition of Ready (DoR) estabelece as condições mínimas para que um Caso de Uso ou conjunto de fluxos esteja apto a ser selecionado para uma iteração de desenvolvimento. No contexto do SIGMA, um item será considerado pronto quando apresentar informações suficientes para orientar sua implementação, sem depender de decisões essenciais ou esclarecimentos ainda pendentes.</p>
+<p>Para isso, devem ser atendidos os seguintes critérios:</p>
 <ul>
-<li><strong>Regras de Negócio compreendidas:</strong> Regras de Negócio relacionadas ao item inteiramente compreendidas e registradas;</li>
-<li><strong>Análise prévia realizada:</strong> Houve uma análise prévia das dependências técnicas, riscos e impactos;</li>
-<li><strong>Rastreabilidade verificável:</strong> Há uma relação verificável com pelo menos um objetivo específico, característica de produto e/ou requisito funcional;</li>
-<li><strong>Critérios de aceitação definidos:</strong> O Caso de Uso está de acordo com os critérios de aceitação e regras de negócio que permitem verificar a conclusão;</li>
-<li><strong>Validação com o cliente:</strong> O cliente já validou a aplicação do Caso de Uso, atestando o valor de negócio e importância para o projeto;</li>
-<li><strong>Escopo compatível com a iteração:</strong> O escopo do Caso de Uso ou do conjunto selecionado é proporcional e adequado à duração da iteração;</li>
-<li><strong>Mensuração técnica completa:</strong> Os conhecimentos acerca da real implementação da funcionalidade relacionada ao item estão bem mensurados e abrangidos, isto é, não há lacunas referentes à utilização e funcionamento;</li>
-<li><strong>Detalhamento suficiente:</strong> Detalhamento suficiente da funcionalidade para a real implementação.</li>
+<li>
+<p><strong>Descrição formal do Caso de Uso:</strong> O Caso de Uso está formalmente descrito, contendo de forma clara e sem ambiguidades a identificação dos atores, objetivo, pré-condições, pós-condições, fluxo principal e fluxos alternativos e de exceção aplicáveis.</p>
+</li>
+<li>
+<p><strong>Rastreabilidade verificável:</strong> Há relação identificável com ao menos um objetivo específico, característica de produto ou requisito funcional/não funcional na Matriz de Rastreabilidade.</p>
+</li>
+<li>
+<p><strong>Critérios de aceitação definidos:</strong> O Caso de Uso está acompanhado de critérios de aceitação verificáveis e regras de negócio claras, que permitam avaliar o comportamento esperado dos fluxos contemplados.</p>
+</li>
+<li>
+<p><strong>Regras de negócio compreendidas:</strong> As regras de negócio necessárias para a implementação já foram compreendidas, registradas e relacionadas ao Caso de Uso.</p>
+</li>
+<li>
+<p><strong>Protótipo ou wireframe disponível:</strong> Quando houver impacto na interface, existe um protótipo ou wireframe correspondente, suficientemente detalhado e validado para orientar o desenvolvimento.</p>
+</li>
+<li>
+<p><strong>Análise prévia realizada:</strong> As dependências técnicas, os riscos e os impactos arquiteturais relevantes foram identificados e analisados previamente, evitando que decisões essenciais para a implementação permaneçam em aberto.</p>
+</li>
+<li>
+<p><strong>Escopo compatível com a iteração:</strong> O escopo do Caso de Uso ou do conjunto de fluxos selecionado está delimitado e é compatível com a capacidade de desenvolvimento da equipe durante uma iteração.</p>
+</li>
+<li>
+<p><strong>Validação com a representante do projeto:</strong> A representante do projeto validou o entendimento do Caso de Uso, confirmando sua adequação às necessidades do projeto, ao contexto de uso e às expectativas da comunidade atendida.</p>
+</li>
 </ul>
+<h3 id="aplicacao-do-dor-nos-casos-de-uso">Aplicação do DoR nos Casos de Uso</h3>
+<p>A avaliação do DoR deverá ser registrada individualmente para cada Caso de Uso ou conjunto de fluxos selecionado para desenvolvimento. Para isso, será utilizado um checklist que permita verificar o atendimento de cada critério, apresentando:</p>
+<ul>
+<li>Identificação do Caso de Uso e dos fluxos avaliados;</li>
+<li>Iteração em que o item está planejado para desenvolvimento;</li>
+<li>Situação de cada critério: Atendido, Não atendido ou Não aplicável;</li>
+<li>Evidências ou referências que comprovem o atendimento dos critérios;</li>
+<li>Justificativa para os critérios considerados não aplicáveis;</li>
+<li>Responsáveis e data da avaliação;</li>
+<li>Pendências identificadas e respectivas justificativas;</li>
+<li>Resultado final da avaliação: Ready ou Not Ready.</li>
+</ul>
+<p>Um Caso de Uso ou conjunto de fluxos somente será considerado Ready quando todos os critérios aplicáveis estiverem atendidos. Critérios não aplicáveis deverão possuir justificativa registrada, enquanto pendências que impeçam o início seguro do desenvolvimento deverão ser resolvidas antes da seleção do item para a iteração.</p>
 <hr />
 <h2 id="92-definition-of-done-dod">9.2 Definition of Done (DoD)</h2>
-<p>O Definition of Done (DoD) estabelece as condições a serem atendidas para que uma funcionalidade seja considerada concluída pela equipe. No SIGMA, apenas a implementação do código não será considerada como critério suficiente para tratar a entrega como finalizada. Será necessário, ainda, verificar o atendimento aos requisitos, qualidade técnica, integração com o sistema e conformidade com o escopo definido.</p>
-<p>Um item será considerado concluído quando os seguintes critérios aplicáveis forem atendidos:</p>
+<p>O Definition of Done (DoD) estabelece as condições que devem ser atendidas para que uma funcionalidade ou incremento seja considerado concluído pela equipe. No SIGMA, apenas a implementação do código não será considerada suficiente para caracterizar uma entrega como finalizada. Será necessário verificar o atendimento aos requisitos, a qualidade técnica, a integração com o sistema e a conformidade com o escopo definido.</p>
+<p>Uma funcionalidade ou incremento será considerado tecnicamente concluído quando os seguintes critérios aplicáveis forem atendidos:</p>
 <ul>
-<li><strong>Implementação conforme especificação:</strong> A funcionalidade foi implementada de acordo com a especificação aprovada, contemplando o objetivo esperado, as regras de negócio e o escopo definido para o item.</li>
-<li><strong>Verificação dos critérios de aceitação:</strong> Todos os critérios de aceitação foram verificados.</li>
-<li><strong>Execução de testes:</strong> Os testes aplicáveis, incluindo testes funcionais, unitários e de integração, foram executados com sucesso.</li>
-<li><strong>Integração e ausência de regressão:</strong> A implementação foi integrada ao projeto e revisada para verificar se não compromete as funcionalidades existentes.</li>
-<li><strong>Revisão de código:</strong> O código foi revisado pela equipe e atende aos padrões técnicos acordados pelo grupo.</li>
-<li><strong>Conformidade com RNFs:</strong> Foram verificados os requisitos não funcionais relacionados à funcionalidade, especialmente segurança, usabilidade, integridade das informações e desempenho, quando aplicáveis e definidos para o item.</li>
-<li><strong>Conformidade de interface e usabilidade:</strong> Quando houver impacto na interface, os fluxos implementados foram verificados em relação aos protótipos ou às especificações aprovadas, considerando a clareza das informações e a facilidade de utilização.</li>
-<li><strong>Atualização da documentação:</strong> A documentação pertinente foi atualizada, incluindo o estado do requisito, sua característica de produto relacionada e as evidências dos testes e das revisões realizadas.</li>
-<li><strong>Demonstração e homologação:</strong> A funcionalidade foi demonstrada e verificada pela equipe. Quando a validação do cliente ou de seu representante for aplicável, o resultado deverá ser registrado. Caso a homologação ainda esteja pendente, isso deverá permanecer explícito, sem apresentar a entrega como aprovada pelo cliente.</li>
-<li><strong>Alinhamento com o escopo:</strong> A funcionalidade está de acordo com o escopo aprovado, sem incorporar alterações não autorizadas. Mudanças solicitadas durante o desenvolvimento deverão ser registradas e avaliadas antes de serem incorporadas.</li>
-<li><strong>Tratamento de pendências:</strong> Os problemas não impeditivos que permanecerem deverão ser documentados, classificados por impacto e prioridade e encaminhados para tratamento posterior. Pendências que comprometam critérios de aceitação ou requisitos obrigatórios impedem que o item seja considerado concluído.</li>
+<li>
+<p><strong>Implementação conforme especificação:</strong> A funcionalidade foi implementada de acordo com a especificação aprovada, contemplando o objetivo esperado, as regras de negócio e o escopo definido para o item.</p>
+</li>
+<li>
+<p><strong>Verificação dos critérios de aceitação:</strong> Todos os critérios de aceitação relacionados aos fluxos desenvolvidos foram verificados, demonstrando que o comportamento implementado corresponde ao esperado.</p>
+</li>
+<li>
+<p><strong>Execução de testes:</strong> Os testes aplicáveis, incluindo testes funcionais, unitários e de integração, foram executados com sucesso. As evidências dos testes deverão ser registradas, e eventuais testes não aplicáveis deverão possuir justificativa.</p>
+</li>
+<li>
+<p><strong>Integração e ausência de regressão:</strong> A implementação foi integrada à base do projeto e verificada para garantir que não comprometa funcionalidades existentes. Os testes de regressão aplicáveis foram executados.</p>
+</li>
+<li>
+<p><strong>Revisão de código:</strong> O código foi revisado por outro integrante da equipe e atende aos padrões técnicos e às convenções estabelecidas pelo grupo.</p>
+</li>
+<li>
+<p><strong>Conformidade com os requisitos não funcionais:</strong> Foram verificados os requisitos não funcionais relacionados à funcionalidade, especialmente segurança, usabilidade, integridade das informações e desempenho, quando aplicáveis e definidos para o item.</p>
+</li>
+<li>
+<p><strong>Conformidade de interface e usabilidade:</strong> Quando houver impacto na interface, os fluxos implementados foram verificados em relação aos protótipos ou às especificações aprovadas, considerando a clareza das informações e a facilidade de utilização.</p>
+</li>
+<li>
+<p><strong>Atualização da documentação:</strong> A documentação pertinente foi atualizada, incluindo o estado dos requisitos e Casos de Uso relacionados, a Matriz de Rastreabilidade e as evidências dos testes e das revisões realizadas.</p>
+</li>
+<li>
+<p><strong>Demonstração da funcionalidade:</strong> A funcionalidade foi demonstrada à equipe, permitindo verificar seu funcionamento e sua conformidade com o escopo implementado.</p>
+</li>
+<li>
+<p><strong>Alinhamento com o escopo:</strong> A funcionalidade está de acordo com o escopo aprovado, sem incorporar alterações não autorizadas. Mudanças solicitadas durante o desenvolvimento deverão ser registradas e avaliadas antes de serem incorporadas.</p>
+</li>
+<li>
+<p><strong>Tratamento de pendências:</strong> Os problemas identificados foram classificados de acordo com seu impacto e prioridade. Pendências impeditivas, que comprometam critérios de aceitação, regras de negócio ou requisitos obrigatórios, impedem a conclusão do item. Problemas não impeditivos que permanecerem deverão ser documentados e encaminhados para tratamento posterior.</p>
+</li>
 </ul>
+<h3 id="aplicacao-do-dod-nas-entregas">Aplicação do DoD nas entregas</h3>
+<p>A aplicação do DoD deverá ser registrada para cada funcionalidade ou incremento desenvolvido, apresentando evidências que permitam verificar o atendimento dos critérios. O registro deverá conter, quando aplicável:</p>
+<ul>
+<li>Identificação do requisito, Caso de Uso e fluxos implementados;</li>
+<li>Iteração e versão da entrega;</li>
+<li>Evidências da implementação e dos testes executados;</li>
+<li>Referência à revisão do código e à integração realizada;</li>
+<li>Responsáveis pela implementação e revisão;</li>
+<li>Registro da demonstração à equipe;</li>
+<li>Resultado da validação pelo cliente ou representante, quando realizada;</li>
+<li>Pendências identificadas e sua classificação;</li>
+<li>Resultado final da avaliação.</li>
+</ul>
+<p>A conclusão técnica da funcionalidade deverá ser registrada separadamente da homologação pelo cliente ou representante. Dessa forma, uma entrega que já atenda aos critérios técnicos, mas ainda aguarde avaliação do cliente, poderá ser identificada como tecnicamente concluída e aguardando homologação, sem ser apresentada como aprovada pelo cliente.</p>
+<p>Quando realizada, a homologação deverá ter seu resultado registrado, indicando se a entrega foi aprovada, aprovada com ressalvas ou rejeitada. Caso sejam identificados problemas que comprometam os critérios de aceitação ou os requisitos estabelecidos, deverão ser realizadas as correções necessárias antes de considerar a entrega definitivamente aceita.</p>
+<p>Um item somente será considerado tecnicamente concluído quando todos os critérios aplicáveis do DoD estiverem atendidos e suas respectivas evidências estiverem registradas. A aprovação do cliente, quando necessária para a aceitação da entrega, deverá ser acompanhada separadamente.</p>
 
 
 

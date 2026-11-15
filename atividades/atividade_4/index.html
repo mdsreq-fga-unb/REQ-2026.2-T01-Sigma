@@ -1579,8 +1579,8 @@ Como comprovação dentro de <code>docs/assets/priorização dos requisitos.csv<
 <td>2</td>
 <td>3</td>
 <td>1</td>
-<td>2.6</td>
-<td>3</td>
+<td>2</td>
+<td>2</td>
 </tr>
 <tr>
 <td>RF02</td>
@@ -1871,7 +1871,7 @@ Como comprovação dentro de <code>docs/assets/priorização dos requisitos.csv<
 <td>2</td>
 <td>3</td>
 <td>1</td>
-<td>2.6</td>
+<td>2</td>
 </tr>
 <tr>
 <td>RF2</td>
@@ -2214,73 +2214,95 @@ Como comprovação dentro de <code>docs/assets/priorização dos requisitos.csv<
 <h3 id="definicao-do-criterio-de-montagem-do-mvp">Definição do Critério de Montagem do MVP</h3>
 <p>Para a inserção dos requisitos no MVP, efetuamos uma análise plural considerando as posições de cada requisito funcional e não-funcional na Matrix 4x4, alocando aqueles que apresentavam mais valor de negócio e menos esforço técnico. Além das posições da Matriz 4x4, foi considerado uma análise de contribuição para a solução do problema e relacionamento direto com o cumprimento dos objetivos do projeto. Em geral, acrescentamos ao MVP, aqueles requisitos indispensáveis e vitais para o desenvolvimento e implementação da solução, cujos complementam as funcionalidades que ja estariam no MVP .</p>
 <h2 id="definicao-de-rfs-do-mvp">Definição de RFs do MVP</h2>
+<p>A tabela a seguir consolida a lista vigente de Requisitos Funcionais do MVP, incluindo o RF17 (necessário para auditoria e histórico de edições dos cards) conforme pactuado com a cliente e formalizado nos Casos de Uso e nas atas de reunião:</p>
 <table>
 <thead>
 <tr>
-<th>Requisito</th>
+<th>ID</th>
+<th>Nome do Requisito</th>
 <th>Justificativa</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>RF05</td>
-<td>Necessário para a segurança do sistema, alto valor de negócio.</td>
+<td>Cadastrar usuários</td>
+<td>Necessário para a segurança do sistema e gestão de acessos, alto valor de negócio.</td>
 </tr>
 <tr>
 <td>RF06</td>
-<td>Necessário para a segurança do sistema, alto valor de negócio.</td>
+<td>Realizar login</td>
+<td>Necessário para a segurança e autenticação no sistema, alto valor de negócio.</td>
 </tr>
 <tr>
 <td>RF07</td>
-<td>Necessário para a segurança do sistema, alto valor de negócio.</td>
+<td>Realizar logout</td>
+<td>Necessário para encerramento de sessão e segurança física, alto valor de negócio.</td>
 </tr>
 <tr>
 <td>RF08</td>
-<td>Necessário para a solução do problema principal, alto valor de negócio.</td>
+<td>Cadastrar card de aluno</td>
+<td>Função essencial, resolve o problema principal de matrícula, alto valor de negócio.</td>
 </tr>
 <tr>
 <td>RF09</td>
-<td>Necessário para a solução do problema principal, alto valor de negócio.</td>
+<td>Preenchimento de fichas</td>
+<td>Função essencial para preenchimento dos dados escolares, alto valor de negócio.</td>
 </tr>
 <tr>
 <td>RF10</td>
-<td>Necessário para a solução do problema principal, alto valor de negócio.</td>
-</tr>
-<tr>
-<td>RF21</td>
-<td>Necessário para a fluidez do sistema, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF14</td>
-<td>Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF15</td>
-<td>Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF16</td>
-<td>Necessário para o funcionamento correto do sistema, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF23</td>
-<td>Necessário para o salvamento de dados do sistema, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF22</td>
-<td>Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF24</td>
-<td>Necessário para a solução do problema principal, alto valor de negócio, baixo esforço técnico.</td>
-</tr>
-<tr>
-<td>RF18</td>
-<td>Necessário para a correta implementação do sistema e cumprimento de objetivos específicos, alto valor de negócio, baixo esforço técnico.</td>
+<td>Editar fichas do card</td>
+<td>Necessário para atualização cadastral contínua dos alunos, alto valor de negócio.</td>
 </tr>
 <tr>
 <td>RF13</td>
-<td>Necessário para a correta implementação do sistema e estruturação da solução do problema, alto valor de negócio, baixo esforço técnico.</td>
+<td>Vincular aluno a turma</td>
+<td>Necessário para estruturação escolar e alocação dos matriculados, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF14</td>
+<td>Anexar documentos</td>
+<td>Função essencial para digitalização dos comprovantes em PDF, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF15</td>
+<td>Editar documento</td>
+<td>Necessário para substituição de PDFs incorretos ou atualizados, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF16</td>
+<td>Baixar fichas e documentos</td>
+<td>Necessário para download individual de fichas e anexos em PDF, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF17</td>
+<td>Apresentar histórico de edições</td>
+<td>Necessário para auditoria, rastreabilidade e preservação do histórico de alterações nos cards, conforme acordado com a cliente.</td>
+</tr>
+<tr>
+<td>RF18</td>
+<td>Cadastrar Etapa</td>
+<td>Necessário para organização curricular e hierarquia escolar, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF21</td>
+<td>Buscar aluno pelo nome</td>
+<td>Necessário para rápida localização de registros e fluidez operacional, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF22</td>
+<td>Buscar Turmas e Etapas</td>
+<td>Necessário para consulta ágil da organização escolar, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF23</td>
+<td>Possibilitar salvamento de dados</td>
+<td>Necessário para persistência segura e confirmação de gravação, alto valor de negócio.</td>
+</tr>
+<tr>
+<td>RF24</td>
+<td>Cadastrar Turma</td>
+<td>Necessário para cadastro de turmas vinculadas à sua respectiva etapa, alto valor de negócio.</td>
 </tr>
 </tbody>
 </table>
