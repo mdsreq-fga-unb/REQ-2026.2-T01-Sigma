@@ -47,9 +47,9 @@
       id: 'RF05',
       category: 'rf',
       type: 'Requisito Funcional',
-      name: 'Cadastrar Usuários',
-      description: 'Permitir que usuários com perfil administrativo realizem o cadastro de novos usuários no sistema.',
-      related: ['UC02', 'RN18', 'RN19', 'RN20', 'RN21']
+      name: 'Gerenciar Usuários (Cadastro e Manutenção de Acesso)',
+      description: 'Permitir que usuários com perfil Administrador realizem o cadastro, listagem, inativação e reativação de contas de acesso no sistema, preservando a rastreabilidade sem exclusão física (RN18, RN21).',
+      related: ['UC02', 'RN15', 'RN18', 'RN19', 'RN20', 'RN21']
     },
     RF06: {
       id: 'RF06',
@@ -190,10 +190,10 @@
     RF23: {
       id: 'RF23',
       category: 'rf',
-      type: 'Requisito Funcional',
-      name: 'Possibilitar salvamento com confirmação',
-      description: 'O sistema deve exigir confirmação explícita ("Confirmar" ou "Cancelar") ao solicitar o salvamento ou alteração de uma ficha de matrícula, prevenindo perdas acidentais.',
-      related: ['UC04', 'RN15']
+      type: 'Requisito Funcional (Consolidado na RN15)',
+      name: 'Possibilitar salvamento com confirmação (incorporado à RN15)',
+      description: 'Item consolidado como regra de negócio transversal na RN15 (Confirmação Prévia de Salvamento), aplicando-se às operações críticas de salvamento, alteração, inativação e exclusão (UC02, UC03, UC04, UC05, UC06 e UC07).',
+      related: ['RN15', 'UC04']
     },
     RF24: {
       id: 'RF24',
@@ -323,18 +323,18 @@
       category: 'rn',
       type: 'Regra de Negócio',
       name: 'Vínculo Único de Turma e Etapa',
-      description: 'Toda matrícula deve estar vinculada a exatamente uma turma e a uma etapa.',
-      justification: 'Estrutura organizacional da creche.',
-      related: ['RF13', 'RF18', 'RF24', 'UC07']
+      description: 'Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (selecionada no cadastro ou na alocação), atuando em conjunto com a RN03.',
+      justification: 'Estrutura organizacional da creche e integridade referencial no banco (turma_id obrigatório).',
+      related: ['RF08', 'RF13', 'RF18', 'RF24', 'UC04', 'UC07']
     },
     RN03: {
       id: 'RN03',
       category: 'rn',
       type: 'Regra de Negócio',
-      name: 'Ativação Mediante Fichas Completas',
-      description: 'Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias: Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula.',
-      justification: 'Garantir conformidade e documentação completa.',
-      related: ['RF09', 'RF10', 'UC04', 'UC07']
+      name: 'Ativação Mediante Fichas Completas e Alocação',
+      description: 'Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias (Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula) e o vínculo com uma turma e etapa ativas (RN02).',
+      justification: 'Garantir conformidade documental e enturmação completa.',
+      related: ['RF09', 'RF10', 'RF13', 'UC04', 'UC07']
     },
     RN04: {
       id: 'RN04',
@@ -439,10 +439,10 @@
       id: 'RN15',
       category: 'rn',
       type: 'Regra de Negócio',
-      name: 'Confirmação Prévia de Salvamento',
-      description: 'As alterações na matrícula só são aplicadas após a confirmação. Se a operação for cancelada, os dados não serão salvos.',
-      justification: 'Evita salvamentos acidentais.',
-      related: ['RF10', 'RF23', 'UC04']
+      name: 'Confirmação Prévia de Salvamento e Operações Críticas',
+      description: 'Operações de salvamento, alteração, inativação ou exclusão (como fichas de matrícula, contas de usuário, documentos e avisos) só são aplicadas após confirmação explícita ("Confirmar" ou "Cancelar"). Se cancelada, os dados não são persistidos (regra transversal que consolida o antigo RF23).',
+      justification: 'Evita salvamentos, alterações ou inativações acidentais.',
+      related: ['RF04', 'RF05', 'RF10', 'RF15', 'UC02', 'UC03', 'UC04', 'UC05']
     },
     RN16: {
       id: 'RN16',

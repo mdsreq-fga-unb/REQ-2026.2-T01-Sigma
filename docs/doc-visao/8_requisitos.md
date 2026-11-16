@@ -151,7 +151,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
         <div class="catalogo-card__row">
           <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
           <div class="catalogo-card__chips">
-            <button type="button" class="chip chip--rf" data-modal-id="RF05" title="Clique para ver detalhes do RF05">RF05 - Cadastrar Usuários</button>
+            <button type="button" class="chip chip--rf" data-modal-id="RF05" title="Clique para ver detalhes do RF05">RF05 - Gerenciar Usuários</button>
           </div>
         </div>
         <div class="catalogo-card__row">
@@ -245,7 +245,6 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
             <button type="button" class="chip chip--rf" data-modal-id="RF11" title="Clique para ver detalhes do RF11">RF11</button>
             <button type="button" class="chip chip--rf" data-modal-id="RF12" title="Clique para ver detalhes do RF12">RF12</button>
             <button type="button" class="chip chip--rf" data-modal-id="RF17" title="Clique para ver detalhes do RF17">RF17</button>
-            <button type="button" class="chip chip--rf" data-modal-id="RF23" title="Clique para ver detalhes do RF23">RF23</button>
           </div>
         </div>
         <div class="catalogo-card__row">
