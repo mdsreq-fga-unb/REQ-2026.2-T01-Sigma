@@ -1,0 +1,2306 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de requisitos de software para o projeto SIGMA">
+      
+      
+        <meta name="author" content="Equipe SIGMA">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>10 backlog - SIGMA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-backlog-do-produto" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="SIGMA" class="md-header__button md-logo" aria-label="SIGMA" data-md-component="logo">
+      
+  <img src="../../../assets/logo-dark.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIGMA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10 backlog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SIGMA" class="md-nav__button md-logo" aria-label="SIGMA" data-md-component="logo">
+      
+  <img src="../../../assets/logo-dark.png" alt="logo">
+
+    </a>
+    SIGMA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Produto e Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão do Produto e Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/1_cenarioAtual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Cenário Atual do Cliente e do Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/2_solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Solução Proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/3_intervencao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Intervenção Social
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/4_estrategias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 Estratégias de engenharia de software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/5_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/6_cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 Cronograma e entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/7_interacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Interação entre Equipe e Cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/8_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/9_dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 DoR & DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/10_backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/11_licoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 Lições Aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../atividades/atividade_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../atividades/atividade_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividade 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../atividades/atividade_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    atividade 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atas de Reunião
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atas de Reunião
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reunioes/ata1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reunião unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Especificação
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Especificação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/casos-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Casos de Uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../videos/entrega-videos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrega de vídeos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#101-backlog-geral-do-produto-e-planejamento-das-entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Backlog Geral do Produto e Planejamento das Entregas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-priorizacao-do-backlog-e-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Priorização do Backlog e MVP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validacao-do-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação do MVP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="admonition info">
+<p class="admonition-title">Versão Arquivada (v2.1 — 07/11/2026)</p>
+<p>Esta é uma cópia histórica intermediária da Unidade 3 (commit <code>ba950ba</code>). <a href="../../../doc-visao/10_backlog/">Acessar a versão atual</a>.</p>
+</div>
+<h1 id="10-backlog-do-produto">10 Backlog do produto</h1>
+<p>Aqui vale ressaltar que todos os <strong>casos de uso</strong> a seguir são derivados das nossas listas de requisitos apresentado anteriormente nesse documento.
+Essa é uma lista tem o intuito de atender a representação de <strong>requisitos de produto</strong>, pra auxiliar duranto o desenvolvimento, e tamebm é  preliminar e deverá sofrer ajustes sempre que necessário durante o desenvolvimento do produto do SIGMA;</p>
+<h2 id="101-backlog-geral-do-produto-e-planejamento-das-entregas">10.1 Backlog Geral do Produto e Planejamento das Entregas</h2>
+<p>O Backlog do Produto organiza as entregas do sistema SIGMA orientadas por Casos de Uso e seus respectivos fluxos operacionais, alinhando as necessidades da Creche Estação Vida ao ciclo iterativo do processo OpenUP.</p>
+<p>Para assegurar o acompanhamento transparente da evolução do projeto, o estado de cada funcionalidade é distinguido nas três dimensões do ciclo de desenvolvimento:
+- <strong>Especificação:</strong> Status da modelagem e documentação de requisitos (Fechada para todos os Casos de Uso homologados na Unidade 2).
+- <strong>Implementação:</strong> Estado atual da codificação (Planejada, Em andamento, Em revisão ou Fechada).
+- <strong>Validação:</strong> Validação formal com os stakeholders (Fechada para consenso de requisitos e protótipos; Planejada para a homologação integrada do software na Iteração 8).</p>
+<h3 id="quadro-de-planejamento-do-backlog">Quadro de Planejamento do Backlog</h3>
+<table>
+<thead>
+<tr>
+<th>Item / Caso de Uso</th>
+<th>Fluxos e Requisitos Contemplados</th>
+<th>Iteração Prevista</th>
+<th>Dependências</th>
+<th>Responsáveis</th>
+<th>Especificação</th>
+<th>Implementação</th>
+<th>Validação de Software</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc01/">UC01 - Gerenciar Autenticação</a></td>
+<td>FP01 (Login - RF06, RNF05), FP02 (Logout - RF07), RNF02</td>
+<td>Iteração 4 (Construção)</td>
+<td>Nenhuma</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Em andamento</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc02/">UC02 - Gerenciar Usuários Administrativos</a></td>
+<td>FP01 (Cadastro de usuário - RF05, RNF02)</td>
+<td>Iteração 4 (Construção)</td>
+<td>UC01</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Em andamento</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04.1 - Cadastro e Fichas de Matrícula</a></td>
+<td>FP01 (Cadastro de card, fichas e salvamento - RF08, RF09, RF23, RNF08)</td>
+<td>Iteração 4 (Construção)</td>
+<td>UC01, UC06.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Em andamento</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04.2 - Edição e Histórico de Matrícula</a></td>
+<td>FA01 (Edição de fichas e histórico de alterações - RF10, RF17, RF23)</td>
+<td>Iteração 5 (Construção)</td>
+<td>UC04.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc05/">UC05 - Gerenciar Documentos Digitais</a></td>
+<td>FP01, FA01 (Upload, substituição e download de PDFs - RF14, RF15, RF16, RN05)</td>
+<td>Iteração 6 (Construção)</td>
+<td>UC04.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc06/">UC06.1 - Cadastro de Etapas e Turmas</a></td>
+<td>FP01 (RF18 - Etapa), FP02 (RF24 - Turma com etapa vinculada)</td>
+<td>Iteração 7 (Construção)</td>
+<td>UC01</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc07/">UC07 - Alocar Alunos</a></td>
+<td>FP01 (Alocação de aluno em turma - RF13, RF21, RF22, RNF06, RNF07)</td>
+<td>Iteração 7 (Construção)</td>
+<td>UC04.1, UC06.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc08/">UC08 - Consultar Registros (Busca)</a></td>
+<td>FP01 (Busca por aluno, turmas e etapas - RF21, RF22, RNF06, RNF07)</td>
+<td>Iteração 7 (Construção)</td>
+<td>UC04.1, UC06.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><em>[UC04.3 - Inativação e Reativação]</em></td>
+<td>FA02 (Inativar - RF11), FA03 (Reativar - RF12)</td>
+<td>Pós-MVP</td>
+<td>UC04.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><em>[UC06.2 - Estrutura Escolar Avançada]</em></td>
+<td>FP03 (Vincular turma à etapa - RF20), FP04 (Inativar turma/etapa - RF19)</td>
+<td>Pós-MVP</td>
+<td>UC06.1</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+<tr>
+<td><em>[UC03 - Quadro de Avisos]</em></td>
+<td>FP01 a FP04 (Gestão de avisos - RF01, RF02, RF03, RF04)</td>
+<td>Pós-MVP (Versão 2.0)</td>
+<td>UC01, UC02</td>
+<td>A definir</td>
+<td>Fechada</td>
+<td>Planejada</td>
+<td>Planejada</td>
+</tr>
+</tbody>
+</table>
+<p>A seguir uma tabela que Relaciona os requisitos do nosso sistema com os casos de uso.</p>
+<h3 id="rastreabilidade-entre-requisitos-e-casos-de-uso">Rastreabilidade entre Requisitos e Casos de Uso</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>Casos de uso vinculados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF01</td>
+<td>Disponibilizar quadro de avisos</td>
+<td>UC03 - Gerenciamento de quadros de avisos</td>
+</tr>
+<tr>
+<td>RF02</td>
+<td>Lançar avisos</td>
+<td>UC03 - Gerenciamento de quadros de avisos</td>
+</tr>
+<tr>
+<td>RF03</td>
+<td>Exibir avisos</td>
+<td>UC03 - Gerenciamento de quadros de avisos</td>
+</tr>
+<tr>
+<td>RF04</td>
+<td>Apagar avisos</td>
+<td>UC03 - Gerenciamento de quadros de avisos</td>
+</tr>
+<tr>
+<td>RF05</td>
+<td>Cadastrar Usuários</td>
+<td>UC02 - Gerenciar usuários administrativos / UC03 - Gerenciamento de quadros de avisos</td>
+</tr>
+<tr>
+<td>RF06</td>
+<td>Realizar login</td>
+<td>UC01 - Gerenciar autenticação</td>
+</tr>
+<tr>
+<td>RF07</td>
+<td>Realizar logout</td>
+<td>UC01 - Gerenciar autenticação / UC03 - Gerenciamento de quadros de avisos</td>
+</tr>
+<tr>
+<td>RF08</td>
+<td>Cadastrar card de aluno</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF09</td>
+<td>Preenchimento de fichas</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF10</td>
+<td>Editar fichas do card</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF11</td>
+<td>Inativar card de aluno</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF12</td>
+<td>Reativar card de aluno</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF13</td>
+<td>Vincular aluno a turma</td>
+<td>UC07 - Alocar alunos</td>
+</tr>
+<tr>
+<td>RF14</td>
+<td>Anexar documentos</td>
+<td>UC05 - Gerenciar Documentos Digitais</td>
+</tr>
+<tr>
+<td>RF15</td>
+<td>Editar documento</td>
+<td>UC05 - Gerenciar Documentos Digitais</td>
+</tr>
+<tr>
+<td>RF16</td>
+<td>Baixar fichas e documentos</td>
+<td>UC05 - Gerenciar Documentos Digitais</td>
+</tr>
+<tr>
+<td>RF17</td>
+<td>Apresentar histórico de edições</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF18</td>
+<td>Cadastrar Etapa</td>
+<td>UC06 - Gerenciar estrutura escolar (Etapas e Turmas)</td>
+</tr>
+<tr>
+<td>RF19</td>
+<td>Inativar turma e etapa</td>
+<td>UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas)</td>
+</tr>
+<tr>
+<td>RF20</td>
+<td>Vincular turma à etapa</td>
+<td>UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas)</td>
+</tr>
+<tr>
+<td>RF21</td>
+<td>Buscar aluno pelo nome</td>
+<td>UC08 - Consultar Registros (Busca) / UC07 - Alocar Alunos</td>
+</tr>
+<tr>
+<td>RF22</td>
+<td>Buscar turmas e etapas</td>
+<td>UC08 - Consultar Registros (Busca) / UC07 - Alocar Alunos</td>
+</tr>
+<tr>
+<td>RF23</td>
+<td>Possibilitar salvamento de dados</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RF24</td>
+<td>Cadastrar Turma</td>
+<td>UC06 - Gerenciar Estrutura Escolar (Etapas e Turmas)</td>
+</tr>
+<tr>
+<td>RNF01</td>
+<td>Privacidade de Dados e Retenção Segura</td>
+<td>GLOBAL / Transversal (UC01, UC02, UC04, UC05, UC07, UC08)</td>
+</tr>
+<tr>
+<td>RNF02</td>
+<td>Restrição de Acesso não Autenticado</td>
+<td>UC01 - Gerenciar autenticação / UC07 - Alocar Alunos / UC02 - Gerenciar usuários administrativos</td>
+</tr>
+<tr>
+<td>RNF03</td>
+<td>Interface responsiva e adaptável a múltiplos dispositivos</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>RNF04</td>
+<td>Interface com suporte a Modo Escuro alternável</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>RNF05</td>
+<td>Tempo de Resposta do Sistema ao Logar</td>
+<td>UC01 - Gerenciar autenticação</td>
+</tr>
+<tr>
+<td>RNF06</td>
+<td>Tempo de Resposta do Sistema ao Buscar aluno</td>
+<td>UC07 - Alocar Alunos / UC08 - Consultar Registros (Busca)</td>
+</tr>
+<tr>
+<td>RNF07</td>
+<td>Tempo de resposta do sistema para buscar turmas ou etapas</td>
+<td>UC07 - Alocar Alunos / UC08 - Consultar Registros (Busca)</td>
+</tr>
+<tr>
+<td>RNF08</td>
+<td>Tempo de resposta para salvar uma ficha</td>
+<td>UC04 - Gerenciar cards de matrícula</td>
+</tr>
+<tr>
+<td>RNF09</td>
+<td>Disponibilidade do sistema</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>RNF10</td>
+<td>Acessos Múltiplos</td>
+<td>GLOBAL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="102-priorizacao-do-backlog-e-mvp">10.2 Priorização do Backlog e MVP</h2>
+<p>Para a inserção dos requisitos no MVP, efetuamos uma análise plural considerando as posições de cada requisito funcional e não-funcional na Matrix 4x4, alocando aqueles que apresentavam mais valor de negócio e menos esforço técnico. Além das posições da Matriz 4x4, foi considerado uma análise de contribuição para a solução do problema e relacionamento direto com o cumprimento dos objetivos do projeto. Em geral, acrescentamos ao MVP, aqueles requisitos indispensáveis e vitais para o desenvolvimento e implementação da solução, cujos complementam as funcionalidades que ja estariam no MVP .</p>
+<h3 id="consolidacao-das-avaliacoes">Consolidação das Avaliações</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requisito</th>
+<th>Justificativa do cliente</th>
+<th>V. Negócio</th>
+<th>Esforço</th>
+<th>Complexidade</th>
+<th>Lacuna de Capacidade</th>
+<th>Esforço técnico consolidado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF1</td>
+<td>Disponibilizar quadro de avisos</td>
+<td>Se manifestou como um desejo da cliente</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>RF2</td>
+<td>Lançar avisos</td>
+<td>Se manifestou como um desejo da cliente</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RF3</td>
+<td>Exibir avisos</td>
+<td>Se manifestou como um desejo da cliente</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RF4</td>
+<td>Apagar avisos</td>
+<td>Se manifestou como um desejo da cliente</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RF5</td>
+<td>Cadastrar usuários</td>
+<td>Necessidade da cliente, para cadastrar possíveis novos usuários</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>RF6</td>
+<td>Realizar login</td>
+<td>O sistema deve ser protegido por login</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.6</td>
+</tr>
+<tr>
+<td>RF7</td>
+<td>Realizar logout</td>
+<td>O logout é necessário para garantir a segurança física do computador contra acessos indevidos</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.6</td>
+</tr>
+<tr>
+<td>RF8</td>
+<td>Cadastrar card de aluno</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RF9</td>
+<td>Preenchimento de fichas</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RF10</td>
+<td>Editar fichas de card</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RF11</td>
+<td>Inativar card de aluno</td>
+<td>Útil para organização interna</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF12</td>
+<td>Reativar card de aluno</td>
+<td>Útil para organização interna</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF13</td>
+<td>Vincular aluno a turma</td>
+<td>Útil para organização interna</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>RF14</td>
+<td>Anexar documentos</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.6</td>
+</tr>
+<tr>
+<td>RF15</td>
+<td>Editar documento</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>RF16</td>
+<td>Baixar fichas e documentos</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>RF17</td>
+<td>Apresentar histórico de edições</td>
+<td>Útil para organização interna</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RF18</td>
+<td>Cadastrar Etapa</td>
+<td>Útil para organização interna</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF19</td>
+<td>Inativar Turma e Etapa</td>
+<td>Útil para organização interna</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF20</td>
+<td>Vincular turma à etapa</td>
+<td>Útil para organização interna</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>RF21</td>
+<td>Buscar aluno pelo nome</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF22</td>
+<td>Buscar Turmas e Etapas</td>
+<td>Útil para organização interna</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF23</td>
+<td>Possibilitar salvamento de dados</td>
+<td>Função essencial, visa resolver o problema principal</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RF24</td>
+<td>Cadastrar Turma</td>
+<td>Útil para organização interna</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RNF1</td>
+<td>Privacidade de dados e retenção segura</td>
+<td>Necessário, obrigação legal</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>3.6</td>
+</tr>
+<tr>
+<td>RNF2</td>
+<td>Restrição de acesso não autenticado</td>
+<td>Necessário, proteção contra acessos indesejados</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>RNF3</td>
+<td>Interface responsiva e adaptável a múltiplos dispositivos</td>
+<td>Útil, mas não essencial para primeiro uso</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>RNF4</td>
+<td>Interface com suporte a modo escuro alternável</td>
+<td>Útil, mas não essencial para primeiro uso</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>RNF5</td>
+<td>Tempo de resposta do sistema ao logar</td>
+<td>Necessário, a velocidade do sistema foi uma queixa forte do cliente</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RNF6</td>
+<td>Tempo de resposta do sistema ao buscar aluno</td>
+<td>Necessário, a velocidade do sistema foi uma queixa forte do cliente</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RNF7</td>
+<td>Tempo de resposta do sistema para buscar turmas ou etapas</td>
+<td>Necessário, a velocidade do sistema foi uma queixa forte do cliente</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RNF8</td>
+<td>Tempo de resposta para salvar uma ficha</td>
+<td>Necessário, a velocidade do sistema foi uma queixa forte do cliente</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>RNF9</td>
+<td>Disponibilidade do sistema</td>
+<td>Necessário, o sistema deve permanecer acessível durante todo o expediente</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RNF10</td>
+<td>Acessos múltiplos</td>
+<td>Essencial, para acompanhar a necessidade do cliente</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>A seguir a imagem e o link da nossa matriz de requisitos, 
+<a href="https://excalidraw.ufpi.br/#room=18ce979a0731349ffb5c,xyFmMOtSPX3E6eJx2N1H_g">link do excalidraw</a></p>
+<p><img alt="matriz de requisitos " src="../../../assets/matriz_requisitos.png" /></p>
+<h3 id="priorizacao-dos-casos-de-uso">Priorização dos Casos de Uso</h3>
+<p>Considerando a Tabela de Consolidação das Avaliações, realizou-se a priorização aplicada aos Casos de Uso do sistema. A tabela a seguir apresenta o agrupamento de Valor de Negócio (VN) e Esforço Técnico (ET) dos requisitos que compõem cada Caso de Uso, incluindo a quantidade de requisitos e o esforço técnico total acumulado (soma).</p>
+<h4 id="valor-de-negocio-e-esforco-tecnico-por-caso-de-uso">Valor de Negócio e Esforço Técnico por Caso de Uso</h4>
+<table>
+<thead>
+<tr>
+<th>Caso de Uso</th>
+<th>Qtd. Req.</th>
+<th>Requisitos &amp; Valor de Negócio</th>
+<th>Requisitos &amp; Esforço Técnico</th>
+<th>Média do Valor de Negócio</th>
+<th>Média do Esforço Técnico</th>
+<th>Esforço Total Acumulado (Soma)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC1</td>
+<td>4</td>
+<td>RF06: 4<br>RF07: 4<br>RNF02: 4<br>RNF05: 4</td>
+<td>RF06: 1.6<br>RF07: 1.6<br>RNF02: 1.3<br>RNF05: 2.6</td>
+<td>4.0</td>
+<td>1.8</td>
+<td>7.1</td>
+</tr>
+<tr>
+<td>UC2</td>
+<td>2</td>
+<td>RF05: 4<br>RNF02: 4</td>
+<td>RF05: 1.3<br>RNF02: 1.3</td>
+<td>4.0</td>
+<td>1.3</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>UC3</td>
+<td>6</td>
+<td>RF01: 2<br>RF02: 2<br>RF03: 2<br>RF04: 2<br>RF05: 4<br>RF07: 4</td>
+<td>RF01: 2.0<br>RF02: 2.0<br>RF03: 2.0<br>RF04: 2.0<br>RF05: 1.3<br>RF07: 1.6</td>
+<td>2.7</td>
+<td>1.8</td>
+<td>10.9</td>
+</tr>
+<tr>
+<td>UC4</td>
+<td>8</td>
+<td>RF08: 4<br>RF09: 4<br>RF10: 3<br>RF11: 2<br>RF12: 2<br>RF17: 3<br>RF23: 3<br>RNF08: 4</td>
+<td>RF08: 2.6<br>RF09: 2.6<br>RF10: 2.6<br>RF11: 1.0<br>RF12: 1.0<br>RF17: 2.0<br>RF23: 1.0<br>RNF08: 2.6</td>
+<td>3.1</td>
+<td>1.9</td>
+<td>15.4</td>
+</tr>
+<tr>
+<td>UC5</td>
+<td>3</td>
+<td>RF14: 4<br>RF15: 3<br>RF16: 3</td>
+<td>RF14: 1.6<br>RF15: 1.3<br>RF16: 2.3</td>
+<td>3.3</td>
+<td>1.7</td>
+<td>5.2</td>
+</tr>
+<tr>
+<td>UC6</td>
+<td>4</td>
+<td>RF18: 4<br>RF19: 2<br>RF20: 2<br>RF24: 4</td>
+<td>RF18: 1.0<br>RF19: 1.0<br>RF20: 1.3<br>RF24: 1.0</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>4.3</td>
+</tr>
+<tr>
+<td>UC7</td>
+<td>5</td>
+<td>RF13: 4<br>RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4</td>
+<td>RF13: 1.3<br>RF21: 1.0<br>RF22: 1.0<br>RNF06: 2.6<br>RNF07: 2.6</td>
+<td>4.0</td>
+<td>1.7</td>
+<td>8.5</td>
+</tr>
+<tr>
+<td>UC8</td>
+<td>4</td>
+<td>RF21: 4<br>RF22: 4<br>RNF06: 4<br>RNF07: 4</td>
+<td>RF21: 1.0<br>RF22: 1.0<br>RNF06: 2.6<br>RNF07: 2.6</td>
+<td>4.0</td>
+<td>1.8</td>
+<td>7.2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota Metodológica (Média Simples vs. Esforço Total Acumulado):</strong><br />
+A média simples do esforço técnico por requisito foi utilizada como indicador da densidade relativa de esforço de cada Caso de Uso. Contudo, essa média não expressa isoladamente o volume total de desenvolvimento. Por exemplo, o <strong>UC04</strong> agrega 8 requisitos complexos (múltiplas fichas de dados, salvamento assíncrono e histórico), totalizando <strong>15,4</strong> pontos de esforço acumulado, ao passo que o <strong>UC02</strong> possui apenas 2 requisitos de cadastro básico com <strong>2,6</strong> pontos acumulados. Embora suas médias sejam comparáveis (1,9 vs. 1,3), a carga total de implementação do UC04 é quase seis vezes superior à do UC02. Por esse motivo, a seleção do MVP avaliou em conjunto a densidade, a carga acumulada de trabalho e a essencialidade das funcionalidades para o negócio.</p>
+</blockquote>
+<h4 id="tabela-de-priorizacao-dos-casos-de-uso-no-mvp-visao-completa-dos-casos-de-uso">Tabela de Priorização dos Casos de Uso no MVP (Visão Completa dos Casos de Uso)</h4>
+<p>A tabela abaixo sintetiza a priorização analítica inicial dos Casos de Uso a partir dos valores consolidados:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Caso de Uso</th>
+<th>Valor de Negócio</th>
+<th>Esforço Técnico</th>
+<th>Valor Resultante (V. Negócio / E. Técnico)</th>
+<th>Compõe a Entrega?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc01/">UC01</a></td>
+<td>Gerenciar Autenticação</td>
+<td>4.0</td>
+<td>1.8</td>
+<td>2.22</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc02/">UC02</a></td>
+<td>Gerenciar Usuários Administrativos</td>
+<td>4.0</td>
+<td>1.3</td>
+<td>3.08</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc03/">UC03</a></td>
+<td>Gerenciar Quadro de Avisos</td>
+<td>2.7</td>
+<td>1.8</td>
+<td>1.50</td>
+<td>NÃO</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>Gerenciar Fichas de Matrícula</td>
+<td>3.1</td>
+<td>1.9</td>
+<td>1.63</td>
+<td>SIM (Exceção de Negócio)</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc05/">UC05</a></td>
+<td>Gerenciar Documentos Digitais</td>
+<td>3.3</td>
+<td>1.7</td>
+<td>1.94</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc06/">UC06</a></td>
+<td>Gerenciar Estrutura Escolar</td>
+<td>3.0</td>
+<td>1.1</td>
+<td>2.73</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc07/">UC07</a></td>
+<td>Alocar Alunos</td>
+<td>4.0</td>
+<td>1.7</td>
+<td>2.35</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc08/">UC08</a></td>
+<td>Consultar Registros (Busca)</td>
+<td>4.0</td>
+<td>1.8</td>
+<td>2.22</td>
+<td>SIM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critérios de Seleção e Justificativa de Exceção:</strong></p>
+<ol>
+<li><strong>Critério Analítico Geral:</strong> Para a composição da entrega, o critério padrão adotado considerou os Casos de Uso com <strong>Valor de Negócio $\ge$ 3.0</strong> e <strong>Valor Resultante (Razão) $\ge$ 1.90</strong>.</li>
+<li><strong>Justificativa da Exceção de Negócio (UC04):</strong><br />
+   O UC04 obteve razão resultante de <strong>1,63</strong> (com VN = 3,125 e ET = 1,925), pontuação analítica que ficaria abaixo da linha de corte geral de 1,90 devido ao elevado volume de operações e requisitos técnicos que ele engloba. No entanto, sua inclusão no MVP é mandatória e foi aprovada como uma <strong>exceção justificada por necessidade de negócio</strong>: o UC04 constitui o coração operacional e a razão de ser de toda a solução SIGMA (cadastro centralizado do aluno e preenchimento de suas fichas). Sem o UC04, o sistema não entregaria o protótipo minimamente viável pactuado com a creche.</li>
+<li><strong>Inclusão do RF16 no UC05:</strong><br />
+   Com a inclusão devida do RF16 (Baixar fichas e documentos - VN: 3; ET: 2,3), o UC05 alcançou VN = 3,33 e ET = 1,73, resultando em Razão = 1,92 (ou 1,94 considerando arredondamentos parciais), qualificando-se normalmente nos critérios de seleção.</li>
+</ol>
+<h3 id="103-detalhamento-de-escopo-por-caso-de-uso-no-mvp-fluxos-contemplados-vs-excluidos">10.3 Detalhamento de Escopo por Caso de Uso no MVP (Fluxos Contemplados vs. Excluídos)</h3>
+<p>Conforme registrado nas deliberações das reuniões da equipe com a representante da creche (ver <a href="../../../reunioes/ata1/">Ata de Reunião 1</a>), a seleção de um Caso de Uso para o MVP não implica a inclusão de todos os seus fluxos alternativos ou secundários. Determinados fluxos que demandavam esforço adicional sem urgência no primeiro ciclo foram expressamente excluídos da versão inicial do MVP:</p>
+<ul>
+<li><strong>UC04 - Gerenciar Fichas de Matrícula:</strong></li>
+<li><strong>Fluxos Contemplados no MVP:</strong><ul>
+<li>FP01 - Cadastrar Card de Aluno e Preencher Fichas: contempla RF08 (cadastrar card), RF09 (preenchimento de fichas), RF23 (confirmação e salvamento) e RNF08 (tempo de resposta de salvamento &lt; 5s).</li>
+<li>FA01 - Editar Fichas de Matrícula: contempla RF10 (edição de dados das fichas), RF17 (histórico de alterações) e RF23 (salvamento).</li>
+</ul>
+</li>
+<li>
+<p><strong>Fluxos Excluídos do MVP (Backlog Futuro):</strong></p>
+<ul>
+<li>FA02 - Inativar Matrícula (RF11): o ciclo de desativação de cards não é frequente no período inicial de adoção escolar e foi adiado.</li>
+<li>FA03 - Reativar Matrícula (RF12): dependente do fluxo de inativação, igualmente postergado.</li>
+</ul>
+</li>
+<li>
+<p><strong>UC06 - Gerenciar Estrutura Escolar:</strong></p>
+</li>
+<li><strong>Fluxos Contemplados no MVP:</strong><ul>
+<li>FP01 - Cadastrar Etapa: contempla RF18 (cadastro de etapas ativas).</li>
+<li>FP02 - Cadastrar Turma: contempla RF24 (cadastro de turmas com seleção direta da etapa vinculada no momento da criação).</li>
+</ul>
+</li>
+<li><strong>Fluxos Excluídos do MVP (Backlog Futuro):</strong><ul>
+<li>FP03 - Vincular Turma à Etapa (RF20): a vinculação avulsa/posterior tornou-se desnecessária no MVP, uma vez que a etapa já é obrigatoriamente associada na criação da turma (FP02).</li>
+<li>FP04 - Inativar Turma ou Etapa (RF19): a exclusão/inativação de estruturas curriculares foi postergada para ciclos pós-MVP.</li>
+</ul>
+</li>
+</ul>
+<h4 id="consolidacao-do-escopo-efetivo-do-mvp-por-caso-de-uso">Consolidação do Escopo Efetivo do MVP por Caso de Uso</h4>
+<p>Ao recalcular os Casos de Uso considerando estritamente os fluxos e requisitos que integram a versão aprovada do MVP, obtêm-se as métricas refinadas da entrega:</p>
+<table>
+<thead>
+<tr>
+<th>Caso de Uso</th>
+<th>Requisitos Efetivos no MVP</th>
+<th>Média VN (MVP)</th>
+<th>Média ET (MVP)</th>
+<th>Razão Efetiva (MVP)</th>
+<th>Esforço Acumulado (MVP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc01/">UC01</a></td>
+<td>RF06, RF07, RNF02, RNF05</td>
+<td>4.0</td>
+<td>1.8</td>
+<td>2.22</td>
+<td>7.1</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc02/">UC02</a></td>
+<td>RF05, RNF02</td>
+<td>4.0</td>
+<td>1.3</td>
+<td>3.08</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>RF08, RF09, RF10, RF17, RF23, RNF08</td>
+<td>3.5</td>
+<td>2.2</td>
+<td>1.59</td>
+<td>13.4</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc05/">UC05</a></td>
+<td>RF14, RF15, RF16</td>
+<td>3.3</td>
+<td>1.7</td>
+<td>1.94</td>
+<td>5.2</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc06/">UC06</a></td>
+<td>RF18, RF24</td>
+<td>4.0</td>
+<td>1.0</td>
+<td>4.00</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc07/">UC07</a></td>
+<td>RF13, RF21, RF22, RNF06, RNF07</td>
+<td>4.0</td>
+<td>1.7</td>
+<td>2.35</td>
+<td>8.5</td>
+</tr>
+<tr>
+<td><a href="../../../doc-visao/casos-uso/uc08/">UC08</a></td>
+<td>RF21, RF22, RNF06, RNF07</td>
+<td>4.0</td>
+<td>1.8</td>
+<td>2.22</td>
+<td>7.2</td>
+</tr>
+</tbody>
+</table>
+<p><em>Observação:</em> No <strong>UC04</strong>, ao focar exclusivamente no escopo aprovado do MVP, a média de Valor de Negócio sobe de 3,1 para <strong>3,5</strong>, reforçando a entrega imediata de alto valor à cliente. No <strong>UC06</strong>, a remoção dos fluxos secundários (RF19 e RF20) eleva o custo-benefício para razão 4,00 com esforço acumulado reduzido a apenas 2,0 pontos.</p>
+<h3 id="104-requisitos-transversais-e-condicoes-globais-de-entrega">10.4 Requisitos Transversais e Condições Globais de Entrega</h3>
+<p>Determinados requisitos não-funcionais possuem caráter arquitetural e de conformidade legal, aplicando-se transversalmente a toda a plataforma. Por essa natureza, eles não estão restritos a um único Caso de Uso de interface, mas atuam como <strong>condições mandatórias globais de entrega</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requisito</th>
+<th>Natureza</th>
+<th>Abrangência no MVP</th>
+<th>Condição de Aceite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RNF01</strong></td>
+<td>Privacidade de dados e retenção segura</td>
+<td>Obrigação Legal (LGPD) e Arquitetural</td>
+<td>Transversal a todos os Casos de Uso com manipulação de dados cadastrais (UC01, UC02, UC04, UC05, UC07, UC08).</td>
+<td>Criptografia de dados sensíveis dos menores e seus responsáveis em repouso e trânsito, controle de privilégios de acesso e trilha de auditoria. Trata-se de exigência legal inegociável definida como obrigatória na Atividade 4.</td>
+</tr>
+<tr>
+<td><strong>RNF02</strong></td>
+<td>Restrição de acesso não autenticado</td>
+<td>Segurança de Acesso</td>
+<td>Transversal a todas as telas e endpoints do sistema.</td>
+<td>Nenhuma rota operacional ou dado de aluno pode ser acessado sem credenciais autenticadas e autorizadas via token de sessão.</td>
+</tr>
+<tr>
+<td><strong>RNF09</strong></td>
+<td>Disponibilidade do sistema</td>
+<td>Confiabilidade Operacional</td>
+<td>Transversal ao ambiente operacional do SIGMA.</td>
+<td>O sistema deve assegurar disponibilidade estável durante todo o expediente regular de atendimento da creche.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="105-lista-vigente-consolidada-de-requisitos-do-mvp">10.5 Lista Vigente Consolidada de Requisitos do MVP</h3>
+<p>Para solucionar quaisquer divergências entre listagens preliminares de atividades anteriores e o escopo homologado com a cliente (como a inclusão do <strong>RF17</strong> e a delimitação dos fluxos internos dos Casos de Uso), a tabela abaixo estabelece a <strong>relação oficial e vigente</strong> de requisitos que compõem o MVP do SIGMA:</p>
+<h4 id="requisitos-funcionais-vigentes-no-mvp-16-requisitos">Requisitos Funcionais Vigentes no MVP (16 Requisitos)</h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Caso de Uso Vinculado</th>
+<th>Fluxo Específico no MVP</th>
+<th>Iteração de Construção</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RF05</strong></td>
+<td>Cadastrar Usuários</td>
+<td><a href="../../../doc-visao/casos-uso/uc02/">UC02</a></td>
+<td>FP01 - Cadastrar Usuário Administrativo</td>
+<td>Iteração 4</td>
+</tr>
+<tr>
+<td><strong>RF06</strong></td>
+<td>Realizar login</td>
+<td><a href="../../../doc-visao/casos-uso/uc01/">UC01</a></td>
+<td>FP01 - Autenticar Usuário</td>
+<td>Iteração 4</td>
+</tr>
+<tr>
+<td><strong>RF07</strong></td>
+<td>Realizar logout</td>
+<td><a href="../../../doc-visao/casos-uso/uc01/">UC01</a></td>
+<td>FP02 - Encerrar Sessão</td>
+<td>Iteração 4</td>
+</tr>
+<tr>
+<td><strong>RF08</strong></td>
+<td>Cadastrar card de aluno</td>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>FP01 - Cadastrar Card de Aluno e Preencher Fichas</td>
+<td>Iteração 4</td>
+</tr>
+<tr>
+<td><strong>RF09</strong></td>
+<td>Preenchimento de fichas</td>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>FP01 - Cadastrar Card de Aluno e Preencher Fichas</td>
+<td>Iteração 4</td>
+</tr>
+<tr>
+<td><strong>RF10</strong></td>
+<td>Editar fichas do card</td>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>FA01 - Editar Fichas de Matrícula</td>
+<td>Iteração 5</td>
+</tr>
+<tr>
+<td><strong>RF13</strong></td>
+<td>Vincular aluno a turma</td>
+<td><a href="../../../doc-visao/casos-uso/uc07/">UC07</a></td>
+<td>FP01 - Alocar Aluno em Turma</td>
+<td>Iteração 7</td>
+</tr>
+<tr>
+<td><strong>RF14</strong></td>
+<td>Anexar documentos</td>
+<td><a href="../../../doc-visao/casos-uso/uc05/">UC05</a></td>
+<td>FP01 - Anexar Novo Documento (PDF)</td>
+<td>Iteração 6</td>
+</tr>
+<tr>
+<td><strong>RF15</strong></td>
+<td>Editar documento</td>
+<td><a href="../../../doc-visao/casos-uso/uc05/">UC05</a></td>
+<td>FA01 - Substituir Documento Existente</td>
+<td>Iteração 6</td>
+</tr>
+<tr>
+<td><strong>RF16</strong></td>
+<td>Baixar fichas e documentos</td>
+<td><a href="../../../doc-visao/casos-uso/uc05/">UC05</a></td>
+<td>FP01 / FA01 - Download de PDF</td>
+<td>Iteração 6</td>
+</tr>
+<tr>
+<td><strong>RF17</strong></td>
+<td>Apresentar histórico de edições</td>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>FA01 - Registro de Auditoria e Edições</td>
+<td>Iteração 5</td>
+</tr>
+<tr>
+<td><strong>RF18</strong></td>
+<td>Cadastrar Etapa</td>
+<td><a href="../../../doc-visao/casos-uso/uc06/">UC06</a></td>
+<td>FP01 - Cadastrar Etapa Escolar</td>
+<td>Iteração 7</td>
+</tr>
+<tr>
+<td><strong>RF21</strong></td>
+<td>Buscar aluno pelo nome</td>
+<td><a href="../../../doc-visao/casos-uso/uc08/">UC08</a> / <a href="../../../doc-visao/casos-uso/uc07/">UC07</a></td>
+<td>FP01 - Busca de Alunos</td>
+<td>Iteração 7</td>
+</tr>
+<tr>
+<td><strong>RF22</strong></td>
+<td>Buscar turmas e etapas</td>
+<td><a href="../../../doc-visao/casos-uso/uc08/">UC08</a> / <a href="../../../doc-visao/casos-uso/uc07/">UC07</a></td>
+<td>FP01 - Busca de Turmas/Etapas</td>
+<td>Iteração 7</td>
+</tr>
+<tr>
+<td><strong>RF23</strong></td>
+<td>Possibilitar salvamento de dados</td>
+<td><a href="../../../doc-visao/casos-uso/uc04/">UC04</a></td>
+<td>FP01 / FA01 - Confirmação de Salvamento</td>
+<td>Iterações 4 e 5</td>
+</tr>
+<tr>
+<td><strong>RF24</strong></td>
+<td>Cadastrar Turma</td>
+<td><a href="../../../doc-visao/casos-uso/uc06/">UC06</a></td>
+<td>FP02 - Cadastrar Turma com Etapa</td>
+<td>Iteração 7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="requisitos-nao-funcionais-vigentes-no-mvp-7-requisitos">Requisitos Não-Funcionais Vigentes no MVP (7 Requisitos)</h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Nome do Requisito</th>
+<th>Categoria</th>
+<th>Natureza no MVP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RNF01</strong></td>
+<td>Privacidade de dados e retenção segura</td>
+<td>Segurança e Conformidade (LGPD)</td>
+<td>Mandatório Transversal (todos os casos de uso de dados de alunos)</td>
+</tr>
+<tr>
+<td><strong>RNF02</strong></td>
+<td>Restrição de acesso não autenticado</td>
+<td>Segurança de Acesso</td>
+<td>Mandatório Transversal (proteção de rotas e APIs)</td>
+</tr>
+<tr>
+<td><strong>RNF05</strong></td>
+<td>Tempo de resposta do sistema ao logar (&lt; 2s)</td>
+<td>Desempenho</td>
+<td>Associado ao UC01</td>
+</tr>
+<tr>
+<td><strong>RNF06</strong></td>
+<td>Tempo de resposta ao buscar aluno (&lt; 3s)</td>
+<td>Desempenho</td>
+<td>Associado ao UC07 e UC08</td>
+</tr>
+<tr>
+<td><strong>RNF07</strong></td>
+<td>Tempo de resposta para buscar turmas/etapas (&lt; 3s)</td>
+<td>Desempenho</td>
+<td>Associado ao UC07 e UC08</td>
+</tr>
+<tr>
+<td><strong>RNF08</strong></td>
+<td>Tempo de resposta para salvar uma ficha (&lt; 5s)</td>
+<td>Desempenho</td>
+<td>Associado ao UC04</td>
+</tr>
+<tr>
+<td><strong>RNF09</strong></td>
+<td>Disponibilidade contínua no expediente escolar</td>
+<td>Confiabilidade</td>
+<td>Mandatório Global (ambiente de produção)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="106-backlog-futuro-e-encaminhamento-de-itens-posteriores-pos-mvp">10.6 Backlog Futuro e Encaminhamento de Itens Posteriores (Pós-MVP)</h3>
+<p>Os itens abaixo foram formalmente retirados do escopo da primeira entrega do SIGMA por consenso entre a equipe de desenvolvimento e a representação da Creche Estação Vida (registrado na <a href="../../../reunioes/ata1/">Ata de Reunião 1</a>). Cada um desses itens possui encaminhamento e justificativa definidos:</p>
+<ol>
+<li><strong>Quadro de Avisos (<a href="../../../doc-visao/casos-uso/uc03/">UC03</a> — RF01, RF02, RF03 e RF04):</strong></li>
+<li><em>Justificativa:</em> Identificado como desejo periférico da cliente. O canal de comunicação via WhatsApp já atende a rotina da instituição, não justificando o esforço de implementação antes de estabilizar a gestão de fichas de matrícula.</li>
+<li><em>Encaminhamento:</em> Postergado para a <strong>Versão 2.0</strong> do sistema, como módulo de comunicação interna.</li>
+<li><strong>Inativação e Reativação de Cards de Aluno (UC04 — RF11 e RF12):</strong></li>
+<li><em>Justificativa:</em> O foco imediato da creche é a digitalização das matrículas ativas para o ano letivo de 2026. A inativação e a reativação de cards tornam-se necessárias apenas ao final do ciclo escolar ou em caso de evasão/transferência.</li>
+<li><em>Encaminhamento:</em> Planejado para o ciclo de rematrícula e gestão de egressos (<strong>Pós-MVP</strong>).</li>
+<li><strong>Gerenciamento Avançado de Estrutura Escolar (UC06 — RF19 e RF20):</strong></li>
+<li><em>Justificativa:</em> Na primeira versão, as turmas são obrigatoriamente vinculadas às suas etapas no próprio momento do cadastro (FP02), dispensando a operação de vínculo avulso posterior (RF20). A exclusão/inativação de turmas e etapas (RF19) não é necessária durante a fase inicial de implantação.</li>
+<li><em>Encaminhamento:</em> Planejado para a fase de encerramento do ano letivo e reestruturação de turmas (<strong>Pós-MVP</strong>).</li>
+<li><strong>Requisitos Não-Funcionais Evolutivos:</strong></li>
+<li><strong>RNF03 (Interface Responsiva para Dispositivos Móveis):</strong> A operação da secretaria é realizada exclusivamente em computadores de mesa e notebooks. A adaptação para smartphones e tablets foi encaminhada para a Versão 2.0.</li>
+<li><strong>RNF04 (Interface com Suporte a Modo Escuro):</strong> Recurso de conforto visual opcional, postergado para ciclo evolutivo.</li>
+<li><strong>RNF10 (Acessos Múltiplos e Carga Massiva Concorrente):</strong> Com apenas duas secretárias operando a secretaria da creche, mecanismos avançados de concorrência massiva foram postergados.</li>
+</ol>
+<blockquote>
+<p>Para consultar as regras de negócio consolidadas, acesse o documento de <a href="../../../doc-visao/Regras-Negocio/"><strong>Regras de Negócio</strong></a>.</p>
+</blockquote>
+<h2 id="validacao-do-mvp">Validação do MVP</h2>
+<p>Apos a confecção do MVP de acordo com as posições dos requisitos nos quadrantes e a completude entre os requisitos conforme esta descrito no critério de constituição do MVP, ocorreu a validação de tal por meio de apresentação de um slide diretamente com a cordenadora da creche, que é a nossa stakeholder principal</p>
+<blockquote>
+<p>link da reuião dísponível na aba reuniões.</p>
+</blockquote>
+<p>Durante a reunião a coordenadora avaliou o quadroe matriz e valor e os requisitos listadso no MVP, confirmou que o conjunto dos requisitos satisfaz a ideia do 'miínimo possivel pra funcionar', contemplando com fidelidade as necessidades priorítárias pro MVP SIGMA;</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../../javascripts/modal.js"></script>
+      
+    
+  </body>
+</html>

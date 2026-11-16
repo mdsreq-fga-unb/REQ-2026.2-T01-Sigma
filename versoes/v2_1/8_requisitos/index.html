@@ -1,0 +1,1706 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de requisitos de software para o projeto SIGMA">
+      
+      
+        <meta name="author" content="Equipe SIGMA">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>8 requisitos - SIGMA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8-catalogo-unificado-de-requisitos" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="SIGMA" class="md-header__button md-logo" aria-label="SIGMA" data-md-component="logo">
+      
+  <img src="../../../assets/logo-dark.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIGMA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8 requisitos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SIGMA" class="md-nav__button md-logo" aria-label="SIGMA" data-md-component="logo">
+      
+  <img src="../../../assets/logo-dark.png" alt="logo">
+
+    </a>
+    SIGMA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Produto e Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão do Produto e Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/1_cenarioAtual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Cenário Atual do Cliente e do Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/2_solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Solução Proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/3_intervencao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Intervenção Social
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/4_estrategias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 Estratégias de engenharia de software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/5_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/6_cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 Cronograma e entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/7_interacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Interação entre Equipe e Cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/8_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 Catálogo Unificado de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/9_dor_dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 DoR & DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/10_backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/11_licoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 Lições Aprendidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../atividades/atividade_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../atividades/atividade_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atividade 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../atividades/atividade_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    atividade 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atas de Reunião
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Atas de Reunião
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reunioes/ata1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reunião unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Especificação
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Especificação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doc-visao/casos-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Casos de Uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../videos/entrega-videos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrega de vídeos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-catalogo-de-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Catálogo de Casos de Uso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-tabela-geral-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Tabela Geral de Requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83-arvore-de-rastreabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Árvore de Rastreabilidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="admonition info">
+<p class="admonition-title">Versão Arquivada (v2.1 — 08/11/2026)</p>
+<p>Esta é uma cópia histórica intermediária da Unidade 3 (commit <code>8da668b</code>). <a href="../../../doc-visao/8_requisitos/">Acessar a versão atual</a>.</p>
+</div>
+<h1 id="8-catalogo-unificado-de-requisitos">8. Catálogo Unificado de Requisitos</h1>
+<p>Este documento consolida os requisitos funcionais e não funcionais do sistema <strong>SIGMA</strong>, estruturando suas relações com os objetivos do produto, regras de negócio e planejamento de entregas. Os requisitos funcionais são declarados através de <strong>Casos de Uso (UC)</strong>, detalhando fluxos principais, alternativos, exceções e critérios de aceitação.</p>
+<hr />
+<h2 id="81-catalogo-de-casos-de-uso">8.1 Catálogo de Casos de Uso</h2>
+<p>O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com Características do Produto (CP) e Objetivos Específicos (OE), capacidades funcionais (RF), requisitos não funcionais (RNF), regras de negócio (RN) e status no MVP:</p>
+<div class="catalogo-panel">
+
+  <!-- UC01 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc01/">UC01 - Gerenciar Autenticação</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP4 - Controle de Acesso</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.3 - Segurança</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Permitir que as secretárias e administradores acessem e encerrem suas sessões com credenciais seguras, protegendo o acesso aos dados sensíveis da instituição.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf06" class="chip chip--rf" title="Realizar login">RF06 - Realizar Login</a>
+            <a href="#req-rf07" class="chip chip--rf" title="Realizar logout">RF07 - Realizar Logout</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf05" class="chip chip--rnf" title="Tempo de Resposta ao Logar < 2s">RNF05</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn16" class="chip chip--rn" title="Bloqueio após 5 tentativas consecutivas inválidas">RN16</a>
+            <a href="../Regras-Negocio/#rn17" class="chip chip--rn" title="Encerramento de sessão após 30 min de inatividade">RN17</a>
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Apenas contas com status Ativo">RN18</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc01/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC02 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc02/">UC02 - Gerenciar Usuários Administrativos</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP4 - Controle de Acesso</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.3 - Segurança</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Permitir o cadastro, controle e inativação de contas da equipe administrativa da creche com restrições e políticas de senhas fortes.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf05" class="chip chip--rf" title="Cadastrar Usuários">RF05 - Cadastrar Usuários</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso não Autenticado">RNF02</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Bloqueio imediato de contas inativas">RN18</a>
+            <a href="../Regras-Negocio/#rn19" class="chip chip--rn" title="E-mail único cadastrado">RN19</a>
+            <a href="../Regras-Negocio/#rn20" class="chip chip--rn" title="Senha de 8 caracteres com letras, números e especiais">RN20</a>
+            <a href="../Regras-Negocio/#rn21" class="chip chip--rn" title="Impedimento de exclusão física, apenas inativação">RN21</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc02/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC03 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc03/">UC03 - Gerenciar Quadro de Avisos</a></h3>
+        <span class="badge-mvp badge-mvp--nao"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Não</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP6 - Avisos Rápidos</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.4 - Comunicação Interna</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Disponibilizar espaço central para lançamento, visualização e remoção de avisos internos entre a equipe administrativa da creche.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf01" class="chip chip--rf" title="Disponibilizar quadro de avisos">RF01</a>
+            <a href="#req-rf02" class="chip chip--rf" title="Lançar avisos">RF02</a>
+            <a href="#req-rf03" class="chip chip--rf" title="Exibir avisos">RF03</a>
+            <a href="#req-rf04" class="chip chip--rf" title="Apagar avisos">RF04</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn09" class="chip chip--rn" title="Assunto, descrição, data e autor obrigatórios">RN09</a>
+            <a href="../Regras-Negocio/#rn17" class="chip chip--rn" title="Timeout de inatividade 30 min">RN17</a>
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Apenas contas ativas">RN18</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc03/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC04 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc04/">UC04 - Gerenciar Fichas de Matrícula</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP1, CP2, CP8</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1, OE.2, OE.3</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Cadastrar cards de alunos, preencher fichas socioeconômicas e termos escolares, editar dados, registrar histórico e exigir confirmação de salvamento.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf08" class="chip chip--rf" title="Cadastrar card de aluno">RF08</a>
+            <a href="#req-rf09" class="chip chip--rf" title="Preenchimento de fichas">RF09</a>
+            <a href="#req-rf10" class="chip chip--rf" title="Editar fichas do card">RF10</a>
+            <a href="#req-rf11" class="chip chip--rf" title="Inativar card de aluno (Pós-MVP)">RF11</a>
+            <a href="#req-rf12" class="chip chip--rf" title="Reativar card de aluno (Pós-MVP)">RF12</a>
+            <a href="#req-rf17" class="chip chip--rf" title="Apresentar histórico de edições">RF17</a>
+            <a href="#req-rf23" class="chip chip--rf" title="Possibilitar salvamento com confirmação">RF23</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade de Dados LGPD">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf08" class="chip chip--rnf" title="Tempo de salvamento de ficha < 5s">RNF08</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn01" class="chip chip--rn" title="Apenas uma matrícula ativa por vez">RN01</a>
+            <a href="../Regras-Negocio/#rn03" class="chip chip--rn" title="Matrícula ativa mediante 5 fichas completas">RN03</a>
+            <a href="../Regras-Negocio/#rn06" class="chip chip--rn" title="Validação de campos obrigatórios">RN06</a>
+            <a href="../Regras-Negocio/#rn07" class="chip chip--rn" title="Impedir dois alunos com mesmo CPF ou matrícula">RN07</a>
+            <a href="../Regras-Negocio/#rn10" class="chip chip--rn" title="Matrícula inativa não pode ser editada">RN10</a>
+            <a href="../Regras-Negocio/#rn15" class="chip chip--rn" title="Alterações confirmadas antes de salvar">RN15</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc04/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC05 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc05/">UC05 - Gerenciar Documentos Digitais</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP5 - Gerenciamento de Documentos</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.2 - Preservar Informações</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Anexar documentos digitalizados (certidões, declarações) em formato PDF, realizar download e substituir arquivos vinculados às fichas.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf14" class="chip chip--rf" title="Anexar documentos">RF14 - Anexar</a>
+            <a href="#req-rf15" class="chip chip--rf" title="Editar/Substituir documento">RF15 - Substituir</a>
+            <a href="#req-rf16" class="chip chip--rf" title="Baixar fichas e documentos">RF16 - Baixar PDF</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf01" class="chip chip--rnf" title="Privacidade e Retenção Segura LGPD">RNF01</a>
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn05" class="chip chip--rn" title="Formato obrigatório em PDF">RN05</a>
+            <a href="../Regras-Negocio/#rn10" class="chip chip--rn" title="Matrícula inativa não pode receber novos anexos">RN10</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc05/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC06 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc06/">UC06 - Gerenciar Estrutura Escolar</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP7 - Turmas e Etapas</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização Administrativa</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Cadastrar novas etapas de ensino e turmas da creche, vincular turmas às suas respectivas etapas e gerenciar inativações com histórico.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf18" class="chip chip--rf" title="Cadastrar Etapa">RF18 - Cadastrar Etapa</a>
+            <a href="#req-rf19" class="chip chip--rf" title="Inativar turma e etapa">RF19 - Inativar</a>
+            <a href="#req-rf20" class="chip chip--rf" title="Vincular turma à etapa">RF20 - Vincular</a>
+            <a href="#req-rf24" class="chip chip--rf" title="Cadastrar Turma">RF24 - Cadastrar Turma</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf07" class="chip chip--rnf" title="Tempo de busca de turmas/etapas < 2s">RNF07</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn04" class="chip chip--rn" title="Turma obrigatoriamente vinculada a etapa">RN04</a>
+            <a href="../Regras-Negocio/#rn11" class="chip chip--rn" title="Apenas estruturas ativas recebem vínculos">RN11</a>
+            <a href="../Regras-Negocio/#rn12" class="chip chip--rn" title="Inativação mantém vínculos existentes">RN12</a>
+            <a href="../Regras-Negocio/#rn13" class="chip chip--rn" title="Impedir etapas duplicadas">RN13</a>
+            <a href="../Regras-Negocio/#rn14" class="chip chip--rn" title="Impedir turmas duplicadas na mesma etapa">RN14</a>
+            <a href="../Regras-Negocio/#rn22" class="chip chip--rn" title="Campos obrigatórios de etapa e turma">RN22</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc06/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC07 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc07/">UC07 - Alocar Alunos</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP7, CP1</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização Administrativa</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Vincular o card de matrícula do aluno a uma turma existente ativa, garantindo alocação única e consistência na formação de salas.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf13" class="chip chip--rf" title="Vincular aluno a turma">RF13 - Vincular Turma</a>
+            <a href="#req-rf21" class="chip chip--rf" title="Buscar aluno pelo nome">RF21 - Buscar Aluno</a>
+            <a href="#req-rf22" class="chip chip--rf" title="Buscar turmas e etapas">RF22 - Buscar Turma</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf06" class="chip chip--rnf" title="Tempo de busca de aluno < 2s">RNF06</a>
+            <a href="#req-rnf07" class="chip chip--rnf" title="Tempo de busca de turmas < 2s">RNF07</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn02" class="chip chip--rn" title="Matrícula vinculada a 1 turma e 1 etapa">RN02</a>
+            <a href="../Regras-Negocio/#rn03" class="chip chip--rn" title="Fichas completas para ativação">RN03</a>
+            <a href="../Regras-Negocio/#rn04" class="chip chip--rn" title="Turma vinculada a etapa">RN04</a>
+            <a href="../Regras-Negocio/#rn06" class="chip chip--rn" title="Validação de campos antes de salvar">RN06</a>
+            <a href="../Regras-Negocio/#rn08" class="chip chip--rn" title="Impedir aluno em duas turmas simultaneamente">RN08</a>
+            <a href="../Regras-Negocio/#rn10" class="chip chip--rn" title="Matrícula inativa não pode ter alocação alterada">RN10</a>
+            <a href="../Regras-Negocio/#rn11" class="chip chip--rn" title="Apenas turmas ativas recebem novos alunos">RN11</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc07/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+  <!-- UC08 -->
+  <div class="catalogo-card">
+    <div>
+      <div class="catalogo-card__header">
+        <h3 class="catalogo-card__title"><a href="../casos-uso/uc08/">UC08 - Consultar Registros (Busca)</a></h3>
+        <span class="badge-mvp badge-mvp--sim"><a href="../10_backlog/#102-priorizacao-do-backlog-e-mvp">MVP: Sim</a></span>
+      </div>
+      <div class="catalogo-card__hierarchy">
+        <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP3, CP7</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização e Continuidade</a></span>
+      </div>
+      <p class="catalogo-card__desc">
+        Consultar alunos por nome completo ou parcial (sem distinção de maiúsculas/acentos) e pesquisar turmas e etapas em tempo hábil.
+      </p>
+      <div class="catalogo-card__attributes">
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rf21" class="chip chip--rf" title="Buscar aluno pelo nome">RF21 - Buscar Aluno</a>
+            <a href="#req-rf22" class="chip chip--rf" title="Buscar turmas e etapas">RF22 - Buscar Turmas</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Requisitos Não Funcionais (RNF)</span>
+          <div class="catalogo-card__chips">
+            <a href="#req-rnf02" class="chip chip--rnf" title="Restrição de Acesso">RNF02</a>
+            <a href="#req-rnf06" class="chip chip--rnf" title="Tempo de busca de aluno < 2s">RNF06</a>
+            <a href="#req-rnf07" class="chip chip--rnf" title="Tempo de busca de turmas < 2s">RNF07</a>
+          </div>
+        </div>
+        <div class="catalogo-card__row">
+          <span class="catalogo-card__label">Regras de Negócio (RN)</span>
+          <div class="catalogo-card__chips">
+            <a href="../Regras-Negocio/#rn07" class="chip chip--rn" title="Resultados únicos de matrícula e CPF">RN07</a>
+            <a href="../Regras-Negocio/#rn11" class="chip chip--rn" title="Identificação de status ativo/inativo">RN11</a>
+            <a href="../Regras-Negocio/#rn12" class="chip chip--rn" title="Inativos permanecem visíveis na consulta">RN12</a>
+            <a href="../Regras-Negocio/#rn13" class="chip chip--rn" title="Unicidade de nomes de etapas">RN13</a>
+            <a href="../Regras-Negocio/#rn14" class="chip chip--rn" title="Unicidade de nomes de turmas na etapa">RN14</a>
+            <a href="../Regras-Negocio/#rn18" class="chip chip--rn" title="Apenas usuários autenticados">RN18</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="catalogo-card__footer">
+      <a href="../casos-uso/uc08/" class="catalogo-card__link">Ver especificação completa →</a>
+    </div>
+  </div>
+
+</div>
+
+<hr />
+<p><span id="83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso"></span>
+<span id="82-lista-de-requisitos-nao-funcionais-especificacao-suplementar"></span></p>
+<h2 id="82-tabela-geral-de-requisitos">8.2 Tabela Geral de Requisitos</h2>
+<p>A tabela a seguir consolida as especificações de todos os requisitos funcionais e não funcionais do sistema:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Nome do Requisito</th>
+<th style="text-align: left;">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span id="req-rf01" class="rf-anchor">RF01</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Disponibilizar quadro de avisos</td>
+<td style="text-align: left;">O sistema deve disponibilizar um espaço central para visualização e gerenciamento de avisos administrativos da creche.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf02" class="rf-anchor">RF02</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Lançar avisos</td>
+<td style="text-align: left;">As secretárias ou administradores devem poder publicar novos avisos informando assunto, descrição, autor e data.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf03" class="rf-anchor">RF03</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Exibir avisos</td>
+<td style="text-align: left;">O sistema deve listar de forma clara os avisos cadastrados no mural geral da instituição.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf04" class="rf-anchor">RF04</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Apagar avisos</td>
+<td style="text-align: left;">As secretárias ou administradores devem poder excluir avisos publicados quando não forem mais necessários.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf05" class="rf-anchor">RF05</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Cadastrar Usuários</td>
+<td style="text-align: left;">Permitir que usuários com perfil administrativo realizem o cadastro de novos usuários no sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf06" class="rf-anchor">RF06</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Realizar login</td>
+<td style="text-align: left;">As secretárias e administradores devem poder realizar login no sistema com e-mail cadastrado e senha.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf07" class="rf-anchor">RF07</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Realizar logout</td>
+<td style="text-align: left;">As secretárias e administradores devem poder encerrar com segurança sua sessão ativa no sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf08" class="rf-anchor">RF08</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Cadastrar card de aluno</td>
+<td style="text-align: left;">As secretárias devem poder criar cards de alunos representando os registros oficiais de matrícula da instituição.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf09" class="rf-anchor">RF09</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Preenchimento de fichas</td>
+<td style="text-align: left;">As secretárias devem poder preencher as fichas obrigatórias: Termo de Compromisso Escolar, Termo de Autorização de Uso de Imagem, Termo de Saída de Aluno, Ficha Socioeconômica e Requerimento de Matrícula.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf10" class="rf-anchor">RF10</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Editar fichas do card</td>
+<td style="text-align: left;">As secretárias devem poder editar qualquer uma das informações das fichas do card para manutenção e atualização cadastral contínua.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf11" class="rf-anchor">RF11</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Inativar card de aluno</td>
+<td style="text-align: left;">As secretárias devem poder inativar o card de um aluno, alterando seu status para "inativo" e restringindo edições.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf12" class="rf-anchor">RF12</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Reativar card de aluno</td>
+<td style="text-align: left;">Permitir a alteração do status do card de aluno de inativo para ativo, restaurando as permissões de edição e vinculação.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf13" class="rf-anchor">RF13</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Vincular aluno a turma</td>
+<td style="text-align: left;">As secretárias devem poder associar o card de matrícula de um aluno a uma turma cadastrada e ativa da creche.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf14" class="rf-anchor">RF14</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Anexar documentos</td>
+<td style="text-align: left;">O sistema deve permitir anexar cópias digitalizadas de documentos (certidões, declarações, termos) em formato PDF às fichas dos alunos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf15" class="rf-anchor">RF15</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Editar/Substituir documento</td>
+<td style="text-align: left;">O sistema deve permitir substituir um documento PDF previamente anexado a uma ficha, removendo o arquivo anterior e mantendo o novo documento.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf16" class="rf-anchor">RF16</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Baixar fichas e documentos</td>
+<td style="text-align: left;">O sistema deve permitir o download individual de qualquer ficha de matrícula ou documento anexado em formato PDF.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf17" class="rf-anchor">RF17</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Apresentar histórico de edições</td>
+<td style="text-align: left;">O sistema deve permitir a consulta do histórico de edições de uma ficha, exibindo usuário responsável, data/hora da edição, campo alterado, valor anterior e novo valor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf18" class="rf-anchor">RF18</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Cadastrar Etapa</td>
+<td style="text-align: left;">O sistema deve permitir que as secretárias ou administradores cadastrem novas etapas escolares da creche.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf19" class="rf-anchor">RF19</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Inativar turma e etapa</td>
+<td style="text-align: left;">O sistema deve permitir inativar turmas ou etapas quando não estiverem mais em operação, preservando o histórico de vínculos anteriores.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf20" class="rf-anchor">RF20</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Vincular turma à etapa</td>
+<td style="text-align: left;">O sistema deve permitir vincular uma turma a uma etapa de ensino existente e ativa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf21" class="rf-anchor">RF21</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Buscar aluno pelo nome</td>
+<td style="text-align: left;">O sistema deve permitir buscar alunos pelo nome completo ou parcial, sem distinção de maiúsculas, minúsculas ou acentos, retornando os registros de matrícula correspondentes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf22" class="rf-anchor">RF22</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Buscar turmas e etapas</td>
+<td style="text-align: left;">O sistema deve permitir pesquisar turmas e etapas cadastradas na instituição para consulta e vinculação.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf23" class="rf-anchor">RF23</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Possibilitar salvamento com confirmação</td>
+<td style="text-align: left;">O sistema deve exigir confirmação explícita ("Confirmar" ou "Cancelar") ao solicitar o salvamento ou alteração de uma ficha de matrícula, prevenindo perdas acidentais.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rf24" class="rf-anchor">RF24</span></td>
+<td style="text-align: left;">Funcional</td>
+<td style="text-align: left;">Cadastrar Turma</td>
+<td style="text-align: left;">O sistema deve permitir cadastrar uma nova turma associada obrigatoriamente a uma etapa de ensino existente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf01" class="rf-anchor">RNF01</span></td>
+<td style="text-align: left;">Não Funcional (Segurança)</td>
+<td style="text-align: left;">Privacidade de Dados e Proteção LGPD</td>
+<td style="text-align: left;">Garantir a privacidade dos dados pessoais e sensíveis das crianças e famílias, restringindo o acesso e a visualização exclusivamente a usuários autenticados da creche, em conformidade com a LGPD.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf02" class="rf-anchor">RNF02</span></td>
+<td style="text-align: left;">Não Funcional (Segurança)</td>
+<td style="text-align: left;">Restrição de Acesso não Autenticado</td>
+<td style="text-align: left;">O sistema deve restringir o acesso a todas as rotas e funcionalidades internas exclusivamente a usuários autenticados com credenciais válidas. Requisições não autenticadas devem retornar HTTP 401 e redirecionar para login.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf03" class="rf-anchor">RNF03</span></td>
+<td style="text-align: left;">Não Funcional (Usabilidade)</td>
+<td style="text-align: left;">Interface Responsiva e Adaptável</td>
+<td style="text-align: left;">O sistema deve adaptar seus componentes visuais para monitores desktop e dispositivos móveis (resoluções de 360px mobile, 768px tablet e 1280px desktop), preservando layout e funcionalidade.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf04" class="rf-anchor">RNF04</span></td>
+<td style="text-align: left;">Não Funcional (Usabilidade)</td>
+<td style="text-align: left;">Suporte a Modo Escuro Alternável</td>
+<td style="text-align: left;">O sistema deve disponibilizar alternância de tema visual (claro/escuro), assegurando índices de contraste e legibilidade adequados em ambas as paletas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf05" class="rf-anchor">RNF05</span></td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta ao Logar</td>
+<td style="text-align: left;">Garantir tempo de resposta inferior a 2 segundos entre o clique no botão de login e a autorização de acesso ao painel, sob conexão de rede estável.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf06" class="rf-anchor">RNF06</span></td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta ao Buscar Aluno</td>
+<td style="text-align: left;">Retornar os resultados da consulta de alunos em tempo inferior a 2 segundos para 95% das requisições na base da creche (estimada em ~200-300 registros anuais).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf07" class="rf-anchor">RNF07</span></td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta para Buscar Turmas ou Etapas</td>
+<td style="text-align: left;">Retornar os resultados da consulta de turmas e etapas em tempo inferior a 2 segundos para 95% das requisições.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf08" class="rf-anchor">RNF08</span></td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Tempo de Resposta para Salvar Ficha</td>
+<td style="text-align: left;">O sistema deve concluir o salvamento de uma ficha de matrícula em tempo inferior a 5 segundos para 95% das requisições, exibindo confirmação de sucesso.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf09" class="rf-anchor">RNF09</span></td>
+<td style="text-align: left;">Não Funcional (Confiabilidade)</td>
+<td style="text-align: left;">Disponibilidade Operacional</td>
+<td style="text-align: left;">O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span id="req-rnf10" class="rf-anchor">RNF10</span></td>
+<td style="text-align: left;">Não Funcional (Desempenho)</td>
+<td style="text-align: left;">Suporte a Acessos Concorrentes</td>
+<td style="text-align: left;">O sistema deve suportar simultaneamente a equipe administrativa (mínimo de 10 usuários simultâneos) sem degradação perceptível de tempo de resposta.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><span id="83-arvore-de-rastreabilidade"></span></p>
+<h2 id="83-arvore-de-rastreabilidade">8.3 Árvore de Rastreabilidade</h2>
+<p>A representação gráfica abaixo conecta o problema, objetivos específicos (OEs), características do produto (CPs) e os requisitos no Miro:</p>
+<iframe width="100%" height="650" src="https://miro.com/app/live-embed/uXjVEbrie7A=/" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen title="Árvore de Rastreabilidade no Miro"></iframe>
+
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"/></svg></span> <strong><a href="https://miro.com/app/board/uXjVEbrie7A=/">Abrir Árvore de Rastreabilidade diretamente no Miro</a></strong></p>
+<hr />
+<h3 id="captura-da-arvore-de-rastreabilidade">Captura da Árvore de Rastreabilidade</h3>
+<p><img alt="Árvore de Rastreabilidade" src="../../../assets/arvore_rastreabilidade.png" /></p>
+<p align="center"><em>Registro atualizado da rastreabilidade estrutural dos requisitos do SIGMA.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../../javascripts/modal.js"></script>
+      
+    
+  </body>
+</html>

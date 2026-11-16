@@ -535,6 +535,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#historico-de-versoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Versões
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1068,6 +1079,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#historico-de-versoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histórico de Versões
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1108,7 +1130,7 @@
 <td>13/08 a 08/09</td>
 <td>Definição da visão do produto e levantamento inicial do escopo, contemplando a identificação preliminar das CP1 a CP7.</td>
 <td>Definir a visão do produto, delimitar o problema, identificar as principais necessidades do cliente e estabelecer as características iniciais da solução. Organizar os requisitos iniciais e documentar as estratégias e os riscos do projeto.</td>
-<td><a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/">Documento de visão. A entrega da unidade foi finalizada em setembro, com registro da versão 1.1 em 07/09/2026.</a></td>
+<td><a href="../../versoes/">Documento de visão (versão consolidada em histórico)</a>. A entrega da unidade foi finalizada em setembro, com registro da versão 1.1 em 07/09/2026.</td>
 <td>Concluída</td>
 </tr>
 <tr>
@@ -1116,7 +1138,7 @@
 <td>09/09 a 29/09</td>
 <td>Levantamento, análise e priorização das CP1 a CP7, com definição preliminar das funcionalidades prioritárias e proposta inicial de MVP.</td>
 <td>Consolidar, revisar e ajustar, a partir das revisões realizadas, os requisitos, analisar prioridades e definir proposta inicial para o MVP.</td>
-<td><a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/doc-visao/8_requisitos.html">Requisitos documentados</a>, resultados da revisão por pares, ajustes registrados e matriz de priorização. As correções relacionadas às Issues foram incorporadas à versão 2.0 do documento, registrada em 24/09/2026. <a href="https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/atividades/atividade_2.html">Atividades</a></td>
+<td><a href="../../versoes/v2/8_requisitos/">Requisitos documentados (v2.0)</a>, resultados da revisão por pares, ajustes registrados e matriz de priorização. As correções relacionadas às Issues foram incorporadas à versão 2.0 do documento, registrada em 24/09/2026. <a href="../../atividades/atividade_2/">Atividade 2</a></td>
 <td>Concluída</td>
 </tr>
 <tr>
@@ -1131,33 +1153,33 @@
 <td><strong>Iteração 4 - Construção</strong></td>
 <td>20/10 a 29/10</td>
 <td>CP1 — Gerenciamento de cards de matrícula. CP4 — Controle de acesso, como funcionalidade transversal.</td>
-<td>Implementar o cadastro e o gerenciamento inicial dos cards de matrícula (CP1), integrando desde o início os mecanismos de autenticação e controle de acesso (CP4). Verificar a criação, a consulta básica e a persistência dos registros. <strong>Nota:</strong> Como a criação de turmas/etapas (RF18/RF24) e vinculação (RF13) ocorrem na Iteração 7, nesta iteração o cadastro do aluno permitirá o preenchimento da turma como texto livre para não bloquear a RN02.</td>
-<td>Fluxo inicial de cadastro de cards implementado e testado; autenticação e autorização funcionando nos fluxos desenvolvidos. Revisão interna dos testes e demonstração ao cliente.</td>
-<td><strong>Em andamento</strong></td>
+<td>Implementar o cadastro e o gerenciamento inicial dos cards de matrícula (CP1), integrando desde o início os mecanismos de autenticação e controle de acesso (CP4). Verificar a criação, a consulta básica e a persistência dos registros.</td>
+<td>Migrações iniciais do PostgreSQL (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/54">PR #54</a>), autenticação JWT/logout do UC01 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/55">PR #55</a>), cadastro de usuários do UC02 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/61">PR #61</a>), telas de login/usuários (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60">PR #60</a>) e telas de cadastro de aluno e termos (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>).</td>
+<td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 5 - Construção</strong></td>
 <td>30/10 a 05/11</td>
 <td>CP2 — Edição e atualização de cards de matrícula. Continuidade dos controles de acesso da CP4.</td>
 <td>Implementar a edição e a atualização dos cards de matrícula (CP2), considerando o requisito discutido com o cliente de preservar valores anteriores relevantes quando as informações forem alteradas. Verificar também a consistência dos registros após as atualizações.</td>
-<td>Funcionalidades de edição e atualização testadas, com evidências de preservação do histórico definido nos requisitos. Revisão interna e validação com o cliente.</td>
-<td>Planejada</td>
+<td>Tabelas de histórico e estrutura de fichas adicionadas ao banco (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69">PR #69</a>) e fluxo de edição integrado à validação das telas de matrícula (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>).</td>
+<td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 6 - Construção</strong></td>
 <td>06/11 a 12/11</td>
 <td>CP5 — Gerenciamento de documentos. Dependência dos cards de matrícula da CP1 e manutenção dos controles de acesso da CP4.</td>
-<td>Implementar o gerenciamento de documentos vinculados aos cards de matrícula (CP5), incluindo as operações previstas de anexação, consulta, <strong>substituição ou exclusão</strong> (conforme alinhamento com a Issue de Requisitos). Verificar as permissões de acesso e a integridade dos vínculos.</td>
-<td>Gerenciamento de documentos implementado e testado, com verificação dos vínculos, das permissões e das operações previstas. Revisão interna e validação com o cliente.</td>
-<td>Planejada</td>
+<td>Implementar o gerenciamento de documentos vinculados aos cards de matrícula (CP5), incluindo as operações previstas de anexação, consulta, substituição ou exclusão. Verificar as permissões de acesso e a integridade dos vínculos.</td>
+<td>Tabelas de documentos digitais no banco (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69">PR #69</a>) e integração frontend/backend conteinerizada com Docker (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>).</td>
+<td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 7 - Construção</strong></td>
 <td>13/11 a 19/11</td>
 <td>CP3 — Consulta de informações dos cards de matrícula. CP7 — Gerenciamento de turmas e etapas. Integração com as funcionalidades anteriores e manutenção da CP4.</td>
 <td>Implementar a consulta de informações dos cards (CP3) e o gerenciamento de turmas e etapas (CP7). Integrar as funcionalidades desenvolvidas, executar testes de integração e regressão.</td>
-<td>Funcionalidades de consulta, turmas e etapas integradas ao sistema; resultados dos testes registrados. Demonstração integrada ao cliente.</td>
-<td>Planejada</td>
+<td>Integração Docker front/back (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>), backend e telas de turmas/etapas do UC06 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/57">PR #57</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60">PR #60</a>), telas de busca de alunos (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>); finalização dos vínculos e testes integrados em curso.</td>
+<td><strong>Em andamento</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 8 - Transição</strong></td>
@@ -1187,6 +1209,49 @@
 <li><strong>Validação do incremento:</strong> demonstração da funcionalidade aos stakeholders, coleta de feedback e identificação de ajustes.</li>
 <li><strong>Organização e atualização:</strong> atualização dos requisitos, Backlog, matriz de rastreabilidade, decisões e demais artefatos afetados pelo resultado da iteração.</li>
 </ul>
+<hr />
+<h2 id="historico-de-versoes">Histórico de Versões</h2>
+<table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>Data</th>
+<th>Descrição da Alteração</th>
+<th>Autor(es)</th>
+<th>Revisor(es)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../versoes/v1/6_cronograma/">1.0</a></td>
+<td>07/09/2026</td>
+<td>Criação inicial do cronograma e entregas (Unidade 1).</td>
+<td>Gabriel Octacilio</td>
+<td>Equipe SIGMA</td>
+</tr>
+<tr>
+<td><a href="../../versoes/v2/6_cronograma/">2.0</a></td>
+<td>10/10/2026</td>
+<td>Atualização das iterações da Elaboração e planejamento da Construção (Unidade 2).</td>
+<td>Pedro Luca</td>
+<td>Gabriel Octacilio</td>
+</tr>
+<tr>
+<td><a href="../../versoes/v2_1/6_cronograma/">2.1</a></td>
+<td>07/11/2026</td>
+<td>Ajuste de notas e marcos das iterações de Construção e Transição (Issue #33).</td>
+<td>Bryan</td>
+<td>Gabriel Octacilio</td>
+</tr>
+<tr>
+<td><strong>2.2 (Atual)</strong></td>
+<td>16/11/2026</td>
+<td>Atualização dos status reais das Iterações 4 a 7 conforme entregas no repositório (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a> a <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>) e inclusão do histórico de versões (Issue #23).</td>
+<td>Pedro Luca</td>
+<td>Equipe SIGMA</td>
+</tr>
+</tbody>
+</table>
 
 
 
