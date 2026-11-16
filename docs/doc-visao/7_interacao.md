@@ -36,3 +36,13 @@ O processo de validação deve garantir que o sistema atende com sucesso às nec
 - **Testes de usabilidade**: Focados na experiência de uso. Serão realizados com as secretárias para garantir que a solução seja clara, intuitiva e não exija conhecimentos técnicos avançados para ser operada no dia a dia.
 - **Testes de aceitação**: Os testes de aceitação são focados nas regras de negócio, ocorrem para garantir que as funcionalidades implementadas (como o cadastro, busca e edição de alunos) cumpram com os critérios de aceitação estabelecidos junto à diretora e às secretarias.
 - **DoR e DoD**: Os critérios estabelecidos pela equipe para que um requisito esteja pronto para ingressar em uma iteração (DoR) e seja considerado concluído (DoD) possuem a sua seção específica dentro do repositório, onde se encontram detalhados.
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/7_interacao.md) | 07/09/2026 | Criação inicial da seção de interação entre equipe e cliente (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0 (Atual)](../versoes/v2/7_interacao.md) | 08/10/2026 | Correção da Issue #8, adoção do termo iteração e explicitação de aceitação final pelo cliente (Unidade 2). | Jorge Vásquez | Equipe SIGMA |

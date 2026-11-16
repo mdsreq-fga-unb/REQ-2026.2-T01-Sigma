@@ -32,6 +32,8 @@ As fases que serão seguidas são apresentadas na tabela abaixo, juntamente com 
 | Testador | Responsável por testes de integração e validação com partes interessadas; possivelmente acumulado com o papel de Desenvolvedor |
 | Gerente de Projeto | Responsável por planejamento e priorização do backlog, comunicação com o cliente |
 
+> **Evidência de execução dos papéis:** A atuação efetiva de cada integrante nas atividades de análise, revisão, decisão e desenvolvimento é rastreada por meio da seção **Histórico de Versões** ao final de cada página do Documento de Visão (com autor e revisor), do registro de iterações na seção **4.5** e do [repositório de versões arquivadas](../versoes/index.md).
+
 **Artefatos:**
 
 Assim como no nível das fases e dos papéis, os artefatos não são seguidos de forma rígida. Em vez disso, aqueles que ajudam a alcançar as metas do projeto são empregados, conforme mostrado na tabela abaixo.
@@ -117,7 +119,7 @@ Durante a fase de Elaboração, a equipe analisou os riscos técnicos e definiu 
 
 | Categoria | Decisão Tomada | Risco Mitigado |
 | :--- | :--- | :--- |
-| **Arquitetura** | Backend em FastAPI (Python) e Frontend em Node.js, comunicando-se via API REST. | Facilita a separação de responsabilidades e a manutenção. |
+| **Arquitetura** | Backend em FastAPI (Python) e Frontend em Next.js, comunicando-se via API REST. | Facilita a separação de responsabilidades e a manutenção. |
 | **Banco de Dados** | PostgreSQL (relacional). | Garante integridade dos dados e suporta consultas complexas (RN02). |
 | **Segurança** | Autenticação via JWT e senhas criptografadas com Bcrypt. | Impede acessos não autorizados (RNF01, RNF02) e vazamento de senhas. |
 | **Backup** | Rotina de backup diário do banco de dados via volumes do Docker. | Mitiga a perda de dados em caso de falha no servidor. |
@@ -127,9 +129,23 @@ Durante a fase de Elaboração, a equipe analisou os riscos técnicos e definiu 
 
 Para garantir a transparência do processo OpenUP e rastrear a execução das atividades, a equipe mantém o seguinte registro de acompanhamento:
 
-| Iteração | Planejado | Concluído | Replanejado / Pendências |
-| :--- | :--- | :--- | :--- |
-| **Iteração 1** | Documento de Visão, Rich Picture | Entregue no prazo. | - |
-| **Iteração 2** | Backlog inicial, priorização MoSCoW | Entregue. | Matriz de priorização ajustada após feedback. |
-| **Iteração 3** | Prototipação e decisões de arquitetura | **Concluída em 04/11**. | Protótipos validados com a cliente. Decisões de arquitetura documentadas. |
-| **Iteração 4** | Cadastro de cards e controle de acesso | Em andamento. | - |
+| Iteração | Planejado | Concluído | Replanejado / Pendências | Responsáveis / Evidências |
+| :--- | :--- | :--- | :--- | :--- |
+| **Iteração 1** | Documento de Visão, Rich Picture | Entregue no prazo (07/09). | - | Gabriel Octacilio, João Rolim, Jorge Vásquez, Bryan, Pedro Luca |
+| **Iteração 2** | Backlog inicial, priorização MoSCoW | Entregue (24/09 e ajustes em 12/10). | Matriz de priorização ajustada após feedback. | Equipe SIGMA ([Snapshots v2.0](../versoes/index.md)) |
+| **Iteração 3** | Prototipação e decisões de arquitetura | **Concluída em 04/11**. | Protótipos validados com a cliente. Decisões de arquitetura documentadas. | Lucas Peixoto (protótipos), Bryan (arquitetura), Pedro Luca |
+| **Iteração 4** | Cadastro de cards (CP1) e controle de acesso (CP4) | **Concluída**: migrações PostgreSQL ([PR #41](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41), [PR #54](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/54)), autenticação JWT ([PR #55](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/55)), cadastro de usuários ([PR #61](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/61), [PR #60](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60)) e telas de cadastro de aluno/termos ([PR #71](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71)). | - | João Rolim, Gabriel Octacilio, Pedro Luca, Jorge Vásquez |
+| **Iteração 5** | Edição e atualização de cards com histórico (CP2) | **Concluída**: estrutura de tabelas de histórico/fichas ([PR #69](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69)) e fluxo de edição nas telas de matrícula ([PR #71](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71)). | - | João Rolim, Jorge Vásquez |
+| **Iteração 6** | Gerenciamento de documentos digitais (CP5) | **Concluída**: tabelas de documentos no banco ([PR #69](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69)) e integração frontend/backend via Docker ([PR #65](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65)). | - | João Rolim, Bryan |
+| **Iteração 7** | Consulta (CP3) e turmas/etapas (CP7) | **Em andamento (13/11–19/11)**: integração Docker ([PR #65](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65)), backend/frontend UC06 ([PR #57](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/57), [PR #60](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60)), telas de busca ([PR #71](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71)). | Concluir integração dos fluxos finais e testes até 19/11. | Bryan, Pedro Luca, Jorge Vásquez, João Rolim, Gabriel Octacilio |
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/4_estrategias.md) | 07/09/2026 | Criação inicial da seção de estratégias e escolha do OpenUP (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0](../versoes/v2/4_estrategias.md) | 12/10/2026 | Refinamento da adaptação do OpenUP, papéis e riscos (Unidade 2). | Bryan | Gabriel Octacilio |
+| [2.1](../versoes/v2_1/4_estrategias.md) | 08/11/2026 | Inclusão das seções 4.1.2, 4.4 (decisões de arquitetura) e 4.5 (acompanhamento das iterações) (Issue #23). | Bryan | Equipe SIGMA |
+| **2.2 (Atual)** | 16/11/2026 | Atualização das Iterações 4 a 7 no acompanhamento, registro de responsáveis/evidências e histórico de versões (Issue #23). | Pedro Luca | Equipe SIGMA |

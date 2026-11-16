@@ -92,3 +92,13 @@ A conclusão técnica da funcionalidade deverá ser registrada separadamente da 
 Quando realizada, a homologação deverá ter seu resultado registrado, indicando se a entrega foi aprovada, aprovada com ressalvas ou rejeitada. Caso sejam identificados problemas que comprometam os critérios de aceitação ou os requisitos estabelecidos, deverão ser realizadas as correções necessárias antes de considerar a entrega definitivamente aceita.
 
 Um item somente será considerado tecnicamente concluído quando todos os critérios aplicáveis do DoD estiverem atendidos e suas respectivas evidências estiverem registradas. A aprovação do cliente, quando necessária para a aceitação da entrega, deverá ser acompanhada separadamente.
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [2.0](../versoes/v2/9_dor_dod.md) | 10/10/2026 | Criação da seção de DoR e DoD no Documento de Visão (Unidade 2). | Pedro Luca | Equipe SIGMA |
+| **2.1 (Atual)** | 02/11/2026 | Reformulação dos critérios e aplicação de DoR e DoD com base nas Issues #29 e #30 ([PR #39](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/39)). | Lucas Peixoto | Gabriel Octacilio |

@@ -104,3 +104,14 @@ A Creche Estação Vida possui quatro principais perfis de clientes e públicos 
 - **Equipe pedagógica (professoras e monitoras):** Não utiliza o sistema diretamente, mas é beneficiada pela redução de tempo no momento em que a secretaria procura informações dos alunos necessárias para o desenvolvimento das atividades e acompanhamento das crianças, tendo maior facilidade para consultar dados.
 - **Responsáveis (pais e familiares):**  São responsáveis por fornecer as informações utilizadas no processo de matrícula e poderão ser beneficiados indiretamente pela maior organização e segurança dos dados, reduzindo as dificuldades relacionadas à localização e manutenção das informações cadastrais.
 - **Alunos (crianças) e comunidade:** São os principais beneficiários indiretos da solução, pois uma gestão mais organizada das informações pode contribuir para um atendimento mais eficiente e reduzir os riscos relacionados à perda ou dificuldade de acesso aos dados dos alunos.
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/1_cenarioAtual.md) | 07/09/2026 | Criação inicial do cenário atual do cliente e do negócio (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0](../versoes/v2/1_cenarioAtual.md) | 12/10/2026 | Correções das Issues 2 e 3 e refinamento do cenário (Unidade 2). | Gabriel Octacilio | Equipe SIGMA |
+| **2.1 (Atual)** | 06/11/2026 | Atualização do cenário atual referente aos perfis e contexto da instituição (Issue #22). | Jorge Vásquez | Gabriel Octacilio |

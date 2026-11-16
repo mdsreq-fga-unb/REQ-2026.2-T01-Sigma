@@ -38,3 +38,13 @@ Dessa forma, a intervenção não beneficia apenas a administração da creche. 
 
 #### Referências
 BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). Diário Oficial da União, Brasília, DF, 15 ago. 2018.
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/3_intervencao.md) | 07/09/2026 | Criação inicial da seção de intervenção social (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0 (Atual)](../versoes/v2/3_intervencao.md) | 07/10/2026 | Refinamento da situação da creche, adequação à LGPD e remoção de declarações de requisitos duplicadas (Unidade 2). | Jorge Vásquez | Equipe SIGMA |

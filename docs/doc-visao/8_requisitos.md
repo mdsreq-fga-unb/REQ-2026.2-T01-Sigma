@@ -486,3 +486,14 @@ A representação gráfica abaixo conecta o problema, objetivos específicos (OE
 ![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
 
 <p align="center"><em>Registro atualizado da rastreabilidade estrutural dos requisitos do SIGMA.</em></p>
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [2.0](../versoes/v2/8_requisitos.md) | 12/10/2026 | Consolidação inicial dos requisitos, regras de negócio e árvore de rastreabilidade (Unidade 2). | Pedro Luca, Gabriel Octacilio | Equipe SIGMA |
+| [2.1](../versoes/v2_1/8_requisitos.md) | 04/11/2026 | Criação do Catálogo Unificado de Requisitos e remoção de declarações duplicadas ([PR #50](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/50)). | Pedro Luca | Gabriel Octacilio |
+| **2.2 (Atual)** | 11/11/2026 | Inclusão de modais interativos (`modal.js`), filtros de MVP, ajustes de CP7/OE.1 e embed do Miro ([PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/63)). | Pedro Luca | Equipe SIGMA |

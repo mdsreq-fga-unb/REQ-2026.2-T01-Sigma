@@ -76,3 +76,14 @@ A composição e os critérios do MVP foram formalmente apresentados e validados
 - **Aprovação do Recorte:** A coordenadora confirmou que os 7 Casos de Uso selecionados (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) atendem plenamente ao objetivo de *mínimo produto indispensável para operação*, cobrindo o ciclo crítico de matrículas e dispensando o uso de papéis físicos.
 - **Adiamento Consciente:** Foi acordado entre cliente e equipe técnica o adiamento do mural de avisos (UC03) e das operações complexas de inativação/reativação (RF11, RF12, RF19, RF20) para o ciclo pós-MVP.
 - **Evidências:** Os registros detalhados da validação estão disponíveis na seção [Atas de Reunião - Unidade 2](../reunioes/ata1.md).
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [2.0](../versoes/v2/10_backlog.md) | 12/10/2026 | Backlog V1.1, priorização MoSCoW e definição inicial do MVP (Unidade 2). | Gabriel Octacilio | Equipe SIGMA |
+| [2.1](../versoes/v2_1/10_backlog.md) | 07/11/2026 | Reestruturação do backlog e correção dos cálculos de priorização (Issues #31 e #32). | Pedro Luca | Gabriel Octacilio |
+| **2.2 (Atual)** | 09/11/2026 | Conversão para critérios do MVP integrados ao Catálogo Unificado ([PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/63)). | Pedro Luca | Equipe SIGMA |

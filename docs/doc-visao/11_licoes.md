@@ -23,3 +23,14 @@ Também passamos por dificuldades para priorizar os requisitos devido à dificul
 Para a próxima unidade, definimos ações futuras prioritárias com responsáveis, prazos e critérios de sucesso: (1) **Bryan Rodrigues e Jorge Vásquez** serão responsáveis por elaborar os protótipos de tela e validá-los com as secretárias da creche até **19/10/2026** (Iteração 3), tendo como critério de sucesso a aprovação em reunião gravada dos fluxos dos casos de uso do MVP antes da codificação; (2) **Lucas Peixoto e João Rolim** ficarão responsáveis por atualizar continuamente a [Árvore de Rastreabilidade](8_requisitos.md#83-arvore-de-rastreabilidade), o [Backlog](10_backlog.md) e as [Regras de Negócio](8_requisitos.md) ao final de cada iteração de construção (**29/10, 05/11, 12/11 e 19/11/2026**), tendo como critério de sucesso 100% dos requisitos refinados rastreados e sem divergências de IDs; e (3) **Gabriel Vieira e Pedro Rocha** serão responsáveis por aplicar o checklist de [DoR e DoD](9_dor_dod.md) e conduzir as revisões e demonstrações incrementais com a cliente nas mesmas datas (**até 19/11/2026**), tendo como critério de sucesso que nenhuma funcionalidade seja iniciada ou entregue sem cumprir todos os critérios de aceitação, testes e revisão por pares.
 
 As evidências das revisões frequentes, da priorização e das validações com a cliente já incorporadas nesta unidade podem ser conferidas em [Atas de Reunião da Unidade 2](../reunioes/ata1.md) (reuniões de 18/09, 23/09, 06/10 e 11/10) e na [Tabela de Decisão dos Feedbacks](../atividades/atividade_3.md).
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/11_licoes.md) | 07/09/2026 | Registro inicial das lições aprendidas (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0](../versoes/v2/11_licoes.md) | 12/10/2026 | Correção da Issue #9 e adição das lições aprendidas da Unidade 2. | João Rolim, Pedro Luca | Equipe SIGMA |
+| **2.1 (Atual)** | 09/11/2026 | Remoção de referências redundantes após consolidação do Catálogo Unificado ([PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/63)). | Pedro Luca | Equipe SIGMA |
