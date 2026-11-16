@@ -96,21 +96,24 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como será aplicado:** Durante as iterações de desenvolvimento, serão realizadas comunicações diretas com os stakeholders para esclarecer dúvidas pontuais sobre as regras de negócio, garantindo que a equipa não fique bloqueada durante a implementação.
 - **Resultado esperado:** Dúvidas pontuais de negócio resolvidas para não travar o desenvolvimento.
 - **Evidências:**
-    - [Inserir Link]
+    - [Acompanhamento das Iterações e validações](4_estrategias.md#45-acompanhamento-das-iteracoes)
+    - [Protótipos e fluxos validados em 04/11](6_cronograma.md#iteracoes)
 
 #### Prática: Análise e Consenso
 - **Técnicas em aplicação:** Avaliação de Mudanças (Análise de Impacto).
 - **Como está sendo aplicado:** Caso surjam novos pedidos ou alterações nos requisitos durante o desenvolvimento, está sendo aplicada a técnica de Análise de Impacto para avaliar a viabilidade técnica, o custo e o impacto dessas mudanças no escopo da iteração atual.
 - **Resultado esperado:** Decisão tomada sobre a viabilidade técnica e o impacto de aceitar mudanças durante a iteração.
 - **Evidências:**
-    - [Inserir Link]
+    - [Histórico de Versões dos Requisitos](8_requisitos.md#historico-de-versoes)
+    - [Critérios do MVP e Priorização](10_backlog.md)
 
 #### Prática: Declaração
 - **Técnicas a serem aplicadas:** Especificação Sob Demanda (Critérios de Aceite e atualização de Casos de Uso).
 - **Como será aplicado:** Evitando um detalhamento antecipado desnecessário, os requisitos selecionados para a iteração atual serão especificados no momento certo, por meio da escrita de critérios de aceite e atualização dos casos de uso, documentando o que os desenvolvedores precisam para construir a funcionalidade.
 - **Resultado esperado:** Regras de negócio da iteração atual documentadas para os desenvolvedores.
 - **Evidências:**
-    - [Inserir Link]
+    - [Catálogo Unificado de Requisitos](8_requisitos.md)
+    - [Painel de Casos de Uso](casos-uso/index.md)
 
 #### Prática: Representação
 - **Técnicas a serem aplicadas:** Refinamento Visual (Atualização de Protótipos de Interface).
@@ -124,8 +127,8 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como será aplicado:** O software implementado será verificado por meio de técnicas convencionais de teste para averiguar objetivamente se as regras de negócio e os critérios de aceite foram plenamente atendidos. Em seguida, as funcionalidades desenvolvidas serão apresentadas aos stakeholders em demonstrações iterativas, permitindo validar se o sistema continua a atender às necessidades da creche e incorporar feedback nas próximas iterações.
 - **Resultado esperado:** Funcionalidades verificadas iterativamente com o cliente e feedback recolhido para os passos seguintes.
 - **Evidências:**
-    - [Inserir Link]
-    - [Inserir Link]
+    - [Critérios de DoR e DoD](9_dor_dod.md)
+    - [Entregas e PRs integrados no Cronograma](6_cronograma.md#iteracoes)
 
 #### Prática: Organização e Atualização
 - **Técnicas em aplicação:** Revisão e Manutenção do Backlog (Atualização de Requisitos e Gerenciamento de Mudanças) e Construção da Árvore de Rastreabilidade.
@@ -143,15 +146,14 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como será aplicado:** Serão realizados testes de aceitação com as principais usuárias do sistema (secretárias) para verificar se as funcionalidades implementadas atendem aos requisitos e às necessidades reais da rotina administrativa da creche. Por fim, a solução será avaliada pela direção, coordenação e secretárias antes da sua utilização definitiva, o que permitirá identificar e corrigir os ajustes finais.
 - **Resultado esperado:** Sistema validado de forma definitiva pelas usuárias finais no ambiente real da instituição.
 - **Evidências:**
-    - [Inserir Link para o Relatório de Testes de Aceitação (UAT)]
-    - [Inserir Link para a Ata/Termo de Homologação e Aceite Final com o cliente]
+    - *Execução ainda não iniciada (prevista para a Iteração 8 — 24/11 a 03/12, quando serão registrados o Relatório de UAT e o Termo de Homologação e Aceite Final).*
 
 #### Prática: Organização e Atualização
 - **Técnicas a serem aplicadas:** Gestão de Conhecimento e Registro de Melhorias Futuras.
 - **Como será aplicado:** As necessidades, novas ideias ou funcionalidades que não forem essenciais para o MVP (versão atual) serão formalmente registradas e organizadas no backlog para possíveis iterações e evoluções futuras.
 - **Resultado esperado:** Novas demandas e melhorias não críticas registradas e organizadas para futuras versões do sistema.
 - **Evidências:**
-    - [Inserir Link]
+    - *Execução ainda não iniciada (prevista para a Iteração 9 — 04/12 a 10/12; itens fora do MVP já mapeados no [Catálogo Unificado](8_requisitos.md)).*
 
 
 ---
@@ -162,4 +164,5 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 |---|---|---|---|---|
 | [1.0](../versoes/v1/5_requisitos.md) | 07/09/2026 | Criação inicial do processo de Engenharia de Requisitos (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
 | [2.0](../versoes/v2/5_requisitos.md) | 12/10/2026 | Reestruturação conforme novo formato, links de evidências e casos de uso (Unidade 2). | Pedro Luca | Equipe SIGMA |
-| **2.1 (Atual)** | 07/11/2026 | Atualização da seção de Processo de ER com base na Issue #24. | Jorge Vásquez | Gabriel Octacilio |
+| [2.1](../versoes/v2/5_requisitos.md) | 07/11/2026 | Atualização da seção de Processo de ER com base na Issue #24. | Jorge Vásquez | Gabriel Octacilio |
+| **2.2 (Atual)** | 16/11/2026 | Substituição dos placeholders `[Inserir Link]` pelas evidências da Construção e indicação de execução futura na Transição (Issue #34). | Pedro Luca | Equipe SIGMA |
