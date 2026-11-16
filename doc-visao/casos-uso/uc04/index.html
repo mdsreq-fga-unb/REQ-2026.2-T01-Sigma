@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,10 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -609,6 +609,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registros-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 Registros de DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1070,6 +1098,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#10-aplicacao-do-dor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Aplicação do DoR
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1103,22 +1142,22 @@
 <li>O backend deve estar integrado ao banco de dados PostgreSQL.</li>
 </ol>
 <h2 id="4-fluxo-principal">4. Fluxo Principal</h2>
-<p><strong>FP01 - Cadastrar Card de Aluno e Preencher Fichas (RF08, RF09, RF23)</strong></p>
+<p><strong>FP01 - Cadastrar Card de Aluno e Preencher Fichas (RF08, RF09)</strong></p>
 <ol>
 <li>O ator acessa a seção de gerenciamento de matrículas e seleciona a opção para criar um novo card. </li>
 <li>O sistema apresenta o formulário inicial para os dados do aluno. </li>
-<li>O ator preenche os dados cadastrais básicos do aluno. </li>
+<li>O ator preenche os dados cadastrais básicos do aluno e seleciona a turma e etapa de ensino ativa correspondente (RN02, UC07).</li>
 <li>O sistema avança para as abas ou seções de preenchimento das fichas obrigatórias (Socioeconômica, Imagem, Saída, Compromisso Escolar, Requerimento). </li>
 <li>O ator preenche todas as informações necessárias nas fichas. </li>
 <li>O ator aciona a opção de salvar os dados.</li>
 <li>O sistema solicita a confirmação do salvamento. (RN15, FA05)</li>
 <li>O ator confirma a operação. </li>
-<li>O sistema valida todos os campos obrigatórios e verifica se não há conflitos de duplicidade. (RN06, RN07, FE01, FE02)</li>
+<li>O sistema valida todos os campos obrigatórios, o vínculo com turma/etapa e verifica se não há conflitos de duplicidade. (RN02, RN06, RN07, FE01, FE02)</li>
 <li>O sistema registra o card do aluno e as fichas preenchidas no banco de dados em menos de 5 segundos. (RNF08, RNF01, FE04)</li>
-<li>O sistema altera o status da matrícula para ativa e exibe mensagem de sucesso. (RN01, RN03)</li>
+<li>O sistema altera o status da matrícula para ativa (mediante fichas completas e vínculo com turma/etapa) e exibe mensagem de sucesso. (RN01, RN02, RN03)</li>
 </ol>
 <h2 id="5-fluxos-alternativos">5. Fluxos Alternativos</h2>
-<p><strong>FA01 - Editar Fichas de Matrícula (RF10, RF17, RF23)</strong></p>
+<p><strong>FA01 - Editar Fichas de Matrícula (RF10, RF17)</strong></p>
 <ol>
 <li>O ator acessa a lista de cards de matrícula e seleciona um aluno com matrícula ativa. (FE03)</li>
 <li>O ator aciona a opção de edição.</li>
@@ -1128,7 +1167,7 @@
 <li>O sistema valida os campos, registra o novo estado no banco e salva um registro no histórico de edições do card. (RN06, FE01, FE02, FE04)</li>
 <li>O sistema exibe mensagem de sucesso.</li>
 </ol>
-<p><strong>FA02 - Inativar Matrícula (Pós-MVP) (RF11, RF17, RF23)</strong></p>
+<p><strong>FA02 - Inativar Matrícula (Pós-MVP) (RF11, RF17)</strong></p>
 <ol>
 <li>O ator acessa a lista de cards e seleciona um aluno.</li>
 <li>O ator aciona a opção de inativar a matrícula.</li>
@@ -1136,7 +1175,7 @@
 <li>O ator confirma.</li>
 <li>O sistema altera o status do card para inativo, bloqueando futuras edições, e salva a alteração no histórico. (RN10)</li>
 </ol>
-<p><strong>FA03 - Reativar Matrícula (Pós-MVP) (RF12, RF17, RF23)</strong></p>
+<p><strong>FA03 - Reativar Matrícula (Pós-MVP) (RF12, RF17)</strong></p>
 <ol>
 <li>O ator busca por um aluno com status inativo e acessa seu card.</li>
 <li>O ator aciona a opção de reativar a matrícula.</li>
@@ -1150,7 +1189,7 @@
 <li>O ator aciona a opção para visualizar o histórico de alterações.</li>
 <li>O sistema exibe a lista de edições anteriores, mostrando data, autor e o que foi modificado.</li>
 </ol>
-<p><strong>FA05 - Cancelar Criação ou Edição (RF23)</strong></p>
+<p><strong>FA05 - Cancelar Criação ou Edição</strong></p>
 <ol>
 <li>Durante o preenchimento ou edição de uma ficha, o ator aciona a opção de cancelar.</li>
 <li>O sistema descarta as informações inseridas ou alteradas. (RN15)</li>
@@ -1176,7 +1215,7 @@
 <li>O sistema identifica o status da matrícula e oculta ou desabilita os botões de edição das fichas. (RN10)</li>
 <li>O ator só consegue visualizar os dados ou acionar a reativação. (FA03)</li>
 </ol>
-<p><strong>FE04 - Falha de Conectividade ou Tempo de Resposta Excedido (RF23)</strong></p>
+<p><strong>FE04 - Falha de Conectividade ou Tempo de Resposta Excedido</strong></p>
 <ol>
 <li>O ator confirma o salvamento dos dados.</li>
 <li>Caso a persistência ultrapasse o tempo esperado de 5 segundos, o sistema exibe o indicativo <em>"A operação está demorando mais que o esperado"</em> e disponibiliza a opção de <strong>cancelar</strong> para tentar novamente ou continuar aguardando. (RNF08)</li>
@@ -1200,10 +1239,16 @@
 <td><a href="../../8_requisitos/#req-rf08">RF08</a>, <a href="../../8_requisitos/#req-rf09">RF09</a></td>
 </tr>
 <tr>
+<td><a href="../../8_requisitos/#rn02">RN02</a></td>
+<td>Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (selecionada no cadastro ou na alocação em <code>UC07</code>).</td>
+<td>Estrutura organizacional da creche e integridade referencial no banco (<code>turma_id</code> obrigatório).</td>
+<td><a href="../../8_requisitos/#req-rf08">RF08</a>, <a href="../../8_requisitos/#req-rf13">RF13</a></td>
+</tr>
+<tr>
 <td><a href="../../8_requisitos/#rn03">RN03</a></td>
-<td>Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias: Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula.</td>
-<td>Garantir conformidade e documentação completa.</td>
-<td><a href="../../8_requisitos/#req-rf09">RF09</a>, <a href="../../8_requisitos/#req-rf10">RF10</a></td>
+<td>Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias (Termo de compromisso escolar, Autorização de uso de Imagem, Autorização de saída, Socioeconômica e Requerimento de Matrícula) <strong>e</strong> o vínculo com uma turma e etapa ativas (<code>RN02</code>).</td>
+<td>Garantir conformidade documental e alocação escolar completa.</td>
+<td><a href="../../8_requisitos/#req-rf09">RF09</a>, <a href="../../8_requisitos/#req-rf10">RF10</a>, <a href="../../8_requisitos/#req-rf13">RF13</a></td>
 </tr>
 <tr>
 <td><a href="../../8_requisitos/#rn06">RN06</a></td>
@@ -1225,9 +1270,9 @@
 </tr>
 <tr>
 <td><a href="../../8_requisitos/#rn15">RN15</a></td>
-<td>As alterações na matrícula só são aplicadas após a confirmação. Se a operação for cancelada, os dados não serão salvos.</td>
-<td>Evita salvamentos acidentais de dados incompletos.</td>
-<td><a href="../../8_requisitos/#req-rf23">RF23</a>, <a href="../../8_requisitos/#req-rf10">RF10</a></td>
+<td>Operações de salvamento, alteração, inativação ou exclusão exigem confirmação explícita ("Confirmar" ou "Cancelar") antes de persistir os dados (regra transversal que consolida o antigo RF23).</td>
+<td>Evita salvamentos ou alterações acidentais de dados.</td>
+<td><a href="../../8_requisitos/#req-rf10">RF10</a></td>
 </tr>
 </tbody>
 </table>
@@ -1270,11 +1315,6 @@
 <td><a href="../../8_requisitos/#req-rf17">RF17</a></td>
 <td>Apresentar Histórico de Edições</td>
 <td>Garante auditoria e rastreabilidade das modificações realizadas.</td>
-</tr>
-<tr>
-<td><a href="../../8_requisitos/#req-rf23">RF23</a></td>
-<td>Possibilitar salvamento com confirmação</td>
-<td>Exige confirmação explícita de "Confirmar" ou "Cancelar" antes de persistir dados.</td>
 </tr>
 <tr>
 <td><a href="../../8_requisitos/#req-rnf01">RNF01</a></td>
@@ -1376,6 +1416,116 @@
 <br />
 <figcaption>Figura 15 – Ficha socioeconômica em modo escuro (RNF04)</figcaption>
 </figure>
+<h2 id="10-aplicacao-do-dor">10. Aplicação do DoR</h2>
+<p>Esta seção registra a avaliação de prontidão deste Caso de Uso, conforme os critérios definidos em <a href="../../9_dor_dod/#91-definition-of-ready-dor">Definition of Ready (DoR)</a>. O checklist deve ser preenchido para o Caso de Uso ou para o conjunto de fluxos efetivamente selecionado para uma iteração. A presença deste modelo não significa que o Caso de Uso já foi aprovado.</p>
+<h3 id="identificacao-e-delimitacao-da-avaliacao">Identificação e delimitação da avaliação</h3>
+<ul>
+<li><strong>Caso de Uso:</strong> UC04 — Gerenciar Fichas de Matrícula</li>
+<li><strong>Versão do Caso de Uso:</strong> 2.0 (consolidada na fase de Elaboração)</li>
+<li><strong>Iteração planejada:</strong> Iterações 4 e 5 - Construção (20/10 a 05/11)</li>
+<li><strong>Responsável(is) pela avaliação:</strong> Lucas Peixoto e Equipe SIGMA</li>
+<li><strong>Data da avaliação:</strong> 19/10/2026 (pré-Iteração 4) e 04/11/2026 (validação dos protótipos e fluxos com as secretárias)</li>
+<li><strong>Representante consultada:</strong> Cirlene Sena (diretora/coordenadora) e secretárias da Creche Estação Vida</li>
+<li><strong>Fluxos selecionados para a iteração:</strong> FP01 (Cadastrar Card de Aluno e Preencher Fichas), FA01 (Editar Fichas de Matrícula), FA04 (Consultar Histórico de Edições), FA05 (Cancelar), FE01, FE02 e FE04</li>
+<li><strong>Fluxos excluídos desta iteração e justificativa:</strong> FA02 (Inativar Matrícula - RF11) e FA03 (Reativar Matrícula - RF12) são Pós-MVP conforme decisão de 06/10/2026 (<a href="../../10_backlog/#103-validacao-do-mvp-com-o-stakeholder">MVP</a>); FE03 depende de FA02.</li>
+<li><strong>Objetivo(s) específico(s) e característica(s) do produto (OE/CP):</strong> OE.1, OE.2, OE.3 / CP1, CP2, CP8</li>
+<li><strong>Requisitos funcionais relacionados:</strong> RF08, RF09, RF10, RF11, RF12, RF17, RF23</li>
+<li><strong>Requisitos não funcionais relacionados:</strong> RNF01, RNF02, RNF08</li>
+<li><strong>Regras de negócio relacionadas:</strong> RN01, RN03, RN06, RN07, RN10, RN15</li>
+</ul>
+<h3 id="checklist-de-prontidao">Checklist de prontidão</h3>
+<p>Para cada critério, selecionar uma única situação e registrar a evidência correspondente. Utilize <strong>Não aplicável</strong> somente quando houver justificativa. Utilize <strong>Pendente de evidência</strong> quando o atendimento ainda não puder ser comprovado.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Critério de verificação</th>
+<th>Situação</th>
+<th>Evidência / referência</th>
+<th>Observações e pendências</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOR01</td>
+<td>O Caso de Uso está formalmente descrito, com atores, objetivo, pré-condições, pós-condições e fluxos principais, alternativos e de exceção aplicáveis claros e sem ambiguidades?</td>
+<td>☑ Atendido</td>
+<td>Seções 1 a 6 deste arquivo (<code>uc04.md</code>).</td>
+<td>Fluxos do MVP (<code>FP01</code>, <code>FA01</code>, <code>FA04</code>, <code>FA05</code>) descritos; telas implementadas em <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/43">PR #43</a> e <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>.</td>
+</tr>
+<tr>
+<td>DOR02</td>
+<td>Os fluxos selecionados para a iteração estão identificados e delimitados, com indicação do que será desenvolvido agora e do que ficará para depois?</td>
+<td>☑ Atendido</td>
+<td>Delimitação acima, <a href="../../10_backlog/">MVP</a> e <a href="../../6_cronograma/">Cronograma</a> (Iterações 4 e 5).</td>
+<td><code>FA02</code> e <code>FA03</code> explicitamente marcados como Pós-MVP.</td>
+</tr>
+<tr>
+<td>DOR03</td>
+<td>A rastreabilidade do escopo está demonstrada pela cadeia aplicável entre objetivo específico, característica do produto, RF/RNF e regras de negócio, conforme a Árvore de Rastreabilidade?</td>
+<td>☑ Atendido</td>
+<td>Seção 8 deste arquivo e <a href="../../8_requisitos/#uc04">Catálogo Unificado de Requisitos</a> (<code>OE.1, OE.2, OE.3</code> → <code>CP1, CP2, CP8</code> → <code>RF08–RF12, RF17, RF23</code>).</td>
+<td>Cadeia completa documentada.</td>
+</tr>
+<tr>
+<td>DOR04</td>
+<td>Existem critérios de aceitação verificáveis para os fluxos selecionados, coerentes com os requisitos e regras de negócio relacionados?</td>
+<td>☑ Atendido</td>
+<td>Seções 5, 6 e 7 deste arquivo e <code>RN01, RN03, RN06, RN07, RN10, RN15</code> no <a href="../../8_requisitos/">Catálogo Unificado</a>.</td>
+<td>Cobre obrigatoriedade de fichas, duplicidade de CPF/matrícula e preservação de histórico (<code>RF17</code>).</td>
+</tr>
+<tr>
+<td>DOR05</td>
+<td>As regras de negócio necessárias foram compreendidas, registradas e verificadas quanto a contradições ou decisões essenciais em aberto?</td>
+<td>☑ Atendido</td>
+<td>Seção 7 deste arquivo e <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a>.</td>
+<td>A sequência entre ativação da matrícula (<code>RN03</code>) e vínculo com turma/etapa (<code>RN02</code>, tratado no <code>UC07</code>) deve ser consolidada antes da integração final de alocação.</td>
+</tr>
+<tr>
+<td>DOR06</td>
+<td>Quando houver impacto na interface, existe protótipo ou wireframe suficientemente detalhado e validado para orientar os fluxos selecionados?</td>
+<td>☑ Atendido</td>
+<td>Seção 9 deste arquivo (Figuras 1 a 15 — Figma) e validação com as secretárias em 04/11/2026 (<a href="../../6_cronograma/">Cronograma</a>).</td>
+<td>Telas de cadastro, fichas e modo escuro validadas.</td>
+</tr>
+<tr>
+<td>DOR07</td>
+<td>As dependências técnicas, riscos, impactos arquiteturais e viabilidade de implementação foram analisados para o escopo selecionado?</td>
+<td>☑ Atendido</td>
+<td>Modelagem e tabelas de fichas/histórico (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69">PR #69</a>) e telas de cadastro/termos (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>).</td>
+<td>Viabilidade confirmada para o recorte do MVP.</td>
+</tr>
+<tr>
+<td>DOR08</td>
+<td>A representante do projeto validou o entendimento e a adequação do escopo às necessidades e ao contexto de uso da Creche Estação Vida?</td>
+<td>☑ Atendido</td>
+<td><a href="../../../reunioes/ata1/">Ata de Reunião (06/10/2026)</a> e validação de protótipos em 04/11/2026.</td>
+<td>Escopo e formulários validados pela diretora e secretárias.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pontos-de-atencao-especificos-deste-caso-de-uso">Pontos de atenção específicos deste Caso de Uso</h3>
+<ul>
+<li>FA02 — Inativar Matrícula e FA03 — Reativar Matrícula estão marcados como Pós-MVP. Não os incluir no escopo da iteração atual sem uma decisão de repriorização registrada.</li>
+<li>Verificar a sequência entre a ativação da matrícula após o preenchimento das fichas (RN03/FP01) e a exigência de vínculo com turma e etapa (RN02, no UC07). A decisão deve ser consistente entre UC04, UC06 e UC07 antes de considerar prontos os fluxos que dependem dessa sequência.</li>
+<li>O FP01 reúne cadastro, preenchimento de várias fichas e salvamento. Delimitar se todos esses passos serão tratados como um único incremento ou se serão divididos em partes verificáveis.</li>
+</ul>
+<h3 id="resultado-da-avaliacao">Resultado da avaliação</h3>
+<ul>
+<li><strong>Resultado:</strong> ☑ Ready (para os fluxos do MVP selecionados: <code>FP01</code>, <code>FA01</code>, <code>FA04</code>, <code>FA05</code>)</li>
+<li><strong>Pendências impeditivas:</strong> Nenhuma para o cadastro/edição das fichas (<code>FP01</code>/<code>FA01</code>).</li>
+<li><strong>Pendências não impeditivas:</strong> Consolidar entre <code>UC04</code> e <code>UC07</code> a ordem entre ativação da matrícula (<code>RN03</code>) e alocação obrigatória em turma/etapa (<code>RN02</code>); manter <code>FA02</code>/<code>FA03</code> fora do MVP.</li>
+<li><strong>Responsável pelo acompanhamento:</strong> Lucas Peixoto</li>
+<li><strong>Data prevista para reavaliação:</strong> Antes da integração final de alocação (<code>UC07</code>) na Iteração 7/8</li>
+</ul>
+<blockquote>
+<p><strong>Atenção:</strong> O resultado <strong>Ready</strong> somente poderá ser marcado
+quando todos os critérios aplicáveis estiverem atendidos,
+as evidências estiverem registradas e não houver decisões
+essenciais ou contradições impeditivas em aberto.</p>
+<p>Caso contrário, o resultado deverá permanecer como
+<strong>Not Ready</strong> ou <strong>Ainda não avaliado</strong>.</p>
+</blockquote>
 <hr />
 <p><a href="../uc03/">← Anterior: UC03 - Gerenciar Quadros de Avisos</a> | <a href="../uc05/">Próximo: UC05 - Gerenciar Documentos Digitais →</a></p>
 
@@ -1435,10 +1585,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/modal.js"></script>
       
