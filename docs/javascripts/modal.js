@@ -204,6 +204,15 @@
       related: ['UC06', 'RN02', 'RN04', 'RN11', 'RN14', 'RN22']
     },
 
+    RF25: {
+      id: 'RF25',
+      category: 'rf',
+      type: 'Requisito Funcional',
+      name: 'Alternância de Tema Visual',
+      description: 'Disponibilizar um controle na interface que permita ao usuário alterar manualmente entre os temas "claro" e "escuro".',
+      related: []
+    },
+
     // -------------------------------------------------------------------------
     // Requisitos Não Funcionais (RNF01 - RNF10)
     // -------------------------------------------------------------------------
