@@ -276,7 +276,7 @@
       category: 'rnf',
       type: 'Requisito Não Funcional (Confiabilidade)',
       name: 'Disponibilidade Operacional',
-      description: 'O sistema deve assegurar disponibilidade, isto é, assegurar suas funcionalidades operacionais (operações envolvendo os alunos, turmas e outros usuários quando cabível), de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).',
+      description: 'O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30). Considera-se disponível quando o sistema carrega a interface e executa com sucesso as operações operacionais essenciais (login, busca, cadastro/edição de fichas e vínculo de turmas), e indisponível quando retorna erros de servidor (HTTP 5xx) ou falha de conexão com o banco. A verificação é feita por monitoramento contínuo de health-check da API e registros de logs de erro.',
       related: []
     },
     RNF10: {
@@ -297,7 +297,7 @@
       related: []
     },
 
-    RNF11: {
+    RNF12: {
       id: 'RNF12',
       category: 'rnf',
       type: 'Requisito Não Funcional (Segurança)',
