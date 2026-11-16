@@ -86,3 +86,15 @@ Dentre os benefícios previstos para os usuários do sistema, podemos incluir:
 - Facilidade no preenchimento de matrículas, exigindo menos esforço e aumentando a praticidade;
 - Praticidade na busca por informações com um banco de dados integrado;
 - Maior segurança e confiabilidade das informações dos alunos matriculados.
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/2_solucao.md) | 07/09/2026 | Criação inicial da solução proposta (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0](../versoes/v2/2_solucao.md) | 12/10/2026 | Atualização dos OEs, CPs (CP1–CP8) e correções da Unidade 2. | Pedro Luca, Gabriel Octacilio | Equipe SIGMA |
+| [2.1](../versoes/v2_1/2_solucao.md) | 06/11/2026 | Separação dos perfis (secretariado/administrador) e inclusão de viabilidade em nuvem (Issue #22). | Jorge Vásquez | Gabriel Octacilio |
+| **2.2 (Atual)** | 16/11/2026 | Detalhamento das permissões do perfil Administrador e definição de prazo/critérios de hospedagem, custeio e manutenção (Issue #22 / PR #72). | Pedro Luca | Equipe SIGMA |

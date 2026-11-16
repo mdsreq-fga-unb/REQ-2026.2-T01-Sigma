@@ -152,3 +152,14 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Resultado esperado:** Novas demandas e melhorias não críticas registradas e organizadas para futuras versões do sistema.
 - **Evidências:**
     - [Inserir Link]
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [1.0](../versoes/v1/5_requisitos.md) | 07/09/2026 | Criação inicial do processo de Engenharia de Requisitos (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
+| [2.0](../versoes/v2/5_requisitos.md) | 12/10/2026 | Reestruturação conforme novo formato, links de evidências e casos de uso (Unidade 2). | Pedro Luca | Equipe SIGMA |
+| **2.1 (Atual)** | 07/11/2026 | Atualização da seção de Processo de ER com base na Issue #24. | Jorge Vásquez | Gabriel Octacilio |
