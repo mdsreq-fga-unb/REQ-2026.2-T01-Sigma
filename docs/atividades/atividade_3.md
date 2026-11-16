@@ -1,5 +1,8 @@
 # Tabela Antiga de requisitos
 
+!!! warning "Registro Histórico (v1.0 — 24/09/2026)"
+    Esta tabela preserva o levantamento inicial da Atividade 3 apenas para fins de histórico e avaliação. **Ela não representa a especificação vigente do produto** — para consultar os requisitos atualizados, acesse o [Catálogo Unificado de Requisitos](../doc-visao/8_requisitos.md).
+
 ### Requisitos Funcionais
  
 | ID | Nome | Descrição | CP vinculada |
