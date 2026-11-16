@@ -276,7 +276,7 @@
       category: 'rnf',
       type: 'Requisito Não Funcional (Confiabilidade)',
       name: 'Disponibilidade Operacional',
-      description: 'O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).',
+      description: 'O sistema deve assegurar disponibilidade, isto é, assegurar suas funcionalidades operacionais, de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).',
       related: []
     },
     RNF10: {

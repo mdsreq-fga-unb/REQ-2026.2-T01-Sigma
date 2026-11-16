@@ -483,6 +483,6 @@ A representação gráfica abaixo conecta o problema, objetivos específicos (OE
 
 ### Captura da Árvore de Rastreabilidade
 
-![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
+![Árvore de Rastreabilidade](../assets/image.png)
 
 <p align="center"><em>Registro atualizado da rastreabilidade estrutural dos requisitos do SIGMA.</em></p>
