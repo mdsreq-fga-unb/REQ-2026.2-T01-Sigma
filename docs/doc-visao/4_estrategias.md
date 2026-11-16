@@ -43,7 +43,6 @@ Assim como no nível das fases e dos papéis, os artefatos não são seguidos de
 | Visão | Documentação do problema, dos objetivos e do escopo do projeto |
 | Lista de Requisitos (backlog) | Registro e priorização de requisitos |
 | Casos de Uso (leves e detalhados) | Descrição do sistema de acordo com suas entidades e ações |
-| Histórias do Usuário | Descrição do sistema do ponto de vista dos usuários, para auxiliar na priorização do backlog |
 | Protótipos | Validação da arquitetura gráfica antes da construção real |
 | Especificações Suplementares | Documentação de requisitos funcionais e não funcionais |
 
@@ -59,7 +58,7 @@ Igualmente conforme descrito acima, algumas das práticas sugeridas pelo OpenUP 
 
 ### 4.1.2 Relação entre os Artefatos
 
-Embora o OpenUP preveja a utilização de Histórias de Usuário como artefatos complementares, a equipe decidiu centralizar o desenvolvimento e a documentação nos Casos de Uso. Com essa escolha visamos garantir maior rastreabilidade e alinhamento com a arquitetura do sistema. As Histórias de Usuário foram incorporadas como Critérios de Aceite dentro da especificação de cada Caso de Uso, evitando a duplicação de artefatos e mantendo o foco na interação entre atores e sistema.
+Como adaptação do OpenUP ao contexto do projeto, a equipe decidiu **não adotar Histórias de Usuário**, centralizando toda a especificação funcional e a organização do backlog nos **Casos de Uso** integrados ao Catálogo Unificado de Requisitos (RFs, RNFs e RNs). Essa escolha evita a duplicação de artefatos, garante rastreabilidade direta entre objetivos, requisitos e fluxos do sistema e mantém o foco na interação entre atores e sistema.
 
 ### 4.1.3 Direção dos Riscos
 
@@ -148,4 +147,5 @@ Para garantir a transparência do processo OpenUP e rastrear a execução das at
 | [1.0](../versoes/v1/4_estrategias.md) | 07/09/2026 | Criação inicial da seção de estratégias e escolha do OpenUP (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
 | [2.0](../versoes/v2/4_estrategias.md) | 12/10/2026 | Refinamento da adaptação do OpenUP, papéis e riscos (Unidade 2). | Bryan | Gabriel Octacilio |
 | [2.1](../versoes/v2_1/4_estrategias.md) | 08/11/2026 | Inclusão das seções 4.1.2, 4.4 (decisões de arquitetura) e 4.5 (acompanhamento das iterações) (Issue #23). | Bryan | Equipe SIGMA |
-| **2.2 (Atual)** | 16/11/2026 | Atualização das Iterações 4 a 7 no acompanhamento, registro de responsáveis/evidências e histórico de versões (Issue #23). | Pedro Luca | Equipe SIGMA |
+| 2.2 | 16/11/2026 | Atualização das Iterações 4 a 7 no acompanhamento, registro de responsáveis/evidências e histórico de versões (Issue #23 / [PR #73](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/73)). | Pedro Luca | Equipe SIGMA |
+| **2.3 (Atual)** | 16/11/2026 | Remoção de Histórias de Usuário da lista de artefatos e explicitação da adoção exclusiva de Casos de Uso (Issue #23). | Pedro Luca | Equipe SIGMA |
