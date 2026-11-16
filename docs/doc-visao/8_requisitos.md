@@ -44,6 +44,8 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <span id="rnf08"></span><span id="req-rnf08"></span>
   <span id="rnf09"></span><span id="req-rnf09"></span>
   <span id="rnf10"></span><span id="req-rnf10"></span>
+  <span id="rnf10"></span><span id="req-rnf11"></span>
+  <span id="rnf10"></span><span id="req-rnf12"></span>
   <span id="rn01"></span>
   <span id="rn02"></span>
   <span id="rn03"></span>
@@ -483,6 +485,6 @@ A representação gráfica abaixo conecta o problema, objetivos específicos (OE
 
 ### Captura da Árvore de Rastreabilidade
 
-![Árvore de Rastreabilidade](../assets/image.png)
+![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
 
 <p align="center"><em>Registro atualizado da rastreabilidade estrutural dos requisitos do SIGMA.</em></p>
