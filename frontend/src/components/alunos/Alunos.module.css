@@ -1,0 +1,249 @@
+/* Estilos compartilhados pelas telas do UC04 (novo aluno, card e termos). */
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: 6px;
+}
+
+.breadcrumb a {
+  color: var(--color-info);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Seções em cartão (formulários) ---------- */
+.secoes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.secao {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+}
+
+.secaoCabecalho {
+  margin-bottom: 14px;
+}
+
+.secaoTitulo {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.secaoDescricao {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.grid2,
+.grid3,
+.grid2x1 {
+  display: grid;
+  gap: 14px 12px;
+  align-items: start;
+}
+
+.grid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Campo largo + campo estreito (ex.: data de nascimento + sexo) */
+.grid2x1 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.notaCampo {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* Campos de formulário compactos, como no protótipo */
+.secao input:not([type="radio"]):not([type="checkbox"]),
+.secao select {
+  height: 40px;
+  font-size: 14px;
+}
+
+.secao label,
+.secao legend {
+  font-size: 12px;
+}
+
+.secao [role="radiogroup"] label,
+.secao fieldset label {
+  font-size: 13px;
+}
+
+/* Campos desabilitados (card inativo: somente consulta) */
+.secao input:disabled,
+.secao select:disabled {
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  cursor: not-allowed;
+}
+
+.secao label:has(input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Marca de campo obrigatório em títulos de seção e checkboxes */
+.obrigatorio {
+  color: var(--color-text);
+}
+
+/* ---------- Ações no rodapé dos formulários ---------- */
+.acoesForm {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ---------- Dados vindos do card (bloco "Aluno" dos termos) ---------- */
+.dadosCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0;
+}
+
+.dadosCard div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dadosCard dt {
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.dadosCard dd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+/* ---------- Situação de fichas e documentos ---------- */
+.situacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.situacaoPonto {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.situacaoOk {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.situacaoPendente {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+/* ---------- Links de ação ("Abrir →") ---------- */
+.linkAcao {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-info);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.linkAcao:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Modais ---------- */
+.modalAlerta {
+  margin-bottom: 16px;
+}
+
+.modalAcoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ---------- Estados de carregamento / erro ---------- */
+.estado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.carregando {
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+@media (max-width: 860px) {
+  .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .grid2,
+  .grid3,
+  .grid2x1 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .acoesForm > *,
+  .modalAcoes > * {
+    flex: 1;
+  }
+}

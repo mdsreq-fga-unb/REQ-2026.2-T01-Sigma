@@ -20,6 +20,12 @@
   color: var(--color-danger);
 }
 
+.warning {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning);
+}
+
 .info {
   background: var(--color-info-bg);
   border-color: var(--color-info-border);

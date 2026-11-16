@@ -6,10 +6,13 @@ import {
   mockHabilitado,
   naoEncontrado,
   novoId,
-  publico,
   store,
+  usuarioBackend,
   usuarioDaSessao,
 } from "@/mocks/store";
+
+const TAMANHO_PADRAO = 20;
+const TAMANHO_MAXIMO = 100;
 
 export async function GET(request: NextRequest) {
   if (!mockHabilitado()) return naoEncontrado();
@@ -17,7 +20,18 @@ export async function GET(request: NextRequest) {
 
   const { resposta } = usuarioDaSessao(request);
   if (resposta) return resposta;
-  return NextResponse.json(store.usuarios.map(publico));
+
+  // Mesmo formato paginado do backend: GET /usuarios?pagina=&tamanho=
+  const params = request.nextUrl.searchParams;
+  const tamanho = Math.min(Math.max(Number(params.get("tamanho")) || TAMANHO_PADRAO, 1), TAMANHO_MAXIMO);
+  const pagina = Math.max(Math.trunc(Number(params.get("pagina")) || 1), 1);
+  const inicio = (pagina - 1) * tamanho;
+  return NextResponse.json({
+    itens: store.usuarios.slice(inicio, inicio + tamanho).map(usuarioBackend),
+    total: store.usuarios.length,
+    pagina,
+    tamanho,
+  });
 }
 
 export async function POST(request: NextRequest) {
@@ -51,5 +65,5 @@ export async function POST(request: NextRequest) {
     senha,
   };
   store.usuarios.push(novo);
-  return NextResponse.json(publico(novo), { status: 201 });
+  return NextResponse.json(usuarioBackend(novo), { status: 201 });
 }

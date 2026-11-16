@@ -4,8 +4,8 @@ import {
   esperar,
   mockHabilitado,
   naoEncontrado,
-  publico,
   store,
+  usuarioBackend,
   usuarioDaSessao,
 } from "@/mocks/store";
 
@@ -24,5 +24,5 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
   if (alvo.ativo) return erro(409, "STATUS_INVALIDO", "A conta já está ativa.");
 
   alvo.ativo = true;
-  return NextResponse.json(publico(alvo));
+  return NextResponse.json(usuarioBackend(alvo));
 }
