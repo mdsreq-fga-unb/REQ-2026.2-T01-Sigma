@@ -44,6 +44,8 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <span id="rnf08"></span><span id="req-rnf08"></span>
   <span id="rnf09"></span><span id="req-rnf09"></span>
   <span id="rnf10"></span><span id="req-rnf10"></span>
+  <span id="rnf11"></span><span id="req-rnf11"></span>
+  <span id="rnf12"></span><span id="req-rnf12"></span>
   <span id="rn01"></span>
   <span id="rn02"></span>
   <span id="rn03"></span>
@@ -464,6 +466,19 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
 <!-- Mensagem de estado vazio caso nenhum card corresponda ao filtro -->
 <div id="catalogo-empty-state" class="catalogo-empty-state" style="display: none;">
   <p>Nenhum Caso de Uso encontrado para o filtro selecionado.</p>
+</div>
+
+### Requisitos Não Funcionais Transversais
+
+Requisitos não funcionais aplicáveis a todo o sistema (clique nos chips para ver os detalhes):
+
+<div class="catalogo-card__chips" style="margin: 0.75rem 0 1.5rem 0;">
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF03" title="Clique para ver detalhes do RNF03">RNF03 - Interface Responsiva</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF04" title="Clique para ver detalhes do RNF04">RNF04 - Modo Escuro</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF09" title="Clique para ver detalhes do RNF09">RNF09 - Disponibilidade</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF10" title="Clique para ver detalhes do RNF10">RNF10 - Acessos Concorrentes</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF11" title="Clique para ver detalhes do RNF11">RNF11 - Retenção e Descarte</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF12" title="Clique para ver detalhes do RNF12">RNF12 - Backup e Restauração</button>
 </div>
 
 ---
