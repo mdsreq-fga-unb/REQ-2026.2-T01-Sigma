@@ -27,6 +27,9 @@ export type StatusAluno = "ATIVO" | "INATIVO";
 export type Sexo = "MASCULINO" | "FEMININO";
 export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADA";
 
+export type StatusMatricula = "PENDENTE" | "ATIVA" | "INATIVA";
+export type TipoAlteracaoMatricula = "CRIACAO" | "EDICAO" | "INATIVACAO" | "REATIVACAO";
+
 /** Datas trafegam como `AAAA-MM-DD`; a interface exibe dd/mm/aaaa. */
 export interface DadosPessoaisAluno {
   nome: string;
@@ -45,6 +48,162 @@ export interface DadosMatriculaAluno {
   etapaId: string | null; // "Ano de escolaridade / etapa"
   anoLetivo: string;
   dataMatricula: string;
+}
+
+export interface DadosAluno {
+  nome: string;
+  cpf: string;
+  numeroMatricula: string;
+  dataNascimento: string;
+  nomeResponsavel: string;
+  telefoneResponsavel: string;
+  sexo: string;
+  nis: string;
+  identidade: string;
+  naturalidade: string;
+  ufNaturalidade: string;
+  nacionalidade: string;
+  corRaca: string;
+}
+
+export interface DocumentoCivil {
+  rg: string;
+  orgaoEmissor: string;
+  ufEmissor: string;
+  dataExpedicao: string;
+  tipoCertidao: "NASCIMENTO" | "CASAMENTO";
+  numeroTermo: string;
+  folha: string;
+  livro: string;
+  dataEmissao: string;
+  nomeCartorio: string;
+  ufCartorio: string;
+  documentoEstrangeiro: string;
+}
+
+export interface DadosFiliacao {
+  nome: string;
+  escolaridade: string;
+  localTrabalho: string;
+  telefoneTrabalho: string;
+}
+
+export interface RenovacaoMatricula {
+  data: string;
+  ano: string;
+  responsavel: string;
+}
+
+export interface FichaRequerimento {
+  anoEscolaridade: string;
+  anoLetivo: string;
+  dataMatricula: string;
+  documentacaoCivil: DocumentoCivil;
+  filiacao: {
+    pai: DadosFiliacao;
+    mae: DadosFiliacao;
+  };
+  endereco: string;
+  telefone: string;
+  saude: {
+    problemas: string[];
+    observacoesProblemas: string;
+    acompanhamentos: string[];
+    observacoesAcompanhamento: string;
+  };
+  compromissoDocumentos: {
+    responsavel: string;
+    documentosEntregues: string[];
+  };
+  renovacoes: RenovacaoMatricula[];
+  transferencia: {
+    dataPedido: string;
+    dataEntrega: string;
+    responsavel: string;
+  };
+}
+
+export interface MembroFamiliar {
+  componente: string;
+  profissao: string;
+  idade: string;
+  estadoCivil: string;
+  escolaridade: string;
+  rendaMensal: string;
+}
+
+export interface FichaSocioeconomica {
+  endereco: {
+    logradouro: string;
+    numero: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    cep: string;
+    telefone: string;
+    celular: string;
+    email: string;
+  };
+  moradia: {
+    tipo: string;
+    valorMensal: string;
+    cedidoPor: string;
+  };
+  transporte: string;
+  nucleoFamiliar: MembroFamiliar[];
+  observacoes: string;
+  outrasPropriedades: {
+    possui: boolean;
+    descricao: string;
+  };
+  declaracao: {
+    responsavel: string;
+    local: string;
+    data: string;
+  };
+}
+
+export interface FichasMatricula {
+  socioeconomica: FichaSocioeconomica;
+  imagem: {
+    autorizada: boolean | null;
+    responsavel: string;
+  };
+  saida: {
+    autorizadaSemResponsavel: boolean | null;
+    responsavel: string;
+    pessoasAutorizadas: string;
+  };
+  compromisso: {
+    aceito: boolean;
+    responsavel: string;
+  };
+  requerimento: FichaRequerimento;
+}
+
+export interface HistoricoMatricula {
+  id: string;
+  data: string;
+  autor: string;
+  tipo: TipoAlteracaoMatricula;
+  alteracoes: string[];
+}
+
+export type AlteracaoMatricula = HistoricoMatricula;
+
+export interface Matricula {
+  id: string;
+  aluno: DadosAluno;
+  fichas: FichasMatricula;
+  status: StatusMatricula;
+  criadaEm: string;
+  atualizadaEm: string;
+  historico: HistoricoMatricula[];
+}
+
+export interface NovaMatriculaPayload {
+  aluno: DadosAluno;
+  fichas: FichasMatricula;
 }
 
 /** RF08 – cria o card; fichas e termos são preenchidos depois, dentro do card. */
@@ -203,6 +362,7 @@ export type ApiErrorCode =
   | "EMAIL_EM_USO" // UC02 FE01 (RN19)
   | "SENHA_FORA_PADRAO" // UC02 FE04 (RN20)
   | "CPF_EM_USO" // UC04 FE02 (RN07)
+  | "MATRICULA_EM_USO" // UC04 – matrícula já usada para outro cadastro
   | "MATRICULA_INATIVA" // UC04 FE03 (RN10)
   | "FICHAS_INCOMPLETAS" // UC04 FE01 (RN06)
   | "TURMA_INATIVA" // UC04 – vincular à turma (RN11)
