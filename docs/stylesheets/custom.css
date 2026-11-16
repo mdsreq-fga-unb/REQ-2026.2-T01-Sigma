@@ -1991,3 +1991,36 @@ body.sigma-modal-open {
 }
 
 
+.md-typeset figure.prototipo {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.md-typeset figure.prototipo br {
+  display: none; /* o markdown="span" insere um <br> entre a imagem e a legenda */
+}
+
+.md-typeset figure.prototipo img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--palette-gray-200);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.md-typeset figure.prototipo a:hover img {
+  box-shadow: 0 4px 16px rgba(39, 130, 156, 0.35);
+}
+
+.md-typeset figure.prototipo figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--lighter);
+}
+
+[data-md-color-scheme="slate"] .md-typeset figure.prototipo img,
+[data-md-color-scheme="dark"] .md-typeset figure.prototipo img {
+  border-color: var(--palette-gray-600);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
