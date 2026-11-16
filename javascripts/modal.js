@@ -276,7 +276,7 @@
       category: 'rnf',
       type: 'Requisito Não Funcional (Confiabilidade)',
       name: 'Disponibilidade Operacional',
-      description: 'O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).',
+      description: 'O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30). Considera-se disponível quando o sistema carrega a interface e executa com sucesso as operações operacionais essenciais (login, busca, cadastro/edição de fichas e vínculo de turmas), e indisponível quando retorna erros de servidor (HTTP 5xx) ou falha de conexão com o banco. A verificação é feita por monitoramento contínuo de health-check da API e registros de logs de erro.',
       related: []
     },
     RNF10: {
@@ -288,9 +288,27 @@
       related: []
     },
 
+    RNF11: {
+      id: 'RNF11',
+      category: 'rnf',
+      type: 'Requisito Não Funcional (Segurança)',
+      name: 'Política de Retenção e Descarte de Dados',
+      description: 'Garantir o ciclo de vida dos dados pessoais aplicando os seguintes parâmetros de segurança: I - Todos os dados pessoais retidos e os backups correspondentes devem ser armazenados com criptografia forte; II - O sistema deve manter rotinas de backup automatizadas que garantam a integridade e a restauração dos dados retidos em caso de falhas, sem perda de informações; III - Dados inativos retidos por obrigações legais devem ser segregados do banco de dados operacional, acessíveis exclusivamente pelo administrador; IV - Após expirar o prazo legal de retenção, deve-se aplicar rotinas automatizadas de anonimização irreversível ou exclusão física, garantindo que os dados não possam ser recuperados sob nenhuma circunstância.',
+      related: []
+    },
+
+    RNF12: {
+      id: 'RNF12',
+      category: 'rnf',
+      type: 'Requisito Não Funcional (Segurança)',
+      name: 'Backup e Restauração de Dados',
+      description: 'Realizar rotinas automatizadas de backup do banco de dados e dos arquivos com frequência mínima diária. Em caso de incidentes ou falhas críticas, a perda aceitável de dados (RPO - Recovery Point Objective) não deve exceder as últimas 24 horas de operação, e o tempo máximo de recuperação e restauração completa do sistema (RTO - Recovery Time Objective) deve ser inferior a 4 horas.',
+      related: []
+    },
     // -------------------------------------------------------------------------
     // Regras de Negócio (RN01 - RN22)
     // -------------------------------------------------------------------------
+
     RN01: {
       id: 'RN01',
       category: 'rn',
