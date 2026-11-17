@@ -1,112 +1,67 @@
+# Modelo de apresentação de checklist DoD em PDF
 
-# Modelo de Registro — Definition of Done (DoD)
+Este modelo deve ser utilizado quando a equipe receber um novo checklist de funcionalidades em PDF elaborado pela liderança e validado com a representante do projeto. O PDF deve ser mantido como documento original da validação; este arquivo organiza sua identificação e apresentação no site.
 
-## 1. Identificação da entrega
+**Não substitua nem edite o PDF validado para preencher este modelo.** Copie os blocos abaixo para o `index.md`, preencha os dados confirmados e mantenha o arquivo PDF na pasta `pdfs/`.
+
+## 1. Identificação do registro
 
 | Campo | Informação |
 |---|---|
-| Identificação da entrega | A preencher |
-| Funcionalidade / incremento | A preencher |
-| Caso(s) de Uso relacionado(s) | A preencher |
-| Fluxos implementados | A preencher |
-| Requisitos relacionados (RF, RNF e RN) | A preencher |
-| Iteração | A preencher |
-| Versão da entrega | A preencher |
-| Responsável pela implementação | A preencher |
-| Responsável pela revisão | A preencher |
-| Data da avaliação | A preencher |
+| Caso de Uso | UCXX — Nome do Caso de Uso |
+| Documento | Nome do checklist de funcionalidades |
+| Arquivo PDF | `pdfs/arquivo_do_checklist.pdf` |
+| Responsável pela elaboração | A preencher, se registrado |
+| Data do documento | A preencher, se registrada |
+| Validação com a representante | A preencher conforme registro disponível |
+| Observações | A preencher, se necessário |
 
-**Importante:** o responsável pela revisão deve ser diferente do responsável pela implementação.
+## 2. Link para o PDF
 
-## 2. Checklist de verificação técnica
+Substitua o nome do arquivo pelo PDF correspondente:
 
-Para cada critério, registre o resultado, a evidência e as observações necessárias.
+[**Abrir checklist em PDF**](pdfs/arquivo_do_checklist.pdf)
 
-| ID | Critério | Resultado | Evidência / referência | Observações |
-|---|---|---|---|---|
-| DOD01 | Implementação conforme especificação aprovada | A preencher | A preencher | A preencher |
-| DOD02 | Critérios de aceitação verificados | A preencher | A preencher | A preencher |
-| DOD03 | Testes funcionais, unitários e de integração executados | A preencher | A preencher | A preencher |
-| DOD04 | Integração realizada e regressões verificadas | A preencher | A preencher | A preencher |
-| DOD05 | Revisão de código realizada por outro integrante | A preencher | A preencher | A preencher |
-| DOD06 | Requisitos não funcionais aplicáveis verificados | A preencher | A preencher | A preencher |
-| DOD07 | Interface e usabilidade verificadas, quando aplicáveis | A preencher | A preencher | A preencher |
-| DOD08 | Documentação e rastreabilidade atualizadas | A preencher | A preencher | A preencher |
-| DOD09 | Funcionalidade demonstrada à equipe | A preencher | A preencher | A preencher |
-| DOD10 | Escopo aprovado respeitado | A preencher | A preencher | A preencher |
-| DOD11 | Pendências identificadas e classificadas | A preencher | A preencher | A preencher |
+## 3. Bloco para visualizar o PDF na página
 
-**Resultados possíveis:**
-- Atendido
-- Não atendido
-- Não aplicável (com justificativa)
+Copie o bloco HTML abaixo para o `index.md`. Atualize o texto do resumo, o título e os dois caminhos para que correspondam ao arquivo real.
 
-## 3. Evidências dos testes
+```html
+<details>
+<summary>Visualizar checklist validado do UCXX</summary>
 
-| Teste | Fluxo / requisito relacionado | Resultado esperado | Resultado obtido | Evidência |
-|---|---|---|---|---|
-| Teste 01 | A preencher | A preencher | A preencher | A preencher |
-| Teste 02 | A preencher | A preencher | A preencher | A preencher |
+<iframe
+  src="pdfs/arquivo_do_checklist.pdf"
+  width="100%"
+  height="650"
+  title="Checklist de funcionalidades do UCXX"
+  loading="lazy">
+</iframe>
 
-Registrar os testes funcionais, unitários, de integração e de regressão aplicáveis. Quando algum tipo de teste não for necessário, justificar sua não aplicabilidade.
+<p>
+  Caso a visualização incorporada não esteja disponível,
+  <a href="pdfs/arquivo_do_checklist.pdf" target="_blank" rel="noopener">abra o PDF em uma nova aba</a>.
+</p>
 
-## 4. Revisão técnica
+</details>
+```
 
-- **Revisor:** A preencher
-- **Implementador:** A preencher
-- **Pull Request / referência do código:** A preencher
-- **Data da revisão:** A preencher
-- **Resultado:** A preencher
-- **Observações:** A preencher
+## 4. Resumo do conteúdo
 
-## 5. Demonstração à equipe
+Descreva brevemente quais fluxos, funcionalidades ou requisitos aparecem no documento. Não acrescente ao resumo comportamentos que não estejam registrados no PDF.
 
-- **Data da demonstração:** A preencher
-- **Participantes:** A preencher
-- **Funcionalidades demonstradas:** A preencher
-- **Resultado e observações:** A preencher
-- **Evidência (ata, vídeo ou registro):** A preencher
+- Fluxos / funcionalidades contemplados: A preencher.
+- Requisitos relacionados identificados no documento: A preencher.
+- Observações relevantes: A preencher.
 
-## 6. Pendências identificadas
+## 5. Relação com o DoD
 
-| Pendência | Classificação | Responsável | Prazo | Situação |
-|---|---|---|---|---|
-| A preencher | Impeditiva / Não impeditiva | A preencher | A preencher | A preencher |
+O checklist em PDF pode servir como evidência de validação funcional e de alinhamento do escopo com a cliente. A conclusão técnica pelo DoD continua dependendo das demais evidências aplicáveis, como execução de testes, integração, revisão de código, verificação de requisitos não funcionais e atualização da documentação.
 
-Pendências impeditivas que comprometam critérios de aceitação, regras de negócio ou requisitos obrigatórios impedem a conclusão técnica da entrega.
+Quando esses itens forem registrados em outro artefato, inclua a referência correspondente, sem duplicar ou afirmar resultados que não tenham sido verificados.
 
-Pendências não impeditivas poderão permanecer abertas, desde que documentadas e encaminhadas para tratamento posterior.
+---
 
-## 7. Validação pela representante do projeto
+## Exemplo de inclusão no índice
 
-A validação pelo cliente ou representante deverá ser registrada separadamente da conclusão técnica.
-
-- **Validação realizada?** A preencher
-- **Representante:** A preencher
-- **Data:** A preencher
-- **Resultado:** A preencher (Aprovada / Aprovada com ressalvas / Rejeitada / Não realizada)
-- **Observações e solicitações:** A preencher
-- **Evidência da validação:** A preencher
-
-## 8. Resultado final
-
-**Situação técnica:**
-- [ ] Não concluída
-- [ ] Tecnicamente concluída
-
-**Situação da homologação:**
-- [ ] Não realizada
-- [ ] Aguardando homologação
-- [ ] Aprovada
-- [ ] Aprovada com ressalvas
-- [ ] Rejeitada
-
-**Responsável pelo registro final:** A preencher
-
-**Data:** A preencher
-
-**Justificativa / observações finais:**
-
-A preencher.
-
-Uma entrega somente poderá ser considerada tecnicamente concluída quando todos os critérios aplicáveis do DoD estiverem atendidos e suas evidências registradas. A homologação pelo cliente deverá permanecer como uma avaliação separada.
+No `index.md`, acrescente uma linha à tabela de **Registros disponíveis** e uma subseção de visualização seguindo o padrão dos PDFs já cadastrados.
