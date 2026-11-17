@@ -489,7 +489,7 @@ Requisitos não funcionais aplicáveis a todo o sistema (clique nos chips para v
 <span id="83-arvore-de-rastreabilidade"></span>
 ## 8.2 Árvore de Rastreabilidade
 
-A árvore abaixo segue a derivação **Problema → Objetivo Geral → Objetivos Específicos (OE) → Características do Produto (CP) → Casos de Uso (UC) → Requisitos (RF, RNF e RN)**, conforme o [Catálogo de Casos de Uso](#81-catalogo-de-casos-de-uso) e as [Características de Produto](../2_solucao.md#23-caracteristicas-de-produto). Os requisitos não funcionais transversais, que valem para todo o sistema, derivam diretamente do Objetivo Geral.
+A árvore abaixo segue a derivação **Problema → Objetivo Geral → Objetivos Específicos (OE) → Características do Produto (CP) → Casos de Uso (UC) → Requisitos (RF, RNF e RN)**, conforme o [Catálogo de Casos de Uso](#81-catalogo-de-casos-de-uso) e as [Características de Produto](2_solucao.md#23-caracteristicas-de-produto). Os requisitos não funcionais transversais, que valem para todo o sistema, derivam diretamente do Objetivo Geral.
 
 Use a roda do mouse (ou o gesto de pinça) para dar zoom, arraste para mover a árvore e passe o mouse sobre um item para destacar o seu caminho: de onde ele deriva e o que deriva dele. Clique em um requisito para ver os seus detalhes. Os botões no canto superior direito aproximam, afastam, mostram a árvore inteira e abrem em tela cheia.
 
