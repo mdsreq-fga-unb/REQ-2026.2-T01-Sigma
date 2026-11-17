@@ -43,6 +43,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: mermaid-caminho
+          class: mermaid-caminho
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -61,6 +64,8 @@ extra_css:
 
 extra_javascript:
   - javascripts/modal.js
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - javascripts/mermaid-caminho.js
 
 nav:
   - Início: index.md

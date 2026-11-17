@@ -30,8 +30,9 @@ Tendo em vista que são dados sensíveis de crianças, a nossa solução pretend
 | CP4 | OE.3 | Controle de acesso de usuários | Permitir o cadastro de dois tipos de perfil disponíveis: o de Administrador, que possui acesso às mesmas funcionalidades do secretariado com a capacidade adicional de cadastrar novas secretárias no sistema, e o de secretariado, que ativa funções de cadastro, consulta, atualização e organização das informações dos alunos. | Controla o acesso ao sistema, proporcionando segurança e confiabilidade de informações. |
 | CP5 | OE.2 | Gerenciamento de documentos | Anexação ou deleção de documentos vinculados aos cards de matrículas. | Permite a anexação de documentos fixados aos cards de matrícula. |
 | CP6 | OE.4 | Avisos Rápidos | Postagem de avisos administrativos, para todos os usuários do sistema. | Facilita a comunicação entre as secretárias, facilitando o trabalho em equipe e coordenação no time. |
-| CP7 | OE.4 | Gerenciamento de turmas e etapas | Criação, edição e inativação de turmas e etapas; vínculo de cards em turmas e etapas. | Facilita a organização dos cards de alunos, ajudando a logística entre as secretárias e otimizando o tempo de busca de um card. |
+| CP7 | OE.1 | Gerenciamento de turmas e etapas | Criação, edição e inativação de turmas e etapas; vínculo de cards em turmas e etapas. | Facilita a organização dos cards de alunos, ajudando a logística entre as secretárias e otimizando o tempo de busca de um card. |
 | CP8 | OE.3 | Auditoria e Integridade | Registrar o histórico de edições e exigir confirmação em operações de salvamento. | Garantir total rastreabilidade e segurança contra alterações indevidas ou perdas acidentais de dados. |
+| CP9 | OE.4 | Gestão de Notificações e Alertas | Garantir que os alertas e notificações emitidos pelo sistema após operações realizadas pelos usuários possam ser administrados livremente em seus respectivos ambientes. | Garantir total liberdade na administração de configurações de alertas e notificações. |
 
 
  
