@@ -1150,9 +1150,6 @@
 <p><strong>Rastreabilidade verificável:</strong> Há relação identificável com ao menos um objetivo específico, característica de produto ou requisito funcional/não funcional na Matriz de Rastreabilidade.</p>
 </li>
 <li>
-<p><strong>Critérios de aceitação definidos:</strong> O Caso de Uso está acompanhado de critérios de aceitação verificáveis e regras de negócio claras, que permitam avaliar o comportamento esperado dos fluxos contemplados.</p>
-</li>
-<li>
 <p><strong>Regras de negócio compreendidas:</strong> As regras de negócio necessárias para a implementação já foram compreendidas, registradas e relacionadas ao Caso de Uso.</p>
 </li>
 <li>
@@ -1190,9 +1187,6 @@
 <p><strong>Implementação conforme especificação:</strong> A funcionalidade foi implementada de acordo com a especificação aprovada, contemplando o objetivo esperado, as regras de negócio e o escopo definido para o item.</p>
 </li>
 <li>
-<p><strong>Verificação dos critérios de aceitação:</strong> Todos os critérios de aceitação relacionados aos fluxos desenvolvidos foram verificados, demonstrando que o comportamento implementado corresponde ao esperado.</p>
-</li>
-<li>
 <p><strong>Execução de testes:</strong> Os testes aplicáveis, incluindo testes funcionais, unitários e de integração, foram executados com sucesso. As evidências dos testes deverão ser registradas, e eventuais testes não aplicáveis deverão possuir justificativa.</p>
 </li>
 <li>
@@ -1217,7 +1211,7 @@
 <p><strong>Alinhamento com o escopo:</strong> A funcionalidade está de acordo com o escopo aprovado, sem incorporar alterações não autorizadas. Mudanças solicitadas durante o desenvolvimento deverão ser registradas e avaliadas antes de serem incorporadas.</p>
 </li>
 <li>
-<p><strong>Tratamento de pendências:</strong> Os problemas identificados foram classificados de acordo com seu impacto e prioridade. Pendências impeditivas, que comprometam critérios de aceitação, regras de negócio ou requisitos obrigatórios, impedem a conclusão do item. Problemas não impeditivos que permanecerem deverão ser documentados e encaminhados para tratamento posterior.</p>
+<p><strong>Tratamento de pendências:</strong> Os problemas identificados foram classificados de acordo com seu impacto e prioridade. Pendências impeditivas, que comprometam regras de negócio ou requisitos obrigatórios, impedem a conclusão do item. Problemas não impeditivos que permanecerem deverão ser documentados e encaminhados para tratamento posterior.</p>
 </li>
 </ul>
 <h3 id="aplicacao-do-dod-nas-entregas">Aplicação do DoD nas entregas</h3>
@@ -1234,7 +1228,7 @@
 <li>Resultado final da avaliação.</li>
 </ul>
 <p>A conclusão técnica da funcionalidade deverá ser registrada separadamente da homologação pelo cliente ou representante. Dessa forma, uma entrega que já atenda aos critérios técnicos, mas ainda aguarde avaliação do cliente, poderá ser identificada como tecnicamente concluída e aguardando homologação, sem ser apresentada como aprovada pelo cliente.</p>
-<p>Quando realizada, a homologação deverá ter seu resultado registrado, indicando se a entrega foi aprovada, aprovada com ressalvas ou rejeitada. Caso sejam identificados problemas que comprometam os critérios de aceitação ou os requisitos estabelecidos, deverão ser realizadas as correções necessárias antes de considerar a entrega definitivamente aceita.</p>
+<p>Quando realizada, a homologação deverá ter seu resultado registrado, indicando se a entrega foi aprovada, aprovada com ressalvas ou rejeitada. Caso sejam identificados problemas que comprometam os requisitos estabelecidos, deverão ser realizadas as correções necessárias antes de considerar a entrega definitivamente aceita.</p>
 <p>Um item somente será considerado tecnicamente concluído quando todos os critérios aplicáveis do DoD estiverem atendidos e suas respectivas evidências estiverem registradas. A aprovação do cliente, quando necessária para a aceitação da entrega, deverá ser acompanhada separadamente.</p>
 <hr />
 <h2 id="historico-de-versoes">Histórico de Versões</h2>
@@ -1328,6 +1322,10 @@
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/modal.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-caminho.js"></script>
       
     
   </body>

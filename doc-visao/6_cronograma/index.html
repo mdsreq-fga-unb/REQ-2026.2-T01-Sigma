@@ -1146,7 +1146,7 @@
 <tr>
 <th>Iterações</th>
 <th>Período</th>
-<th>Foco / CPs relacionadas</th>
+<th>Foco / Casos de Uso relacionados</th>
 <th>Principais atividades e escopo</th>
 <th>Entregas e critérios de validação</th>
 <th>Situação</th>
@@ -1156,15 +1156,15 @@
 <tr>
 <td><strong>Iteração 1 - Concepção</strong></td>
 <td>13/08 a 08/09</td>
-<td>Definição da visão do produto e levantamento inicial do escopo, contemplando a identificação preliminar das CP1 a CP7.</td>
-<td>Definir a visão do produto, delimitar o problema, identificar as principais necessidades do cliente e estabelecer as características iniciais da solução. Organizar os requisitos iniciais e documentar as estratégias e os riscos do projeto.</td>
+<td>Definição da visão do produto e levantamento inicial do escopo, contemplando a identificação preliminar das necessidades e dos casos de uso (UC01 a UC08).</td>
+<td>Definir a visão do produto, delimitar o problema, identificar as principais necessidades do cliente e estabelecer os objetivos iniciais da solução. Organizar os requisitos iniciais e documentar as estratégias e os riscos do projeto.</td>
 <td><a href="../../versoes/">Documento de visão (versão consolidada em histórico)</a>. A entrega da unidade foi finalizada em setembro, com registro da versão 1.1 em 07/09/2026.</td>
 <td>Concluída</td>
 </tr>
 <tr>
 <td><strong>Iteração 2 - Elaboração</strong></td>
 <td>09/09 a 29/09</td>
-<td>Levantamento, análise e priorização das CP1 a CP7, com definição preliminar das funcionalidades prioritárias e proposta inicial de MVP.</td>
+<td>Levantamento, análise e priorização dos requisitos e casos de uso (UC01 a UC08), com definição preliminar das funcionalidades prioritárias e proposta inicial de MVP.</td>
 <td>Consolidar, revisar e ajustar, a partir das revisões realizadas, os requisitos, analisar prioridades e definir proposta inicial para o MVP.</td>
 <td><a href="../../versoes/v2/8_requisitos/">Requisitos documentados (v2.0)</a>, resultados da revisão por pares, ajustes registrados e matriz de priorização. As correções relacionadas às Issues foram incorporadas à versão 2.0 do documento, registrada em 24/09/2026. <a href="../../atividades/atividade_2/">Atividade 2</a></td>
 <td>Concluída</td>
@@ -1172,57 +1172,57 @@
 <tr>
 <td><strong>Iteração 3 - Elaboração</strong></td>
 <td>30/09 a 19/10</td>
-<td>Refinamento do MVP e preparação das CP1 a CP5 e CP7. A CP6 permanece fora do MVP conforme decisão tomada com o cliente em 06/10/2026.</td>
-<td>Consolidar a definição do MVP a partir da validação realizada com o cliente em 06/10/2026. Incorporar os retornos recebidos, elaborar os protótipos das telas e refinar os fluxos de uso. Detalhar o modelo de dados, o controle de acesso, o registro de alterações nos cards, a segurança, os backups, a hospedagem e os limites da migração de dados.</td>
+<td>Refinamento do MVP composto por <a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc02/">UC02</a>, <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc05/">UC05</a>, <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc07/">UC07</a> e <a href="../casos-uso/uc08/">UC08</a>. O <a href="../casos-uso/uc03/">UC03 — Gerenciar Quadro de Avisos</a> permanece fora do MVP conforme decisão tomada com o cliente em 06/10/2026.</td>
+<td>Consolidar a definição do MVP a partir da validação realizada com o cliente em 06/10/2026. Incorporar os retornos recebidos, elaborar os protótipos das telas e refinar os fluxos dos casos de uso. Detalhar o modelo de dados, o controle de acesso, o registro de alterações nas fichas, a segurança, os backups, a hospedagem e os limites da migração de dados.</td>
 <td><strong>MVP aprovado pelo cliente</strong> e <strong>protótipos e fluxos de uso validados com as secretárias no dia 04/11</strong>.</td>
 <td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 4 - Construção</strong></td>
 <td>20/10 a 29/10</td>
-<td>CP1 — Gerenciamento de cards de matrícula. CP4 — Controle de acesso, como funcionalidade transversal.</td>
-<td>Implementar o cadastro e o gerenciamento inicial dos cards de matrícula (CP1), integrando desde o início os mecanismos de autenticação e controle de acesso (CP4). Verificar a criação, a consulta básica e a persistência dos registros.</td>
-<td>Migrações iniciais do PostgreSQL (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/54">PR #54</a>), autenticação JWT/logout do UC01 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/55">PR #55</a>), cadastro de usuários do UC02 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/61">PR #61</a>), telas de login/usuários (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60">PR #60</a>) e telas de cadastro de aluno e termos (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>).</td>
+<td>Preparação do ambiente e refinamento técnico dos casos de uso do MVP (<a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc02/">UC02</a>, <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc05/">UC05</a>, <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc07/">UC07</a> e <a href="../casos-uso/uc08/">UC08</a>).</td>
+<td>Consolidar o ambiente de desenvolvimento, prototipação das telas e detalhamento técnico (modelagem de dados e contratos) para início da codificação do sistema.</td>
+<td>Ambiente e arquitetura base definidos; protótipos e especificações dos casos de uso preparados para validação e implementação.</td>
 <td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 5 - Construção</strong></td>
 <td>30/10 a 05/11</td>
-<td>CP2 — Edição e atualização de cards de matrícula. Continuidade dos controles de acesso da CP4.</td>
-<td>Implementar a edição e a atualização dos cards de matrícula (CP2), considerando o requisito discutido com o cliente de preservar valores anteriores relevantes quando as informações forem alteradas. Verificar também a consistência dos registros após as atualizações.</td>
-<td>Tabelas de histórico e estrutura de fichas adicionadas ao banco (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69">PR #69</a>) e fluxo de edição integrado à validação das telas de matrícula (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>).</td>
+<td>Estruturação inicial do repositório e frontend base de <a href="../casos-uso/uc01/">UC01 — Gerenciar Autenticação</a> e <a href="../casos-uso/uc02/">UC02 — Gerenciar Usuários Administrativos</a>.</td>
+<td>Criar a estrutura inicial de pastas e testes (<code>6b12574</code>, <code>ea24ba0</code>), implementar as telas iniciais de autenticação (<code>09a5f3e</code>, <code>3ba3173</code>, <code>85b737f</code>) e modais de usuários com mocks (<code>11edec2</code>, <code>108f8ac</code>), consolidar o Catálogo Unificado de Requisitos (<code>0bad795</code>) e validar protótipos com as secretárias (<code>04/11</code>).</td>
+<td>Estrutura inicial do projeto e frontend base de UC01 e UC02 com mocks entregues (<code>30/10</code> a <code>02/11</code>); catálogo unificado publicado e protótipos validados com as secretárias em <code>04/11</code>.</td>
 <td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 6 - Construção</strong></td>
 <td>06/11 a 12/11</td>
-<td>CP5 — Gerenciamento de documentos. Dependência dos cards de matrícula da CP1 e manutenção dos controles de acesso da CP4.</td>
-<td>Implementar o gerenciamento de documentos vinculados aos cards de matrícula (CP5), incluindo as operações previstas de anexação, consulta, substituição ou exclusão. Verificar as permissões de acesso e a integridade dos vínculos.</td>
-<td>Tabelas de documentos digitais no banco (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69">PR #69</a>) e integração frontend/backend conteinerizada com Docker (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>).</td>
+<td><a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc02/">UC02</a>, <a href="../casos-uso/uc06/">UC06 — Gerenciar Estrutura Escolar</a>, base de dados de <a href="../casos-uso/uc04/">UC04</a> e frontend inicial de <a href="../casos-uso/uc08/">UC08</a>.</td>
+<td>Modelar o banco inicial no PostgreSQL/Alembic (<code>usuario</code>, <code>etapa</code>, <code>turma</code>, <code>responsavel</code>, <code>pessoa</code>, <code>aluno</code>, <code>operacao</code>), implementar backend de autenticação JWT/logout (UC01), cadastro de usuários (UC02), backend e telas de turmas/etapas (UC06), frontends iniciais de matrículas e busca (UC04/UC08) e integração Docker front/back.</td>
+<td>Migrações iniciais (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/54">PR #54</a>), backend UC01 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/55">PR #55</a>), backend UC02 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/61">PR #61</a>), backend UC06 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/57">PR #57</a>), telas de login/usuários/turmas (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60">PR #60</a>), frontends iniciais de UC04/UC06/UC08 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/43">PR #43</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/53">PR #53</a>) e integração Docker (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>).</td>
 <td><strong>Concluída</strong></td>
 </tr>
 <tr>
 <td><strong>Iteração 7 - Construção</strong></td>
 <td>13/11 a 19/11</td>
-<td>CP3 — Consulta de informações dos cards de matrícula. CP7 — Gerenciamento de turmas e etapas. Integração com as funcionalidades anteriores e manutenção da CP4.</td>
-<td>Implementar a consulta de informações dos cards (CP3) e o gerenciamento de turmas e etapas (CP7). Integrar as funcionalidades desenvolvidas, executar testes de integração e regressão.</td>
-<td>Integração Docker front/back (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>), backend e telas de turmas/etapas do UC06 (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/57">PR #57</a>, <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60">PR #60</a>), telas de busca de alunos (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>); finalização dos vínculos e testes integrados em curso.</td>
+<td><a href="../casos-uso/uc04/">UC04 — Gerenciar Fichas de Matrícula</a>, <a href="../casos-uso/uc05/">UC05 — Gerenciar Documentos Digitais</a> (modelagem), <a href="../casos-uso/uc07/">UC07 — Alocar Alunos</a> e <a href="../casos-uso/uc08/">UC08 — Consultar Registros (Busca)</a>.</td>
+<td>Adicionar ao banco as tabelas de fichas (<code>Req_matricula</code>, <code>ficha_socioeco</code>, <code>saude</code>, <code>familiar</code>, <code>pessoas_a</code>, <code>matricula</code>), termos e <code>documento</code> (UC04/UC05); implementar telas de cadastro de aluno, card, termos (UC04), modal de vinculação a turmas (UC07) e busca de alunos (UC08); avançar nos endpoints de backend correspondentes.</td>
+<td>Tabelas completas de fichas, termos, histórico e documentos no banco (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/69">PR #69</a>) e telas de cadastro de aluno, termos, busca e vínculo com turmas (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>); endpoints de backend e integração de UC04, UC07 e UC08 em curso.</td>
 <td><strong>Em andamento</strong></td>
 </tr>
 <tr>
-<td><strong>Iteração 8 - Transição</strong></td>
-<td>24/11 a 03/12</td>
-<td>Homologação do MVP composto pelas CP1, CP2, CP3, CP4, CP5 e CP7. Preparação dos dados, segurança e infraestrutura.</td>
-<td>Executar a preparação para implantação, incluindo homologação, testes integrados, verificações de segurança, backup e recuperação, preparação e conferência dos dados e treinamento dos usuários. <strong>A migração piloto contemplará 5 fichas selecionadas, por meio da digitalização dos documentos físicos e digitação no sistema.</strong></td>
-<td>Sistema homologado em ambiente de pré-produção; <strong>5 fichas migradas e conferidas com as secretárias</strong>; procedimentos de backup e contingência verificados.</td>
+<td><strong>Iteração 8 - Construção</strong></td>
+<td>20/11 a 26/11</td>
+<td>Conclusão e integração de <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc05/">UC05</a>, <a href="../casos-uso/uc07/">UC07</a> e <a href="../casos-uso/uc08/">UC08</a>, mantendo <a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc02/">UC02</a> e <a href="../casos-uso/uc06/">UC06</a>.</td>
+<td>Finalizar os endpoints e telas pendentes das fichas (requerimento, ficha socioeconômica e histórico de edições no UC04), implementar o upload, consulta, substituição e exclusão de documentos digitais (UC05), concluir a integração front/back de alocação (UC07) e busca (UC08), provisionar o ambiente de hospedagem em pré-produção e executar testes integrados e de regressão de todo o MVP (<strong>code freeze em 26/11</strong>).</td>
+<td>MVP funcionalmente completo (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) integrado em ambiente Docker, implantado em pré-produção com testes de integração e regressão aprovados até 26/11.</td>
 <td>Planejada</td>
 </tr>
 <tr>
 <td><strong>Iteração 9 - Transição</strong></td>
-<td>04/12 a 10/12</td>
-<td>Implantação e aceite do MVP: CP1, CP2, CP3, CP4, CP5 e CP7.</td>
-<td>Preparar e executar a implantação técnica. Acompanhar o funcionamento inicial, corrigir problemas encontrados, finalizar a documentação e definir responsabilidades de suporte e manutenção após a entrega. <strong>A operação em larga escala e a substituição total do papel ocorrerão em 2027 com a entrada das novas turmas.</strong></td>
-<td>Sistema disponibilizado para uso (Piloto) em dez/2026; testes finais e aceite registrados; documentação entregue.</td>
+<td>27/11 a 01/12</td>
+<td>Homologação, implantação e aceite do MVP composto por <a href="../casos-uso/uc01/">UC01</a>, <a href="../casos-uso/uc02/">UC02</a>, <a href="../casos-uso/uc04/">UC04</a>, <a href="../casos-uso/uc05/">UC05</a>, <a href="../casos-uso/uc06/">UC06</a>, <a href="../casos-uso/uc07/">UC07</a> e <a href="../casos-uso/uc08/">UC08</a>.</td>
+<td>Executar homologação (UAT) com as secretárias, verificações de segurança, backup e recuperação, treinamento dos usuários e implantação técnica em produção. <strong>A migração piloto contemplará 5 fichas selecionadas, por meio da digitalização dos documentos físicos e digitação no sistema.</strong> Corrigir eventuais ajustes da homologação, finalizar a documentação e registrar o aceite final até 01/12. <strong>A operação em larga escala e a substituição total do papel ocorrerão em 2027 com a entrada das novas turmas.</strong></td>
+<td>Sistema homologado e disponibilizado para uso (Piloto) até <strong>01/12/2026</strong>; <strong>5 fichas migradas e conferidas com as secretárias</strong>; procedimentos de backup verificados; testes finais, aceite e documentação entregues.</td>
 <td>Planejada</td>
 </tr>
 </tbody>
@@ -1272,9 +1272,16 @@
 <td>Gabriel Octacilio</td>
 </tr>
 <tr>
-<td><strong>2.2 (Atual)</strong></td>
+<td><a href="../../versoes/v2_2/6_cronograma/">2.2</a></td>
 <td>16/11/2026</td>
 <td>Atualização dos status reais das Iterações 4 a 7 conforme entregas no repositório (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a> a <a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/71">PR #71</a>) e inclusão do histórico de versões (Issue #23).</td>
+<td>Pedro Luca</td>
+<td>Equipe SIGMA</td>
+</tr>
+<tr>
+<td><strong>2.3 (Atual)</strong></td>
+<td>16/11/2026</td>
+<td>Substituição das CPs pelos Casos de Uso (UC01 a UC08) com base nas datas reais de commits/PRs, conversão da Iteração 8 para Construção (<code>20/11 a 26/11</code>) e ajuste da Transição na Iteração 9 para entrega final em <code>01/12/2026</code>.</td>
 <td>Pedro Luca</td>
 <td>Equipe SIGMA</td>
 </tr>
@@ -1343,6 +1350,10 @@
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/modal.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-caminho.js"></script>
       
     
   </body>

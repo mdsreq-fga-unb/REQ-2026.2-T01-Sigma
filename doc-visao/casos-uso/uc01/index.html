@@ -1066,6 +1066,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#61-diagrama-de-atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Diagrama de Atividades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#7-regras-de-negocio" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1191,6 +1202,29 @@
 <li>O sistema nega o login e não cria a sessão.</li>
 <li>O sistema exibe a mensagem: "Acesso negado. Sua conta encontra-se inativa. Procure a administração."</li>
 </ol>
+<h2 id="61-diagrama-de-atividades">6.1 Diagrama de Atividades</h2>
+<p>O diagrama a seguir representa o fluxo principal (FP01), o fluxo alternativo (FA01) e os fluxos de exceção (FE01 a FE05) deste caso de uso. Ações do ator aparecem em azul, ações do sistema em verde e exceções/alternativos em amarelo. Passe o mouse sobre uma etapa para destacar o caminho percorrido desde o início do fluxo até ela.</p>
+<pre class="mermaid-caminho"><code>flowchart TD
+    inicio(( )) --&gt; a1["Acessar a página inicial do SIGMA"]
+    a1 --&gt; s1["Exibir formulário de autenticação"]
+    fe02["FE02 - Rota interna sem sessão:&lt;br/&gt;HTTP 401 e volta ao login (RNF02)"] -.-&gt; s1
+    s1 --&gt; a2["Inserir e-mail e senha&lt;br/&gt;e selecionar 'Entrar'"]
+    a2 --&gt; d1{"Servidor respondeu&lt;br/&gt;em até 2 s? (RNF05)"}
+    d1 -- não --&gt; fe03["FE03 - 'Não foi possível conectar&lt;br/&gt;ao servidor. Tente novamente mais tarde.'"]
+    d1 -- sim --&gt; d2{"Credenciais válidas?&lt;br/&gt;(RNF02)"}
+    d2 -- não --&gt; fe01["FE01 - 'E-mail ou senha incorretos.'&lt;br/&gt;FE04 - 5ª falha seguida: bloqueio de 15 min (RN16)"]
+    d2 -- sim --&gt; d3{"Conta ativa?&lt;br/&gt;(RN18)"}
+    d3 -- não --&gt; fe05["FE05 - 'Acesso negado. Sua conta&lt;br/&gt;encontra-se inativa. Procure a administração.'"]
+    d3 -- sim --&gt; s2["Autorizar em menos de 2 s e&lt;br/&gt;redirecionar ao dashboard (RF06, RNF05)"]
+    s2 -- sair --&gt; fa01["FA01 - Logout (RF07): clicar em 'Sair',&lt;br/&gt;encerrar sessão e voltar ao login"]
+    s2 --&gt; fim((( )))
+    rn17["RN17 - 30 min de inatividade&lt;br/&gt;encerram a sessão"] -.-&gt; fim
+
+    classDef ponto fill:#1a202c,stroke:#94a3b8
+    class inicio,fim ponto
+    class a1,a2 cls_cp
+    class s1,s2 cls_uc
+    class fe01,fe02,fe03,fe05,fa01,rn17 cls_pos</code></pre>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>
 <thead>
@@ -1286,7 +1320,7 @@
 <li><strong>Fluxos excluídos desta iteração e justificativa:</strong> Nenhum — todos os fluxos de autenticação do UC01 integram o escopo do MVP.</li>
 <li><strong>Objetivo(s) específico(s) e característica(s) do produto (OE/CP):</strong> OE.3 - Segurança / CP4 - Controle de Acesso</li>
 <li><strong>Requisitos funcionais relacionados:</strong> RF06, RF07</li>
-<li><strong>Requisitos não funcionais relacionados:</strong> RNF01, RNF02, RNF05; RNF03 é citado no protótipo mobile e deve ter sua relação com o Caso de Uso conferida.</li>
+<li><strong>Requisitos não funcionais relacionados:</strong> RNF01, RNF02, RNF05; </li>
 <li><strong>Regras de negócio relacionadas:</strong> RN16, RN17, RN18</li>
 </ul>
 <h3 id="checklist-de-prontidao">Checklist de prontidão</h3>
@@ -1325,34 +1359,27 @@
 </tr>
 <tr>
 <td>DOR04</td>
-<td>Existem critérios de aceitação verificáveis para os fluxos selecionados, coerentes com os requisitos e regras de negócio relacionados?</td>
-<td>☑ Atendido</td>
-<td>Seções 5, 6 e 7 deste arquivo e requisitos <code>RF06</code>, <code>RF07</code>, <code>RN16</code>, <code>RN17</code>, <code>RN18</code> no <a href="../../8_requisitos/">Catálogo Unificado</a>.</td>
-<td>Cobre login válido, logout, credenciais inválidas, acesso não autenticado, bloqueio por tentativas e conta inativa.</td>
-</tr>
-<tr>
-<td>DOR05</td>
 <td>As regras de negócio necessárias foram compreendidas, registradas e verificadas quanto a contradições ou decisões essenciais em aberto?</td>
 <td>☑ Atendido</td>
 <td>Seção 7 deste arquivo e <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a>.</td>
 <td>Alinhar formalmente o texto resumido de <code>RN16</code> com a duração de 15 minutos descrita em <code>FE04</code> (não impeditivo).</td>
 </tr>
 <tr>
-<td>DOR06</td>
+<td>DOR05</td>
 <td>Quando houver impacto na interface, existe protótipo ou wireframe suficientemente detalhado e validado para orientar os fluxos selecionados?</td>
 <td>☑ Atendido</td>
 <td>Seção 9 deste arquivo (Figuras 1 a 3 — Figma) e validação com as secretárias registrada em 04/11/2026 (<a href="../../6_cronograma/">Cronograma</a>).</td>
 <td>Telas desktop, erro de login e mobile validadas.</td>
 </tr>
 <tr>
-<td>DOR07</td>
+<td>DOR06</td>
 <td>As dependências técnicas, riscos, impactos arquiteturais e viabilidade de implementação foram analisados para o escopo selecionado?</td>
 <td>☑ Atendido</td>
 <td>Migrações de banco (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a>), autenticação JWT (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/55">PR #55</a>) e integração Docker (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>).</td>
 <td>Viabilidade técnica confirmada e entregue na Iteração 4.</td>
 </tr>
 <tr>
-<td>DOR08</td>
+<td>DOR07</td>
 <td>A representante do projeto validou o entendimento e a adequação do escopo às necessidades e ao contexto de uso da Creche Estação Vida?</td>
 <td>☑ Atendido</td>
 <td><a href="../../../reunioes/ata1/">Ata de Reunião (06/10/2026)</a> e validação do recorte em <a href="../../10_backlog/#103-validacao-do-mvp-com-o-stakeholder">MVP</a>.</td>
@@ -1447,6 +1474,10 @@ essenciais ou contradições impeditivas em aberto.</p>
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/modal.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-caminho.js"></script>
       
     
   </body>

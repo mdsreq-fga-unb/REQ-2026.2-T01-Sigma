@@ -1066,6 +1066,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#61-diagrama-de-atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Diagrama de Atividades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#7-regras-de-negocio" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1212,6 +1223,33 @@
 <li>O Administrador solicita a inativação de uma conta já inativa ou a reativação de uma conta já ativa.</li>
 <li>O sistema identifica o conflito de estado, interrompe a operação e informa que a conta já se encontra no status desejado.</li>
 </ol>
+<h2 id="61-diagrama-de-atividades">6.1 Diagrama de Atividades</h2>
+<p>O diagrama a seguir representa o fluxo principal (FP01), o fluxo alternativo de cancelamento (FA01) e os fluxos de exceção do cadastro (FE01 a FE04) deste caso de uso. Ações do ator aparecem em azul, ações do sistema em verde e exceções/alternativos em amarelo. Passe o mouse sobre uma etapa para destacar o caminho percorrido desde o início do fluxo até ela.</p>
+<pre class="mermaid-caminho"><code>flowchart TD
+    inicio(( )) --&gt; a1["Acessar o gerenciamento de usuários (RNF02)"]
+    a1 --&gt; a2["Selecionar 'Novo Usuário'"]
+    a2 --&gt; s1["Apresentar o formulário de cadastro:&lt;br/&gt;nome, e-mail e senha"]
+    s1 --&gt; a3["Preencher os dados do&lt;br/&gt;novo membro da equipe"]
+    a3 --&gt; dc{"Confirmar ou&lt;br/&gt;cancelar?"}
+    dc -- confirmar --&gt; d1{"Campos obrigatórios&lt;br/&gt;preenchidos?"}
+    d1 -- sim --&gt; d2{"Senha forte?&lt;br/&gt;(RN20)"}
+    d2 -- sim --&gt; d3{"E-mail ainda não&lt;br/&gt;cadastrado? (RN19)"}
+    d3 -- sim --&gt; d4{"Conexão com o&lt;br/&gt;banco disponível?"}
+    d4 -- sim --&gt; s2["Cadastrar o usuário com&lt;br/&gt;status ativo (RF05, RN18)"]
+    s2 --&gt; s3["Exibir mensagem de sucesso e&lt;br/&gt;atualizar a lista de usuários"]
+    s3 --&gt; fim((( )))
+    dc -- cancelar --&gt; fa01["FA01 - Cancelar: descartar os dados,&lt;br/&gt;sem salvar, e voltar à tela anterior"]
+    d1 -- não --&gt; fe02["FE02 - Alertar os campos&lt;br/&gt;não preenchidos"]
+    d2 -- não --&gt; fe04["FE04 - Senha fora do padrão:&lt;br/&gt;exibir a regra de senha (RN20)"]
+    d3 -- não --&gt; fe01["FE01 - 'Este e-mail já está em&lt;br/&gt;uso por outro usuário.'"]
+    d4 -- não --&gt; fe03["FE03 - Falha de conexão:&lt;br/&gt;tentar novamente mais tarde"]
+
+
+    classDef ponto fill:#1a202c,stroke:#94a3b8
+    class inicio,fim ponto
+    class a1,a2,a3 cls_cp
+    class s1,s2,s3 cls_uc
+    class fa01,fe01,fe02,fe03,fe04 cls_pos</code></pre>
 <h2 id="7-regras-de-negocio">7. Regras de Negócio</h2>
 <table>
 <thead>
@@ -1222,6 +1260,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../../8_requisitos/#rn15">RN15</a></td>
+<td>Confirmação Prévia de Salvamento e Operações Críticas.</td>
+<td>Garantir confirmação de operação de inativação e reativação de usuário.</td>
+</tr>
 <tr>
 <td><a href="../../8_requisitos/#rn18">RN18</a></td>
 <td>Apenas contas com status "Ativo" podem acessar o sistema.</td>
@@ -1346,34 +1389,27 @@
 </tr>
 <tr>
 <td>DOR04</td>
-<td>Existem critérios de aceitação verificáveis para os fluxos selecionados, coerentes com os requisitos e regras de negócio relacionados?</td>
-<td>☑ Atendido</td>
-<td>Seções 5, 6 e 7 deste arquivo e <code>RN18</code>–<code>RN21</code> no <a href="../../8_requisitos/">Catálogo Unificado</a>.</td>
-<td>Cobre unicidade de e-mail, campos obrigatórios e padrão de senha.</td>
-</tr>
-<tr>
-<td>DOR05</td>
 <td>As regras de negócio necessárias foram compreendidas, registradas e verificadas quanto a contradições ou decisões essenciais em aberto?</td>
 <td>☑ Atendido</td>
 <td>Seção 7 deste arquivo e <a href="../../8_requisitos/">Catálogo Unificado de Requisitos</a>.</td>
 <td>Pendente apenas explicitar o perfil autorizado na pré-condição de gerenciamento (não impeditivo para <code>FP01</code>, tratado com <code>RN18</code>).</td>
 </tr>
 <tr>
-<td>DOR06</td>
+<td>DOR05</td>
 <td>Quando houver impacto na interface, existe protótipo ou wireframe suficientemente detalhado e validado para orientar os fluxos selecionados?</td>
 <td>☑ Atendido</td>
 <td>Seção 9 deste arquivo (Figuras 1 a 4 — Figma) e validação com as secretárias em 04/11/2026 (<a href="../../6_cronograma/">Cronograma</a>).</td>
 <td>Telas de cadastro e listagem validadas.</td>
 </tr>
 <tr>
-<td>DOR07</td>
+<td>DOR06</td>
 <td>As dependências técnicas, riscos, impactos arquiteturais e viabilidade de implementação foram analisados para o escopo selecionado?</td>
 <td>☑ Atendido</td>
 <td>Migrações de usuários (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/41">PR #41</a>), backend (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/61">PR #61</a>) e integração Docker (<a href="https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/65">PR #65</a>).</td>
 <td>Viabilidade confirmada e entregue na Iteração 4.</td>
 </tr>
 <tr>
-<td>DOR08</td>
+<td>DOR07</td>
 <td>A representante do projeto validou o entendimento e a adequação do escopo às necessidades e ao contexto de uso da Creche Estação Vida?</td>
 <td>☑ Atendido</td>
 <td><a href="../../../reunioes/ata1/">Ata de Reunião (06/10/2026)</a> e <a href="../../10_backlog/#103-validacao-do-mvp-com-o-stakeholder">MVP</a>.</td>
@@ -1467,6 +1503,10 @@ essenciais ou contradições impeditivas em aberto.</p>
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/modal.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-caminho.js"></script>
       
     
   </body>
