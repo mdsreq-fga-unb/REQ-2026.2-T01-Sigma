@@ -34,6 +34,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <span id="rf22"></span><span id="req-rf22"></span>
   <span id="rf23"></span><span id="req-rf23"></span>
   <span id="rf24"></span><span id="req-rf24"></span>
+  <span id="rf25"></span><span id="req-rf25"></span>
   <span id="rnf01"></span><span id="req-rnf01"></span>
   <span id="rnf02"></span><span id="req-rnf02"></span>
   <span id="rnf03"></span><span id="req-rnf03"></span>
@@ -164,6 +165,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
         <div class="catalogo-card__row">
           <span class="catalogo-card__label">Regras de Negócio (RN)</span>
           <div class="catalogo-card__chips">
+            <button type="button" class="chip chip--rn" data-modal-id="RN15" title="Clique para ver detalhes da RN15">RN15</button>
             <button type="button" class="chip chip--rn" data-modal-id="RN18" title="Clique para ver detalhes da RN18">RN18</button>
             <button type="button" class="chip chip--rn" data-modal-id="RN19" title="Clique para ver detalhes da RN19">RN19</button>
             <button type="button" class="chip chip--rn" data-modal-id="RN20" title="Clique para ver detalhes da RN20">RN20</button>
