@@ -47,9 +47,9 @@
       id: 'RF05',
       category: 'rf',
       type: 'Requisito Funcional',
-      name: 'Cadastrar Usuários',
-      description: 'Permitir que usuários com perfil administrativo realizem o cadastro de novos usuários no sistema.',
-      related: ['UC02', 'RN18', 'RN19', 'RN20', 'RN21']
+      name: 'Gerenciar Usuários (Cadastro e Manutenção de Acesso)',
+      description: 'Permitir que usuários com perfil Administrador realizem o cadastro, listagem, inativação e reativação de contas de acesso no sistema, preservando a rastreabilidade sem exclusão física (RN18, RN21).',
+      related: ['UC02', 'RN15', 'RN18', 'RN19', 'RN20', 'RN21']
     },
     RF06: {
       id: 'RF06',
@@ -190,10 +190,10 @@
     RF23: {
       id: 'RF23',
       category: 'rf',
-      type: 'Requisito Funcional',
-      name: 'Possibilitar salvamento com confirmação',
-      description: 'O sistema deve exigir confirmação explícita ("Confirmar" ou "Cancelar") ao solicitar o salvamento ou alteração de uma ficha de matrícula, prevenindo perdas acidentais.',
-      related: ['UC04', 'RN15']
+      type: 'Requisito Funcional (Consolidado na RN15)',
+      name: 'Possibilitar salvamento com confirmação (incorporado à RN15)',
+      description: 'Item consolidado como regra de negócio transversal na RN15 (Confirmação Prévia de Salvamento), aplicando-se às operações críticas de salvamento, alteração, inativação e exclusão (UC02, UC03, UC04, UC05, UC06 e UC07).',
+      related: ['RN15', 'UC04']
     },
     RF24: {
       id: 'RF24',
@@ -202,6 +202,15 @@
       name: 'Cadastrar Turma',
       description: 'O sistema deve permitir cadastrar uma nova turma associada obrigatoriamente a uma etapa de ensino existente.',
       related: ['UC06', 'RN02', 'RN04', 'RN11', 'RN14', 'RN22']
+    },
+
+    RF25: {
+      id: 'RF25',
+      category: 'rf',
+      type: 'Requisito Funcional',
+      name: 'Alternância de Tema Visual',
+      description: 'Disponibilizar um controle na interface que permita ao usuário alterar manualmente entre os temas "claro" e "escuro".',
+      related: []
     },
 
     // -------------------------------------------------------------------------
@@ -276,7 +285,7 @@
       category: 'rnf',
       type: 'Requisito Não Funcional (Confiabilidade)',
       name: 'Disponibilidade Operacional',
-      description: 'O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30).',
+      description: 'O sistema deve assegurar disponibilidade de 99,5% durante o horário de expediente comercial da creche (segunda a sexta-feira, das 07h00 às 19h30). Considera-se disponível quando o sistema carrega a interface e executa com sucesso as operações operacionais essenciais (login, busca, cadastro/edição de fichas e vínculo de turmas), e indisponível quando retorna erros de servidor (HTTP 5xx) ou falha de conexão com o banco. A verificação é feita por monitoramento contínuo de health-check da API e registros de logs de erro.',
       related: []
     },
     RNF10: {
@@ -288,9 +297,27 @@
       related: []
     },
 
+    RNF11: {
+      id: 'RNF11',
+      category: 'rnf',
+      type: 'Requisito Não Funcional (Segurança)',
+      name: 'Política de Retenção e Descarte de Dados',
+      description: 'Garantir o ciclo de vida dos dados pessoais aplicando os seguintes parâmetros de segurança: I - Todos os dados pessoais retidos e os backups correspondentes devem ser armazenados com criptografia forte; II - O sistema deve manter rotinas de backup automatizadas que garantam a integridade e a restauração dos dados retidos em caso de falhas, sem perda de informações; III - Dados inativos retidos por obrigações legais devem ser segregados do banco de dados operacional, acessíveis exclusivamente pelo administrador; IV - Após expirar o prazo legal de retenção, deve-se aplicar rotinas automatizadas de anonimização irreversível ou exclusão física, garantindo que os dados não possam ser recuperados sob nenhuma circunstância.',
+      related: []
+    },
+
+    RNF12: {
+      id: 'RNF12',
+      category: 'rnf',
+      type: 'Requisito Não Funcional (Segurança)',
+      name: 'Backup e Restauração de Dados',
+      description: 'Realizar rotinas automatizadas de backup do banco de dados e dos arquivos com frequência mínima diária. Em caso de incidentes ou falhas críticas, a perda aceitável de dados (RPO - Recovery Point Objective) não deve exceder as últimas 24 horas de operação, e o tempo máximo de recuperação e restauração completa do sistema (RTO - Recovery Time Objective) deve ser inferior a 4 horas.',
+      related: []
+    },
     // -------------------------------------------------------------------------
     // Regras de Negócio (RN01 - RN22)
     // -------------------------------------------------------------------------
+
     RN01: {
       id: 'RN01',
       category: 'rn',
@@ -305,18 +332,18 @@
       category: 'rn',
       type: 'Regra de Negócio',
       name: 'Vínculo Único de Turma e Etapa',
-      description: 'Toda matrícula deve estar vinculada a exatamente uma turma e a uma etapa.',
-      justification: 'Estrutura organizacional da creche.',
-      related: ['RF13', 'RF18', 'RF24', 'UC07']
+      description: 'Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (selecionada no cadastro ou na alocação), atuando em conjunto com a RN03.',
+      justification: 'Estrutura organizacional da creche e integridade referencial no banco (turma_id obrigatório).',
+      related: ['RF08', 'RF13', 'RF18', 'RF24', 'UC04', 'UC07']
     },
     RN03: {
       id: 'RN03',
       category: 'rn',
       type: 'Regra de Negócio',
-      name: 'Ativação Mediante Fichas Completas',
-      description: 'Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias: Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula.',
-      justification: 'Garantir conformidade e documentação completa.',
-      related: ['RF09', 'RF10', 'UC04', 'UC07']
+      name: 'Ativação Mediante Fichas Completas e Alocação',
+      description: 'Uma matrícula só pode ser considerada ativa após o preenchimento completo das fichas obrigatórias (Termo de compromisso escolar, Termo de Autorização de uso de Imagem, Termo de autorização saída de aluno sem os responsáveis, Socioeconômica e Requerimento de Matrícula) e o vínculo com uma turma e etapa ativas (RN02).',
+      justification: 'Garantir conformidade documental e enturmação completa.',
+      related: ['RF09', 'RF10', 'RF13', 'UC04', 'UC07']
     },
     RN04: {
       id: 'RN04',
@@ -421,10 +448,10 @@
       id: 'RN15',
       category: 'rn',
       type: 'Regra de Negócio',
-      name: 'Confirmação Prévia de Salvamento',
-      description: 'As alterações na matrícula só são aplicadas após a confirmação. Se a operação for cancelada, os dados não serão salvos.',
-      justification: 'Evita salvamentos acidentais.',
-      related: ['RF10', 'RF23', 'UC04']
+      name: 'Confirmação Prévia de Salvamento e Operações Críticas',
+      description: 'Operações de salvamento, alteração, inativação ou exclusão (como fichas de matrícula, contas de usuário, documentos e avisos) só são aplicadas após confirmação explícita ("Confirmar" ou "Cancelar"). Se cancelada, os dados não são persistidos (regra transversal que consolida o antigo RF23).',
+      justification: 'Evita salvamentos, alterações ou inativações acidentais.',
+      related: ['RF04', 'RF05', 'RF10', 'RF15', 'UC02', 'UC03', 'UC04', 'UC05']
     },
     RN16: {
       id: 'RN16',

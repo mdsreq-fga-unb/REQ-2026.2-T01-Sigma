@@ -34,6 +34,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <span id="rf22"></span><span id="req-rf22"></span>
   <span id="rf23"></span><span id="req-rf23"></span>
   <span id="rf24"></span><span id="req-rf24"></span>
+  <span id="rf25"></span><span id="req-rf25"></span>
   <span id="rnf01"></span><span id="req-rnf01"></span>
   <span id="rnf02"></span><span id="req-rnf02"></span>
   <span id="rnf03"></span><span id="req-rnf03"></span>
@@ -44,6 +45,8 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <span id="rnf08"></span><span id="req-rnf08"></span>
   <span id="rnf09"></span><span id="req-rnf09"></span>
   <span id="rnf10"></span><span id="req-rnf10"></span>
+  <span id="rnf11"></span><span id="req-rnf11"></span>
+  <span id="rnf12"></span><span id="req-rnf12"></span>
   <span id="rn01"></span>
   <span id="rn02"></span>
   <span id="rn03"></span>
@@ -149,7 +152,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
         <div class="catalogo-card__row">
           <span class="catalogo-card__label">Requisitos Funcionais (RF)</span>
           <div class="catalogo-card__chips">
-            <button type="button" class="chip chip--rf" data-modal-id="RF05" title="Clique para ver detalhes do RF05">RF05 - Cadastrar Usuários</button>
+            <button type="button" class="chip chip--rf" data-modal-id="RF05" title="Clique para ver detalhes do RF05">RF05 - Gerenciar Usuários</button>
           </div>
         </div>
         <div class="catalogo-card__row">
@@ -162,6 +165,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
         <div class="catalogo-card__row">
           <span class="catalogo-card__label">Regras de Negócio (RN)</span>
           <div class="catalogo-card__chips">
+            <button type="button" class="chip chip--rn" data-modal-id="RN15" title="Clique para ver detalhes da RN15">RN15</button>
             <button type="button" class="chip chip--rn" data-modal-id="RN18" title="Clique para ver detalhes da RN18">RN18</button>
             <button type="button" class="chip chip--rn" data-modal-id="RN19" title="Clique para ver detalhes da RN19">RN19</button>
             <button type="button" class="chip chip--rn" data-modal-id="RN20" title="Clique para ver detalhes da RN20">RN20</button>
@@ -243,7 +247,6 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
             <button type="button" class="chip chip--rf" data-modal-id="RF11" title="Clique para ver detalhes do RF11">RF11</button>
             <button type="button" class="chip chip--rf" data-modal-id="RF12" title="Clique para ver detalhes do RF12">RF12</button>
             <button type="button" class="chip chip--rf" data-modal-id="RF17" title="Clique para ver detalhes do RF17">RF17</button>
-            <button type="button" class="chip chip--rf" data-modal-id="RF23" title="Clique para ver detalhes do RF23">RF23</button>
           </div>
         </div>
         <div class="catalogo-card__row">
@@ -466,6 +469,19 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
   <p>Nenhum Caso de Uso encontrado para o filtro selecionado.</p>
 </div>
 
+### Requisitos Não Funcionais Transversais
+
+Requisitos não funcionais aplicáveis a todo o sistema (clique nos chips para ver os detalhes):
+
+<div class="catalogo-card__chips" style="margin: 0.75rem 0 1.5rem 0;">
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF03" title="Clique para ver detalhes do RNF03">RNF03 - Interface Responsiva</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF04" title="Clique para ver detalhes do RNF04">RNF04 - Modo Escuro</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF09" title="Clique para ver detalhes do RNF09">RNF09 - Disponibilidade</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF10" title="Clique para ver detalhes do RNF10">RNF10 - Acessos Concorrentes</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF11" title="Clique para ver detalhes do RNF11">RNF11 - Retenção e Descarte</button>
+  <button type="button" class="chip chip--rnf" data-modal-id="RNF12" title="Clique para ver detalhes do RNF12">RNF12 - Backup e Restauração</button>
+</div>
+
 ---
 
 <span id="83-rastreabilidade-dos-requisitos-funcionais-aos-casos-de-uso"></span>
@@ -478,15 +494,6 @@ A representação gráfica abaixo conecta o problema, objetivos específicos (OE
 <iframe width="100%" height="650" src="https://miro.com/app/live-embed/uXjVERXWbnA=/?inviteKey=eEFMdGhhL2tCWTBOTjVsNWRqc0tQRXlVY2ZhWTh5MXp2dHRaR2pwcnZKU2JIRzFvcGJUOCtxYk1zV2E3V3dFNGFWaHVTd09TdTRXb0lETk9pZUlBejI4QnZUb2VsQVFzc1FYMEErNjMzOUpEemd3NjYyOS9VOWkweVJXazdkd1NzVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE%3D" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen title="Árvore de Rastreabilidade no Miro"></iframe>
 
 :material-open-in-new: **[Abrir Árvore de Rastreabilidade diretamente no Miro](https://miro.com/app/board/uXjVERXWbnA=/?inviteKey=eEFMdGhhL2tCWTBOTjVsNWRqc0tQRXlVY2ZhWTh5MXp2dHRaR2pwcnZKU2JIRzFvcGJUOCtxYk1zV2E3V3dFNGFWaHVTd09TdTRXb0lETk9pZUlBejI4QnZUb2VsQVFzc1FYMEErNjMzOUpEemd3NjYyOS9VOWkweVJXazdkd1NzVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE%3D)**
-
----
-
-### Captura da Árvore de Rastreabilidade
-
-![Árvore de Rastreabilidade](../assets/arvore_rastreabilidade.png)
-
-<p align="center"><em>Registro atualizado da rastreabilidade estrutural dos requisitos do SIGMA.</em></p>
-
 
 ---
 

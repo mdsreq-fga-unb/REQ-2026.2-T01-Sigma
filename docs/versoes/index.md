@@ -2,6 +2,12 @@
 
 Esta página centraliza o acesso às versões anteriores dos documentos do projeto SIGMA, permitindo acompanhar a evolução e o amadurecimento dos artefatos ao longo das unidades e iterações sem poluir a barra de navegação principal.
 
+## Versão 2.2 — Revisão Intermediária da Unidade 3 (16/11/2026)
+
+Snapshot referente à atualização de status do cronograma antes da reestruturação para Casos de Uso (commit `fac4527`):
+
+- [6. Cronograma e Entregas (v2.2)](v2_2/6_cronograma.md)
+
 ## Versão 2.1 — Revisões Intermediárias da Unidade 3 (06/11 a 08/11/2026)
 
 Snapshots intermediários após a entrega da Unidade 2:

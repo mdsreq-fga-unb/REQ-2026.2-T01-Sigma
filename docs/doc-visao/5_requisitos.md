@@ -32,10 +32,11 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
     - [Link para a nossa lista inicial de requisitos](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/atividades/atividade_3/)
 
 #### Prática: Representação
-- **Técnicas a serem aplicadas:** Casos de Uso de Alto Nível.
-- **Como será aplicado:** Serão elaborados casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.
-- **Resultado esperado:** Funcionalidades críticas mapeadas e representadas de forma concisa.
+- **Técnicas aplicadas:** Representação Gráfica de Contexto (Rich Picture, Diagrama de Ishikawa e Mapa de Stakeholders) e Casos de Uso de Alto Nível.
+- **Como foi aplicado:** Foram elaborados diagramas gráficos de contexto para representar o cenário atual da creche, os atores envolvidos e as causas do problema central (*Rich Picture*, *Diagrama de Ishikawa* e *Mapa de Stakeholders*), além de casos de uso simplificados para representar as principais funcionalidades identificadas, como cadastrar aluno, consultar ficha e atualizar informações.
+- **Resultado esperado:** Contexto do problema, atores e funcionalidades críticas mapeados e representados de forma visual e concisa.
 - **Evidências:**
+    - [Cenário Atual: Rich Picture e Diagrama de Ishikawa](1_cenarioAtual.md#13-rich-picture)
     - [Link para casos de uso](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/doc-visao/casos-uso/)
 
 #### Prática: Organização e Atualização
@@ -72,20 +73,32 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Evidências:**
     - [Casos de uso detalhado](https://mdsreq-fga-unb.github.io/REQ-2026.2-T01-Sigma/doc-visao/casos-uso/)
 
+#### Prática: Representação
+- **Técnicas aplicadas:** Protótipo de Alta Fidelidade (Figma), Diagramas de Fluxo e Árvore de Rastreabilidade (Representação Gráfica Hierárquica).
+- **Como foi aplicado:** Foram elaborados **protótipos de alta fidelidade** no Figma e **diagramas de fluxo** para representar visualmente as telas, a navegação e os fluxos de interação dos Casos de Uso, além da representação gráfica hierárquica na **Árvore de Rastreabilidade** conectando Problema, Objetivos Específicos (`OE`), Características do Produto (`CP`) e requisitos.
+- **Resultado esperado:** Fluxos de interação, interfaces e relações entre requisitos representados visualmente para alinhamento com stakeholders e equipe técnica.
+- **Evidências:**
+    - [Protótipo de Alta Fidelidade](https://www.figma.com/design/99K50wj2mkeuIdAPWrpCBr/Sigma---prot%C3%B3tipo--plano-free-?node-id=6-4&t=SsVQTnArufZAsepm-1)
+    - [Casos de Uso com protótipos e fluxos](casos-uso/index.md)
+    - [Árvore de Rastreabilidade (Seção 8.2)](8_requisitos.md#83-arvore-de-rastreabilidade)
+
 
 #### Prática: Verificação e Validação
-- **Técnicas aplicadas:** Revisões com Stakeholders e Demonstrações.
-- **Como está sendo aplicado:** Os requisitos refinados foram revisados junto aos usuários para verificar se estão de acordo com as necessidades identificadas. Versões iniciais das funcionalidades serão apresentados aos stakeholders em sessões de demonstração para obter feedback e identificar possíveis ajustes.
-- **Resultados:** Confirmação de que o MVP proposto atende às expectativas dos usuários.
+- **Técnicas aplicadas:** Revisões com Stakeholders, Demonstrações, Walkthroughs com a Equipe (pela documentação) e Definição de Critérios de DoR e DoD (a partir de 10/10/2026).
+- **Como está sendo aplicado:** Os requisitos refinados e os artefatos de especificação passam por **walkthroughs com a equipe pela documentação** (revisão por pares dos Casos de Uso, regras de negócio e protótipos) para garantir clareza e consistência antes da codificação. A partir da entrega da Unidade 2 (10/10/2026), iniciou-se a implementação dos critérios de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para padronizar a prontidão e a conclusão das entregas. Junto aos usuários, os requisitos e o recorte do MVP foram revisados em sessões de demonstração para obter feedback e confirmar o alinhamento às necessidades da creche.
+- **Resultados:** Confirmação de que o MVP proposto atende às expectativas dos usuários e estabelecimento dos critérios iniciais de DoR e DoD.
 - **Evidências:**
     - [Link de validação do MVP](https://unbbr-my.sharepoint.com/:v:/g/personal/242004706_aluno_unb_br/IQBXti2dM-CuR44I9bXe8Ka9AedalX9A8_pG9i43LaH3-cA?e=P1HCHE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+    - [Critérios iniciais de DoR e DoD (v2.0 — 10/10/2026)](../versoes/v2/9_dor_dod.md)
+    - [Atas de Reunião e Revisões](../reunioes/ata1.md)
 
 #### Prática: Organização e Atualização
-- **Técnicas em aplicação:** Gerenciamento de Mudanças e Atualização de Rastreabilidade.
-- **Como está sendo aplicado:** A Matriz de Rastreabilidade está sendo mantida em atualização contínua. Conforme os requisitos são refinados, as alterações de escopo, novas dependências e repriorizações estão sendo registradas na matriz para manter o controle e o histórico do projeto.
-- **Resultado esperado:** Alterações de escopo e novas dependências documentadas, mantendo a integridade e o controle do projeto.
+- **Técnicas em aplicação:** Gerenciamento de Mudanças, Atualização de Rastreabilidade, Versionamento e Baselines (Snapshots).
+- **Como está sendo aplicado:** A Árvore de Rastreabilidade está sendo mantida em atualização contínua. Conforme os requisitos são refinados, as alterações de escopo, novas dependências e repriorizações são registradas para manter o controle e o histórico do projeto. Paralelamente, a equipe preserva **baselines (snapshots)** por marco de entrega (como `v1.0` e `v2.0`) em repositório separado do escopo vigente, além de manter o **Histórico de Versões** em cada documento com autor, revisor e justificativa das mudanças.
+- **Resultado esperado:** Alterações de escopo e novas dependências documentadas, preservando a memória das decisões e mantendo o escopo vigente limpo e coerente.
 - **Evidências:**
     - [Árvore de rastreabilidade](https://miro.com/app/board/uXjVEbrie7A=/)
+    - [Repositório de Versões Arquivadas (Baselines v1.0, v2.0 e v2.1)](../versoes/index.md)
 
 ---
 
@@ -96,62 +109,70 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 - **Como será aplicado:** Durante as iterações de desenvolvimento, serão realizadas comunicações diretas com os stakeholders para esclarecer dúvidas pontuais sobre as regras de negócio, garantindo que a equipa não fique bloqueada durante a implementação.
 - **Resultado esperado:** Dúvidas pontuais de negócio resolvidas para não travar o desenvolvimento.
 - **Evidências:**
-    - [Inserir Link]
+    - [Acompanhamento das Iterações e validações](4_estrategias.md#45-acompanhamento-das-iteracoes)
+    - [Protótipos e fluxos validados em 04/11](6_cronograma.md#iteracoes)
 
 #### Prática: Análise e Consenso
 - **Técnicas em aplicação:** Avaliação de Mudanças (Análise de Impacto).
 - **Como está sendo aplicado:** Caso surjam novos pedidos ou alterações nos requisitos durante o desenvolvimento, está sendo aplicada a técnica de Análise de Impacto para avaliar a viabilidade técnica, o custo e o impacto dessas mudanças no escopo da iteração atual.
 - **Resultado esperado:** Decisão tomada sobre a viabilidade técnica e o impacto de aceitar mudanças durante a iteração.
 - **Evidências:**
-    - [Inserir Link]
+    - [Histórico de Versões dos Requisitos](8_requisitos.md#historico-de-versoes)
+    - [Critérios do MVP e Priorização](10_backlog.md)
 
 #### Prática: Declaração
 - **Técnicas a serem aplicadas:** Especificação Sob Demanda (Critérios de Aceite e atualização de Casos de Uso).
 - **Como será aplicado:** Evitando um detalhamento antecipado desnecessário, os requisitos selecionados para a iteração atual serão especificados no momento certo, por meio da escrita de critérios de aceite e atualização dos casos de uso, documentando o que os desenvolvedores precisam para construir a funcionalidade.
 - **Resultado esperado:** Regras de negócio da iteração atual documentadas para os desenvolvedores.
 - **Evidências:**
-    - [Inserir Link]
+    - [Catálogo Unificado de Requisitos](8_requisitos.md)
+    - [Painel de Casos de Uso](casos-uso/index.md)
 
 #### Prática: Representação
-- **Técnicas a serem aplicadas:** Refinamento Visual (Atualização de Protótipos de Interface).
-- **Como será aplicado:** Os protótipos de interface criados precisam ser ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código.
+- **Técnicas em aplicação:** Refinamento Visual de Protótipo de Alta Fidelidade e Atualização de Diagramas de Fluxo.
+- **Como está sendo aplicado:** Os protótipos de alta fidelidade no Figma e os diagramas de fluxo associados aos Casos de Uso são ajustados sob demanda, refletindo pequenas adaptações de tela ou de fluxo que se mostrarem necessárias ao longo do desenvolvimento do código e das validações com a cliente.
 - **Resultado esperado:** Telas e fluxos ajustados conforme necessidades ou limitações que surgirem durante o desenvolvimento.
 - **Evidências:**
     - [Protótipo de Alta Fidelidade](https://www.figma.com/design/99K50wj2mkeuIdAPWrpCBr/Sigma---prot%C3%B3tipo--plano-free-?node-id=6-4&t=SsVQTnArufZAsepm-1)
+    - [Casos de Uso com protótipos e fluxos](casos-uso/index.md)
 
 #### Prática: Verificação e Validação
-- **Técnicas a serem aplicadas:** Testes Baseados em Requisitos (Verificação) e Demonstrações Incrementais (Validação).
-- **Como será aplicado:** O software implementado será verificado por meio de técnicas convencionais de teste para averiguar objetivamente se as regras de negócio e os critérios de aceite foram plenamente atendidos. Em seguida, as funcionalidades desenvolvidas serão apresentadas aos stakeholders em demonstrações iterativas, permitindo validar se o sistema continua a atender às necessidades da creche e incorporar feedback nas próximas iterações.
-- **Resultado esperado:** Funcionalidades verificadas iterativamente com o cliente e feedback recolhido para os passos seguintes.
+- **Técnicas em aplicação:** Checklist de DoR e DoD (Verificação), Testes Baseados em Requisitos (Verificação), Walkthroughs com a Cliente (pelo sistema) e Demonstrações Incrementais (Validação).
+- **Como está sendo aplicado:** Antes de selecionar um Caso de Uso para a iteração, a equipe aplica o checklist de **Definition of Ready (DoR)** para verificar se a especificação, regras de negócio, critérios de aceitação e protótipos estão prontos. Durante a construção, o software implementado é verificado por testes baseados em requisitos e avaliado pelos critérios do **Definition of Done (DoD)** (revisão de código, integração, testes e conformidade com RNFs). Em paralelo, durante a Construção foram realizados **walkthroughs com a cliente diretamente pelo sistema** em sessões de demonstração incremental, validando os fluxos na prática com as secretárias e coletando feedback para os próximos incrementos.
+- **Resultado esperado:** Funcionalidades verificadas segundo os critérios de DoR/DoD e validadas em uso real com a cliente, com feedback recolhido para ajustes contínuos.
 - **Evidências:**
-    - [Inserir Link]
-    - [Inserir Link]
+    - [Critérios de DoR e DoD (v2.1 — PR #39)](9_dor_dod.md)
+    - [Modelo de Registro de DoD](registros-dod/modelo.md)
+    - [Entregas e PRs integrados no Cronograma](6_cronograma.md#iteracoes)
 
 #### Prática: Organização e Atualização
-- **Técnicas em aplicação:** Revisão e Manutenção do Backlog (Atualização de Requisitos e Gerenciamento de Mudanças) e Construção da Árvore de Rastreabilidade.
-- **Como está sendo aplicado:** Os requisitos estão sendo atualizados constantemente conforme as alterações identificadas durante o desenvolvimento. Novos requisitos ou modificações estão sendo registrados e avaliados considerando o seu impacto e prioridade para o projeto. Em conjunto com essas atualizações, está sendo construída uma árvore de rastreabilidade para mapear e gerenciar visualmente as ligações e a evolução desses requisitos.
-- **Resultado esperado:** Backlog de requisitos atualizado, incorporando feedbacks, controlando novas demandas e mantendo a rastreabilidade estruturada em árvore.
+- **Técnicas em aplicação:** Revisão e Manutenção do Backlog (Atualização de Requisitos e Gerenciamento de Mudanças), Consolidação em Catálogo Unificado, Atualização Contínua da Árvore de Rastreabilidade, Versionamento/Baselines e Rastreamento por Iteração e Pull Requests.
+- **Como está sendo aplicado:** Os requisitos são atualizados ao final de cada iteração conforme alterações, refinamentos e feedbacks identificados durante o desenvolvimento, passando por análise de impacto e repriorização. Para evitar declarações dispersas ou duplicadas, o escopo foi consolidado no **Catálogo Unificado de Requisitos** (conectando `OE`, `CP`, `RF`, `RNF`, `RN`, `UC` e status de `MVP` em uma fonte única). A **Árvore de Rastreabilidade** no Miro é atualizada para refletir as ligações vigentes, enquanto versões antigas são movidas para **baselines** (`docs/versoes/`) e cada alteração é registrada no **Histórico de Versões** das páginas e no acompanhamento das iterações com vínculo direto aos **Pull Requests e Issues** do GitHub.
+- **Resultado esperado:** Escopo vigente unificado, navegável e rastreável ao código entregue, incorporando feedbacks e preservando memória suficiente das decisões sem redundâncias.
 - **Evidências:**
-    - [Árvore de Rastreabilidade no Miro](https://miro.com/app/board/uXjVEbrie7A=/) (captura registrada em 10/10/2026, documentada na [Seção 8.3](8_requisitos.md#83-arvore-de-rastreabilidade))
+    - [Catálogo Unificado de Requisitos (PR #50 e PR #63)](8_requisitos.md)
+    - [Árvore de Rastreabilidade no Miro](https://miro.com/app/board/uXjVEbrie7A=/) (documentada na [Seção 8.2](8_requisitos.md#83-arvore-de-rastreabilidade))
+    - [Critérios do MVP integrados ao Catálogo](10_backlog.md)
+    - [Repositório de Versões Arquivadas (Baselines)](../versoes/index.md)
+    - [Acompanhamento das Iterações e PRs](4_estrategias.md#45-acompanhamento-das-iteracoes) e [Ciclo das Iterações](6_cronograma.md#ciclo-de-cada-iteracao)
 
 ---
 
 ### 5.1.4 Transição
 
 #### Prática: Verificação e Validação
-- **Técnicas a serem aplicadas:** Testes de Aceitação do Usuário (UAT) e Validação com Stakeholders.
-- **Como será aplicado:** Serão realizados testes de aceitação com as principais usuárias do sistema (secretárias) para verificar se as funcionalidades implementadas atendem aos requisitos e às necessidades reais da rotina administrativa da creche. Por fim, a solução será avaliada pela direção, coordenação e secretárias antes da sua utilização definitiva, o que permitirá identificar e corrigir os ajustes finais.
+- **Técnicas a serem aplicadas:** Testes de Aceitação do Usuário (UAT), Aplicação final de DoD (Homologação), Walkthroughs com a Cliente (pelo sistema) e Validação com Stakeholders.
+- **Como será aplicado:** Serão realizados testes de aceitação e **walkthroughs com a cliente pelo sistema** (com as principais usuárias, as secretárias) para verificar se as funcionalidades implementadas atendem aos requisitos e às necessidades reais da rotina administrativa da creche. A homologação seguirá os critérios de registro do **DoD**, avaliando a solução junto à direção, coordenação e secretárias antes da sua utilização definitiva para identificar e corrigir ajustes finais.
 - **Resultado esperado:** Sistema validado de forma definitiva pelas usuárias finais no ambiente real da instituição.
 - **Evidências:**
-    - [Inserir Link para o Relatório de Testes de Aceitação (UAT)]
-    - [Inserir Link para a Ata/Termo de Homologação e Aceite Final com o cliente]
+    - *Execução ainda não iniciada (prevista para a Iteração 8 — 24/11 a 03/12, quando serão registrados o Relatório de UAT e o Termo de Homologação e Aceite Final).*
 
 #### Prática: Organização e Atualização
 - **Técnicas a serem aplicadas:** Gestão de Conhecimento e Registro de Melhorias Futuras.
 - **Como será aplicado:** As necessidades, novas ideias ou funcionalidades que não forem essenciais para o MVP (versão atual) serão formalmente registradas e organizadas no backlog para possíveis iterações e evoluções futuras.
 - **Resultado esperado:** Novas demandas e melhorias não críticas registradas e organizadas para futuras versões do sistema.
 - **Evidências:**
-    - [Inserir Link]
+    - *Execução ainda não iniciada (prevista para a Iteração 9 — 04/12 a 10/12; itens fora do MVP já mapeados no [Catálogo Unificado](8_requisitos.md)).*
 
 
 ---
@@ -162,4 +183,8 @@ Nesta seção, detalhamos a aplicação das práticas de Engenharia de Requisito
 |---|---|---|---|---|
 | [1.0](../versoes/v1/5_requisitos.md) | 07/09/2026 | Criação inicial do processo de Engenharia de Requisitos (Unidade 1). | Gabriel Octacilio | Equipe SIGMA |
 | [2.0](../versoes/v2/5_requisitos.md) | 12/10/2026 | Reestruturação conforme novo formato, links de evidências e casos de uso (Unidade 2). | Pedro Luca | Equipe SIGMA |
-| **2.1 (Atual)** | 07/11/2026 | Atualização da seção de Processo de ER com base na Issue #24. | Jorge Vásquez | Gabriel Octacilio |
+| [2.1](../versoes/v2/5_requisitos.md) | 07/11/2026 | Atualização da seção de Processo de ER com base na Issue #24. | Jorge Vásquez | Gabriel Octacilio |
+| 2.2 | 16/11/2026 | Substituição dos placeholders `[Inserir Link]` pelas evidências da Construção e indicação de execução futura na Transição (Issue #34). | Pedro Luca | Equipe SIGMA |
+| 2.3 | 16/11/2026 | Inclusão das técnicas de Organização e Atualização aplicadas na Elaboração e Construção (Catálogo Unificado, Baselines/Versionamento, Histórico de Versões e rastreamento por Iterações/PRs). | Pedro Luca | Equipe SIGMA |
+| 2.4 | 16/11/2026 | Inclusão de DoR/DoD (a partir da Elaboração/Unidade 2) e de walkthroughs com a equipe pela documentação (Elaboração) e com a cliente pelo sistema (Construção e Transição) nas práticas de Verificação e Validação. | Pedro Luca | Equipe SIGMA |
+| **2.5 (Atual)** | 16/11/2026 | Inclusão das técnicas de Representação nas fases de Concepção, Elaboração e Construção (representações gráficas de contexto, diagramas de fluxo e protótipo de alta fidelidade). | Pedro Luca | Equipe SIGMA |
