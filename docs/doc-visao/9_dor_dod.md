@@ -16,8 +16,6 @@ Para isso, devem ser atendidos os seguintes critérios:
 
 - **Rastreabilidade verificável:** Há relação identificável com ao menos um objetivo específico, característica de produto ou requisito funcional/não funcional na Matriz de Rastreabilidade.
 
-- **Critérios de aceitação definidos:** O Caso de Uso está acompanhado de critérios de aceitação verificáveis e regras de negócio claras, que permitam avaliar o comportamento esperado dos fluxos contemplados.
-
 - **Regras de negócio compreendidas:** As regras de negócio necessárias para a implementação já foram compreendidas, registradas e relacionadas ao Caso de Uso.
 
 - **Protótipo ou wireframe disponível:** Quando houver impacto na interface, existe um protótipo ou wireframe correspondente, suficientemente detalhado e validado para orientar o desenvolvimento.
@@ -53,8 +51,6 @@ Uma funcionalidade ou incremento será considerado tecnicamente concluído quand
 
 - **Implementação conforme especificação:** A funcionalidade foi implementada de acordo com a especificação aprovada, contemplando o objetivo esperado, as regras de negócio e o escopo definido para o item.
 
-- **Verificação dos critérios de aceitação:** Todos os critérios de aceitação relacionados aos fluxos desenvolvidos foram verificados, demonstrando que o comportamento implementado corresponde ao esperado.
-
 - **Execução de testes:** Os testes aplicáveis, incluindo testes funcionais, unitários e de integração, foram executados com sucesso. As evidências dos testes deverão ser registradas, e eventuais testes não aplicáveis deverão possuir justificativa.
 
 - **Integração e ausência de regressão:** A implementação foi integrada à base do projeto e verificada para garantir que não comprometa funcionalidades existentes. Os testes de regressão aplicáveis foram executados.
@@ -71,7 +67,7 @@ Uma funcionalidade ou incremento será considerado tecnicamente concluído quand
 
 - **Alinhamento com o escopo:** A funcionalidade está de acordo com o escopo aprovado, sem incorporar alterações não autorizadas. Mudanças solicitadas durante o desenvolvimento deverão ser registradas e avaliadas antes de serem incorporadas.
 
-- **Tratamento de pendências:** Os problemas identificados foram classificados de acordo com seu impacto e prioridade. Pendências impeditivas, que comprometam critérios de aceitação, regras de negócio ou requisitos obrigatórios, impedem a conclusão do item. Problemas não impeditivos que permanecerem deverão ser documentados e encaminhados para tratamento posterior.
+- **Tratamento de pendências:** Os problemas identificados foram classificados de acordo com seu impacto e prioridade. Pendências impeditivas, que comprometam regras de negócio ou requisitos obrigatórios, impedem a conclusão do item. Problemas não impeditivos que permanecerem deverão ser documentados e encaminhados para tratamento posterior.
 
 ### Aplicação do DoD nas entregas
 
@@ -89,7 +85,7 @@ A aplicação do DoD deverá ser registrada para cada funcionalidade ou incremen
 
 A conclusão técnica da funcionalidade deverá ser registrada separadamente da homologação pelo cliente ou representante. Dessa forma, uma entrega que já atenda aos critérios técnicos, mas ainda aguarde avaliação do cliente, poderá ser identificada como tecnicamente concluída e aguardando homologação, sem ser apresentada como aprovada pelo cliente.
 
-Quando realizada, a homologação deverá ter seu resultado registrado, indicando se a entrega foi aprovada, aprovada com ressalvas ou rejeitada. Caso sejam identificados problemas que comprometam os critérios de aceitação ou os requisitos estabelecidos, deverão ser realizadas as correções necessárias antes de considerar a entrega definitivamente aceita.
+Quando realizada, a homologação deverá ter seu resultado registrado, indicando se a entrega foi aprovada, aprovada com ressalvas ou rejeitada. Caso sejam identificados problemas que comprometam os requisitos estabelecidos, deverão ser realizadas as correções necessárias antes de considerar a entrega definitivamente aceita.
 
 Um item somente será considerado tecnicamente concluído quando todos os critérios aplicáveis do DoD estiverem atendidos e suas respectivas evidências estiverem registradas. A aprovação do cliente, quando necessária para a aceitação da entrega, deverá ser acompanhada separadamente.
 
