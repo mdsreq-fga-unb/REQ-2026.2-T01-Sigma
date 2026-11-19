@@ -7,17 +7,16 @@ from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from .termo_saida import TermoSaida
-    from .pessoa import Pessoa
+
 
 class PessoaAutorizada(TimestampMixin, Base):
+    """Pessoa autorizada a buscar a criança. Guarda só nome e parentesco (não depende de Pessoa)."""
 
     __tablename__ = "PessoaAutorizada"
 
-    nome:Mapped[str] = mapped_column(String(100))
-    parentesco:Mapped[str] = mapped_column(String(100))
-    id_tasa:Mapped[int] = mapped_column(ForeignKey("TermoSaida.id"))
-    id_pessoa:Mapped[int] = mapped_column(ForeignKey("Pessoa.id"))
-    id:Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    nome: Mapped[str] = mapped_column(String(100))
+    parentesco: Mapped[str] = mapped_column(String(50))  # texto livre
+    id_termo_saida: Mapped[int] = mapped_column(ForeignKey("TermoSaida.id"))
 
-    tasa:Mapped["TermoSaida"] = relationship(back_populates="pessoa_autorizada")
-    pessoa:Mapped["Pessoa"] = relationship(back_populates="pessoa_autorizada")
+    termo_saida: Mapped["TermoSaida"] = relationship(back_populates="pessoas_autorizadas")
