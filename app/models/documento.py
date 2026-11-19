@@ -7,7 +7,7 @@ from app.core.database import Base
 from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
-    from .Req_matricula import RequerimentoMatricula
+    from .requerimento_matricula import RequerimentoMatricula
 
 class TipoDocumento(enum.Enum):
     FOTO_3X4 = "2 fotos 3x4"

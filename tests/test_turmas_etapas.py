@@ -316,7 +316,7 @@ def test_inativar_turma_sucesso_e_preserva_vinculos_alunos(client, test_user, db
         raca=Raca.PARDO,
         nacionalidade="Brasileira",
         uf="DF",
-        endereco="Rua 1",
+        logradouro="Rua 1",
         cidade="Brasília",
         cep="70000-000",
         status=StatusAluno.ATIVO,
