@@ -9,6 +9,7 @@ from .mixins import TimestampMixin
 if TYPE_CHECKING:
     from .aluno import Aluno
     from .requerimento_matricula import RequerimentoMatricula
+    from .ficha_socioeco import FichaSocioeconomica
     from .termo_saida import TermoSaida
     from .termo_imagem import TermoImagem
     from .termo_comp import TermoCompromisso
@@ -24,6 +25,7 @@ class Matricula(TimestampMixin, Base):
 
     aluno: Mapped["Aluno"] = relationship(back_populates="matriculas")
     requerimento: Mapped["RequerimentoMatricula | None"] = relationship(back_populates="matricula", uselist=False)
+    ficha_socioeconomica: Mapped["FichaSocioeconomica | None"] = relationship(back_populates="matricula", uselist=False)
     termo_saida: Mapped["TermoSaida | None"] = relationship(back_populates="matricula", uselist=False)
     termo_imagem: Mapped["TermoImagem | None"] = relationship(back_populates="matricula", uselist=False)
     termo_compromisso: Mapped["TermoCompromisso | None"] = relationship(back_populates="matricula", uselist=False)
