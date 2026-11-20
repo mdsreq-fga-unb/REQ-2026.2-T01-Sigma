@@ -11,8 +11,8 @@ from .mixins import TimestampMixin
 if TYPE_CHECKING:
     from .turma import Turma
     from .responsavel import Responsavel
-    from .ficha_socioeco import FichaSocioeconomica
     from .matricula import Matricula
+    from .documentacao_civil import DocumentacaoCivil
 
 class StatusAluno(enum.Enum):
     ATIVO = "ativo"
@@ -48,10 +48,19 @@ class Aluno(TimestampMixin, Base):
             "uf IN (" + ", ".join(f"'{u}'" for u in UFS) + ")",
             name="ck_alunos_uf",
         ),
+        CheckConstraint(
+            "uf_residencia IN (" + ", ".join(f"'{u}'" for u in UFS) + ")",
+            name="ck_alunos_uf_residencia",
+        ),
     )
-    endereco: Mapped[str] = mapped_column(String(200))
-    cidade: Mapped[str] = mapped_column(String(100))
+    logradouro: Mapped[str] = mapped_column(String(200))
+    numero: Mapped[str | None] = mapped_column(String(10))
+    bairro: Mapped[str | None] = mapped_column(String(100))
+    cidade: Mapped[str] = mapped_column(String(100))  # cidade de residência
     cep: Mapped[str] = mapped_column(String(9))
+    naturalidade: Mapped[str | None] = mapped_column(String(100))  # cidade de nascimento
+    telefone: Mapped[str | None] = mapped_column(String(11))  # telefone do próprio aluno, só dígitos
+    uf_residencia: Mapped[str | None] = mapped_column(String(2))  # UF de residência
     status: Mapped[StatusAluno] = mapped_column(
         Enum(StatusAluno, name="status_aluno"),
         default=StatusAluno.ATIVO,
@@ -61,6 +70,6 @@ class Aluno(TimestampMixin, Base):
 
     responsavel: Mapped["Responsavel"] = relationship(back_populates="alunos")
     turma: Mapped["Turma"] = relationship(back_populates="alunos")
-    ficha: Mapped["FichaSocioeconomica | None"] = relationship(back_populates="aluno", uselist=False)
     matriculas: Mapped[list["Matricula"]] = relationship(back_populates="aluno")
+    documentacao_civil: Mapped["DocumentacaoCivil | None"] = relationship(back_populates="aluno", uselist=False)
 
