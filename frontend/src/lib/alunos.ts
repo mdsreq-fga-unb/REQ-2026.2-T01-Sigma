@@ -47,6 +47,18 @@ export const OPCOES_FORMA_SAIDA: { valor: FormaSaida; rotulo: string }[] = [
   { valor: "OUTROS", rotulo: "Outros" },
 ];
 
+export const OPCOES_PARENTESCO: { valor: string; rotulo: string }[] = [
+  { valor: "Mãe", rotulo: "Mãe" },
+  { valor: "Pai", rotulo: "Pai" },
+  { valor: "Avô/Avó", rotulo: "Avô/Avó" },
+  { valor: "Tio/Tia", rotulo: "Tio/Tia" },
+  { valor: "Irmão/Irmã", rotulo: "Irmão/Irmã" },
+  { valor: "Padrasto/Madrasta", rotulo: "Padrasto/Madrasta" },
+  { valor: "Responsável legal", rotulo: "Responsável legal" },
+  { valor: "Motorista escolar", rotulo: "Motorista escolar" },
+  { valor: "Outro", rotulo: "Outro" },
+];
+
 /** Regime sugerido no termo de compromisso: o texto oficial fala em "tempo integral". */
 export const REGIME_PADRAO = "Tempo integral";
 

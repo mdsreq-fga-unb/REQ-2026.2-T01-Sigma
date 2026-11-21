@@ -4,11 +4,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { IconTrash } from "@/components/ui/Icons";
 import { RadioGroup } from "@/components/ui/RadioGroup";
+import { SelectField } from "@/components/ui/SelectField";
 import { TextField } from "@/components/ui/TextField";
 import {
   LOCAL_PADRAO,
   MAX_PESSOAS_AUTORIZADAS,
   OPCOES_FORMA_SAIDA,
+  OPCOES_PARENTESCO,
   dataDigitadaParaIso,
   exigePessoasAutorizadas,
   isoParaData,
@@ -16,6 +18,7 @@ import {
   validarTermoSaida,
   type ErrosCampos,
 } from "@/lib/alunos";
+import { MSG } from "@/lib/mensagens";
 import type { AlunoCard, FormaSaida, PessoaAutorizada, TermoSaida as Termo } from "@/types";
 import { useAlunoCard } from "../card/AlunoCardContext";
 import { DadosAlunoCard, Secao, TermoForm } from "./TermoForm";
@@ -57,14 +60,26 @@ export function TermoSaida() {
 
   function alterar<K extends keyof Formulario>(campo: K, valor: Formulario[K]) {
     setForm((atual) => ({ ...atual, [campo]: valor }));
-    if (erros[campo]) setErros(({ [campo]: _removido, ...resto }) => resto);
+    const limparPessoas = campo === "formaSaida" && !exigePessoasAutorizadas(valor as FormaSaida | null);
+    if (erros[campo] || (limparPessoas && erros.pessoasAutorizadas)) {
+      setErros(({ [campo]: _removido, pessoasAutorizadas, ...resto }) =>
+        limparPessoas ? resto : pessoasAutorizadas ? { ...resto, pessoasAutorizadas } : resto,
+      );
+    }
+  }
+
+  function cancelar() {
+    setForm(inicial(card));
+    setErros({});
+    setNovaPessoa({ nome: "", parentesco: "" });
+    setErroNovaPessoa({});
   }
 
   function adicionarPessoa() {
     const nome = novaPessoa.nome.trim();
     const faltando = {
       nome: nome ? undefined : "Informe o nome.",
-      parentesco: novaPessoa.parentesco.trim() ? undefined : "Informe o parentesco.",
+      parentesco: novaPessoa.parentesco.trim() ? undefined : "Selecione o parentesco.",
     };
     setErroNovaPessoa(faltando);
     if (faltando.nome || faltando.parentesco || lotado) return;
@@ -92,10 +107,11 @@ export function TermoSaida() {
   return (
     <TermoForm
       termo="saida"
-      avisoPendente="Ficha pendente. Sem este termo preenchido, o aluno só pode sair da escola com o responsável."
+      avisoPendente={MSG.termoSaidaPendente}
       montarPayload={montarPayload}
       validar={validarTermoSaida}
       onErros={setErros}
+      onCancelar={cancelar}
     >
       <Secao titulo="Responsável legal">
         <TextField
@@ -182,7 +198,10 @@ export function TermoSaida() {
               value={novaPessoa.nome}
               disabled={lotado}
               aria-invalid={erros.pessoasAutorizadas && form.pessoasAutorizadas.length === 0 ? true : undefined}
-              onChange={(e) => setNovaPessoa((p) => ({ ...p, nome: e.target.value }))}
+              onChange={(e) => {
+                setNovaPessoa((p) => ({ ...p, nome: e.target.value }));
+                if (erroNovaPessoa.nome) setErroNovaPessoa((err) => ({ ...err, nome: undefined }));
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
@@ -191,17 +210,15 @@ export function TermoSaida() {
               }}
               error={erroNovaPessoa.nome}
             />
-            <TextField
+            <SelectField
               label="Parentesco"
-              placeholder="Ex.: pai, mãe, avó, tio"
+              placeholder="Selecione"
               value={novaPessoa.parentesco}
+              options={OPCOES_PARENTESCO}
               disabled={lotado}
-              onChange={(e) => setNovaPessoa((p) => ({ ...p, parentesco: e.target.value }))}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  adicionarPessoa();
-                }
+              onChange={(e) => {
+                setNovaPessoa((p) => ({ ...p, parentesco: e.target.value }));
+                if (erroNovaPessoa.parentesco) setErroNovaPessoa((err) => ({ ...err, parentesco: undefined }));
               }}
               error={erroNovaPessoa.parentesco}
             />

@@ -236,7 +236,7 @@ export type FormaSaida = "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS";
 
 export interface PessoaAutorizada {
   nome: string;
-  parentesco: string; // texto livre
+  parentesco: string;
 }
 
 export interface TermoSaida {
