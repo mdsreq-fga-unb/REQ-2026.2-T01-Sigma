@@ -82,7 +82,7 @@ export function lerTermoUsoImagem(valor: unknown): TermoUsoImagem | null {
   if (!raiz || !r) return null;
   const campos = [r.nome, r.nacionalidade, r.estadoCivil, r.rg, r.cpf, r.endereco, raiz.local, raiz.data].map(txt);
   if (campos.some((v) => v === null)) return null;
-  if (typeof raiz.autoriza !== "boolean") return null;
+  if (raiz.autoriza !== null && typeof raiz.autoriza !== "boolean") return null;
   const [nome, nacionalidade, estadoCivil, rg, cpf, endereco, local, data] = campos as string[];
   return {
     responsavel: { nome, nacionalidade, estadoCivil, rg, cpf: somenteDigitos(cpf), endereco },

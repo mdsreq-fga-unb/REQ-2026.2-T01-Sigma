@@ -40,6 +40,7 @@ export const MSG = {
   termoSaidaPendente: "Ficha pendente. Sem este termo preenchido, o aluno só pode sair da escola com o responsável.",
   termoCompromissoPendente:
     "Ficha pendente. O aluno só é matriculado com cópia de toda a documentação solicitada.",
+  termoImagemPendente: "Ficha pendente. Enquanto este termo não for preenchido, a imagem do aluno não pode ser usada.",
 
   // UC08 – Consultar Registros (FA02)
   nenhumResultado: "Nenhum resultado encontrado",
