@@ -25,9 +25,7 @@ Caminho = tuple[str | int, ...]
 _DATA_ISO = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
 
 
-# ----------------------------------------------------------------------------------------
 # Bloco do aluno (somente leitura nos dois termos)
-# ----------------------------------------------------------------------------------------
 
 
 class AlunoTermoResponse(BaseModel):
@@ -50,9 +48,7 @@ class AlunoTermoResponse(BaseModel):
         )
 
 
-# ----------------------------------------------------------------------------------------
 # Tratamento dos valores recebidos
-# ----------------------------------------------------------------------------------------
 
 
 def limpar_texto(valor: Any) -> Any:
@@ -103,9 +99,7 @@ def esta_vazio(valor: Any) -> bool:
     return valor is None or (isinstance(valor, str) and not valor.strip())
 
 
-# ----------------------------------------------------------------------------------------
 # Erros no formato dos 422 do FastAPI
-# ----------------------------------------------------------------------------------------
 
 
 def erro_campo_obrigatorio(caminho: Caminho, rotulo: str) -> InitErrorDetails:

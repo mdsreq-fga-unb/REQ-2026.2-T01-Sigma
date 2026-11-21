@@ -51,10 +51,7 @@ OBSERVACAO_PDF = "Se outra pessoa for buscar a criança, a escola precisa ser av
 _CAMINHO_DATA: Caminho = ("data",)
 
 
-# ----------------------------------------------------------------------------------------
 # Montagem dos dados
-# ----------------------------------------------------------------------------------------
-
 
 def _dados_do_termo(termo: TermoSaida | None) -> dict[str, Any]:
     """Estado do termo no mesmo formato do corpo da requisição (dicionário aninhado).
@@ -172,10 +169,7 @@ def _buscar_matricula(db: Session, id_matricula: int) -> Matricula:
     return matricula
 
 
-# ----------------------------------------------------------------------------------------
 # Casos de uso
-# ----------------------------------------------------------------------------------------
-
 
 def obter_termo(db: Session, id_matricula: int) -> TermoSaidaResponse:
     """Termo da matrícula. 404 se a matrícula não existir."""
@@ -259,10 +253,7 @@ def exportar_pdf(db: Session, id_matricula: int, usuario: Usuario) -> tuple[byte
     return conteudo, nome_arquivo
 
 
-# ----------------------------------------------------------------------------------------
 # Contexto do PDF
-# ----------------------------------------------------------------------------------------
-
 
 def montar_contexto_pdf(termo: TermoSaidaResponse) -> dict[str, Any]:
     """Termo transformado em dicionário simples para o template. Nunca objetos ORM.

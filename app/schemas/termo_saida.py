@@ -34,10 +34,7 @@ from app.schemas.termo_comum import (
     limpar_texto,
 )
 
-# ----------------------------------------------------------------------------------------
-# Configuração do termo. É o ÚNICO lugar para ajustar campos, nomes e limites quando o PO
-# confirmar a lista de obrigatórios.
-# ----------------------------------------------------------------------------------------
+# Configuração do termo. É o ÚNICO lugar para ajustar campos, nomes e limites
 
 MAX_PESSOAS_AUTORIZADAS = 4
 
@@ -145,9 +142,7 @@ def termo_completo(dados: Mapping[str, Any]) -> bool:
     return not avaliar(dados)
 
 
-# ----------------------------------------------------------------------------------------
 # Entrada
-# ----------------------------------------------------------------------------------------
 
 
 class ResponsavelSaidaEntrada(EntradaBase):
@@ -220,9 +215,7 @@ class TermoSaidaUpdate(EntradaBase):
         return self
 
 
-# ----------------------------------------------------------------------------------------
 # Resposta
-# ----------------------------------------------------------------------------------------
 
 
 class ResponsavelSaidaResponse(BaseModel):

@@ -48,10 +48,7 @@ ARQUIVO_TEXTO = service_pdf.PASTA_TEMPLATES / "termos" / "uso_imagem.txt"
 LIMITE_RESIDENTE_EM = 300  # tamanho da coluna TermoImagem.residente_em
 
 
-# ----------------------------------------------------------------------------------------
 # Montagem dos dados
-# ----------------------------------------------------------------------------------------
-
 
 def montar_endereco_aluno(aluno: Aluno) -> str:
     """Endereço do aluno em uma linha. Sugestão de "residente em" quando o termo ainda não existe.
@@ -145,10 +142,7 @@ def _buscar_matricula(db: Session, id_matricula: int) -> Matricula:
     return matricula
 
 
-# ----------------------------------------------------------------------------------------
 # Casos de uso
-# ----------------------------------------------------------------------------------------
-
 
 def obter_termo(db: Session, id_matricula: int) -> TermoImagemResponse:
     """Termo da matrícula. 404 se a matrícula não existir."""
@@ -225,10 +219,7 @@ def exportar_pdf(db: Session, id_matricula: int, usuario: Usuario) -> tuple[byte
     return conteudo, nome_arquivo
 
 
-# ----------------------------------------------------------------------------------------
 # Texto do termo e contexto do PDF
-# ----------------------------------------------------------------------------------------
-
 
 def paragrafos_do_termo() -> list[str]:
     """Parágrafos do texto integral, lidos do arquivo único em `app/templates/termos`."""

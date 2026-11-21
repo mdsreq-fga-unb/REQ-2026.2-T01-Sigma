@@ -86,10 +86,7 @@ def _operacoes(db, tipo: Tipo) -> list[Operacao]:
     return db.query(Operacao).filter(Operacao.tipo == tipo).order_by(Operacao.id).all()
 
 
-# ----------------------------------------------------------------------------------------
 # GET
-# ----------------------------------------------------------------------------------------
-
 
 def test_get_sem_termo_devolve_aluno_local_da_configuracao_e_completa_falso(
     client, db_session, matricula_termos, auth_termos
@@ -145,10 +142,7 @@ def test_get_devolve_o_termo_salvo_com_as_pessoas(client, matricula_termos, auth
     assert dados["completa"] is True
 
 
-# ----------------------------------------------------------------------------------------
 # PUT – criação, atualização e obrigatórios (FE01)
-# ----------------------------------------------------------------------------------------
-
 
 def test_put_cria_o_termo(client, db_session, matricula_termos, auth_termos):
     res = client.put(_url(matricula_termos), json=corpo(), headers=auth_termos)
@@ -360,10 +354,7 @@ def test_put_responde_em_menos_de_5_segundos(client, matricula_termos, auth_term
     assert duracao < 5
 
 
-# ----------------------------------------------------------------------------------------
 # Pessoas autorizadas
-# ----------------------------------------------------------------------------------------
-
 
 def test_quinta_pessoa_retorna_422(client, db_session, matricula_termos, auth_termos):
     cinco = [pessoa(f"Pessoa {n}", "Tio") for n in range(1, 6)]
@@ -534,10 +525,7 @@ def test_put_nao_altera_o_termo_de_outra_matricula_do_mesmo_aluno(client, db_ses
     assert db_session.query(TermoSaida).count() == 2
 
 
-# ----------------------------------------------------------------------------------------
 # Autenticação e matrícula inexistente
-# ----------------------------------------------------------------------------------------
-
 
 @pytest.mark.parametrize("metodo,caminho", ROTAS_DO_TERMO)
 def test_rotas_sem_token_retornam_401(client, metodo, caminho):
@@ -566,10 +554,7 @@ def test_matricula_inexistente_retorna_404(client, auth_termos, metodo, sufixo):
     assert res.json()["detail"] == "Matrícula não encontrada."
 
 
-# ----------------------------------------------------------------------------------------
 # Histórico de edições (Operacao)
-# ----------------------------------------------------------------------------------------
-
 
 def test_primeiro_put_registra_preenchimento(client, db_session, test_user, matricula_termos, auth_termos):
     client.put(_url(matricula_termos), json=corpo(), headers=auth_termos)
@@ -667,10 +652,7 @@ def test_historico_nunca_guarda_nomes_nem_parentescos(client, db_session, matric
             assert dado not in operacao.descricao
 
 
-# ----------------------------------------------------------------------------------------
 # Falhas: nada fica gravado pela metade (FE04)
-# ----------------------------------------------------------------------------------------
-
 
 @pytest.fixture
 def historico_com_falha(monkeypatch):
@@ -747,9 +729,7 @@ def test_falha_nao_registra_dados_pessoais_no_log(client_real, matricula_real, a
         assert dado not in caplog.text
 
 
-# ----------------------------------------------------------------------------------------
 # PDF
-# ----------------------------------------------------------------------------------------
 
 
 def _resposta_do_get(client, matricula, auth) -> TermoSaidaResponse:

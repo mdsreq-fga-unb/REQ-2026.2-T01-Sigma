@@ -27,10 +27,7 @@ from app.schemas.termo_comum import (
     levantar_erros,
 )
 
-# ----------------------------------------------------------------------------------------
-# Configuração do termo. É o ÚNICO lugar para ajustar campos, nomes e limites quando o PO
-# confirmar a lista de obrigatórios.
-# ----------------------------------------------------------------------------------------
+# Configuração do termo. É o ÚNICO lugar para ajustar campos, nomes e limites
 
 # Nomes legíveis, na ordem da tela. Usados nas mensagens de erro e no histórico de edições.
 ROTULOS: dict[Caminho, str] = {
@@ -87,9 +84,7 @@ def termo_completo(dados: Mapping[str, Any]) -> bool:
     return not avaliar(dados, para_completa=True)
 
 
-# ----------------------------------------------------------------------------------------
 # Entrada
-# ----------------------------------------------------------------------------------------
 
 
 class ResponsavelImagemEntrada(EntradaBase):
@@ -132,9 +127,7 @@ class TermoImagemUpdate(BaseModel):
         return self
 
 
-# ----------------------------------------------------------------------------------------
 # Resposta
-# ----------------------------------------------------------------------------------------
 
 
 class ResponsavelImagemResponse(BaseModel):

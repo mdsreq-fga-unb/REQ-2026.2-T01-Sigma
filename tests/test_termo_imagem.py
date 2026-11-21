@@ -66,10 +66,7 @@ def _campos_com_erro(resposta) -> set[tuple]:
     return {tuple(erro["loc"][1:]) for erro in resposta.json()["detail"]}
 
 
-# ----------------------------------------------------------------------------------------
 # GET
-# ----------------------------------------------------------------------------------------
-
 
 def test_get_sem_termo_devolve_aluno_sugestao_e_completa_falso(client, db_session, matricula_termos, auth_termos):
     res = client.get(_url(matricula_termos), headers=auth_termos)
@@ -121,10 +118,7 @@ def test_get_devolve_o_termo_salvo(client, matricula_termos, auth_termos):
     assert dados["created_at"] is not None
 
 
-# ----------------------------------------------------------------------------------------
 # PUT – criação, atualização e obrigatórios (FE01)
-# ----------------------------------------------------------------------------------------
-
 
 def test_put_cria_o_termo(client, db_session, matricula_termos, auth_termos):
     res = client.put(_url(matricula_termos), json=corpo(), headers=auth_termos)
@@ -346,9 +340,7 @@ def test_put_responde_em_menos_de_5_segundos(client, matricula_termos, auth_term
     assert duracao < 5
 
 
-# ----------------------------------------------------------------------------------------
 # Autenticação e matrícula inexistente
-# ----------------------------------------------------------------------------------------
 
 
 @pytest.mark.parametrize("metodo,caminho", ROTAS_DO_TERMO)
@@ -378,10 +370,7 @@ def test_matricula_inexistente_retorna_404(client, auth_termos, metodo, sufixo):
     assert res.json()["detail"] == "Matrícula não encontrada."
 
 
-# ----------------------------------------------------------------------------------------
 # Histórico de edições (Operacao)
-# ----------------------------------------------------------------------------------------
-
 
 def _operacoes(db, tipo: Tipo) -> list[Operacao]:
     return db.query(Operacao).filter(Operacao.tipo == tipo).order_by(Operacao.id).all()
@@ -452,9 +441,7 @@ def test_historico_nunca_guarda_dados_pessoais(client, db_session, matricula_ter
             assert dado not in operacao.descricao
 
 
-# ----------------------------------------------------------------------------------------
 # Falhas: nada fica gravado pela metade (FE04)
-# ----------------------------------------------------------------------------------------
 
 
 @pytest.fixture
@@ -531,10 +518,7 @@ def test_falha_nao_registra_dados_pessoais_no_log(client_real, matricula_real, a
         assert dado not in caplog.text
 
 
-# ----------------------------------------------------------------------------------------
 # Texto integral e PDF
-# ----------------------------------------------------------------------------------------
-
 
 def test_rota_de_texto_devolve_o_texto_integral(client, auth_termos):
     res = client.get("/termos/uso-imagem/texto", headers=auth_termos)

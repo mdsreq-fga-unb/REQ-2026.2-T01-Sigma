@@ -58,10 +58,7 @@ def _resposta_pdf(conteudo: bytes, nome_arquivo: str, resposta_base: Response) -
     return resposta
 
 
-# ----------------------------------------------------------------------------------------
 # Termo de autorização de uso de imagem
-# ----------------------------------------------------------------------------------------
-
 
 @router.get(
     "/{id_matricula}/termo-imagem",
@@ -109,10 +106,7 @@ def exportar_termo_imagem_pdf(id_matricula: int, response: Response, db: SessaoB
     return _resposta_pdf(conteudo, nome_arquivo, response)
 
 
-# ----------------------------------------------------------------------------------------
 # Termo de autorização de saída do aluno
-# ----------------------------------------------------------------------------------------
-
 
 @router.get(
     "/{id_matricula}/termo-saida",
