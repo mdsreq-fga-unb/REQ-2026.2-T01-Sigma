@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.api_all import api_router
 from app.core.config import settings
+from app.core.exceptions import ErroNegocio, tratar_erro_negocio
 
 app = FastAPI(
     title=settings.app_name,
@@ -20,8 +21,12 @@ app.add_middleware(
     allow_origins=ORIGENS_PERMITIDAS,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=[settings.renewed_token_header_name],
+    # Content-Disposition: o frontend lê o nome do arquivo dos PDFs exportados (UC04).
+    expose_headers=[settings.renewed_token_header_name, "Content-Disposition"],
 )
+
+# Erros de regra de negócio lançados pelos services (404, 422, 503...) viram resposta HTTP aqui.
+app.add_exception_handler(ErroNegocio, tratar_erro_negocio)
 
 app.include_router(api_router)
 

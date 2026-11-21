@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     max_login_failed_attempts: int = 5
     lockout_duration_minutes: int = 15
 
+    # Local fixo impresso no Termo de autorização de saída (UC04). Não é gravado no banco
+    # nem aceito pela API: vem sempre daqui.
+    local_termo_saida: str = "Águas Lindas de Goiás"
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 

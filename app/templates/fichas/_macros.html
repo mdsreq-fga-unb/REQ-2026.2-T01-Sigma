@@ -1,0 +1,22 @@
+{# Peças reutilizáveis pelas fichas. Importar com: {% from "fichas/_macros.html" import campo, opcao, assinatura %} #}
+
+{# Campo com rótulo e valor. Valor vazio aparece como linha em branco, para preenchimento à mão. #}
+{% macro campo(rotulo, valor, classe="") %}
+<div class="campo {{ classe }}">
+  <span class="rotulo">{{ rotulo }}:</span>
+  <span class="valor">{{ valor if valor is not none else "" }}</span>
+</div>
+{% endmacro %}
+
+{# Opção com caixa marcada (☒) ou desmarcada (☐). #}
+{% macro opcao(marcada, texto) %}
+<span class="opcao"><span class="caixa">{{ marcada|caixa }}</span> {{ texto }}</span>
+{% endmacro %}
+
+{# Linha de assinatura com legenda. #}
+{% macro assinatura(legenda) %}
+<div class="assinatura">
+  <div class="linha-assinatura"></div>
+  <div class="legenda">{{ legenda }}</div>
+</div>
+{% endmacro %}

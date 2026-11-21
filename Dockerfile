@@ -3,6 +3,19 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
+# WeasyPrint (PDF das fichas e termos): Pango e HarfBuzz, mais uma família de fontes com os
+# símbolos de caixa (☐ ☒). Lista da página de instalação do WeasyPrint para Debian.
+# Vem ANTES do pip install, sem pacotes recomendados, e o cache do apt é limpo na mesma camada.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libpango-1.0-0 \
+        libharfbuzz0b \
+        libpangoft2-1.0-0 \
+        libharfbuzz-subset0 \
+        fontconfig \
+        fonts-dejavu-core \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY requirements.txt .

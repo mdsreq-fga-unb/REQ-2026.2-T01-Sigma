@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>{% block titulo %}Ficha de matrícula{% endblock %}</title>
+  {# Endereços relativos: o service de PDF informa app/templates como base_url. Nada externo. #}
+  <link rel="stylesheet" href="fichas/fichas.css">
+  <style>
+    @page {
+      @bottom-left { content: "Gerado em {{ gerado_em|data_hora }}"; }
+    }
+  </style>
+</head>
+<body>
+  {# Cabeçalho repetido em todas as páginas (elemento "running" posicionado pelo @page). #}
+  <header class="cabecalho">
+    <img class="logo" src="static/logo.png" alt="">
+    <div class="instituicao">
+      <strong>{{ nome_creche }}</strong>
+      <span>Secretaria · Fichas de matrícula</span>
+    </div>
+  </header>
+
+  <main>
+    {% block conteudo %}{% endblock %}
+  </main>
+</body>
+</html>
