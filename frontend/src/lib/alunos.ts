@@ -57,6 +57,8 @@ export const OPCOES_PARENTESCO: { valor: string; rotulo: string }[] = [
   { valor: "Responsável legal", rotulo: "Responsável legal" },
   { valor: "Motorista escolar", rotulo: "Motorista escolar" },
   { valor: "Outro", rotulo: "Outro" },
+];
+
 export type AutorizacaoImagem = "SIM" | "NAO";
 
 export const OPCOES_AUTORIZACAO_IMAGEM: { valor: AutorizacaoImagem; rotulo: string }[] = [
