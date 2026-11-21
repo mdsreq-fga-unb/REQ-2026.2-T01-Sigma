@@ -47,6 +47,27 @@ export const OPCOES_FORMA_SAIDA: { valor: FormaSaida; rotulo: string }[] = [
   { valor: "OUTROS", rotulo: "Outros" },
 ];
 
+export type AutorizacaoImagem = "SIM" | "NAO";
+
+export const OPCOES_AUTORIZACAO_IMAGEM: { valor: AutorizacaoImagem; rotulo: string }[] = [
+  { valor: "SIM", rotulo: "Sim, autoriza" },
+  { valor: "NAO", rotulo: "Não autoriza" },
+];
+
+export const OPCOES_ESTADO_CIVIL: { valor: string; rotulo: string }[] = [
+  { valor: "Solteira", rotulo: "Solteira" },
+  { valor: "Solteiro", rotulo: "Solteiro" },
+  { valor: "Casada", rotulo: "Casada" },
+  { valor: "Casado", rotulo: "Casado" },
+  { valor: "União estável", rotulo: "União estável" },
+  { valor: "Separada", rotulo: "Separada" },
+  { valor: "Separado", rotulo: "Separado" },
+  { valor: "Divorciada", rotulo: "Divorciada" },
+  { valor: "Divorciado", rotulo: "Divorciado" },
+  { valor: "Viúva", rotulo: "Viúva" },
+  { valor: "Viúvo", rotulo: "Viúvo" },
+];
+
 /** Regime sugerido no termo de compromisso: o texto oficial fala em "tempo integral". */
 export const REGIME_PADRAO = "Tempo integral";
 
@@ -201,7 +222,7 @@ export function validarTermoUsoImagem(termo: TermoUsoImagem): ErrosCampos {
   if (vazio(r.rg)) erros.rg = "Informe o RG.";
   validarCpf(erros, "cpf", r.cpf, true);
   if (vazio(r.endereco)) erros.endereco = "Informe o endereço.";
-  if (!termo.autoriza) erros.autoriza = "Confirme que o responsável autoriza o uso da imagem.";
+  if (termo.autoriza === null) erros.autoriza = "Informe se o responsável autoriza o uso da imagem.";
   if (vazio(termo.local)) erros.local = "Informe o local.";
   validarData(erros, "data", termo.data);
   return erros;

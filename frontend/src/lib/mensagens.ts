@@ -37,6 +37,7 @@ export const MSG = {
   falhaSalvar: "Não foi possível salvar. Verifique a conexão e tente novamente; nenhum dado foi gravado.", // FE04
   turmaIndisponivel: "Esta turma não está mais ativa. Escolha outra turma.", // RN11
   alunoNaoEncontrado: "Card não encontrado. Ele pode ter sido removido ou o endereço está incorreto.",
+  termoImagemPendente: "Ficha pendente. Enquanto este termo não for preenchido, a imagem do aluno não pode ser usada.",
 
   // UC08 – Consultar Registros (FA02)
   nenhumResultado: "Nenhum resultado encontrado",

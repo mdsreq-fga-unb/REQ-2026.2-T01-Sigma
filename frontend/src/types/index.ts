@@ -227,7 +227,7 @@ export interface ResponsavelLegal {
 
 export interface TermoUsoImagem {
   responsavel: ResponsavelLegal;
-  autoriza: boolean; // o termo só é válido com a autorização (sem opção "Não autoriza")
+  autoriza: boolean | null;
   local: string;
   data: string;
 }
