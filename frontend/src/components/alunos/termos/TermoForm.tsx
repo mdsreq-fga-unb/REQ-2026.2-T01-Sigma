@@ -24,6 +24,8 @@ interface TermoFormProps<T extends TermoAluno> {
   validar: (payload: NonNullable<TermosAluno[T]>) => ErrosCampos;
   /** Recebe os erros por campo para destacá-los (FE01). */
   onErros: (erros: ErrosCampos) => void;
+  /** Quando informado, restaura o último estado salvo sem sair da aba. */
+  onCancelar?: () => void;
   children: ReactNode;
 }
 
@@ -31,7 +33,7 @@ interface TermoFormProps<T extends TermoAluno> {
  * Estrutura comum aos termos do card (RF09, RF10):
  * - card inativo → campos desabilitados, somente consulta (FE03, RN10);
  * - "Salvar ficha" valida os obrigatórios (FE01, RN06) e pede confirmação (RF23, RN15);
- * - "Cancelar" descarta as alterações e volta à visão geral (FA05).
+ * - "Cancelar" descarta as alterações (restaura o estado salvo ou volta à visão geral) (FA05).
  */
 export function TermoForm<T extends TermoAluno>({
   termo,
@@ -39,6 +41,7 @@ export function TermoForm<T extends TermoAluno>({
   montarPayload,
   validar,
   onErros,
+  onCancelar,
   children,
 }: TermoFormProps<T>) {
   const router = useRouter();
@@ -70,6 +73,7 @@ export function TermoForm<T extends TermoAluno>({
     if (!payload) return;
     const atualizado: AlunoCard = await salvarTermo(card.id, termo, payload);
     atualizar(atualizado);
+    setPayload(null);
     toast(MSG.fichaSalva, `${NOMES_FICHAS[termo]} · ${MSG.fichaSalvaDetalhe}`);
     router.push(visaoGeral);
   }
@@ -95,7 +99,17 @@ export function TermoForm<T extends TermoAluno>({
       <div className={shared.acoesForm}>
         {ativo ? (
           <>
-            <Button variant="secondary" onClick={() => router.push(visaoGeral)}>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                if (onCancelar) {
+                  setIncompleto(false);
+                  onCancelar();
+                } else {
+                  router.push(visaoGeral);
+                }
+              }}
+            >
               Cancelar
             </Button>
             <Button type="submit">Salvar ficha</Button>
