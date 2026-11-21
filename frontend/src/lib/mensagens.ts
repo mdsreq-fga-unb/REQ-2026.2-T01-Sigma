@@ -37,9 +37,22 @@ export const MSG = {
   falhaSalvar: "Não foi possível salvar. Verifique a conexão e tente novamente; nenhum dado foi gravado.", // FE04
   turmaIndisponivel: "Esta turma não está mais ativa. Escolha outra turma.", // RN11
   alunoNaoEncontrado: "Card não encontrado. Ele pode ter sido removido ou o endereço está incorreto.",
+  termoSaidaPendente: "Ficha pendente. Sem este termo preenchido, o aluno só pode sair da escola com o responsável.",
+  termoCompromissoPendente:
+    "Ficha pendente. O aluno só é matriculado com cópia de toda a documentação solicitada.",
   termoImagemPendente: "Ficha pendente. Enquanto este termo não for preenchido, a imagem do aluno não pode ser usada.",
 
   // UC08 – Consultar Registros (FA02)
   nenhumResultado: "Nenhum resultado encontrado",
   nenhumResultadoDica: "Confira a grafia ou busque por parte do nome.",
 } as const;
+
+/** Resumo fixo das normas do Termo de Compromisso Escolar (UC04). */
+export const NORMAS_TERMO_COMPROMISSO = [
+  "Entrada das 07h30 às 08h00; depois disso o portão é fechado.",
+  "Saída das 16h00 às 17h00; atrasos constantes podem ser comunicados ao Conselho Tutelar.",
+  "Entrada só com uniforme; a escola não se responsabiliza por celulares, joias ou brinquedos.",
+  "A escola não administra medicação; em caso de febre, o responsável é chamado.",
+  "Todo mês um responsável assina a lista de frequência.",
+  "Faltas só são justificadas com atestado médico; faltas não justificadas podem levar à perda da vaga.",
+] as const;

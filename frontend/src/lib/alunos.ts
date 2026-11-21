@@ -47,6 +47,18 @@ export const OPCOES_FORMA_SAIDA: { valor: FormaSaida; rotulo: string }[] = [
   { valor: "OUTROS", rotulo: "Outros" },
 ];
 
+export const OPCOES_PARENTESCO: { valor: string; rotulo: string }[] = [
+  { valor: "Mãe", rotulo: "Mãe" },
+  { valor: "Pai", rotulo: "Pai" },
+  { valor: "Avô/Avó", rotulo: "Avô/Avó" },
+  { valor: "Tio/Tia", rotulo: "Tio/Tia" },
+  { valor: "Irmão/Irmã", rotulo: "Irmão/Irmã" },
+  { valor: "Padrasto/Madrasta", rotulo: "Padrasto/Madrasta" },
+  { valor: "Responsável legal", rotulo: "Responsável legal" },
+  { valor: "Motorista escolar", rotulo: "Motorista escolar" },
+  { valor: "Outro", rotulo: "Outro" },
+];
+
 export type AutorizacaoImagem = "SIM" | "NAO";
 
 export const OPCOES_AUTORIZACAO_IMAGEM: { valor: AutorizacaoImagem; rotulo: string }[] = [
@@ -70,6 +82,17 @@ export const OPCOES_ESTADO_CIVIL: { valor: string; rotulo: string }[] = [
 
 /** Regime sugerido no termo de compromisso: o texto oficial fala em "tempo integral". */
 export const REGIME_PADRAO = "Tempo integral";
+
+export const OPCOES_MODALIDADE: { valor: string; rotulo: string }[] = [
+  { valor: "Creche", rotulo: "Creche" },
+  { valor: "Pré-escola", rotulo: "Pré-escola" },
+];
+
+export const OPCOES_REGIME: { valor: string; rotulo: string }[] = [
+  { valor: "Tempo integral", rotulo: "Tempo integral" },
+  { valor: "Parcial - matutino", rotulo: "Parcial - matutino" },
+  { valor: "Parcial - vespertino", rotulo: "Parcial - vespertino" },
+];
 
 export const NOMES_FICHAS: Record<FichaAluno, string> = {
   requerimento: "Requerimento de matrícula",
@@ -253,8 +276,8 @@ export function validarTermoCompromisso(termo: TermoCompromisso): ErrosCampos {
   const erros: ErrosCampos = {};
   if (vazio(termo.nomeResponsavel)) erros.nomeResponsavel = "Informe o nome do responsável.";
   validarCpf(erros, "cpfResponsavel", termo.cpfResponsavel, true);
-  if (vazio(termo.modalidade)) erros.modalidade = "Informe a modalidade.";
-  if (vazio(termo.regime)) erros.regime = "Informe o regime.";
+  if (vazio(termo.modalidade)) erros.modalidade = "Selecione a modalidade.";
+  if (vazio(termo.regime)) erros.regime = "Selecione o regime.";
   if (!termo.ciente) erros.ciente = "Confirme que o responsável leu e assinou o termo.";
   validarData(erros, "dataAssinatura", termo.dataAssinatura);
   return erros;
