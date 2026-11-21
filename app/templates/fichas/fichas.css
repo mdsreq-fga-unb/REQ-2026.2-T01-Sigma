@@ -1,0 +1,181 @@
+/* Estilo de impressão das fichas e termos de matrícula (UC04).
+   Tudo que a página usa vem de app/templates: nenhuma fonte, imagem ou CSS externo. */
+
+@font-face {
+  font-family: "Fichas Sans";
+  src: url("../static/fonts/DejaVuSans.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Fichas Sans";
+  src: url("../static/fonts/DejaVuSans-Bold.ttf");
+  font-weight: bold;
+}
+
+@page {
+  size: A4;
+  margin: 3.4cm 1.9cm 2.2cm 1.9cm;
+
+  /* O cabeçalho (.cabecalho) é um elemento "running": aparece em todas as páginas. */
+  @top-left {
+    content: element(cabecalho);
+    width: 17.2cm;
+  }
+  /* O texto "Gerado em ..." do rodapé esquerdo é definido no base.html (traz a data). */
+  @bottom-left {
+    font-family: "Fichas Sans", "DejaVu Sans", sans-serif;
+    font-size: 7.5pt;
+    color: #555;
+  }
+  @bottom-right {
+    content: "Página " counter(page) " de " counter(pages);
+    font-family: "Fichas Sans", "DejaVu Sans", sans-serif;
+    font-size: 7.5pt;
+    color: #555;
+  }
+}
+
+html {
+  font-family: "Fichas Sans", "DejaVu Sans", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #111;
+}
+
+body { margin: 0; }
+
+/* ---------- Cabeçalho ---------- */
+.cabecalho {
+  position: running(cabecalho);
+  display: flex;
+  align-items: center;
+  gap: .45cm;
+  padding-bottom: .25cm;
+  border-bottom: 1.2pt solid #17546f;
+}
+.cabecalho .logo { height: 1.35cm; }
+.cabecalho .instituicao { display: flex; flex-direction: column; }
+.cabecalho .instituicao strong { font-size: 10.5pt; color: #17546f; }
+.cabecalho .instituicao span { font-size: 8pt; color: #555; }
+
+/* ---------- Títulos ---------- */
+h1 {
+  margin: 0 0 .1cm;
+  font-size: 14pt;
+  text-align: center;
+  color: #17546f;
+}
+.subtitulo {
+  margin: 0 0 .5cm;
+  text-align: center;
+  font-size: 9.5pt;
+  color: #444;
+}
+h2 {
+  margin: 0 0 .22cm;
+  padding-bottom: .08cm;
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #17546f;
+  border-bottom: .6pt solid #9bb7c4;
+}
+
+/* Uma seção não é quebrada no meio entre duas páginas. */
+section {
+  margin-bottom: .5cm;
+  break-inside: avoid;
+}
+
+/* ---------- Campos ---------- */
+.linha {
+  display: flex;
+  gap: .6cm;
+  margin: .26cm 0;
+}
+.campo {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  min-width: 0;
+}
+.campo .rotulo {
+  flex: none;
+  margin-right: .18cm;
+  font-size: 8.5pt;
+  color: #333;
+  white-space: nowrap;
+}
+/* Campo de data: largura fixa, para a data nunca quebrar em duas linhas. */
+.campo.data { flex: 0 0 5.9cm; }
+.campo.data .valor { white-space: nowrap; }
+
+/* Campo vazio fica como linha em branco, para preenchimento à mão. */
+.campo .valor {
+  flex: 1;
+  min-height: .55cm;
+  padding: 0 .1cm .04cm;
+  border-bottom: .6pt solid #333;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Opções (caixas) ---------- */
+.opcoes {
+  display: flex;
+  gap: 1.4cm;
+  margin: .3cm 0;
+}
+.opcao { font-size: 10pt; }
+.opcoes-lista { margin: .15cm 0; }
+.opcoes-lista .opcao { display: block; margin: .18cm 0; }
+.opcao .caixa { font-size: 13pt; vertical-align: -1pt; }
+.opcao .complemento {
+  display: inline-block;
+  min-width: 9cm;
+  margin-left: .15cm;
+  border-bottom: .6pt solid #333;
+}
+
+/* ---------- Texto do termo ---------- */
+.texto-termo p {
+  margin: .22cm 0;
+  text-align: justify;
+}
+.pergunta { margin: .15cm 0; }
+.observacao {
+  margin: .2cm 0 .5cm;
+  font-size: 8.5pt;
+  color: #333;
+}
+
+/* ---------- Tabela ---------- */
+table.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* colunas com a mesma largura, preenchida ou em branco */
+  margin: .15cm 0;
+}
+table.tabela th,
+table.tabela td {
+  padding: .1cm .2cm;
+  border: .6pt solid #555;
+  height: .8cm;
+  text-align: left;
+  vertical-align: middle;
+}
+table.tabela th {
+  background: #e8f0f4;
+  font-size: 8.5pt;
+}
+table.tabela .numero { width: 1cm; text-align: center; }
+table.tabela .nome { width: 9cm; }
+
+/* ---------- Assinatura ---------- */
+.assinatura {
+  width: 9.5cm;
+  margin: 1.5cm auto 0;
+  text-align: center;
+  break-inside: avoid;
+}
+.assinatura .linha-assinatura { border-top: .7pt solid #000; }
+.assinatura .legenda { padding-top: .12cm; font-size: 8.5pt; color: #333; }

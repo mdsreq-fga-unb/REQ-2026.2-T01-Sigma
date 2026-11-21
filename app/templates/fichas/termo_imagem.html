@@ -1,0 +1,57 @@
+{% extends "fichas/base.html" %}
+{% from "fichas/_macros.html" import campo, opcao, assinatura %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ titulo }}</h1>
+<p class="subtitulo">Ano letivo {{ ano_letivo }}</p>
+
+<section>
+  <h2>Responsável legal</h2>
+  <div class="linha">{{ campo("Nome", responsavel.nome) }}</div>
+  <div class="linha">
+    {{ campo("Nacionalidade", responsavel.nacionalidade) }}
+    {{ campo("Estado civil", responsavel.estado_civil) }}
+  </div>
+  <div class="linha">
+    {{ campo("RG", responsavel.rg) }}
+    {{ campo("CPF", responsavel.cpf|cpf) }}
+  </div>
+  <div class="linha">{{ campo("Residente em", responsavel.residente_em) }}</div>
+</section>
+
+<section>
+  <h2>Aluno(a)</h2>
+  <div class="linha">{{ campo("Nome", aluno.nome) }}</div>
+  <div class="linha">
+    {{ campo("Data de nascimento", aluno.data_nascimento|data, "data") }}
+    {{ campo("Ano/série", aluno.etapa) }}
+  </div>
+</section>
+
+{# Texto integral: vem do mesmo arquivo que a rota GET /termos/uso-imagem/texto. #}
+<section class="texto-termo">
+  <h2>Termo</h2>
+  {% for paragrafo in paragrafos_termo %}
+  <p>{{ paragrafo }}</p>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>Autorização</h2>
+  <div class="opcoes">
+    {# "==" (e não "is true"): variável esquecida no contexto quebra em vez de sair como "não respondido". #}
+    {{ opcao(autoriza == true, "Autorizo") }}
+    {{ opcao(autoriza == false, "Não autorizo") }}
+  </div>
+</section>
+
+<section>
+  <div class="linha">
+    {{ campo("Local", local) }}
+    {{ campo("Data", data|data, "data") }}
+  </div>
+  {{ assinatura("Assinatura do responsável legal") }}
+</section>
+{% endblock %}
