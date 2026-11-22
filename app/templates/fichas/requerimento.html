@@ -1,0 +1,161 @@
+{% extends "fichas/base.html" %}
+{% from "fichas/_macros.html" import campo, opcao, assinatura %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block conteudo %}
+<div class="ficha-compacta">
+<p class="orgao">Secretaria Municipal de Educação</p>
+<h1>{{ titulo }}</h1>
+<div class="linha">
+  {{ campo("Escola municipal", nome_creche) }}
+  {{ campo("INEP", none, "medio") }}
+</div>
+<div class="linha">
+  {{ campo("Ano letivo", ano_letivo, "curto") }}
+  {{ campo("Data da matrícula", matricula.data_matricula|data, "data") }}
+</div>
+
+<section>
+  <h2>Dados pessoais do aluno</h2>
+  <div class="linha">{{ campo("Nome", pessoais.nome) }}</div>
+  <div class="linha">
+    {{ campo("Data de nascimento", pessoais.data_nascimento|data, "data") }}
+    {{ campo("Sexo", pessoais.sexo) }}
+    {{ campo("Cor/raça", pessoais.raca) }}
+  </div>
+  <div class="linha">
+    {{ campo("CPF", pessoais.cpf|cpf) }}
+    {{ campo("Nº do NIS", pessoais.nis|nis) }}
+  </div>
+  <div class="linha">
+    {{ campo("Naturalidade", pessoais.naturalidade) }}
+    {{ campo("UF", pessoais.uf, "curto") }}
+    {{ campo("Nacionalidade", pessoais.nacionalidade) }}
+  </div>
+  <div class="linha">
+    {{ campo("Ano de escolaridade", matricula.ano_escolaridade) }}
+    {{ campo("Turma", matricula.turma) }}
+  </div>
+</section>
+
+<section>
+  <h2>Documentação civil</h2>
+  <div class="linha">
+    {{ campo("Nº do RG", documentacao.rg) }}
+    {{ campo("Órgão emissor", documentacao.orgao_emissor) }}
+    {{ campo("UF", documentacao.uf_rg, "curto") }}
+  </div>
+  <div class="linha">
+    {{ campo("Expedição", documentacao.data_expedicao|data, "data") }}
+    {{ campo("Nº do documento estrangeiro", documentacao.documento_estrangeiro) }}
+  </div>
+  <div class="linha">
+    {{ campo("Certidão civil", documentacao.tipo_certidao) }}
+    {{ campo("Emissão", documentacao.data_emissao_certidao|data, "data") }}
+  </div>
+  <div class="linha">
+    {{ campo("Nº do termo", documentacao.num_termo) }}
+    {{ campo("Folha", documentacao.folha) }}
+    {{ campo("Livro", documentacao.livro) }}
+  </div>
+  <div class="linha">
+    {{ campo("Cartório", documentacao.nome_cartorio) }}
+    {{ campo("UF", documentacao.uf_cartorio, "curto") }}
+  </div>
+</section>
+
+<section>
+  <h2>Filiação</h2>
+  {% for chave, titulo_pessoa in [("pai", "Pai"), ("mae", "Mãe")] %}
+  {% set pessoa = filiacao[chave] %}
+  <div class="linha">
+    {{ campo(titulo_pessoa, pessoa.nome) }}
+    {{ campo("Escolaridade", pessoa.escolaridade) }}
+  </div>
+  <div class="linha">
+    {{ campo("Local de trabalho", pessoa.local_trabalho) }}
+    {{ campo("Telefone do trabalho", pessoa.telefone_trabalho|telefone, "telefone") }}
+  </div>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>Endereço e contato</h2>
+  <div class="linha">
+    {{ campo("Logradouro", endereco.logradouro) }}
+    {{ campo("Nº", endereco.numero, "curto") }}
+  </div>
+  <div class="linha">
+    {{ campo("Bairro", endereco.bairro) }}
+    {{ campo("Cidade", endereco.cidade) }}
+    {{ campo("UF", endereco.uf, "curto") }}
+  </div>
+  <div class="linha">
+    {{ campo("CEP", endereco.cep|cep, "medio") }}
+    {{ campo("Telefone", endereco.telefone|telefone, "telefone") }}
+  </div>
+  <div class="linha">{{ campo("Ass. do responsável pela matrícula", none) }}</div>
+</section>
+
+<section>
+  <h2>Saúde</h2>
+  <p class="subtitulo-secao">Problema de saúde</p>
+  <div class="opcoes-grade">
+    {% for item in saude.problemas %}{{ opcao(item.marcada, item.rotulo) }}{% endfor %}
+  </div>
+  <div class="linha">{{ campo("Observação", saude.observacao_problemas) }}</div>
+  <p class="subtitulo-secao">Acompanhamento médico</p>
+  <div class="opcoes-grade">
+    {% for item in saude.acompanhamentos %}{{ opcao(item.marcada, item.rotulo) }}{% endfor %}
+  </div>
+  <div class="linha">{{ campo("Observação", saude.observacao_acompanhamentos) }}</div>
+</section>
+
+{# Renovações não são gravadas no sistema: o quadro sai em branco para preencher à mão, como no papel. #}
+<section>
+  <h2>Renovações de matrícula</h2>
+  <table class="tabela compacta">
+    <thead>
+      <tr><th>Matrícula renovada em</th><th>Para o ano</th><th>Ass. do responsável</th></tr>
+    </thead>
+    <tbody>
+      {% for _ in range(linhas_renovacao) %}
+      <tr><td></td><td></td><td></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+{# Exibida mesmo vazia: as linhas em branco servem para preencher à mão. #}
+<section>
+  <h2>Transferência</h2>
+  <div class="linha">
+    {{ campo("Data do pedido", transferencia.data_pedido|data, "data") }}
+    {{ campo("Data de entrega", transferencia.data_entrega|data, "data") }}
+  </div>
+  <div class="linha">{{ campo("Nome do responsável", transferencia.nome_responsavel) }}</div>
+  <div class="linha">{{ campo("Ass. do responsável", none) }}</div>
+</section>
+
+<section>
+  <h2>Termo de compromisso</h2>
+  <p class="texto-compromisso">
+    Eu, <span class="preenchido">{{ compromisso.nome_responsavel or "__________________________________________" }}</span>,
+    estou ciente que devo entregar os documentos abaixo relacionados no prazo de 30 (trinta) dias,
+    e que por falta dos mesmos a matrícula do(a) aluno(a) estará incompleta.
+  </p>
+  <p class="subtitulo-secao">Documentos</p>
+  <div class="opcoes-grade duas-colunas">
+    {% for item in compromisso.documentos %}{{ opcao(item.marcada, item.rotulo) }}{% endfor %}
+  </div>
+</section>
+
+<section>
+  <div class="assinaturas">
+    {{ assinatura("Secretário(a) Escolar") }}
+    {{ assinatura("Diretor(a)") }}
+  </div>
+</section>
+</div>
+{% endblock %}

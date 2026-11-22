@@ -1,7 +1,7 @@
 """Rotas das fichas e termos da matrícula (UC04 - Gerenciar Fichas de Matrícula).
 
 Uma rota por termo/ficha. As rotas só recebem a requisição, chamam o service e devolvem a
-resposta: nenhuma regra de negócio fica aqui. Os erros de negócio (404, 422, 503, 500) são
+resposta: nenhuma regra de negócio fica aqui. Os erros de negócio (404, 409, 422, 503, 500) são
 lançados pelos services e convertidos em resposta HTTP por `tratar_erro_negocio` (app/main.py).
 
 Qualquer usuário autenticado e ativo da equipe administrativa pode usar as rotas
@@ -16,9 +16,10 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.deps import get_current_user
 from app.models.user import Usuario
+from app.schemas.requerimento import RequerimentoResponse, RequerimentoUpdate
 from app.schemas.termo_imagem import TermoImagemResponse, TermoImagemUpdate
 from app.schemas.termo_saida import TermoSaidaResponse, TermoSaidaUpdate
-from app.services import service_termo_imagem, service_termo_saida
+from app.services import service_requerimento, service_termo_imagem, service_termo_saida
 
 router = APIRouter(prefix="/matriculas", tags=["Matrículas"])
 
@@ -56,6 +57,56 @@ def _resposta_pdf(conteudo: bytes, nome_arquivo: str, resposta_base: Response) -
         if nome.lower() not in {"content-length", "content-type"}:
             resposta.headers[nome] = valor
     return resposta
+
+
+# Requerimento de matrícula
+
+
+@router.get(
+    "/{id_matricula}/requerimento",
+    response_model=RequerimentoResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Obter o Requerimento de matrícula",
+    responses={
+        200: {"description": "Ficha da matrícula. Sem requerimento salvo: dados do aluno, demais seções vazias e `completa` falso."},
+        **_RESPOSTAS_AUTENTICACAO,
+        404: {"description": "Matrícula não encontrada."},
+        503: {"description": "Falha de conexão com o banco de dados."},
+    },
+)
+def obter_requerimento(id_matricula: int, db: SessaoBanco, _usuario: UsuarioAtual):
+    return service_requerimento.obter_requerimento(db, id_matricula)
+
+
+@router.put(
+    "/{id_matricula}/requerimento",
+    response_model=RequerimentoResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Salvar o Requerimento de matrícula (cria ou atualiza)",
+    responses={
+        200: {"description": "Ficha salva. Dados pessoais e endereço também são gravados no aluno."},
+        **_RESPOSTAS_AUTENTICACAO,
+        404: {"description": "Matrícula não encontrada."},
+        409: {"description": "CPF, NIS ou RG (na mesma UF) de outro aluno."},
+        422: {"description": "Campos obrigatórios vazios (todos listados) ou dados inválidos."},
+        503: {"description": "Falha de conexão com o banco de dados. Nada foi salvo."},
+    },
+)
+def salvar_requerimento(id_matricula: int, dados: RequerimentoUpdate, db: SessaoBanco, usuario: UsuarioAtual):
+    return service_requerimento.salvar_requerimento(db, id_matricula, dados, usuario)
+
+
+@router.get(
+    "/{id_matricula}/requerimento/pdf",
+    response_class=Response,
+    summary="Exportar o Requerimento de matrícula em PDF",
+    responses=_RESPOSTA_PDF,
+)
+def exportar_requerimento_pdf(id_matricula: int, response: Response, db: SessaoBanco, usuario: UsuarioAtual):
+    # Função síncrona de propósito: o WeasyPrint usa CPU e bloqueia, então o FastAPI a executa
+    # no pool de threads sem travar o servidor.
+    conteudo, nome_arquivo = service_requerimento.exportar_pdf(db, id_matricula, usuario)
+    return _resposta_pdf(conteudo, nome_arquivo, response)
 
 
 # Termo de autorização de uso de imagem

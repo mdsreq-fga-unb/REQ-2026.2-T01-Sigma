@@ -64,7 +64,7 @@ def montar_endereco_aluno(aluno: Aluno) -> str:
         f"nº {aluno.numero}" if aluno.numero else None,
         aluno.bairro,
         cidade,
-        f"CEP {aluno.cep}" if aluno.cep else None,
+        f"CEP {service_pdf.filtro_cep(aluno.cep)}" if aluno.cep else None,
     ]
     return ", ".join(parte for parte in partes if parte)[:LIMITE_RESIDENTE_EM]
 

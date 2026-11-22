@@ -5,31 +5,14 @@ as pessoas autorizadas e o histórico de edições juntos ou não grava nada (FE
 """
 from typing import Any
 
-from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload, selectinload
 
-from app.models.aluno import Aluno
 from app.models.matricula import Matricula
 from app.models.pessoas_a import PessoaAutorizada
 from app.models.termo_imagem import TermoImagem
 from app.models.termo_saida import TermoSaida
-from app.models.turma import Turma
-
-ID_MAXIMO = 2_147_483_647  # maior valor do inteiro de 4 bytes (a chave primária no PostgreSQL)
-
-
-def _id_possivel(id_matricula: int) -> bool:
-    """Id fora do intervalo do inteiro do banco não pode existir (e a consulta estouraria)."""
-    return 1 <= id_matricula <= ID_MAXIMO
-
-
-def _consulta_matricula(id_matricula: int):
-    """Matrícula com aluno, turma e etapa já carregados (poucas consultas, para caber nos 5 s)."""
-    return (
-        select(Matricula)
-        .where(Matricula.id == id_matricula)
-        .options(joinedload(Matricula.aluno).joinedload(Aluno.turma).joinedload(Turma.etapa))
-    )
+from app.repository.repository_matricula import consulta_matricula as _consulta_matricula
+from app.repository.repository_matricula import id_possivel as _id_possivel
 
 
 def buscar_matricula_com_termo_imagem(db: Session, id_matricula: int) -> Matricula | None:

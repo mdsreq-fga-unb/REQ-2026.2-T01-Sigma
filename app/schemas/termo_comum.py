@@ -128,6 +128,7 @@ def avaliar_campos(
     obrigatorios: Iterable[Caminho],
     limites: Mapping[Caminho, int],
     cpfs: Iterable[Caminho] = (),
+    datas_nao_futuras: Iterable[Caminho] | None = None,
 ) -> list[InitErrorDetails]:
     """Confere os campos simples de um termo e devolve **todas** as pendências (FE01).
 
@@ -135,10 +136,11 @@ def avaliar_campos(
     - obrigatório e vazio: erro de campo obrigatório com o nome legível do campo;
     - texto maior que o limite da coluna: erro de tamanho;
     - CPF: 11 dígitos, só números, com dígito verificador válido;
-    - data: não pode ser futura.
+    - data: não pode ser futura (todas, ou só as de `datas_nao_futuras`, quando informado).
     """
     obrigatorios = set(obrigatorios)
     cpfs = set(cpfs)
+    datas_nao_futuras = None if datas_nao_futuras is None else set(datas_nao_futuras)
     erros: list[InitErrorDetails] = []
 
     for caminho, rotulo in rotulos.items():
@@ -162,10 +164,39 @@ def avaliar_campos(
                     f"{rotulo} inválido. Informe os 11 dígitos de um CPF válido, sem pontuação.",
                 )
             )
-        elif isinstance(valor, date) and valor > hoje_sao_paulo():
+        elif (
+            isinstance(valor, date)
+            and (datas_nao_futuras is None or caminho in datas_nao_futuras)
+            and valor > hoje_sao_paulo()
+        ):
             erros.append(erro_regra(caminho, "data_futura", f"{rotulo}: a data não pode ser futura."))
 
     return erros
+
+
+def juntar_com_faltantes(
+    titulo: str,
+    excecao: ValidationError,
+    dados_brutos: Any,
+    *,
+    rotulos: Mapping[Caminho, str],
+    obrigatorios: Iterable[Caminho],
+) -> NoReturn:
+    """Erro de um campo (ex.: opção inválida) + os obrigatórios vazios, num único 422 (FE01).
+
+    Quando um campo falha na conversão, o Pydantic não chega à validação geral da ficha. Sem
+    isto, o usuário corrigiria esse campo e só então descobriria os obrigatórios faltantes.
+    """
+    erros: list[InitErrorDetails] = [
+        {"type": PydanticCustomError(e["type"], e["msg"].replace("{", "{{").replace("}", "}}")), "loc": e["loc"], "input": e.get("input")}
+        for e in excecao.errors()
+    ]
+    com_erro = {tuple(e["loc"]) for e in excecao.errors()}
+    dados = dados_brutos if isinstance(dados_brutos, Mapping) else {}
+    for caminho in obrigatorios:
+        if caminho not in com_erro and esta_vazio(limpar_texto(valor_em(dados, caminho))):
+            erros.append(erro_campo_obrigatorio(caminho, rotulos[caminho]))
+    raise ValidationError.from_exception_data(titulo, erros)
 
 
 def erro_tamanho(caminho: Caminho, rotulo: str, limite: int) -> InitErrorDetails:

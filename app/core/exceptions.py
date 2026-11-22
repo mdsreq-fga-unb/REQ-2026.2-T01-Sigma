@@ -54,6 +54,13 @@ class DadosInvalidosError(ErroNegocio):
         return self.erros
 
 
+class DuplicidadeError(ErroNegocio):
+    """Dado que precisa ser único já pertence a outro registro (ex.: CPF de outro aluno)."""
+
+    status_code = 409
+    mensagem = "Já existe um registro com estes dados."
+
+
 class FalhaAoSalvarError(ErroNegocio):
     """Falha de banco ao gravar. Nada foi salvo (FE04)."""
 
