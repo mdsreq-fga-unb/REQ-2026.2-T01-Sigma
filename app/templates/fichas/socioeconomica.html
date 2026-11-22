@@ -1,0 +1,135 @@
+{% extends "fichas/base.html" %}
+
+{% macro campo(rotulo, valor, grande=false) %}
+  <div class="campo{% if grande %} g2{% endif %}">
+    <span class="rotulo">{{ rotulo }}</span>
+    <span class="valor">{{ valor }}</span>
+  </div>
+{% endmacro %}
+
+{% macro opcoes(lista) %}
+  <div class="opcoes">
+    {% for o in lista %}
+      <span class="opcao"><span class="caixa">{% if o.marcado %}X{% endif %}</span>{{ o.rotulo }}</span>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% block titulo %}Ficha Socioeconômica{% endblock %}
+
+{% block cabecalho %}{{ titulo }}{% endblock %}
+{% block subcabecalho %}<div class="ano">Ano letivo {{ ano_letivo }}</div>{% endblock %}
+
+{% block conteudo %}
+
+  {# 2. Dados pessoais do aluno #}
+  <section>
+    <h2>Dados do aluno</h2>
+    <div class="linha">
+      {{ campo("Nome", dados_pessoais.nome, true) }}
+      {{ campo("Data de nascimento", dados_pessoais.data_nasc) }}
+      {{ campo("Sexo", dados_pessoais.sexo) }}
+    </div>
+    <div class="linha">
+      {{ campo("Ano / série", dados_pessoais.etapa) }}
+      {{ campo("Nome da mãe", dados_pessoais.nome_mae, true) }}
+      {{ campo("Nome do pai", dados_pessoais.nome_pai, true) }}
+    </div>
+  </section>
+
+  {# 3. Endereço e contato #}
+  <section>
+    <h2>Endereço e contato</h2>
+    <div class="linha">
+      {{ campo("Endereço", endereco.logradouro, true) }}
+      {{ campo("Número", endereco.numero) }}
+      {{ campo("Bairro", endereco.bairro) }}
+    </div>
+    <div class="linha">
+      {{ campo("Cidade", endereco.cidade, true) }}
+      {{ campo("UF", endereco.uf) }}
+      {{ campo("CEP", endereco.cep) }}
+    </div>
+    <div class="linha">
+      {{ campo("Telefone para contato", contato.telefone_contato) }}
+      {{ campo("Celular", contato.celular) }}
+      {{ campo("E-mail", contato.email, true) }}
+    </div>
+  </section>
+
+  {# 4. Moradia: todas as opções, a escolhida marcada; "Por quem?" e valor sempre aparecem #}
+  <section>
+    <h2>Moradia</h2>
+    {{ opcoes(moradia.opcoes) }}
+    <div class="linha">
+      {{ campo("Por quem?", moradia.cedido_por, true) }}
+      {{ campo("Valor mensal pago", moradia.valor) }}
+    </div>
+  </section>
+
+  {# 5. Transporte #}
+  <section>
+    <h2>Meio de transporte</h2>
+    {{ opcoes(transporte.opcoes) }}
+  </section>
+
+  {# 6. Núcleo familiar: pelo menos 6 linhas, as extras em branco #}
+  <section>
+    <h2>Núcleo familiar</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Profissão / função</th>
+          <th style="width: 9%;">Idade</th>
+          <th>Estado civil</th>
+          <th>Escolaridade</th>
+          <th>Renda mensal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in familiares %}
+        <tr>
+          <td>{{ f.tipo }}</td>
+          <td>{{ f.profissao }}</td>
+          <td>{{ f.idade }}</td>
+          <td>{{ f.estado_civil }}</td>
+          <td>{{ f.escolaridade }}</td>
+          <td>{{ f.renda_mensal }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="nota">Observações: informar situações como pais separados, falecimento, aposentadoria ou desemprego.</p>
+    <span class="valor" style="min-height: 28px;">{{ observacoes_familia }}</span>
+  </section>
+
+  {# 7. Outras propriedades #}
+  <section>
+    <h2>Outras propriedades</h2>
+    <div class="opcoes">
+      <span class="opcao"><span class="caixa">{% if outras_propriedades.possui_nao %}X{% endif %}</span>Não</span>
+      <span class="opcao"><span class="caixa">{% if outras_propriedades.possui_sim %}X{% endif %}</span>Sim</span>
+    </div>
+    {{ campo("Relação das propriedades", outras_propriedades.relacao) }}
+  </section>
+
+  {# 8. Declaração do responsável #}
+  <section>
+    <h2>Declaração do responsável</h2>
+    <p class="nota">
+      Declaro que as informações prestadas nesta ficha são verdadeiras, ciente de que a falsificação,
+      o falseamento ou a omissão de dados será apurada pelo Serviço Social.
+    </p>
+    <div class="linha">
+      {{ campo("Nome do responsável pela criança", declaracao.nome, true) }}
+      {{ campo("Local", declaracao.local) }}
+      {{ campo("Data", declaracao.data) }}
+    </div>
+    <div class="assinatura">
+      <div class="traco"></div>
+      Assinatura do responsável
+    </div>
+  </section>
+
+{% endblock %}

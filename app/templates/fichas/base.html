@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>{% block titulo %}Ficha{% endblock %}</title>
+  {# Sem fontes, imagens ou CSS externos: o PDF não carrega nada de fora. #}
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 14mm 18mm 14mm;
+      @bottom-right {
+        content: "Página " counter(page) " de " counter(pages);
+        font-size: 8pt;
+        color: #555;
+      }
+    }
+    * { box-sizing: border-box; }
+    body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 9.5pt; color: #111; line-height: 1.35; }
+    header { text-align: center; border-bottom: 1.5px solid #111; padding-bottom: 6px; margin-bottom: 10px; }
+    .instituicao { font-size: 9pt; text-transform: uppercase; letter-spacing: 1px; color: #333; }
+    h1 { font-size: 15pt; margin: 2px 0 0 0; }
+    .ano { font-size: 10pt; color: #333; }
+    h2 { font-size: 10.5pt; background: #e8e8e8; padding: 3px 6px; margin: 12px 0 6px 0; page-break-after: avoid; }
+    section { page-break-inside: avoid; }
+    .linha { display: flex; gap: 14px; margin-bottom: 5px; }
+    .campo { flex: 1; }
+    .campo.g2 { flex: 2; }
+    .rotulo { font-size: 7.5pt; text-transform: uppercase; color: #444; display: block; }
+    .valor { display: block; border-bottom: 1px solid #777; min-height: 14px; padding: 0 2px; }
+    .opcoes { margin: 2px 0 6px 0; }
+    .opcao { display: inline-block; margin-right: 16px; }
+    .caixa { display: inline-block; width: 11px; height: 11px; border: 1px solid #111;
+             text-align: center; line-height: 10px; font-size: 9pt; font-weight: bold; margin-right: 4px; vertical-align: middle; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #555; padding: 3px 4px; text-align: left; height: 20px; }
+    th { background: #f0f0f0; font-size: 8pt; }
+    .nota { font-size: 8pt; color: #333; margin: 4px 0; }
+    .assinatura { margin-top: 34px; text-align: center; }
+    .assinatura .traco { border-top: 1px solid #111; width: 60%; margin: 0 auto 3px auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="instituicao">Creche Estação Vida</div>
+    <h1>{% block cabecalho %}{% endblock %}</h1>
+    {% block subcabecalho %}{% endblock %}
+  </header>
+
+  {% block conteudo %}{% endblock %}
+</body>
+</html>
