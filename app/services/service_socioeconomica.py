@@ -1,3 +1,4 @@
+import unicodedata
 from datetime import datetime, timezone
 
 from sqlalchemy.exc import SQLAlchemyError
@@ -312,31 +313,41 @@ def registrar_exportacao_pdf(db: Session, id_matricula: int, usuario: Usuario) -
 
 # ---------------------------------------------------------------------------
 # Contexto do PDF: dicionário simples, já formatado (sem objetos ORM)
+# Os dados extras do aluno (CPF, NIS...) só entram aqui: a API não os devolve.
 # ---------------------------------------------------------------------------
-ROTULOS_MORADIA = {
-    SituacaoMoradia.PROPRIO: "Próprio",
-    SituacaoMoradia.CEDIDO: "Cedido",
-    SituacaoMoradia.FINANCIADO: "Financiado",
-    SituacaoMoradia.ALUGADO: "Alugado",
-    SituacaoMoradia.OCUPACAO_IRREGULAR: "Ocupação irregular",
-}
-ROTULOS_TRANSPORTE = {
-    MeioTransporte.NENHUM_A_PE_BICICLETA: "Nenhum (a pé / bicicleta)",
-    MeioTransporte.CARONA: "Carona",
-    MeioTransporte.TRANSPORTE_COLETIVO: "Transporte coletivo",
-    MeioTransporte.CARRO_MOTO_PROPRIO: "Carro / moto próprio",
-}
+RACAS = ["Branca", "Preta", "Parda", "Amarela", "Indígena", "Não Declarada"]
+MESES = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
+]
+# Linhas impressas da tabela do formulário: (tipo de componente, rótulo impresso)
+SLOTS_FAMILIA = [
+    ("pai", "Pai"),
+    ("mae", "Mãe"),
+    ("irmao", "Irmãos"),
+    ("irmao", ""),
+    ("irmao", ""),
+    ("outro", "Outros"),
+    ("outro", ""),
+]
+
+
+def _fmt_numero(v) -> str:
+    if v is None:
+        return ""
+    return f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
 def _fmt_dinheiro(v) -> str:
-    if v is None:
-        return ""
-    texto = f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-    return f"R$ {texto}"
+    return "" if v is None else f"R$ {_fmt_numero(v)}"
 
 
 def _fmt_cep(v) -> str:
     return f"{v[:5]}-{v[5:]}" if v and len(v) == 8 else (v or "")
+
+
+def _fmt_cpf(v) -> str:
+    return f"{v[:3]}.{v[3:6]}.{v[6:9]}-{v[9:]}" if v and len(v) == 11 else (v or "")
 
 
 def _fmt_telefone(v) -> str:
@@ -357,41 +368,80 @@ def _texto(v) -> str:
     return "" if v is None else str(v)
 
 
-def _opcoes(rotulos: dict, escolhida) -> list[dict]:
-    return [{"rotulo": r, "marcado": enum == escolhida} for enum, r in rotulos.items()]
+def _sem_acento(texto: str) -> str:
+    return unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().strip().lower()
 
 
-def montar_contexto_pdf(resposta: FichaSocioeconomicaResposta) -> dict:
+def _tipo_componente(tipo: str | None) -> str:
+    t = _sem_acento(tipo or "")
+    if t == "pai":
+        return "pai"
+    if t == "mae":
+        return "mae"
+    if t.startswith("irma"):  # irmão, irmã, irmãos, irmãs
+        return "irmao"
+    return "outro"
+
+
+def _linhas_familia(membros) -> list[dict]:
+    """Encaixa os membros nas linhas impressas (Pai, Mãe, Irmãos, Outros).
+    Quem não couber vai para linhas extras no fim da tabela."""
+    campos = ("idade", "estado_civil", "escolaridade", "profissao", "renda_mensal")
+    linhas = [{"componente": rotulo, **{c: "" for c in campos}} for _, rotulo in SLOTS_FAMILIA]
+    livres = set(range(len(SLOTS_FAMILIA)))
+    extras: list[dict] = []
+
+    for m in membros:
+        tipo = _tipo_componente(m.tipo)
+        linha = {
+            "componente": _texto(m.tipo),
+            "idade": _texto(m.idade),
+            "estado_civil": _texto(m.estado_civil),
+            "escolaridade": _texto(m.escolaridade),
+            "profissao": _texto(m.profissao),
+            "renda_mensal": _fmt_dinheiro(m.renda_mensal),
+        }
+        i = next((i for i, (k, _) in enumerate(SLOTS_FAMILIA) if k == tipo and i in livres), None)
+        if i is None:
+            extras.append(linha)
+            continue
+        livres.discard(i)
+        if tipo in ("pai", "mae"):
+            linha["componente"] = SLOTS_FAMILIA[i][1]
+        else:  # irmão/outro: mostra o que foi digitado (ex.: "Irmã", "Avó")
+            linha["componente"] = linha["componente"] or SLOTS_FAMILIA[i][1]
+        linhas[i] = linha
+
+    return linhas + extras
+
+
+def montar_contexto_pdf(resposta: FichaSocioeconomicaResposta, matricula) -> dict:
+    aluno = matricula.aluno
     p = resposta.dados_pessoais
     e = resposta.endereco
     c = resposta.contato
     m = resposta.moradia
     op = resposta.outras_propriedades
     d = resposta.declaracao
-
-    linhas = [
-        {
-            "tipo": _texto(f.tipo),
-            "profissao": _texto(f.profissao),
-            "idade": _texto(f.idade),
-            "estado_civil": _texto(f.estado_civil),
-            "escolaridade": _texto(f.escolaridade),
-            "renda_mensal": _fmt_dinheiro(f.renda_mensal),
-        }
-        for f in resposta.nucleo_familiar.membros
-    ]
-    vazia = {k: "" for k in ("tipo", "profissao", "idade", "estado_civil", "escolaridade", "renda_mensal")}
-    while len(linhas) < MIN_LINHAS_FAMILIA_PDF:
-        linhas.append(dict(vazia))  # linhas em branco para preencher à mão
+    sexo = _valor_enum(aluno.sexo)
+    raca = _valor_enum(aluno.raca)
 
     return {
-        "titulo": "Ficha Socioeconômica",
-        "ano_letivo": _texto(p.ano_letivo),
-        "dados_pessoais": {
+        "aluno": {
+            "ano_serie": _texto(p.etapa),
+            "ano_letivo": _texto(p.ano_letivo),
+            "data_matricula": _fmt_data(matricula.data_matricula),
             "nome": _texto(p.nome),
+            "sexo_m": sexo == "Masculino",
+            "sexo_f": sexo == "Feminino",
+            "nis": _texto(aluno.nis),
+            "id": _texto(aluno.id),
             "data_nasc": _fmt_data(p.data_nasc),
-            "sexo": _texto(p.sexo),
-            "etapa": _texto(p.etapa),
+            "naturalidade": _texto(aluno.naturalidade),
+            "uf_nasc": _texto(aluno.uf),
+            "nacionalidade": _texto(aluno.nacionalidade),
+            "cpf": _fmt_cpf(aluno.cpf),
+            "racas": [{"rotulo": r, "marcado": r == raca} for r in RACAS],
             "nome_mae": _texto(p.nome_mae),
             "nome_pai": _texto(p.nome_pai),
         },
@@ -409,12 +459,12 @@ def montar_contexto_pdf(resposta: FichaSocioeconomicaResposta) -> dict:
             "email": _texto(c.email),
         },
         "moradia": {
-            "opcoes": _opcoes(ROTULOS_MORADIA, m.situacao),
+            "situacao": _valor_enum(m.situacao) or "",
             "cedido_por": _texto(m.cedido_por),
-            "valor": _fmt_dinheiro(m.valor),
+            "valor": _fmt_numero(m.valor),  # o "R$" já vem impresso no formulário
         },
-        "transporte": {"opcoes": _opcoes(ROTULOS_TRANSPORTE, resposta.transporte.meio)},
-        "familiares": linhas,
+        "transporte": {"meio": _valor_enum(resposta.transporte.meio) or ""},
+        "familiares": _linhas_familia(resposta.nucleo_familiar.membros),
         "observacoes_familia": _texto(resposta.nucleo_familiar.observacoes),
         "outras_propriedades": {
             "possui_sim": op.possui is True,
@@ -424,6 +474,16 @@ def montar_contexto_pdf(resposta: FichaSocioeconomicaResposta) -> dict:
         "declaracao": {
             "nome": _texto(d.nome),
             "local": _texto(d.local),
-            "data": _fmt_data(d.data),
+            "dia": f"{d.data.day:02d}" if d.data else "",
+            "mes": MESES[d.data.month - 1] if d.data else "",
+            "ano": str(d.data.year) if d.data else "",
         },
     }
+
+
+def contexto_pdf(db: Session, id_matricula: int) -> dict:
+    """Tudo que o template do PDF precisa, já formatado."""
+    matricula = repo.buscar_matricula(db, id_matricula)
+    if matricula is None:
+        raise MatriculaNaoEncontradaError()
+    return montar_contexto_pdf(_montar_resposta(matricula), matricula)

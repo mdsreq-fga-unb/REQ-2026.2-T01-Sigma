@@ -100,14 +100,13 @@ def exportar_socioeconomica_pdf(
     usuario: Annotated[Usuario, Depends(get_current_user)],
 ):
     try:
-        ficha = service.obter_ficha(db, id_matricula)
+        contexto = service.contexto_pdf(db, id_matricula)
     except MatriculaNaoEncontradaError as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=e.mensagem)
     except SQLAlchemyError:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=ERRO_BANCO)
 
     try:
-        contexto = service.montar_contexto_pdf(ficha)
         pdf = service_pdf.gerar_pdf("fichas/socioeconomica.html", contexto)
     except Exception:
         # Sem detalhes na resposta nem em log: o erro pode conter dados da ficha.
@@ -121,8 +120,8 @@ def exportar_socioeconomica_pdf(
     except SQLAlchemyError:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=ERRO_BANCO)
 
-    p = ficha.dados_pessoais
-    nome_arquivo = f"socioeconomica-{service_pdf.slug(p.nome)}-{p.ano_letivo}.pdf"
+    aluno = contexto["aluno"]
+    nome_arquivo = f"socioeconomica-{service_pdf.slug(aluno['nome'])}-{aluno['ano_letivo']}.pdf"
     resposta = Response(
         content=pdf,
         media_type="application/pdf",
