@@ -19,6 +19,26 @@ from app.models.user import Usuario
 from app.schemas.termo_imagem import TermoImagemResponse, TermoImagemUpdate
 from app.schemas.termo_saida import TermoSaidaResponse, TermoSaidaUpdate
 from app.services import service_termo_imagem, service_termo_saida
+from typing import Annotated
+
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import Session
+
+from app.core.config import settings
+from app.core.database import get_db
+from app.core.deps import get_current_user
+from app.models.user import Usuario
+from app.schemas.schema_ficha_socioeconomica import (
+    FichaSocioeconomicaEntrada,
+    FichaSocioeconomicaResposta,
+)
+from app.services import service_pdf
+from app.services import service_socioeconomica as service
+from app.services.service_socioeconomica import (
+    MatriculaNaoEncontradaError,
+    MembroInvalidoError,
+)
 
 router = APIRouter(prefix="/matriculas", tags=["Matrículas"])
 
@@ -153,31 +173,9 @@ def salvar_termo_saida(id_matricula: int, dados: TermoSaidaUpdate, db: SessaoBan
 def exportar_termo_saida_pdf(id_matricula: int, response: Response, db: SessaoBanco, usuario: UsuarioAtual):
     conteudo, nome_arquivo = service_termo_saida.exportar_pdf(db, id_matricula, usuario)
     return _resposta_pdf(conteudo, nome_arquivo, response)
-from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
-from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.orm import Session
 
-from app.core.config import settings
-from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import Usuario
-from app.schemas.schema_ficha_socioeconomica import (
-    FichaSocioeconomicaEntrada,
-    FichaSocioeconomicaResposta,
-)
-from app.services import service_pdf
-from app.services import service_socioeconomica as service
-from app.services.service_socioeconomica import (
-    MatriculaNaoEncontradaError,
-    MembroInvalidoError,
-)
 
-router = APIRouter(
-    prefix="/matriculas",
-    tags=["matriculas"],
-)
 
 # LGPD: estas rotas não registram o corpo da requisição nem os erros do banco em log.
 ERRO_BANCO = "Não foi possível salvar. Tente novamente."
