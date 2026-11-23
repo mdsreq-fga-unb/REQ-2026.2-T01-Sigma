@@ -1,0 +1,23 @@
+{# Cabeçalho e rodapé do SEV, repetidos nas duas páginas. #}
+
+{% macro cabecalho(logo) %}
+  <div class="timbre">
+    <div class="timbre-logo">{% if logo %}<img src="{{ logo }}" alt="">{% endif %}</div>
+    <div class="timbre-texto">
+      <div>SEV - Sociedade Estação Vida</div>
+      <div>Sociedade Civil sem fins lucrativos - CNPJ - 03.860.360/0001-51</div>
+      <div>Quadra 55 Conjunto A Lote 35 Setor 05 – Águas Lindas de Goiás – GO</div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro rodape(logo) %}
+  <div class="rodape">
+    <div class="rodape-logo">{% if logo %}<img src="{{ logo }}" alt="">{% endif %}</div>
+    <div class="rodape-texto">
+      Centro Sociedade Estação Vida - Quadra 55 Conjunto "A" Lote 35 Setor 05, Águas Lindas de Goiás
+      CEP: 72910-565 – e-mail <span class="link">sev.sociedadeestacaovida@gmail.com</span> –
+      Telefone (61) 99360-1921 / (61) 98598 2680 – Instagram: Sociedade Estação Vida.
+    </div>
+  </div>
+{% endmacro %}
