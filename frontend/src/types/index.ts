@@ -227,7 +227,7 @@ export interface ResponsavelLegal {
 
 export interface TermoUsoImagem {
   responsavel: ResponsavelLegal;
-  autoriza: boolean; // o termo só é válido com a autorização (sem opção "Não autoriza")
+  autoriza: boolean | null;
   local: string;
   data: string;
 }
@@ -236,7 +236,7 @@ export type FormaSaida = "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS";
 
 export interface PessoaAutorizada {
   nome: string;
-  parentesco: string; // texto livre
+  parentesco: string;
 }
 
 export interface TermoSaida {
@@ -250,8 +250,8 @@ export interface TermoSaida {
 export interface TermoCompromisso {
   nomeResponsavel: string;
   cpfResponsavel: string;
-  modalidade: string; // texto livre (ex.: "Creche", "Pré-escola")
-  regime: string; // texto livre (ex.: "Tempo integral")
+  modalidade: string;
+  regime: string;
   ciente: boolean; // "O responsável leu e assinou o termo"
   dataAssinatura: string;
 }
