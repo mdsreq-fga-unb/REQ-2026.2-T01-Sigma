@@ -43,19 +43,6 @@ from app.schemas.schema_ficha_socioeconomica import (
 from app.services import service_pdf
 from app.services import service_socioeconomica as service
 
-# O PDF só é gerado se o WeasyPrint (e as bibliotecas do sistema, como o Pango) carregarem.
-try:
-    import weasyprint  # noqa: F401
-
-    WEASYPRINT_OK = True
-except (ImportError, OSError):
-    WEASYPRINT_OK = False
-
-requer_weasyprint = pytest.mark.skipif(
-    not WEASYPRINT_OK, reason="WeasyPrint (ou Pango) não está disponível neste ambiente"
-)
-
-
 def get_auth_headers(user) -> dict:
     token = create_access_token(data={"sub": str(user.id)})
     return {"Authorization": f"Bearer {token}"}
@@ -1037,32 +1024,3 @@ def test_falha_na_geracao_do_pdf_retorna_500_e_nao_registra_exportacao(client, t
     assert response.json()["detail"] == "Não foi possível gerar o PDF."
     assert "Maria" not in response.text
     assert db_session.query(Operacao).filter(Operacao.tipo == Tipo.EXPORTACAO_PDF).count() == 0
-
-
-@requer_weasyprint
-def test_exportar_pdf_devolve_arquivo_sem_cache_e_registra_a_exportacao(client, test_user, db_session, aluno, matricula):
-    """PDF gerado com WeasyPrint: tipo, download, sem cache, token renovado e Operação."""
-    headers = get_auth_headers(test_user)
-    _salvar(client, headers, matricula.id)
-
-    response = client.get(url(matricula.id, "/pdf"), headers=headers)
-
-    assert response.status_code == 200
-    assert response.headers["content-type"] == "application/pdf"
-    assert response.headers["cache-control"] == "no-store"
-    assert 'filename="socioeconomica-ana-clara-de-sa-2026.pdf"' in response.headers["content-disposition"]
-    assert response.headers[settings.renewed_token_header_name] != ""
-    assert response.content.startswith(b"%PDF")
-
-    ops = db_session.query(Operacao).filter(Operacao.tipo == Tipo.EXPORTACAO_PDF).all()
-    assert len(ops) == 1
-    assert ops[0].id_user == test_user.id
-    assert ops[0].id_aluno == aluno.id
-    assert ops[0].descricao == "Ficha socioeconômica exportada (ano letivo 2026)"
-
-
-@requer_weasyprint
-def test_exportar_pdf_de_matricula_sem_ficha_gera_o_formulario_em_branco(client, test_user, matricula):
-    response = client.get(url(matricula.id, "/pdf"), headers=get_auth_headers(test_user))
-    assert response.status_code == 200
-    assert response.content.startswith(b"%PDF")

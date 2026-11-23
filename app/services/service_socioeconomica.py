@@ -283,6 +283,8 @@ def salvar_ficha(
                 ))
 
         db.commit()
+    except (MatriculaNaoEncontradaError, MembroInvalidoError):
+        raise  # nada foi gravado: não há o que desfazer
     except SQLAlchemyError:
         db.rollback()
         raise  # a rota converte em 503
