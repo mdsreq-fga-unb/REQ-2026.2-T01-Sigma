@@ -12,10 +12,12 @@ passam objetos ORM ao template.
 - O WeasyPrint é importado só na hora de gerar o PDF. Sem as bibliotecas do sistema (Pango),
   a API sobe normalmente e só as rotas de PDF respondem 500.
 """
+import base64
 import logging
 import re
 import unicodedata
 from datetime import date, datetime
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -32,6 +34,7 @@ PASTA_TEMPLATES = Path(__file__).resolve().parent.parent / "templates"
 BASE_URL = PASTA_TEMPLATES.as_uri() + "/"
 
 NOME_CRECHE = "Centro de Educação Infantil Sociedade Estação Vida"
+ARQUIVO_LOGO = PASTA_TEMPLATES / "static" / "logo.png"
 
 
 # ----------------------------------------------------------------------------------------
@@ -131,6 +134,7 @@ def _criar_ambiente() -> Environment:
 
 
 ambiente = _criar_ambiente()
+_env = ambiente  # nome antigo: os testes da socioeconômica (#99) usam `service_pdf._env`
 
 
 # ----------------------------------------------------------------------------------------
@@ -138,9 +142,18 @@ ambiente = _criar_ambiente()
 # ----------------------------------------------------------------------------------------
 
 
+@lru_cache(maxsize=1)
+def _logo_data_uri() -> str:
+    """Logo embutido no HTML (data URI). Vazio se o arquivo não existir. Nada é buscado de fora."""
+    if not ARQUIVO_LOGO.is_file():
+        return ""
+    return "data:image/png;base64," + base64.b64encode(ARQUIVO_LOGO.read_bytes()).decode()
+
+
 def renderizar_html(nome_template: str, contexto: dict[str, Any]) -> str:
-    """Renderiza o template com o contexto. Toda ficha recebe também `gerado_em` (data e hora)."""
-    dados = {"gerado_em": para_sao_paulo(agora_utc()), **contexto}
+    """Renderiza o template com o contexto. Toda ficha recebe também `gerado_em` (data e hora)
+    e `logo` (data URI do logo)."""
+    dados = {"gerado_em": para_sao_paulo(agora_utc()), "logo": _logo_data_uri(), **contexto}
     return ambiente.get_template(nome_template).render(**dados)
 
 
@@ -166,8 +179,12 @@ def gerar_pdf(nome_template: str, contexto: dict[str, Any]) -> bytes:
         raise FalhaGeracaoPdfError() from exc
 
 
+def slug(texto: str | None) -> str:
+    """'João da Silva' -> 'joao-da-silva' (sem acentos, sem espaços, minúsculo)."""
+    sem_acentos = unicodedata.normalize("NFKD", texto or "").encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"[^a-z0-9]+", "-", sem_acentos.lower()).strip("-") or "aluno"
+
+
 def nome_arquivo_pdf(prefixo: str, nome_aluno: str, ano_letivo: int) -> str:
     """`<prefixo>-<nome-do-aluno>-<ano>.pdf`: sem acentos, sem espaços e em minúsculas."""
-    sem_acentos = unicodedata.normalize("NFKD", nome_aluno).encode("ascii", "ignore").decode("ascii")
-    nome = re.sub(r"[^a-z0-9]+", "-", sem_acentos.lower()).strip("-") or "aluno"
-    return f"{prefixo}-{nome}-{ano_letivo}.pdf"
+    return f"{prefixo}-{slug(nome_aluno)}-{ano_letivo}.pdf"

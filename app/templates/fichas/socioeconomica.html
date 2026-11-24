@@ -1,0 +1,192 @@
+{% extends "fichas/base_socioeconomica.html" %}
+{% from "fichas/_timbre.html" import cabecalho, rodape %}
+
+{# ( ) ou (X), como no formulário impresso #}
+{% macro marca(marcado) %}<span class="marca">({{ "X" if marcado else " " }})</span>{% endmacro %}
+
+{% block titulo %}Ficha Socioeconômica{% endblock %}
+
+{% block conteudo %}
+
+{# ===================== PÁGINA 1 ===================== #}
+<div class="pagina">
+  {{ cabecalho(logo) }}
+
+  <div class="titulo">FICHA SOCIOECONÔMICA</div>
+  <div class="creche">Creche Escola Centro Sociedade Estação Vida</div>
+
+  <div class="moldura">
+    <div class="moldura-titulo">DADOS PESSOAIS DO ALUNO</div>
+
+    <div class="l">
+      <span class="rot">Ano/Série:</span><span class="v f2">{{ aluno.ano_serie }}</span>
+      <span class="rot">Ano Letivo:</span><span class="v">{{ aluno.ano_letivo }}</span>
+      <span class="rot">Data da Matrícula:</span><span class="v f2">{{ aluno.data_matricula }}</span>
+    </div>
+
+    <div class="l">
+      <span class="rot">Nome do Aluno:</span><span class="v f5">{{ aluno.nome }}</span>
+      <span class="rot">Sexo: M {{ marca(aluno.sexo_m) }} F {{ marca(aluno.sexo_f) }}</span>
+    </div>
+
+    <div class="l">
+      <span class="rot">Nº do NIS:</span><span class="v f2">{{ aluno.nis }}</span>
+      <span class="rot">ID</span><span class="v">{{ aluno.id }}</span>
+      <span class="rot">Data de nascimento:</span><span class="v f2">{{ aluno.data_nasc }}</span>
+    </div>
+
+    <div class="l">
+      <span class="rot">Naturalidade:</span><span class="v f3">{{ aluno.naturalidade }}</span>
+      <span class="rot">UF:</span><span class="v curto">{{ aluno.uf_nasc }}</span>
+      <span class="rot">Nacionalidade:</span><span class="v f2">{{ aluno.nacionalidade }}</span>
+    </div>
+
+    <div class="l">
+      <span class="rot">Nº do CPF do Aluno:</span><span class="v">{{ aluno.cpf }}</span>
+    </div>
+
+    <p class="texto racas">
+      Cor/Raça:
+      {% for r in aluno.racas %}<span>{{ marca(r.marcado) }} {{ r.rotulo }}</span>{% endfor %}
+    </p>
+
+    <div class="l">
+      <span class="rot">Nome da Mãe:</span><span class="v">{{ aluno.nome_mae }}</span>
+    </div>
+    <div class="l">
+      <span class="rot">Nome do Pai:</span><span class="v">{{ aluno.nome_pai }}</span>
+    </div>
+
+    <div class="l">
+      <span class="rot">Endereço do Aluno:</span><span class="v f5">{{ endereco.logradouro }}</span>
+      <span class="rot">Nº</span><span class="v curto">{{ endereco.numero }}</span>
+    </div>
+    <div class="l">
+      <span class="rot">Bairro</span><span class="v f2">{{ endereco.bairro }}</span>
+      <span class="rot">Cidade</span><span class="v f3">{{ endereco.cidade }}</span>
+      <span class="rot">Estado</span><span class="v curto">{{ endereco.uf }}</span>
+      <span class="rot">CEP</span><span class="v f2">{{ endereco.cep }}</span>
+    </div>
+
+    <div class="l">
+      <span class="rot">Telefone para contato:</span><span class="v">{{ contato.telefone_contato }}</span>
+    </div>
+    <div class="l">
+      <span class="rot">Telefone Celular:</span><span class="v">{{ contato.celular }}</span>
+      <span class="rot">E-mail:</span><span class="v">{{ contato.email }}</span>
+    </div>
+
+    <div class="pergunta">1) O imóvel onde a criança reside é:</div>
+    <div class="opcao">{{ marca(moradia.situacao == "PROPRIO") }} Próprio</div>
+    <div class="opcao">
+      <div class="l">
+        <span class="rot">{{ marca(moradia.situacao == "CEDIDO") }} Cedido. Por quem?</span>
+        <span class="v">{{ moradia.cedido_por if moradia.situacao == "CEDIDO" }}</span>
+      </div>
+    </div>
+    <div class="opcao">
+      <div class="l">
+        <span class="rot">{{ marca(moradia.situacao == "FINANCIADO") }} Financiado. Valor mensal pago: R$</span>
+        <span class="v">{{ moradia.valor if moradia.situacao == "FINANCIADO" }}</span>
+      </div>
+    </div>
+    <div class="opcao">
+      <div class="l">
+        <span class="rot">{{ marca(moradia.situacao == "ALUGADO") }} Alugado. Valor mensal pago: R$</span>
+        <span class="v">{{ moradia.valor if moradia.situacao == "ALUGADO" }}</span>
+      </div>
+    </div>
+    <div class="opcao">{{ marca(moradia.situacao == "OCUPACAO_IRREGULAR") }} Ocupação Irregular</div>
+
+    <div class="pergunta">2) Qual o meio de transporte utilizado no percurso residência e creche?</div>
+    <div class="opcao">{{ marca(transporte.meio == "NENHUM_A_PE_BICICLETA") }} Nenhum, a pé ou bicicleta</div>
+    <div class="opcao">{{ marca(transporte.meio == "CARONA") }} Carona</div>
+    <div class="opcao">{{ marca(transporte.meio == "TRANSPORTE_COLETIVO") }} Transporte coletivo (ônibus, fretado)</div>
+    <div class="opcao">{{ marca(transporte.meio == "CARRO_MOTO_PROPRIO") }} Carro ou motocicleta próprio</div>
+  </div>
+
+  {{ rodape(logo) }}
+</div>
+
+{# ===================== PÁGINA 2 ===================== #}
+<div class="pagina">
+  {{ cabecalho(logo) }}
+
+  <div class="moldura">
+    <div class="pergunta" style="margin-top: 0;">
+      3) Relacionar no quadro abaixo todas as pessoas que fazem parte do núcleo familiar da criança,
+      especificando no espaço reservado a “Observações” as seguintes situações:
+    </div>
+    <ul class="regras">
+      <li>No caso de pais separados: informar se a separação é legalizada e tempo de separação</li>
+      <li>No caso de falecimento (pais): informar há quanto tempo.</li>
+      <li>Em caso de aposentadoria ou desemprego: informar a última função exercida e há quanto tempo</li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Componentes</th>
+          <th>Idade</th>
+          <th>Estado civil</th>
+          <th>Escolaridade</th>
+          <th>Profissão/ função</th>
+          <th>Renda mensal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in familiares %}
+        <tr>
+          <td class="comp">{{ f.componente }}</td>
+          <td>{{ f.idade }}</td>
+          <td>{{ f.estado_civil }}</td>
+          <td>{{ f.escolaridade }}</td>
+          <td>{{ f.profissao }}</td>
+          <td>{{ f.renda_mensal }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% if observacoes_familia %}
+    <div class="obs"><span class="rot">Observações:</span> {{ observacoes_familia }}</div>
+    {% endif %}
+
+    <div class="pergunta">
+      4. A família possui propriedades (imóveis, terrenos e propriedades rurais) além da moradia que reside?
+    </div>
+    <div class="opcao" style="margin-left: 6mm;">{{ marca(outras_propriedades.possui_nao) }} Não</div>
+    <div class="opcao" style="margin-left: 6mm;">{{ marca(outras_propriedades.possui_sim) }} Sim. Relacione:</div>
+    <div class="pauta">{{ outras_propriedades.relacao }}</div>
+    <div class="pauta"></div>
+  </div>
+
+  <p class="alerta">
+    O Serviço Social alerta que, no caso de falsificação de documentos, falseamento ou omissão de dados
+    socioeconômicos, o(a) candidato(a) será desclassificado(a) do processo de seleção.
+  </p>
+
+  <div class="data-linha">
+    <b>{{ declaracao.local }}</b>{% if declaracao.local %},{% else %}<span class="sub" style="min-width: 40mm;"></span>,{% endif %}
+    <span class="sub">{{ declaracao.dia }}</span> de
+    <span class="sub mes">{{ declaracao.mes }}</span> de
+    <span class="sub ano">{{ declaracao.ano }}</span>.
+  </div>
+
+  <div class="assinatura">
+    <div class="bloco">
+      <div class="nome">{{ declaracao.nome }}</div>
+      <div class="traco"></div>
+      Nome do (a) Responsável pela criança
+    </div>
+    <div class="bloco">
+      <div class="nome"></div>
+      <div class="traco"></div>
+      Assinatura
+    </div>
+  </div>
+
+  {{ rodape(logo) }}
+</div>
+
+{% endblock %}

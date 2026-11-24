@@ -1,16 +1,21 @@
 "use client";
 
 import { useId, useState } from "react";
+import { SelectField } from "@/components/ui/SelectField";
 import { TextField } from "@/components/ui/TextField";
 import {
+  OPCOES_MODALIDADE,
+  OPCOES_REGIME,
   REGIME_PADRAO,
   dataDigitadaParaIso,
   isoParaData,
   mascaraCpf,
   mascaraData,
+  somenteDigitos,
   validarTermoCompromisso,
   type ErrosCampos,
 } from "@/lib/alunos";
+import { MSG, NORMAS_TERMO_COMPROMISSO } from "@/lib/mensagens";
 import type { AlunoCard, TermoCompromisso as Termo } from "@/types";
 import { useAlunoCard } from "../card/AlunoCardContext";
 import { DadosAlunoCard, Obrigatorio, Secao, TermoForm } from "./TermoForm";
@@ -18,16 +23,6 @@ import { TextoTermoCompromissoModal } from "./TextoTermoCompromissoModal";
 import shared from "../Alunos.module.css";
 import formStyles from "@/components/ui/Form.module.css";
 import styles from "./Termos.module.css";
-
-/** Resumo das normas do termo assinado (texto do protótipo). */
-const NORMAS = [
-  "Entrada das 07h30 às 08h00; depois disso o portão é fechado.",
-  "Saída das 16h00 às 17h00; atrasos constantes podem ser comunicados ao Conselho Tutelar.",
-  "Entrada só com uniforme; a escola não se responsabiliza por celulares, joias ou brinquedos.",
-  "A escola não administra medicação; em caso de febre, o responsável é chamado.",
-  "Todo mês um responsável assina a lista de frequência.",
-  "Faltas só são justificadas com atestado médico; faltas não justificadas podem levar à perda da vaga.",
-];
 
 interface Formulario {
   nomeResponsavel: string;
@@ -71,10 +66,15 @@ export function TermoCompromisso() {
     if (erros[campo]) setErros(({ [campo]: _removido, ...resto }) => resto);
   }
 
+  function cancelar() {
+    setForm(inicial(card));
+    setErros({});
+  }
+
   function montarPayload(): Termo {
     return {
       nomeResponsavel: form.nomeResponsavel.trim(),
-      cpfResponsavel: form.cpfResponsavel,
+      cpfResponsavel: somenteDigitos(form.cpfResponsavel),
       modalidade: form.modalidade.trim(),
       regime: form.regime.trim(),
       ciente: form.ciente,
@@ -86,10 +86,11 @@ export function TermoCompromisso() {
     <>
       <TermoForm
         termo="compromisso"
-        avisoPendente="Ficha pendente. O aluno só é matriculado com cópia de toda a documentação solicitada."
+        avisoPendente={MSG.termoCompromissoPendente}
         montarPayload={montarPayload}
         validar={validarTermoCompromisso}
         onErros={setErros}
+        onCancelar={cancelar}
       >
         <Secao titulo="Responsável">
           <div className={shared.grid2}>
@@ -117,19 +118,21 @@ export function TermoCompromisso() {
 
         <Secao titulo="Matrícula">
           <div className={shared.grid2}>
-            <TextField
+            <SelectField
               label="Modalidade"
               required
-              placeholder="Ex.: creche ou pré-escola"
+              placeholder="Selecione"
               value={form.modalidade}
+              options={OPCOES_MODALIDADE}
               onChange={(e) => alterar("modalidade", e.target.value)}
               error={erros.modalidade}
             />
-            <TextField
+            <SelectField
               label="Regime"
               required
-              placeholder="Ex.: tempo integral"
+              placeholder="Selecione"
               value={form.regime}
+              options={OPCOES_REGIME}
               onChange={(e) => alterar("regime", e.target.value)}
               error={erros.regime}
             />
@@ -142,7 +145,7 @@ export function TermoCompromisso() {
         >
           <div className={shared.campos}>
             <ul className={styles.normas}>
-              {NORMAS.map((norma) => (
+              {NORMAS_TERMO_COMPROMISSO.map((norma) => (
                 <li key={norma}>{norma}</li>
               ))}
             </ul>
