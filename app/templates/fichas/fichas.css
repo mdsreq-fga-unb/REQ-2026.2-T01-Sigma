@@ -179,3 +179,55 @@ table.tabela .nome { width: 9cm; }
 }
 .assinatura .linha-assinatura { border-top: .7pt solid #000; }
 .assinatura .legenda { padding-top: .12cm; font-size: 8.5pt; color: #333; }
+
+/* ---------- Requerimento de matrícula ---------- */
+/* Campos curtos (UF, número) não esticam a linha toda. */
+.campo.curto { flex: 0 0 2.6cm; }
+.campo.medio { flex: 0 0 4.6cm; }
+/* Telefone com rótulo longo ("Telefone do trabalho"): largura fixa, número numa linha só. */
+.campo.telefone { flex: 0 0 7cm; }
+.campo.telefone .valor,
+.campo.medio .valor,
+.campo.curto .valor { white-space: nowrap; }
+
+/* Várias opções lado a lado (saúde, documentos), quebrando em colunas. */
+.opcoes-grade {
+  display: flex;
+  flex-wrap: wrap;
+  margin: .15cm 0 .1cm;
+}
+.opcoes-grade .opcao { flex: 0 0 25%; margin: .1cm 0; }
+.opcoes-grade.duas-colunas .opcao { flex: 0 0 50%; }
+.subtitulo-secao {
+  margin: .3cm 0 .05cm;
+  font-size: 8.5pt;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Órgão do modelo em papel, acima do título. */
+.orgao {
+  margin: 0 0 .1cm;
+  text-align: center;
+  font-size: 9pt;
+  font-weight: bold;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #333;
+}
+.texto-compromisso { margin: .15cm 0; text-align: justify; }
+.texto-compromisso .preenchido { font-weight: bold; }
+
+/* Duas assinaturas lado a lado. */
+.assinaturas { display: flex; gap: 1cm; }
+.assinaturas .assinatura { width: auto; flex: 1; margin-top: 1.1cm; }
+
+/* Quadro de renovações: linhas mais baixas, para a ficha caber em 2 páginas como no papel. */
+table.tabela.compacta th,
+table.tabela.compacta td { height: .55cm; padding: .04cm .2cm; }
+
+/* Requerimento: espaçamento um pouco menor, para caber em 2 páginas como o modelo em papel. */
+.ficha-compacta section { margin-bottom: .36cm; }
+.ficha-compacta .linha { margin: .2cm 0; }
+.ficha-compacta .opcoes-grade .opcao { margin: .05cm 0; }
+.ficha-compacta .subtitulo-secao { margin-top: .2cm; }

@@ -76,6 +76,14 @@ def filtro_telefone(valor: Any) -> str:
     return _como_veio(valor)
 
 
+def filtro_cep(valor: Any) -> str:
+    """00000-000. Valor que não tem 8 dígitos sai como veio."""
+    d = _digitos(valor)
+    if len(d) != 8:
+        return _como_veio(valor)
+    return f"{d[:5]}-{d[5:]}"
+
+
 def filtro_data(valor: Any) -> str:
     """dd/mm/aaaa. Aceita `date` ou texto ISO (AAAA-MM-DD). Vazio sai em branco."""
     if isinstance(valor, str):
@@ -115,6 +123,7 @@ def _criar_ambiente() -> Environment:
             "cpf": filtro_cpf,
             "nis": filtro_nis,
             "telefone": filtro_telefone,
+            "cep": filtro_cep,
             "data": filtro_data,
             "data_hora": filtro_data_hora,
             "caixa": filtro_caixa,

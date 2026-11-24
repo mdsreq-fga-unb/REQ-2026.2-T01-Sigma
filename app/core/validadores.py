@@ -46,6 +46,11 @@ def telefone_valido(telefone: str) -> bool:
     return so_digitos(telefone) and len(telefone) in (10, 11)
 
 
+def cep_valido(cep: str) -> bool:
+    """CEP com exatamente 8 dígitos."""
+    return so_digitos(cep) and len(cep) == 8
+
+
 def uf_valida(uf: str) -> bool:
     """Sigla de UF presente em `UFS` (maiúsculas, como o banco guarda)."""
     return isinstance(uf, str) and uf in UFS

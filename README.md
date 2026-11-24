@@ -66,8 +66,136 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 ```
 
 O frontend real consome autenticação, usuários e estrutura escolar (turmas/etapas) disponíveis na
-API. Das matrículas, o backend implementa por enquanto só os termos de uso de imagem e de saída
-(UC04, seção abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
+API. Das matrículas, o backend implementa por enquanto o Requerimento de matrícula e os termos de uso
+de imagem e de saída (UC04, seções abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
+
+# API do Requerimento de matrícula (UC04)
+
+Consulta, preenchimento, edição e exportação em PDF do Requerimento de matrícula. Mesmas regras
+gerais dos termos (autenticação, tudo ou nada, idempotência, histórico sem valores e formato do 422,
+descritas na seção dos termos abaixo).
+
+| Método | Rota | Ação | Respostas |
+|---|---|---|---|
+| GET | `/matriculas/{id}/requerimento` | Obter a ficha | 200; 401; 404; 503 |
+| PUT | `/matriculas/{id}/requerimento` | Salvar a ficha (cria ou atualiza) | 200; 401; 404; 409; 422; 503 |
+| GET | `/matriculas/{id}/requerimento/pdf` | Exportar PDF | 200 `application/pdf`; 401; 404; 500 |
+
+Código: `app/schemas/requerimento.py`, `app/services/service_requerimento.py`,
+`app/repository/repository_matricula.py` e `app/templates/fichas/requerimento.html`.
+
+## Onde cada seção é gravada
+
+| Seção (corpo do PUT) | Tabela | Observação |
+|---|---|---|
+| `dados_pessoais` | `Aluno` | Vale para todas as matrículas e fichas do aluno |
+| `matricula` (`ano_letivo`, `data_matricula`) | `Matricula` | `ano_escolaridade` e `turma` vêm só na resposta (somente leitura; troca de turma é o UC07) |
+| `documentacao_civil` | `DocumentacaoCivil` | Uma por aluno: aparece já preenchida nas outras matrículas dele |
+| `endereco_contato` | `Aluno` (endereço) e `RequerimentoMatricula.telefone_requerimento` (telefone) | |
+| `filiacao`, `termo_compromisso`, `transferencia` | `RequerimentoMatricula` | Por matrícula |
+| `saude` | `Saude` | Por matrícula |
+
+## Regras
+
+- **Obrigatórios (lista inicial, a confirmar com o PO):** nome, data de nascimento, sexo, CPF,
+  naturalidade, UF (de naturalidade), nacionalidade, cor/raça, ano letivo, data da matrícula e
+  endereço (logradouro, cidade e CEP, as colunas obrigatórias do aluno). Ficam em `CAMPOS_OBRIGATORIOS`.
+- `completa` é verdadeiro quando o requerimento já foi salvo e não tem pendências.
+- **Duplicidade (409):** "Já existe um aluno cadastrado com este CPF.", "... com este NIS." e
+  "... com este RG nesta UF." (o mesmo RG em outra UF é aceito). Se dois salvamentos concorrerem,
+  o banco recusa e a resposta é a mesma.
+- **Formatos:** CPF (com dígito verificador), NIS (11), telefones (10 ou 11) e CEP (8) só com dígitos;
+  UF em sigla maiúscula; datas em ISO. O CEP é devolvido sempre só com dígitos.
+- **Datas:** nascimento, expedição do RG e emissão da certidão não podem ser futuras; a emissão da
+  certidão não pode ser anterior ao nascimento; a data de entrega da transferência exige a do pedido
+  e não pode ser anterior a ela. Ano letivo entre 2000 e o ano que vem.
+- **Saúde:** marcar `OUTROS` exige a observação correspondente.
+- **Histórico:** `PREENCHIMENTO_REQUERIMENTO` no primeiro salvamento; `EDICAO_REQUERIMENTO` com os nomes
+  dos campos alterados (ex.: "Nome do aluno; Saúde – problemas de saúde"), sem valores; `EXPORTACAO_PDF`
+  em cada PDF. Saúde, raça e documentos nunca vão para o histórico nem para o log.
+
+## Valores aceitos (nomes do enum)
+
+| Campo | Valores |
+|---|---|
+| `sexo` | `FEMININO`, `MASCULINO`, `NAO_DECLARADO` |
+| `raca` | `BRANCO`, `PRETO`, `PARDO`, `AMARELO`, `INDIGENA`, `NAO_DECLARADO` |
+| `tipo_certidao` | `NASCIMENTO`, `CASAMENTO` |
+| `saude.problemas` | `AUDICAO`, `GARGANTA`, `FALA`, `VISAO`, `DESMAIOS`, `RINS`, `ALERGIA`, `OUTROS` |
+| `saude.acompanhamentos` | `PSICOLOGICO`, `ALERGISTA`, `UROLOGICO`, `FONOAUDIOLOGICO`, `CARDIOLOGICO`, `RINS`, `OUTROS` |
+| `termo_compromisso.documentos_entregues` | `FOTO_3X4`, `COMPROVANTE_RESIDENCIA`, `CERTIDAO_NASCIMENTO`, `HISTORICO_ESCOLAR`, `CARTAO_VACINA` |
+
+As listas não aceitam repetição. A escolaridade dos pais é texto livre até a lista oficial ser definida.
+
+## Exemplo de corpo do PUT
+
+```jsonc
+// PUT /matriculas/7/requerimento (seções opcionais podem ser omitidas)
+{
+  "dados_pessoais": {"nome": "Ana Beatriz de Souza", "data_nascimento": "2022-05-10", "sexo": "FEMININO",
+                     "nis": "12345678901", "cpf": "52998224725", "naturalidade": "Brasília", "uf": "DF",
+                     "nacionalidade": "Brasileira", "raca": "PARDO"},
+  "matricula": {"ano_letivo": 2026, "data_matricula": "2026-02-02"},
+  "documentacao_civil": {"rg": "1234567", "orgao_emissor": "SSP", "uf_rg": "GO", "data_expedicao": "2023-01-15",
+                         "tipo_certidao": "NASCIMENTO", "num_termo": "000123", "folha": "045", "livro": "A-12",
+                         "data_emissao_certidao": "2022-05-20", "nome_cartorio": "Cartório do 1º Ofício",
+                         "uf_cartorio": "DF", "documento_estrangeiro": null},
+  "filiacao": {"pai": {"nome": "João Carlos de Souza", "escolaridade": "Ensino médio completo",
+                       "local_trabalho": "Mercado Central", "telefone_trabalho": "6133334444"},
+               "mae": {"nome": "Maria das Graças Souza", "escolaridade": null, "local_trabalho": null, "telefone_trabalho": null}},
+  "endereco_contato": {"logradouro": "Rua das Flores", "numero": "10", "bairro": "Centro",
+                       "cidade": "Águas Lindas de Goiás", "uf": "GO", "cep": "72910000", "telefone": "61999998888"},
+  "saude": {"problemas": ["ALERGIA", "OUTROS"], "observacao_problemas": "Intolerância a lactose",
+            "acompanhamentos": [], "observacao_acompanhamentos": null},
+  "termo_compromisso": {"nome_responsavel": "Maria das Graças Souza", "documentos_entregues": ["FOTO_3X4", "CARTAO_VACINA"]},
+  "transferencia": {"data_pedido": null, "data_entrega": null, "nome_responsavel": null}
+}
+```
+
+A resposta repete as seções e acrescenta `matricula.ano_escolaridade`, `matricula.turma`, `completa`,
+`created_at` e `updated_at` (nulos enquanto a ficha não foi salva; `updated_at` é o da última edição).
+
+## Para o time de frontend (requerimento)
+
+- O **modal de confirmação** antes de salvar continua no frontend.
+- Sexo, raça e as listas usam os **nomes do enum** acima (o formulário atual envia `M`/`F`, `BRANCA` etc.).
+- **Endereço:** o protótipo e o papel têm um único campo "Endereço"; a API usa as colunas do aluno
+  (logradouro, número, bairro, cidade, UF e CEP), e logradouro, cidade e CEP são obrigatórios. A tela
+  precisa separar os campos (ou o time decide outra regra; veja as pendências).
+- **Ano de escolaridade** é somente leitura na API, como pede a issue #90 (troca de turma é o UC07);
+  no protótipo ele aparece como lista editável.
+- O campo **"ID"** do protótipo e do papel não é gravado (pendência abaixo).
+- **Renovações de matrícula** (tabela do protótipo, quadros do papel) não existem no banco: o PDF sai com
+  o quadro em branco para preencher à mão, e o botão "Registrar renovação" ainda não tem API.
+- "Problemas de saúde": o formulário atual tem "Sangramento", que não existe no banco nem no papel; o certo é "Garganta".
+- **Documentos entregues** (`termo_compromisso.documentos_entregues`) é o que a aba Documentos e o resumo
+  "3 de 5 entregues" do card devem ler.
+- Quando um campo tem formato inválido (ex.: sexo "F"), o 422 traz esse erro junto com os obrigatórios
+  vazios. As regras que comparam campos (CPF, UF, datas) aparecem depois que os formatos forem corrigidos.
+
+## PDF do requerimento
+
+Segue o modelo em papel da Secretaria Municipal de Educação, em 2 páginas: cabeçalho com escola e INEP
+(em branco), dados pessoais, documentação civil, filiação, endereço e assinatura do responsável pela
+matrícula; saúde e acompanhamento médico; quadro de renovações em branco; transferência; termo de
+compromisso (com o texto do prazo de 30 dias) e assinaturas do(a) Secretário(a) Escolar e do(a) Diretor(a).
+O cabeçalho usa o logo do sistema, não o da Prefeitura.
+
+## Pendências com o PO (requerimento)
+
+- Lista definitiva de campos obrigatórios.
+- Campo "ID" (protótipo e papel). Se for o identificador do aluno na Secretaria ou no Censo Escolar,
+  precisa de coluna própria, em nova issue de banco.
+- Endereço em campo único (protótipo) x colunas separadas obrigatórias (banco).
+- Ano de escolaridade editável (protótipo) x somente leitura (issue #90).
+- Renovações de matrícula: o protótipo registra data, ano e responsável; precisa de tabela nova no banco.
+- Número do INEP da creche, para sair impresso no PDF.
+- Lista oficial de escolaridade dos pais (o protótipo usa uma lista; a API aceita texto livre).
+- Telefone da seção "Endereço e contato": gravado em `RequerimentoMatricula.telefone_requerimento`,
+  como documenta o modelo do banco; `Aluno.telefone` ("telefone do próprio aluno") não é alterado.
+- Histórico com valores: o protótipo da aba Histórico mostra "valor anterior" e "valor novo" por campo,
+  mas as issues #90 e #92 pedem só os nomes dos campos (LGPD) e a `Operacao` tem uma única descrição.
+  Mostrar valores exige decisão do PO (LGPD) e mudança no banco.
 
 # API dos termos da matrícula (UC04)
 
