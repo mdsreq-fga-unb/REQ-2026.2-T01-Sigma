@@ -1,0 +1,61 @@
+{% extends "fichas/base.html" %}
+{% from "fichas/_macros.html" import campo, assinatura %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ titulo }}</h1>
+<p class="subtitulo">Ano letivo {{ ano_letivo }}</p>
+
+<section>
+  <h2>Responsável legal</h2>
+  <div class="linha">{{ campo("Nome", responsavel_nome) }}</div>
+</section>
+
+<section>
+  <h2>Aluno(a)</h2>
+  <div class="linha">{{ campo("Nome", aluno.nome) }}</div>
+  <div class="linha">
+    {{ campo("Data de nascimento", aluno.data_nascimento|data, "data") }}
+    {{ campo("Ano/série", aluno.etapa) }}
+    {{ campo("Período", aluno.periodo) }}
+  </div>
+</section>
+
+<section>
+  <h2>Saída da escola</h2>
+  <p class="pergunta">Como o aluno sai no horário de encerramento da aula?</p>
+  <div class="opcoes-lista">
+    {% for forma in formas_saida %}
+    <span class="opcao">
+      <span class="caixa">{{ forma.marcada|caixa }}</span> {{ forma.rotulo }}{% if forma.com_descricao %}: <span class="complemento">{{ forma.descricao or "" }}</span>{% endif %}
+
+    </span>
+    {% endfor %}
+  </div>
+</section>
+
+<section>
+  <h2>Pessoas autorizadas a buscar o aluno</h2>
+  {# Sempre com o mesmo número de linhas, preenchidas ou em branco, para completar à mão. #}
+  <table class="tabela">
+    <thead>
+      <tr><th class="numero">Nº</th><th class="nome">Nome</th><th>Parentesco</th></tr>
+    </thead>
+    <tbody>
+      {% for pessoa in pessoas %}
+      <tr><td class="numero">{{ pessoa.numero }}</td><td>{{ pessoa.nome }}</td><td>{{ pessoa.parentesco }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="observacao">{{ observacao }}</p>
+</section>
+
+<section>
+  <div class="linha">
+    {{ campo("Local", local) }}
+    {{ campo("Data", data|data, "data") }}
+  </div>
+  {{ assinatura("Assinatura do responsável legal") }}
+</section>
+{% endblock %}

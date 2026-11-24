@@ -66,7 +66,176 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 ```
 
 O frontend real consome autenticação, usuários e estrutura escolar (turmas/etapas) disponíveis na
-API. O backend ainda não implementa os endpoints de matrículas usados pela tela de alunos.
+API. Das matrículas, o backend implementa por enquanto só os termos de uso de imagem e de saída
+(UC04, seção abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
+
+# API dos termos da matrícula (UC04)
+
+Termo de autorização de uso de imagem e Termo de autorização de saída do aluno. Cada termo é
+**por matrícula** (um por ano letivo): salvar o termo de uma matrícula nunca altera o de outra
+matrícula do mesmo aluno. Todas as rotas exigem token e conta ativa (`401` sem token, `403` com
+conta inativa) e aparecem em `/docs`.
+
+| Método | Rota | Ação | Respostas |
+|---|---|---|---|
+| GET | `/matriculas/{id}/termo-imagem` | Obter termo de imagem | 200; 401; 404 |
+| PUT | `/matriculas/{id}/termo-imagem` | Salvar termo de imagem (cria ou atualiza) | 200; 401; 404; 422; 503 |
+| GET | `/matriculas/{id}/termo-imagem/pdf` | Exportar PDF | 200 `application/pdf`; 401; 404; 500 |
+| GET | `/matriculas/{id}/termo-saida` | Obter termo de saída | 200; 401; 404 |
+| PUT | `/matriculas/{id}/termo-saida` | Salvar termo de saída, com as pessoas autorizadas | 200; 401; 404; 422; 503 |
+| GET | `/matriculas/{id}/termo-saida/pdf` | Exportar PDF | 200 `application/pdf`; 401; 404; 500 |
+| GET | `/termos/uso-imagem/texto` | Texto integral do termo de imagem | 200; 401 |
+
+Código: rotas em `app/routes/route_matriculas.py` e `route_termos.py`, regras em
+`app/services/service_termo_imagem.py` e `service_termo_saida.py`, schemas em
+`app/schemas/termo_imagem.py` e `termo_saida.py`, acesso ao banco em
+`app/repository/repository_termos.py`. O histórico de edições e o PDF são serviços genéricos,
+reaproveitáveis pelas outras fichas: `service_historico.py` e `service_pdf.py`.
+
+## Regras
+
+- **Tudo ou nada (FE04):** termo, pessoas autorizadas e histórico são gravados em uma única
+  transação. Falha de banco: `503` com "Não foi possível salvar. Tente novamente." e nada fica gravado.
+- **Idempotente:** reenviar o mesmo termo não duplica pessoas (envie o `id` das já salvas) e, se nada
+  mudou, não gera registro de edição.
+- **Histórico (`Operacao`):** primeira gravação = `PREENCHIMENTO_TERMO_*`; demais = `EDICAO_TERMO_*`
+  com os **nomes** dos campos alterados (ex.: "Responsável legal – CPF"), **nunca os valores**
+  (LGPD). Cada exportação gera `EXPORTACAO_PDF`. O corpo das requisições não é registrado em log.
+- **Campos obrigatórios (FE01):** ficam em uma lista única no topo de cada schema
+  (`CAMPOS_OBRIGATORIOS`), para ajustar quando o PO confirmar. A lista atual é provisória.
+- **Matrícula inativa e ativação da matrícula** não fazem parte desta entrega.
+
+### Termo de imagem
+
+- Obrigatórios para salvar: nome, CPF e "residente em" do responsável, local e data.
+- **A autorização aceita vazio** (`null` = "não respondido") e "não autoriza" (`false`) é resposta válida.
+  O indicador `completa` só é verdadeiro com a autorização respondida (sim ou não).
+- Termo ainda não salvo: o `GET` sugere "residente em" com o endereço do aluno
+  (`Rua, nº 10, Bairro, Cidade/UF, CEP 00000-000`); o `PUT` grava o que for enviado.
+- CPF: 11 dígitos, **só números**, com dígito verificador válido (sem verificação de unicidade).
+
+### Termo de saída
+
+- Obrigatórios para salvar: nome do responsável, forma de saída e data; em cada pessoa autorizada,
+  nome e parentesco. Período é texto livre (até 50 caracteres) e opcional.
+- Forma de saída: `RESPONSAVEIS`, `TRANSPORTE_ESCOLAR` ou `OUTROS`.
+  `TRANSPORTE_ESCOLAR` e `OUTROS` exigem ao menos uma pessoa autorizada; `RESPONSAVEIS` aceita a lista
+  vazia. `OUTROS` exige a descrição; nas outras formas a descrição é descartada.
+- **Pessoas autorizadas** são enviadas como lista completa, no máximo 4: com `id` é atualizada, sem
+  `id` é criada e a que não vier na lista é removida. O `id` precisa ser de uma pessoa do termo desta
+  matrícula (senão, `422`). Na resposta, vêm na ordem de cadastro (por `id`).
+- **O local é fixo** (`LOCAL_TERMO_SAIDA`): aparece só na resposta e qualquer `local` enviado é ignorado.
+
+### Formato do erro 422
+
+Mesmo formato padrão do FastAPI: uma lista com **um item por problema**, todos de uma vez, para o
+frontend destacar todos os campos juntos. Use `loc` (sem o primeiro item, `"body"`) para achar o campo
+e `msg` para o texto.
+
+```jsonc
+{
+  "detail": [
+    {"type": "campo_obrigatorio", "loc": ["body", "responsavel", "cpf"],
+     "msg": "Campo obrigatório não preenchido: Responsável legal – CPF."},
+    {"type": "campo_obrigatorio", "loc": ["body", "pessoas_autorizadas", 1, "parentesco"],
+     "msg": "Campo obrigatório não preenchido: Pessoas autorizadas – pessoa 2 – parentesco."}
+  ]
+}
+```
+
+### Exemplos de corpo do PUT
+
+```jsonc
+// PUT /matriculas/7/termo-imagem
+{
+  "responsavel": {"nome": "Maria das Graças Souza", "nacionalidade": "Brasileira", "estado_civil": "Solteira",
+                  "rg": "1234567 SSP/GO", "cpf": "52998224725",
+                  "residente_em": "Rua das Flores, nº 10, Centro, Águas Lindas de Goiás/GO, CEP 72910-000"},
+  "autorizacao": {"autoriza": true, "local": "Águas Lindas de Goiás", "data": "2026-11-20"}
+}
+
+// PUT /matriculas/7/termo-saida
+{
+  "responsavel": {"nome": "Maria das Graças Souza"},
+  "periodo": "Integral",
+  "saida": {"forma_saida": "TRANSPORTE_ESCOLAR", "descricao_outros": null},
+  "pessoas_autorizadas": [{"id": 12, "nome": "João Carlos de Souza", "parentesco": "Avô"},
+                          {"nome": "Luiza Pereira", "parentesco": "Tia"}],
+  "data": "2026-11-20"
+}
+```
+
+A resposta (`GET` e `PUT`) repete esses blocos e acrescenta `aluno` (somente leitura: `nome`,
+`data_nascimento`, `etapa` e `ano_letivo`), `completa`, `created_at` e `updated_at` (nulos enquanto o
+termo não foi salvo). No termo de saída vem também `local`.
+
+## Para o time de frontend
+
+- Uma rota por termo (tabela acima). A **confirmação antes de salvar** continua sendo um modal no frontend.
+- Os dados do aluno (`aluno`) são **somente leitura** nos dois termos. Qualquer coisa enviada neles é ignorada.
+- **Período do termo de saída é editável** (texto livre). O Figma mostra o campo como somente leitura no
+  bloco do aluno, então a tela precisa ser ajustada.
+- **Local do termo de saída é fixo**: vem na resposta (`local`) e não é editável.
+- **"Residente em"** do termo de imagem vem sugerido no `GET` e é obrigatório.
+- **Autorização de imagem aceita vazio** ("não respondido"); a opção "não autoriza" existe. O mock atual
+  do frontend ainda não tem as duas coisas.
+- **Pessoas autorizadas:** enviar como lista completa a cada salvamento, com `id` nas já salvas, no máximo 4.
+  **É preciso um botão de remover pessoa**, que não existe no Figma.
+- O link "Ver texto completo do termo" usa `GET /termos/uso-imagem/texto` (`{"titulo", "texto"}`, parágrafos
+  separados por linha em branco). É o mesmo texto do PDF.
+- CPF **só com dígitos**; datas em ISO (`AAAA-MM-DD`). A máscara é do frontend.
+- Os nomes dos campos da API são em `snake_case` (os mocks atuais usam camelCase).
+- Os PDFs vêm com `Content-Disposition: attachment; filename="termo-imagem-<aluno>-<ano>.pdf"` e
+  `Cache-Control: no-store`. Como a rota devolve o arquivo, o `X-Renewed-Token` continua vindo nelas.
+
+## Pendências com o PO (não bloqueiam)
+
+- Opção "Não autoriza": não existe no termo em papel. Validar com a creche.
+- Texto oficial do termo de imagem: até a entrega, `app/templates/termos/uso_imagem.txt` usa o texto de
+  abrangência da tela. Para trocar, basta editar esse arquivo (rota de texto e PDF mudam juntos).
+- Lista de campos obrigatórios de cada termo e valor do local fixo do termo de saída.
+- Logo do PDF: está o logo do Sigma. Troque `app/templates/static/logo.png` pelo da creche.
+
+# PDF das fichas e termos (WeasyPrint)
+
+Os PDFs são gerados com **Jinja2 + WeasyPrint** a partir de `app/templates/`:
+
+```text
+app/templates/
+├── fichas/      base.html (cabeçalho e rodapé), _macros.html, fichas.css e um .html por ficha/termo
+├── termos/      textos integrais dos termos (arquivo único, usado pela rota de texto e pelo PDF)
+└── static/      logo.png e fontes (DejaVu Sans, com a licença). Nada é carregado de fora.
+```
+
+- **No container (recomendado):** `docker compose up --build`. A imagem já instala as bibliotecas
+  (Pango, HarfBuzz) e a fonte. Não há nada para instalar à mão.
+- **Linux (Debian/Ubuntu), sem container:**
+
+  ```bash
+  sudo apt install libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 libharfbuzz-subset0 fonts-dejavu-core
+  ```
+
+- **Windows:** o WeasyPrint precisa do Pango via MSYS2.
+  1. Instale o [MSYS2](https://www.msys2.org/#installation) mantendo as opções padrão.
+  2. No shell do MSYS2, execute `pacman -S mingw-w64-x86_64-pango` e feche o shell.
+  3. No terminal em que for rodar a API ou o `pytest`, aponte para as DLLs:
+     `set WEASYPRINT_DLL_DIRECTORIES=C:\msys64\mingw64\bin` (cmd) ou
+     `$env:WEASYPRINT_DLL_DIRECTORIES="C:\msys64\mingw64\bin"` (PowerShell).
+  4. Confira com `python -m weasyprint --info`.
+
+  Alternativas: gerar e testar o PDF pelo container ou pelo WSL.
+  Documentação oficial: <https://doc.courtbouillon.org/weasyprint/stable/first_steps.html>.
+- **Sem o Pango a API sobe normalmente**: só as rotas de PDF respondem `500` ("Não foi possível gerar o
+  PDF"), e os testes de PDF são **pulados** em vez de quebrar a suíte.
+- O texto dos PDFs é autoescapado: um texto com HTML digitado no formulário sai como texto.
+
+## Configuração do termo de saída
+
+| Variável | Padrão | Para que serve |
+|---|---|---|
+| `LOCAL_TERMO_SAIDA` | `Águas Lindas de Goiás` | Local impresso no Termo de autorização de saída. Fixo: não é gravado no banco nem aceito pela API. |
+
+Já está no `.env.exemple` e no `docker-compose.yml`.
 
 # Estrutura de pastas 
 

@@ -25,6 +25,7 @@ services:
       DEBUG: "true"
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Configure JWT_SECRET_KEY in .env}
+      LOCAL_TERMO_SAIDA: ${LOCAL_TERMO_SAIDA:-Águas Lindas de Goiás}
       ADMIN_NAME: ${ADMIN_NAME:-Administrador do Sistema}
       ADMIN_EMAIL: ${ADMIN_EMAIL:?Configure ADMIN_EMAIL in .env}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Configure ADMIN_PASSWORD in .env}
