@@ -9,7 +9,7 @@ import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { IconChevronDown, IconChevronLeft, IconChevronRight, IconSearch } from "@/components/ui/Icons";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { isoParaData } from "@/lib/alunos";
+import { isoParaData, statusExibicaoAluno } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
 import { listarAlunos } from "@/services/alunos.service";
 import { listarTurmas } from "@/services/turmas.service";
@@ -196,7 +196,7 @@ export function AlunosView() {
                           <td className={styles.muted}>{aluno.turma?.nome ?? "—"}</td>
                           <td className={styles.muted}>{aluno.etapa?.nome ?? "—"}</td>
                           <td>
-                            <StatusBadge ativo={aluno.status === "ATIVO"} />
+                            <StatusBadge status={statusExibicaoAluno(aluno)} />
                           </td>
                           <td>
                             <Link

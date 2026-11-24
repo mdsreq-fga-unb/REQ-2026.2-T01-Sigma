@@ -22,6 +22,11 @@
   color: var(--color-info);
 }
 
+.pendente {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
 .inativo {
   background: var(--color-neutral-badge-bg);
   color: var(--color-neutral-badge);

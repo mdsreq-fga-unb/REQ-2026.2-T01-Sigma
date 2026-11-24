@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ABA_DA_FICHA, NOMES_FICHAS, formatarDataHora } from "@/lib/alunos";
+import { ABA_DA_FICHA, DOCUMENTOS_EXIGIDOS, NOMES_FICHAS, formatarDataHora } from "@/lib/alunos";
 import type { FichaAluno } from "@/types";
 import { SituacaoBadge } from "../SituacaoBadge";
 import { useAlunoCard } from "./AlunoCardContext";
@@ -15,7 +15,10 @@ export function VisaoGeral() {
   const { card } = useAlunoCard();
   const ativo = card.status === "ATIVO";
   const base = `/alunos/${encodeURIComponent(card.id)}`;
-  const entregues = card.documentos.filter((d) => d.situacao === "ENTREGUE").length;
+  const documentos = DOCUMENTOS_EXIGIDOS.map(
+    (nome) => card.documentos.find((doc) => doc.nome === nome) ?? { nome, situacao: "PENDENTE" as const },
+  );
+  const entregues = documentos.filter((d) => d.situacao === "ENTREGUE").length;
   const responsavel = card.resumo.responsavel
     ? `${card.resumo.responsavel}${card.resumo.parentesco ? ` (${card.resumo.parentesco})` : ""}`
     : "";
@@ -73,10 +76,10 @@ export function VisaoGeral() {
                 Documentos
               </h2>
               <p className={styles.painelDescricao}>
-                {entregues} de {card.documentos.length} entregues
+                {entregues} de {documentos.length} entregues
               </p>
               <ul className={styles.documentos}>
-                {card.documentos.map((doc) => (
+                {documentos.map((doc) => (
                   <li key={doc.nome}>
                     <span>{doc.nome}</span>
                     <SituacaoBadge ok={doc.situacao === "ENTREGUE"} rotuloOk="Entregue" />
