@@ -8,14 +8,7 @@ Qualquer usuário autenticado e ativo da equipe administrativa pode usar as rota
 (`get_current_user` recusa token ausente/inválido com 401 e conta inativa com 403).
 O corpo das requisições tem dados pessoais e nunca é registrado em log.
 """
-from typing import Annotated
 
-from fastapi import APIRouter, Depends, Response, status
-from sqlalchemy.orm import Session
-
-from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import Usuario
 from app.schemas.termo_imagem import TermoImagemResponse, TermoImagemUpdate
 from app.schemas.termo_saida import TermoSaidaResponse, TermoSaidaUpdate
 from app.services import service_termo_imagem, service_termo_saida
@@ -35,11 +28,8 @@ from app.schemas.schema_ficha_socioeconomica import (
 )
 from app.services import service_pdf
 from app.services import service_socioeconomica as service
-from app.services.service_socioeconomica import (
-    MatriculaNaoEncontradaError,
-    MembroInvalidoError,
-)
-
+# LGPD: estas rotas não registram o corpo da requisição nem os erros do banco em log.
+ERRO_BANCO = "Não foi possível salvar. Tente novamente."
 router = APIRouter(prefix="/matriculas", tags=["Matrículas"])
 
 SessaoBanco = Annotated[Session, Depends(get_db)]
@@ -177,8 +167,7 @@ def exportar_termo_saida_pdf(id_matricula: int, response: Response, db: SessaoBa
 
 
 
-# LGPD: estas rotas não registram o corpo da requisição nem os erros do banco em log.
-ERRO_BANCO = "Não foi possível salvar. Tente novamente."
+
 
 
 @router.get(
@@ -199,7 +188,7 @@ def obter_socioeconomica(
 ):
     try:
         return service.obter_ficha(db, id_matricula)
-    except MatriculaNaoEncontradaError as e:
+    except service.MatriculaNaoEncontradaError as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=e.mensagem)
 
 
@@ -224,9 +213,9 @@ def salvar_socioeconomica(
 ):
     try:
         return service.salvar_ficha(db, id_matricula, dados, usuario)
-    except MatriculaNaoEncontradaError as e:
+    except service.MatriculaNaoEncontradaError as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=e.mensagem)
-    except MembroInvalidoError as e:
+    except service.MembroInvalidoError as e:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=e.mensagem)
     except SQLAlchemyError:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=ERRO_BANCO)
@@ -254,7 +243,7 @@ def exportar_socioeconomica_pdf(
 ):
     try:
         contexto = service.contexto_pdf(db, id_matricula)
-    except MatriculaNaoEncontradaError as e:
+    except service.MatriculaNaoEncontradaError as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=e.mensagem)
     except SQLAlchemyError:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=ERRO_BANCO)
