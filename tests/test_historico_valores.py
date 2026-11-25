@@ -70,7 +70,7 @@ def test_sensibilidade_por_caminho_exato_e_por_prefixo():
     assert e_sensivel(("saude", "problemas"))
     assert e_sensivel(("nucleo_familiar", "membro", "renda_mensal"))
     assert not e_sensivel(("dados_pessoais", "nome"))
-    assert not e_sensivel(("moradia", "valor"))  # decisão em aberto: valor mensal não é sensível
+    assert e_sensivel(("moradia", "valor"))
 
 
 def test_nomes_sem_repeticao_mantendo_a_ordem():

@@ -17,6 +17,7 @@ CAMINHOS_SENSIVEIS: frozenset[tuple[str, ...]] = frozenset({
     ("responsavel", "cpf"),        # termos de imagem e de saída
     ("responsavel", "rg"),         # termo de imagem
     ("nucleo_familiar", "membro", "renda_mensal"),
+    ("moradia", "valor"),          # valor mensal da moradia (decisão da equipe)
 })
 
 # Prefixos: documentos civis e saúde inteiros
