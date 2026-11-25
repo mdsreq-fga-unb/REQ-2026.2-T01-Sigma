@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { IconTrash } from "@/components/ui/Icons";
@@ -31,17 +33,26 @@ interface Formulario {
   pessoasAutorizadas: PessoaAutorizada[];
   local: string;
   data: string; // dd/mm/aaaa
+  descricaoOutros: string;
 }
 
 function inicial(card: AlunoCard): Formulario {
   const termo = card.termos.saida;
-  if (termo) return { ...termo, pessoasAutorizadas: [...termo.pessoasAutorizadas], data: isoParaData(termo.data) };
+  if (termo) {
+    return {
+      ...termo,
+      pessoasAutorizadas: [...termo.pessoasAutorizadas],
+      data: isoParaData(termo.data),
+      descricaoOutros: termo.descricaoOutros ?? "",
+    };
+  }
   return {
     nomeResponsavel: card.resumo.responsavel,
     formaSaida: null,
     pessoasAutorizadas: [],
     local: LOCAL_PADRAO,
     data: "",
+    descricaoOutros: "",
   };
 }
 
@@ -53,8 +64,7 @@ export function TermoSaida() {
   const [novaPessoa, setNovaPessoa] = useState<PessoaAutorizada>({ nome: "", parentesco: "" });
   const [erroNovaPessoa, setErroNovaPessoa] = useState<{ nome?: string; parentesco?: string }>({});
 
-  // Período informado no termo de compromisso (campo "Regime").
-  const periodo = card.termos.compromisso?.regime ?? "";
+  const periodo = card.termos.saida?.periodo || card.termos.compromisso?.regime || "";
   const exigePessoas = exigePessoasAutorizadas(form.formaSaida);
   const lotado = form.pessoasAutorizadas.length >= MAX_PESSOAS_AUTORIZADAS;
 
@@ -62,9 +72,14 @@ export function TermoSaida() {
     setForm((atual) => ({ ...atual, [campo]: valor }));
     const limparPessoas = campo === "formaSaida" && !exigePessoasAutorizadas(valor as FormaSaida | null);
     if (erros[campo] || (limparPessoas && erros.pessoasAutorizadas)) {
-      setErros(({ [campo]: _removido, pessoasAutorizadas, ...resto }) =>
-        limparPessoas ? resto : pessoasAutorizadas ? { ...resto, pessoasAutorizadas } : resto,
-      );
+      setErros(({ [campo]: _removido, pessoasAutorizadas, descricaoOutros, ...resto }) => {
+        const base = limparPessoas ? resto : pessoasAutorizadas ? { ...resto, pessoasAutorizadas } : { ...resto, pessoasAutorizadas, descricaoOutros };
+        if (campo === "formaSaida" && valor !== "OUTROS") {
+          const { descricaoOutros: _d, ...semDesc } = base as ErrosCampos;
+          return semDesc;
+        }
+        return base as ErrosCampos;
+      });
     }
   }
 
@@ -101,6 +116,8 @@ export function TermoSaida() {
       pessoasAutorizadas: form.pessoasAutorizadas,
       local: form.local.trim(),
       data: dataDigitadaParaIso(form.data),
+      periodo: periodo || undefined,
+      descricaoOutros: form.formaSaida === "OUTROS" ? form.descricaoOutros.trim() : undefined,
     };
   }
 
@@ -124,25 +141,37 @@ export function TermoSaida() {
         />
       </Secao>
 
-      <DadosAlunoCard extras={[{ rotulo: "Período", valor: periodo }]} />
+      <DadosAlunoCard extras={periodo ? [{ rotulo: "Período", valor: periodo }] : []} />
 
       <Secao titulo="Saída da escola" obrigatorio descricao="Como o aluno sai no horário de encerramento da aula?">
-        <RadioGroup
-          label="Como o aluno sai no horário de encerramento da aula?"
-          labelOculto
-          required
-          name="formaSaida"
-          value={form.formaSaida}
-          options={OPCOES_FORMA_SAIDA}
-          onChange={(valor) => alterar("formaSaida", valor)}
-          error={erros.formaSaida}
-        />
+        <div className={shared.campos}>
+          <RadioGroup
+            label="Como o aluno sai no horário de encerramento da aula?"
+            labelOculto
+            required
+            name="formaSaida"
+            value={form.formaSaida}
+            options={OPCOES_FORMA_SAIDA}
+            onChange={(valor) => alterar("formaSaida", valor)}
+            error={erros.formaSaida}
+          />
+          {form.formaSaida === "OUTROS" && (
+            <TextField
+              label="Descreva a forma de saída"
+              required
+              placeholder="Informe a forma de saída"
+              value={form.descricaoOutros}
+              onChange={(e) => alterar("descricaoOutros", e.target.value)}
+              error={erros.descricaoOutros}
+            />
+          )}
+        </div>
       </Secao>
 
       <Secao
         titulo="Pessoas autorizadas a buscar o aluno"
         obrigatorio={exigePessoas}
-        descricao={`Obrigatório quando a saída for por transporte escolar ou “Outros”. Máximo de ${MAX_PESSOAS_AUTORIZADAS} pessoas.`}
+        descricao={`Obrigatório quando a saída for por transporte escolar ou "Outros". Máximo de ${MAX_PESSOAS_AUTORIZADAS} pessoas.`}
       >
         <div className={shared.campos}>
           <div className={styles.tabelaPessoas}>
@@ -165,7 +194,7 @@ export function TermoSaida() {
                   </tr>
                 ) : (
                   form.pessoasAutorizadas.map((pessoa, i) => (
-                    <tr key={`${pessoa.nome}-${i}`}>
+                    <tr key={pessoa.id ?? `${pessoa.nome}-${i}`}>
                       <td>{pessoa.nome}</td>
                       <td>{pessoa.parentesco}</td>
                       <td className={styles.colunaAcao}>
