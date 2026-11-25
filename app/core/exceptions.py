@@ -35,6 +35,13 @@ class MatriculaNaoEncontradaError(ErroNegocio):
     mensagem = "Matrícula não encontrada."
 
 
+class MatriculaInativaError(ErroNegocio):
+    """Aluno com status INATIVO: as fichas podem ser consultadas, mas não alteradas (RN10 / FE03)."""
+
+    status_code = 409
+    mensagem = "Matrícula inativa: a ficha pode ser consultada, mas não pode ser alterada."
+
+
 class DadosInvalidosError(ErroNegocio):
     """Dados recusados por regra que só o service conhece (ex.: `id` de outro termo).
 

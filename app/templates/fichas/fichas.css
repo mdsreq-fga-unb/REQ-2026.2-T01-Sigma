@@ -147,6 +147,22 @@ section {
   font-size: 8.5pt;
   color: #333;
 }
+/* Termo de compromisso: normas longas em letra um pouco menor, para caber em 2 páginas. */
+/* As normas ocupam mais de uma página: podem quebrar entre parágrafos (não no meio deles). */
+.texto-termo.normas { break-inside: auto; }
+.texto-termo.normas h2,
+.texto-termo.normas .introduz { break-after: avoid; }
+.texto-termo.normas p { margin: .12cm 0; font-size: 9pt; orphans: 3; widows: 3; }
+.texto-termo .preenchido { font-weight: bold; }
+.lembrete {
+  margin: .5cm 0 0;
+  padding: .2cm .3cm;
+  border: .6pt solid #17546f;
+  font-size: 8.5pt;
+  font-weight: bold;
+  text-align: center;
+  break-inside: avoid;
+}
 
 /* ---------- Tabela ---------- */
 table.tabela {
