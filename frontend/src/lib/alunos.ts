@@ -4,8 +4,6 @@ import type {
   FormaSaida,
   NovoAlunoPayload,
   Sexo,
-  SituacaoFicha,
-  StatusAluno,
   TermoCompromisso,
   TermoSaida,
   TermoUsoImagem,
@@ -120,18 +118,6 @@ export const DOCUMENTOS_EXIGIDOS = [
   "Cartão de vacina",
   "Histórico escolar",
 ];
-
-export type StatusExibicaoAluno = "ATIVO" | "PENDENTE" | "INATIVO";
-
-export function statusExibicaoAluno(card: {
-  status: StatusAluno;
-  turma: { id: string; nome: string } | null;
-  fichas: Record<FichaAluno, SituacaoFicha>;
-}): StatusExibicaoAluno {
-  if (card.status === "INATIVO") return "INATIVO";
-  const fichasCompletas = Object.values(card.fichas).every((situacao) => situacao === "PREENCHIDA");
-  return fichasCompletas && card.turma ? "ATIVO" : "PENDENTE";
-}
 
 // ---------- Busca (RF21) ----------
 

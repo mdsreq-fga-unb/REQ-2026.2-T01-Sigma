@@ -51,7 +51,7 @@ export function TermoForm<T extends TermoAluno>({
   const [payload, setPayload] = useState<NonNullable<TermosAluno[T]> | null>(null);
   const [incompleto, setIncompleto] = useState(false);
 
-  const ativo = card.status === "ATIVO";
+  const ativo = card.status !== "INATIVO"; // Pendente também pode ser editado
   const pendente = card.termos[termo] === null;
   const visaoGeral = `/alunos/${encodeURIComponent(card.id)}`;
 

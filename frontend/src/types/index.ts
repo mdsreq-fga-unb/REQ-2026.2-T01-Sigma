@@ -23,7 +23,11 @@ export interface NovoUsuarioPayload {
 }
 
 // UC04 – Card do aluno / UC08 FP01 – busca de alunos
-export type StatusAluno = "ATIVO" | "INATIVO";
+/**
+ * Status do aluno exibido na lista e no card (UC04 / RN06): PENDENTE enquanto houver
+ * alguma ficha incompleta, ATIVO com todas completas e INATIVO quando inativado.
+ */
+export type StatusAluno = "PENDENTE" | "ATIVO" | "INATIVO";
 export type Sexo = "MASCULINO" | "FEMININO";
 export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADA";
 
@@ -188,8 +192,6 @@ export interface HistoricoMatricula {
   tipo: TipoAlteracaoMatricula;
   alteracoes: string[];
 }
-
-export type AlteracaoMatricula = HistoricoMatricula;
 
 export interface Matricula {
   id: string;
