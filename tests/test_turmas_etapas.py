@@ -310,6 +310,7 @@ def test_inativar_turma_sucesso_e_preserva_vinculos_alunos(client, test_user, db
 
     aluno = Aluno(
         nome="Lucas Silva",
+        parentesco_responsavel="Mãe",
         data_nasc=date(2022, 5, 10),
         cpf="11122233344",
         sexo=Sexo.MASCULINO,

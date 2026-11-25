@@ -14,8 +14,8 @@ class Responsavel(TimestampMixin, Base):
 
     id_pessoa:Mapped[int] = mapped_column(ForeignKey("Pessoa.id"))
     id:Mapped[int] = mapped_column(primary_key=True)
-    telefone: Mapped[str] = mapped_column(String(20))
-    email: Mapped[str] = mapped_column(String(150))
+    telefone: Mapped[str | None] = mapped_column(String(11))  # só dígitos
+    email: Mapped[str | None] = mapped_column(String(150))
     alunos: Mapped[list["Aluno"]] = relationship(back_populates="responsavel")
 
 

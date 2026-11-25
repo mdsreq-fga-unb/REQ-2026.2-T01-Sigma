@@ -10,7 +10,7 @@ class Pessoa(TimestampMixin, Base):
 
     nome:Mapped[str] = mapped_column(String(150))
     id:Mapped[int] = mapped_column(primary_key=True)
-    cpf:Mapped[str] = mapped_column(String(11), unique=True)
+    cpf:Mapped[str | None] = mapped_column(String(11), unique=True)  # opcional; vários vazios são permitidos
     trabalho:Mapped[str | None] = mapped_column(String(100));
-    data_nasc:Mapped[date] = mapped_column()
+    data_nasc:Mapped[date | None] = mapped_column()
 
