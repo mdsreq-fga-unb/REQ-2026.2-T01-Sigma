@@ -39,11 +39,10 @@ class AlunoTermoResponse(BaseModel):
     @classmethod
     def de_matricula(cls, matricula: "Matricula") -> "AlunoTermoResponse":
         aluno = matricula.aluno
-        turma = aluno.turma
         return cls(
             nome=aluno.nome,
             data_nascimento=aluno.data_nasc,
-            etapa=turma.etapa.nome if turma is not None and turma.etapa is not None else None,
+            etapa=matricula.etapa.nome if matricula.etapa is not None else None,
             ano_letivo=matricula.ano,
         )
 

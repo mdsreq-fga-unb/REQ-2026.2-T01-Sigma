@@ -76,20 +76,27 @@ def _dados_do_termo(termo: TermoSaida | None) -> dict[str, Any]:
     }
 
 
+FORMATADORES_HISTORICO = {
+    ("saida", "forma_saida"): service_historico.rotulo_de(FormaSaida, ROTULOS_FORMA_SAIDA),
+}
+
+
 def _foto(dados: dict[str, Any]) -> dict[Caminho, Any]:
     return {caminho: valor_em(dados, caminho) for caminho in ROTULOS}
 
 
-def _alteracoes_pessoas(antes: list[dict[str, Any]], depois: list[dict[str, Any]]) -> list[str]:
-    """Nomes legíveis das mudanças na lista de pessoas. Nunca os nomes das pessoas."""
+def _itens_pessoas(antes: list[dict[str, Any]], depois: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Uma linha por pessoa adicionada/removida (com o nome) e por campo alterado de cada pessoa."""
     por_id_antes = {p["id"]: p for p in antes}
     ids_depois = {p["id"] for p in depois}
-    alterados: list[str] = []
+    itens: list[dict[str, Any]] = []
 
-    if any(p["id"] not in por_id_antes for p in depois):
-        alterados.append(f"{ROTULO_PESSOAS} – pessoa adicionada")
-    if any(p["id"] not in ids_depois for p in antes):
-        alterados.append(f"{ROTULO_PESSOAS} – pessoa removida")
+    for pessoa in depois:
+        if pessoa["id"] not in por_id_antes:
+            itens.append(service_historico.item(NOME_TERMO, f"{ROTULO_PESSOAS} – pessoa adicionada", None, pessoa["nome"]))
+    for pessoa in antes:
+        if pessoa["id"] not in ids_depois:
+            itens.append(service_historico.item(NOME_TERMO, f"{ROTULO_PESSOAS} – pessoa removida", pessoa["nome"], None))
 
     for posicao, pessoa in enumerate(depois, start=1):
         anterior = por_id_antes.get(pessoa["id"])
@@ -97,20 +104,20 @@ def _alteracoes_pessoas(antes: list[dict[str, Any]], depois: list[dict[str, Any]
             continue
         for campo in ("nome", "parentesco"):
             if anterior[campo] != pessoa[campo]:
-                alterados.append(rotulo_pessoa(posicao, campo))
-    return alterados
+                itens.append(service_historico.item(NOME_TERMO, rotulo_pessoa(posicao, campo), anterior[campo], pessoa[campo]))
+    return itens
 
 
-def _campos_alterados(antes: dict[str, Any], depois: dict[str, Any]) -> list[str]:
-    """Campos alterados na ordem da tela: responsável, período, saída, pessoas e, por fim, a data."""
+def _itens_alterados(antes: dict[str, Any], depois: dict[str, Any]) -> list[dict[str, Any]]:
+    """Itens alterados na ordem da tela: responsável, período, saída, pessoas e, por fim, a data."""
     foto_antes, foto_depois = _foto(antes), _foto(depois)
     sem_data = {caminho: rotulo for caminho, rotulo in ROTULOS.items() if caminho != _CAMINHO_DATA}
     so_data = {_CAMINHO_DATA: ROTULOS[_CAMINHO_DATA]}
 
     return (
-        service_historico.campos_alterados(foto_antes, foto_depois, sem_data)
-        + _alteracoes_pessoas(antes["pessoas_autorizadas"], depois["pessoas_autorizadas"])
-        + service_historico.campos_alterados(foto_antes, foto_depois, so_data)
+        service_historico.itens_alterados(foto_antes, foto_depois, sem_data, NOME_TERMO, FORMATADORES_HISTORICO)
+        + _itens_pessoas(antes["pessoas_autorizadas"], depois["pessoas_autorizadas"])
+        + service_historico.itens_alterados(foto_antes, foto_depois, so_data, NOME_TERMO, FORMATADORES_HISTORICO)
     )
 
 
@@ -209,10 +216,14 @@ def salvar_termo(
             service_historico.registrar(db, usuario, matricula.id_aluno, Tipo.PREENCHIMENTO_TERMO_SAIDA, descricao)
         else:
             # Demais: registro de edição com os NOMES dos campos alterados. Nada mudou, nada registrado.
-            alterados = _campos_alterados(antes, _dados_do_termo(termo))
+            alterados = _itens_alterados(antes, _dados_do_termo(termo))
             if alterados:
-                descricao = service_historico.descrever(NOME_TERMO, "editado", matricula.ano, alterados)
-                service_historico.registrar(db, usuario, matricula.id_aluno, Tipo.EDICAO_TERMO_SAIDA, descricao)
+                descricao = service_historico.descrever(
+                    NOME_TERMO, "editado", matricula.ano, service_historico.nomes(alterados)
+                )
+                service_historico.registrar(
+                    db, usuario, matricula.id_aluno, Tipo.EDICAO_TERMO_SAIDA, descricao, alterados
+                )
 
         db.flush()
         db.refresh(termo, attribute_names=["created_at", "updated_at"])  # gerados pelo banco

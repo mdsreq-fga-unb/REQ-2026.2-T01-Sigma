@@ -181,6 +181,14 @@ def _dados_da_ficha(matricula: Matricula) -> dict[str, Any]:
     }
 
 
+# Textos legíveis no histórico (o banco guarda o nome do enum)
+FORMATADORES_HISTORICO = {
+    ("dados_pessoais", "sexo"): service_historico.rotulo_de(Sexo, ROTULOS_SEXO),
+    ("dados_pessoais", "raca"): service_historico.rotulo_de(Raca, ROTULOS_RACA),
+    ("termo_compromisso", "documentos_entregues"): service_historico.rotulo_de(TipoDocumento, ROTULOS_DOCUMENTO),
+}
+
+
 def _foto(dados: dict[str, Any]) -> dict[Caminho, Any]:
     """Fotografia da ficha para comparar antes e depois de salvar (histórico de edições).
     Listas são comparadas sem levar em conta a ordem."""
@@ -204,7 +212,7 @@ def _montar_resposta(matricula: Matricula) -> RequerimentoResponse:
     rm = matricula.requerimento
     dados["matricula"] = {
         **dados["matricula"],
-        "ano_escolaridade": turma.etapa.nome if turma is not None and turma.etapa is not None else None,
+        "ano_escolaridade": matricula.etapa.nome if matricula.etapa is not None else None,
         "turma": turma.nome if turma is not None else None,
     }
     return RequerimentoResponse(
@@ -342,7 +350,7 @@ def salvar_requerimento(
     transação** (FE04).
 
     Idempotente: reenviar a mesma ficha não duplica nada e, se nada mudou, não gera registro de
-    edição. O histórico guarda só os nomes dos campos alterados, nunca os valores (LGPD).
+    edição. O histórico guarda os valores anterior e novo, exceto nos campos sensíveis (LGPD).
     """
     matricula = _buscar_matricula(db, id_matricula)
     _conferir_duplicidade(db, matricula, dados)  # 409 antes de alterar qualquer coisa
@@ -360,10 +368,16 @@ def salvar_requerimento(
             service_historico.registrar(db, usuario, matricula.id_aluno, Tipo.PREENCHIMENTO_REQUERIMENTO, descricao)
         else:
             # Demais: registro de edição com os NOMES dos campos alterados. Nada mudou, nada registrado.
-            alterados = service_historico.campos_alterados(antes, _foto(_dados_da_ficha(matricula)), ROTULOS)
+            alterados = service_historico.itens_alterados(
+                antes, _foto(_dados_da_ficha(matricula)), ROTULOS, NOME_FICHA, FORMATADORES_HISTORICO
+            )
             if alterados:
-                descricao = service_historico.descrever(NOME_FICHA, "editado", matricula.ano, alterados)
-                service_historico.registrar(db, usuario, matricula.id_aluno, Tipo.EDICAO_REQUERIMENTO, descricao)
+                descricao = service_historico.descrever(
+                    NOME_FICHA, "editado", matricula.ano, service_historico.nomes(alterados)
+                )
+                service_historico.registrar(
+                    db, usuario, matricula.id_aluno, Tipo.EDICAO_REQUERIMENTO, descricao, alterados
+                )
                 # A ficha mudou mesmo que só o Aluno tenha mudado: `updated_at` é o da última edição.
                 matricula.requerimento.updated_at = agora_utc()
 

@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from app.core.auditoria import e_sensivel
 from app.models.ficha_socioeco import (
     MeioTransporte as MeioTransporteModelo,
     SituacaoMoradia as SituacaoMoradiaModelo,
@@ -11,6 +12,7 @@ from app.models.ficha_socioeco import (
 from app.models.ops import Operacao, Tipo
 from app.models.user import Usuario
 from app.repository import repository_socioeconomica as repo
+from app.services import service_historico
 from app.schemas.schema_ficha_socioeconomica import (
     ENDERECO_OBRIGATORIO,
     FichaSocioeconomicaEntrada,
@@ -79,6 +81,26 @@ ROTULOS_MEMBRO = {
     "escolaridade": "escolaridade",
     "renda_mensal": "renda",
 }
+ROTULOS_SOCIO = {
+    (secao, campo): rotulo for secao, rotulos in ROTULOS_SECOES.items() for campo, rotulo in rotulos.items()
+}
+ROTULOS_SITUACAO_MORADIA = {
+    SituacaoMoradia.PROPRIO: "Própria",
+    SituacaoMoradia.CEDIDO: "Cedida",
+    SituacaoMoradia.FINANCIADO: "Financiada",
+    SituacaoMoradia.ALUGADO: "Alugada",
+    SituacaoMoradia.OCUPACAO_IRREGULAR: "Ocupação irregular",
+}
+ROTULOS_MEIO_TRANSPORTE = {
+    MeioTransporte.NENHUM_A_PE_BICICLETA: "A pé, de bicicleta ou nenhum",
+    MeioTransporte.CARONA: "Carona",
+    MeioTransporte.TRANSPORTE_COLETIVO: "Transporte coletivo",
+    MeioTransporte.CARRO_MOTO_PROPRIO: "Carro ou moto próprio",
+}
+FORMATADORES_HISTORICO = {
+    ("moradia", "situacao"): service_historico.rotulo_de(SituacaoMoradia, ROTULOS_SITUACAO_MORADIA),
+    ("transporte", "meio"): service_historico.rotulo_de(MeioTransporte, ROTULOS_MEIO_TRANSPORTE),
+}
 CAMPOS_FORA_DO_HISTORICO = {"dados_pessoais", "completa", "created_at", "updated_at"}
 
 
@@ -100,7 +122,7 @@ def _montar_resposta(matricula) -> FichaSocioeconomicaResposta:
             "nome": aluno.nome,
             "data_nasc": aluno.data_nasc,
             "sexo": _valor_enum(aluno.sexo),
-            "etapa": aluno.turma.etapa.nome,
+            "etapa": matricula.etapa.nome,
             "ano_letivo": matricula.ano,
             "nome_mae": req.nome_mae if req is not None else None,
             "nome_pai": req.nome_pai if req is not None else None,
@@ -184,30 +206,51 @@ def _estado(matricula) -> dict:
     return _montar_resposta(matricula).model_dump(exclude=CAMPOS_FORA_DO_HISTORICO)
 
 
-def _campos_alterados(antes: dict, depois: dict) -> list[str]:
-    alterados: list[str] = []
+def _achatar(estado: dict) -> dict:
+    """Seções editáveis (exceto o núcleo familiar) em {(seção, campo): valor}."""
+    return {(secao, campo): estado[secao][campo] for secao, rotulos in ROTULOS_SECOES.items() for campo in rotulos}
 
-    for secao, rotulos in ROTULOS_SECOES.items():
-        for campo, rotulo in rotulos.items():
-            if antes[secao][campo] != depois[secao][campo]:
-                alterados.append(rotulo)
 
-    anteriores = {m["id"]: m for m in antes["nucleo_familiar"]["membros"]}
-    atuais = depois["nucleo_familiar"]["membros"]
-    ids_atuais = {m["id"] for m in atuais}
+def _itens_membros(antes: list[dict], depois: list[dict]) -> list[dict]:
+    """Um item por membro adicionado/removido (com o componente) e por campo alterado de cada membro."""
+    anteriores = {m["id"]: m for m in antes}
+    ids_depois = {m["id"] for m in depois}
+    itens: list[dict] = []
 
-    for posicao, membro in enumerate(atuais, start=1):
+    for posicao, membro in enumerate(depois, start=1):
         antigo = anteriores.get(membro["id"])
         if antigo is None:
-            alterados.append("Núcleo familiar – membro adicionado")
+            itens.append(service_historico.item(NOME_FICHA, "Núcleo familiar – membro adicionado", None, membro["tipo"]))
             continue
         for campo, rotulo in ROTULOS_MEMBRO.items():
             if antigo[campo] != membro[campo]:
-                alterados.append(f"Núcleo familiar – membro {posicao} – {rotulo}")
-    if any(id_ not in ids_atuais for id_ in anteriores):
-        alterados.append("Núcleo familiar – membro removido")
+                itens.append(service_historico.item(
+                    NOME_FICHA,
+                    f"Núcleo familiar – membro {posicao} – {rotulo}",
+                    antigo[campo],
+                    membro[campo],
+                    sensivel=e_sensivel(("nucleo_familiar", "membro", campo)),
+                ))
+    for membro in antes:
+        if membro["id"] not in ids_depois:
+            itens.append(service_historico.item(NOME_FICHA, "Núcleo familiar – membro removido", membro["tipo"], None))
+    return itens
 
-    return list(dict.fromkeys(alterados))  # sem repetidos, mantendo a ordem
+
+def _itens_alterados(antes: dict, depois: dict) -> list[dict]:
+    """Itens do histórico (campo, valor anterior, valor novo, sensível), na ordem da tela."""
+    itens = service_historico.itens_alterados(
+        _achatar(antes), _achatar(depois), ROTULOS_SOCIO, NOME_FICHA, FORMATADORES_HISTORICO
+    )
+    return itens + _itens_membros(antes["nucleo_familiar"]["membros"], depois["nucleo_familiar"]["membros"])
+
+
+def _campos_alterados(antes: dict, depois: dict) -> list[str]:
+    """Só os nomes dos campos alterados (usado no resumo da descrição)."""
+    return service_historico.nomes(_itens_alterados(antes, depois))
+
+
+NOME_FICHA = "Ficha socioeconômica"
 
 
 def _descricao_edicao(ano: int, alterados: list[str]) -> str:
@@ -264,23 +307,18 @@ def salvar_ficha(
         depois = _estado(matricula)
 
         if primeira_vez:
-            db.add(Operacao(
-                id_user=usuario.id,
-                id_aluno=matricula.id_aluno,
-                tipo=Tipo.PREENCHIMENTO_SOCIOECONOMICA,
-                descricao=f"Ficha socioeconômica preenchida (ano letivo {matricula.ano})",
-                data_op=_agora(),
-            ))
+            service_historico.registrar(
+                db, usuario, matricula.id_aluno, Tipo.PREENCHIMENTO_SOCIOECONOMICA,
+                f"Ficha socioeconômica preenchida (ano letivo {matricula.ano})",
+            )
         else:
-            alterados = _campos_alterados(antes, depois)
-            if alterados:  # nada mudou: sem registro de edição
-                db.add(Operacao(
-                    id_user=usuario.id,
-                    id_aluno=matricula.id_aluno,
-                    tipo=Tipo.EDICAO_SOCIOECONOMICA,
-                    descricao=_descricao_edicao(matricula.ano, alterados),
-                    data_op=_agora(),
-                ))
+            itens = _itens_alterados(antes, depois)
+            if itens:  # nada mudou: sem registro de edição
+                service_historico.registrar(
+                    db, usuario, matricula.id_aluno, Tipo.EDICAO_SOCIOECONOMICA,
+                    _descricao_edicao(matricula.ano, service_historico.nomes(itens)),
+                    itens,
+                )
 
         db.commit()
     except (MatriculaNaoEncontradaError, MembroInvalidoError):
