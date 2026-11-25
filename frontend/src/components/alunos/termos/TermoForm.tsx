@@ -7,9 +7,12 @@ import { Button } from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 import { NOMES_FICHAS, isoParaData, temErros, type ErrosCampos } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
+import { usandoBackendReal } from "@/services/api";
 import { salvarTermo } from "@/services/alunos.service";
+import { baixarPdfTermoImagem, baixarPdfTermoSaida } from "@/services/fichas.service";
 import type { AlunoCard, TermoAluno, TermosAluno } from "@/types";
 import { ConfirmacaoModal } from "../ConfirmacaoModal";
+import { mensagemErroAluno } from "../erros";
 import { useAlunoCard } from "../card/AlunoCardContext";
 import { focarPrimeiroErro } from "../focarErro";
 import shared from "../Alunos.module.css";
@@ -50,10 +53,13 @@ export function TermoForm<T extends TermoAluno>({
   const formRef = useRef<HTMLFormElement>(null);
   const [payload, setPayload] = useState<NonNullable<TermosAluno[T]> | null>(null);
   const [incompleto, setIncompleto] = useState(false);
+  const [exportandoPdf, setExportandoPdf] = useState(false);
+  const [erroPdf, setErroPdf] = useState<string | null>(null);
 
   const ativo = card.status === "ATIVO";
   const pendente = card.termos[termo] === null;
   const visaoGeral = `/alunos/${encodeURIComponent(card.id)}`;
+  const podeExportarPdf = usandoBackendReal && (termo === "usoImagem" || termo === "saida");
 
   function enviar(event: React.FormEvent) {
     event.preventDefault();
@@ -78,6 +84,19 @@ export function TermoForm<T extends TermoAluno>({
     router.push(visaoGeral);
   }
 
+  async function exportarPdf() {
+    setErroPdf(null);
+    setExportandoPdf(true);
+    try {
+      if (termo === "usoImagem") await baixarPdfTermoImagem(card.id);
+      else if (termo === "saida") await baixarPdfTermoSaida(card.id);
+    } catch (e) {
+      setErroPdf(mensagemErroAluno(e));
+    } finally {
+      setExportandoPdf(false);
+    }
+  }
+
   return (
     <form ref={formRef} onSubmit={enviar} noValidate>
       {ativo && pendente && (
@@ -90,6 +109,11 @@ export function TermoForm<T extends TermoAluno>({
           <Alert>{MSG.fichaIncompleta}</Alert>
         </div>
       )}
+      {erroPdf && (
+        <div className={styles.alerta}>
+          <Alert>{erroPdf}</Alert>
+        </div>
+      )}
 
       <fieldset className={styles.conteudo} disabled={!ativo}>
         <legend className="sr-only">{NOMES_FICHAS[termo]}</legend>
@@ -97,6 +121,11 @@ export function TermoForm<T extends TermoAluno>({
       </fieldset>
 
       <div className={shared.acoesForm}>
+        {podeExportarPdf && (
+          <Button variant="secondary" onClick={exportarPdf} loading={exportandoPdf} disabled={exportandoPdf}>
+            {exportandoPdf ? "Exportando..." : "Exportar PDF"}
+          </Button>
+        )}
         {ativo ? (
           <>
             <Button
