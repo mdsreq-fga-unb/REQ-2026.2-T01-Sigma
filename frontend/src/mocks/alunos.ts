@@ -62,12 +62,20 @@ function referenciaTurma(registro: AlunoRegistro): { turma: ReferenciaNome | nul
 }
 
 export function alunoResumo(registro: AlunoRegistro): AlunoResumo {
+  const { termos } = registro;
   return {
     id: registro.id,
     nome: registro.aluno.nome,
     dataNascimento: registro.aluno.dataNascimento,
     status: registro.status,
     ...referenciaTurma(registro),
+    fichas: {
+      requerimento: registro.requerimentoPreenchido ? "PREENCHIDA" : "PENDENTE",
+      socioeconomica: registro.socioeconomicaPreenchida ? "PREENCHIDA" : "PENDENTE",
+      usoImagem: termos.usoImagem ? "PREENCHIDA" : "PENDENTE",
+      saida: termos.saida ? "PREENCHIDA" : "PENDENTE",
+      compromisso: termos.compromisso ? "PREENCHIDA" : "PENDENTE",
+    },
   };
 }
 

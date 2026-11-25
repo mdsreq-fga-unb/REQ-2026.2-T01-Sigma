@@ -293,6 +293,7 @@ export interface AlunoResumo {
   turma: ReferenciaNome | null;
   etapa: ReferenciaNome | null;
   status: StatusAluno;
+  fichas: Record<FichaAluno, SituacaoFicha>;
 }
 
 export interface FiltroAlunos {

@@ -7,9 +7,9 @@ import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { useToast } from "@/components/ui/Toast";
-import { isoParaData } from "@/lib/alunos";
+import { isoParaData, statusExibicaoAluno } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
-import { inativarAluno, obterAluno, reativarAluno } from "@/services/alunos.service";
+import { obterAluno, reativarAluno } from "@/services/alunos.service";
 import type { AlunoCard } from "@/types";
 import { ConfirmacaoModal } from "../ConfirmacaoModal";
 import { mensagemErroAluno } from "../erros";
@@ -30,11 +30,12 @@ const ABAS = [
 ];
 
 type Carga = { status: "carregando" } | { status: "erro"; mensagem: string } | { status: "ok"; card: AlunoCard };
-type Modal = "inativar" | "reativar" | "vincular" | null;
+type Modal = "reativar" | "vincular" | null;
 
 /** "Nascida em 12/03/2024 · Turma A · Berçário · Ano letivo 2026" */
 function subtitulo(card: AlunoCard): string {
-  const verbo = card.aluno.sexo === "FEMININO" ? "Nascida em" : card.aluno.sexo === "MASCULINO" ? "Nascido em" : "Nascimento em";
+  const verbo =
+    card.aluno.sexo === "FEMININO" ? "Nascida em" : card.aluno.sexo === "MASCULINO" ? "Nascido em" : "Nascimento em";
   return [
     `${verbo} ${isoParaData(card.aluno.dataNascimento)}`,
     card.turma?.nome ?? "Sem turma",
@@ -108,7 +109,8 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
     );
   }
 
-  const ativo = card.status === "ATIVO";
+  const inativo = card.status === "INATIVO";
+  const status = statusExibicaoAluno(card);
 
   return (
     <AlunoCardContext.Provider value={contexto}>
@@ -125,31 +127,32 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
         <div className={styles.identificacao}>
           <div className={styles.tituloLinha}>
             <h1 className={styles.titulo}>{card.aluno.nome}</h1>
-            <StatusBadge ativo={ativo} />
+            <StatusBadge status={status} />
           </div>
           <p className={styles.subtitulo}>{subtitulo(card)}</p>
         </div>
 
         <div className={styles.acoes}>
-          {ativo ? (
+          {inativo ? (
+            <Button onClick={() => setModal("reativar")}>Reativar card</Button>
+          ) : (
             <>
               <Button variant="secondary" onClick={() => setModal("vincular")}>
                 Vincular à turma
               </Button>
-              <Button variant="secondary" disabled title="A geração do PDF será implementada em uma próxima iteração.">
+              <Button
+                variant="secondary"
+                disabled
+                title="A geração do PDF será implementada em uma próxima iteração."
+              >
                 Baixar ficha (PDF)
               </Button>
-              <button type="button" className={styles.inativar} onClick={() => setModal("inativar")}>
-                Inativar card
-              </button>
             </>
-          ) : (
-            <Button onClick={() => setModal("reativar")}>Reativar card</Button>
           )}
         </div>
       </header>
 
-      {!ativo && (
+      {inativo && (
         // UC04 FE03 / RN10: card inativo é somente consulta.
         <div className={styles.aviso}>
           <Alert variant="warning">
@@ -179,22 +182,6 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
       </nav>
 
       {children}
-
-      {modal === "inativar" && (
-        <ConfirmacaoModal
-          titulo={`Inativar o card de ${card.aluno.nome}?`}
-          descricao="O card fica restrito e nenhuma ação poderá ser feita com ele até que seja reativado. Os dados não são apagados."
-          rotuloConfirmar="Inativar card"
-          rotuloEnviando="Inativando..."
-          variante="danger"
-          onConfirmar={async () => {
-            atualizar(await inativarAluno(card.id));
-            setModal(null);
-            toast(MSG.cardInativado, "alteração registrada no histórico");
-          }}
-          onClose={() => setModal(null)}
-        />
-      )}
 
       {modal === "reativar" && (
         <ConfirmacaoModal
