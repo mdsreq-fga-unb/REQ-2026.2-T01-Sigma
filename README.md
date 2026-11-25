@@ -67,7 +67,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 
 O frontend real consome autenticação, usuários e estrutura escolar (turmas/etapas) disponíveis na
 API. Das matrículas, o backend implementa por enquanto o Requerimento de matrícula e os termos de uso
-de imagem e de saída (UC04, seções abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
+de imagem, de saída e de compromisso escolar (UC04, seções abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
 
 # API do Requerimento de matrícula (UC04)
 
@@ -199,7 +199,8 @@ O cabeçalho usa o logo do sistema, não o da Prefeitura.
 
 # API dos termos da matrícula (UC04)
 
-Termo de autorização de uso de imagem e Termo de autorização de saída do aluno. Cada termo é
+Termo de autorização de uso de imagem, Termo de autorização de saída do aluno e Termo de compromisso
+escolar. Cada termo é
 **por matrícula** (um por ano letivo): salvar o termo de uma matrícula nunca altera o de outra
 matrícula do mesmo aluno. Todas as rotas exigem token e conta ativa (`401` sem token, `403` com
 conta inativa) e aparecem em `/docs`.
@@ -212,11 +213,14 @@ conta inativa) e aparecem em `/docs`.
 | GET | `/matriculas/{id}/termo-saida` | Obter termo de saída | 200; 401; 404 |
 | PUT | `/matriculas/{id}/termo-saida` | Salvar termo de saída, com as pessoas autorizadas | 200; 401; 404; 422; 503 |
 | GET | `/matriculas/{id}/termo-saida/pdf` | Exportar PDF | 200 `application/pdf`; 401; 404; 500 |
+| GET | `/matriculas/{id}/termo-compromisso` | Obter termo de compromisso escolar | 200; 401; 404 |
+| PUT | `/matriculas/{id}/termo-compromisso` | Salvar termo de compromisso (cria ou atualiza) | 200; 401; 404; 409; 422; 503 |
+| GET | `/matriculas/{id}/termo-compromisso/pdf` | Exportar PDF | 200 `application/pdf`; 401; 404; 500; 503 |
 | GET | `/termos/uso-imagem/texto` | Texto integral do termo de imagem | 200; 401 |
 
 Código: rotas em `app/routes/route_matriculas.py` e `route_termos.py`, regras em
-`app/services/service_termo_imagem.py` e `service_termo_saida.py`, schemas em
-`app/schemas/termo_imagem.py` e `termo_saida.py`, acesso ao banco em
+`app/services/service_termo_imagem.py`, `service_termo_saida.py` e `service_termo_compromisso.py`,
+schemas em `app/schemas/termo_imagem.py`, `termo_saida.py` e `termo_compromisso.py`, acesso ao banco em
 `app/repository/repository_termos.py`. O histórico de edições e o PDF são serviços genéricos,
 reaproveitáveis pelas outras fichas: `service_historico.py` e `service_pdf.py`.
 
@@ -227,11 +231,15 @@ reaproveitáveis pelas outras fichas: `service_historico.py` e `service_pdf.py`.
 - **Idempotente:** reenviar o mesmo termo não duplica pessoas (envie o `id` das já salvas) e, se nada
   mudou, não gera registro de edição.
 - **Histórico (`Operacao`):** primeira gravação = `PREENCHIMENTO_TERMO_*`; demais = `EDICAO_TERMO_*`
-  com os **nomes** dos campos alterados (ex.: "Responsável legal – CPF"), **nunca os valores**
-  (LGPD). Cada exportação gera `EXPORTACAO_PDF`. O corpo das requisições não é registrado em log.
+  (só se algo mudou), com os **nomes** dos campos alterados na `descricao` e, em `alteracoes`, o valor
+  anterior e o novo de cada campo. Campos sensíveis (`app/core/auditoria.py`, ex.: CPF do responsável)
+  saem com `sensivel: true` e **sem valores** (LGPD). Cada exportação gera `EXPORTACAO_PDF`. O corpo
+  das requisições não é registrado em log.
 - **Campos obrigatórios (FE01):** ficam em uma lista única no topo de cada schema
   (`CAMPOS_OBRIGATORIOS`), para ajustar quando o PO confirmar. A lista atual é provisória.
-- **Matrícula inativa e ativação da matrícula** não fazem parte desta entrega.
+- **Matrícula inativa (RN10 / FE03):** no termo de compromisso, aluno com status `INATIVO` só pode ser
+  consultado: o `PUT` responde `409` e nada é gravado (`GET` e PDF continuam liberados). Nos termos de
+  imagem e de saída o bloqueio ainda não foi aplicado. A ativação da matrícula não faz parte desta entrega.
 
 ### Termo de imagem
 
@@ -253,6 +261,17 @@ reaproveitáveis pelas outras fichas: `service_historico.py` e `service_pdf.py`.
   `id` é criada e a que não vier na lista é removida. O `id` precisa ser de uma pessoa do termo desta
   matrícula (senão, `422`). Na resposta, vêm na ordem de cadastro (por `id`).
 - **O local é fixo** (`LOCAL_TERMO_SAIDA`): aparece só na resposta e qualquer `local` enviado é ignorado.
+
+### Termo de compromisso escolar
+
+- Obrigatórios para salvar: `nome_responsavel`, `cpf_responsavel`, `modalidade` e `regime`.
+- `modalidade`: `CRECHE` ou `PRE_ESCOLA`. `regime`: `TEMPO_INTEGRAL`, `PARCIAL_MATUTINO` ou
+  `PARCIAL_VESPERTINO` (as mesmas opções da tela do frontend).
+- `assinatura` (`true`/`false`) diz se o responsável leu e assinou o termo em papel. Com `true`,
+  `data_assinatura` é obrigatória e não pode ser futura; com `false` (ou ausente), a data é apagada.
+- `completa` só é verdadeiro com os obrigatórios preenchidos, `assinatura: true` e a data.
+- O PDF traz o texto das normas do modelo em papel da creche, que fica em um único arquivo:
+  `app/templates/termos/compromisso_escolar.txt`.
 
 ### Formato do erro 422
 
@@ -291,16 +310,24 @@ e `msg` para o texto.
                           {"nome": "Luiza Pereira", "parentesco": "Tia"}],
   "data": "2026-11-20"
 }
+
+// PUT /matriculas/7/termo-compromisso
+{
+  "nome_responsavel": "Maria das Graças Souza", "cpf_responsavel": "52998224725",
+  "modalidade": "CRECHE", "regime": "TEMPO_INTEGRAL",
+  "assinatura": true, "data_assinatura": "2026-11-20"
+}
 ```
 
 A resposta (`GET` e `PUT`) repete esses blocos e acrescenta `aluno` (somente leitura: `nome`,
 `data_nascimento`, `etapa` e `ano_letivo`), `completa`, `created_at` e `updated_at` (nulos enquanto o
-termo não foi salvo). No termo de saída vem também `local`.
+termo não foi salvo). No termo de saída vem também `local`. O termo de compromisso não tem blocos: os
+campos vêm no primeiro nível, como no corpo.
 
 ## Para o time de frontend
 
 - Uma rota por termo (tabela acima). A **confirmação antes de salvar** continua sendo um modal no frontend.
-- Os dados do aluno (`aluno`) são **somente leitura** nos dois termos. Qualquer coisa enviada neles é ignorada.
+- Os dados do aluno (`aluno`) são **somente leitura** em todos os termos. Qualquer coisa enviada neles é ignorada.
 - **Período do termo de saída é editável** (texto livre). O Figma mostra o campo como somente leitura no
   bloco do aluno, então a tela precisa ser ajustada.
 - **Local do termo de saída é fixo**: vem na resposta (`local`) e não é editável.
@@ -311,6 +338,7 @@ termo não foi salvo). No termo de saída vem também `local`.
   **É preciso um botão de remover pessoa**, que não existe no Figma.
 - O link "Ver texto completo do termo" usa `GET /termos/uso-imagem/texto` (`{"titulo", "texto"}`, parágrafos
   separados por linha em branco). É o mesmo texto do PDF.
+- **Termo de compromisso em matrícula inativa:** o `PUT` responde `409`; a tela deve ficar só para consulta.
 - CPF **só com dígitos**; datas em ISO (`AAAA-MM-DD`). A máscara é do frontend.
 - Os nomes dos campos da API são em `snake_case` (os mocks atuais usam camelCase).
 - Os PDFs vêm com `Content-Disposition: attachment; filename="termo-imagem-<aluno>-<ano>.pdf"` e
@@ -322,6 +350,9 @@ termo não foi salvo). No termo de saída vem também `local`.
 - Texto oficial do termo de imagem: até a entrega, `app/templates/termos/uso_imagem.txt` usa o texto de
   abrangência da tela. Para trocar, basta editar esse arquivo (rota de texto e PDF mudam juntos).
 - Lista de campos obrigatórios de cada termo e valor do local fixo do termo de saída.
+- Termo de compromisso: confirmar as opções de regime (seguem a tela: tempo integral e parcial
+  matutino/vespertino; o papel só cita "tempo integral") e o texto das normas (foram corrigidos só erros de digitação do papel, como
+  "Isto que dizer" → "Isto quer dizer" e "residências de atrasos" → "reincidências").
 - Logo do PDF: está o logo do Sigma. Troque `app/templates/static/logo.png` pelo da creche.
 
 # PDF das fichas e termos (WeasyPrint)

@@ -1,0 +1,69 @@
+{% extends "fichas/base.html" %}
+{% from "fichas/_macros.html" import campo, opcao, assinatura %}
+
+{% set em_branco = "______________________________" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ titulo }}</h1>
+<p class="subtitulo">Ano letivo {{ ano_letivo }}</p>
+
+<section>
+  <h2>Responsável</h2>
+  <div class="linha">
+    {{ campo("Nome", responsavel.nome) }}
+    {{ campo("CPF", responsavel.cpf|cpf) }}
+  </div>
+</section>
+
+<section>
+  <h2>Aluno(a)</h2>
+  <div class="linha">{{ campo("Nome", aluno.nome) }}</div>
+  <div class="linha">
+    {{ campo("Data de nascimento", aluno.data_nascimento|data, "data") }}
+    {{ campo("Ano/série", aluno.etapa) }}
+  </div>
+</section>
+
+<section>
+  <h2>Matrícula</h2>
+  <div class="opcoes">
+    <strong>Modalidade:</strong>
+    {% for item in modalidades %}{{ opcao(item.marcada, item.rotulo) }}{% endfor %}
+  </div>
+  <div class="opcoes">
+    <strong>Regime:</strong>
+    {% for item in regimes %}{{ opcao(item.marcada, item.rotulo) }}{% endfor %}
+  </div>
+</section>
+
+{# Normas: vêm do arquivo único app/templates/termos/compromisso_escolar.txt. #}
+<section class="texto-termo normas">
+  <h2>Termo</h2>
+  <p>
+    Eu, <span class="preenchido">{{ responsavel.nome or em_branco }}</span>, na condição de responsável
+    pelo(a) aluno(a) <span class="preenchido">{{ aluno.nome }}</span>, matriculado(a) no ano de
+    <span class="preenchido">{{ ano_letivo }}</span>, na modalidade de
+    <span class="preenchido">{{ modalidade or em_branco }}</span>, em
+    <span class="preenchido">{{ regime or em_branco }}</span> na Educação Infantil (creche e pré-escola)
+    nesta Unidade Escolar, estou CIENTE das exigências contidas neste termo, bem como das NORMAS E REGRAS
+    da escola, assumindo e firmando compromisso com a equipe gestora e pedagógica desta Unidade Escolar.
+  </p>
+  {% for paragrafo in paragrafos_termo %}
+  {# Parágrafo que termina em ":" introduz o seguinte: os dois ficam na mesma página. #}
+  <p{% if paragrafo.endswith(":") %} class="introduz"{% endif %}>{{ paragrafo }}</p>
+  {% endfor %}
+</section>
+
+<section>
+  <p>De acordo com o termo de compromisso,</p>
+  <div class="linha">
+    {{ campo("CPF", responsavel.cpf|cpf) }}
+    {{ campo("Data", data_assinatura|data, "data") }}
+  </div>
+  {{ assinatura("Assinatura do responsável") }}
+</section>
+
+<p class="lembrete">“{{ lembrete }}”</p>
+{% endblock %}

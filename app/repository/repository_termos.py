@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session, joinedload, selectinload
 
 from app.models.matricula import Matricula
 from app.models.pessoas_a import PessoaAutorizada
+from app.models.termo_comp import TermoCompromisso
 from app.models.termo_imagem import TermoImagem
 from app.models.termo_saida import TermoSaida
 from app.repository.repository_matricula import consulta_matricula as _consulta_matricula
@@ -33,28 +34,37 @@ def buscar_matricula_com_termo_saida(db: Session, id_matricula: int) -> Matricul
     return db.scalars(consulta).unique().first()
 
 
-def criar_ou_atualizar_termo_imagem(db: Session, matricula: Matricula, valores: dict[str, Any]) -> TermoImagem:
-    """Cria o termo da matrícula ou atualiza o que já existe. Só mexe nesta matrícula."""
-    termo = matricula.termo_imagem
+def buscar_matricula_com_termo_compromisso(db: Session, id_matricula: int) -> Matricula | None:
+    """Matrícula com aluno, turma, etapa e o Termo de compromisso escolar (se existir)."""
+    if not _id_possivel(id_matricula):
+        return None
+    consulta = _consulta_matricula(id_matricula).options(joinedload(Matricula.termo_compromisso))
+    return db.scalars(consulta).unique().first()
+
+
+def _criar_ou_atualizar(db: Session, matricula: Matricula, relacao: str, modelo: type, valores: dict[str, Any]):
+    """Cria o termo da matrícula (`relacao` é o atributo dela, ex.: "termo_imagem") ou atualiza o
+    que já existe. Só mexe nesta matrícula."""
+    termo = getattr(matricula, relacao)
     if termo is None:
-        termo = TermoImagem(matricula=matricula, **valores)
+        termo = modelo(matricula=matricula, **valores)
         db.add(termo)
     else:
         for campo, valor in valores.items():
             setattr(termo, campo, valor)
     return termo
+
+
+def criar_ou_atualizar_termo_imagem(db: Session, matricula: Matricula, valores: dict[str, Any]) -> TermoImagem:
+    return _criar_ou_atualizar(db, matricula, "termo_imagem", TermoImagem, valores)
 
 
 def criar_ou_atualizar_termo_saida(db: Session, matricula: Matricula, valores: dict[str, Any]) -> TermoSaida:
-    """Cria o termo da matrícula ou atualiza o que já existe. Só mexe nesta matrícula."""
-    termo = matricula.termo_saida
-    if termo is None:
-        termo = TermoSaida(matricula=matricula, **valores)
-        db.add(termo)
-    else:
-        for campo, valor in valores.items():
-            setattr(termo, campo, valor)
-    return termo
+    return _criar_ou_atualizar(db, matricula, "termo_saida", TermoSaida, valores)
+
+
+def criar_ou_atualizar_termo_compromisso(db: Session, matricula: Matricula, valores: dict[str, Any]) -> TermoCompromisso:
+    return _criar_ou_atualizar(db, matricula, "termo_compromisso", TermoCompromisso, valores)
 
 
 def sincronizar_pessoas_autorizadas(termo: TermoSaida, pessoas: list[dict[str, Any]]) -> None:
