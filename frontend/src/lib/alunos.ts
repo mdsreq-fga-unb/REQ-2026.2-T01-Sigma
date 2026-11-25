@@ -273,19 +273,17 @@ export function exigePessoasAutorizadas(forma: FormaSaida | null): boolean {
 export function validarTermoSaida(termo: TermoSaida): ErrosCampos {
   const erros: ErrosCampos = {};
   if (vazio(termo.nomeResponsavel)) erros.nomeResponsavel = "Informe o nome do responsável legal.";
-  if (!termo.formaSaida) erros.formaSaida = "Informe como o aluno sai da escola.";
-  if (termo.pessoasAutorizadas.length > MAX_PESSOAS_AUTORIZADAS) {
-    erros.pessoasAutorizadas = `Informe no máximo ${MAX_PESSOAS_AUTORIZADAS} pessoas.`;
-  } else if (termo.pessoasAutorizadas.some((p) => vazio(p.nome) || vazio(p.parentesco))) {
-    erros.pessoasAutorizadas = "Informe o nome e o parentesco de cada pessoa autorizada.";
-  } else if (exigePessoasAutorizadas(termo.formaSaida) && termo.pessoasAutorizadas.length === 0) {
+  if (!termo.formaSaida) erros.formaSaida = "Selecione como o aluno sai no horário de encerramento.";
+  if (exigePessoasAutorizadas(termo.formaSaida) && termo.pessoasAutorizadas.length === 0) {
     erros.pessoasAutorizadas = "Adicione ao menos uma pessoa autorizada a buscar o aluno.";
   }
+  if (termo.formaSaida === "OUTROS" && vazio(termo.descricaoOutros ?? "")) {
+    erros.descricaoOutros = "Informe a descrição da forma de saída.";
+  }
   if (vazio(termo.local)) erros.local = "Informe o local.";
-  validarData(erros, "data", termo.data);
+  if (vazio(termo.data)) erros.data = "Informe a data.";
   return erros;
 }
-
 export function validarTermoCompromisso(termo: TermoCompromisso): ErrosCampos {
   const erros: ErrosCampos = {};
   if (vazio(termo.nomeResponsavel)) erros.nomeResponsavel = "Informe o nome do responsável.";
@@ -299,4 +297,18 @@ export function validarTermoCompromisso(termo: TermoCompromisso): ErrosCampos {
 
 export function temErros(erros: ErrosCampos): boolean {
   return Object.keys(erros).length > 0;
+}
+
+export function mascaraCep(valor: string): string {
+  const d = somenteDigitos(valor).slice(0, 8);
+  if (d.length <= 5) return d;
+  return `${d.slice(0, 5)}-${d.slice(5)}`;
+}
+
+export function mascaraTelefone(valor: string): string {
+  const d = somenteDigitos(valor).slice(0, 11);
+  if (d.length <= 2) return d ? `(${d}` : "";
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
 }
