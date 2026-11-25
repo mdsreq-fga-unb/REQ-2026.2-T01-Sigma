@@ -126,6 +126,7 @@ def aluno(db_session):
     db_session.flush()
 
     obj = Aluno(
+        parentesco_responsavel="Mãe",
         nome="Ana Clara de Sá",
         data_nasc=date(2022, 5, 10),
         cpf="11122233344",
@@ -155,7 +156,7 @@ def aluno(db_session):
 @pytest.fixture
 def matricula(db_session, aluno):
     """Matrícula de 2026 do aluno, ainda sem ficha."""
-    obj = Matricula(ano=2026, id_aluno=aluno.id, data_matricula=date(2026, 1, 15))
+    obj = Matricula(ano=2026, id_aluno=aluno.id, id_etapa=aluno.turma.id_etapa, data_matricula=date(2026, 1, 15))
     db_session.add(obj)
     db_session.commit()
     db_session.refresh(obj)
@@ -165,7 +166,7 @@ def matricula(db_session, aluno):
 @pytest.fixture
 def matricula_outro_ano(db_session, aluno):
     """Matrícula de 2025 do mesmo aluno (cada ano letivo tem a sua ficha)."""
-    obj = Matricula(ano=2025, id_aluno=aluno.id, data_matricula=date(2025, 1, 20))
+    obj = Matricula(ano=2025, id_aluno=aluno.id, id_etapa=aluno.turma.id_etapa, data_matricula=date(2025, 1, 20))
     db_session.add(obj)
     db_session.commit()
     db_session.refresh(obj)

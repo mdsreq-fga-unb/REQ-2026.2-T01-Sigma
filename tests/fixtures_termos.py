@@ -131,6 +131,7 @@ def criar_aluno(db, nome: str = "Ana Beatriz de Souza", nome_etapa: str = "Mater
         "cep": "72910-000",
         "uf_residencia": "GO",
         "responsavel_id": responsavel.id,
+        "parentesco_responsavel": "Mãe",
         "turma_id": turma.id,
     }
     dados.update(extras)
@@ -144,7 +145,7 @@ def criar_matricula(db, aluno: Aluno | None = None, ano: int = 2026, **dados_alu
     """Matrícula de `ano`. Sem `aluno`, cria um. Com `aluno`, é outra matrícula do mesmo aluno."""
     if aluno is None:
         aluno = criar_aluno(db, **dados_aluno)
-    matricula = Matricula(ano=ano, id_aluno=aluno.id)
+    matricula = Matricula(ano=ano, id_aluno=aluno.id, id_etapa=aluno.turma.id_etapa)
     db.add(matricula)
     db.commit()
     db.refresh(matricula)

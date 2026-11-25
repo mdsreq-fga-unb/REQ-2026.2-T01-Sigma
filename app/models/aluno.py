@@ -53,11 +53,11 @@ class Aluno(TimestampMixin, Base):
             name="ck_alunos_uf_residencia",
         ),
     )
-    logradouro: Mapped[str] = mapped_column(String(200))
+    logradouro: Mapped[str | None] = mapped_column(String(200))  # opcional no cadastro do card
     numero: Mapped[str | None] = mapped_column(String(10))
     bairro: Mapped[str | None] = mapped_column(String(100))
-    cidade: Mapped[str] = mapped_column(String(100))  # cidade de residência
-    cep: Mapped[str] = mapped_column(String(9))
+    cidade: Mapped[str | None] = mapped_column(String(100))  # cidade de residência
+    cep: Mapped[str | None] = mapped_column(String(9))
     naturalidade: Mapped[str | None] = mapped_column(String(100))  # cidade de nascimento
     telefone: Mapped[str | None] = mapped_column(String(11))  # telefone do próprio aluno, só dígitos
     uf_residencia: Mapped[str | None] = mapped_column(String(2))  # UF de residência
@@ -66,10 +66,11 @@ class Aluno(TimestampMixin, Base):
         default=StatusAluno.ATIVO,
     )
     responsavel_id: Mapped[int] = mapped_column(ForeignKey("Responsavel.id"))
-    turma_id: Mapped[int] = mapped_column(ForeignKey("Turma.id"))
+    parentesco_responsavel: Mapped[str] = mapped_column(String(50))  # mãe, pai, avó... (vínculo com o responsável)
+    turma_id: Mapped[int | None] = mapped_column(ForeignKey("Turma.id"), nullable=True)  # vinculada depois do cadastro
 
     responsavel: Mapped["Responsavel"] = relationship(back_populates="alunos")
-    turma: Mapped["Turma"] = relationship(back_populates="alunos")
+    turma: Mapped["Turma | None"] = relationship(back_populates="alunos")
     matriculas: Mapped[list["Matricula"]] = relationship(back_populates="aluno")
     documentacao_civil: Mapped["DocumentacaoCivil | None"] = relationship(back_populates="aluno", uselist=False)
 

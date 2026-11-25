@@ -96,6 +96,13 @@ def _dados_do_termo(termo: TermoImagem | None, residente_em_sugerido: str = "") 
     }
 
 
+def _autorizacao(valor: bool) -> str:
+    return "Sim, autoriza" if valor else "Não autoriza"
+
+
+FORMATADORES_HISTORICO = {("autorizacao", "autoriza"): _autorizacao}
+
+
 def _foto(termo: TermoImagem | None) -> dict[Caminho, Any]:
     """Fotografia do termo para comparar antes e depois de salvar (histórico de edições)."""
     dados = _dados_do_termo(termo)
@@ -159,7 +166,7 @@ def salvar_termo(
     """Cria ou atualiza o termo e registra o histórico, **tudo em uma única transação** (FE04).
 
     Idempotente: reenviar o mesmo termo não duplica nada e, se nada mudou, não gera registro de
-    edição. O histórico guarda só os nomes dos campos alterados, nunca os valores (LGPD).
+    edição. O histórico guarda os valores anterior e novo, exceto nos campos sensíveis (LGPD).
     """
     matricula = _buscar_matricula(db, id_matricula)
     try:
@@ -175,10 +182,16 @@ def salvar_termo(
             service_historico.registrar(db, usuario, matricula.id_aluno, Tipo.PREENCHIMENTO_TERMO_IMAGEM, descricao)
         else:
             # Demais: registro de edição com os NOMES dos campos alterados. Nada mudou, nada registrado.
-            alterados = service_historico.campos_alterados(antes, _foto(termo), ROTULOS)
+            alterados = service_historico.itens_alterados(
+                antes, _foto(termo), ROTULOS, NOME_TERMO, FORMATADORES_HISTORICO
+            )
             if alterados:
-                descricao = service_historico.descrever(NOME_TERMO, "editado", matricula.ano, alterados)
-                service_historico.registrar(db, usuario, matricula.id_aluno, Tipo.EDICAO_TERMO_IMAGEM, descricao)
+                descricao = service_historico.descrever(
+                    NOME_TERMO, "editado", matricula.ano, service_historico.nomes(alterados)
+                )
+                service_historico.registrar(
+                    db, usuario, matricula.id_aluno, Tipo.EDICAO_TERMO_IMAGEM, descricao, alterados
+                )
 
         db.flush()
         db.refresh(termo, attribute_names=["created_at", "updated_at"])  # gerados pelo banco

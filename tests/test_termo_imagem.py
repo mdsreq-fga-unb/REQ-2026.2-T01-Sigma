@@ -644,3 +644,29 @@ def test_id_fora_do_intervalo_do_banco_retorna_404_e_nao_erro_de_banco(client, a
 
     assert res.status_code == 404
     assert res.json()["detail"] == "Matrícula não encontrada."
+
+
+def test_edicao_guarda_os_valores_no_historico_e_so_os_sensiveis_ficam_vazios(client, db_session, matricula_termos, auth_termos):
+    client.put(_url(matricula_termos), json=corpo(), headers=auth_termos)
+    client.put(
+        _url(matricula_termos),
+        json=corpo(
+            responsavel={"cpf": OUTRO_CPF_VALIDO, "nome": "Joana Pereira Lima", "rg": "7654321 SSP/DF"},
+            autorizacao={"autoriza": False},
+        ),
+        headers=auth_termos,
+    )
+
+    (edicao,) = _operacoes(db_session, Tipo.EDICAO_TERMO_IMAGEM)
+    por_campo = {item["campo"]: item for item in edicao.alteracoes}
+    assert por_campo["Responsável legal – nome"]["valor_novo"] == "Joana Pereira Lima"
+    assert por_campo["Autorização de uso de imagem"]["valor_novo"] == "Não autoriza"
+    assert por_campo["Responsável legal – CPF"] == {
+        "ficha": por_campo["Responsável legal – CPF"]["ficha"],
+        "campo": "Responsável legal – CPF",
+        "valor_anterior": "",
+        "valor_novo": "",
+        "sensivel": True,
+    }
+    assert "Joana" not in edicao.descricao  # o resumo continua só com os nomes
+

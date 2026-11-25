@@ -11,7 +11,7 @@ O corpo das requisições tem dados pessoais e nunca é registrado em log.
 
 from app.schemas.termo_imagem import TermoImagemResponse, TermoImagemUpdate
 from app.schemas.termo_saida import TermoSaidaResponse, TermoSaidaUpdate
-from app.services import service_termo_imagem, service_termo_saida
+from app.services import service_termo_imagem, service_termo_saida, service_requerimento
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Response, status

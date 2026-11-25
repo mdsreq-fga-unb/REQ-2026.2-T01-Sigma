@@ -8,6 +8,7 @@ from .mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from .aluno import Aluno
+    from .etapa import Etapa
     from .requerimento_matricula import RequerimentoMatricula
     from .ficha_socioeco import FichaSocioeconomica
     from .termo_saida import TermoSaida
@@ -22,6 +23,9 @@ class Matricula(TimestampMixin, Base):
     ano: Mapped[int] = mapped_column()
     data_matricula: Mapped[date] = mapped_column(Date, server_default=func.current_date())
     id_aluno: Mapped[int] = mapped_column(ForeignKey("Aluno.id"))
+    id_etapa: Mapped[int] = mapped_column(ForeignKey("Etapa.id"))  # etapa escolhida no cadastro do card
+
+    etapa: Mapped["Etapa"] = relationship()
 
     aluno: Mapped["Aluno"] = relationship(back_populates="matriculas")
     requerimento: Mapped["RequerimentoMatricula | None"] = relationship(back_populates="matricula", uselist=False)
