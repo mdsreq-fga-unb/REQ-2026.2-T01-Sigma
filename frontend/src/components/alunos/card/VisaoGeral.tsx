@@ -13,7 +13,7 @@ const ORDEM_FICHAS: FichaAluno[] = ["requerimento", "socioeconomica", "usoImagem
 /** UC04 – Card do aluno · visão geral (RF08, RF11) e versão somente consulta do card inativo (RF12, RN10). */
 export function VisaoGeral() {
   const { card } = useAlunoCard();
-  const ativo = card.status === "ATIVO";
+  const ativo = card.status !== "INATIVO"; // Pendente também pode ser editado
   const base = `/alunos/${encodeURIComponent(card.id)}`;
   const documentos = DOCUMENTOS_EXIGIDOS.map(
     (nome) => card.documentos.find((doc) => doc.nome === nome) ?? { nome, situacao: "PENDENTE" as const },

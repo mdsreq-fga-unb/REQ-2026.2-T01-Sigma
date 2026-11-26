@@ -2,7 +2,9 @@ import type {
   AlunoCard,
   AlunoResumo,
   DadosPessoaisAluno,
+  FichaAluno,
   ReferenciaNome,
+  SituacaoFicha,
   StatusAluno,
   TermosAluno,
 } from "@/types";
@@ -27,7 +29,8 @@ export interface AlunoRegistro {
   matricula: { anoLetivo: string; dataMatricula: string };
   etapaId: string | null;
   turmaId: string | null;
-  status: StatusAluno;
+  /** Só guarda a inativação; PENDENTE/ATIVO é calculado pelas fichas (`statusAluno`). */
+  status: "ATIVO" | "INATIVO";
   // Fichas ainda não implementadas no frontend: o mock guarda só se estão preenchidas.
   requerimentoPreenchido: boolean;
   socioeconomicaPreenchida: boolean;
@@ -61,41 +64,45 @@ function referenciaTurma(registro: AlunoRegistro): { turma: ReferenciaNome | nul
   };
 }
 
-export function alunoResumo(registro: AlunoRegistro): AlunoResumo {
+function situacaoFichas(registro: AlunoRegistro): Record<FichaAluno, SituacaoFicha> {
   const { termos } = registro;
+  return {
+    requerimento: registro.requerimentoPreenchido ? "PREENCHIDA" : "PENDENTE",
+    socioeconomica: registro.socioeconomicaPreenchida ? "PREENCHIDA" : "PENDENTE",
+    usoImagem: termos.usoImagem ? "PREENCHIDA" : "PENDENTE",
+    saida: termos.saida ? "PREENCHIDA" : "PENDENTE",
+    compromisso: termos.compromisso ? "PREENCHIDA" : "PENDENTE",
+  };
+}
+
+/** RN06: a matrícula só fica ativa com todas as fichas completas; até lá, Pendente. */
+export function statusAluno(registro: AlunoRegistro): StatusAluno {
+  if (registro.status === "INATIVO") return "INATIVO";
+  const completas = Object.values(situacaoFichas(registro)).every((situacao) => situacao === "PREENCHIDA");
+  return completas ? "ATIVO" : "PENDENTE";
+}
+
+export function alunoResumo(registro: AlunoRegistro): AlunoResumo {
   return {
     id: registro.id,
     nome: registro.aluno.nome,
     dataNascimento: registro.aluno.dataNascimento,
-    status: registro.status,
+    status: statusAluno(registro),
     ...referenciaTurma(registro),
-    fichas: {
-      requerimento: registro.requerimentoPreenchido ? "PREENCHIDA" : "PENDENTE",
-      socioeconomica: registro.socioeconomicaPreenchida ? "PREENCHIDA" : "PENDENTE",
-      usoImagem: termos.usoImagem ? "PREENCHIDA" : "PENDENTE",
-      saida: termos.saida ? "PREENCHIDA" : "PENDENTE",
-      compromisso: termos.compromisso ? "PREENCHIDA" : "PENDENTE",
-    },
+    fichas: situacaoFichas(registro),
   };
 }
 
 export function alunoCard(registro: AlunoRegistro): AlunoCard {
-  const { termos } = registro;
   const ultima = registro.historico[0];
   return {
     id: registro.id,
     aluno: registro.aluno,
     matricula: registro.matricula,
-    status: registro.status,
+    status: statusAluno(registro),
     ...referenciaTurma(registro),
-    fichas: {
-      requerimento: registro.requerimentoPreenchido ? "PREENCHIDA" : "PENDENTE",
-      socioeconomica: registro.socioeconomicaPreenchida ? "PREENCHIDA" : "PENDENTE",
-      usoImagem: termos.usoImagem ? "PREENCHIDA" : "PENDENTE",
-      saida: termos.saida ? "PREENCHIDA" : "PENDENTE",
-      compromisso: termos.compromisso ? "PREENCHIDA" : "PENDENTE",
-    },
-    termos,
+    fichas: situacaoFichas(registro),
+    termos: registro.termos,
     resumo: registro.resumo,
     documentos: DOCUMENTOS_EXIGIDOS.map((nome) => ({
       nome,
@@ -148,6 +155,45 @@ function registroBase(
   };
 }
 
+/** Fichas e termos todos preenchidos: o aluno aparece como Ativo (RN06). */
+function fichasCompletas(responsavel: string, parentesco: string, endereco: string): Partial<AlunoRegistro> {
+  return {
+    requerimentoPreenchido: true,
+    socioeconomicaPreenchida: true,
+    termos: {
+      usoImagem: {
+        responsavel: {
+          nome: responsavel,
+          nacionalidade: "Brasileira",
+          estadoCivil: "Casada",
+          rg: "0000000",
+          cpf: "00000000000",
+          endereco,
+        },
+        autoriza: true,
+        local: "Águas Lindas de Goiás",
+        data: "2026-02-03",
+      },
+      saida: {
+        nomeResponsavel: responsavel,
+        formaSaida: "RESPONSAVEIS",
+        pessoasAutorizadas: [],
+        local: "Águas Lindas de Goiás",
+        data: "2026-02-03",
+      },
+      compromisso: {
+        nomeResponsavel: responsavel,
+        cpfResponsavel: "00000000000",
+        modalidade: "Creche",
+        regime: "Tempo integral",
+        ciente: true,
+        dataAssinatura: "2026-02-03",
+      },
+    },
+    resumo: { responsavel, parentesco, telefone: "(61) 9 0000-0000", endereco },
+  };
+}
+
 function seedAlunos(): AlunoRegistro[] {
   const endereco = "Quadra 00, Conjunto A, Lote 00, Setor 5 — Águas Lindas de Goiás";
   const anaClara = registroBase("a1", pessoa("Ana Clara Souza", "2024-03-12", "FEMININO"), "e1", "t1", {
@@ -191,9 +237,21 @@ function seedAlunos(): AlunoRegistro[] {
   const prototipo: AlunoRegistro[] = [
     anaClara,
     registroBase("a2", pessoa("Bruno Henrique Lima", "2023-08-05", "MASCULINO"), "e2", "t2"),
-    registroBase("a3", pessoa("Carla Mendes Rocha", "2022-01-21", "FEMININO"), "e3", "t3"),
+    registroBase(
+      "a3",
+      pessoa("Carla Mendes Rocha", "2022-01-21", "FEMININO"),
+      "e3",
+      "t3",
+      fichasCompletas("Juliana Mendes", "mãe", endereco),
+    ),
     registroBase("a4", pessoa("Davi Oliveira Santos", "2023-06-30", "MASCULINO"), "e2", "t2", { status: "INATIVO" }),
-    registroBase("a5", pessoa("Eduarda Pereira Costa", "2022-11-14", "FEMININO"), "e3", "t3"),
+    registroBase(
+      "a5",
+      pessoa("Eduarda Pereira Costa", "2022-11-14", "FEMININO"),
+      "e3",
+      "t3",
+      fichasCompletas("Roberto Costa", "pai", endereco),
+    ),
     registroBase("a6", pessoa("Felipe Araújo Nunes", "2024-04-09", "MASCULINO"), "e1", "t1"),
     registroBase("a7", pessoa("Giovana Ribeiro Alves", "2022-02-02", "FEMININO"), null, null),
   ];
@@ -203,10 +261,13 @@ function seedAlunos(): AlunoRegistro[] {
     registroBase("a8", pessoa("Heitor Almeida Dias", "2024-01-15", "MASCULINO"), "e1", "t1", {
       requerimentoPreenchido: true,
     }),
-    registroBase("a9", pessoa("Isabela Barbosa Esteves", "2023-02-08", "FEMININO"), "e2", "t2", {
-      requerimentoPreenchido: true,
-      socioeconomicaPreenchida: true,
-    }),
+    registroBase(
+      "a9",
+      pessoa("Isabela Barbosa Esteves", "2023-02-08", "FEMININO"),
+      "e2",
+      "t2",
+      fichasCompletas("Patrícia Barbosa", "mãe", endereco),
+    ),
     registroBase("a10", pessoa("João Pedro Cardoso Ferreira", "2022-03-15", "MASCULINO"), "e3", "t3"),
   ];
 

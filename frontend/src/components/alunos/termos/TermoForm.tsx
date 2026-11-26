@@ -56,7 +56,7 @@ export function TermoForm<T extends TermoAluno>({
   const [exportandoPdf, setExportandoPdf] = useState(false);
   const [erroPdf, setErroPdf] = useState<string | null>(null);
 
-  const ativo = card.status === "ATIVO";
+  const ativo = card.status !== "INATIVO"; // Pendente também pode ser editado
   const pendente = card.termos[termo] === null;
   const visaoGeral = `/alunos/${encodeURIComponent(card.id)}`;
   const podeExportarPdf = usandoBackendReal && (termo === "usoImagem" || termo === "saida");

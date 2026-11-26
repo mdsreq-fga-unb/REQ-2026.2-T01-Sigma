@@ -1,10 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { normalizarBusca, temErros, validarNovoAluno } from "@/lib/alunos";
-import { alunoCard, alunoResumo, alunos, type AlunoRegistro } from "@/mocks/alunos";
+import { alunoCard, alunoResumo, alunos, statusAluno, type AlunoRegistro } from "@/mocks/alunos";
 import { lerNovoAluno } from "@/mocks/alunosPayload";
 import { erro, esperar, mockHabilitado, naoEncontrado, novoId, store, usuarioDaSessao } from "@/mocks/store";
 import type { ListaAlunos, StatusAluno } from "@/types";
 
+const STATUS_VALIDOS: StatusAluno[] = ["PENDENTE", "ATIVO", "INATIVO"];
 const TAMANHO_PADRAO = 10;
 const TAMANHO_MAXIMO = 50;
 
@@ -21,7 +22,8 @@ export async function GET(request: NextRequest) {
 
   const params = request.nextUrl.searchParams;
   const busca = normalizarBusca(params.get("busca") ?? "");
-  const status = params.get("status") as StatusAluno | null;
+  const statusParam = params.get("status");
+  const status = STATUS_VALIDOS.find((s) => s === statusParam);
   const turmaId = params.get("turmaId");
   const tamanhoPagina = Math.min(Math.max(Number(params.get("tamanhoPagina")) || TAMANHO_PADRAO, 1), TAMANHO_MAXIMO);
 
@@ -29,7 +31,7 @@ export async function GET(request: NextRequest) {
     .filter(
       (a) =>
         (!busca || normalizarBusca(a.aluno.nome).includes(busca)) &&
-        (status !== "ATIVO" && status !== "INATIVO" ? true : a.status === status) &&
+        (!status || statusAluno(a) === status) &&
         (!turmaId || a.turmaId === turmaId),
     )
     .sort((a, b) => a.aluno.nome.localeCompare(b.aluno.nome, "pt-BR"));

@@ -7,7 +7,7 @@ import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { useToast } from "@/components/ui/Toast";
-import { isoParaData, statusExibicaoAluno } from "@/lib/alunos";
+import { isoParaData } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
 import { obterAluno, reativarAluno } from "@/services/alunos.service";
 import type { AlunoCard } from "@/types";
@@ -110,7 +110,6 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
   }
 
   const inativo = card.status === "INATIVO";
-  const status = statusExibicaoAluno(card);
 
   return (
     <AlunoCardContext.Provider value={contexto}>
@@ -127,7 +126,7 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
         <div className={styles.identificacao}>
           <div className={styles.tituloLinha}>
             <h1 className={styles.titulo}>{card.aluno.nome}</h1>
-            <StatusBadge status={status} />
+            <StatusBadge status={card.status} />
           </div>
           <p className={styles.subtitulo}>{subtitulo(card)}</p>
         </div>

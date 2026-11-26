@@ -23,8 +23,8 @@
 }
 
 .pendente {
-  background: var(--color-warning-bg);
-  color: var(--color-warning);
+  background: var(--color-pending-badge-bg);
+  color: var(--color-pending-badge);
 }
 
 .inativo {
