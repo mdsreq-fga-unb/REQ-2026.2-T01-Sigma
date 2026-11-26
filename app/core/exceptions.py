@@ -35,6 +35,23 @@ class MatriculaNaoEncontradaError(ErroNegocio):
     mensagem = "Matrícula não encontrada."
 
 
+class AlunoNaoEncontradoError(ErroNegocio):
+    status_code = 404
+    mensagem = "Aluno não encontrado."
+
+
+class EtapaNaoEncontradaError(ErroNegocio):
+    status_code = 404
+    mensagem = "Etapa não encontrada."
+
+
+class MatriculaInativaError(ErroNegocio):
+    """RN10 / FE03: matrícula/card inativo só pode ser consultado, nunca editado."""
+
+    status_code = 409
+    mensagem = "Matrícula inativa não pode ser editada."
+
+
 class DadosInvalidosError(ErroNegocio):
     """Dados recusados por regra que só o service conhece (ex.: `id` de outro termo).
 
