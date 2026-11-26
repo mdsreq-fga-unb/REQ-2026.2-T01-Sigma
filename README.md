@@ -67,7 +67,8 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 
 O frontend real consome autenticação, usuários e estrutura escolar (turmas/etapas) disponíveis na
 API. Das matrículas, o backend implementa por enquanto o Requerimento de matrícula e os termos de uso
-de imagem, de saída e de compromisso escolar (UC04, seções abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
+de imagem, de saída e de compromisso escolar, e a consulta do histórico de edições do card (UC04,
+seções abaixo); os demais endpoints usados pela tela de alunos ainda não existem.
 
 # API do Requerimento de matrícula (UC04)
 
@@ -354,6 +355,35 @@ campos vêm no primeiro nível, como no corpo.
   matutino/vespertino; o papel só cita "tempo integral") e o texto das normas (foram corrigidos só erros de digitação do papel, como
   "Isto que dizer" → "Isto quer dizer" e "residências de atrasos" → "reincidências").
 - Logo do PDF: está o logo do Sigma. Troque `app/templates/static/logo.png` pelo da creche.
+
+# API do Histórico de edições do card (UC04 / FA04)
+
+`GET /alunos/{id_aluno}/historico`: somente leitura (não há rota para editar ou apagar o histórico).
+Respostas: 200; 401; 403 (conta inativa); 404 (aluno não encontrado); 422 (filtro inválido); 503.
+
+| Parâmetro | Valores | Padrão |
+|---|---|---|
+| `ficha` | `card`, `requerimento`, `socioeconomica`, `termo_imagem`, `termo_saida`, `termo_compromisso`, `documentos` | todas |
+| `usuario_id` | id do autor | todos |
+| `periodo` | `7d`, `30d`, `90d`, `todos` (contado a partir de agora) | `30d` |
+| `page` / `page_size` | `page` ≥ 1; `page_size` de 1 a 100 | `1` / `10` |
+
+- **Uma linha por campo alterado**, da mais recente para a mais antiga (`data_op` e, no empate, a
+  operação mais nova). Um salvamento que muda 3 campos gera 3 linhas com a mesma data e autor.
+- `total` e `total_pages` contam **linhas**, não salvamentos.
+- **Exportação de PDF e consulta nunca aparecem.** A "Última edição" da visão geral usa a mesma
+  regra, então é sempre a primeira linha do histórico.
+- **Primeiro preenchimento e registros antigos** (sem `alteracoes`): uma linha só, com o resumo da
+  `descricao` em `campo` (ex.: "Termo de compromisso escolar preenchido (ano letivo 2026).") e valores nulos.
+- **LGPD:** linha com `sensivel: true` sempre traz `valor_anterior` e `valor_novo` nulos.
+- `usuarios`: autores com registro no histórico do aluno, **sem aplicar os filtros**, para montar o
+  filtro "Usuário" da tela sem chamar a rota administrativa `/usuarios`.
+- Funciona para card PENDENTE, ATIVO e INATIVO. `data_hora` vem no fuso de São Paulo, como as
+  outras datas da API.
+- `documentos` ainda não grava histórico: o filtro é aceito e volta vazio.
+
+Código: `app/schemas/historico.py`, `app/services/service_historico_card.py` e
+`app/repository/repository_historico.py`. A gravação continua em `app/services/service_historico.py`.
 
 # PDF das fichas e termos (WeasyPrint)
 

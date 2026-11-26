@@ -9,13 +9,14 @@ from app.models.aluno import Aluno
 from app.models.etapa import Etapa
 from app.models.ficha_socioeco import FichaSocioeconomica
 from app.models.matricula import Matricula
-from app.models.ops import Operacao, Tipo
+from app.models.ops import Operacao
 from app.models.pessoa import Pessoa
 from app.models.requerimento_matricula import RequerimentoMatricula
 from app.models.responsavel import Responsavel
 from app.models.termo_saida import TermoSaida
 from app.models.turma import Turma
 from app.models.user import Usuario
+from app.repository.repository_historico import TIPOS_FORA_DO_HISTORICO
 from app.repository.repository_matricula import id_possivel
 
 
@@ -75,11 +76,12 @@ def buscar_aluno_visao_geral(db: Session, id_aluno: int) -> Aluno | None:
 
 
 def buscar_ultima_edicao(db: Session, id_aluno: int) -> tuple[Operacao, Usuario] | None:
-    """Operação de edição mais recente do aluno (exclui exportação de PDF)."""
+    """Operação mais recente do histórico do aluno (sem exportação de PDF nem consulta): é a
+    primeira linha de `GET /alunos/{id}/historico`."""
     consulta = (
         select(Operacao, Usuario)
         .join(Usuario, Operacao.id_user == Usuario.id)
-        .where(Operacao.id_aluno == id_aluno, Operacao.tipo != Tipo.EXPORTACAO_PDF)
+        .where(Operacao.id_aluno == id_aluno, Operacao.tipo.not_in(TIPOS_FORA_DO_HISTORICO))
         .order_by(Operacao.data_op.desc(), Operacao.id.desc())
         .limit(1)
     )
