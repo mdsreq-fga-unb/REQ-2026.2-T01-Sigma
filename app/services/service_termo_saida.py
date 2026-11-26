@@ -198,6 +198,8 @@ def salvar_termo(
     alterados, nunca os valores (LGPD).
     """
     matricula = _buscar_matricula(db, id_matricula)
+    from app.services.service_status_matricula import garantir_editavel
+    garantir_editavel(matricula)
     termo_anterior = matricula.termo_saida
     _conferir_ids_das_pessoas(termo_anterior, dados)  # 422 antes de alterar qualquer coisa: nada a desfazer
 

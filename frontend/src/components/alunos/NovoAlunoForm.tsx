@@ -25,14 +25,12 @@ import {
   type ErrosCampos,
 } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
-import { novoPayloadMatricula } from "@/lib/matriculas";
 import { criarAluno } from "@/services/alunos.service";
 import { listarEtapas } from "@/services/etapas.service";
-import type { CorRaca, Etapa, NovaMatriculaPayload, NovoAlunoPayload, Sexo } from "@/types";
+import type { CorRaca, Etapa, NovoAlunoPayload, Sexo } from "@/types";
 import { ConfirmacaoModal } from "./ConfirmacaoModal";
 import { focarPrimeiroErro } from "./focarErro";
 import stylesAluno from "./Alunos.module.css";
-import stylesMatricula from "./MatriculaForm.module.css";
 
 interface Formulario {
   nome: string;
@@ -48,11 +46,6 @@ interface Formulario {
   etapaId: string;
   anoLetivo: string;
   dataMatricula: string;
-}
-
-interface NovoAlunoFormProps {
-  onCancel?: () => void;
-  onCreate?: (payload: NovaMatriculaPayload) => void;
 }
 
 function formularioInicial(): Formulario {
@@ -94,218 +87,6 @@ function paraPayload(f: Formulario): NovoAlunoPayload {
       dataMatricula: dataDigitadaParaIso(f.dataMatricula),
     },
   };
-}
-
-function FluxoMatricula({ onCancel, onCreate }: NovoAlunoFormProps) {
-  const [payload, setPayload] = useState<NovaMatriculaPayload>(() => novoPayloadMatricula());
-  const { aluno } = payload;
-  const requerimento = payload.fichas.requerimento;
-
-  function atualizarAluno(campo: keyof typeof aluno, valor: string) {
-    setPayload((atual) => ({ ...atual, aluno: { ...atual.aluno, [campo]: valor } }));
-  }
-
-  function atualizarMatricula(campo: "anoEscolaridade" | "anoLetivo" | "dataMatricula", valor: string) {
-    setPayload((atual) => ({
-      ...atual,
-      fichas: {
-        ...atual.fichas,
-        requerimento: { ...atual.fichas.requerimento, [campo]: valor },
-      },
-    }));
-  }
-
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!onCreate) return;
-    onCreate({
-      ...payload,
-      aluno: { ...aluno, cpf: aluno.cpf.replace(/\D/g, "") },
-    });
-  }
-
-  return (
-    <form className={stylesMatricula.form} onSubmit={onSubmit}>
-      <section className={stylesMatricula.secao}>
-        <header className={stylesMatricula.cabecalhoSecao}>
-          <div>
-            <h2>Dados pessoais do aluno</h2>
-            <p>Comuns ao Requerimento de matrícula e à Ficha socioeconômica — preenchidos uma vez.</p>
-          </div>
-        </header>
-        <div className={stylesMatricula.gradeTres}>
-          <div className={stylesMatricula.larguraTotal}>
-            <TextField
-              label="Nome do aluno"
-              required
-              autoComplete="off"
-              placeholder="Digite o nome completo"
-              value={aluno.nome}
-              onChange={(event) => atualizarAluno("nome", event.target.value)}
-            />
-          </div>
-          <TextField
-            label="Data de nascimento"
-            type="date"
-            required
-            value={aluno.dataNascimento}
-            onChange={(event) => atualizarAluno("dataNascimento", event.target.value)}
-          />
-          <fieldset className={stylesMatricula.grupoOpcoes}>
-            <legend>Sexo<span aria-hidden="true"> *</span></legend>
-            <div className={stylesMatricula.opcoes}>
-              {[{ valor: "M", rotulo: "Masculino" }, { valor: "F", rotulo: "Feminino" }].map((opcao, index) => (
-                <label className={stylesMatricula.opcao} key={opcao.valor}>
-                  <input
-                    type="radio"
-                    name="sexo-aluno"
-                    value={opcao.valor}
-                    checked={aluno.sexo === opcao.valor}
-                    required={index === 0 && !aluno.sexo}
-                    onChange={() => atualizarAluno("sexo", opcao.valor)}
-                  />
-                  {opcao.rotulo}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-          <TextField
-            label="Nº do NIS"
-            placeholder="—"
-            value={aluno.nis}
-            onChange={(event) => atualizarAluno("nis", event.target.value)}
-          />
-          <TextField
-            label="ID"
-            placeholder="—"
-            value={aluno.identidade}
-            onChange={(event) => atualizarAluno("identidade", event.target.value)}
-          />
-          <TextField
-            label="CPF do aluno"
-            inputMode="numeric"
-            pattern="[0-9]{11}"
-            maxLength={11}
-            placeholder="000.000.000-00"
-            hint="Informe os 11 números do CPF."
-            required
-            value={aluno.cpf}
-            onChange={(event) => atualizarAluno("cpf", event.target.value.replace(/\D/g, ""))}
-          />
-          <TextField
-            label="Naturalidade"
-            placeholder="Cidade"
-            value={aluno.naturalidade}
-            onChange={(event) => atualizarAluno("naturalidade", event.target.value)}
-          />
-          <label className={stylesMatricula.campo}>
-            <span className={stylesMatricula.rotulo}>UF</span>
-            <select
-              className={stylesMatricula.controle}
-              value={aluno.ufNaturalidade}
-              onChange={(event) => atualizarAluno("ufNaturalidade", event.target.value)}
-            >
-              <option value="">Selecione</option>
-              {[
-                "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
-                "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC",
-                "SP", "SE", "TO",
-              ].map((estado) => (
-                <option key={estado} value={estado}>{estado}</option>
-              ))}
-            </select>
-          </label>
-          <TextField
-            label="Nacionalidade"
-            value={aluno.nacionalidade}
-            onChange={(event) => atualizarAluno("nacionalidade", event.target.value)}
-          />
-          <div className={stylesMatricula.larguraTotal}>
-            <fieldset className={stylesMatricula.grupoOpcoes}>
-              <legend>Cor/raça</legend>
-              <div className={stylesMatricula.opcoes}>
-                {[
-                  { valor: "BRANCA", rotulo: "Branca" },
-                  { valor: "PRETA", rotulo: "Preta" },
-                  { valor: "PARDA", rotulo: "Parda" },
-                  { valor: "AMARELA", rotulo: "Amarela" },
-                  { valor: "INDIGENA", rotulo: "Indígena" },
-                  { valor: "NAO_DECLARADA", rotulo: "Não declarada" },
-                ].map((opcao) => (
-                  <label className={stylesMatricula.opcao} key={opcao.valor}>
-                    <input
-                      type="radio"
-                      name="cor-raca"
-                      value={opcao.valor}
-                      checked={aluno.corRaca === opcao.valor}
-                      onChange={() => atualizarAluno("corRaca", opcao.valor)}
-                    />
-                    {opcao.rotulo}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-          </div>
-        </div>
-      </section>
-
-      <section className={stylesMatricula.secao}>
-        <header className={stylesMatricula.cabecalhoSecao}>
-          <div>
-            <h2>Matrícula</h2>
-          </div>
-        </header>
-        <div className={stylesMatricula.gradeTres}>
-          <label className={stylesMatricula.campo}>
-            <span className={stylesMatricula.rotulo}>Ano de escolaridade / etapa</span>
-            <select
-              className={stylesMatricula.controle}
-              value={requerimento.anoEscolaridade}
-              onChange={(event) => atualizarMatricula("anoEscolaridade", event.target.value)}
-              required
-            >
-              <option value="">Selecione</option>
-              {[
-                "Berçário",
-                "Maternal I",
-                "Maternal II",
-                "Jardim I",
-                "Jardim II",
-                "Pré-escola",
-              ].map((opcao) => (
-                <option value={opcao} key={opcao}>{opcao}</option>
-              ))}
-            </select>
-          </label>
-          <TextField
-            label="Ano letivo"
-            inputMode="numeric"
-            pattern="[0-9]{4}"
-            maxLength={4}
-            required
-            value={requerimento.anoLetivo}
-            onChange={(event) => atualizarMatricula("anoLetivo", event.target.value)}
-          />
-          <TextField
-            label="Data da matrícula"
-            type="date"
-            required
-            value={requerimento.dataMatricula}
-            onChange={(event) => atualizarMatricula("dataMatricula", event.target.value)}
-          />
-        </div>
-        <p className={stylesMatricula.ajuda}>A turma é vinculada depois, pelo botão “Vincular à turma” no card do aluno.</p>
-      </section>
-
-      <footer className={stylesMatricula.acoes}>
-        <p>As fichas e os termos serão preenchidos depois, dentro do card.</p>
-        <div>
-          <Button variant="secondary" onClick={onCancel}>Cancelar</Button>
-          <Button type="submit">Criar card</Button>
-        </div>
-      </footer>
-    </form>
-  );
 }
 
 function FluxoCard() {
@@ -531,7 +312,6 @@ function FluxoCard() {
   );
 }
 
-export function NovoAlunoForm(props: NovoAlunoFormProps = {}) {
-  if (props.onCreate || props.onCancel) return <FluxoMatricula {...props} />;
+export function NovoAlunoForm() {
   return <FluxoCard />;
 }

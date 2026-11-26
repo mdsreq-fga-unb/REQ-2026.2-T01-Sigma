@@ -291,6 +291,8 @@ def salvar_ficha(
         matricula = repo.buscar_matricula(db, id_matricula)
         if matricula is None:
             raise MatriculaNaoEncontradaError()
+        from app.services.service_status_matricula import garantir_editavel
+        garantir_editavel(matricula)
 
         membros = [m.model_dump() for m in entrada.nucleo_familiar.membros]
         invalidos = repo.ids_membros_invalidos(matricula.ficha_socioeconomica, membros)
