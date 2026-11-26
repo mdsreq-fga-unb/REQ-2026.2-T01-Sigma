@@ -55,10 +55,24 @@ O frontend consome a API em `NEXT_PUBLIC_API_URL` (padrão no desenvolvimento: `
 
 As chamadas para `/api/backend/*` são repassadas pelo Next ao FastAPI (`next.config.ts`), permitindo que o navegador mantenha a mesma origem e que o token renovado seja tratado pelo cliente.
 
-**Contrato UC04/alunos (estado atual):**
-- **Integrado ao backend real (adaptação no front, id do card = id da matrícula):** ficha socioeconômica (`GET/PUT /matriculas/{id}/socioeconomica`), termo de uso de imagem (`GET/PUT /matriculas/{id}/termo-imagem` e texto em `GET /termos/uso-imagem/texto`), termo de saída (`GET/PUT /matriculas/{id}/termo-saida`) e exportação PDF (`GET /matriculas/{id}/socioeconomica|termo-imagem|termo-saida/pdf`) quando disponível.
-- **Parcial/no mock apenas:** a UI de requerimento ainda usa o formulário legado no modo real enquanto a adaptação completa do contrato de `GET/PUT /matriculas/{id}/requerimento` não é finalizada; termo de compromisso permanece mock/local por ausência de rotas no backend.
-- **Bloqueios de backend (fora desta integração):** listar/buscar/criar card agregado (`/alunos`), status consolidado de fichas em uma única rota, inativar/reativar/vincular turma, documentos e histórico/`ultimaEdicao`. Nessas áreas o comportamento em modo real pode ser limitado. Auth, usuários, etapas e turmas seguem integráveis pelas rotas existentes em `app/routes/`.
+**Contrato UC04/alunos:**
+- `POST /alunos` cria aluno, responsável e matrícula; `GET /alunos/{id_aluno}` devolve a visão geral. A URL do card usa `id_aluno`; a resposta também traz `id_matricula`.
+- Os endpoints de fichas/termos usam `id_matricula` em `/matriculas/{id_matricula}/...`: requerimento, socioeconômica, termo de imagem, termo de saída e termo de compromisso. As abas integradas usam esse id; PDFs disponíveis: `GET /matriculas/{id_matricula}/{socioeconomica|requerimento|termo-imagem|termo-saida|termo-compromisso}/pdf`.
+- Requerimento: o formulário real carrega e salva o contrato de `GET/PUT /matriculas/{id_matricula}/requerimento`; ano de escolaridade e turma são somente leitura. A resposta usa `completa`.
+- Ficha socioeconômica: `GET/PUT /matriculas/{id_matricula}/socioeconomica`; o formulário envia a lista completa de membros, preserva os IDs, usa os enums atuais de moradia/transporte e exibe dados pessoais somente leitura.
+- Termos de imagem e saída convertem os formatos do formulário para os schemas reais, inclusive autorização de imagem não respondida (`null`). O texto oficial do termo vem de `GET /termos/uso-imagem/texto`.
+- O cadastro envia `aluno.data_nasc`/`raca`, `responsavel.nome`/`parentesco`/`cpf`/`telefone` e `matricula.id_etapa`/`ano`/`data_matricula`. Nome e parentesco do responsável são obrigatórios. O sexo (`MASCULINO`/`FEMININO`) segue o enum da API; os rótulos de raça são convertidos para os nomes do enum backend (por exemplo, `PARDA` → `PARDO`). O campo ID/RG do formulário não é aceito pelo endpoint de cadastro e não é enviado.
+- No modo real, a lista permanece vazia até o backend disponibilizar `GET /alunos` com busca. Inativar/reativar, vincular turma e histórico de edições também dependem de rotas futuras.
+
+**Configuração de ambiente:** o padrão continua sendo mock em desenvolvimento (`NEXT_PUBLIC_API_URL=/api/mock`, `SIGMA_API_MOCK=true`), para que o frontend funcione sem a API. Para testar com o backend, defina em `.env.local` ou no ambiente do serviço `frontend`:
+
+```env
+NEXT_PUBLIC_API_URL=/api/backend
+BACKEND_URL=http://localhost:8001
+SIGMA_API_MOCK=false
+```
+
+No Docker Compose, use `BACKEND_URL=http://backend:8000`. O navegador sempre chama `/api/backend`; o rewrite em `next.config.ts` encaminha a requisição pelo Next, evitando depender de CORS do FastAPI. Não configure `NEXT_PUBLIC_API_URL=http://localhost:8000` diretamente no browser.
 
 ## Scripts
 

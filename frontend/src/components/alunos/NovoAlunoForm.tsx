@@ -19,6 +19,7 @@ import {
   isoParaData,
   mascaraCpf,
   mascaraData,
+  mascaraTelefone,
   somenteDigitos,
   temErros,
   validarNovoAluno,
@@ -46,6 +47,10 @@ interface Formulario {
   etapaId: string;
   anoLetivo: string;
   dataMatricula: string;
+  nomeResponsavel: string;
+  parentescoResponsavel: string;
+  cpfResponsavel: string;
+  telefoneResponsavel: string;
 }
 
 function formularioInicial(): Formulario {
@@ -64,6 +69,10 @@ function formularioInicial(): Formulario {
     etapaId: "",
     anoLetivo: hoje.slice(0, 4),
     dataMatricula: isoParaData(hoje),
+    nomeResponsavel: "",
+    parentescoResponsavel: "",
+    cpfResponsavel: "",
+    telefoneResponsavel: "",
   };
 }
 
@@ -85,6 +94,12 @@ function paraPayload(f: Formulario): NovoAlunoPayload {
       etapaId: f.etapaId || null,
       anoLetivo: f.anoLetivo.trim(),
       dataMatricula: dataDigitadaParaIso(f.dataMatricula),
+    },
+    responsavel: {
+      nome: f.nomeResponsavel.trim(),
+      parentesco: f.parentescoResponsavel.trim(),
+      cpf: somenteDigitos(f.cpfResponsavel),
+      telefone: somenteDigitos(f.telefoneResponsavel),
     },
   };
 }
@@ -207,6 +222,7 @@ function FluxoCard() {
                 <TextField label="ID" placeholder="—" value={form.rg} onChange={(e) => alterar("rg", e.target.value)} />
                 <TextField
                   label="CPF do aluno"
+                  required
                   placeholder="000.000.000-00"
                   inputMode="numeric"
                   value={form.cpf}
@@ -214,6 +230,7 @@ function FluxoCard() {
                   error={erros.cpf}
                 />
               </div>
+              <p className={stylesAluno.notaCampo}>O campo ID/RG não é enviado ao backend neste cadastro.</p>
 
               <div className={stylesAluno.grid3}>
                 <TextField
@@ -224,16 +241,20 @@ function FluxoCard() {
                 />
                 <SelectField
                   label="UF"
+                  required
                   placeholder="Selecione"
                   options={UFS.map((uf) => ({ valor: uf, rotulo: uf }))}
                   value={form.uf}
                   onChange={(e) => alterar("uf", e.target.value)}
+                  error={erros.uf}
                 />
                 <TextField
                   label="Nacionalidade"
+                  required
                   placeholder="Brasileira"
                   value={form.nacionalidade}
                   onChange={(e) => alterar("nacionalidade", e.target.value)}
+                  error={erros.nacionalidade}
                 />
               </div>
 
@@ -244,6 +265,55 @@ function FluxoCard() {
                 options={OPCOES_COR_RACA}
                 onChange={(valor) => alterar("corRaca", valor)}
               />
+            </div>
+          </section>
+
+          <section className={stylesAluno.secao} aria-labelledby="secao-responsavel">
+            <header className={stylesAluno.secaoCabecalho}>
+              <h2 id="secao-responsavel" className={stylesAluno.secaoTitulo}>
+                Responsável
+              </h2>
+              <p className={stylesAluno.secaoDescricao}>
+                Nome e parentesco são necessários para criar o card. CPF e telefone são opcionais.
+              </p>
+            </header>
+            <div className={stylesAluno.campos}>
+              <div className={stylesAluno.grid2}>
+                <TextField
+                  label="Nome do responsável"
+                  required
+                  placeholder="Digite o nome completo"
+                  value={form.nomeResponsavel}
+                  onChange={(e) => alterar("nomeResponsavel", e.target.value)}
+                  error={erros.nomeResponsavel}
+                />
+                <TextField
+                  label="Parentesco"
+                  required
+                  placeholder="Ex.: mãe, pai, responsável legal"
+                  value={form.parentescoResponsavel}
+                  onChange={(e) => alterar("parentescoResponsavel", e.target.value)}
+                  error={erros.parentescoResponsavel}
+                />
+              </div>
+              <div className={stylesAluno.grid2}>
+                <TextField
+                  label="CPF do responsável"
+                  placeholder="000.000.000-00"
+                  inputMode="numeric"
+                  value={form.cpfResponsavel}
+                  onChange={(e) => alterar("cpfResponsavel", mascaraCpf(e.target.value))}
+                  error={erros.cpfResponsavel}
+                />
+                <TextField
+                  label="Telefone do responsável"
+                  placeholder="(00) 00000-0000"
+                  inputMode="tel"
+                  value={form.telefoneResponsavel}
+                  onChange={(e) => alterar("telefoneResponsavel", mascaraTelefone(e.target.value))}
+                  error={erros.telefoneResponsavel}
+                />
+              </div>
             </div>
           </section>
 
@@ -258,11 +328,12 @@ function FluxoCard() {
               <div className={stylesAluno.grid3}>
                 <SelectField
                   label="Ano de escolaridade / etapa"
+                  required
                   placeholder="Selecione"
                   options={etapas.map((e) => ({ valor: e.id, rotulo: e.nome }))}
                   value={form.etapaId}
                   onChange={(e) => alterar("etapaId", e.target.value)}
-                  error={erroEtapas ? "Não foi possível carregar as etapas." : undefined}
+                  error={erroEtapas ? "Não foi possível carregar as etapas." : erros.etapaId}
                 />
                 <TextField
                   label="Ano letivo"
@@ -301,7 +372,7 @@ function FluxoCard() {
       {confirmando && (
         <ConfirmacaoModal
           titulo={`Criar o card de ${confirmando.aluno.nome}?`}
-          descricao="O card é criado como ativo e a criação fica registrada no histórico com o seu nome, a data e a hora."
+          descricao="O card é criado com os dados do aluno, do responsável e da matrícula. A situação inicial depende das fichas pendentes."
           rotuloConfirmar="Confirmar"
           rotuloEnviando="Criando..."
           onConfirmar={criar}

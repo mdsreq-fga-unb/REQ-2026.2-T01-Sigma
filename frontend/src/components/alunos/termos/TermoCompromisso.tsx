@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
+import { Alert } from "@/components/ui/Alert";
 import { SelectField } from "@/components/ui/SelectField";
 import { TextField } from "@/components/ui/TextField";
 import {
@@ -16,6 +17,9 @@ import {
   type ErrosCampos,
 } from "@/lib/alunos";
 import { MSG, NORMAS_TERMO_COMPROMISSO } from "@/lib/mensagens";
+import { mensagemErroAluno } from "@/components/alunos/erros";
+import { usandoBackendReal } from "@/services/api";
+import { obterTermoCompromisso } from "@/services/fichas.service";
 import type { AlunoCard, TermoCompromisso as Termo } from "@/types";
 import { useAlunoCard } from "../card/AlunoCardContext";
 import { DadosAlunoCard, Obrigatorio, Secao, TermoForm } from "./TermoForm";
@@ -59,7 +63,39 @@ export function TermoCompromisso() {
   const [form, setForm] = useState<Formulario>(() => inicial(card));
   const [erros, setErros] = useState<ErrosCampos>({});
   const [textoAberto, setTextoAberto] = useState(false);
+  const [carregando, setCarregando] = useState(usandoBackendReal);
+  const [erroCarga, setErroCarga] = useState<string | null>(null);
   const anoMatricula = card.matricula.dataMatricula.slice(0, 4);
+  const modalidadeLabel = OPCOES_MODALIDADE.find((opcao) => opcao.valor === form.modalidade)?.rotulo ?? form.modalidade;
+
+  useEffect(() => {
+    if (!usandoBackendReal) return;
+    let ativo = true;
+    void (async () => {
+      try {
+        const termo = await obterTermoCompromisso(card.idMatricula);
+        if (!ativo) return;
+        setForm({
+          nomeResponsavel: termo.nome_responsavel ?? card.resumo.responsavel,
+          cpfResponsavel: mascaraCpf(termo.cpf_responsavel ?? ""),
+          modalidade: termo.modalidade ?? "",
+          regime: termo.regime ?? "",
+          ciente: termo.assinatura,
+          dataAssinatura: isoParaData(termo.data_assinatura ?? ""),
+        });
+      } catch (error) {
+        if (ativo) setErroCarga(mensagemErroAluno(error, "carregar"));
+      } finally {
+        if (ativo) setCarregando(false);
+      }
+    })();
+    return () => {
+      ativo = false;
+    };
+  }, [card.idMatricula, card.resumo.responsavel]);
+
+  if (carregando) return <p aria-live="polite">Carregando termo de compromisso...</p>;
+  if (erroCarga) return <Alert>{erroCarga}</Alert>;
 
   function alterar<K extends keyof Formulario>(campo: K, valor: Formulario[K]) {
     setForm((atual) => ({ ...atual, [campo]: valor }));
@@ -200,7 +236,7 @@ export function TermoCompromisso() {
           responsavel={form.nomeResponsavel}
           aluno={card.aluno.nome}
           anoMatricula={anoMatricula}
-          modalidade={form.modalidade}
+          modalidade={modalidadeLabel}
           onClose={() => setTextoAberto(false)}
         />
       )}

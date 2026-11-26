@@ -130,7 +130,13 @@ function paraApiError(error: AxiosError<CorpoErro>): ApiError {
   if (status === 423) return { status, code: "CONTA_BLOQUEADA", message: detailString };
   if (status === 403) return { status, code: ehLogin ? "CONTA_INATIVA" : "SEM_PERMISSAO", message: detailString };
   if (status === 404) return { status, code: "NAO_ENCONTRADO", message: detailString ?? "Registro nÃ£o encontrado." };
-  if (status === 409 && /e-?mail/i.test(detailString ?? "")) return { status, code: "EMAIL_EM_USO", message: detailString };
+  if (status === 409) {
+    if (/e-?mail/i.test(detailString ?? "")) return { status, code: "EMAIL_EM_USO", message: detailString };
+    if (/nis/i.test(detailString ?? "")) return { status, code: "NIS_EM_USO", message: detailString };
+    if (/cpf/i.test(detailString ?? "")) return { status, code: "CPF_EM_USO", message: detailString };
+    if (/inativ/i.test(detailString ?? "")) return { status, code: "MATRICULA_INATIVA", message: detailString };
+    return { status, code: "DADOS_INVALIDOS", message: detailString ?? "NÃ£o foi possÃ­vel concluir a operaÃ§Ã£o por conflito de dados." };
+  }
   if (status === 422) {
     const detalheTexto = JSON.stringify(detail ?? "").toLowerCase();
     const info = extrair422(detail ?? data);

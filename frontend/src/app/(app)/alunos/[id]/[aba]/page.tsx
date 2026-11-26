@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Alert } from "@/components/ui/Alert";
+import { FichaRequerimento } from "@/components/alunos/FichaRequerimento";
 import { FichaSocioeconomica } from "@/components/alunos/FichaSocioeconomica";
 import { MatriculaForm } from "@/components/alunos/MatriculaForm";
 import { TermoCompromisso } from "@/components/alunos/termos/TermoCompromisso";
@@ -18,7 +18,7 @@ function montarMatricula(card: AlunoCard): Matricula {
   const base = novoPayloadMatricula();
 
   return {
-    id: card.id,
+    id: card.idMatricula,
     aluno: {
       ...base.aluno,
       nome: card.aluno.nome,
@@ -83,12 +83,7 @@ export default function AlunoAbaPage() {
       return <TermoCompromisso />;
     case "requerimento":
       if (!usandoApiMock) {
-        return (
-          <Alert>
-            A ficha de requerimento em modo real (GET/PUT /matriculas/{'{id}'}/requerimento) ainda não foi integrada nesta tela.
-            O download de PDF do requerimento já está disponível na camada de serviços.
-          </Alert>
-        );
+        return card ? <FichaRequerimento /> : <EmBreve casoDeUso="UC04 – Requerimento de matrícula" />;
       }
       if (!card) return <EmBreve casoDeUso="UC04 – Requerimento de matrícula" />;
       return (

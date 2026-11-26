@@ -18,7 +18,7 @@ export function novoPayloadMatricula(): NovaMatriculaPayload {
       naturalidade: "",
       ufNaturalidade: "",
       nacionalidade: "Brasileira",
-      corRaca: "NAO_DECLARADA",
+      corRaca: "NAO_DECLARADO",
     },
     fichas: {
       socioeconomica: {

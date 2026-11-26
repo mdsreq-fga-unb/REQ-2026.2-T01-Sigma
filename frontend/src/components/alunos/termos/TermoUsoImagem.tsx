@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert } from "@/components/ui/Alert";
 import { RadioGroup } from "@/components/ui/RadioGroup";
 import { SelectField } from "@/components/ui/SelectField";
@@ -19,6 +19,10 @@ import {
   type ErrosCampos,
 } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
+import { mensagemErroAluno } from "@/components/alunos/erros";
+import { usandoBackendReal } from "@/services/api";
+import { mapTermoImagemBackParaFront } from "@/services/alunos.service";
+import { obterTermoImagem } from "@/services/fichas.service";
 import type { AlunoCard, ResponsavelLegal, TermoUsoImagem as Termo } from "@/types";
 import { useAlunoCard } from "../card/AlunoCardContext";
 import { DadosAlunoCard, Secao, TermoForm } from "./TermoForm";
@@ -62,6 +66,36 @@ export function TermoUsoImagem() {
   const [form, setForm] = useState<Formulario>(() => inicial(card));
   const [erros, setErros] = useState<ErrosCampos>({});
   const [textoAberto, setTextoAberto] = useState(false);
+  const [carregando, setCarregando] = useState(usandoBackendReal);
+  const [erroCarga, setErroCarga] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!usandoBackendReal) return;
+    let ativo = true;
+    void (async () => {
+      try {
+        const termo = mapTermoImagemBackParaFront(await obterTermoImagem(card.idMatricula));
+        if (!ativo || !termo) return;
+        setForm({
+          ...termo.responsavel,
+          cpf: mascaraCpf(termo.responsavel.cpf),
+          autoriza: termo.autoriza === null ? null : termo.autoriza ? "SIM" : "NAO",
+          local: termo.local,
+          data: isoParaData(termo.data),
+        });
+      } catch (error) {
+        if (ativo) setErroCarga(mensagemErroAluno(error, "carregar"));
+      } finally {
+        if (ativo) setCarregando(false);
+      }
+    })();
+    return () => {
+      ativo = false;
+    };
+  }, [card.idMatricula]);
+
+  if (carregando) return <p aria-live="polite">Carregando termo de uso de imagem...</p>;
+  if (erroCarga) return <Alert>{erroCarga}</Alert>;
 
   function alterar<K extends keyof Formulario>(campo: K, valor: Formulario[K]) {
     setForm((atual) => ({ ...atual, [campo]: valor }));
