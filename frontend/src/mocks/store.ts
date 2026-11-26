@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE } from "@/lib/sessao";
-import type { ApiErrorCode, Matricula, StatusEstrutura, Usuario } from "@/types";
+import type { ApiErrorCode, StatusEstrutura, Usuario } from "@/types";
 import type { AlunoRegistro } from "./alunos";
 
 /*
@@ -37,7 +37,6 @@ export interface TurmaRegistro {
 interface MockStore {
   usuarios: UsuarioRegistro[];
   alunos?: AlunoRegistro[]; // UC04 – criado sob demanda em mocks/alunos.ts
-  matriculas: Matricula[];
   etapas: EtapaRegistro[];
   turmas: TurmaRegistro[];
   sessoes: Map<string, string>; // token → id do usuário
@@ -94,7 +93,6 @@ function seed(): MockStore {
   ];
   return {
     usuarios,
-    matriculas: [],
     etapas: seedEtapas(),
     turmas: seedTurmas(),
     sessoes: new Map(),
@@ -124,7 +122,6 @@ function seedTurmas(): TurmaRegistro[] {
 // globalThis mantém o estado entre recarregamentos de módulo do `next dev`.
 const globalMock = globalThis as typeof globalThis & { __sigmaMock?: MockStore };
 export const store: MockStore = (globalMock.__sigmaMock ??= seed());
-store.matriculas ??= [];
 store.etapas ??= seedEtapas();
 store.turmas ??= seedTurmas();
 

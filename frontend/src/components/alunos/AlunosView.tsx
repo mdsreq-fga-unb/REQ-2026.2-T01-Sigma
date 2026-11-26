@@ -9,7 +9,7 @@ import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { IconChevronDown, IconChevronLeft, IconChevronRight, IconSearch } from "@/components/ui/Icons";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { isoParaData, statusExibicaoAluno } from "@/lib/alunos";
+import { ABA_DA_FICHA, isoParaData } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
 import { listarAlunos } from "@/services/alunos.service";
 import { listarTurmas } from "@/services/turmas.service";
@@ -134,6 +134,7 @@ export function AlunosView() {
           <label htmlFor={statusId}>Status:</label>
           <select id={statusId} value={filtroStatus} onChange={(e) => setFiltroStatus(e.target.value as FiltroStatus)}>
             <option value="TODOS">Todos</option>
+            <option value="PENDENTE">Pendente</option>
             <option value="ATIVO">Ativo</option>
             <option value="INATIVO">Inativo</option>
           </select>
@@ -196,13 +197,14 @@ export function AlunosView() {
                           <td className={styles.muted}>{aluno.turma?.nome ?? "—"}</td>
                           <td className={styles.muted}>{aluno.etapa?.nome ?? "—"}</td>
                           <td>
-                            <StatusBadge status={statusExibicaoAluno(aluno)} />
+                            <StatusBadge status={aluno.status} />
                           </td>
                           <td>
+                            {/* Figma: "botão pra editar ficha" — o card já abre na aba Requerimento. */}
                             <Link
-                              href={`/alunos/${encodeURIComponent(aluno.id)}`}
+                              href={`/alunos/${encodeURIComponent(aluno.id)}/${ABA_DA_FICHA.requerimento}`}
                               className={styles.abrir}
-                              aria-label={`Abrir card de ${aluno.nome}`}
+                              aria-label={`Abrir card de ${aluno.nome} na ficha de requerimento`}
                             >
                               Abrir card →
                             </Link>
