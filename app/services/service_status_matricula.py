@@ -12,20 +12,18 @@ from app.models.aluno import StatusAluno
 from app.models.matricula import Matricula
 from app.models.turma import StatusTurma
 from app.schemas.requerimento import ficha_completa as requerimento_completo
+from app.schemas.termo_compromisso import termo_completo as termo_compromisso_completo_dados
 from app.schemas.termo_imagem import termo_completo as termo_imagem_completo
 from app.schemas.termo_saida import termo_completo as termo_saida_completo
 
 
 def termo_compromisso_completo(matricula: Matricula) -> bool:
-    """Termo de compromisso completo quando modalidade, regime e assinatura estão preenchidos."""
+    """Mesma regra do indicador `completa` do termo (#107): responsável, modalidade, regime,
+    assinatura e data. Modalidade e regime são enum desde a #107, não texto."""
+    from app.services import service_termo_compromisso
+
     termo = matricula.termo_compromisso
-    if termo is None:
-        return False
-    return (
-        bool((termo.modalidade or "").strip())
-        and bool((termo.regime or "").strip())
-        and termo.assinatura is True
-    )
+    return termo is not None and termo_compromisso_completo_dados(service_termo_compromisso._dados_do_termo(termo))
 
 
 def status_fichas_matricula(matricula: Matricula) -> dict[str, bool]:
