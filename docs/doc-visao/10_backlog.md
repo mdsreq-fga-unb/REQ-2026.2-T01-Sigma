@@ -17,7 +17,7 @@ A seleção dos componentes do MVP baseou-se na ponderação conjunta entre o **
 O valor de cada necessidade funcional foi qualificado em reuniões participativas com a diretoria e a secretaria da Creche Estação Vida, aplicando os seguintes parâmetros:
 
 - **Escala de Impacto no Negócio (1 a 4):**
-    - **Nível 4 (Crítico):** Resolve o gargalo mais severo da instituição (eliminação de fichas em papel, prevenção de perda de dados de crianças, proteção de acesso). Sem este item, o sistema é inoperável.
+    - **Nível 4 (Crítico):** Resolve o gargalo mais severo da instituição (redução da dependência de fichas em papel, prevenção de perda de dados de crianças, proteção de acesso). Sem este item, o sistema é inoperável.
     - **Nível 3 (Alto):** Agrega eficiência expressiva ao fluxo diário (edição segura de fichas, upload/download de comprovantes em PDF, agilidade de busca).
     - **Nível 2 (Médio):** Funcionalidades de conveniência ou processos secundários (quadro de avisos interno, relatórios complementares).
     - **Nível 1 (Baixo):** Ajustes cosméticos ou demandas dispensáveis na fase inicial.
@@ -57,7 +57,7 @@ Itens com razão $\ge 2.0$ e classificados como *Must Have* receberam prioridade
 Diferente das capacidades funcionais que foram modularizadas em casos de uso, certos requisitos não funcionais constituem **condições de conformidade transversal indispensável** em todos os fluxos do MVP:
 
 - **Proteção e Privacidade de Dados (LGPD):** Obrigação legal absoluta no manuseio de dados de menores e responsáveis vulneráveis.
-- **Segurança de Acesso e Autenticação:** Restrição irrestrita de acessos não autenticados aos registros da creche.
+- **Segurança de Acesso e Autenticação:** Restrição de acessos não autenticados aos registros da creche. Essa restrição é uma das medidas do conjunto descrito em [2.1 da Solução Proposta](2_solucao.md#21-objetivo-geral-do-produto) e, isoladamente, não demonstra que todas as necessidades de privacidade e proteção dos dados estejam atendidas.
 
 ---
 
@@ -73,8 +73,10 @@ Para consultar a especificação completa, capacidades funcionais, requisitos de
 
 A composição e os critérios do MVP foram formalmente apresentados e validados com **Cirlene Sena**, diretora e coordenadora da **Creche Estação Vida** (stakeholder principal):
 
-- **Aprovação do Recorte:** A coordenadora confirmou que os 7 Casos de Uso selecionados (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) atendem plenamente ao objetivo de *mínimo produto indispensável para operação*, cobrindo o ciclo crítico de matrículas e dispensando o uso de papéis físicos.
+- **Aprovação do Recorte:** A coordenadora confirmou que os 7 Casos de Uso selecionados (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) atendem plenamente ao objetivo de *mínimo produto indispensável para operação*, cobrindo o ciclo crítico de matrículas das fichas de 2026 e reduzindo o uso de papel nesse ciclo.
 - **Adiamento Consciente:** Foi acordado entre cliente e equipe técnica o adiamento do mural de avisos (UC03) e das operações complexas de inativação/reativação (RF11, RF12, RF19, RF20) para o ciclo pós-MVP.
+- **Papel físico durante o piloto e a transição:** O MVP não dispensa o papel. Fichas anteriores a 2026 e fichas de 2026 não migradas continuam físicas; no piloto (5 fichas, até 01/12/2026), os originais físicos permanecem arquivados para conferência; a substituição gradual do papel está prevista para 2027. Detalhes em [2.6 da Solução Proposta](2_solucao.md#26-viabilidade-da-proposta).
+- **Exclusão de documentos:** Não faz parte do MVP. O UC05 cobre anexar, substituir e baixar documentos; uma eventual exclusão exigiria novo requisito, com perfil autorizado, confirmação e regra de preservação das informações (ver nota de CP5 em [2.3](2_solucao.md#23-caracteristicas-de-produto)).
 - **Evidências:** Os registros detalhados da validação estão disponíveis na seção [Atas de Reunião - Unidade 2](../reunioes/ata1.md).
 
 
@@ -86,4 +88,5 @@ A composição e os critérios do MVP foram formalmente apresentados e validados
 |---|---|---|---|---|
 | [2.0](../versoes/v2/10_backlog.md) | 12/10/2026 | Backlog V1.1, priorização MoSCoW e definição inicial do MVP (Unidade 2). | Gabriel Octacilio | Equipe SIGMA |
 | [2.1](../versoes/v2_1/10_backlog.md) | 07/11/2026 | Reestruturação do backlog e correção dos cálculos de priorização (Issues #31 e #32). | Pedro Luca | Gabriel Octacilio |
-| **2.2 (Atual)** | 09/11/2026 | Conversão para critérios do MVP integrados ao Catálogo Unificado ([PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/63)). | Pedro Luca | Equipe SIGMA |
+| [2.2](../versoes/v2_2/10_backlog.md) | 09/11/2026 | Conversão para critérios do MVP integrados ao Catálogo Unificado ([PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/63)). | Pedro Luca | Equipe SIGMA |
+| **2.3 (Atual)** | 26/11/2026 | Correção da revisão da Visão: recorte do MVP não "dispensa" papel físico, exclusão de documentos fora do escopo e segurança apresentada como conjunto de medidas. | Equipe SIGMA | A definir |
