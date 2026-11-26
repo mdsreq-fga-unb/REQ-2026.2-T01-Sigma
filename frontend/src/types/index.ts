@@ -23,7 +23,11 @@ export interface NovoUsuarioPayload {
 }
 
 // UC04 – Card do aluno / UC08 FP01 – busca de alunos
-export type StatusAluno = "ATIVO" | "INATIVO";
+/**
+ * Status do aluno exibido na lista e no card (UC04 / RN06): PENDENTE enquanto houver
+ * alguma ficha incompleta, ATIVO com todas completas e INATIVO quando inativado.
+ */
+export type StatusAluno = "PENDENTE" | "ATIVO" | "INATIVO";
 export type Sexo = "MASCULINO" | "FEMININO";
 export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADA";
 
@@ -94,6 +98,32 @@ export interface RenovacaoMatricula {
   responsavel: string;
 }
 
+// ---------------------------------------------------------------------------
+// Backend UC04 (fichas/termos/requerimento) — contratos reais /matriculas/{id}
+// ---------------------------------------------------------------------------
+
+export interface BackendDocumento { id?: string | null; pendente: boolean; descricao?: string | null; }
+export interface BackendResponsavel { nome: string; nacionalidade: string; estado_civil: string; rg: string; orgao_expedidor: string; cpf: string; endereco: string; documentos: BackendDocumento[]; }
+export interface BackendResponsavelItem { id?: string | null; nome: string; parentesco: string; responsavel_principal: boolean; contato?: string | null; endereco?: string | null; documentos: BackendDocumento[]; }
+export interface BackendMembroFamiliar { id?: string | null; tipo: string; nome: string; idade: number; escolaridade: string; renda_mensal: number | string; }
+export interface BackendRequerimentoMatricula { nome_aluno: string; cor_raca: string; data_nascimento: string; naturalidade: string; uf_naturalidade: string; cpf_aluno?: string | null; certidao_nova: string; documentos: BackendDocumento[]; possui_irmao_creche: boolean; nome_irmao_creche?: string | null; responsavel_1: BackendResponsavel; responsavel_2?: BackendResponsavel | null; responsaveis: BackendResponsavelItem[]; composicao_familiar_renda: string; pessoas_autorizadas_buscar: string; turno: string; ano?: number | null; assinatura_responsavel: string; data_assinatura: string; declaracao_responsavel: boolean; pendencias: string[]; completo: boolean; }
+export interface BackendSocioDadosPessoais { nome: string; cor_raca: string; data_nascimento: string; naturalidade: string; naturalidade_uf: string; certidao_nova: string; possui_irmao_na_creche: boolean; nome_irmao_na_creche?: string | null; }
+export interface BackendSocioEndereco { logradouro: string; numero: string; complemento?: string | null; bairro: string; uf_residencia: string; cep: string; ponto_referencia?: string | null; }
+export interface BackendSocioContato { telefone_contato?: string | null; celular: string; email?: string | null; }
+export interface BackendSocioMoradia { situacao: "PROPRIO" | "ALUGADO" | "FINANCIADO" | "CEDIDO" | "OCUPACAO_IRREGULAR"; cedido_por?: string | null; valor?: number | string | null; }
+export interface BackendSocioTransporte { meio: string; possui: boolean; valor?: number | string | null; }
+export interface BackendSocioNucleoFamiliar { membros: BackendMembroFamiliar[]; observacoes?: string | null; }
+export interface BackendSocioPropriedadeRural { possui: boolean; descricao?: string | null; }
+export interface BackendSocioOutrasPropriedades { possui: boolean; relacao?: string | null; }
+export interface BackendSocioDeclaracao { nome: string; rg?: string | null; cpf: string; data_assinatura: string; }
+export interface BackendSocioeconomica { dados_pessoais: BackendSocioDadosPessoais; endereco: BackendSocioEndereco; contato: BackendSocioContato; moradia: BackendSocioMoradia; transporte: BackendSocioTransporte; nucleo_familiar: BackendSocioNucleoFamiliar; propriedade_rural?: BackendSocioPropriedadeRural | null; outras_propriedades?: BackendSocioOutrasPropriedades | null; declaracao: BackendSocioDeclaracao; pendencias: string[]; completa: boolean; }
+export interface BackendResponsavelTermoImagem { nome: string; nacionalidade: string; estado_civil: string; rg: string; cpf: string; residente_em: string; }
+export interface BackendAutorizacaoImagem { autoriza: boolean; local: string; data: string; }
+export interface BackendTermoImagem { responsavel: BackendResponsavelTermoImagem; autorizacao: BackendAutorizacaoImagem; completo: boolean; }
+export interface BackendSaidaTermo { forma_saida: "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS"; descricao_outros?: string | null; }
+export interface BackendPessoaAutorizadaTermo { id?: string | null; nome: string; parentesco: string; }
+export interface BackendTermoSaida { responsavel: string; periodo?: string | null; saida: BackendSaidaTermo; pessoas_autorizadas: BackendPessoaAutorizadaTermo[]; data?: string | null; completo: boolean; }
+export interface BackendTextoTermoUsoImagem { titulo: string; texto: string; }
 export interface FichaRequerimento {
   anoEscolaridade: string;
   anoLetivo: string;
@@ -189,8 +219,6 @@ export interface HistoricoMatricula {
   alteracoes: string[];
 }
 
-export type AlteracaoMatricula = HistoricoMatricula;
-
 export interface Matricula {
   id: string;
   aluno: DadosAluno;
@@ -235,6 +263,7 @@ export interface TermoUsoImagem {
 export type FormaSaida = "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS";
 
 export interface PessoaAutorizada {
+  id?: string;
   nome: string;
   parentesco: string;
 }
@@ -242,9 +271,13 @@ export interface PessoaAutorizada {
 export interface TermoSaida {
   nomeResponsavel: string;
   formaSaida: FormaSaida | null;
-  pessoasAutorizadas: PessoaAutorizada[]; // máximo de 4
+  pessoasAutorizadas: PessoaAutorizada[];
   local: string;
   data: string;
+  /** Período informado no termo (ex.: turno/regime), quando disponível. */
+  periodo?: string;
+  /** Descrição quando a forma de saída for OUTROS. */
+  descricaoOutros?: string;
 }
 
 export interface TermoCompromisso {
@@ -380,4 +413,8 @@ export interface ApiError {
   status: number | null;
   code: ApiErrorCode;
   message?: string;
+  /** Campos específicos quando a validação atinge um campo conhecido. */
+  campos?: Record<string, string>;
+  /** Detalhe bruto do backend (ex.: 422 com lista Pydantic/string). */
+  detail?: unknown;
 }

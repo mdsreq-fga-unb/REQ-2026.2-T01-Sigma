@@ -353,6 +353,8 @@ def salvar_requerimento(
     edição. O histórico guarda os valores anterior e novo, exceto nos campos sensíveis (LGPD).
     """
     matricula = _buscar_matricula(db, id_matricula)
+    from app.services.service_status_matricula import garantir_editavel
+    garantir_editavel(matricula)
     _conferir_duplicidade(db, matricula, dados)  # 409 antes de alterar qualquer coisa
 
     try:

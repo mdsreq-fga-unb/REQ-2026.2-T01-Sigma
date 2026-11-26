@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { Alert } from "@/components/ui/Alert";
+import { FichaSocioeconomica } from "@/components/alunos/FichaSocioeconomica";
 import { MatriculaForm } from "@/components/alunos/MatriculaForm";
 import { TermoCompromisso } from "@/components/alunos/termos/TermoCompromisso";
 import { TermoSaida } from "@/components/alunos/termos/TermoSaida";
@@ -9,6 +11,7 @@ import { TermoUsoImagem } from "@/components/alunos/termos/TermoUsoImagem";
 import { EmBreve } from "@/components/layout/EmBreve";
 import { novoPayloadMatricula } from "@/lib/matriculas";
 import { obterAluno } from "@/services/alunos.service";
+import { usandoApiMock } from "@/services/api";
 import type { AlunoCard, Matricula } from "@/types";
 
 function montarMatricula(card: AlunoCard): Matricula {
@@ -79,6 +82,14 @@ export default function AlunoAbaPage() {
     case "compromisso":
       return <TermoCompromisso />;
     case "requerimento":
+      if (!usandoApiMock) {
+        return (
+          <Alert>
+            A ficha de requerimento em modo real (GET/PUT /matriculas/{'{id}'}/requerimento) ainda não foi integrada nesta tela.
+            O download de PDF do requerimento já está disponível na camada de serviços.
+          </Alert>
+        );
+      }
       if (!card) return <EmBreve casoDeUso="UC04 – Requerimento de matrícula" />;
       return (
         <MatriculaForm
@@ -88,6 +99,9 @@ export default function AlunoAbaPage() {
         />
       );
     case "socioeconomica":
+      if (!usandoApiMock) {
+        return <FichaSocioeconomica />;
+      }
       if (!card) return <EmBreve casoDeUso="UC04 – Ficha socioeconômica" />;
       return (
         <MatriculaForm

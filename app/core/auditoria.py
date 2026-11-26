@@ -14,7 +14,10 @@ CAMINHOS_SENSIVEIS: frozenset[tuple[str, ...]] = frozenset({
     ("dados_pessoais", "nis"),
     ("dados_pessoais", "cpf"),
     ("dados_pessoais", "raca"),
-    ("responsavel", "cpf"),        # termos de imagem e de saída
+    ("aluno", "nis"),
+    ("aluno", "cpf"),
+    ("aluno", "raca"),
+    ("responsavel", "cpf"),        # termos de imagem e de saída e cadastro do card
     ("responsavel", "rg"),         # termo de imagem
     ("cpf_responsavel",),          # termo de compromisso escolar
     ("nucleo_familiar", "membro", "renda_mensal"),

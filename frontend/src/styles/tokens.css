@@ -35,6 +35,9 @@
   --color-info-border: #c5d6fa;
   --color-neutral-badge: #64748b;
   --color-neutral-badge-bg: #eef1f5;
+  /* Selo "Pendente" (matrícula com fichas incompletas – UC04/UC08) */
+  --color-pending-badge: #b45309;
+  --color-pending-badge-bg: #fff4e0;
 
   --color-overlay: rgba(15, 23, 42, 0.55);
   --color-focus: rgba(31, 87, 224, 0.35);
@@ -82,6 +85,8 @@
   --color-info-border: rgba(76, 125, 240, 0.4);
   --color-neutral-badge: #9aa8bf;
   --color-neutral-badge-bg: rgba(154, 168, 191, 0.14);
+  --color-pending-badge: #f5b452;
+  --color-pending-badge-bg: rgba(245, 180, 82, 0.12);
 
   --color-overlay: rgba(0, 0, 0, 0.6);
   --color-focus: rgba(76, 125, 240, 0.45);
