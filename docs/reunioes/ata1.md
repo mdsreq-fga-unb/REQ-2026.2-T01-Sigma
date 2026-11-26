@@ -213,178 +213,178 @@ Tópico referente às reuniões que aconteceram durante o período da segunda un
     - *Equipe:* *retomar* a reunião depois do almoço, terminar a seção 10 e *gravar* o vídeo de apresentação da entrega.
 
 === " 30/10/2026 - Reunião de validação do protótipo do sistema "
-# Ata: Alinhamento Técnico e Início do Desenvolvimento (Ciclo 5)
+    # Ata: Alinhamento Técnico e Início do Desenvolvimento (Ciclo 5)
 
-**Tema:** definição de tecnologias (exportação PDF, ORM), modelagem de dados inicial, perfis de acesso e fluxo de desenvolvimento (branches/PRs) para o início da codificação do backend e frontend.
-**Data:** 30/10/2026 · **Duração:** ~1h08min.
-**Link do vídeo:** [Gravação da reunião](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FCall%20with%20Bryan%20and%205%20others-20261030_093246-Meeting%20Recording%2Emp4&referrer=Teams%2ETEAMS-ELECTRON&referrerScenario=RecapOpenInStreamButton%2Eview)
+    **Tema:** definição de tecnologias (exportação PDF, ORM), modelagem de dados inicial, perfis de acesso e fluxo de desenvolvimento (branches/PRs) para o início da codificação do backend e frontend.
+    **Data:** 30/10/2026 · **Duração:** ~1h08min.
+    **Link do vídeo:** [Gravação da reunião](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FCall%20with%20Bryan%20and%205%20others-20261030_093246-Meeting%20Recording%2Emp4&referrer=Teams%2ETEAMS-ELECTRON&referrerScenario=RecapOpenInStreamButton%2Eview)
 
-## Participantes
+    ## Participantes
 
-| Nome | Papel |
-|-|-|
-| Gabriel Vieira Octacilio Pinheiro (condutor) | Representante de desenvolvimento e time |
-| Pedro Luca Rocha Manera | Equipe de desenvolvimento |
-| Lucas Peixoto Rodrigues | Equipe de desenvolvimento |
-| João Gabriel Rolim Veiga | Equipe de desenvolvimento |
-| Jorge Andres Vasquez Vega | Equipe de desenvolvimento (prototipação) |
-| Bryan Smith Rodrigues Cavalcante | Equipe de desenvolvimento |
+    | Nome | Papel |
+    |-|-|
+    | Gabriel Vieira Octacilio Pinheiro (condutor) | Representante de desenvolvimento e time |
+    | Pedro Luca Rocha Manera | Equipe de desenvolvimento |
+    | Lucas Peixoto Rodrigues | Equipe de desenvolvimento |
+    | João Gabriel Rolim Veiga | Equipe de desenvolvimento |
+    | Jorge Andres Vasquez Vega | Equipe de desenvolvimento (prototipação) |
+    | Bryan Smith Rodrigues Cavalcante | Equipe de desenvolvimento |
 
-## Pautas
+    ## Pautas
 
-- **Exportação de PDF (Jinja2 + WeasyPrint):** Gabriel apresentou a solução técnica para a exportação das fichas em PDF. A abordagem utiliza Jinja2 para renderizar templates HTML com dados dinâmicos e WeasyPrint para converter o HTML em PDF. Foram discutidas rotas para visualização e download do arquivo, além da possibilidade de assinatura via Gov.br (ou impressão e digitalização para quem não tem acesso digital). O protótipo de template foi validado.
-- **Validação da prototipação (Figma):** Jorge apresentou a primeira versão da prototipação. A equipe elogiou o resultado. Foram levantadas decisões provisórias a validar: login via e-mail/senha, perfil único vs. múltiplos perfis, e a necessidade de adicionar um campo para escolha do tipo de usuário (Administrador ou Secretaria) no fluxo de cadastro.
-- **Definição de perfis de acesso:** A equipe decidiu que haverá **dois perfis**: **Administrador** (pode criar/excluir outros perfis e realizar todos os fluxos) e **Secretaria** (apenas funções operacionais, sem gerenciar usuários). O perfil de "Coordenação" citado no Figma será tratado como sinônimo de Administrador. A modelagem será feita com um campo booleano (`is_admin`) na entidade `Usuario`.
-- **Modelagem de dados (Entidade Usuário):** Definiu-se que a entidade `Usuario` terá os campos: `id` (PK sequencial), `nome`, `email` (único), `senha` e `is_admin` (booleano). O `id` foi incluído para facilitar buscas e o histórico de edições. Não será utilizado CPF.
-- **Tecnologia de ORM e Banco de Dados:** A equipe utilizará **SQLAlchemy** como ORM, com migrations (provavelmente Alembic) para criação e alteração das tabelas. Discutiu-se que a modelagem será feita via código Python (classes), e não por um SGBD externo. A conexão com o banco será configurada via variáveis de ambiente (`.env`).
-- **Casos de Uso priorizados (Ciclo 5):** A equipe alinhou que o foco inicial será o **UC01 (Gerenciar Autenticação)** e o **UC02 (Gerenciar Usuários Administrativos)** . O backend desses casos é considerado simples e pode ser iniciado imediatamente. Como o backend é rápido, a equipe também pretende adiantar o **UC06 (Gerenciar Estrutura Escolar - Turmas e Etapas)** , que não depende de outros cadastros. O **UC04 (Gerenciar Fichas de Matrícula)** também foi citado como parte do escopo do ciclo.
-- **Aplicação do DoD (Definition of Done):** Revisou-se o DoD acordado. Alguns critérios não se aplicam a casos de uso (ex.: "critérios de aceitação" são do caso de uso, não do DoD). A validação com a cliente será feita em reunião específica. A equipe se comprometeu a aplicar o DoD aos casos de uso desenvolvidos.
-- **Fluxo de desenvolvimento (Git):** Ficou definido que:
-    1. Cada desenvolvedor criará uma **branch** a partir da `developer` com nome autoexplicativo (ex.: `feat/usuarios-turmas-etapas`).
-    2. O desenvolvimento ocorrerá nessa branch.
-    3. Ao final do ciclo, será aberto um **PR (Pull Request)** para a `developer`.
-    4. Após testes, a `developer` será mergeada na `main` (ou branch principal) por Gabriel.
-- **Testes unitários:** Gabriel solicitou que os desenvolvedores backend já escrevam **testes unitários** usando **Pytest**. A meta é cobrir 100% das funções, conforme orientação do professor. A equipe pode usar IA para auxiliar na geração dos testes.
-- **Prazos e cronograma:** A equipe está no **Ciclo 5**, com prazo até **05/11**. A meta é concluir os casos de uso 1, 2 e 4 até essa data. Para as **issues do monitor** (correções), a meta é **07/11** (sábado), com cada membro pegando no mínimo 2 issues para revisar.
+    - **Exportação de PDF (Jinja2 + WeasyPrint):** Gabriel apresentou a solução técnica para a exportação das fichas em PDF. A abordagem utiliza Jinja2 para renderizar templates HTML com dados dinâmicos e WeasyPrint para converter o HTML em PDF. Foram discutidas rotas para visualização e download do arquivo, além da possibilidade de assinatura via Gov.br (ou impressão e digitalização para quem não tem acesso digital). O protótipo de template foi validado.
+    - **Validação da prototipação (Figma):** Jorge apresentou a primeira versão da prototipação. A equipe elogiou o resultado. Foram levantadas decisões provisórias a validar: login via e-mail/senha, perfil único vs. múltiplos perfis, e a necessidade de adicionar um campo para escolha do tipo de usuário (Administrador ou Secretaria) no fluxo de cadastro.
+    - **Definição de perfis de acesso:** A equipe decidiu que haverá **dois perfis**: **Administrador** (pode criar/excluir outros perfis e realizar todos os fluxos) e **Secretaria** (apenas funções operacionais, sem gerenciar usuários). O perfil de "Coordenação" citado no Figma será tratado como sinônimo de Administrador. A modelagem será feita com um campo booleano (`is_admin`) na entidade `Usuario`.
+    - **Modelagem de dados (Entidade Usuário):** Definiu-se que a entidade `Usuario` terá os campos: `id` (PK sequencial), `nome`, `email` (único), `senha` e `is_admin` (booleano). O `id` foi incluído para facilitar buscas e o histórico de edições. Não será utilizado CPF.
+    - **Tecnologia de ORM e Banco de Dados:** A equipe utilizará **SQLAlchemy** como ORM, com migrations (provavelmente Alembic) para criação e alteração das tabelas. Discutiu-se que a modelagem será feita via código Python (classes), e não por um SGBD externo. A conexão com o banco será configurada via variáveis de ambiente (`.env`).
+    - **Casos de Uso priorizados (Ciclo 5):** A equipe alinhou que o foco inicial será o **UC01 (Gerenciar Autenticação)** e o **UC02 (Gerenciar Usuários Administrativos)** . O backend desses casos é considerado simples e pode ser iniciado imediatamente. Como o backend é rápido, a equipe também pretende adiantar o **UC06 (Gerenciar Estrutura Escolar - Turmas e Etapas)** , que não depende de outros cadastros. O **UC04 (Gerenciar Fichas de Matrícula)** também foi citado como parte do escopo do ciclo.
+    - **Aplicação do DoD (Definition of Done):** Revisou-se o DoD acordado. Alguns critérios não se aplicam a casos de uso (ex.: "critérios de aceitação" são do caso de uso, não do DoD). A validação com a cliente será feita em reunião específica. A equipe se comprometeu a aplicar o DoD aos casos de uso desenvolvidos.
+    - **Fluxo de desenvolvimento (Git):** Ficou definido que:
+        1. Cada desenvolvedor criará uma **branch** a partir da `developer` com nome autoexplicativo (ex.: `feat/usuarios-turmas-etapas`).
+        2. O desenvolvimento ocorrerá nessa branch.
+        3. Ao final do ciclo, será aberto um **PR (Pull Request)** para a `developer`.
+        4. Após testes, a `developer` será mergeada na `main` (ou branch principal) por Gabriel.
+    - **Testes unitários:** Gabriel solicitou que os desenvolvedores backend já escrevam **testes unitários** usando **Pytest**. A meta é cobrir 100% das funções, conforme orientação do professor. A equipe pode usar IA para auxiliar na geração dos testes.
+    - **Prazos e cronograma:** A equipe está no **Ciclo 5**, com prazo até **05/11**. A meta é concluir os casos de uso 1, 2 e 4 até essa data. Para as **issues do monitor** (correções), a meta é **07/11** (sábado), com cada membro pegando no mínimo 2 issues para revisar.
 
-## Decisões
+    ## Decisões
 
-1. **Exportação de PDF:** adotar a stack **Jinja2 + WeasyPrint**, com templates HTML customizados para cada ficha. A assinatura será via Gov.br ou impressão/digitalização.
-2. **Perfis de acesso:** implementar **dois perfis** (Administrador e Secretaria), modelados como um campo booleano `is_admin` na entidade `Usuario`. O Administrador pode gerenciar usuários; a Secretaria, não.
-3. **Modelagem da entidade `Usuario`:** campos `id` (PK), `nome`, `email` (único), `senha` e `is_admin`. CPF não será utilizado.
-4. **ORM e banco:** utilizar **SQLAlchemy** com migrations para o banco de dados. A modelagem é feita via classes Python, sem necessidade de desenhar tabelas manualmente em SGBD.
-5. **Escopo do Ciclo 5:** focar no backend do **UC01 (Autenticação)** e **UC02 (Gerenciar Usuários)** , e adiantar o **UC06 (Turmas e Etapas)** , que é independente. O **UC04 (Fichas)** também integra o escopo.
-6. **Fluxo de Git:** branches por funcionalidade a partir da `developer`, PRs ao final do ciclo, e merge para a branch principal somente após testes.
-7. **Testes unitários:** obrigatórios para o backend, com **Pytest** e meta de 100% de cobertura.
-8. **Issues do monitor:** cada membro deve pegar no mínimo **2 issues** para corrigir até **07/11**. As correções devem ser comunicadas no grupo.
-9. **DoD:** aplicar o Definition of Done acordado, desconsiderando critérios que não se aplicam a casos de uso. A validação com a cliente será feita em reunião separada.
-10. **Reunião de validação com a cliente:** Gabriel agendará uma reunião com a Letícia para validar a prototipação e os casos de uso de forma justificativa (não apenas "gostei/não gostei"), conforme orientação do professor.
+    1. **Exportação de PDF:** adotar a stack **Jinja2 + WeasyPrint**, com templates HTML customizados para cada ficha. A assinatura será via Gov.br ou impressão/digitalização.
+    2. **Perfis de acesso:** implementar **dois perfis** (Administrador e Secretaria), modelados como um campo booleano `is_admin` na entidade `Usuario`. O Administrador pode gerenciar usuários; a Secretaria, não.
+    3. **Modelagem da entidade `Usuario`:** campos `id` (PK), `nome`, `email` (único), `senha` e `is_admin`. CPF não será utilizado.
+    4. **ORM e banco:** utilizar **SQLAlchemy** com migrations para o banco de dados. A modelagem é feita via classes Python, sem necessidade de desenhar tabelas manualmente em SGBD.
+    5. **Escopo do Ciclo 5:** focar no backend do **UC01 (Autenticação)** e **UC02 (Gerenciar Usuários)** , e adiantar o **UC06 (Turmas e Etapas)** , que é independente. O **UC04 (Fichas)** também integra o escopo.
+    6. **Fluxo de Git:** branches por funcionalidade a partir da `developer`, PRs ao final do ciclo, e merge para a branch principal somente após testes.
+    7. **Testes unitários:** obrigatórios para o backend, com **Pytest** e meta de 100% de cobertura.
+    8. **Issues do monitor:** cada membro deve pegar no mínimo **2 issues** para corrigir até **07/11**. As correções devem ser comunicadas no grupo.
+    9. **DoD:** aplicar o Definition of Done acordado, desconsiderando critérios que não se aplicam a casos de uso. A validação com a cliente será feita em reunião separada.
+    10. **Reunião de validação com a cliente:** Gabriel agendará uma reunião com a Letícia para validar a prototipação e os casos de uso de forma justificativa (não apenas "gostei/não gostei"), conforme orientação do professor.
 
-## Tarefas realizadas
+    ## Tarefas realizadas
 
-- Foi apresentada a solução de exportação de PDF (Jinja2 + WeasyPrint), conduziu as decisões de modelagem e fluxo de Git, e organizará as issues no GitHub.
-- Foi apresentado a prototipação no Figma e concedeu acesso de edição à equipe; ficou responsável por adicionar o campo de tipo de usuário no fluxo de cadastro.
-- Também teve contribuição com a definição do ORM (SQLAlchemy), explicou o funcionamento de migrations e reforçou a necessidade de testes unitários.
-- João informou que já está trabalhando no diagrama de banco (Draw.io) e se comprometeu a declarar as entidades `Usuario`, `Turma` e `Etapa` no código.
-- Lucas participou das decisões e confirmou que iniciará o desenvolvimento no dia seguinte (31/10).
+    - Foi apresentada a solução de exportação de PDF (Jinja2 + WeasyPrint), conduziu as decisões de modelagem e fluxo de Git, e organizará as issues no GitHub.
+    - Foi apresentado a prototipação no Figma e concedeu acesso de edição à equipe; ficou responsável por adicionar o campo de tipo de usuário no fluxo de cadastro.
+    - Também teve contribuição com a definição do ORM (SQLAlchemy), explicou o funcionamento de migrations e reforçou a necessidade de testes unitários.
+    - João informou que já está trabalhando no diagrama de banco (Draw.io) e se comprometeu a declarar as entidades `Usuario`, `Turma` e `Etapa` no código.
+    - Lucas participou das decisões e confirmou que iniciará o desenvolvimento no dia seguinte (31/10).
 
-## Pendências
+    ## Pendências
 
-- **Gabriel:** criar as issues de backend e frontend no GitHub (incluindo a lista de issues do professor para escolha da equipe), organizar a estrutura de pastas do repositório, e enviar o arquivo `.zip` com o exemplo de backend (modelagem, schemas, rotas) para João.
-- **Jorge:** adicionar o campo de seleção de perfil (Administrador/Secretaria) no modal de cadastro de usuário no Figma.
-- **João:** finalizar o diagrama de banco e iniciar a declaração das entidades `Usuario`, `Turma` e `Etapa` no código (SQLAlchemy).
-- **Pedro Lucas e Lucas Peixoto:** iniciar o desenvolvimento do backend do UC01 e UC02 (autenticação e gerenciamento de usuários) assim que o repositório for liberado.
-- **Bryan e Jorge:** iniciar o desenvolvimento do frontend das telas de login e cadastro de usuário, seguindo o Figma.
-- **Equipe:** corrigir as issues do monitor até **07/11** (mínimo de 2 por membro) e comunicar no grupo.
-- **Equipe:** escrever testes unitários (Pytest) para todas as funções backend desenvolvidas.
-- **Gabriel:** agendar reunião com a cliente para validação da prototipação e dos casos de uso.
+    - **Gabriel:** criar as issues de backend e frontend no GitHub (incluindo a lista de issues do professor para escolha da equipe), organizar a estrutura de pastas do repositório, e enviar o arquivo `.zip` com o exemplo de backend (modelagem, schemas, rotas) para João.
+    - **Jorge:** adicionar o campo de seleção de perfil (Administrador/Secretaria) no modal de cadastro de usuário no Figma.
+    - **João:** finalizar o diagrama de banco e iniciar a declaração das entidades `Usuario`, `Turma` e `Etapa` no código (SQLAlchemy).
+    - **Pedro Lucas e Lucas Peixoto:** iniciar o desenvolvimento do backend do UC01 e UC02 (autenticação e gerenciamento de usuários) assim que o repositório for liberado.
+    - **Bryan e Jorge:** iniciar o desenvolvimento do frontend das telas de login e cadastro de usuário, seguindo o Figma.
+    - **Equipe:** corrigir as issues do monitor até **07/11** (mínimo de 2 por membro) e comunicar no grupo.
+    - **Equipe:** escrever testes unitários (Pytest) para todas as funções backend desenvolvidas.
+    - **Gabriel:** agendar reunião com a cliente para validação da prototipação e dos casos de uso.
 
 
-=== " 04/11/2026 - Reunião de validação do protótipo do sistema "
-    ## Ata: Alinhamento para Início do Desenvolvimento Backend
+=== "04/11/2026 - Reunião de validação do protótipo do sistema"
+    # Ata: Alinhamento para Início do Desenvolvimento Backend
 
-**Tema:** alinhamento interno sobre prototipação concluída e início do desenvolvimento do backend.  
-**Data:** 04/11/2026 · **Duração:** ~55 min (parte do tempo foi conversa informal, omitida desta ata).  
-**Link do vídeo:** [Gravação da reunião](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FMeeting%20with%20Gabriel%20Vieira%20Octacilio%20Pinheiro%2D20261104%5F194626%2DMeeting%20Recording%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Efee94704%2D3f9c%2D4bf6%2Db694%2Deb1c112b5345)
+    **Tema:** alinhamento interno sobre prototipação concluída e início do desenvolvimento do backend.  
+    **Data:** 04/11/2026 · **Duração:** ~55 min (parte do tempo foi conversa informal, omitida desta ata).  
+    **Link do vídeo:** [Gravação da reunião](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FMeeting%20with%20Gabriel%20Vieira%20Octacilio%20Pinheiro%2D20261104%5F194626%2DMeeting%20Recording%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Efee94704%2D3f9c%2D4bf6%2Db694%2Deb1c112b5345)
 
-## Participantes
+    ## Participantes
 
-| Nome | Papel |
-|-|-|
-| Gabriel Vieira Octacilio Pinheiro (condutor) | Representante de desenvolvimento e time |
-| Letícia Pretto | Cliente/representante da creche |
-| Lucas Peixoto Rodrigues | Equipe de desenvolvimento |
-| João Gabriel Rolim Veiga | Equipe de desenvolvimento |
-| Jorge Vasquez | Equipe de desenvolvimento |
+    | Nome | Papel |
+    |-|-|
+    | Gabriel Vieira Octacilio Pinheiro (condutor) | Representante de desenvolvimento e time |
+    | Letícia Pretto | Cliente/representante da creche |
+    | Lucas Peixoto Rodrigues | Equipe de desenvolvimento |
+    | João Gabriel Rolim Veiga | Equipe de desenvolvimento |
+    | Jorge Vasquez | Equipe de desenvolvimento |
 
-## Pautas
+    ## Pautas
 
-- **Prototipação concluída:** Gabriel informou que as telas do sistema já foram desenhadas e apresentou a prototipação à cliente.
-- **Início do backend:** Gabriel perguntou se a equipe (Pedro Lucas e Lucas Peixoto) já pode iniciar o desenvolvimento do backend com base nos tipos de dados definidos.
-- **Compartilhamento de material técnico:** Gabriel mencionou que enviará um arquivo `.zip` (já compartilhado anteriormente com João no grupo) contendo modelagem do banco, esquemas e rotas até a controller — o processo completo do backend. Também há dois arquivos Markdown explicando como foi feito.
-- **Prazo:** meta de entregar o produto funcional até o dia 10.
-- **Canal de comunicação:** Gabriel reforçou que dúvidas sobre desenvolvimento podem ser enviadas no WhatsApp ou no grupo.
+    - **Prototipação concluída:** Gabriel informou que as telas do sistema já foram desenhadas e apresentou a prototipação à cliente.
+    - **Início do backend:** Gabriel perguntou se a equipe (Pedro Lucas e Lucas Peixoto) já pode iniciar o desenvolvimento do backend com base nos tipos de dados definidos.
+    - **Compartilhamento de material técnico:** Gabriel mencionou que enviará um arquivo `.zip` (já compartilhado anteriormente com João no grupo) contendo modelagem do banco, esquemas e rotas até a controller — o processo completo do backend. Também há dois arquivos Markdown explicando como foi feito.
+    - **Prazo:** meta de entregar o produto funcional até o dia 10.
+    - **Canal de comunicação:** Gabriel reforçou que dúvidas sobre desenvolvimento podem ser enviadas no WhatsApp ou no grupo.
 
-## Decisões
+    ## Decisões
 
-1. **Backend pode ser iniciado** com base nos tipos de dado já definidos na prototipação.
-2. **Gabriel enviará o `.zip`** com modelagem de banco, esquemas e rotas para Lucas Peixoto e Pedro Lucas, acompanhado de dois Markdowns explicativos.
-3. **Lucas Peixoto e Pedro Lucas** ficam responsáveis por iniciar o backend.
-4. **Prazo de entrega:** dia 10/11.
-5. **Comunicação de dúvidas** deve ser feita no WhatsApp ou no grupo, para que todos possam opinar.
+    1. **Backend pode ser iniciado** com base nos tipos de dado já definidos na prototipação.
+    2. **Gabriel enviará o `.zip`** com modelagem de banco, esquemas e rotas para Lucas Peixoto e Pedro Lucas, acompanhado de dois Markdowns explicativos.
+    3. **Lucas Peixoto e Pedro Lucas** ficam responsáveis por iniciar o backend.
+    4. **Prazo de entrega:** dia 10/11.
+    5. **Comunicação de dúvidas** deve ser feita no WhatsApp ou no grupo, para que todos possam opinar.
 
-## Tarefas realizadas
+    ## Tarefas realizadas
 
-- Foi concluida a prototipação das telas, apresentou à cliente e alinhou o início do backend com a equipe; comprometeu-se a enviar o `.zip` com o processo completo do backend.
-- A cliente validou o prototipo apresentado.
-- Os demais membros responsáveis pelo backend confirmaram o início do backend.
+    - Foi concluida a prototipação das telas, apresentou à cliente e alinhou o início do backend com a equipe; comprometeu-se a enviar o `.zip` com o processo completo do backend.
+    - A cliente validou o prototipo apresentado.
+    - Os demais membros responsáveis pelo backend confirmaram o início do backend.
 
-## Pendências
+    ## Pendências
 
-- **Gabriel:** enviar o `.zip` com modelagem do banco, esquemas e rotas para Lucas Peixoto (e Pedro Lucas).
-- **Lucas Peixoto e Pedro Lucas:** iniciar o desenvolvimento do backend com base no material compartilhado.
-- **Equipe:** entregar o produto funcional até o dia 10.
-- **Equipe:** comunicar dúvidas de desenvolvimento no WhatsApp ou no grupo.
+    - **Gabriel:** enviar o `.zip` com modelagem do banco, esquemas e rotas para Lucas Peixoto (e Pedro Lucas).
+    - **Lucas Peixoto e Pedro Lucas:** iniciar o desenvolvimento do backend com base no material compartilhado.
+    - **Equipe:** entregar o produto funcional até o dia 10.
+    - **Equipe:** comunicar dúvidas de desenvolvimento no WhatsApp ou no grupo.
 
-=== " 11/11/2026 - Reunião de validação do protótipo do sistema "
+=== "11/11/2026 - Reunião de validação do protótipo do sistema"
 
-# Ata: Ensaio/Apresentação da Unidade 2 — Requisitos, DoR/DoD, Backlog e Casos de Uso
+    # Ata: Ensaio/Apresentação da Unidade 2 — Requisitos, DoR/DoD, Backlog e Casos de Uso
 
-**Tema:** gravação/apresentação das entregas da Unidade 2 do Sistema Sigma: lista de requisitos, técnicas de declaração, DoR/DoD, backlog, casos de uso e priorização do MVP.  
-**Data:** 12/10/2026 · **Duração:** ~23 min (transcrição).  
-**Link do vídeo:** [Gravação da reunião](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FCall%20with%20Bryan%20and%205%20others%2D20261012%5F170133%2DMeeting%20Recording%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E8818a99d%2D2ab8%2D4f3c%2Dbac3%2D58b16fbc23c7)
+    **Tema:** gravação/apresentação das entregas da Unidade 2 do Sistema Sigma: lista de requisitos, técnicas de declaração, DoR/DoD, backlog, casos de uso e priorização do MVP.  
+    **Data:** 12/10/2026 · **Duração:** ~23 min (transcrição).  
+    **Link do vídeo:** [Gravação da reunião](https://unbbr-my.sharepoint.com/personal/242004706_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F242004706%5Faluno%5Funb%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FCall%20with%20Bryan%20and%205%20others%2D20261012%5F170133%2DMeeting%20Recording%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E8818a99d%2D2ab8%2D4f3c%2Dbac3%2D58b16fbc23c7)
 
-## Participantes
+    ## Participantes
 
-| Nome | Papel |
-|-|-|
-| Pedro Luca Rocha Manera | Apresentação/equipe de desenvolvimento |
-| João Gabriel Rolim Veiga | Apresentação (DoR/DoD) |
-| Jorge Andres Vasquez Vega | Apresentação (técnicas de declaração) |
-| Gabriel Vieira Octacilio Pinheiro | Apresentação (backlog) e apoio técnico |
-| Bryan Smith Rodrigues Cavalcante | Apresentação (casos de uso) |
-| Lucas Peixoto Rodrigues | Apresentação (priorização dos casos de uso no MVP) |
+    | Nome | Papel |
+    |-|-|
+    | Pedro Luca Rocha Manera | Apresentação/equipe de desenvolvimento |
+    | João Gabriel Rolim Veiga | Apresentação (DoR/DoD) |
+    | Jorge Andres Vasquez Vega | Apresentação (técnicas de declaração) |
+    | Gabriel Vieira Octacilio Pinheiro | Apresentação (backlog) e apoio técnico |
+    | Bryan Smith Rodrigues Cavalcante | Apresentação (casos de uso) |
+    | Lucas Peixoto Rodrigues | Apresentação (priorização dos casos de uso no MVP) |
 
-## Pautas
+    ## Pautas
 
-- **Apresentação do grupo 7 e do sistema:** Pedro Luca abriu confirmando o Grupo 7 e apresentou o **Sigma**, sistema integrado de gestão de matrículas desenvolvido para a **Creche Estação Ação Vida**, instituição filantrópica que atende em Águas Lindas de Goiás (conforme transcrição).
-- **Estrutura de requisitos:** a equipe organizou o projeto em **4 objetivos específicos**, **8 características de produto** (2 por objetivo) e requisitos funcionais derivados. Os RNFs foram tratados como transversais, com classificação de qualidade (segurança, usabilidade, desempenho e confiabilidade/disponibilidade). A árvore de rastreabilidade foi apresentada no Miro, com print como evidência.
-- **Técnicas de declaração:** Jorge apresentou três técnicas utilizadas: **lista de requisitos** (simples, com ID, nome curto e descrição), **declarações textuais estruturadas** (usadas na validação do MVP, com fator/ação/condição) e **casos de uso** (nível mais detalhado, com fluxos principal, alternativos e de exceção). Discutiu-se se declarações de negócio deveriam aparecer; a equipe optou por manter apenas as três técnicas por questão de tempo.
-- **DoR e DoD:** João apresentou o **Definition of Ready** (regras de negócio compreendidas, análise técnica de riscos, rastreabilidade verificável, critérios de aceitação, validação com cliente, escopo compatível com a interação, mensuração técnica e detalhamento suficiente) e o **Definition of Done** (implementação conforme especificação, critérios de aceitação cumpridos, testes implementados, integração sem falhas, código revisado, conformidade com RNFs, acessibilidade, documentação atualizada, demonstração/verificação e validação com cliente quando aplicável). Houve queda de áudio e ele repetiu o trecho.
-- **Backlog e MVP:** Gabriel apresentou a estrutura do backlog: requisitos derivados das características de produto, cerca de **24 requisitos funcionais e 10 não funcionais**, cada um vinculado a casos de uso. A priorização usou matriz **valor de negócio × esforço técnico**. O MVP concentrou requisitos do quadrante de **alto valor e baixo esforço**, incluindo também itens de outros quadrantes quando necessários para completude das características de produto.
-- **Casos de uso:** Bryan explicou que o Sigma possui **8 casos de uso** derivados dos requisitos funcionais e complementados por regras de negócio. A estrutura padronizada contém atores, objetivo, pré-condições, fluxo principal, fluxos alternativos, fluxos de exceção, regras de negócio e requisitos relacionados. Exemplo citado: **UC4** vinculado ao **RF8** e à **RN3** (preenchimento completo das fichas para ativar a matrícula).
-- **Priorização dos casos de uso no MVP:** Lucas apresentou tabela com valor de negócio e esforço técnico por caso de uso, calculando médias a partir dos requisitos relacionados. Em seguida, apresentou a tabela de priorização, dividindo valor de negócio por esforço técnico para obter o valor resultante. Os critérios citados envolveram valores **≥ 3** e **≥ 1,9**, além da análise de importância de cada caso de uso para viabilizar um protótipo minimamente funcional. Houve ambiguidade na transcrição entre “valor de negócio”, “esforço técnico” e “valor resultante”.
-- **Problemas técnicos durante a gravação:** o compartilhamento de tela exigiu atualização forçada (`Ctrl+Shift+R`) para exibir a versão atualizada do Pages; o texto de Lucas não apareceu de imediato. João teve queda de áudio/interfone e repetiu sua fala. Ao final, Pedro perguntou sobre a conclusão da gravação, que não ficou clara na transcrição.
+    - **Apresentação do grupo 7 e do sistema:** Pedro Luca abriu confirmando o Grupo 7 e apresentou o **Sigma**, sistema integrado de gestão de matrículas desenvolvido para a **Creche Estação Ação Vida**, instituição filantrópica que atende em Águas Lindas de Goiás (conforme transcrição).
+    - **Estrutura de requisitos:** a equipe organizou o projeto em **4 objetivos específicos**, **8 características de produto** (2 por objetivo) e requisitos funcionais derivados. Os RNFs foram tratados como transversais, com classificação de qualidade (segurança, usabilidade, desempenho e confiabilidade/disponibilidade). A árvore de rastreabilidade foi apresentada no Miro, com print como evidência.
+    - **Técnicas de declaração:** Jorge apresentou três técnicas utilizadas: **lista de requisitos** (simples, com ID, nome curto e descrição), **declarações textuais estruturadas** (usadas na validação do MVP, com fator/ação/condição) e **casos de uso** (nível mais detalhado, com fluxos principal, alternativos e de exceção). Discutiu-se se declarações de negócio deveriam aparecer; a equipe optou por manter apenas as três técnicas por questão de tempo.
+    - **DoR e DoD:** João apresentou o **Definition of Ready** (regras de negócio compreendidas, análise técnica de riscos, rastreabilidade verificável, critérios de aceitação, validação com cliente, escopo compatível com a interação, mensuração técnica e detalhamento suficiente) e o **Definition of Done** (implementação conforme especificação, critérios de aceitação cumpridos, testes implementados, integração sem falhas, código revisado, conformidade com RNFs, acessibilidade, documentação atualizada, demonstração/verificação e validação com cliente quando aplicável). Houve queda de áudio e ele repetiu o trecho.
+    - **Backlog e MVP:** Gabriel apresentou a estrutura do backlog: requisitos derivados das características de produto, cerca de **24 requisitos funcionais e 10 não funcionais**, cada um vinculado a casos de uso. A priorização usou matriz **valor de negócio × esforço técnico**. O MVP concentrou requisitos do quadrante de **alto valor e baixo esforço**, incluindo também itens de outros quadrantes quando necessários para completude das características de produto.
+    - **Casos de uso:** Bryan explicou que o Sigma possui **8 casos de uso** derivados dos requisitos funcionais e complementados por regras de negócio. A estrutura padronizada contém atores, objetivo, pré-condições, fluxo principal, fluxos alternativos, fluxos de exceção, regras de negócio e requisitos relacionados. Exemplo citado: **UC4** vinculado ao **RF8** e à **RN3** (preenchimento completo das fichas para ativar a matrícula).
+    - **Priorização dos casos de uso no MVP:** Lucas apresentou tabela com valor de negócio e esforço técnico por caso de uso, calculando médias a partir dos requisitos relacionados. Em seguida, apresentou a tabela de priorização, dividindo valor de negócio por esforço técnico para obter o valor resultante. Os critérios citados envolveram valores **≥ 3** e **≥ 1,9**, além da análise de importância de cada caso de uso para viabilizar um protótipo minimamente funcional. Houve ambiguidade na transcrição entre “valor de negócio”, “esforço técnico” e “valor resultante”.
+    - **Problemas técnicos durante a gravação:** o compartilhamento de tela exigiu atualização forçada (`Ctrl+Shift+R`) para exibir a versão atualizada do Pages; o texto de Lucas não apareceu de imediato. João teve queda de áudio/interfone e repetiu sua fala. Ao final, Pedro perguntou sobre a conclusão da gravação, que não ficou clara na transcrição.
 
-## Decisões
+    ## Decisões
 
-1. **Manter apenas três técnicas de declaração na apresentação:** lista de requisitos, declarações textuais estruturadas e casos de uso, sem incluir declarações de negócio, para preservar o tempo.
-2. **Repetir os trechos com problemas** de áudio e de compartilhamento de tela para garantir a gravação.
-3. **Usar atualização forçada do navegador** (`Ctrl+Shift+R`) quando a versão do Pages não refletir as alterações.
-4. **Editar a gravação depois**, cortando trechos problemáticos e conversas paralelas.
-5. **Manter a estrutura de priorização do MVP** baseada na matriz valor de negócio × esforço técnico, complementada pela análise de completude das características de produto e pela viabilidade de um protótipo minimamente funcional.
+    1. **Manter apenas três técnicas de declaração na apresentação:** lista de requisitos, declarações textuais estruturadas e casos de uso, sem incluir declarações de negócio, para preservar o tempo.
+    2. **Repetir os trechos com problemas** de áudio e de compartilhamento de tela para garantir a gravação.
+    3. **Usar atualização forçada do navegador** (`Ctrl+Shift+R`) quando a versão do Pages não refletir as alterações.
+    4. **Editar a gravação depois**, cortando trechos problemáticos e conversas paralelas.
+    5. **Manter a estrutura de priorização do MVP** baseada na matriz valor de negócio × esforço técnico, complementada pela análise de completude das características de produto e pela viabilidade de um protótipo minimamente funcional.
 
-## Tarefas realizadas
+    ## Tarefas realizadas
 
-- **Pedro Luca:** abriu a apresentação, contextualizou o Grupo 7 e o Sistema Sigma, e apresentou a estrutura de objetivos específicos, características de produto, requisitos funcionais e RNFs.
-- **Jorge:** apresentou as técnicas de declaração e suas limitações.
-- **João:** apresentou DoR e DoD; repetiu o trecho após queda de áudio.
-- **Gabriel:** apresentou o backlog, a matriz valor de negócio × esforço e a composição do MVP; auxiliou na correção do compartilhamento de tela.
-- **Bryan:** apresentou os 8 casos de uso, sua estrutura padronizada e o exemplo do UC4 com RF8 e RN3.
-- **Lucas:** apresentou a priorização dos casos de uso no MVP; repetiu o trecho após ajuste de cache na página.
+    - **Pedro Luca:** abriu a apresentação, contextualizou o Grupo 7 e o Sistema Sigma, e apresentou a estrutura de objetivos específicos, características de produto, requisitos funcionais e RNFs.
+    - **Jorge:** apresentou as técnicas de declaração e suas limitações.
+    - **João:** apresentou DoR e DoD; repetiu o trecho após queda de áudio.
+    - **Gabriel:** apresentou o backlog, a matriz valor de negócio × esforço e a composição do MVP; auxiliou na correção do compartilhamento de tela.
+    - **Bryan:** apresentou os 8 casos de uso, sua estrutura padronizada e o exemplo do UC4 com RF8 e RN3.
+    - **Lucas:** apresentou a priorização dos casos de uso no MVP; repetiu o trecho após ajuste de cache na página.
 
-## Pendências
+    ## Pendências
 
-- **Equipe:** editar a gravação, cortando trechos com queda de áudio, interfone e problemas de compartilhamento de tela.
-- **Gabriel/Lucas:** verificar se o deploy do Pages está atualizado e se os textos da priorização aparecem corretamente.
-- **Equipe:** ensaiar os tempos de fala, pois alguns trechos precisaram ser repetidos.
-- **Equipe:** confirmar e registrar a conclusão da apresentação, que não ficou clara na transcrição.
-- **Equipe:** revisar a redação dos critérios de priorização dos casos de uso para eliminar a ambiguidade entre “valor de negócio”, “esforço técnico” e “valor resultante”.
+    - **Equipe:** editar a gravação, cortando trechos com queda de áudio, interfone e problemas de compartilhamento de tela.
+    - **Gabriel/Lucas:** verificar se o deploy do Pages está atualizado e se os textos da priorização aparecem corretamente.
+    - **Equipe:** ensaiar os tempos de fala, pois alguns trechos precisaram ser repetidos.
+    - **Equipe:** confirmar e registrar a conclusão da apresentação, que não ficou clara na transcrição.
+    - **Equipe:** revisar a redação dos critérios de priorização dos casos de uso para eliminar a ambiguidade entre “valor de negócio”, “esforço técnico” e “valor resultante”.
 
----
+    ---
 
-**Resumo do que foi sintetizado das atas anteriores e do site de casos de uso:**
+    **Resumo do que foi sintetizado das atas anteriores e do site de casos de uso:**
 
-- **Contexto:** esta gravação ocorre após a montagem de casos de uso e backlog (reunião de 11/10/2026) e antes do alinhamento técnico de 30/10/2026. Ela consolida a apresentação da Unidade 2, com requisitos, técnicas de declaração, DoR/DoD, backlog e priorização do MVP.
-- **Casos de uso citados:** o site de casos de uso confirma que o Sigma possui 8 casos de uso. A transcrição cita explicitamente o **UC4** vinculado ao **RF8** e à **RN3**, o que é coerente com a documentação de visão de produto e casos de uso.
-- **Relação com atas anteriores:** a matriz valor de negócio × esforço e a priorização do MVP já haviam sido discutidas na reunião de 23/09/2026; a ligação CP × requisitos e os ajustes de documentação foram tratados em 11/10/2026. Esta gravação é a apresentação oral desses artefatos.
+    - **Contexto:** esta gravação ocorre após a montagem de casos de uso e backlog (reunião de 11/10/2026) e antes do alinhamento técnico de 30/10/2026. Ela consolida a apresentação da Unidade 2, com requisitos, técnicas de declaração, DoR/DoD, backlog e priorização do MVP.
+    - **Casos de uso citados:** o site de casos de uso confirma que o Sigma possui 8 casos de uso. A transcrição cita explicitamente o **UC4** vinculado ao **RF8** e à **RN3**, o que é coerente com a documentação de visão de produto e casos de uso.
+    - **Relação com atas anteriores:** a matriz valor de negócio × esforço e a priorização do MVP já haviam sido discutidas na reunião de 23/09/2026; a ligação CP × requisitos e os ajustes de documentação foram tratados em 11/10/2026. Esta gravação é a apresentação oral desses artefatos.
