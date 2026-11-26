@@ -17,7 +17,7 @@ from app.models.ops import Operacao, Tipo
 from app.models.pessoa import Pessoa
 from app.models.requerimento_matricula import RequerimentoMatricula
 from app.models.responsavel import Responsavel
-from app.models.termo_comp import TermoCompromisso
+from app.models.termo_comp import ModalidadeEnsino, RegimeAtendimento, TermoCompromisso
 from app.models.termo_imagem import TermoImagem
 from app.models.termo_saida import FormaSaida, TermoSaida
 from app.models.turma import StatusTurma, Turma, Turno
@@ -137,9 +137,12 @@ def _preencher_todas_fichas(db, matricula: Matricula) -> None:
     )
     comp = TermoCompromisso(
         id_matricula=matricula.id,
-        modalidade="Educação Infantil",
-        regime="Integral",
+        nome_responsavel="Maria das Graças Souza",
+        cpf_responsavel=OUTRO_CPF_VALIDO,
+        modalidade=ModalidadeEnsino.CRECHE,
+        regime=RegimeAtendimento.TEMPO_INTEGRAL,
         assinatura=True,
+        data_assinatura=date(2026, 2, 2),
     )
     db.add_all([req, socio, imagem, saida, comp])
     db.flush()
