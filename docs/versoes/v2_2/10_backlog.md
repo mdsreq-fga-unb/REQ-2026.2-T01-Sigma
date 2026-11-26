@@ -1,0 +1,89 @@
+# 10. Mínimo Produto Viável (MVP)
+
+O escopo do **Mínimo Produto Viável (MVP)** do sistema **SIGMA** foi estruturado a partir do [Catálogo Unificado de Requisitos](8_requisitos.md), tendo os **Casos de Uso (UC)** como representação oficial das necessidades operacionais da Creche Estação Vida.
+
+Esta página documenta as **regras e critérios de priorização** adotados para definir o recorte do produto, justificando os itens selecionados para a primeira entrega operacional e os itens planejados para versões posteriores.
+
+---
+
+<span id="102-priorizacao-do-backlog-e-mvp"></span>
+<span id="criterios-priorizacao"></span>
+## 10.1 Critérios e Regras de Priorização do MVP
+
+A seleção dos componentes do MVP baseou-se na ponderação conjunta entre o **Valor de Negócio** (demandado pela creche) e o **Esforço Técnico** (avaliado pela equipe de engenharia), complementada por diretrizes de conformidade regulatória.
+
+### 1. Regra de Valor de Negócio (Cliente e Usuários)
+
+O valor de cada necessidade funcional foi qualificado em reuniões participativas com a diretoria e a secretaria da Creche Estação Vida, aplicando os seguintes parâmetros:
+
+- **Escala de Impacto no Negócio (1 a 4):**
+    - **Nível 4 (Crítico):** Resolve o gargalo mais severo da instituição (eliminação de fichas em papel, prevenção de perda de dados de crianças, proteção de acesso). Sem este item, o sistema é inoperável.
+    - **Nível 3 (Alto):** Agrega eficiência expressiva ao fluxo diário (edição segura de fichas, upload/download de comprovantes em PDF, agilidade de busca).
+    - **Nível 2 (Médio):** Funcionalidades de conveniência ou processos secundários (quadro de avisos interno, relatórios complementares).
+    - **Nível 1 (Baixo):** Ajustes cosméticos ou demandas dispensáveis na fase inicial.
+
+- **Classificação MoSCoW:**
+    - **Must Have (Obrigatório):** Essencial para o ciclo de matrículas e gestão escolar básica. Compõe o núcleo do MVP.
+    - **Should Have (Importante):** Requisitos altamente recomendados, mantidos no MVP quando não comprometem o cronograma principal.
+    - **Could Have (Desejável):** Recursos agregadores de conveniência, incorporados apenas mediante folga técnica.
+    - **Won't Have (Pós-MVP):** Funcionalidades explicitamente acordadas com o cliente como escopo futuro.
+
+---
+
+### 2. Regra de Esforço Técnico e Capacidade de Engenharia
+
+O esforço para concretização de cada requisito foi estimado pela equipe técnica considerando três dimensões (escala 1 a 4):
+
+1. **Esforço de Desenvolvimento ($E$):** Volume estimado de horas de codificação e escrita de testes.
+2. **Complexidade Algorítmica e de Integração ($C$):** Grau de incerteza da lógica de negócio, persistência de arquivos sensíveis e relacionamentos de dados.
+3. **Lacuna de Competência da Equipe ($L$):** Necessidade de curva de aprendizado nas tecnologias e ferramentas empregadas.
+
+O **Esforço Consolidado** resulta da média ponderada dessas dimensões, servindo de base para o cálculo de custo-benefício.
+
+---
+
+### 3. Relação Custo-Benefício (Valor vs. Esforço)
+
+A priorização do MVP busca maximizar a entrega de valor com a menor complexidade de execução no menor ciclo de tempo:
+
+$$\text{Razão de Prioridade} = \frac{\text{Valor de Negócio Médio}}{\text{Esforço Técnico Consolidado}}$$
+
+Itens com razão $\ge 2.0$ e classificados como *Must Have* receberam prioridade imediata para integrar o MVP. Itens com menor razão ou de caráter acessório foram alocados para o backlog pós-MVP.
+
+---
+
+### 4. Requisitos Não Funcionais Transversais Obrigatórios
+
+Diferente das capacidades funcionais que foram modularizadas em casos de uso, certos requisitos não funcionais constituem **condições de conformidade transversal indispensável** em todos os fluxos do MVP:
+
+- **Proteção e Privacidade de Dados (LGPD):** Obrigação legal absoluta no manuseio de dados de menores e responsáveis vulneráveis.
+- **Segurança de Acesso e Autenticação:** Restrição irrestrita de acessos não autenticados aos registros da creche.
+
+---
+
+## 10.2 Integração com o Catálogo Unificado
+
+A indicação individual do recorte de cada Caso de Uso no MVP está consolidada diretamente nos cards do **[Catálogo Unificado de Requisitos](8_requisitos.md)**, identificada visualmente por badges de status e acessível através do filtro de MVP da página.
+
+Para consultar a especificação completa, capacidades funcionais, requisitos de qualidade e regras de negócio de cada item, utilize os modais interativos e as opções de filtragem disponíveis no catálogo unificado.
+
+---
+
+## 10.3 Validação do MVP com o Stakeholder
+
+A composição e os critérios do MVP foram formalmente apresentados e validados com **Cirlene Sena**, diretora e coordenadora da **Creche Estação Vida** (stakeholder principal):
+
+- **Aprovação do Recorte:** A coordenadora confirmou que os 7 Casos de Uso selecionados (UC01, UC02, UC04, UC05, UC06, UC07 e UC08) atendem plenamente ao objetivo de *mínimo produto indispensável para operação*, cobrindo o ciclo crítico de matrículas e dispensando o uso de papéis físicos.
+- **Adiamento Consciente:** Foi acordado entre cliente e equipe técnica o adiamento do mural de avisos (UC03) e das operações complexas de inativação/reativação (RF11, RF12, RF19, RF20) para o ciclo pós-MVP.
+- **Evidências:** Os registros detalhados da validação estão disponíveis na seção [Atas de Reunião - Unidade 2](../reunioes/ata1.md).
+
+
+---
+
+## Histórico de Versões
+
+| Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
+|---|---|---|---|---|
+| [2.0](../versoes/v2/10_backlog.md) | 12/10/2026 | Backlog V1.1, priorização MoSCoW e definição inicial do MVP (Unidade 2). | Gabriel Octacilio | Equipe SIGMA |
+| [2.1](../versoes/v2_1/10_backlog.md) | 07/11/2026 | Reestruturação do backlog e correção dos cálculos de priorização (Issues #31 e #32). | Pedro Luca | Gabriel Octacilio |
+| **2.2 (Atual)** | 09/11/2026 | Conversão para critérios do MVP integrados ao Catálogo Unificado ([PR #63](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/63)). | Pedro Luca | Equipe SIGMA |

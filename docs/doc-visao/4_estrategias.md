@@ -67,7 +67,7 @@ Como mencionado anteriormente, o OpenUP tem sido amplamente orientado por riscos
 | Risco | Maneira de Enfrentar |
 |-------|----------------------|
 | Segurança | Garantir a confidencialidade e a proteção de informações pessoais; controlar quem tem acesso às informações e ao sistema como um todo |
-| Migração | Determinar se todos os documentos físicos serão convertidos para eletrônicos; se não forem, como a equipe administrará aqueles que continuam sendo usados. |
+| Migração | Nem todos os documentos físicos serão convertidos: apenas as fichas de 2026 serão migradas (piloto com 5 fichas até 01/12/2026; larga escala em 2027), e o acervo anterior e as fichas não migradas continuam em papel, guardados pela secretaria. O procedimento de guarda e consulta desses documentos e a convivência com o sistema devem ser combinados com a cliente na homologação (ver 2.6 da Solução Proposta). |
 | Infraestrutura | Ensinar e treinar os membros da equipe sobre tecnologias que estejam alinhadas às capacidades da Creche Estação Vida |
 | Arquitetura de Armazenamento | Definir esse aspecto em uma base iterativa e incremental, em vez de concentrá-lo em uma única etapa, considerando o tamanho e a natureza do projeto. |
 | Controle de Acesso | Definir os tipos de permissão para diferentes indivíduos/entidades. |
@@ -121,6 +121,9 @@ Durante a fase de Elaboração, a equipe analisou os riscos técnicos e definiu 
 | **Arquitetura** | Backend em FastAPI (Python) e Frontend em Next.js, comunicando-se via API REST. | Facilita a separação de responsabilidades e a manutenção. |
 | **Banco de Dados** | PostgreSQL (relacional). | Garante integridade dos dados e suporta consultas complexas (RN02). |
 | **Segurança** | Autenticação via JWT e senhas criptografadas com Bcrypt. | Impede acessos não autorizados (RNF01, RNF02) e vazamento de senhas. |
+| **Controle de Acesso** | Dois perfis (Administrador e Secretaria) e bloqueio de rotas internas sem sessão ativa. | Limita quem acessa e altera os dados (RNF02, RN18). |
+| **Sessão** | Encerramento da sessão após 30 minutos de inatividade. | Reduz a exposição de dados em terminal abandonado (RN17). |
+| **Rastreabilidade** | Histórico de edições e confirmação ao salvar. | Permite identificar alterações indevidas (RF17, CP8). |
 | **Backup** | Rotina de backup diário do banco de dados via volumes do Docker. | Mitiga a perda de dados em caso de falha no servidor. |
 | **Hospedagem** | Conteinerização com Docker. | Garante que o sistema rode de forma idêntica em qualquer ambiente. |
 
@@ -148,4 +151,5 @@ Para garantir a transparência do processo OpenUP e rastrear a execução das at
 | [2.0](../versoes/v2/4_estrategias.md) | 12/10/2026 | Refinamento da adaptação do OpenUP, papéis e riscos (Unidade 2). | Bryan | Gabriel Octacilio |
 | [2.1](../versoes/v2_1/4_estrategias.md) | 08/11/2026 | Inclusão das seções 4.1.2, 4.4 (decisões de arquitetura) e 4.5 (acompanhamento das iterações) (Issue #23). | Bryan | Equipe SIGMA |
 | 2.2 | 16/11/2026 | Atualização das Iterações 4 a 7 no acompanhamento, registro de responsáveis/evidências e histórico de versões (Issue #23 / [PR #73](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/73)). | Pedro Luca | Equipe SIGMA |
-| **2.3 (Atual)** | 16/11/2026 | Remoção de Histórias de Usuário da lista de artefatos e explicitação da adoção exclusiva de Casos de Uso (Issue #23). | Pedro Luca | Equipe SIGMA |
+| [2.3](../versoes/v2_3/4_estrategias.md) | 16/11/2026 | Remoção de Histórias de Usuário da lista de artefatos e explicitação da adoção exclusiva de Casos de Uso (Issue #23). | Pedro Luca | Equipe SIGMA |
+| **2.4 (Atual)** | 26/11/2026 | Correção da revisão da Visão: decisão sobre documentos físicos que continuam fora do sistema (risco de Migração) e medidas de controle de acesso, sessão e rastreabilidade na tabela 4.4. | Equipe SIGMA | A definir |

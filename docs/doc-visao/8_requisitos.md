@@ -377,7 +377,7 @@ O painel a seguir apresenta os Casos de Uso do sistema, indicando o vínculo com
         <span><a href="../2_solucao/#23-caracteristicas-de-produto">CP7, CP1</a></span> • <span><a href="../2_solucao/#22-objetivos-especificos-oe-do-produto">OE.1 - Organização Administrativa</a></span>
       </div>
       <p class="catalogo-card__desc">
-        Vincular o card de matrícula do aluno a uma turma existente ativa, garantindo alocação única e consistência na formação de salas.
+        Alterar a turma de um aluno com matrícula ativa para outra turma existente e ativa, garantindo alocação única. A alocação inicial ocorre no cadastro do card (UC04).
       </p>
       <div class="catalogo-card__attributes">
         <div class="catalogo-card__row">

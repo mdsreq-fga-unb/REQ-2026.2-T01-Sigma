@@ -112,7 +112,7 @@
       category: 'rf',
       type: 'Requisito Funcional',
       name: 'Vincular aluno a turma',
-      description: 'As secretárias devem poder associar o card de matrícula de um aluno a uma turma cadastrada e ativa da creche.',
+      description: 'As secretárias devem poder alterar a turma de um aluno com matrícula ativa, vinculando o card a outra turma cadastrada e ativa da creche. A alocação inicial ocorre no cadastro do card (RF08/UC04).',
       related: ['UC07', 'RN02', 'RN06', 'RN08', 'RN10', 'RN11']
     },
     RF14: {
@@ -128,7 +128,7 @@
       category: 'rf',
       type: 'Requisito Funcional',
       name: 'Editar/Substituir documento',
-      description: 'O sistema deve permitir substituir um documento PDF previamente anexado a uma ficha, removendo o arquivo anterior e mantendo o novo documento.',
+      description: 'O sistema deve permitir substituir um documento PDF previamente anexado a uma ficha, passando o novo documento a ser o vigente. O tratamento do arquivo anterior (descarte ou retenção) depende de decisão da creche, ainda pendente (UC05).',
       related: ['UC05', 'RN05', 'RN10']
     },
     RF16: {
@@ -253,7 +253,7 @@
       category: 'rnf',
       type: 'Requisito Não Funcional (Desempenho)',
       name: 'Tempo de Resposta ao Logar',
-      description: 'Garantir tempo de resposta inferior a 2 segundos entre o clique no botão de login e a autorização de acesso ao painel, sob conexão de rede estável.',
+      description: 'Garantir tempo de resposta inferior a 2 segundos entre o clique no botão de login e a autorização de acesso ao painel, sob conexão de rede estável. É uma meta de desempenho: não define o tempo limite de espera (timeout) nem caracteriza, por si só, falha de conexão.',
       related: ['UC01', 'RF06']
     },
     RNF06: {
@@ -332,7 +332,7 @@
       category: 'rn',
       type: 'Regra de Negócio',
       name: 'Vínculo Único de Turma e Etapa',
-      description: 'Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (selecionada no cadastro ou na alocação), atuando em conjunto com a RN03.',
+      description: 'Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (selecionada no cadastro e alterável depois pela transferência de turma do UC07), atuando em conjunto com a RN03.',
       justification: 'Estrutura organizacional da creche e integridade referencial no banco (turma_id obrigatório).',
       related: ['RF08', 'RF13', 'RF18', 'RF24', 'UC04', 'UC07']
     },
