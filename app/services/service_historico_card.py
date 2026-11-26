@@ -1,15 +1,4 @@
-"""Consulta do histórico de edições do card do aluno (UC04 / FA04 / RF17 / issue #109).
-
-A gravação do histórico fica em `service_historico.py`; este módulo só lê.
-
-- Uma linha por campo alterado: cada item de `Operacao.alteracoes` vira uma linha, com a data
-  e o autor da operação.
-- Operação sem `alteracoes` (registros antigos e os de primeiro preenchimento) vira uma linha só,
-  com o resumo da `descricao`, que tem apenas nomes de campos, nunca valores.
-- Campo sensível sai sempre com `valor_anterior` e `valor_novo` nulos (LGPD), mesmo que algum
-  valor tenha sido gravado por engano.
-- Consulta liberada para qualquer status do card, inclusive INATIVO (FE03 / RN10).
-"""
+"""Consulta do histórico de edições do card do aluno (UC04 / FA04 / RF17 / issue #109)."""
 import logging
 import math
 from datetime import timedelta
