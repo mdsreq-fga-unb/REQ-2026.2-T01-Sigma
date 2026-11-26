@@ -2,7 +2,8 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { IconTrash } from "@/components/ui/Icons";
 import { RadioGroup } from "@/components/ui/RadioGroup";
@@ -21,6 +22,10 @@ import {
   type ErrosCampos,
 } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
+import { mensagemErroAluno } from "@/components/alunos/erros";
+import { usandoBackendReal } from "@/services/api";
+import { mapTermoSaidaBackParaFront } from "@/services/alunos.service";
+import { obterTermoSaida } from "@/services/fichas.service";
 import type { AlunoCard, FormaSaida, PessoaAutorizada, TermoSaida as Termo } from "@/types";
 import { useAlunoCard } from "../card/AlunoCardContext";
 import { DadosAlunoCard, Secao, TermoForm } from "./TermoForm";
@@ -33,6 +38,7 @@ interface Formulario {
   pessoasAutorizadas: PessoaAutorizada[];
   local: string;
   data: string; // dd/mm/aaaa
+  periodo: string;
   descricaoOutros: string;
 }
 
@@ -43,6 +49,7 @@ function inicial(card: AlunoCard): Formulario {
       ...termo,
       pessoasAutorizadas: [...termo.pessoasAutorizadas],
       data: isoParaData(termo.data),
+      periodo: termo.periodo ?? "",
       descricaoOutros: termo.descricaoOutros ?? "",
     };
   }
@@ -52,6 +59,7 @@ function inicial(card: AlunoCard): Formulario {
     pessoasAutorizadas: [],
     local: LOCAL_PADRAO,
     data: "",
+    periodo: "",
     descricaoOutros: "",
   };
 }
@@ -63,8 +71,38 @@ export function TermoSaida() {
   const [erros, setErros] = useState<ErrosCampos>({});
   const [novaPessoa, setNovaPessoa] = useState<PessoaAutorizada>({ nome: "", parentesco: "" });
   const [erroNovaPessoa, setErroNovaPessoa] = useState<{ nome?: string; parentesco?: string }>({});
+  const [carregando, setCarregando] = useState(usandoBackendReal);
+  const [erroCarga, setErroCarga] = useState<string | null>(null);
 
-  const periodo = card.termos.saida?.periodo || card.termos.compromisso?.regime || "";
+  useEffect(() => {
+    if (!usandoBackendReal) return;
+    let ativo = true;
+    void (async () => {
+      try {
+        const termo = mapTermoSaidaBackParaFront(await obterTermoSaida(card.idMatricula));
+        if (!ativo || !termo) return;
+        setForm({
+          ...termo,
+          pessoasAutorizadas: [...termo.pessoasAutorizadas],
+          data: isoParaData(termo.data),
+          periodo: termo.periodo ?? "",
+          descricaoOutros: termo.descricaoOutros ?? "",
+        });
+      } catch (error) {
+        if (ativo) setErroCarga(mensagemErroAluno(error, "carregar"));
+      } finally {
+        if (ativo) setCarregando(false);
+      }
+    })();
+    return () => {
+      ativo = false;
+    };
+  }, [card.idMatricula]);
+
+  if (carregando) return <p aria-live="polite">Carregando termo de saída...</p>;
+  if (erroCarga) return <Alert>{erroCarga}</Alert>;
+
+  const periodo = form.periodo || card.termos.compromisso?.regime || "";
   const exigePessoas = exigePessoasAutorizadas(form.formaSaida);
   const lotado = form.pessoasAutorizadas.length >= MAX_PESSOAS_AUTORIZADAS;
 

@@ -406,7 +406,7 @@ export function MatriculaForm({ matricula, onCancel, onSave }: MatriculaFormProp
                 { label: "Parda", value: "PARDA" },
                 { label: "Amarela", value: "AMARELA" },
                 { label: "Indígena", value: "INDIGENA" },
-                { label: "Não declarada", value: "NAO_DECLARADA" },
+                { label: "Não declarada", value: "NAO_DECLARADO" },
               ]}
               onChange={(value) => setPayload((atual) => ({
                 ...atual, aluno: { ...atual.aluno, corRaca: value },

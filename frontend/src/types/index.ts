@@ -29,7 +29,7 @@ export interface NovoUsuarioPayload {
  */
 export type StatusAluno = "PENDENTE" | "ATIVO" | "INATIVO";
 export type Sexo = "MASCULINO" | "FEMININO";
-export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADA";
+export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADO";
 
 export type StatusMatricula = "PENDENTE" | "ATIVA" | "INATIVA";
 export type TipoAlteracaoMatricula = "CRIACAO" | "EDICAO" | "INATIVACAO" | "REATIVACAO";
@@ -102,27 +102,120 @@ export interface RenovacaoMatricula {
 // Backend UC04 (fichas/termos/requerimento) — contratos reais /matriculas/{id}
 // ---------------------------------------------------------------------------
 
-export interface BackendDocumento { id?: string | null; pendente: boolean; descricao?: string | null; }
-export interface BackendResponsavel { nome: string; nacionalidade: string; estado_civil: string; rg: string; orgao_expedidor: string; cpf: string; endereco: string; documentos: BackendDocumento[]; }
-export interface BackendResponsavelItem { id?: string | null; nome: string; parentesco: string; responsavel_principal: boolean; contato?: string | null; endereco?: string | null; documentos: BackendDocumento[]; }
-export interface BackendMembroFamiliar { id?: string | null; tipo: string; nome: string; idade: number; escolaridade: string; renda_mensal: number | string; }
-export interface BackendRequerimentoMatricula { nome_aluno: string; cor_raca: string; data_nascimento: string; naturalidade: string; uf_naturalidade: string; cpf_aluno?: string | null; certidao_nova: string; documentos: BackendDocumento[]; possui_irmao_creche: boolean; nome_irmao_creche?: string | null; responsavel_1: BackendResponsavel; responsavel_2?: BackendResponsavel | null; responsaveis: BackendResponsavelItem[]; composicao_familiar_renda: string; pessoas_autorizadas_buscar: string; turno: string; ano?: number | null; assinatura_responsavel: string; data_assinatura: string; declaracao_responsavel: boolean; pendencias: string[]; completo: boolean; }
-export interface BackendSocioDadosPessoais { nome: string; cor_raca: string; data_nascimento: string; naturalidade: string; naturalidade_uf: string; certidao_nova: string; possui_irmao_na_creche: boolean; nome_irmao_na_creche?: string | null; }
-export interface BackendSocioEndereco { logradouro: string; numero: string; complemento?: string | null; bairro: string; uf_residencia: string; cep: string; ponto_referencia?: string | null; }
-export interface BackendSocioContato { telefone_contato?: string | null; celular: string; email?: string | null; }
-export interface BackendSocioMoradia { situacao: "PROPRIO" | "ALUGADO" | "FINANCIADO" | "CEDIDO" | "OCUPACAO_IRREGULAR"; cedido_por?: string | null; valor?: number | string | null; }
-export interface BackendSocioTransporte { meio: string; possui: boolean; valor?: number | string | null; }
+export interface BackendMembroFamiliar {
+  id?: number | null;
+  tipo: string | null;
+  profissao: string | null;
+  idade: number | null;
+  estado_civil: string | null;
+  escolaridade: string | null;
+  renda_mensal: number | string | null;
+}
+export interface BackendSocioDadosPessoais { nome?: string | null; data_nasc?: string | null; sexo?: string | null; etapa?: string | null; ano_letivo?: number | null; nome_mae?: string | null; nome_pai?: string | null; }
+export interface BackendSocioEndereco { logradouro: string | null; numero: string | null; bairro: string | null; cidade: string | null; uf_residencia: string | null; cep: string | null; }
+export interface BackendSocioContato { telefone_contato?: string | null; celular?: string | null; email?: string | null; }
+export interface BackendSocioMoradia { situacao: "PROPRIO" | "ALUGADO" | "FINANCIADO" | "CEDIDO" | "OCUPACAO_IRREGULAR" | null; cedido_por?: string | null; valor?: number | string | null; }
+export interface BackendSocioTransporte { meio: "NENHUM_A_PE_BICICLETA" | "CARONA" | "TRANSPORTE_COLETIVO" | "CARRO_MOTO_PROPRIO" | null; }
 export interface BackendSocioNucleoFamiliar { membros: BackendMembroFamiliar[]; observacoes?: string | null; }
-export interface BackendSocioPropriedadeRural { possui: boolean; descricao?: string | null; }
-export interface BackendSocioOutrasPropriedades { possui: boolean; relacao?: string | null; }
-export interface BackendSocioDeclaracao { nome: string; rg?: string | null; cpf: string; data_assinatura: string; }
-export interface BackendSocioeconomica { dados_pessoais: BackendSocioDadosPessoais; endereco: BackendSocioEndereco; contato: BackendSocioContato; moradia: BackendSocioMoradia; transporte: BackendSocioTransporte; nucleo_familiar: BackendSocioNucleoFamiliar; propriedade_rural?: BackendSocioPropriedadeRural | null; outras_propriedades?: BackendSocioOutrasPropriedades | null; declaracao: BackendSocioDeclaracao; pendencias: string[]; completa: boolean; }
-export interface BackendResponsavelTermoImagem { nome: string; nacionalidade: string; estado_civil: string; rg: string; cpf: string; residente_em: string; }
-export interface BackendAutorizacaoImagem { autoriza: boolean; local: string; data: string; }
-export interface BackendTermoImagem { responsavel: BackendResponsavelTermoImagem; autorizacao: BackendAutorizacaoImagem; completo: boolean; }
-export interface BackendSaidaTermo { forma_saida: "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS"; descricao_outros?: string | null; }
-export interface BackendPessoaAutorizadaTermo { id?: string | null; nome: string; parentesco: string; }
-export interface BackendTermoSaida { responsavel: string; periodo?: string | null; saida: BackendSaidaTermo; pessoas_autorizadas: BackendPessoaAutorizadaTermo[]; data?: string | null; completo: boolean; }
+export interface BackendSocioOutrasPropriedades { possui: boolean | null; relacao?: string | null; }
+export interface BackendSocioDeclaracao { nome: string | null; local: string | null; data: string | null; }
+export interface BackendSocioeconomica { dados_pessoais: BackendSocioDadosPessoais; endereco: BackendSocioEndereco; contato: BackendSocioContato; moradia: BackendSocioMoradia; transporte: BackendSocioTransporte; nucleo_familiar: BackendSocioNucleoFamiliar; outras_propriedades?: BackendSocioOutrasPropriedades | null; declaracao: BackendSocioDeclaracao; completa: boolean; }
+export interface BackendSocioeconomicaPayload {
+  endereco: BackendSocioEndereco;
+  contato: BackendSocioContato;
+  moradia: BackendSocioMoradia;
+  transporte: BackendSocioTransporte;
+  nucleo_familiar: BackendSocioNucleoFamiliar;
+  outras_propriedades: BackendSocioOutrasPropriedades;
+  declaracao: BackendSocioDeclaracao;
+}
+
+export interface BackendRequerimentoMatricula {
+  dados_pessoais: {
+    nome: string | null;
+    data_nascimento: string | null;
+    sexo: string | null;
+    nis: string | null;
+    cpf: string | null;
+    naturalidade: string | null;
+    uf: string | null;
+    nacionalidade: string | null;
+    raca: string | null;
+  };
+  matricula: {
+    ano_letivo: number;
+    data_matricula: string | null;
+    ano_escolaridade: string | null;
+    turma: string | null;
+  };
+  documentacao_civil: {
+    rg: string | null;
+    orgao_emissor: string | null;
+    uf_rg: string | null;
+    data_expedicao: string | null;
+    tipo_certidao: string | null;
+    num_termo: string | null;
+    folha: string | null;
+    livro: string | null;
+    data_emissao_certidao: string | null;
+    nome_cartorio: string | null;
+    uf_cartorio: string | null;
+    documento_estrangeiro: string | null;
+  };
+  filiacao: {
+    pai: BackendFiliacaoRequerimento;
+    mae: BackendFiliacaoRequerimento;
+  };
+  endereco_contato: {
+    logradouro: string | null;
+    numero: string | null;
+    bairro: string | null;
+    cidade: string | null;
+    uf: string | null;
+    cep: string | null;
+    telefone: string | null;
+  };
+  saude: {
+    problemas: string[];
+    observacao_problemas: string | null;
+    acompanhamentos: string[];
+    observacao_acompanhamentos: string | null;
+  };
+  termo_compromisso: {
+    nome_responsavel: string | null;
+    documentos_entregues: string[];
+  };
+  transferencia: {
+    data_pedido: string | null;
+    data_entrega: string | null;
+    nome_responsavel: string | null;
+  };
+  completa: boolean;
+  created_at: string | null;
+  updated_at: string | null;
+}
+export interface BackendFiliacaoRequerimento {
+  nome: string | null;
+  escolaridade: string | null;
+  local_trabalho: string | null;
+  telefone_trabalho: string | null;
+}
+export type BackendRequerimentoPayload = Omit<
+  BackendRequerimentoMatricula,
+  "completa" | "created_at" | "updated_at" | "matricula"
+> & {
+  matricula: {
+    ano_letivo: number | null;
+    data_matricula: string | null;
+  };
+};
+export interface BackendResponsavelTermoImagem { nome: string | null; nacionalidade: string | null; estado_civil: string | null; rg: string | null; cpf: string | null; residente_em: string; }
+export interface BackendAutorizacaoImagem { autoriza: boolean | null; local: string | null; data: string | null; }
+export interface BackendTermoImagem { responsavel: BackendResponsavelTermoImagem; autorizacao: BackendAutorizacaoImagem; completa: boolean; }
+export interface BackendSaidaTermo { forma_saida: "RESPONSAVEIS" | "TRANSPORTE_ESCOLAR" | "OUTROS" | null; descricao_outros?: string | null; }
+export interface BackendPessoaAutorizadaTermo { id?: number | null; nome: string; parentesco: string; }
+export interface BackendTermoSaida { responsavel: { nome?: string | null }; periodo?: string | null; saida: BackendSaidaTermo; pessoas_autorizadas: BackendPessoaAutorizadaTermo[]; local: string; data?: string | null; completa: boolean; }
+export interface BackendTermoCompromisso { nome_responsavel?: string | null; cpf_responsavel?: string | null; modalidade?: string | null; regime?: string | null; assinatura: boolean; data_assinatura?: string | null; completa: boolean; }
 export interface BackendTextoTermoUsoImagem { titulo: string; texto: string; }
 export interface FichaRequerimento {
   anoEscolaridade: string;
@@ -238,6 +331,40 @@ export interface NovaMatriculaPayload {
 export interface NovoAlunoPayload {
   aluno: DadosPessoaisAluno;
   matricula: DadosMatriculaAluno;
+  responsavel: {
+    nome: string;
+    parentesco: string;
+    cpf: string;
+    telefone: string;
+  };
+}
+
+/** Resposta consolidada de GET/POST /alunos. */
+export interface AlunoVisaoGeralResponse {
+  id_aluno: number;
+  id_matricula: number;
+  nome: string;
+  data_nasc: string;
+  status: StatusAluno;
+  etapa: { id: number; nome: string } | null;
+  turma: { id: number; nome: string; turno?: string | null; status: string } | null;
+  ano_letivo: number;
+  data_matricula: string;
+  fichas: {
+    requerimento: { completa: boolean };
+    socioeconomica: { completa: boolean };
+    termo_imagem: { completa: boolean };
+    termo_saida: { completa: boolean };
+    termo_compromisso: { completa: boolean };
+  };
+  resumo: {
+    responsavel: { nome: string; parentesco: string; telefone?: string | null; cpf?: string | null };
+    telefone?: string | null;
+    endereco?: string | null;
+    turma_etapa: { etapa?: string | null; turma?: string | null };
+  };
+  documentos: { itens: { tipo: string; nome: string; entregue: boolean }[]; entregues: number; total: number };
+  ultima_edicao: { data: string; autor: string } | null;
 }
 
 export type FichaAluno = "requerimento" | "socioeconomica" | "usoImagem" | "saida" | "compromisso";
@@ -305,6 +432,7 @@ export interface ReferenciaNome {
 
 export interface AlunoCard {
   id: string;
+  idMatricula: string;
   aluno: DadosPessoaisAluno;
   matricula: { anoLetivo: string; dataMatricula: string };
   etapa: ReferenciaNome | null;
@@ -396,6 +524,7 @@ export type ApiErrorCode =
   | "EMAIL_EM_USO" // UC02 FE01 (RN19)
   | "SENHA_FORA_PADRAO" // UC02 FE04 (RN20)
   | "CPF_EM_USO" // UC04 FE02 (RN07)
+  | "NIS_EM_USO" // UC04 FE02 (RN07)
   | "MATRICULA_EM_USO" // UC04 – matrícula já usada para outro cadastro
   | "MATRICULA_INATIVA" // UC04 FE03 (RN10)
   | "FICHAS_INCOMPLETAS" // UC04 FE01 (RN06)

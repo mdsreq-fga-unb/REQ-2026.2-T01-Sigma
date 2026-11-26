@@ -97,6 +97,7 @@ export function alunoCard(registro: AlunoRegistro): AlunoCard {
   const ultima = registro.historico[0];
   return {
     id: registro.id,
+    idMatricula: registro.id,
     aluno: registro.aluno,
     matricula: registro.matricula,
     status: statusAluno(registro),
@@ -184,8 +185,8 @@ function fichasCompletas(responsavel: string, parentesco: string, endereco: stri
       compromisso: {
         nomeResponsavel: responsavel,
         cpfResponsavel: "00000000000",
-        modalidade: "Creche",
-        regime: "Tempo integral",
+        modalidade: "CRECHE",
+        regime: "TEMPO_INTEGRAL",
         ciente: true,
         dataAssinatura: "2026-02-03",
       },

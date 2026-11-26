@@ -1,60 +1,45 @@
-﻿import type {
+import type {
   AlunoCard,
-  AlunoResumo,
-  BackendRequerimentoMatricula,
-  BackendSocioeconomica,
-  BackendTermoImagem,
-  BackendTermoSaida,
-  DadosPessoaisAluno,
-  FichaAluno,
+  AlunoVisaoGeralResponse,
   FiltroAlunos,
   ListaAlunos,
   NovoAlunoPayload,
   SituacaoFicha,
   TermoAluno,
+  TermoCompromisso,
   TermoSaida,
   TermoUsoImagem,
   TermosAluno,
 } from "@/types";
 import { api, isApiError, usandoApiMock } from "./api";
 import {
-  obterRequerimento,
-  obterSocioeconomica,
   obterTermoImagem,
   obterTermoSaida,
+  salvarTermoCompromisso,
   salvarTermoImagem,
   salvarTermoSaida,
 } from "./fichas.service";
 
-/*
- * UC04 (card do aluno) e UC08 FP01 (busca de alunos).
- * Em modo mock o frontend usa `/alunos/*`. Em modo real (backend) as fichas/termos
- * existentes usam `/matriculas/{id}/*` e o id do card é o id da matrícula.
- */
-
-/** Segmento da URL de cada termo em `PUT /alunos/{id}/termos/{termo}` (mock). */
 const ROTA_TERMO: Record<TermoAluno, string> = {
   usoImagem: "uso-imagem",
   saida: "saida",
   compromisso: "compromisso",
 };
 
-function erroNaoSuportado(mensagem: string): never {
-  throw { status: 501, code: "ERRO_DESCONHECIDO", message: mensagem };
-}
-
-function situacao(completa: boolean | undefined): SituacaoFicha {
+function situacao(completa: boolean): SituacaoFicha {
   return completa ? "PREENCHIDA" : "PENDENTE";
 }
 
-function ignorar404<T>(promessa: Promise<T>): Promise<T | null> {
-  return promessa.catch((erro) => {
-    if (isApiError(erro) && (erro.status === 404 || erro.code === "NAO_ENCONTRADO")) return null;
-    throw erro;
-  });
-}
+const RACA_BACKEND: Record<NonNullable<NovoAlunoPayload["aluno"]["corRaca"]>, string> = {
+  BRANCA: "BRANCO",
+  PRETA: "PRETO",
+  PARDA: "PARDO",
+  AMARELA: "AMARELO",
+  INDIGENA: "INDIGENA",
+  NAO_DECLARADO: "NAO_DECLARADO",
+};
 
-function mapTermoImagemFrontParaBack(termo: TermoUsoImagem): unknown {
+export function mapTermoImagemFrontParaBack(termo: TermoUsoImagem) {
   return {
     responsavel: {
       nome: termo.responsavel.nome,
@@ -65,20 +50,22 @@ function mapTermoImagemFrontParaBack(termo: TermoUsoImagem): unknown {
       residente_em: termo.responsavel.endereco,
     },
     autorizacao: {
-      autoriza: Boolean(termo.autoriza),
+      autoriza: termo.autoriza,
       local: termo.local,
       data: termo.data,
     },
   };
 }
 
-function mapTermoImagemBackParaFront(termo: BackendTermoImagem | null): TermoUsoImagem | null {
+export function mapTermoImagemBackParaFront(
+  termo: Awaited<ReturnType<typeof obterTermoImagem>> | null,
+): TermoUsoImagem | null {
   if (!termo) return null;
   return {
     responsavel: {
       nome: termo.responsavel?.nome ?? "",
       nacionalidade: termo.responsavel?.nacionalidade ?? "",
-      estadoCivil: (termo.responsavel?.estado_civil as string | undefined) ?? "",
+      estadoCivil: termo.responsavel?.estado_civil ?? "",
       rg: termo.responsavel?.rg ?? "",
       cpf: termo.responsavel?.cpf ?? "",
       endereco: termo.responsavel?.residente_em ?? "",
@@ -89,16 +76,16 @@ function mapTermoImagemBackParaFront(termo: BackendTermoImagem | null): TermoUso
   };
 }
 
-function mapTermoSaidaFrontParaBack(termo: TermoSaida): unknown {
+export function mapTermoSaidaFrontParaBack(termo: TermoSaida) {
   return {
-    responsavel: termo.nomeResponsavel,
-    periodo: termo.periodo ?? undefined,
+    responsavel: { nome: termo.nomeResponsavel },
+    periodo: termo.periodo || undefined,
     saida: {
-      forma_saida: termo.formaSaida ?? "RESPONSAVEIS",
+      forma_saida: termo.formaSaida,
       descricao_outros: termo.formaSaida === "OUTROS" ? (termo.descricaoOutros ?? "") : undefined,
     },
     pessoas_autorizadas: (termo.pessoasAutorizadas ?? []).map((p) => ({
-      ...(p.id ? { id: p.id } : {}),
+      ...(p.id && /^\d+$/.test(p.id) ? { id: Number(p.id) } : {}),
       nome: p.nome,
       parentesco: p.parentesco,
     })),
@@ -106,104 +93,108 @@ function mapTermoSaidaFrontParaBack(termo: TermoSaida): unknown {
   };
 }
 
-function mapTermoSaidaBackParaFront(termo: BackendTermoSaida | null): TermoSaida | null {
+export function mapTermoSaidaBackParaFront(
+  termo: Awaited<ReturnType<typeof obterTermoSaida>> | null,
+): TermoSaida | null {
   if (!termo) return null;
   return {
-    nomeResponsavel: termo.responsavel ?? "",
+    nomeResponsavel: termo.responsavel?.nome ?? "",
     formaSaida: termo.saida?.forma_saida ?? null,
-    pessoasAutorizadas: (termo.pessoas_autorizadas ?? []).map((p, i) => ({
-      id: p.id ?? `pessoa-${i}`,
+    pessoasAutorizadas: (termo.pessoas_autorizadas ?? []).map((p) => ({
+      id: p.id === null || p.id === undefined ? undefined : String(p.id),
       nome: p.nome ?? "",
       parentesco: p.parentesco ?? "",
     })),
-    local: "Escola/Creche Comunitária Social Tia Leonísia", // local fixo no backend (não editável)
+    local: termo.local ?? "",
     data: termo.data ?? "",
     periodo: termo.periodo ?? undefined,
     descricaoOutros: termo.saida?.descricao_outros ?? undefined,
   };
 }
 
-function alunoDeFichas(socio: BackendSocioeconomica | null, req: BackendRequerimentoMatricula | null): DadosPessoaisAluno {
-  const dp = socio?.dados_pessoais;
-  const nome = dp?.nome || req?.nome_aluno || "";
-  const dataNascimento = dp?.data_nascimento || req?.data_nascimento || "";
-  const corRaca = (dp?.cor_raca || req?.cor_raca || null) as DadosPessoaisAluno["corRaca"];
-  const naturalidade = dp?.naturalidade || req?.naturalidade || "";
-  const uf = dp?.naturalidade_uf || req?.uf_naturalidade || "";
+export function mapAlunoVisaoGeral(response: AlunoVisaoGeralResponse): AlunoCard {
+  const { fichas, resumo } = response;
+  const termos: TermosAluno = { usoImagem: null, saida: null, compromisso: null };
   return {
-    nome,
-    dataNascimento,
-    sexo: null,
-    nis: "",
-    rg: "",
-    cpf: req?.cpf_aluno ?? "",
-    naturalidade,
-    uf,
-    nacionalidade: "Brasileira",
-    corRaca,
-  };
-}
-
-function resumoDeFichas(socio: BackendSocioeconomica | null): { responsavel: string; parentesco: string; telefone: string; endereco: string } {
-  const e = socio?.endereco;
-  const endereco = e ? [e.logradouro, e.numero, e.bairro, e.uf_residencia, e.cep].filter(Boolean).join(", ") : "";
-  const telefone = socio?.contato?.celular || socio?.contato?.telefone_contato || "";
-  const responsavel = socio?.declaracao?.nome || "";
-  return { responsavel, parentesco: "", telefone, endereco };
-}
-
-function fichasDeBackend(
-  socio: BackendSocioeconomica | null,
-  req: BackendRequerimentoMatricula | null,
-  img: BackendTermoImagem | null,
-  saida: BackendTermoSaida | null,
-): Record<FichaAluno, SituacaoFicha> {
-  return {
-    requerimento: situacao(req?.completo),
-    socioeconomica: situacao(socio?.completa),
-    usoImagem: situacao(img?.completo),
-    saida: situacao(saida?.completo),
-    compromisso: "PENDENTE", // backend ainda não expõe termo de compromisso
-  };
-}
-
-async function comporCardReal(id: string): Promise<AlunoCard> {
-  const [socio, req, img, saida] = await Promise.all([
-    ignorar404(obterSocioeconomica(id)),
-    ignorar404(obterRequerimento(id)),
-    ignorar404(obterTermoImagem(id)),
-    ignorar404(obterTermoSaida(id)),
-  ]);
-
-  if (!socio && !req && !img && !saida) {
-    throw { status: 404, code: "NAO_ENCONTRADO", message: "Matrícula não encontrada." };
-  }
-
-  const fichas = fichasDeBackend(socio, req, img, saida);
-  const termos: TermosAluno = {
-    usoImagem: mapTermoImagemBackParaFront(img),
-    saida: mapTermoSaidaBackParaFront(saida),
-    compromisso: null,
-  };
-
-  return {
-    id,
-    aluno: alunoDeFichas(socio, req),
-    matricula: { anoLetivo: req?.ano ? String(req.ano) : "", dataMatricula: "" },
-    etapa: null,
-    turma: null,
-    status: "ATIVO",
-    fichas,
+    id: String(response.id_aluno),
+    idMatricula: String(response.id_matricula),
+    aluno: {
+      nome: response.nome,
+      dataNascimento: response.data_nasc,
+      sexo: null,
+      nis: "",
+      rg: "",
+      cpf: "",
+      naturalidade: "",
+      uf: "",
+      nacionalidade: "",
+      corRaca: null,
+    },
+    matricula: { anoLetivo: String(response.ano_letivo), dataMatricula: response.data_matricula },
+    etapa: response.etapa
+      ? { id: String(response.etapa.id), nome: response.etapa.nome }
+      : resumo.turma_etapa.etapa
+        ? { id: "", nome: resumo.turma_etapa.etapa }
+        : null,
+    turma: response.turma
+      ? { id: String(response.turma.id), nome: response.turma.nome }
+      : resumo.turma_etapa.turma
+        ? { id: "", nome: resumo.turma_etapa.turma }
+        : null,
+    status: response.status,
+    fichas: {
+      requerimento: situacao(fichas.requerimento.completa),
+      socioeconomica: situacao(fichas.socioeconomica.completa),
+      usoImagem: situacao(fichas.termo_imagem.completa),
+      saida: situacao(fichas.termo_saida.completa),
+      compromisso: situacao(fichas.termo_compromisso.completa),
+    },
     termos,
-    resumo: resumoDeFichas(socio),
-    documentos: [],
-    ultimaEdicao: null,
+    resumo: {
+      responsavel: resumo.responsavel.nome,
+      parentesco: resumo.responsavel.parentesco,
+      telefone: resumo.telefone ?? resumo.responsavel.telefone ?? "",
+      endereco: resumo.endereco ?? "",
+    },
+    documentos: response.documentos.itens.map((documento) => ({
+      nome: documento.nome,
+      situacao: documento.entregue ? "ENTREGUE" : "PENDENTE",
+    })),
+    ultimaEdicao: response.ultima_edicao
+      ? { data: response.ultima_edicao.data, autor: response.ultima_edicao.autor }
+      : null,
+  };
+}
+
+function payloadCadastro(payload: NovoAlunoPayload) {
+  return {
+    aluno: {
+      nome: payload.aluno.nome,
+      data_nasc: payload.aluno.dataNascimento,
+      sexo: payload.aluno.sexo,
+      cpf: payload.aluno.cpf,
+      nis: payload.aluno.nis,
+      naturalidade: payload.aluno.naturalidade,
+      uf: payload.aluno.uf,
+      nacionalidade: payload.aluno.nacionalidade,
+      raca: payload.aluno.corRaca ? RACA_BACKEND[payload.aluno.corRaca] : undefined,
+    },
+    responsavel: {
+      nome: payload.responsavel.nome,
+      parentesco: payload.responsavel.parentesco,
+      cpf: payload.responsavel.cpf || undefined,
+      telefone: payload.responsavel.telefone || undefined,
+    },
+    matricula: {
+      id_etapa: payload.matricula.etapaId ? Number(payload.matricula.etapaId) : null,
+      ano: Number(payload.matricula.anoLetivo),
+      data_matricula: payload.matricula.dataMatricula,
+    },
   };
 }
 
 export async function listarAlunos({ busca, status, turmaId, pagina, tamanhoPagina }: FiltroAlunos = {}): Promise<ListaAlunos> {
   if (!usandoApiMock) {
-    // Backend não possui endpoint agregado de listagem/busca de alunos (UC08/UC04 card list).
     return {
       itens: [],
       total: 0,
@@ -225,51 +216,76 @@ export async function listarAlunos({ busca, status, turmaId, pagina, tamanhoPagi
 }
 
 export async function obterAluno(id: string): Promise<AlunoCard> {
-  if (!usandoApiMock) return comporCardReal(id);
-  const { data } = await api.get<AlunoCard>(`/alunos/${encodeURIComponent(id)}`);
-  return data;
+  if (usandoApiMock) {
+    const { data } = await api.get<AlunoCard>(`/alunos/${encodeURIComponent(id)}`);
+    return data;
+  }
+  const { data } = await api.get<AlunoVisaoGeralResponse>(`/alunos/${encodeURIComponent(id)}`);
+  return mapAlunoVisaoGeral(data);
 }
 
 export async function criarAluno(payload: NovoAlunoPayload): Promise<AlunoCard> {
-  if (!usandoApiMock) erroNaoSuportado("A criação do card do aluno ainda não está disponível no backend.");
-  const { data } = await api.post<AlunoCard>("/alunos", payload);
-  return data;
+  if (usandoApiMock) {
+    const { data } = await api.post<AlunoCard>("/alunos", payload);
+    return data;
+  }
+  try {
+    const { data } = await api.post<AlunoVisaoGeralResponse>("/alunos", payloadCadastro(payload));
+    return mapAlunoVisaoGeral(data);
+  } catch (error) {
+    if (isApiError(error) && error.status === 404) {
+      throw { ...error, message: "A etapa selecionada não foi encontrada. Atualize a lista e tente novamente." };
+    }
+    throw error;
+  }
 }
 
 export async function salvarTermo<T extends TermoAluno>(
-  id: string,
+  idAluno: string,
+  idMatricula: string,
   termo: T,
   payload: NonNullable<TermosAluno[T]>,
 ): Promise<AlunoCard> {
-  if (!usandoApiMock) {
-    if (termo === "usoImagem") {
-      await salvarTermoImagem(id, mapTermoImagemFrontParaBack(payload as TermoUsoImagem));
-      return comporCardReal(id);
-    }
-    if (termo === "saida") {
-      await salvarTermoSaida(id, mapTermoSaidaFrontParaBack(payload as TermoSaida));
-      return comporCardReal(id);
-    }
-    erroNaoSuportado("O termo de compromisso ainda não está disponível no backend.");
+  if (usandoApiMock) {
+    const { data } = await api.put<AlunoCard>(
+      `/alunos/${encodeURIComponent(idAluno)}/termos/${ROTA_TERMO[termo]}`,
+      payload,
+    );
+    return data;
   }
-  const { data } = await api.put<AlunoCard>(`/alunos/${encodeURIComponent(id)}/termos/${ROTA_TERMO[termo]}`, payload);
-  return data;
+
+  if (termo === "usoImagem") {
+    await salvarTermoImagem(idMatricula, mapTermoImagemFrontParaBack(payload as TermoUsoImagem));
+  } else if (termo === "saida") {
+    await salvarTermoSaida(idMatricula, mapTermoSaidaFrontParaBack(payload as TermoSaida));
+  } else {
+    const compromisso = payload as TermoCompromisso;
+    await salvarTermoCompromisso(idMatricula, {
+      nome_responsavel: compromisso.nomeResponsavel,
+      cpf_responsavel: compromisso.cpfResponsavel,
+      modalidade: compromisso.modalidade,
+      regime: compromisso.regime,
+      assinatura: compromisso.ciente,
+      data_assinatura: compromisso.dataAssinatura || null,
+    });
+  }
+  return obterAluno(idAluno);
 }
 
 export async function inativarAluno(id: string): Promise<AlunoCard> {
-  if (!usandoApiMock) erroNaoSuportado("A inativação do aluno ainda não está disponível no backend.");
+  if (!usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "A inativação do aluno ainda não está disponível no backend." };
   const { data } = await api.patch<AlunoCard>(`/alunos/${encodeURIComponent(id)}/inativar`);
   return data;
 }
 
 export async function reativarAluno(id: string): Promise<AlunoCard> {
-  if (!usandoApiMock) erroNaoSuportado("A reativação do aluno ainda não está disponível no backend.");
+  if (!usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "A reativação do aluno ainda não está disponível no backend." };
   const { data } = await api.patch<AlunoCard>(`/alunos/${encodeURIComponent(id)}/reativar`);
   return data;
 }
 
 export async function vincularTurma(id: string, turmaId: string): Promise<AlunoCard> {
-  if (!usandoApiMock) erroNaoSuportado("O vínculo do aluno à turma ainda não está disponível no backend.");
+  if (!usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "O vínculo do aluno à turma ainda não está disponível no backend." };
   const { data } = await api.patch<AlunoCard>(`/alunos/${encodeURIComponent(id)}/turma`, { turmaId });
   return data;
 }

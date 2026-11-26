@@ -2,6 +2,9 @@
 import type {
   BackendRequerimentoMatricula,
   BackendSocioeconomica,
+  BackendSocioeconomicaPayload,
+  BackendRequerimentoPayload,
+  BackendTermoCompromisso,
   BackendTermoImagem,
   BackendTermoSaida,
   BackendTextoTermoUsoImagem,
@@ -16,7 +19,7 @@ export async function obterSocioeconomica(matriculaId: string): Promise<BackendS
 
 export async function salvarSocioeconomica(
   matriculaId: string,
-  payload: unknown,
+  payload: BackendSocioeconomicaPayload,
 ): Promise<BackendSocioeconomica> {
   const { data } = await api.put<BackendSocioeconomica>(`/matriculas/${encodeURIComponent(matriculaId)}/socioeconomica`, payload);
   return data;
@@ -34,7 +37,7 @@ export async function obterRequerimento(matriculaId: string): Promise<BackendReq
 
 export async function salvarRequerimento(
   matriculaId: string,
-  payload: unknown,
+  payload: BackendRequerimentoPayload,
 ): Promise<BackendRequerimentoMatricula> {
   const { data } = await api.put<BackendRequerimentoMatricula>(`/matriculas/${encodeURIComponent(matriculaId)}/requerimento`, payload);
   return data;
@@ -73,6 +76,31 @@ export async function salvarTermoSaida(matriculaId: string, payload: unknown): P
 export async function baixarPdfTermoSaida(matriculaId: string): Promise<void> {
   const resposta = await api.get<Blob>(`/matriculas/${encodeURIComponent(matriculaId)}/termo-saida/pdf`, { responseType: "blob" });
   await baixarArquivo(resposta, `termo-saida-${matriculaId}.pdf`);
+}
+
+export async function obterTermoCompromisso(matriculaId: string): Promise<BackendTermoCompromisso> {
+  const { data } = await api.get<BackendTermoCompromisso>(
+    `/matriculas/${encodeURIComponent(matriculaId)}/termo-compromisso`,
+  );
+  return data;
+}
+
+export async function salvarTermoCompromisso(
+  matriculaId: string,
+  payload: Omit<BackendTermoCompromisso, "completa">,
+): Promise<BackendTermoCompromisso> {
+  const { data } = await api.put<BackendTermoCompromisso>(
+    `/matriculas/${encodeURIComponent(matriculaId)}/termo-compromisso`,
+    payload,
+  );
+  return data;
+}
+
+export async function baixarPdfTermoCompromisso(matriculaId: string): Promise<void> {
+  const resposta = await api.get<Blob>(`/matriculas/${encodeURIComponent(matriculaId)}/termo-compromisso/pdf`, {
+    responseType: "blob",
+  });
+  await baixarArquivo(resposta, `termo-compromisso-${matriculaId}.pdf`);
 }
 
 export async function obterTextoTermoUsoImagem(): Promise<BackendTextoTermoUsoImagem> {

@@ -33,7 +33,7 @@ export const OPCOES_COR_RACA: { valor: CorRaca; rotulo: string }[] = [
   { valor: "PARDA", rotulo: "Parda" },
   { valor: "AMARELA", rotulo: "Amarela" },
   { valor: "INDIGENA", rotulo: "Indígena" },
-  { valor: "NAO_DECLARADA", rotulo: "Não declarada" },
+  { valor: "NAO_DECLARADO", rotulo: "Não declarada" },
 ];
 
 export const UFS = [
@@ -81,17 +81,17 @@ export const OPCOES_ESTADO_CIVIL: { valor: string; rotulo: string }[] = [
 ];
 
 /** Regime sugerido no termo de compromisso: o texto oficial fala em "tempo integral". */
-export const REGIME_PADRAO = "Tempo integral";
+export const REGIME_PADRAO = "TEMPO_INTEGRAL";
 
 export const OPCOES_MODALIDADE: { valor: string; rotulo: string }[] = [
-  { valor: "Creche", rotulo: "Creche" },
-  { valor: "Pré-escola", rotulo: "Pré-escola" },
+  { valor: "CRECHE", rotulo: "Creche" },
+  { valor: "PRE_ESCOLA", rotulo: "Pré-escola" },
 ];
 
 export const OPCOES_REGIME: { valor: string; rotulo: string }[] = [
-  { valor: "Tempo integral", rotulo: "Tempo integral" },
-  { valor: "Parcial - matutino", rotulo: "Parcial - matutino" },
-  { valor: "Parcial - vespertino", rotulo: "Parcial - vespertino" },
+  { valor: "TEMPO_INTEGRAL", rotulo: "Tempo integral" },
+  { valor: "PARCIAL_MATUTINO", rotulo: "Parcial - matutino" },
+  { valor: "PARCIAL_VESPERTINO", rotulo: "Parcial - vespertino" },
 ];
 
 export const NOMES_FICHAS: Record<FichaAluno, string> = {
@@ -225,12 +225,20 @@ function validarCpf(erros: ErrosCampos, campo: string, cpf: string, obrigatorio:
 }
 
 /** RF08 – dados mínimos para criar o card (campos com * no protótipo). */
-export function validarNovoAluno({ aluno, matricula }: NovoAlunoPayload): ErrosCampos {
+export function validarNovoAluno({ aluno, matricula, responsavel }: NovoAlunoPayload): ErrosCampos {
   const erros: ErrosCampos = {};
   if (vazio(aluno.nome)) erros.nome = "Informe o nome do aluno.";
   validarData(erros, "dataNascimento", aluno.dataNascimento);
   if (!aluno.sexo) erros.sexo = "Selecione o sexo.";
-  validarCpf(erros, "cpf", aluno.cpf, false);
+  validarCpf(erros, "cpf", aluno.cpf, true);
+  if (vazio(aluno.uf)) erros.uf = "Selecione a UF de naturalidade.";
+  if (vazio(aluno.nacionalidade)) erros.nacionalidade = "Informe a nacionalidade.";
+  if (vazio(responsavel.nome)) erros.nomeResponsavel = "Informe o nome do responsável.";
+  if (vazio(responsavel.parentesco)) erros.parentescoResponsavel = "Informe o parentesco do responsável.";
+  validarCpf(erros, "cpfResponsavel", responsavel.cpf, false);
+  const telefone = somenteDigitos(responsavel.telefone);
+  if (telefone && !/^\d{10,11}$/.test(telefone)) erros.telefoneResponsavel = "Informe DDD e telefone com 10 ou 11 dígitos.";
+  if (vazio(matricula.etapaId)) erros.etapaId = "Selecione a etapa.";
   if (!/^\d{4}$/.test(matricula.anoLetivo.trim())) erros.anoLetivo = "Informe o ano letivo com 4 dígitos.";
   validarData(erros, "dataMatricula", matricula.dataMatricula, { futuraPermitida: true });
   return erros;
@@ -245,7 +253,6 @@ export function validarTermoUsoImagem(termo: TermoUsoImagem): ErrosCampos {
   if (vazio(r.rg)) erros.rg = "Informe o RG.";
   validarCpf(erros, "cpf", r.cpf, true);
   if (vazio(r.endereco)) erros.endereco = "Informe o endereço.";
-  if (termo.autoriza === null) erros.autoriza = "Informe se o responsável autoriza o uso da imagem.";
   if (vazio(termo.local)) erros.local = "Informe o local.";
   validarData(erros, "data", termo.data);
   return erros;
