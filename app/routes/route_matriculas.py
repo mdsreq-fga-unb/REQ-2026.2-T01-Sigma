@@ -9,9 +9,10 @@ Qualquer usuário autenticado e ativo da equipe administrativa pode usar as rota
 O corpo das requisições tem dados pessoais e nunca é registrado em log.
 """
 
+from app.schemas.termo_compromisso import TermoCompromissoResponse, TermoCompromissoUpdate
 from app.schemas.termo_imagem import TermoImagemResponse, TermoImagemUpdate
 from app.schemas.termo_saida import TermoSaidaResponse, TermoSaidaUpdate
-from app.services import service_termo_imagem, service_termo_saida, service_requerimento
+from app.services import service_termo_compromisso, service_termo_imagem, service_termo_saida, service_requerimento
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Response, status
@@ -215,6 +216,58 @@ def salvar_termo_saida(id_matricula: int, dados: TermoSaidaUpdate, db: SessaoBan
 )
 def exportar_termo_saida_pdf(id_matricula: int, response: Response, db: SessaoBanco, usuario: UsuarioAtual):
     conteudo, nome_arquivo = service_termo_saida.exportar_pdf(db, id_matricula, usuario)
+    return _resposta_pdf(conteudo, nome_arquivo, response)
+
+
+# Termo de compromisso escolar
+
+@router.get(
+    "/{id_matricula}/termo-compromisso",
+    response_model=TermoCompromissoResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Obter o Termo de compromisso escolar da matrícula",
+    responses={
+        200: {"description": "Termo da matrícula. Sem termo salvo: campos vazios, dados do aluno e `completa` falso."},
+        **_RESPOSTAS_AUTENTICACAO,
+        404: {"description": "Matrícula não encontrada."},
+        503: {"description": "Falha de conexão com o banco de dados."},
+    },
+)
+def obter_termo_compromisso(id_matricula: int, db: SessaoBanco, _usuario: UsuarioAtual):
+    return service_termo_compromisso.obter_termo(db, id_matricula)
+
+
+@router.put(
+    "/{id_matricula}/termo-compromisso",
+    response_model=TermoCompromissoResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Salvar o Termo de compromisso escolar (cria ou atualiza)",
+    responses={
+        200: {"description": "Termo salvo."},
+        **_RESPOSTAS_AUTENTICACAO,
+        404: {"description": "Matrícula não encontrada."},
+        409: {"description": "Matrícula inativa: o termo só pode ser consultado (RN10)."},
+        422: {
+            "description": "Campos obrigatórios vazios (todos listados), CPF inválido, opção inválida, "
+            "data futura ou termo assinado sem data."
+        },
+        503: {"description": "Falha de conexão com o banco de dados. Nada foi salvo."},
+    },
+)
+def salvar_termo_compromisso(
+    id_matricula: int, dados: TermoCompromissoUpdate, db: SessaoBanco, usuario: UsuarioAtual
+):
+    return service_termo_compromisso.salvar_termo(db, id_matricula, dados, usuario)
+
+
+@router.get(
+    "/{id_matricula}/termo-compromisso/pdf",
+    response_class=Response,
+    summary="Exportar o Termo de compromisso escolar em PDF",
+    responses={**_RESPOSTA_PDF, 503: {"description": "Falha ao registrar a exportação no banco de dados."}},
+)
+def exportar_termo_compromisso_pdf(id_matricula: int, response: Response, db: SessaoBanco, usuario: UsuarioAtual):
+    conteudo, nome_arquivo = service_termo_compromisso.exportar_pdf(db, id_matricula, usuario)
     return _resposta_pdf(conteudo, nome_arquivo, response)
 
 
