@@ -7,9 +7,6 @@ Cada preenchimento, edição e exportação vira uma `Operacao` com autor, data 
   {"ficha", "campo", "valor_anterior", "valor_novo", "sensivel"}.
   Os valores vêm já formatados para leitura (data, R$, Sim/Não, nome da opção).
   Campo sensível (app/core/auditoria.py) vem com `sensivel=True` e valores vazios.
-
-Não registrar valores em logs da aplicação.
-Reaproveitável pelas outras fichas da matrícula.
 """
 from collections.abc import Callable, Mapping, Sequence
 from datetime import date
