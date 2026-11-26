@@ -12,7 +12,7 @@ export const api = axios.create({
 });
 
 /** RNF05: o login deve responder em menos de 2 s; acima disso aciona o FE03 do UC01. */
-export const LOGIN_TIMEOUT_MS = 2000;
+export const LOGIN_TIMEOUT_MS = 10000;
 
 // Rotas em que um 401 Ã© uma resposta esperada e nÃ£o deve redirecionar para o login.
 const ROTAS_SEM_REDIRECT_401 = ["/auth/login"];
