@@ -81,7 +81,18 @@ export async function POST(request: NextRequest) {
     termos: { usoImagem: null, saida: null, compromisso: null },
     resumo: { responsavel: "", parentesco: "", telefone: "", endereco: "" },
     documentosEntregues: [],
-    historico: [{ id: novoId(), data: agora, autor: autor.nome, descricao: "Card criado." }],
+    historico: [
+      {
+        id: novoId(),
+        dataHora: agora,
+        usuario: autor.nome,
+        ficha: "CARD",
+        campo: "Status",
+        valorAnterior: null,
+        valorNovo: "Pendente (card criado)",
+        sensivel: false,
+      },
+    ],
   };
   alunos().push(registro);
   return NextResponse.json(alunoCard(registro), { status: 201 });

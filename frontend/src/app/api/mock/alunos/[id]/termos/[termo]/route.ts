@@ -1,19 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { temErros, validarTermoCompromisso, validarTermoSaida, validarTermoUsoImagem } from "@/lib/alunos";
 import {
-  NOMES_FICHAS,
-  temErros,
-  validarTermoCompromisso,
-  validarTermoSaida,
-  validarTermoUsoImagem,
-} from "@/lib/alunos";
-import { alunoCard, buscarAluno, registrarHistorico } from "@/mocks/alunos";
+  alteracaoStatus,
+  alunoCard,
+  buscarAluno,
+  registrarAlteracoes,
+  statusAluno,
+  type Alteracao,
+} from "@/mocks/alunos";
 import { lerTermoCompromisso, lerTermoSaida, lerTermoUsoImagem } from "@/mocks/alunosPayload";
+import { alteracoesCompromisso, alteracoesSaida, alteracoesUsoImagem } from "@/mocks/historico";
 import { erro, esperar, mockHabilitado, naoEncontrado, usuarioDaSessao } from "@/mocks/store";
 
 /**
  * UC04 FP01/FA01 – `PUT /alunos/{id}/termos/{uso-imagem|saida|compromisso}`.
- * Valida os campos obrigatórios (RN06), bloqueia cards inativos (RN10) e registra a
- * alteração no histórico de edições (RF17).
+ * Valida os campos obrigatórios (RN06), bloqueia cards inativos (RN10) e registra no
+ * histórico de edições uma linha por campo alterado (RF17).
  */
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string; termo: string }> }) {
   if (!mockHabilitado()) return naoEncontrado();
@@ -28,30 +30,32 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   if (registro.status === "INATIVO") return erro(409, "MATRICULA_INATIVA");
 
   const corpo = await request.json().catch(() => null);
-  let nomeFicha: string;
+  const statusAntes = statusAluno(registro);
+  let alteracoes: Alteracao[];
 
   if (termo === "uso-imagem") {
     const payload = lerTermoUsoImagem(corpo);
     if (!payload) return erro(422, "DADOS_INVALIDOS");
     if (temErros(validarTermoUsoImagem(payload))) return erro(422, "FICHAS_INCOMPLETAS");
+    alteracoes = alteracoesUsoImagem(registro.termos.usoImagem, payload);
     registro.termos.usoImagem = payload;
-    nomeFicha = NOMES_FICHAS.usoImagem;
   } else if (termo === "saida") {
     const payload = lerTermoSaida(corpo);
     if (!payload) return erro(422, "DADOS_INVALIDOS");
     if (temErros(validarTermoSaida(payload))) return erro(422, "FICHAS_INCOMPLETAS");
+    alteracoes = alteracoesSaida(registro.termos.saida, payload);
     registro.termos.saida = payload;
-    nomeFicha = NOMES_FICHAS.saida;
   } else if (termo === "compromisso") {
     const payload = lerTermoCompromisso(corpo);
     if (!payload) return erro(422, "DADOS_INVALIDOS");
     if (temErros(validarTermoCompromisso(payload))) return erro(422, "FICHAS_INCOMPLETAS");
+    alteracoes = alteracoesCompromisso(registro.termos.compromisso, payload);
     registro.termos.compromisso = payload;
-    nomeFicha = NOMES_FICHAS.compromisso;
   } else {
     return erro(404, "NAO_ENCONTRADO");
   }
 
-  registrarHistorico(registro, autor.nome, `${nomeFicha} atualizado.`);
+  // Completar o último termo muda o status do card de Pendente para Ativo (RN06).
+  registrarAlteracoes(registro, autor.nome, [...alteracoes, ...alteracaoStatus(statusAntes, statusAluno(registro))]);
   return NextResponse.json(alunoCard(registro));
 }
