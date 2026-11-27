@@ -1,8 +1,10 @@
 import type {
   CorRaca,
   FichaAluno,
+  FichaHistorico,
   FormaSaida,
   NovoAlunoPayload,
+  PeriodoHistorico,
   Sexo,
   TermoCompromisso,
   TermoSaida,
@@ -110,6 +112,28 @@ export const ABA_DA_FICHA: Record<FichaAluno, string> = {
   saida: "saida",
   compromisso: "compromisso",
 };
+
+// ---------- Histórico de edições (RF17) ----------
+
+/** Rótulos da coluna/filtro "Ficha" do histórico, na ordem das abas do card. */
+export const NOMES_FICHAS_HISTORICO: Record<FichaHistorico, string> = {
+  CARD: "Card",
+  REQUERIMENTO: "Requerimento",
+  SOCIOECONOMICA: "Socioeconômica",
+  USO_IMAGEM: "Uso de imagem",
+  SAIDA: "Saída",
+  COMPROMISSO: "Compromisso",
+  DOCUMENTOS: "Documentos",
+};
+
+export const PERIODO_HISTORICO_PADRAO: PeriodoHistorico = "30_DIAS";
+
+export const OPCOES_PERIODO_HISTORICO: { valor: PeriodoHistorico; rotulo: string; dias: number | null }[] = [
+  { valor: "7_DIAS", rotulo: "Últimos 7 dias", dias: 7 },
+  { valor: "30_DIAS", rotulo: "Últimos 30 dias", dias: 30 },
+  { valor: "90_DIAS", rotulo: "Últimos 90 dias", dias: 90 },
+  { valor: "TODO", rotulo: "Todo o período", dias: null },
+];
 
 export const DOCUMENTOS_EXIGIDOS = [
   "Certidão de nascimento",

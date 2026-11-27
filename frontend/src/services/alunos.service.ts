@@ -2,7 +2,9 @@ import type {
   AlunoCard,
   AlunoVisaoGeralResponse,
   FiltroAlunos,
+  FiltroHistorico,
   ListaAlunos,
+  ListaHistorico,
   NovoAlunoPayload,
   SituacaoFicha,
   TermoAluno,
@@ -270,6 +272,27 @@ export async function salvarTermo<T extends TermoAluno>(
     });
   }
   return obterAluno(idAluno);
+}
+
+/**
+ * UC04 / RF17 – `GET /alunos/{id}/historico?ficha=&usuario=&periodo=&pagina=&tamanhoPagina=`.
+ * Somente leitura. Campos sensíveis chegam sem valores (`sensivel: true`).
+ */
+export async function listarHistorico(
+  id: string,
+  { ficha, usuario, periodo, pagina, tamanhoPagina }: FiltroHistorico = {},
+): Promise<ListaHistorico> {
+  if (!usandoApiMock) erroNaoSuportado("O histórico de edições ainda não está integrado ao backend.");
+  const { data } = await api.get<ListaHistorico>(`/alunos/${encodeURIComponent(id)}/historico`, {
+    params: {
+      ficha: ficha || undefined,
+      usuario: usuario || undefined,
+      periodo: periodo || undefined,
+      pagina,
+      tamanhoPagina,
+    },
+  });
+  return data;
 }
 
 export async function inativarAluno(id: string): Promise<AlunoCard> {

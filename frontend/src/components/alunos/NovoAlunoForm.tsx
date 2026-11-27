@@ -38,7 +38,6 @@ interface Formulario {
   dataNascimento: string;
   sexo: Sexo | null;
   nis: string;
-  rg: string;
   cpf: string;
   naturalidade: string;
   uf: string;
@@ -60,7 +59,6 @@ function formularioInicial(): Formulario {
     dataNascimento: "",
     sexo: null,
     nis: "",
-    rg: "",
     cpf: "",
     naturalidade: "",
     uf: "",
@@ -83,7 +81,7 @@ function paraPayload(f: Formulario): NovoAlunoPayload {
       dataNascimento: dataDigitadaParaIso(f.dataNascimento),
       sexo: f.sexo,
       nis: f.nis.trim(),
-      rg: f.rg.trim(),
+      rg: "",
       cpf: somenteDigitos(f.cpf),
       naturalidade: f.naturalidade.trim(),
       uf: f.uf,
@@ -211,7 +209,7 @@ function FluxoCard() {
                 />
               </div>
 
-              <div className={stylesAluno.grid3}>
+              <div className={stylesAluno.grid2}>
                 <TextField
                   label="Nº do NIS"
                   placeholder="—"
@@ -219,7 +217,6 @@ function FluxoCard() {
                   value={form.nis}
                   onChange={(e) => alterar("nis", e.target.value)}
                 />
-                <TextField label="ID" placeholder="—" value={form.rg} onChange={(e) => alterar("rg", e.target.value)} />
                 <TextField
                   label="CPF do aluno"
                   required
@@ -235,9 +232,11 @@ function FluxoCard() {
               <div className={stylesAluno.grid3}>
                 <TextField
                   label="Naturalidade"
+                  required
                   placeholder="Cidade"
                   value={form.naturalidade}
                   onChange={(e) => alterar("naturalidade", e.target.value)}
+                  error={erros.naturalidade}
                 />
                 <SelectField
                   label="UF"
@@ -261,9 +260,11 @@ function FluxoCard() {
               <RadioGroup
                 label="Cor/Raça"
                 name="corRaca"
+                required
                 value={form.corRaca}
                 options={OPCOES_COR_RACA}
                 onChange={(valor) => alterar("corRaca", valor)}
+                error={erros.corRaca}
               />
             </div>
           </section>
