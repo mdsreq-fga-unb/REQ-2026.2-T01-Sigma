@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { Alert } from "@/components/ui/Alert";
 import { FichaSocioeconomica } from "@/components/alunos/FichaSocioeconomica";
 import { MatriculaForm } from "@/components/alunos/MatriculaForm";
+import { Historico } from "@/components/alunos/card/Historico";
 import { TermoCompromisso } from "@/components/alunos/termos/TermoCompromisso";
 import { TermoSaida } from "@/components/alunos/termos/TermoSaida";
 import { TermoUsoImagem } from "@/components/alunos/termos/TermoUsoImagem";
@@ -38,7 +39,6 @@ function montarMatricula(card: AlunoCard): Matricula {
     status: "PENDENTE",
     criadaEm: new Date().toISOString(),
     atualizadaEm: new Date().toISOString(),
-    historico: [],
   };
 }
 
@@ -69,6 +69,9 @@ export default function AlunoAbaPage() {
       ativo = false;
     };
   }, [id]);
+
+  // O histórico usa o card do layout e tem o próprio estado de carregamento.
+  if (aba === "historico") return <Historico />;
 
   if (carregando) {
     return <p aria-live="polite">Carregando ficha...</p>;
@@ -112,8 +115,6 @@ export default function AlunoAbaPage() {
       );
     case "documentos":
       return <EmBreve casoDeUso="UC05 – Documentos digitais" />;
-    case "historico":
-      return <EmBreve casoDeUso="UC04 – Histórico de edições (RF17)" />;
     default:
       return null;
   }

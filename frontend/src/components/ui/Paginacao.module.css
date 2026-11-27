@@ -1,0 +1,35 @@
+.paginacao {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.paginacao button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+}
+
+.paginacao button:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+}
+
+.paginacao button:disabled {
+  color: var(--color-placeholder);
+  cursor: not-allowed;
+}
+
+.paginacao button[aria-current="page"] {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  font-weight: 700;
+}

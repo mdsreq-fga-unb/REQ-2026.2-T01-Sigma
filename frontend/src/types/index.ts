@@ -32,7 +32,6 @@ export type Sexo = "MASCULINO" | "FEMININO";
 export type CorRaca = "BRANCA" | "PRETA" | "PARDA" | "AMARELA" | "INDIGENA" | "NAO_DECLARADA";
 
 export type StatusMatricula = "PENDENTE" | "ATIVA" | "INATIVA";
-export type TipoAlteracaoMatricula = "CRIACAO" | "EDICAO" | "INATIVACAO" | "REATIVACAO";
 
 /** Datas trafegam como `AAAA-MM-DD`; a interface exibe dd/mm/aaaa. */
 export interface DadosPessoaisAluno {
@@ -211,14 +210,6 @@ export interface FichasMatricula {
   requerimento: FichaRequerimento;
 }
 
-export interface HistoricoMatricula {
-  id: string;
-  data: string;
-  autor: string;
-  tipo: TipoAlteracaoMatricula;
-  alteracoes: string[];
-}
-
 export interface Matricula {
   id: string;
   aluno: DadosAluno;
@@ -226,7 +217,6 @@ export interface Matricula {
   status: StatusMatricula;
   criadaEm: string;
   atualizadaEm: string;
-  historico: HistoricoMatricula[];
 }
 
 export interface NovaMatriculaPayload {
@@ -343,6 +333,54 @@ export interface ListaAlunos {
   totalCadastrados: number; // todos os cards
   pagina: number;
   tamanhoPagina: number;
+}
+
+// UC04 – Histórico de edições do card (RF17)
+
+/** Onde a alteração foi feita: no próprio card ou em uma das fichas/termos. */
+export type FichaHistorico =
+  | "CARD"
+  | "REQUERIMENTO"
+  | "SOCIOECONOMICA"
+  | "USO_IMAGEM"
+  | "SAIDA"
+  | "COMPROMISSO"
+  | "DOCUMENTOS";
+
+export type PeriodoHistorico = "7_DIAS" | "30_DIAS" | "90_DIAS" | "TODO";
+
+/**
+ * Uma linha do histórico = um campo alterado. Um salvamento que muda três campos gera
+ * três registros com a mesma data/hora e usuário.
+ */
+export interface RegistroHistorico {
+  id: string;
+  dataHora: string; // ISO 8601
+  usuario: string; // nome de quem fez a alteração
+  ficha: FichaHistorico;
+  campo: string; // nome legível do campo (ex.: "Telefone")
+  /** `null` = vazio. Sempre `null` em campos sensíveis: o backend não grava esses valores. */
+  valorAnterior: string | null;
+  valorNovo: string | null;
+  /** CPF, RG, NIS, saúde, renda, raça e documentos civis: a tela mostra só "Valor alterado". */
+  sensivel: boolean;
+}
+
+export interface FiltroHistorico {
+  ficha?: FichaHistorico;
+  usuario?: string;
+  periodo?: PeriodoHistorico;
+  pagina?: number;
+  tamanhoPagina?: number;
+}
+
+export interface ListaHistorico {
+  itens: RegistroHistorico[]; // mais recente primeiro
+  total: number; // resultados do filtro
+  pagina: number;
+  tamanhoPagina: number;
+  /** Quem já alterou este aluno (todo o histórico, sem filtros): opções do filtro "Usuário". */
+  usuarios: string[];
 }
 
 // UC06 / UC08 – Estrutura escolar (turmas e etapas)
