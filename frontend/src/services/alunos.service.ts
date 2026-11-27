@@ -194,7 +194,7 @@ function payloadCadastro(payload: NovoAlunoPayload) {
 }
 
 export async function listarAlunos({ busca, status, turmaId, pagina, tamanhoPagina }: FiltroAlunos = {}): Promise<ListaAlunos> {
-  if (!usandoApiMock) {
+  if (usandoApiMock) {
     return {
       itens: [],
       total: 0,
@@ -273,19 +273,19 @@ export async function salvarTermo<T extends TermoAluno>(
 }
 
 export async function inativarAluno(id: string): Promise<AlunoCard> {
-  if (!usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "A inativação do aluno ainda não está disponível no backend." };
+  if (usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "A inativação do aluno ainda não está disponível no backend." };
   const { data } = await api.patch<AlunoCard>(`/alunos/${encodeURIComponent(id)}/inativar`);
   return data;
 }
 
 export async function reativarAluno(id: string): Promise<AlunoCard> {
-  if (!usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "A reativação do aluno ainda não está disponível no backend." };
+  if (usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "A reativação do aluno ainda não está disponível no backend." };
   const { data } = await api.patch<AlunoCard>(`/alunos/${encodeURIComponent(id)}/reativar`);
   return data;
 }
 
 export async function vincularTurma(id: string, turmaId: string): Promise<AlunoCard> {
-  if (!usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "O vínculo do aluno à turma ainda não está disponível no backend." };
+  if (usandoApiMock) throw { status: 501, code: "ERRO_DESCONHECIDO", message: "O vínculo do aluno à turma ainda não está disponível no backend." };
   const { data } = await api.patch<AlunoCard>(`/alunos/${encodeURIComponent(id)}/turma`, { turmaId });
   return data;
 }
