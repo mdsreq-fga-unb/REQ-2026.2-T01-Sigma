@@ -90,6 +90,28 @@ Quando realizada, a homologação deverá ter seu resultado registrado, indicand
 Um item somente será considerado tecnicamente concluído quando todos os critérios aplicáveis do DoD estiverem atendidos e suas respectivas evidências estiverem registradas. A aprovação do cliente, quando necessária para a aceitação da entrega, deverá ser acompanhada separadamente.
 
 
+### Situações utilizadas no acompanhamento das iterações
+
+Para que o [acompanhamento das iterações](4_estrategias.md#45-acompanhamento-das-iteracoes) e o [cronograma](6_cronograma.md) não apresentem como concluída uma funcionalidade da qual só parte foi entregue, a equipe usa as situações abaixo. Cada item acompanhado deve informar a situação, as evidências e o que ainda falta.
+
+| Situação | O que significa | Evidência mínima |
+|---|---|---|
+| Estrutura criada | Tabelas, migrações, configuração de ambiente ou esqueleto de código, ainda sem fluxo funcional para o usuário. | PR ou migração |
+| Interface iniciada | Telas ou mocks existentes, ainda sem integração com o backend. | PR das telas |
+| Implementada | Código do fluxo (frontend e backend) escrito, mas sem a verificação completa do DoD. | PR do fluxo |
+| Integrada e verificada | Integrada à base do projeto, com os testes funcionais, de integração e de regressão aplicáveis executados. | Registro dos testes |
+| Tecnicamente concluída | Todos os critérios aplicáveis do DoD atendidos, com as evidências registradas. | Registro de DoD |
+| Aguardando homologação | Tecnicamente concluída, mas ainda sem avaliação da representante do projeto. | Registro de DoD |
+| Homologada | Resultado da avaliação registrado: aprovada, aprovada com ressalvas ou rejeitada. | Registro da homologação |
+
+Regras de uso:
+
+- A palavra "concluída", sem qualificação, só é usada para "tecnicamente concluída". Em entregas parciais, informa-se a situação da tabela acima e lista-se o que falta.
+- A conclusão técnica e a homologação são registradas separadamente. Uma entrega tecnicamente concluída e ainda sem avaliação da representante é "aguardando homologação", e não "aprovada".
+- Uma pendência impeditiva (regra obrigatória ou fluxo essencial ainda não implementado) deve aparecer explicitamente como pendência e não pode ser coberta por uma marcação genérica de conclusão. Pendências não impeditivas podem permanecer abertas, desde que identificadas, classificadas e encaminhadas.
+- Checklists de validação funcional, como os PDFs dos [registros de DoD](registros-dod/index.md), registram o escopo e o alinhamento com a cliente. Eles não substituem testes, integração, revisão de código e análise de requisitos não funcionais.
+
+
 ---
 
 ## Histórico de Versões
@@ -97,4 +119,5 @@ Um item somente será considerado tecnicamente concluído quando todos os crité
 | Versão | Data | Descrição da Alteração | Autor(es) | Revisor(es) |
 |---|---|---|---|---|
 | [2.0](../versoes/v2/9_dor_dod.md) | 10/10/2026 | Criação da seção de DoR e DoD no Documento de Visão (Unidade 2). | Pedro Luca | Equipe SIGMA |
-| **2.1 (Atual)** | 02/11/2026 | Reformulação dos critérios e aplicação de DoR e DoD com base nas Issues #29 e #30 ([PR #39](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/39)). | Lucas Peixoto | Gabriel Octacilio |
+| [2.1](../versoes/v2_1/9_dor_dod.md) | 02/11/2026 | Reformulação dos critérios e aplicação de DoR e DoD com base nas Issues #29 e #30 ([PR #39](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/39)). | Lucas Peixoto | Gabriel Octacilio |
+| **2.2 (Atual)** | 27/11/2026 | Correção da revisão do DoD: definição das situações usadas no acompanhamento das iterações (estrutura criada, interface iniciada, implementada, integrada e verificada, tecnicamente concluída, aguardando homologação, homologada) e das regras de uso da palavra "concluída". | Equipe SIGMA | A definir |

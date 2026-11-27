@@ -47,6 +47,22 @@ Caso a visualização incorporada não esteja disponível no navegador, <a href=
 
 </details>
 
+## Relação com os demais critérios do DoD
+
+Os checklists acima registram a validação funcional. A tabela relaciona cada Caso de Uso aos demais critérios do [DoD](../9_dor_dod.md) (testes, integração e regressão, revisão de código, requisitos não funcionais e documentação). Nenhum fluxo é apresentado como tecnicamente concluído enquanto essas evidências não forem registradas.
+
+| Caso de Uso | Fluxos no checklist validado | Implementação (PRs) | Demais evidências do DoD | Situação conforme o DoD |
+|---|---|---|---|---|
+| **UC01** | FP01, FA01, FE01 a FE05, sessão de 30 min (RN17) e restrição a usuários autenticados (RNF01) | Backend: [PR #55](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/55). Telas: [PR #60](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60) | Sem registro de testes, integração, revisão e RNFs. O [registro de DoD do UC01](uc01-gerenciar_autenticar.md) existe, mas todos os campos estão "A preencher" | Implementado, com validação funcional. Conclusão técnica pendente de evidências |
+| **UC02** | FP01, FA01 a FA03, FE01 a FE06 e restrição ao Administrador | Backend: [PR #61](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/61). Telas: [PR #60](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60) | Sem registro de testes, integração, revisão e RNFs | Implementado, com validação funcional. Conclusão técnica pendente de evidências |
+| **UC06** | FP01, FA01, FA02 e FE01 a FE06; RNF02 e RNF07. O FA03 e o FA04 são pós-MVP e não são considerados concluídos | Backend: [PR #57](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/57). Telas: [PR #60](https://github.com/mdsreq-fga-unb/REQ-2026.2-T01-Sigma/pull/60) | Sem registro de testes, integração, revisão e RNFs; o carregamento em menos de 2 s (RNF07) não tem medição registrada | Implementado, com validação funcional. Conclusão técnica pendente de evidências |
+
+Observações:
+
+- Os PRs indicam que o código foi escrito, mas não substituem testes, revisão e integração. A coluna "Implementação" é por Caso de Uso, pois os registros não separam os PRs por fluxo. Ao preencher o registro de DoD, relacione cada fluxo ao seu PR, aos testes e à revisão.
+- O checklist em PDF do UC01 ainda descreve a falha de conexão como "ao passar de 2 s sem resposta". O [UC01](../casos-uso/uc01.md) atual distingue a meta de 2 s, o timeout e a indisponibilidade, e o PDF deve ser reemitido para refletir essa diferença.
+- Os checklists foram validados com a representante, mas a data e o resultado formal da homologação não estão registrados nesta página. Até lá, a situação de homologação não deve ser apresentada como "aprovada".
+
 ## Inclusão de novos registros
 
 Quando um novo checklist em PDF for elaborado e validado:
