@@ -7,9 +7,13 @@ import { Button } from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 import { NOMES_FICHAS, isoParaData, temErros, type ErrosCampos } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
-import { usandoBackendReal } from "@/services/api";
+import { isApiError, usandoBackendReal } from "@/services/api";
 import { salvarTermo } from "@/services/alunos.service";
-import { baixarPdfTermoImagem, baixarPdfTermoSaida } from "@/services/fichas.service";
+import {
+  baixarPdfTermoCompromisso,
+  baixarPdfTermoImagem,
+  baixarPdfTermoSaida,
+} from "@/services/fichas.service";
 import type { AlunoCard, TermoAluno, TermosAluno } from "@/types";
 import { ConfirmacaoModal } from "../ConfirmacaoModal";
 import { mensagemErroAluno } from "../erros";
@@ -55,11 +59,13 @@ export function TermoForm<T extends TermoAluno>({
   const [incompleto, setIncompleto] = useState(false);
   const [exportandoPdf, setExportandoPdf] = useState(false);
   const [erroPdf, setErroPdf] = useState<string | null>(null);
+  const [erroConflito, setErroConflito] = useState(false);
+  const [somenteLeitura, setSomenteLeitura] = useState(false);
 
-  const ativo = card.status !== "INATIVO"; // Pendente também pode ser editado
+  const ativo = card.status !== "INATIVO" && !somenteLeitura; // Pendente também pode ser editado
   const pendente = card.termos[termo] === null;
   const visaoGeral = `/alunos/${encodeURIComponent(card.id)}`;
-  const podeExportarPdf = usandoBackendReal && (termo === "usoImagem" || termo === "saida");
+  const podeExportarPdf = usandoBackendReal;
 
   function enviar(event: React.FormEvent) {
     event.preventDefault();
@@ -77,7 +83,18 @@ export function TermoForm<T extends TermoAluno>({
 
   async function confirmar() {
     if (!payload) return;
-    const atualizado: AlunoCard = await salvarTermo(card.id, termo, payload);
+    let atualizado: AlunoCard;
+    try {
+      atualizado = await salvarTermo(card.id, card.idMatricula, termo, payload);
+    } catch (error) {
+      if (termo === "compromisso" && isApiError(error) && error.status === 409) {
+        setSomenteLeitura(true);
+        setErroConflito(true);
+        setPayload(null);
+        return;
+      }
+      throw error;
+    }
     atualizar(atualizado);
     setPayload(null);
     toast(MSG.fichaSalva, `${NOMES_FICHAS[termo]} · ${MSG.fichaSalvaDetalhe}`);
@@ -88,8 +105,9 @@ export function TermoForm<T extends TermoAluno>({
     setErroPdf(null);
     setExportandoPdf(true);
     try {
-      if (termo === "usoImagem") await baixarPdfTermoImagem(card.id);
-      else if (termo === "saida") await baixarPdfTermoSaida(card.id);
+      if (termo === "usoImagem") await baixarPdfTermoImagem(card.idMatricula);
+      else if (termo === "saida") await baixarPdfTermoSaida(card.idMatricula);
+      else if (termo === "compromisso") await baixarPdfTermoCompromisso(card.idMatricula);
     } catch (e) {
       setErroPdf(mensagemErroAluno(e));
     } finally {
@@ -112,6 +130,13 @@ export function TermoForm<T extends TermoAluno>({
       {erroPdf && (
         <div className={styles.alerta}>
           <Alert>{erroPdf}</Alert>
+        </div>
+      )}
+      {erroConflito && (
+        <div className={styles.alerta}>
+          <Alert variant="warning">
+            A matrícula está inativa. O termo agora está disponível somente para consulta.
+          </Alert>
         </div>
       )}
 

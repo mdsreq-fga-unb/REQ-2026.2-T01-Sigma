@@ -19,6 +19,7 @@ import {
   isoParaData,
   mascaraCpf,
   mascaraData,
+  mascaraTelefone,
   somenteDigitos,
   temErros,
   validarNovoAluno,
@@ -45,6 +46,10 @@ interface Formulario {
   etapaId: string;
   anoLetivo: string;
   dataMatricula: string;
+  nomeResponsavel: string;
+  parentescoResponsavel: string;
+  cpfResponsavel: string;
+  telefoneResponsavel: string;
 }
 
 function formularioInicial(): Formulario {
@@ -62,6 +67,10 @@ function formularioInicial(): Formulario {
     etapaId: "",
     anoLetivo: hoje.slice(0, 4),
     dataMatricula: isoParaData(hoje),
+    nomeResponsavel: "",
+    parentescoResponsavel: "",
+    cpfResponsavel: "",
+    telefoneResponsavel: "",
   };
 }
 
@@ -83,6 +92,12 @@ function paraPayload(f: Formulario): NovoAlunoPayload {
       etapaId: f.etapaId || null,
       anoLetivo: f.anoLetivo.trim(),
       dataMatricula: dataDigitadaParaIso(f.dataMatricula),
+    },
+    responsavel: {
+      nome: f.nomeResponsavel.trim(),
+      parentesco: f.parentescoResponsavel.trim(),
+      cpf: somenteDigitos(f.cpfResponsavel),
+      telefone: somenteDigitos(f.telefoneResponsavel),
     },
   };
 }
@@ -212,6 +227,7 @@ function FluxoCard() {
                   error={erros.cpf}
                 />
               </div>
+              <p className={stylesAluno.notaCampo}>O campo ID/RG não é enviado ao backend neste cadastro.</p>
 
               <div className={stylesAluno.grid3}>
                 <TextField
@@ -250,6 +266,55 @@ function FluxoCard() {
                 onChange={(valor) => alterar("corRaca", valor)}
                 error={erros.corRaca}
               />
+            </div>
+          </section>
+
+          <section className={stylesAluno.secao} aria-labelledby="secao-responsavel">
+            <header className={stylesAluno.secaoCabecalho}>
+              <h2 id="secao-responsavel" className={stylesAluno.secaoTitulo}>
+                Responsável
+              </h2>
+              <p className={stylesAluno.secaoDescricao}>
+                Nome e parentesco são necessários para criar o card. CPF e telefone são opcionais.
+              </p>
+            </header>
+            <div className={stylesAluno.campos}>
+              <div className={stylesAluno.grid2}>
+                <TextField
+                  label="Nome do responsável"
+                  required
+                  placeholder="Digite o nome completo"
+                  value={form.nomeResponsavel}
+                  onChange={(e) => alterar("nomeResponsavel", e.target.value)}
+                  error={erros.nomeResponsavel}
+                />
+                <TextField
+                  label="Parentesco"
+                  required
+                  placeholder="Ex.: mãe, pai, responsável legal"
+                  value={form.parentescoResponsavel}
+                  onChange={(e) => alterar("parentescoResponsavel", e.target.value)}
+                  error={erros.parentescoResponsavel}
+                />
+              </div>
+              <div className={stylesAluno.grid2}>
+                <TextField
+                  label="CPF do responsável"
+                  placeholder="000.000.000-00"
+                  inputMode="numeric"
+                  value={form.cpfResponsavel}
+                  onChange={(e) => alterar("cpfResponsavel", mascaraCpf(e.target.value))}
+                  error={erros.cpfResponsavel}
+                />
+                <TextField
+                  label="Telefone do responsável"
+                  placeholder="(00) 00000-0000"
+                  inputMode="tel"
+                  value={form.telefoneResponsavel}
+                  onChange={(e) => alterar("telefoneResponsavel", mascaraTelefone(e.target.value))}
+                  error={erros.telefoneResponsavel}
+                />
+              </div>
             </div>
           </section>
 
@@ -308,7 +373,7 @@ function FluxoCard() {
       {confirmando && (
         <ConfirmacaoModal
           titulo={`Criar o card de ${confirmando.aluno.nome}?`}
-          descricao="O card é criado como ativo e a criação fica registrada no histórico com o seu nome, a data e a hora."
+          descricao="O card é criado com os dados do aluno, do responsável e da matrícula. A situação inicial depende das fichas pendentes."
           rotuloConfirmar="Confirmar"
           rotuloEnviando="Criando..."
           onConfirmar={criar}

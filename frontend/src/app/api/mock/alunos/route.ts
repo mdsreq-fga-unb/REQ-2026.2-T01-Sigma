@@ -79,7 +79,12 @@ export async function POST(request: NextRequest) {
     requerimentoPreenchido: false,
     socioeconomicaPreenchida: false,
     termos: { usoImagem: null, saida: null, compromisso: null },
-    resumo: { responsavel: "", parentesco: "", telefone: "", endereco: "" },
+    resumo: {
+      responsavel: payload.responsavel.nome,
+      parentesco: payload.responsavel.parentesco,
+      telefone: payload.responsavel.telefone,
+      endereco: "",
+    },
     documentosEntregues: [],
     historico: [
       {

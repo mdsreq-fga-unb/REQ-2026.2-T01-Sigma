@@ -30,14 +30,15 @@ function opcao<T extends string>(valor: unknown, validos: readonly T[]): T | nul
 }
 
 const SEXOS: Sexo[] = ["MASCULINO", "FEMININO"];
-const CORES: CorRaca[] = ["BRANCA", "PRETA", "PARDA", "AMARELA", "INDIGENA", "NAO_DECLARADA"];
+const CORES: CorRaca[] = ["BRANCA", "PRETA", "PARDA", "AMARELA", "INDIGENA", "NAO_DECLARADO"];
 const FORMAS: FormaSaida[] = ["RESPONSAVEIS", "TRANSPORTE_ESCOLAR", "OUTROS"];
 
 export function lerNovoAluno(valor: unknown): NovoAlunoPayload | null {
   const raiz = obj(valor);
   const a = obj(raiz?.aluno);
   const m = obj(raiz?.matricula);
-  if (!a || !m) return null;
+  const r = obj(raiz?.responsavel);
+  if (!a || !m || !r) return null;
 
   const campos = {
     nome: txt(a.nome),
@@ -50,6 +51,10 @@ export function lerNovoAluno(valor: unknown): NovoAlunoPayload | null {
     nacionalidade: txt(a.nacionalidade),
     anoLetivo: txt(m.anoLetivo),
     dataMatricula: txt(m.dataMatricula),
+    nomeResponsavel: txt(r.nome),
+    parentescoResponsavel: txt(r.parentesco),
+    cpfResponsavel: txt(r.cpf),
+    telefoneResponsavel: txt(r.telefone),
   };
   const sexo = opcao(a.sexo, SEXOS);
   const corRaca = opcao(a.corRaca, CORES);
@@ -73,6 +78,12 @@ export function lerNovoAluno(valor: unknown): NovoAlunoPayload | null {
       corRaca,
     },
     matricula: { etapaId: etapaId || null, anoLetivo: c.anoLetivo, dataMatricula: c.dataMatricula },
+    responsavel: {
+      nome: c.nomeResponsavel,
+      parentesco: c.parentescoResponsavel,
+      cpf: somenteDigitos(c.cpfResponsavel),
+      telefone: somenteDigitos(c.telefoneResponsavel),
+    },
   };
 }
 
