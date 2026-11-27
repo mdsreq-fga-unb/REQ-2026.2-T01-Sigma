@@ -282,7 +282,6 @@ export async function listarHistorico(
   id: string,
   { ficha, usuario, periodo, pagina, tamanhoPagina }: FiltroHistorico = {},
 ): Promise<ListaHistorico> {
-  if (!usandoApiMock) erroNaoSuportado("O histórico de edições ainda não está integrado ao backend.");
   const { data } = await api.get<ListaHistorico>(`/alunos/${encodeURIComponent(id)}/historico`, {
     params: {
       ficha: ficha || undefined,
