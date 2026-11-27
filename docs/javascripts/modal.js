@@ -112,7 +112,7 @@
       category: 'rf',
       type: 'Requisito Funcional',
       name: 'Vincular aluno a turma',
-      description: 'As secretárias devem poder alterar a turma de um aluno com matrícula ativa, vinculando o card a outra turma cadastrada e ativa da creche. A alocação inicial ocorre no cadastro do card (RF08/UC04).',
+      description: 'As secretárias devem poder associar o card de matrícula de um aluno a uma turma cadastrada e ativa da creche.',
       related: ['UC07', 'RN02', 'RN06', 'RN08', 'RN10', 'RN11']
     },
     RF14: {
@@ -332,7 +332,7 @@
       category: 'rn',
       type: 'Regra de Negócio',
       name: 'Vínculo Único de Turma e Etapa',
-      description: 'Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (selecionada no cadastro e alterável depois pela transferência de turma do UC07), atuando em conjunto com a RN03.',
+      description: 'Toda matrícula ativa deve estar vinculada a exatamente uma turma e a uma etapa (vinculada pelo UC07, na alocação inicial e nas transferências posteriores), atuando em conjunto com a RN03.',
       justification: 'Estrutura organizacional da creche e integridade referencial no banco (turma_id obrigatório).',
       related: ['RF08', 'RF13', 'RF18', 'RF24', 'UC04', 'UC07']
     },

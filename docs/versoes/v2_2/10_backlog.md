@@ -1,3 +1,6 @@
+!!! info "Versão Arquivada (v2.2 — 09/11/2026)"
+    Esta é uma cópia histórica anterior às correções da revisão da Visão de Produto e Projeto. [Acessar a versão atual](../../doc-visao/10_backlog.md).
+
 # 10. Mínimo Produto Viável (MVP)
 
 O escopo do **Mínimo Produto Viável (MVP)** do sistema **SIGMA** foi estruturado a partir do [Catálogo Unificado de Requisitos](8_requisitos.md), tendo os **Casos de Uso (UC)** como representação oficial das necessidades operacionais da Creche Estação Vida.

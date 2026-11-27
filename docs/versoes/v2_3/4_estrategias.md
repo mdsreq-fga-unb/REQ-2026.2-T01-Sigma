@@ -1,3 +1,6 @@
+!!! info "Versão Arquivada (v2.3 — 16/11/2026)"
+    Esta é uma cópia histórica anterior às correções da revisão da Visão de Produto e Projeto. [Acessar a versão atual](../../doc-visao/4_estrategias.md).
+
 # 4 ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE
 
 ## 4.1 Estratégia Priorizada

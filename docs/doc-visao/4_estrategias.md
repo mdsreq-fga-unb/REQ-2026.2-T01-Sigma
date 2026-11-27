@@ -121,7 +121,7 @@ Durante a fase de Elaboração, a equipe analisou os riscos técnicos e definiu 
 | **Arquitetura** | Backend em FastAPI (Python) e Frontend em Next.js, comunicando-se via API REST. | Facilita a separação de responsabilidades e a manutenção. |
 | **Banco de Dados** | PostgreSQL (relacional). | Garante integridade dos dados e suporta consultas complexas (RN02). |
 | **Segurança** | Autenticação via JWT e senhas criptografadas com Bcrypt. | Impede acessos não autorizados (RNF01, RNF02) e vazamento de senhas. |
-| **Controle de Acesso** | Dois perfis (Administrador e Secretaria) e bloqueio de rotas internas sem sessão ativa. | Limita quem acessa e altera os dados (RNF02, RN18). |
+| **Controle de acesso** | Dois perfis (Administrador e Secretaria), bloqueio de rotas internas sem sessão ativa, bloqueio de contas inativas e bloqueio temporário após 5 tentativas de login inválidas. | Limita quem acessa e altera os dados (RNF02, RN16, RN18). |
 | **Sessão** | Encerramento da sessão após 30 minutos de inatividade. | Reduz a exposição de dados em terminal abandonado (RN17). |
 | **Rastreabilidade** | Histórico de edições e confirmação ao salvar. | Permite identificar alterações indevidas (RF17, CP8). |
 | **Backup** | Rotina de backup diário do banco de dados via volumes do Docker. | Mitiga a perda de dados em caso de falha no servidor. |

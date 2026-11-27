@@ -1,3 +1,6 @@
+!!! info "Versão Arquivada (v2.2 — 16/11/2026)"
+    Esta é uma cópia histórica anterior às correções da revisão da Visão de Produto e Projeto. [Acessar a versão atual](../../doc-visao/2_solucao.md).
+
 # 2. Solução Proposta
  
 ## 2.1 Objetivo Geral do Produto
