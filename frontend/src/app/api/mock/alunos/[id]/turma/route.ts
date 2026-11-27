@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { alunoCard, buscarAluno, registrarHistorico } from "@/mocks/alunos";
+import { alunoCard, buscarAluno, registrarAlteracoes } from "@/mocks/alunos";
 import { erro, esperar, mockHabilitado, naoEncontrado, store, usuarioDaSessao } from "@/mocks/store";
 
 /**
@@ -26,9 +26,16 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
   if (store.etapas.find((e) => e.id === turma.etapaId)?.status !== "ATIVO") return erro(409, "ETAPA_INATIVA");
 
   if (registro.turmaId !== turma.id) {
+    const nomeTurma = (id: string | null) => store.turmas.find((t) => t.id === id)?.nome ?? null;
+    const nomeEtapa = (id: string | null) => store.etapas.find((e) => e.id === id)?.nome ?? null;
+    const turmaAntes = nomeTurma(registro.turmaId);
+    const etapaAntes = nomeEtapa(store.turmas.find((t) => t.id === registro.turmaId)?.etapaId ?? registro.etapaId);
     registro.turmaId = turma.id;
     registro.etapaId = turma.etapaId;
-    registrarHistorico(registro, autor.nome, `Aluno vinculado à ${turma.nome}.`);
+    registrarAlteracoes(registro, autor.nome, [
+      { ficha: "CARD", campo: "Turma", anterior: turmaAntes, novo: turma.nome },
+      { ficha: "CARD", campo: "Etapa", anterior: etapaAntes, novo: nomeEtapa(turma.etapaId) },
+    ]);
   }
   return NextResponse.json(alunoCard(registro));
 }

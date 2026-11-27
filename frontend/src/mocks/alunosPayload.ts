@@ -99,13 +99,22 @@ export function lerTermoSaida(valor: unknown): TermoSaida | null {
   const local = txt(raiz.local);
   const data = txt(raiz.data);
   const formaSaida = opcao(raiz.formaSaida, FORMAS);
+  // Opcional: ausente/null = sem descrição; qualquer outro tipo que não texto é formato inválido.
+  const descricaoOutros = raiz.descricaoOutros === undefined || raiz.descricaoOutros === null ? "" : txt(raiz.descricaoOutros);
   const pessoas = raiz.pessoasAutorizadas.map((p) => {
     const pessoa = obj(p);
     const nome = txt(pessoa?.nome);
     const parentesco = txt(pessoa?.parentesco);
     return nome === null || parentesco === null ? null : { nome, parentesco };
   });
-  if (nomeResponsavel === null || local === null || data === null || formaSaida === undefined || pessoas.includes(null)) {
+  if (
+    nomeResponsavel === null ||
+    local === null ||
+    data === null ||
+    formaSaida === undefined ||
+    descricaoOutros === null ||
+    pessoas.includes(null)
+  ) {
     return null;
   }
   return {
@@ -114,6 +123,8 @@ export function lerTermoSaida(valor: unknown): TermoSaida | null {
     pessoasAutorizadas: pessoas as TermoSaida["pessoasAutorizadas"],
     local,
     data,
+    // A descrição só faz sentido quando a forma de saída é "Outros" (validada em validarTermoSaida).
+    ...(formaSaida === "OUTROS" ? { descricaoOutros } : {}),
   };
 }
 

@@ -3,7 +3,9 @@ import type {
   AlunoResumo,
   DadosPessoaisAluno,
   FichaAluno,
+  FichaHistorico,
   ReferenciaNome,
+  RegistroHistorico,
   SituacaoFicha,
   StatusAluno,
   TermosAluno,
@@ -16,12 +18,23 @@ import { novoId, store } from "./store";
  * Reproduz o contrato proposto ao backend; ver README do frontend.
  */
 
-export interface HistoricoRegistro {
-  id: string;
-  data: string; // ISO 8601
-  autor: string;
-  descricao: string;
+/**
+ * Alteração de um campo, antes de ser gravada no histórico. Os valores de campos sensíveis
+ * servem só para saber se houve mudança e são descartados ao gravar (`registrarAlteracoes`).
+ */
+export interface Alteracao {
+  ficha: FichaHistorico;
+  campo: string;
+  anterior: string | null;
+  novo: string | null;
+  sensivel?: boolean;
 }
+
+export const ROTULO_STATUS: Record<StatusAluno, string> = {
+  PENDENTE: "Pendente",
+  ATIVO: "Ativo",
+  INATIVO: "Inativo",
+};
 
 export interface AlunoRegistro {
   id: string;
@@ -37,7 +50,7 @@ export interface AlunoRegistro {
   termos: TermosAluno;
   resumo: AlunoCard["resumo"];
   documentosEntregues: string[];
-  historico: HistoricoRegistro[]; // mais recente primeiro (RF17)
+  historico: RegistroHistorico[]; // mais recente primeiro (RF17)
 }
 
 /** Lista de alunos do mock, criada na primeira utilização. */
@@ -49,8 +62,41 @@ export function buscarAluno(id: string): AlunoRegistro | undefined {
   return alunos().find((a) => a.id === id);
 }
 
-export function registrarHistorico(registro: AlunoRegistro, autor: string, descricao: string): void {
-  registro.historico.unshift({ id: novoId(), data: new Date().toISOString(), autor, descricao });
+function texto(valor: string | null): string {
+  return valor?.trim() ?? "";
+}
+
+/**
+ * RF17 – grava uma linha por campo alterado, todas com a mesma data/hora e usuário.
+ * Campos sem mudança são ignorados; campos sensíveis são gravados sem os valores.
+ */
+export function registrarAlteracoes(
+  registro: AlunoRegistro,
+  usuario: string,
+  alteracoes: Alteracao[],
+  dataHora = new Date().toISOString(),
+): void {
+  const linhas: RegistroHistorico[] = alteracoes
+    .filter((a) => texto(a.anterior) !== texto(a.novo))
+    .map((a) => {
+      const sensivel = Boolean(a.sensivel);
+      return {
+        id: novoId(),
+        dataHora,
+        usuario,
+        ficha: a.ficha,
+        campo: a.campo,
+        valorAnterior: sensivel ? null : texto(a.anterior) || null,
+        valorNovo: sensivel ? null : texto(a.novo) || null,
+        sensivel,
+      };
+    });
+  registro.historico.unshift(...linhas);
+}
+
+/** Linha "Status" do card quando a operação muda o status calculado (RN06) ou a inativação. */
+export function alteracaoStatus(antes: StatusAluno, depois: StatusAluno): Alteracao[] {
+  return antes === depois ? [] : [{ ficha: "CARD", campo: "Status", anterior: ROTULO_STATUS[antes], novo: ROTULO_STATUS[depois] }];
 }
 
 function referenciaTurma(registro: AlunoRegistro): { turma: ReferenciaNome | null; etapa: ReferenciaNome | null } {
@@ -108,11 +154,83 @@ export function alunoCard(registro: AlunoRegistro): AlunoCard {
       nome,
       situacao: registro.documentosEntregues.includes(nome) ? "ENTREGUE" : "PENDENTE",
     })),
-    ultimaEdicao: ultima ? { data: ultima.data, autor: ultima.autor } : null,
+    // O registro mais recente do histórico é o mesmo exibido em "Última edição em..." (RF17).
+    ultimaEdicao: ultima ? { data: ultima.dataHora, autor: ultima.usuario } : null,
   };
 }
 
 // ---------- Dados de exemplo (fictícios) ----------
+
+const CRIACAO_SEED = "2026-02-02T13:00:00Z";
+
+/** Linha de histórico do seed. Campos sensíveis são criados sem valores, como no backend. */
+function linha(
+  id: string,
+  dataHora: string,
+  usuario: string,
+  ficha: FichaHistorico,
+  campo: string,
+  valorAnterior: string | null,
+  valorNovo: string | null,
+): RegistroHistorico {
+  return { id, dataHora, usuario, ficha, campo, valorAnterior, valorNovo, sensivel: false };
+}
+
+function linhaSensivel(id: string, dataHora: string, usuario: string, ficha: FichaHistorico, campo: string): RegistroHistorico {
+  return { id, dataHora, usuario, ficha, campo, valorAnterior: null, valorNovo: null, sensivel: true };
+}
+
+function linhaCriacao(id: string, dataHora = CRIACAO_SEED, usuario = "Secretaria"): RegistroHistorico {
+  return linha(`${id}-h0`, dataHora, usuario, "CARD", "Status", null, "Pendente (card criado)");
+}
+
+/**
+ * Data/hora relativa ao início do servidor, no horário de Brasília (UTC−3), para que o
+ * filtro padrão "Últimos 30 dias" sempre tenha registros na demonstração.
+ */
+function diasAtras(dias: number, hora: number, minuto: number): string {
+  const data = new Date();
+  data.setUTCDate(data.getUTCDate() - dias);
+  data.setUTCHours(hora + 3, minuto, 0, 0);
+  return data.toISOString();
+}
+
+/** Histórico de exemplo da Ana Clara, baseado no protótipo "UC04 – Histórico de edições". */
+function historicoAnaClara(): RegistroHistorico[] {
+  const d1 = diasAtras(1, 14, 32);
+  const d3 = diasAtras(3, 9, 15);
+  const d12 = diasAtras(12, 16, 40);
+  const d18 = diasAtras(18, 11, 20);
+  const d25 = diasAtras(25, 8, 47);
+  const d45 = diasAtras(45, 10, 5);
+  const d60 = diasAtras(60, 15, 10);
+  const d120 = diasAtras(120, 10, 2);
+  return [
+    linha("a1-h14", d1, "Secretaria", "REQUERIMENTO", "Telefone", "(61) 9 1111-1111", "(61) 9 0000-0000"),
+    linha("a1-h13", d3, "Secretária 2", "SOCIOECONOMICA", "Moradia", "Cedido", "Alugado"),
+    linha("a1-h12", d3, "Secretária 2", "SOCIOECONOMICA", "Valor mensal pago", null, "R$ 0,00"),
+    linhaSensivel("a1-h11", d3, "Secretária 2", "SOCIOECONOMICA", "Renda familiar"),
+    linha("a1-h10", d12, "Secretaria", "USO_IMAGEM", "Autoriza uso da imagem", "Não autoriza", "Sim, autoriza"),
+    linha(
+      "a1-h9",
+      d18,
+      "Secretaria",
+      "REQUERIMENTO",
+      "Endereço",
+      "Quadra 00, Conjunto B, Setor 3 — Águas Lindas de Goiás",
+      "Quadra 00, Conjunto A, Setor 5 — Águas Lindas de Goiás",
+    ),
+    linhaSensivel("a1-h8", d18, "Secretaria", "REQUERIMENTO", "Problemas de saúde"),
+    linha("a1-h7", d25, "Secretária 2", "REQUERIMENTO", "Parentesco do responsável", null, "mãe"),
+    linha("a1-h6", d45, "Secretaria", "DOCUMENTOS", "Anexo", null, "requerimento-assinado.pdf"),
+    linha("a1-h5", d45, "Secretaria", "DOCUMENTOS", "Comprovante de residência", "Pendente", "Entregue"),
+    linhaSensivel("a1-h4", d60, "Secretaria", "REQUERIMENTO", "CPF do aluno"),
+    linhaSensivel("a1-h3", d60, "Secretaria", "REQUERIMENTO", "Cor/raça"),
+    linha("a1-h2", d120, "Secretaria", "USO_IMAGEM", "Autoriza uso da imagem", null, "Não autoriza"),
+    linha("a1-h1", d120, "Secretaria", "USO_IMAGEM", "Responsável legal", null, "Maria Souza"),
+    linhaCriacao("a1"),
+  ];
+}
 
 function pessoa(nome: string, dataNascimento: string, sexo: DadosPessoaisAluno["sexo"]): DadosPessoaisAluno {
   return {
@@ -148,9 +266,7 @@ function registroBase(
     termos: { usoImagem: null, saida: null, compromisso: null },
     resumo: { responsavel: "", parentesco: "", telefone: "", endereco: "" },
     documentosEntregues: [],
-    historico: [
-      { id: `${id}-h1`, data: "2026-02-02T13:00:00Z", autor: "Secretaria", descricao: "Card criado." },
-    ],
+    historico: [linhaCriacao(id)],
     ...parcial,
   };
 }
@@ -223,15 +339,7 @@ function seedAlunos(): AlunoRegistro[] {
       endereco: "Quadra 00, Conjunto A, Setor 5 — Águas Lindas de Goiás",
     },
     documentosEntregues: DOCUMENTOS_EXIGIDOS.slice(0, 3),
-    historico: [
-      {
-        id: "a1-h2",
-        data: "2026-10-10T17:32:00Z",
-        autor: "Secretaria",
-        descricao: "Termo de autorização de uso de imagem atualizado.",
-      },
-      { id: "a1-h1", data: "2026-02-02T13:00:00Z", autor: "Secretaria", descricao: "Card criado." },
-    ],
+    historico: historicoAnaClara(),
   });
 
   const prototipo: AlunoRegistro[] = [
@@ -244,7 +352,11 @@ function seedAlunos(): AlunoRegistro[] {
       "t3",
       fichasCompletas("Juliana Mendes", "mãe", endereco),
     ),
-    registroBase("a4", pessoa("Davi Oliveira Santos", "2023-06-30", "MASCULINO"), "e2", "t2", { status: "INATIVO" }),
+    registroBase("a4", pessoa("Davi Oliveira Santos", "2023-06-30", "MASCULINO"), "e2", "t2", {
+      status: "INATIVO",
+      // O histórico continua disponível para cards inativos.
+      historico: [linha("a4-h1", diasAtras(20, 10, 30), "Coordenação", "CARD", "Status", "Pendente", "Inativo"), linhaCriacao("a4")],
+    }),
     registroBase(
       "a5",
       pessoa("Eduarda Pereira Costa", "2022-11-14", "FEMININO"),
