@@ -230,7 +230,12 @@ export function validarNovoAluno({ aluno, matricula }: NovoAlunoPayload): ErrosC
   if (vazio(aluno.nome)) erros.nome = "Informe o nome do aluno.";
   validarData(erros, "dataNascimento", aluno.dataNascimento);
   if (!aluno.sexo) erros.sexo = "Selecione o sexo.";
-  validarCpf(erros, "cpf", aluno.cpf, false);
+  validarCpf(erros, "cpf", aluno.cpf, true);
+  if (vazio(aluno.naturalidade)) erros.naturalidade = "Informe a naturalidade.";
+  if (vazio(aluno.uf)) erros.uf = "Selecione a UF.";
+  if (vazio(aluno.nacionalidade)) erros.nacionalidade = "Informe a nacionalidade.";
+  if (!aluno.corRaca) erros.corRaca = "Selecione a cor/raça.";
+  if (!matricula.etapaId) erros.etapaId = "Selecione o ano de escolaridade / etapa.";
   if (!/^\d{4}$/.test(matricula.anoLetivo.trim())) erros.anoLetivo = "Informe o ano letivo com 4 dígitos.";
   validarData(erros, "dataMatricula", matricula.dataMatricula, { futuraPermitida: true });
   return erros;
