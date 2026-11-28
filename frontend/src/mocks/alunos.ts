@@ -2,6 +2,8 @@ import type {
   AlunoCard,
   AlunoResumo,
   DadosPessoaisAluno,
+  DocumentoAnexado,
+  DocumentosAluno,
   FichaAluno,
   FichaHistorico,
   ReferenciaNome,
@@ -9,8 +11,10 @@ import type {
   SituacaoFicha,
   StatusAluno,
   TermosAluno,
+  TipoDocumento,
 } from "@/types";
-import { DOCUMENTOS_EXIGIDOS } from "@/lib/alunos";
+import { NOMES_TIPO_DOCUMENTO, ordenarDocumentos, resumoDocumentos } from "@/lib/documentos";
+import { gerarPdfSimples } from "./pdf";
 import { novoId, store } from "./store";
 
 /*
@@ -36,6 +40,11 @@ export const ROTULO_STATUS: Record<StatusAluno, string> = {
   INATIVO: "Inativo",
 };
 
+/** UC05 – PDF anexado, guardado em memória. Um por tipo (RF15). */
+export interface DocumentoRegistro extends DocumentoAnexado {
+  conteudo: Uint8Array<ArrayBuffer>;
+}
+
 export interface AlunoRegistro {
   id: string;
   aluno: DadosPessoaisAluno;
@@ -49,13 +58,16 @@ export interface AlunoRegistro {
   socioeconomicaPreenchida: boolean;
   termos: TermosAluno;
   resumo: AlunoCard["resumo"];
-  documentosEntregues: string[];
+  documentos: DocumentoRegistro[]; // UC05
   historico: RegistroHistorico[]; // mais recente primeiro (RF17)
 }
 
 /** Lista de alunos do mock, criada na primeira utilização. */
 export function alunos(): AlunoRegistro[] {
-  return (store.alunos ??= seedAlunos());
+  const lista = (store.alunos ??= seedAlunos());
+  // Store criado antes do UC05 num `next dev` já em execução: começa sem anexos.
+  for (const registro of lista) registro.documentos ??= [];
+  return lista;
 }
 
 export function buscarAluno(id: string): AlunoRegistro | undefined {
@@ -151,12 +163,36 @@ export function alunoCard(registro: AlunoRegistro): AlunoCard {
     fichas: situacaoFichas(registro),
     termos: registro.termos,
     resumo: registro.resumo,
-    documentos: DOCUMENTOS_EXIGIDOS.map((nome) => ({
-      nome,
-      situacao: registro.documentosEntregues.includes(nome) ? "ENTREGUE" : "PENDENTE",
-    })),
+    // Mesma fonte da aba Documentos: entregue = há PDF anexado do tipo (UC05).
+    documentos: resumoDocumentos(registro.documentos),
     // O registro mais recente do histórico é o mesmo exibido em "Última edição em..." (RF17).
     ultimaEdicao: ultima ? { data: ultima.dataHora, autor: ultima.usuario } : null,
+  };
+}
+
+/** UC05 – anexos sem o conteúdo + data do aceite do termo de compromisso (prazo das pendências). */
+export function documentosAluno(registro: AlunoRegistro): DocumentosAluno {
+  const compromisso = registro.termos.compromisso;
+  return {
+    itens: ordenarDocumentos(registro.documentos.map(({ conteudo: _conteudo, ...documento }) => documento)),
+    dataAceiteCompromisso: compromisso?.ciente && compromisso.dataAssinatura ? compromisso.dataAssinatura : null,
+  };
+}
+
+/** Anexo de exemplo do seed, com um PDF simples gerado na hora. */
+function documentoSeed(
+  id: string,
+  aluno: string,
+  tipo: TipoDocumento,
+  nomeArquivo: string,
+  anexadoEm: string,
+): DocumentoRegistro {
+  return {
+    id,
+    tipo,
+    nomeArquivo,
+    anexadoEm,
+    conteudo: gerarPdfSimples(NOMES_TIPO_DOCUMENTO[tipo], [`Aluno: ${aluno}`, "Documento de exemplo do mock do SIGMA."]),
   };
 }
 
@@ -224,7 +260,7 @@ function historicoAnaClara(): RegistroHistorico[] {
     linhaSensivel("a1-h8", d18, "Secretaria", "REQUERIMENTO", "Problemas de saúde"),
     linha("a1-h7", d25, "Secretária 2", "REQUERIMENTO", "Parentesco do responsável", null, "mãe"),
     linha("a1-h6", d45, "Secretaria", "DOCUMENTOS", "Anexo", null, "requerimento-assinado.pdf"),
-    linha("a1-h5", d45, "Secretaria", "DOCUMENTOS", "Comprovante de residência", "Pendente", "Entregue"),
+    linha("a1-h5", d45, "Secretaria", "DOCUMENTOS", "Anexo", null, "comprovante-residencia.pdf"),
     linhaSensivel("a1-h4", d60, "Secretaria", "REQUERIMENTO", "CPF do aluno"),
     linhaSensivel("a1-h3", d60, "Secretaria", "REQUERIMENTO", "Cor/raça"),
     linha("a1-h2", d120, "Secretaria", "USO_IMAGEM", "Autoriza uso da imagem", null, "Não autoriza"),
@@ -266,7 +302,7 @@ function registroBase(
     socioeconomicaPreenchida: false,
     termos: { usoImagem: null, saida: null, compromisso: null },
     resumo: { responsavel: "", parentesco: "", telefone: "", endereco: "" },
-    documentosEntregues: [],
+    documentos: [],
     historico: [linhaCriacao(id)],
     ...parcial,
   };
@@ -331,7 +367,15 @@ function seedAlunos(): AlunoRegistro[] {
         data: "2026-02-03",
       },
       saida: null,
-      compromisso: null,
+      // Aceito em 03/02/2026: prazo de entrega dos documentos em 05/03/2026 (protótipo do UC05).
+      compromisso: {
+        nomeResponsavel: "Maria Souza",
+        cpfResponsavel: "00000000000",
+        modalidade: "CRECHE",
+        regime: "TEMPO_INTEGRAL",
+        ciente: true,
+        dataAssinatura: "2026-02-03",
+      },
     },
     resumo: {
       responsavel: "Maria Souza",
@@ -339,7 +383,14 @@ function seedAlunos(): AlunoRegistro[] {
       telefone: "(61) 9 0000-0000",
       endereco: "Quadra 00, Conjunto A, Setor 5 — Águas Lindas de Goiás",
     },
-    documentosEntregues: DOCUMENTOS_EXIGIDOS.slice(0, 3),
+    // Anexos do protótipo "UC05 – Documentos digitais".
+    documentos: [
+      documentoSeed("a1-d1", "Ana Clara Souza", "CERTIDAO_NASCIMENTO", "certidao-nascimento.pdf", "2026-02-03T13:10:00Z"),
+      documentoSeed("a1-d2", "Ana Clara Souza", "COMPROVANTE_RESIDENCIA", "comprovante-residencia.pdf", "2026-02-03T13:12:00Z"),
+      documentoSeed("a1-d3", "Ana Clara Souza", "FOTO_3X4", "fotos-3x4.pdf", "2026-02-03T13:15:00Z"),
+      documentoSeed("a1-d4", "Ana Clara Souza", "REQUERIMENTO_ASSINADO", "requerimento-assinado.pdf", "2026-02-04T12:30:00Z"),
+      documentoSeed("a1-d5", "Ana Clara Souza", "SOCIOECONOMICA_ASSINADA", "socioeconomica-assinada.pdf", "2026-02-04T12:34:00Z"),
+    ],
     historico: historicoAnaClara(),
   });
 
