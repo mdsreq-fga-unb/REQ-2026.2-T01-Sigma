@@ -10,6 +10,13 @@ import { useToast } from "@/components/ui/Toast";
 import { isoParaData } from "@/lib/alunos";
 import { MSG } from "@/lib/mensagens";
 import { obterAluno, reativarAluno } from "@/services/alunos.service";
+import {
+  baixarPdfRequerimento,
+  baixarPdfSocioeconomica,
+  baixarPdfTermoCompromisso,
+  baixarPdfTermoImagem,
+  baixarPdfTermoSaida,
+} from "@/services/fichas.service";
 import type { AlunoCard } from "@/types";
 import { ConfirmacaoModal } from "../ConfirmacaoModal";
 import { mensagemErroAluno } from "../erros";
@@ -28,6 +35,15 @@ const ABAS = [
   { segmento: "documentos", rotulo: "Documentos" },
   { segmento: "historico", rotulo: "Histórico" },
 ];
+
+/** PDF baixado pelo botão "Baixar ficha (PDF)" em cada aba de ficha/termo. */
+const PDF_DA_ABA: Partial<Record<string, (idMatricula: string) => Promise<void>>> = {
+  requerimento: baixarPdfRequerimento,
+  socioeconomica: baixarPdfSocioeconomica,
+  "uso-imagem": baixarPdfTermoImagem,
+  saida: baixarPdfTermoSaida,
+  compromisso: baixarPdfTermoCompromisso,
+};
 
 type Carga = { status: "carregando" } | { status: "erro"; mensagem: string } | { status: "ok"; card: AlunoCard };
 type Modal = "reativar" | "vincular" | null;
@@ -56,6 +72,8 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
   const toast = useToast();
   const [carga, setCarga] = useState<Carga>({ status: "carregando" });
   const [modal, setModal] = useState<Modal>(null);
+  const [baixandoPdf, setBaixandoPdf] = useState(false);
+  const [erroPdf, setErroPdf] = useState<{ aba: string; mensagem: string } | null>(null);
 
   const carregar = useCallback(async () => {
     setCarga({ status: "carregando" });
@@ -110,6 +128,20 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
   }
 
   const inativo = card.status === "INATIVO";
+  const baixarPdfDaAba = PDF_DA_ABA[segmentoAtual];
+
+  async function baixarFichaPdf() {
+    if (!card || !baixarPdfDaAba) return;
+    setErroPdf(null);
+    setBaixandoPdf(true);
+    try {
+      await baixarPdfDaAba(card.idMatricula);
+    } catch (error) {
+      setErroPdf({ aba: segmentoAtual, mensagem: mensagemErroAluno(error, "carregar") });
+    } finally {
+      setBaixandoPdf(false);
+    }
+  }
 
   return (
     <AlunoCardContext.Provider value={contexto}>
@@ -139,12 +171,15 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
               <Button variant="secondary" onClick={() => setModal("vincular")}>
                 Vincular à turma
               </Button>
+              {/* Baixa o PDF da ficha/termo da aba aberta; nas demais abas fica desabilitado. */}
               <Button
                 variant="secondary"
-                disabled
-                title="A geração do PDF será implementada em uma próxima iteração."
+                onClick={() => void baixarFichaPdf()}
+                loading={baixandoPdf}
+                disabled={!baixarPdfDaAba}
+                title={baixarPdfDaAba ? undefined : "Abra a aba de uma ficha ou termo para baixar o PDF."}
               >
-                Baixar ficha (PDF)
+                {baixandoPdf ? "Gerando..." : "Baixar ficha (PDF)"}
               </Button>
             </>
           )}
@@ -158,6 +193,12 @@ export function AlunoCardShell({ children }: { children: ReactNode }) {
             Este card está inativo. As fichas ficam disponíveis apenas para consulta e nenhuma ação pode ser feita até a
             reativação.
           </Alert>
+        </div>
+      )}
+
+      {erroPdf && erroPdf.aba === segmentoAtual && (
+        <div className={styles.aviso}>
+          <Alert>{erroPdf.mensagem}</Alert>
         </div>
       )}
 
