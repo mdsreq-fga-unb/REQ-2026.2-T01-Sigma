@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { FichaRequerimento } from "@/components/alunos/FichaRequerimento";
 import { FichaSocioeconomica } from "@/components/alunos/FichaSocioeconomica";
 import { MatriculaForm } from "@/components/alunos/MatriculaForm";
+import { Documentos } from "@/components/alunos/card/Documentos";
 import { Historico } from "@/components/alunos/card/Historico";
 import { TermoCompromisso } from "@/components/alunos/termos/TermoCompromisso";
 import { TermoSaida } from "@/components/alunos/termos/TermoSaida";
@@ -70,8 +71,9 @@ export default function AlunoAbaPage() {
     };
   }, [id]);
 
-  // O histórico usa o card do layout e tem o próprio estado de carregamento.
+  // Histórico e Documentos usam o card do layout e têm o próprio estado de carregamento.
   if (aba === "historico") return <Historico />;
+  if (aba === "documentos") return <Documentos />;
 
   if (carregando) {
     return <p aria-live="polite">Carregando ficha...</p>;
@@ -108,8 +110,6 @@ export default function AlunoAbaPage() {
           onSave={() => router.push(`/alunos/${encodeURIComponent(id)}`)}
         />
       );
-    case "documentos":
-      return <EmBreve casoDeUso="UC05 – Documentos digitais" />;
     default:
       return null;
   }

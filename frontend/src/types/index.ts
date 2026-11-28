@@ -432,8 +432,54 @@ export interface AlunoCard {
   termos: TermosAluno;
   /** Dados do Requerimento de matrícula (ficha ainda não implementada). Vazio = não informado. */
   resumo: { responsavel: string; parentesco: string; telefone: string; endereco: string };
-  documentos: { nome: string; situacao: SituacaoDocumento }[]; // UC05
+  /**
+   * UC05 – situação dos documentos exigidos (`DOCUMENTOS_EXIGIDOS`), calculada a partir dos
+   * anexos reais: "ENTREGUE" quando há um PDF anexado daquele tipo. Mesma fonte da aba Documentos.
+   */
+  documentos: ResumoDocumento[];
   ultimaEdicao: { data: string; autor: string } | null; // RF17
+}
+
+// UC05 – Gerenciar Documentos Digitais (RF14, RF15, RF16)
+
+/**
+ * Tipos de documento anexável. Os cinco primeiros espelham `TipoDocumento` do backend
+ * (`app/models/documento.py`); os de fichas assinadas ainda precisam entrar no enum do backend.
+ */
+export type TipoDocumento =
+  | "CERTIDAO_NASCIMENTO"
+  | "COMPROVANTE_RESIDENCIA"
+  | "FOTO_3X4"
+  | "CARTAO_VACINA"
+  | "HISTORICO_ESCOLAR"
+  | "REQUERIMENTO_ASSINADO"
+  | "SOCIOECONOMICA_ASSINADA"
+  | "USO_IMAGEM_ASSINADO"
+  | "SAIDA_ASSINADO"
+  | "COMPROMISSO_ASSINADO";
+
+export interface ResumoDocumento {
+  tipo: TipoDocumento;
+  nome: string; // rótulo do tipo (ex.: "Certidão de nascimento")
+  situacao: SituacaoDocumento;
+}
+
+/** PDF anexado ao card. Há no máximo um arquivo por tipo (RF15: substituir troca o arquivo). */
+export interface DocumentoAnexado {
+  id: string;
+  tipo: TipoDocumento;
+  nomeArquivo: string; // nome original do arquivo enviado
+  anexadoEm: string; // ISO 8601
+}
+
+/** Resposta de `GET /alunos/{id}/documentos` (e das operações de anexar/substituir). */
+export interface DocumentosAluno {
+  itens: DocumentoAnexado[];
+  /**
+   * Data do aceite do termo de compromisso (AAAA-MM-DD), base do prazo de 30 dias para a
+   * entrega dos documentos exigidos. `null` = termo ainda não assinado.
+   */
+  dataAceiteCompromisso: string | null;
 }
 
 /** Linha da lista de alunos (UC08 FP01). */
@@ -571,6 +617,9 @@ export type ApiErrorCode =
   | "TURMA_NOME_EM_USO" // UC06 FE03 (RN14)
   | "ETAPA_INATIVA" // UC06 FE05 (RN11)
   | "STATUS_INVALIDO" // UC06 – turma já está no status pedido
+  | "FORMATO_INVALIDO" // UC05 FE01 (RN05) – arquivo que não é PDF
+  | "ARQUIVO_MUITO_GRANDE" // UC05 – arquivo acima do limite do servidor
+  | "DOCUMENTO_JA_ANEXADO" // UC05 – já existe arquivo deste tipo (usar "Substituir")
   | "DADOS_INVALIDOS"
   | "NAO_ENCONTRADO"
   | "FALHA_CONEXAO" // UC01 FE03 / UC02 FE03 (gerado no cliente)
