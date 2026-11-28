@@ -10,6 +10,7 @@ import type {
   TermoSaida,
   TermoUsoImagem,
 } from "@/types";
+import { NOMES_TIPO_DOCUMENTO, TIPOS_DOCUMENTO_EXIGIDOS } from "./documentos";
 
 /*
  * Regras e utilitários do UC04 (card do aluno) e do UC08 FP01 (busca de alunos),
@@ -135,13 +136,8 @@ export const OPCOES_PERIODO_HISTORICO: { valor: PeriodoHistorico; rotulo: string
   { valor: "TODO", rotulo: "Todo o período", dias: null },
 ];
 
-export const DOCUMENTOS_EXIGIDOS = [
-  "Certidão de nascimento",
-  "Comprovante de residência",
-  "2 fotos 3×4",
-  "Cartão de vacina",
-  "Histórico escolar",
-];
+/** Nomes dos documentos exigidos pelo termo de compromisso (UC05; tipos em `lib/documentos.ts`). */
+export const DOCUMENTOS_EXIGIDOS = TIPOS_DOCUMENTO_EXIGIDOS.map((tipo) => NOMES_TIPO_DOCUMENTO[tipo]);
 
 // ---------- Busca (RF21) ----------
 

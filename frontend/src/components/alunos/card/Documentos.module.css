@@ -1,0 +1,233 @@
+/* UC05 – Aba Documentos do card e modal "Substituir documento". Tabela reaproveita AlunosView.module.css. */
+
+.blocos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bloco {
+  padding: 20px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+}
+
+.blocoTitulo {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.blocoDescricao {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.alerta {
+  margin-top: 12px;
+}
+
+.estado {
+  margin-top: 12px;
+}
+
+.vazio {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.nota {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+/* ---------- Área de upload ---------- */
+.areaWrap {
+  margin-top: 14px;
+}
+
+.areaUpload {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px dashed var(--color-info-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.areaUploadClique {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 26px 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.areaUploadCompacta .areaUploadClique {
+  padding: 18px 16px;
+}
+
+.areaUpload:hover:not(.areaUploadBloqueada),
+.areaUploadArrastando {
+  border-color: var(--color-info);
+}
+
+.areaUploadArrastando {
+  border-style: solid;
+}
+
+/* O input fica oculto (sr-only), mas continua focável pelo teclado. */
+.areaUpload:has(input:focus-visible) {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.areaUploadTitulo {
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.areaUploadDica {
+  font-size: 11px;
+  color: var(--color-muted);
+  overflow-wrap: anywhere;
+}
+
+.areaUploadRemover {
+  margin: -16px 0 14px;
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-danger);
+  cursor: pointer;
+}
+
+.areaUploadRemover:hover {
+  text-decoration: underline;
+}
+
+.areaUploadBloqueada {
+  border-color: var(--color-border);
+  background: var(--color-surface-muted);
+  color: var(--color-muted);
+}
+
+.areaUploadBloqueada .areaUploadClique {
+  cursor: not-allowed;
+}
+
+/* ---------- Tipo de documento + Anexar ---------- */
+.linhaTipo {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.campoTipo {
+  flex: 1;
+  min-width: 0;
+}
+
+.rotulo {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.select {
+  height: 40px;
+  font-size: 14px;
+}
+
+.select:disabled {
+  background: var(--color-surface-muted);
+  cursor: not-allowed;
+}
+
+/* ---------- Documentos anexados ---------- */
+.tabelaCaixa {
+  margin-top: 14px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.tabela td {
+  font-size: 13px;
+}
+
+.tabela td.quebra {
+  white-space: normal;
+}
+
+/* Nomes de arquivo longos quebram linha, como no protótipo. */
+.tabela td.arquivo {
+  min-width: 140px;
+  max-width: 220px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+
+.acoes {
+  display: inline-flex;
+  gap: 14px;
+}
+
+.acoes button:disabled {
+  color: var(--color-muted);
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+/* ---------- Pendências ---------- */
+.pendencias {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pendencias li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 0;
+  font-size: 13px;
+}
+
+/* ---------- Fichas em PDF ---------- */
+.fichasPdf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* ---------- Modal ---------- */
+.modalUpload {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .linhaTipo {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

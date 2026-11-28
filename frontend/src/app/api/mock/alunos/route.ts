@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
       telefone: payload.responsavel.telefone,
       endereco: "",
     },
-    documentosEntregues: [],
+    documentos: [],
     historico: [
       {
         id: novoId(),

@@ -12,7 +12,10 @@ import type {
   TermoSaida,
   TermoUsoImagem,
   TermosAluno,
+  TipoDocumento,
 } from "@/types";
+import { normalizarBusca } from "@/lib/alunos";
+import { NOMES_TIPO_DOCUMENTO, ehTipoDocumento, resumoDocumentos } from "@/lib/documentos";
 import { api, isApiError, usandoApiMock } from "./api";
 import {
   obterTermoImagem,
@@ -114,6 +117,23 @@ export function mapTermoSaidaBackParaFront(
   };
 }
 
+/**
+ * Converte o tipo de documento do backend (nome do enum, valor do enum ou rótulo) no tipo do
+ * frontend. Ex.: "CERTIDAO_NASCIMENTO", "certidao de nascimento" ou "Certidão de nascimento".
+ */
+function tipoDocumentoDoBackend(tipo: string, nome: string): TipoDocumento | null {
+  if (ehTipoDocumento(tipo)) return tipo;
+  const normalizar = (texto: string) => normalizarBusca(texto).replace(/[×x]/g, "x").replace(/\s+/g, " ");
+  const candidatos = [normalizar(tipo), normalizar(nome)];
+  const encontrado = (Object.entries(NOMES_TIPO_DOCUMENTO) as [TipoDocumento, string][]).find(([, rotulo]) =>
+    candidatos.includes(normalizar(rotulo)),
+  );
+  if (encontrado) return encontrado[0];
+  // "cartão vacina" (enum do backend) → "Cartão de vacina"
+  if (candidatos.some((c) => c.includes("vacina"))) return "CARTAO_VACINA";
+  return null;
+}
+
 export function mapAlunoVisaoGeral(response: AlunoVisaoGeralResponse): AlunoCard {
   const { fichas, resumo } = response;
   const termos: TermosAluno = { usoImagem: null, saida: null, compromisso: null };
@@ -158,10 +178,12 @@ export function mapAlunoVisaoGeral(response: AlunoVisaoGeralResponse): AlunoCard
       telefone: resumo.telefone ?? resumo.responsavel.telefone ?? "",
       endereco: resumo.endereco ?? "",
     },
-    documentos: response.documentos.itens.map((documento) => ({
-      nome: documento.nome,
-      situacao: documento.entregue ? "ENTREGUE" : "PENDENTE",
-    })),
+    documentos: resumoDocumentos(
+      response.documentos.itens
+        .filter((documento) => documento.entregue)
+        .map((documento) => ({ tipo: tipoDocumentoDoBackend(documento.tipo, documento.nome) }))
+        .filter((documento): documento is { tipo: TipoDocumento } => documento.tipo !== null),
+    ),
     ultimaEdicao: response.ultima_edicao
       ? { data: response.ultima_edicao.data, autor: response.ultima_edicao.autor }
       : null,

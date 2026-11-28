@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ABA_DA_FICHA, DOCUMENTOS_EXIGIDOS, NOMES_FICHAS, formatarDataHora } from "@/lib/alunos";
+import { ABA_DA_FICHA, NOMES_FICHAS, formatarDataHora } from "@/lib/alunos";
+import { resumoDocumentos } from "@/lib/documentos";
 import type { FichaAluno } from "@/types";
 import { SituacaoBadge } from "../SituacaoBadge";
 import { useAlunoCard } from "./AlunoCardContext";
@@ -15,9 +16,8 @@ export function VisaoGeral() {
   const { card } = useAlunoCard();
   const ativo = card.status !== "INATIVO"; // Pendente também pode ser editado
   const base = `/alunos/${encodeURIComponent(card.id)}`;
-  const documentos = DOCUMENTOS_EXIGIDOS.map(
-    (nome) => card.documentos.find((doc) => doc.nome === nome) ?? { nome, situacao: "PENDENTE" as const },
-  );
+  // UC05: situação calculada pelos anexos reais, a mesma usada nas pendências da aba Documentos.
+  const documentos = resumoDocumentos(card.documentos.filter((doc) => doc.situacao === "ENTREGUE"));
   const entregues = documentos.filter((d) => d.situacao === "ENTREGUE").length;
   const responsavel = card.resumo.responsavel
     ? `${card.resumo.responsavel}${card.resumo.parentesco ? ` (${card.resumo.parentesco})` : ""}`
@@ -80,7 +80,7 @@ export function VisaoGeral() {
               </p>
               <ul className={styles.documentos}>
                 {documentos.map((doc) => (
-                  <li key={doc.nome}>
+                  <li key={doc.tipo}>
                     <span>{doc.nome}</span>
                     <SituacaoBadge ok={doc.situacao === "ENTREGUE"} rotuloOk="Entregue" />
                   </li>
